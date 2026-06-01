@@ -1,0 +1,84 @@
+{
+  "id": "cctc-from-2026-07",
+  "credential": "CCTC",
+  "label": "CCTC Detailed Content Outline (effective 2026-07-01)",
+  "effective_from": "2026-07-01",
+  "effective_until": null,
+  "source": "ABTC Candidate Handbook (rev. 3/12/2026), CCTC Detailed Content Outline effective 7/1/2026.",
+  "structure": "domain_task",
+  "scored_items": 150,
+  "pretest_items": 25,
+  "total_items": 175,
+  "default_exam_items": 175,
+  "default_time_minutes": 180,
+  "domain_tolerance_items": 2,
+  "_blueprint_note": "Per the handbook, this outline is 'written to the domain level': domain item counts are binding (±2), task-level counts are recommended targets.",
+
+  "cognitive_level_targets": { "recall": 0.35, "application": 0.52, "analysis": 0.13 },
+  "_cognitive_note": "The 2026-07 outline does not publish a cognitive-level split. These targets are carried over from the prior outline (Recall 52 / Application 78 / Analysis 20 of 150) as best-available guidance. Treat as soft targets, not hard requirements.",
+
+  "organ_targets": {
+    "general": 75,
+    "kidney": 31,
+    "liver": 18,
+    "lung": 10,
+    "heart": 8,
+    "kidney_pancreas": 3,
+    "pancreas": 2,
+    "heart_lung": 2,
+    "intestine": 1
+  },
+  "_organ_note": "The 2026-07 outline does not restate organ secondary specs for CCTC. Counts are carried over from the prior outline's secondary specifications (75 general / 75 organ-specific of 150) and the handbook's statement that ~50% of items are general. Soft targets.",
+
+  "domains": [
+    {
+      "id": 1,
+      "code": "010000",
+      "name": "Transplant Education",
+      "weight_pct": 31,
+      "items": 46,
+      "tasks": [
+        { "code": "010100", "weight_pct": 4, "items": 6, "name": "Instruct candidate/support on risks, benefits, and alternatives of transplantation and living donation" },
+        { "code": "010200", "weight_pct": 4, "items": 6, "name": "Review indications and contraindications of transplantation and living donation" },
+        { "code": "010300", "weight_pct": 4, "items": 6, "name": "Inform the living donor about immediate post-op care and short/long-term complications" },
+        { "code": "010400", "weight_pct": 4, "items": 6, "name": "Inform donor/candidate about the evaluation and selection process" },
+        { "code": "010500", "weight_pct": 5, "items": 7, "name": "Inform candidate about post-operative care (drug regimen, complications)" },
+        { "code": "010600", "weight_pct": 5, "items": 8, "name": "Educate recipient and support system about infection and organ rejection" },
+        { "code": "010700", "weight_pct": 5, "items": 7, "name": "Educate living donor and support system about complications and expected follow-up" }
+      ]
+    },
+    {
+      "id": 2,
+      "code": "020000",
+      "name": "Pre-Transplant Evaluation and Management",
+      "weight_pct": 30,
+      "items": 46,
+      "tasks": [
+        { "code": "020100", "weight_pct": 5, "items": 7, "name": "Review objective data and anticipate additional consultations" },
+        { "code": "020200", "weight_pct": 5, "items": 7, "name": "Compile multidisciplinary recommendations and facilitate testing/consults/protocols" },
+        { "code": "020300", "weight_pct": 4, "items": 6, "name": "Assess and present evaluation summary to determine suitability" },
+        { "code": "020400", "weight_pct": 4, "items": 6, "name": "Communicate the team's recommendations to candidate/living donor" },
+        { "code": "020500", "weight_pct": 5, "items": 7, "name": "List, maintain, and/or remove candidate from waitlist per OPTN policy" },
+        { "code": "020600", "weight_pct": 5, "items": 7, "name": "Present donor information and candidate's current condition to physician(s)" },
+        { "code": "020700", "weight_pct": 4, "items": 6, "name": "Coordinate pre-operative procedures for candidate, living donor, and facility" }
+      ]
+    },
+    {
+      "id": 3,
+      "code": "030000",
+      "name": "Post-operative Monitoring, Evaluation, and Reporting",
+      "weight_pct": 39,
+      "items": 58,
+      "tasks": [
+        { "code": "030100", "weight_pct": 5, "items": 8, "name": "Identify abnormalities in exam findings, lab values, and diagnostic studies" },
+        { "code": "030200", "weight_pct": 5, "items": 8, "name": "Assess and understand post-transplant recipient complications" },
+        { "code": "030300", "weight_pct": 5, "items": 8, "name": "Summarize the potential risks/adverse effects of the drug regimen" },
+        { "code": "030400", "weight_pct": 5, "items": 7, "name": "Assess for long-term complications" },
+        { "code": "030500", "weight_pct": 5, "items": 7, "name": "Coordinate post-transplant care" },
+        { "code": "030600", "weight_pct": 5, "items": 7, "name": "Facilitate discharge medications" },
+        { "code": "030700", "weight_pct": 5, "items": 8, "name": "Direct recipient toward proper emergency evaluation and treatment" },
+        { "code": "030800", "weight_pct": 3, "items": 5, "name": "Facilitate required data to the OPTN/UNET" }
+      ]
+    }
+  ]
+}

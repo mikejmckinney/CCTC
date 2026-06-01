@@ -1,0 +1,80 @@
+[
+  {
+    "id": "cctc-0001",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030302", "030304"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant recipient has been stable on a maintenance tacrolimus regimen. The team is about to add a new medication for a separate indication. Which of the following is MOST likely to cause a clinically significant INCREASE in the recipient's tacrolimus blood concentration?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Rifampin" },
+      { "id": "B", "text": "Diltiazem" },
+      { "id": "C", "text": "Phenytoin" },
+      { "id": "D", "text": "Carbamazepine" }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Tacrolimus is metabolized primarily by CYP3A4. Diltiazem inhibits CYP3A4, slowing tacrolimus clearance and raising its blood levels, which can push the recipient toward nephrotoxicity and other dose-related toxicity. The coordinator should anticipate the need for closer trough monitoring and a possible tacrolimus dose reduction.",
+      "rationale_incorrect": {
+        "A": "Rifampin is a potent CYP3A4 inducer, which speeds tacrolimus metabolism and LOWERS its levels, risking under-immunosuppression and rejection.",
+        "C": "Phenytoin is a CYP3A4 inducer and lowers tacrolimus levels rather than raising them.",
+        "D": "Carbamazepine is a CYP3A4 inducer and lowers tacrolimus levels rather than raising them."
+      }
+    },
+    "references": [
+      { "citation": "FDA Prescribing Information, tacrolimus (Drug Interactions: CYP3A inhibitors and inducers).", "locator": "Drug Interactions section", "kind": "regulation" },
+      { "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016) — immunosuppressive pharmacology.", "locator": "Pharmacologic agents chapter", "kind": "textbook" }
+    ],
+    "notes": "Stable pharmacology fact. Reviewer: confirm wording stays generic (CYP3A4 inhibitor raises levels) and add a verified FDA label or UpToDate-equivalent deep link before promoting to reviewed.",
+    "last_updated": "2026-06-01"
+  },
+  {
+    "id": "cctc-0002",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020601", "020603", "020607"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A coordinator is reviewing a deceased-donor kidney offer for a specific waitlisted candidate. Which of the following must be confirmed as compatible/acceptable BEFORE the kidney is accepted for that candidate?",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "ABO blood group compatibility between donor and recipient" },
+      { "id": "II", "text": "A negative or otherwise acceptable final crossmatch" },
+      { "id": "III", "text": "An identical HLA match at all loci" },
+      { "id": "IV", "text": "Donor and recipient of the same sex" }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I and III only", "selects": ["I", "III"] },
+      { "id": "C", "text": "II and IV only", "selects": ["II", "IV"] },
+      { "id": "D", "text": "I, III, and IV", "selects": ["I", "III", "IV"] }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "ABO compatibility and an acceptable crossmatch are the immunologic prerequisites for accepting a kidney for a given candidate. ABO incompatibility risks hyperacute rejection outside of a planned incompatible protocol, and a positive crossmatch indicates preformed donor-specific antibody that must be addressed before transplant.",
+      "rationale_incorrect": {
+        "B": "ABO compatibility (I) is required, but an identical HLA match at all loci (III) is not — kidneys are routinely transplanted across HLA mismatches, with degree of match affecting outcomes rather than basic acceptability.",
+        "C": "An acceptable crossmatch (II) is required, but donor-recipient sex matching (IV) is not a compatibility requirement.",
+        "D": "Only ABO (I) is required from this set; identical HLA matching (III) and same-sex matching (IV) are not prerequisites for acceptance."
+      }
+    },
+    "references": [
+      { "citation": "OPTN Policies — kidney allocation and histocompatibility requirements.", "url": "https://optn.transplant.hrsa.gov", "locator": "OPTN Policy: Allocation of Kidneys; Histocompatibility", "kind": "public_authoritative" },
+      { "citation": "Handbook of Kidney Transplantation, 7th ed. (Danovitch) — histocompatibility, crossmatching, immune monitoring.", "locator": "Histocompatibility/crossmatch chapter", "kind": "textbook" }
+    ],
+    "notes": "Reviewer: confirm against the CURRENT OPTN kidney allocation and histocompatibility policy and replace the base URL with the verified deep link to the specific policy section before promoting to reviewed.",
+    "last_updated": "2026-06-01"
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "id": "cctc-thru-2026-06",
+  "credential": "CCTC",
+  "label": "CCTC Examination Specifications (effective until 2026-06-30)",
+  "effective_from": null,
+  "effective_until": "2026-06-30",
+  "source": "ABTC Candidate Handbook (rev. 3/12/2026), CCTC Examination Specifications effective until 6/30/2026.",
+  "structure": "section_subsection",
+  "scored_items": 150,
+  "pretest_items": 25,
+  "total_items": 175,
+  "default_exam_items": 175,
+  "default_time_minutes": 180,
+  "_use_note": "This is the version a candidate sits BEFORE 2026-07-01. Selectable in the app's blueprint switcher.",
+
+  "cognitive_level_targets": { "recall": 0.347, "application": 0.52, "analysis": 0.133 },
+  "_cognitive_note": "From the published spec: Recall 52, Application 78, Analysis 20 of 150 scored items.",
+
+  "organ_targets": {
+    "general": 75,
+    "kidney": 31,
+    "liver": 18,
+    "lung": 10,
+    "heart": 8,
+    "kidney_pancreas": 3,
+    "pancreas": 2,
+    "heart_lung": 2,
+    "intestine": 1
+  },
+  "_organ_note": "From the published secondary specifications: 75 organ-specific + 75 general = 150.",
+
+  "binding_level": "section",
+  "_binding_note": "The published spec's binding targets are the two SECTION totals (73 / 77). Subsection counts are secondary. The crosswalk below maps each 2026-07 task to its primary legacy subsection; because the two outlines come from different job-task analyses they do not reconcile to the item, so sample to the SECTION totals and treat subsections as soft targets.",
+
+  "sections": [
+    {
+      "id": "1",
+      "name": "Evaluation and Preparation for Transplant",
+      "items": 73,
+      "cognitive": { "recall": 30, "application": 35, "analysis": 8 },
+      "subsections": [
+        { "id": "1A", "name": "Education", "items": 23 },
+        { "id": "1B", "name": "Data Collection, Evaluation, and Recommendations", "items": 10 },
+        { "id": "1C", "name": "Suitability Assessment and Determination of the Potential Transplant Candidate and Living Donor", "items": 12 },
+        { "id": "1D", "name": "Wait List Management", "items": 13 },
+        { "id": "1E", "name": "Candidate/Deceased Donor Selection Criteria", "items": 8 },
+        { "id": "1F", "name": "Living Donor and Candidate Preoperative Care", "items": 7 }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Post-Transplant Care",
+      "items": 77,
+      "cognitive": { "recall": 22, "application": 43, "analysis": 12 },
+      "subsections": [
+        { "id": "2A", "name": "Education", "items": 26 },
+        { "id": "2B", "name": "Postoperative Monitoring, Evaluation, and Reporting", "items": 51 }
+      ]
+    }
+  ],
+
+  "crosswalk_from_new_task": {
+    "010100": "1A",
+    "010200": "1A",
+    "010300": "1A",
+    "010400": "1A",
+    "010500": "1A",
+    "010600": "2A",
+    "010700": "2A",
+    "020100": "1B",
+    "020200": "1B",
+    "020300": "1C",
+    "020400": "1C",
+    "020500": "1D",
+    "020600": "1E",
+    "020700": "1F",
+    "030100": "2B",
+    "030200": "2B",
+    "030300": "2B",
+    "030400": "2B",
+    "030500": "2B",
+    "030600": "2B",
+    "030700": "2B",
+    "030800": "2B"
+  },
+  "_crosswalk_note": "Maps 2026-07 tasks -> legacy subsection for sampling under this blueprint. A question's legacy_section field (if present) overrides this mapping. Resulting section split: Section 1 gets tasks 0101xx-0105xx + all 02xxxx; Section 2 gets 0106xx, 0107xx + all 03xxxx. Sample to the section totals (73/77); subsection drift is expected and acceptable."
+}

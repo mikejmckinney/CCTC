@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mikejmckinney/CCTE/schema/question.schema.json",
+  "title": "CCTE Practice Exam Question",
+  "description": "One CCTC practice-exam item. Questions are tagged to the 2026-07 (new) blueprint's domain/task/knowledge codes; the legacy (until 2026-06) blueprint derives its sections via the crosswalk in blueprints/cctc-thru-2026-06.json, so a single question bank serves both exam versions.",
+  "type": "object",
+  "required": ["id", "status", "type", "domain", "stem", "correct", "explanation", "references"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^cctc-[0-9]{4,}$",
+      "description": "Stable, unique id, e.g. cctc-0001. Never reuse an id; retire instead."
+    },
+    "schema_version": { "type": "integer", "const": 1 },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1,
+      "description": "Bump whenever the item's content changes."
+    },
+    "status": {
+      "enum": ["draft", "reviewed"],
+      "description": "Agent output is ALWAYS 'draft'. Only a human SME promotes an item to 'reviewed'."
+    },
+    "type": { "enum": ["one_best", "complex_combo"] },
+    "domain": {
+      "type": "integer",
+      "enum": [1, 2, 3],
+      "description": "2026-07 blueprint domain: 1=Transplant Education, 2=Pre-Transplant Evaluation & Management, 3=Post-operative Monitoring, Evaluation & Reporting."
+    },
+    "task": {
+      "type": "string",
+      "pattern": "^0[1-3]0[1-8]00$",
+      "description": "2026-07 blueprint task code, e.g. 010500."
+    },
+    "knowledge_codes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^0[1-3][0-9]{4}$" },
+      "description": "Specific knowledge/skill codes from the detailed content outline that this item tests, e.g. 010504."
+    },
+    "cognitive_level": {
+      "enum": ["recall", "application", "analysis"],
+      "description": "Used to mirror the exam's cognitive mix (~35% recall / 52% application / 13% analysis)."
+    },
+    "organ": {
+      "enum": ["general", "kidney", "liver", "heart", "lung", "pancreas", "intestine", "kidney_pancreas", "heart_lung", "multi"],
+      "description": "Secondary spec. ~50% of items should be 'general'; the rest follow the organ weighting in the blueprint files."
+    },
+    "recipient_age": {
+      "enum": ["adult", "pediatric", "both"],
+      "default": "adult",
+      "description": "The exam is mostly adult with a small pediatric share."
+    },
+    "legacy_section": {
+      "type": "string",
+      "pattern": "^[12][A-F]$",
+      "description": "OPTIONAL explicit legacy-blueprint subsection override (e.g. '1A'). Normally omitted; the legacy sampler derives the section from 'task' via the crosswalk."
+    },
+    "stem": {
+      "type": "string",
+      "minLength": 10,
+      "description": "The question text. Must be ORIGINAL wording — never copied or closely paraphrased from any copyrighted source. Test competency, not trickery."
+    },
+    "shuffle": {
+      "type": "boolean",
+      "default": true,
+      "description": "false = options must keep authored order (e.g. 'all of the above', 'none of the above', ordered numeric ranges, or complex_combo where element identity is fixed)."
+    },
+    "elements": {
+      "type": "array",
+      "description": "REQUIRED for complex_combo only: the numbered statements (I, II, III...).",
+      "items": {
+        "type": "object",
+        "required": ["id", "text"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^(I|II|III|IV|V)$" },
+          "text": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "options": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "description": "Answer choices. The actual ABTC exam uses four (A-D).",
+      "items": {
+        "type": "object",
+        "required": ["id", "text"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-E]$" },
+          "text": { "type": "string", "minLength": 1 },
+          "selects": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^(I|II|III|IV|V)$" },
+            "description": "complex_combo only: which elements this option asserts (e.g. ['I','II'] for 'I and II only')."
+          }
+        }
+      }
+    },
+    "correct": {
+      "type": "string",
+      "pattern": "^[A-E]$",
+      "description": "id of the single correct option. Validation script confirms it matches exactly one existing option."
+    },
+    "explanation": {
+      "type": "object",
+      "required": ["rationale_correct", "rationale_incorrect"],
+      "additionalProperties": false,
+      "properties": {
+        "rationale_correct": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Why the correct answer is correct, in original wording."
+        },
+        "rationale_incorrect": {
+          "type": "object",
+          "description": "Map of each NON-correct option id to a short reason it is wrong.",
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "minItems": 1,
+      "description": "At least one source. Prefer public/authoritative sources with a clickable url; textbook citations carry a locator for human verification, no url.",
+      "items": {
+        "type": "object",
+        "required": ["citation"],
+        "additionalProperties": false,
+        "properties": {
+          "citation": { "type": "string", "minLength": 3 },
+          "url": { "type": "string", "format": "uri", "description": "Only include if verified live." },
+          "locator": { "type": "string", "description": "e.g. 'OPTN Policy 8.5', 'Danovitch ch. 6', '42 CFR 482.80'." },
+          "kind": { "enum": ["public_authoritative", "guideline", "textbook", "regulation", "other"] }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal note for the reviewer (never shown to the user), e.g. 'Verify current MELD 3.0 components against OPTN policy before promoting to reviewed.'"
+    },
+    "last_updated": { "type": "string", "format": "date" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "complex_combo" } } },
+      "then": { "required": ["elements", "options"] }
+    },
+    {
+      "if": { "properties": { "type": { "const": "one_best" } } },
+      "then": { "required": ["options"] }
+    }
+  ]
+}
