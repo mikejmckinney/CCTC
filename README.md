@@ -23,6 +23,18 @@ A client-side practice-exam web app for the ABTC **Certified Clinical Transplant
   01-build-app.md         # web app functional spec
   02-author-questions.md  # how to author the item bank
   03-validate.md          # schema + blueprint-coverage validation + CI
+package.json             # React/Vite scripts: test, build, validate
+public/
+  manifest.webmanifest   # install metadata for the static app shell
+  sw.js                  # service worker for offline/static hosting
+src/
+  app/App.tsx            # current app scaffold and session UI
+  data/questionBank.ts   # bank loader with example fallback
+  lib/                   # assembly, persistence, scoring, storage helpers
+scripts/
+  validate.mjs           # local bank validator used by build + CI
+.github/workflows/
+  validate.yml           # npm ci && npm run validate on push / PR
 schema/
   question.schema.json    # the question contract
 blueprints/
@@ -30,7 +42,7 @@ blueprints/
   cctc-thru-2026-06.json  # legacy blueprint (+ task->section crosswalk)
 questions/
   README.md               # sharding, naming, status workflow
-  _examples/examples.json  # two worked items (not loaded into the bank)
+  _examples/examples.json  # two worked items; current fallback bank during early scaffold stage
   domain-1-education/ ...  # the bank, sharded by domain
 ```
 
@@ -47,4 +59,24 @@ Blueprint data is transcribed from the ABTC Candidate Handbook (rev. 3/12/2026),
 
 ## Status
 
-Scaffold + agent prompts + schema + blueprints + example items. Next: an agent implements the app (`01`), authors the bank toward ~500 items (`02`), and wires validation/CI (`03`); a transplant SME reviews items before they count in Exam mode.
+The repo now contains the first React/Vite app scaffold, local validation script, and CI validation workflow alongside the prompts, schema, and blueprint data. The question bank is still tiny: there are no live reviewed shards under `questions/` yet, so the current app falls back to the worked examples while the real bank is authored and reviewed.
+
+Next: expand the bank beyond examples, keep validation green as shards land, and continue hardening the app against the full `01-build-app.md` product spec.
+
+## Limitations
+
+- The current bank is not representative yet; it still falls back to example items until real reviewed shards are added under `questions/`.
+- Practice results are unofficial estimates and are not ABTC scaled scores or pass/fail decisions.
+- The app is an exam-prep tool, not medical advice, and should not be used for patient-care decisions.
+- Content coverage and reviewed-item balance will remain incomplete until the bank grows substantially.
+
+## Future Improvements
+
+- Expand the authored and reviewed question bank across all blueprint domains.
+- Improve category-level reporting and history review once the live bank is large enough to make trends meaningful.
+- Continue aligning the UI and session behaviors with the full scope in `.github/prompts/01-build-app.md`.
+- Add more targeted validation and tests as new question shards and workflow paths land.
+
+## FAQ
+
+See [docs/FAQ.md](docs/FAQ.md) for repo and product details.

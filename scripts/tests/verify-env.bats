@@ -266,9 +266,10 @@ _build_fix_env() {
   #   git, head — git checks
   #   grep, find — template-placeholder scan
   #   wc, tr — placeholder counting
+  #   node, npm — package.json-driven Node checks
   #   python3, pip, pip3 — python checks
   #   shellcheck, jq — required-tool checks (present so only rg triggers fix mode)
-  local needed=(bash dirname chmod git head grep find wc tr python3 pip pip3 shellcheck jq apt-get)
+  local needed=(bash dirname chmod git head grep find wc tr node npm python3 pip pip3 shellcheck jq apt-get)
   local excl=("$@")
   for t in "${needed[@]}"; do
     local skip=false

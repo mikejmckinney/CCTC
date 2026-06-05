@@ -1,198 +1,153 @@
-# ai-repo-template Roadmap
+# CCTE Roadmap
 
-> **Purpose**: Record the template repo's shipped phases, the current hardening track, and the next process gaps to close.
+> **Purpose**: Track the product phases for the CCTE static practice-exam app so agents can align implementation work to the actual learner-facing outcome.
+>
+> **Canonical product specs**: This roadmap is a phase tracker, not a substitute for the numbered prompts. For full requirements, read in order: [`.github/prompts/00-onboarding.md`](../.github/prompts/00-onboarding.md) → [`01-build-app.md`](../.github/prompts/01-build-app.md) → [`02-author-questions.md`](../.github/prompts/02-author-questions.md) → [`03-validate.md`](../.github/prompts/03-validate.md).
 
 ## Roadmap Principles
 
-1. Dogfood the workflow in the template repo before asking downstream repos to trust it.
-2. Prefer thin canonical contracts plus focused companion files over monolithic guidance.
-3. Treat GitHub issues, PRs, comments, and labels as live state; keep repo-local state reference-only.
-4. Pair every process claim with executable or sandbox verification.
-5. Keep phases reversible: small rules, small prompts, small workflow changes.
+1. Keep the product static-hostable, client-side only, and offline-capable after first load.
+2. Separate exam-engine behavior, content validation, and question-bank growth so each can evolve without a backend.
+3. Treat reviewed clinical content and schema validation as release gates, not cleanup tasks.
+4. Prefer small, testable slices that preserve resume safety and scoring correctness.
 
 ## Current Phase
 
-**Phase 7 - Template dogfooding, overlay extension, and process hardening**
+**Phase 2 - Exam engine and persistence** (in progress)
 
-The repo has already shipped the core multi-agent kit. Current work is about making the template prove its own rules in practice, tightening the review/merge loop, and reducing the remaining compatibility surfaces that can confuse downstream repos.
-
----
-
-## Phase 1: Context Pack and Core Contract Foundation
-
-**Status**: Complete
-
-**Objective**: Establish the base repo shape and the canonical context/rule surfaces.
-
-### Shipped Highlights
-- `.context/**` structure and lazy-load pattern established.
-- `AGENTS.md` became the root agent contract.
-- ADR discipline and template repo governance patterns were set up.
-
-### Key Decisions
-- ADR-001
-- ADR-002
-
-### Acceptance Criteria Met
-- `.context/**` is the canonical truth layer for repo rules and planning.
-- The template has a durable ADR trail for process decisions.
+Phase 1 bootstrap and the static app scaffold are largely complete in the working tree. The session engine, IndexedDB persistence, validation tooling, and most learner-facing flows from `01-build-app.md` exist in code, but several Phase 2 acceptance checks (resume verification, soft sampling targets) and all real bank growth from `02-author-questions.md` remain open.
 
 ---
 
-## Phase 2: Problem Validation and Planning Gates
+## Phase 1: Bootstrap and App Scaffold
 
-**Status**: Complete
+**Status**: Complete (working tree; land via PR)
 
-**Objective**: Make planning explicit before implementation begins.
+**Objective**: Replace template-era context with product context and stand up the static browser app shell.
 
-### Shipped Highlights
-- Analyst became a required upstream validation role.
-- Pre-flight and plan-as-comment gates were added.
-- Workflow preconditions became explicit instead of tribal knowledge.
+### Deliverables
+- Product-specific `.context` roadmap and vision files.
+- Frontend scaffold for a static React/TypeScript-style app with responsive layout.
+- App shell for start screen, session creation, and top-level navigation.
+- Build path ready for offline-capable static hosting.
 
-### Key Decisions
-- ADR-004
-- ADR-005
-- ADR-011
-- ADR-012
-- ADR-014
-
-### Acceptance Criteria Met
-- Non-exempt implementation work starts from an issue-backed plan.
-- Problem framing and solution framing are separate stages.
+### Acceptance Criteria
+- `.context` files describe CCTE rather than `ai-repo-template`.
+- The app runs locally as a static client-side project.
+- The shell exposes the core settings surface: blueprint, item count, timer, and mode.
 
 ---
 
-## Phase 3: Review Automation and Merge Controls
-
-**Status**: Complete
-
-**Objective**: Add safe automation around review resolution, verification, and merge behavior.
-
-### Shipped Highlights
-- Auto-merge stayed opt-in.
-- Review-thread automation evolved from ADR-007 to ADR-008.
-- Pre-merge verification and template-local pre-commit enforcement landed.
-
-### Key Decisions
-- ADR-006
-- ADR-007
-- ADR-008
-- ADR-016
-- ADR-017
-
-### Acceptance Criteria Met
-- Review automation is label-gated and explicit.
-- The template repo verifies shell/workflow hygiene locally and in CI.
-
----
-
-## Phase 4: Parallel Multi-Agent Coordination
-
-**Status**: Complete
-
-**Objective**: Make parallel agent work safe enough to use on real issues.
-
-### Shipped Highlights
-- Parallel-dispatch patterns and overlap reporting landed.
-- Auto-rebase on merge handles soft overlaps.
-- Owner-keyed live-state thinking evolved from repo-local files to GitHub-first coordination.
-
-### Key Decisions
-- ADR-009
-- ADR-010
-- ADR-018
-- ADR-025
-
-### Acceptance Criteria Met
-- Roles have explicit ownership boundaries.
-- Normal live coordination happens in GitHub issues, PRs, comments, and labels.
-
----
-
-## Phase 5: Role Surfaces, Model Tiering, and Contract Hardening
-
-**Status**: Complete
-
-**Objective**: Make the role layer easier to maintain across tools and easier to audit.
-
-### Shipped Highlights
-- Per-role model tiering landed across supported platforms.
-- `AGENTS.md` was decomposed into focused process rules.
-- Top-level markdown scope split and canonical role bodies plus thin overlays shipped.
-- ADR-026 added formal compliance evidence contracts.
-
-### Key Decisions
-- ADR-019
-- ADR-021
-- ADR-022
-- ADR-023
-- ADR-026
-
-### Acceptance Criteria Met
-- Canonical role bodies live in one place.
-- Parent/subagent compliance evidence has a stable schema.
-
----
-
-## Phase 6: Feedback, Patterns, and Higher-Order Planning
-
-**Status**: Complete
-
-**Objective**: Improve how the template learns from work and how it evaluates complex planning.
-
-### Shipped Highlights
-- Postmortem capture/mirror workflow landed.
-- The orchestration patterns reference became part of Critic/Judge review vocabulary.
-- Multi-model consensus planning shipped as an opt-in path.
-- Opportunity feedback and sandbox dogfood evidence were added.
-
-### Key Decisions
-- ADR-015
-- ADR-020
-- ADR-024
-- ADR-027
-- ADR-029
-
-### Acceptance Criteria Met
-- The template records durable lessons without widening in-scope work.
-- High-risk planning and user-outcome claims have stronger evidence paths.
-
----
-
-## Phase 7: Template Dogfooding and Process Hardening
+## Phase 2: Exam Engine and Persistence
 
 **Status**: In Progress
 
-**Objective**: Close the gap between what the template prescribes and what the template itself demonstrates.
+**Objective**: Implement the session engine that assembles exams, freezes order, and survives interruptions.
 
-### Active Track
-- Dogfood `.context/**` in the template repo itself so agents stop reading placeholder context in normal template work.
-- Finish the multi-platform overlay extension and associated cleanup under issue #327.
-- Harden the `pr-resolve-all` / merge loop under issue #321.
-- Continue draining repo-local compatibility references that can make ADR-025 look optional.
+**Canonical spec**: [`.github/prompts/01-build-app.md`](../.github/prompts/01-build-app.md) (sampling, modes, persistence, scoring, history).
 
-### Current Deliverables
-- Populate `.context/00_INDEX.md`, `.context/roadmap.md`, and `.context/vision/README.md` with real template content.
-- Add architecture diagrams for multi-agent flow and live-state surfaces.
-- Keep Mode B onboarding explicit by restoring those files from a canonical stub source in `.github/prompts/repo-onboarding.md`.
-- Keep the reset rule explicit in `.context/rules/process_template_detection.md` after the live template files lose their bootstrap placeholder markers.
+### Deliverables
+- Blueprint-aware session assembly and weighted sampling.
+- Frozen question order and option order per session.
+- IndexedDB persistence for active session, answers, bookmarks, timer, and history.
+- Resume flow that restores the exact in-progress session state.
 
-### Exit Criteria
-- The template repo demonstrates its own lazy-load context pattern.
-- A fresh derived repo still resets to generic stubs during Mode B onboarding.
-- The review/merge loop remains explicit, verifiable, and human-auditable.
+### Acceptance Criteria
+- Study and Exam modes both run end-to-end.
+- Save-after-each-question and save-after-navigation behavior is verified.
+- Closing and reopening the app restores the active session without reshuffling.
+- Score reports show overall and per-category raw breakdowns.
+
+### Open items (known gaps vs `01-build-app.md`)
+- [x] Automated proof that serialized session state preserves order, option order, answers, bookmarks, and remaining time (`src/lib/sessionResume.test.ts`).
+- [x] Runtime sampler honors blueprint `domain_tolerance_items` when reporting category shortages (`getScaledDomainTolerance`).
+- [x] Runtime sampler approximates `cognitive_level_targets` and `organ_targets` as soft targets during bucket selection.
+- [x] Align `src/data/questionBank.ts` example fallback with `questions/README.md` (documented bootstrap fallback until domain shards exist).
 
 ---
 
-## Watchlist After Phase 7
+## Phase 3: Question-Bank Growth and Validation
 
-- Issue #279 - extract more machine-readable manifests and move logic out of workflow YAML where appropriate.
-- Issue #322 - add a clearer new-project playbook and parent/phase issue templates.
-- Continue pruning documentation or reference surfaces that still imply repo-local live state.
+**Status**: In Progress (validation tooling present; bank growth not started)
 
-## How to Update This Roadmap
+**Objective**: Make the bank safe to expand while keeping schema integrity and blueprint coverage visible.
 
-1. Advance a phase only when the linked ADRs or issue slices are actually merged.
-2. Keep active work tied to concrete issue numbers rather than generic intentions.
-3. When a phase changes coordination rules, update the relevant `.context/vision/architecture/*.md` diagram in the same PR.
+**Canonical specs**:
+- Validation and CI: [`.github/prompts/03-validate.md`](../.github/prompts/03-validate.md)
+- Question authoring: [`.github/prompts/02-author-questions.md`](../.github/prompts/02-author-questions.md) and [`questions/README.md`](../questions/README.md)
+
+This phase is **not complete** until non-`_` shards exist under `questions/`, `npm run validate` passes on them, and reviewed coverage is growing toward the ~500-item target.
+
+### Deliverables
+- Build-time validation for every question file against the schema.
+- Cross-field integrity checks and duplicate-id protection.
+- Coverage reporting for both blueprint versions.
+- Authoring workflow support for draft versus reviewed items.
+- Sharded bank layout under `questions/domain-*` (≤50 items per file).
+
+### Acceptance Criteria
+- Invalid question files fail validation and block the build.
+- Coverage output shows reviewed-item availability by domain or legacy section.
+- The bank structure supports steady growth toward a broad reviewed practice set.
+
+### Authoring checklist (from `02-author-questions.md`)
+
+Use this when expanding the bank; do not duplicate the full authoring rules here.
+
+**Content and guardrails**
+- [ ] Every new item is original expression (facts OK; no copied stems, vignettes, or brain-dump material). See `00-onboarding.md` guardrails.
+- [ ] Every authored item starts as `"status": "draft"`; only a human SME promotes to `"reviewed"`.
+- [ ] One defensible correct answer; plausible distractors; coordinator-level scope (not NP/PA).
+- [ ] `references` with locators; use public authoritative sources where possible (OPTN/UNOS, CMS, guidelines).
+- [ ] `notes` field states what the reviewer must verify (policy versions, lab ranges, drug interactions, etc.).
+
+**Tagging (2026-07 blueprint; legacy via crosswalk)**
+- [ ] `domain` (required), `task` (recommended), `knowledge_codes` (optional).
+- [ ] `cognitive_level` tagged; bank trends toward ~35% recall / 52% application / 13% analysis.
+- [ ] `organ` tagged; ~50% `general`, remainder per blueprint `organ_targets`; include some pediatric items.
+- [ ] Both `one_best` and `complex_combo` formats represented across the bank.
+
+**Structure and growth**
+- [x] Shard directories created: `questions/domain-1-education/`, `domain-2-pretx/`, `domain-3-postop/` (add JSON shards at ≤50 items per file).
+- [ ] After each batch, run `npm run validate` and fill under-represented domains, tasks, cognitive levels, and organs.
+- [ ] Grow reviewed items toward ~500 so sampling has variety beyond a single exam.
+
+**Reviewer / flag loop**
+- [ ] Triage exported flags (`ccte-flags.json` from the app) alongside new authoring.
+- [ ] On fix: edit item in repo, bump `version`, set back to `draft`, re-review; stale app flags drop on version mismatch.
+
+---
+
+## Phase 4: Review Feedback, Polish, and Release Readiness
+
+**Status**: In Progress (partial — flagging and disclaimer exist in code)
+
+**Objective**: Finish the learner experience and prepare the static app for real study use.
+
+**Canonical spec**: [`.github/prompts/01-build-app.md`](../.github/prompts/01-build-app.md) (flagging, responsive/a11y, disclaimer, hosting).
+
+### Deliverables
+- Item flagging workflow with stable JSON export.
+- Responsive polish for phone, tablet, and laptop.
+- Accessibility, disclaimer, and history-review refinements.
+- Release-ready validation and deployment hygiene for static hosting.
+
+### Acceptance Criteria
+- Users can flag items anywhere they review content without mutating the bank.
+- Mobile and keyboard flows are usable without layout breakage.
+- The app clearly states its unofficial, independent study-aid status.
+- A production static build is ready for GitHub Pages or equivalent hosting.
+
+### Open items (known gaps vs `01-build-app.md`)
+- [ ] Device-level responsive and accessibility pass (focus, contrast, one-handed mobile use).
+- [ ] GitHub Pages or equivalent deploy config (`vite` `base`, hosting workflow).
+- [ ] Richer history trend view (current UI shows a short recent-score list only).
+
+---
+
+## Near-Term Sequencing
+
+1. Land Phase 1 bootstrap work on `feature/op-ccte-bootstrap` (commit + PR).
+2. Continue Phase 2 hardening: browser-level resume smoke, richer history trends, device/a11y pass.
+3. Start Phase 3 bank growth per `02-author-questions.md` — add first reviewed JSON shards under `questions/domain-*`; keep `npm run validate` green.
+4. Finish Phase 4 polish and static hosting after the core study/exam loops are stable on a real (not example-only) bank.

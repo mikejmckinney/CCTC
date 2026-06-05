@@ -6,7 +6,7 @@ This directory holds the CCTC practice-exam item bank as **sharded JSON files**.
 
 ```
 questions/
-  _examples/examples.json     # illustrative items only — NOT loaded into the bank
+  _examples/examples.json     # illustrative items only — excluded from the production bank path
   domain-1-education/         # tasks 0101xx–0107xx
   domain-2-pretx/            # tasks 0201xx–0207xx
   domain-3-postop/           # tasks 0301xx–0308xx
@@ -14,7 +14,8 @@ questions/
 
 - **Shard by domain** (and optionally by task within a domain), not by arbitrary file size. A content update then touches one predictable place and per-domain coverage is trivial to audit.
 - **Soft cap of 50 items per file.** When a file exceeds it, split it (e.g. `domain-3-postop/030100-030400.json`, `domain-3-postop/030500-030800.json`). This keeps diffs small and the app loads gracefully as the bank grows.
-- Anything under `_examples/` is for authors/reviewers and is excluded from the loaded bank (the loader ignores paths beginning with `_`).
+- Anything under `_examples/` is for authors/reviewers and is excluded from the production bank path (the loader ignores paths beginning with `_`).
+- **Bootstrap fallback:** when no non-`_` shards exist yet, the app may temporarily load `_examples` so both item formats can be exercised while the real bank is authored. Once domain shards land under `questions/domain-*`, only those files are used.
 
 ## File format
 
