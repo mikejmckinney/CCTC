@@ -54,7 +54,7 @@ jobs:
       - name: Build app for browser tests
         run: npm run build
 
-      - name: Run browser resume smoke tests
+      - name: Run browser resume tests (Playwright runner)
         env:
           CI: true
-        run: npm run test:e2e
+        run: npm run test:e2e:playwright
