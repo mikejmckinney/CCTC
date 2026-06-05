@@ -244,6 +244,8 @@ function App() {
   const [flags, setFlags] = useState<ItemFlag[]>([]);
   const [flagDraft, setFlagDraft] = useState<FlagDraft | null>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
+  const [sessionReplacePromptOpen, setSessionReplacePromptOpen] = useState(false);
+  const [pendingSessionSettings, setPendingSessionSettings] = useState<SessionSettings | null>(null);
   const lastPersistFingerprint = useRef('');
   const activeSessionRef = useRef<ActiveSession | null>(null);
 
@@ -503,6 +505,13 @@ function App() {
     }));
   }
 
+  function beginNewSession(nextSettings: SessionSettings = settings): void {
+    const recentIds = buildRecentItemIds(history.map((entry) => ({ itemIds: entry.itemIds })));
+    const nextSession = createSession(bank.questions, nextSettings, recentIds);
+    setActiveSession(nextSession);
+    setView('session');
+  }
+
   function startSession(): void {
     let nextSettings = settings;
 
@@ -518,17 +527,28 @@ function App() {
     }
 
     if (activeSession && !activeSession.submittedAt) {
-      const resumeCurrent = window.confirm('An unfinished session already exists. Click OK to resume it, or Cancel to replace it with a new one.');
-      if (resumeCurrent) {
-        setView('session');
-        return;
-      }
+      setPendingSessionSettings(nextSettings);
+      setSessionReplacePromptOpen(true);
+      return;
     }
 
-    const recentIds = buildRecentItemIds(history.map((entry) => ({ itemIds: entry.itemIds })));
-    const nextSession = createSession(bank.questions, nextSettings, recentIds);
-    setActiveSession(nextSession);
+    beginNewSession(nextSettings);
+  }
+
+  function dismissSessionReplacePrompt(): void {
+    setSessionReplacePromptOpen(false);
+    setPendingSessionSettings(null);
+  }
+
+  function resumeExistingSession(): void {
+    dismissSessionReplacePrompt();
     setView('session');
+  }
+
+  function replaceActiveSession(): void {
+    const nextSettings = pendingSessionSettings ?? settings;
+    dismissSessionReplacePrompt();
+    beginNewSession(nextSettings);
   }
 
   function discardActiveSession(): void {
@@ -687,6 +707,32 @@ function App() {
             <button className="primary-button" onClick={() => void acknowledgeDisclaimer()}>
               I understand
             </button>
+          </div>
+        </section>
+      )}
+
+      {sessionReplacePromptOpen && (
+        <section className="modal-backdrop" aria-label="Unfinished session">
+          <div className="modal-card">
+            <h2>Unfinished session</h2>
+            <p>
+              You already have a session in progress. Resume it, or start a new session with your current setup (this discards
+              in-progress answers and bookmarks).
+            </p>
+            <p>
+              <strong>Resume your in-progress session?</strong>
+            </p>
+            <div className="modal-actions">
+              <button className="ghost-button" onClick={dismissSessionReplacePrompt}>
+                Cancel
+              </button>
+              <button className="secondary-button" onClick={replaceActiveSession}>
+                No, start new
+              </button>
+              <button className="primary-button" onClick={resumeExistingSession}>
+                Yes, resume
+              </button>
+            </div>
           </div>
         </section>
       )}
