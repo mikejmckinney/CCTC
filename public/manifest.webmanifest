@@ -1,0 +1,9 @@
+{
+  "name": "CCTE Practice Exam",
+  "short_name": "CCTE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f1e8",
+  "theme_color": "#123b3a",
+  "description": "Offline-capable ABTC CCTC practice exam app."
+}

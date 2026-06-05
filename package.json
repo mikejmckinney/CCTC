@@ -1,0 +1,32 @@
+{
+  "name": "ccte",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "validate": "node -e \"const fs=require('node:fs'); const { spawnSync } = require('node:child_process'); if (fs.existsSync('scripts/validate.mjs')) { const result = spawnSync(process.execPath, ['scripts/validate.mjs'], { stdio: 'inherit' }); process.exit(result.status ?? 1); } console.log('scripts/validate.mjs not present yet; skipping validation.');\"",
+    "build": "npm run validate && tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "idb": "^8.0.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^5.0.0",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  }
+}

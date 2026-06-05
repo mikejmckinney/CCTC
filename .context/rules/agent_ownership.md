@@ -12,32 +12,21 @@
 ## Ownership Table
 
 <!--
-NOTE: This table is both (a) ai-repo-template's own ownership map AND
-(b) the example for projects derived from this template. When deriving
-this template for a new project:
-- KEEP every template-governance role row (Analyst / Architect / PM /
-  QA / DevOps / Docs / Judge / Critic) and the `docs/**`, `.context/**`,
-  `.github/**`, `scripts/**`, `config/**`, `install.sh`, `test.sh` globs
-  on the DevOps / Docs / Architect / PM rows — they are load-bearing
-  for the multi-agent workflow.
-- ADJUST the project-specific globs to match your source tree. The
-  Frontend / Backend / QA rows below are shown with illustrative globs:
-  keep the role rows themselves (they are load-bearing), but replace
-  the path globs (`src/frontend/**`, `src/backend/**`, `tests/**`,
-  `e2e/**`, etc.) with your project's real paths once a source tree
-  exists.
-- DO NOT delete this file or wholesale replace the table — `test.sh`,
-  Judge, the parallelism-report parser, and every role consult it.
+NOTE: This table is the canonical ownership map for CCTE. Keep every
+template-governance role row (Analyst / Architect / PM / QA / DevOps /
+Docs / Judge / Critic); they remain load-bearing for the multi-agent
+workflow inherited from the template. Project-specific rows should track
+the actual source tree for this repo's static web app implementation.
 -->
 
 | Role       | Owned path globs                                                     | May also edit (with PM claim) |
 |------------|----------------------------------------------------------------------|-------------------------------|
 | Analyst    | `docs/research/**`                                                   | nothing (research-only)       |
-| Architect  | `AGENTS.md`, `.agents/**`, `docs/decisions/**`, `docs/postmortems/**`, `.context/roadmap.md`, `.context/vision/architecture/**`, `.context/rules/**` (except `agent_ownership.md`) | nothing (plan-only) |
-| Frontend   | `src/frontend/**`, `src/components/**`, `src/pages/**`, `src/styles/**`, `public/**`, colocated `*.test.*` / `*.spec.*` under those paths | UI-adjacent tests in `tests/ui/**` |
-| Backend    | `src/backend/**`, `src/api/**`, `src/server/**`, `src/models/**`, `migrations/**`, `db/**`, colocated `*.test.*` / `*.spec.*` under those paths | API-adjacent tests in `tests/api/**` |
+| Architect  | `AGENTS.md`, `.agents/**`, `docs/decisions/**`, `docs/postmortems/**`, `.context/roadmap.md`, `.context/vision/README.md`, `.context/vision/architecture/**`, `.context/rules/**` (except `agent_ownership.md`) | nothing (plan-only) |
+| Frontend   | `src/app/**`, `src/data/**`, `src/lib/**`, `src/test/**`, `src/types/**`, `src/main.tsx`, `src/app.css`, `public/**`, `index.html`, `package.json`, `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`, `vite.config.*`, `vitest.config.*`, `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`, `eslint.config.*`, `postcss.config.*`, `tailwind.config.*`, colocated `*.test.*` / `*.spec.*` under those paths | UI-adjacent tests in `tests/ui/**`, `playwright/**`, `cypress/**` |
+| Backend    | `src/backend/**`, `src/server/**`, `src/api/**`, `api/**`, `server/**`, `functions/**`, colocated `*.test.*` / `*.spec.*` under those paths | API-adjacent tests in `tests/api/**` |
 | PM         | `.context/state/**`, `.context/rules/agent_ownership.md` (see §"PM ownership carve-out" below) | nothing (dispatch-only)       |
-| QA         | `tests/**`, `e2e/**`                                                 | nothing                       |
+| QA         | `tests/**`, `e2e/**`, `playwright/**`, `cypress/**`                  | nothing                       |
 | DevOps     | .github/workflows/**, config/**, install.sh, test.sh, scripts/**, .pre-commit-config.yaml.template, .cursorignore | nothing                       |
 | Docs       | README.md, AI_REPO_GUIDE.md, CLAUDE.md, AGENT.md, docs/** (except docs/decisions/**, docs/postmortems/**, docs/research/**)  | nothing                       |
 | Judge      | nothing (review-only, `.agents/judge.md`)                            | nothing                       |
