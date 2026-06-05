@@ -53,6 +53,30 @@ const FLAG_REASONS: FlagReason[] = [
 
 const QUESTION_MIN = 10;
 
+function displayLetterForIndex(optionIndex: number): string {
+  return String.fromCharCode('A'.charCodeAt(0) + optionIndex);
+}
+
+function displayLetterForOptionId(optionOrder: string[], optionId: string): string {
+  const optionIndex = optionOrder.indexOf(optionId);
+  return optionIndex >= 0 ? displayLetterForIndex(optionIndex) : optionId;
+}
+
+function incorrectRationalesForDisplay(item: SessionItemSnapshot): Array<{ displayLetter: string; rationale: string }> {
+  return item.optionOrder.flatMap((optionId, optionIndex) => {
+    if (optionId === item.question.correct) {
+      return [];
+    }
+
+    const rationale = item.question.explanation.rationale_incorrect[optionId];
+    if (!rationale) {
+      return [];
+    }
+
+    return [{ displayLetter: displayLetterForIndex(optionIndex), rationale }];
+  });
+}
+
 function formatDuration(totalSeconds: number | null): string {
   if (totalSeconds === null) {
     return 'Untimed';
@@ -169,7 +193,7 @@ function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: s
         </ol>
       )}
       <div className="option-list">
-        {item.optionOrder.map((optionId) => {
+        {item.optionOrder.map((optionId, optionIndex) => {
           const option = item.question.options.find((entry) => entry.id === optionId)!;
           const selected = answer === option.id;
           const correct = option.id === item.question.correct;
@@ -185,7 +209,7 @@ function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: s
                 .filter(Boolean)
                 .join(' ')}
             >
-              <span className="option-letter">{option.id}</span>
+              <span className="option-letter">{displayLetterForIndex(optionIndex)}</span>
               <span>{option.text}</span>
             </div>
           );
@@ -194,9 +218,9 @@ function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: s
       <div className="explanation-card">
         <p>{item.question.explanation.rationale_correct}</p>
         <ul className="plain-list">
-          {Object.entries(item.question.explanation.rationale_incorrect).map(([optionId, rationale]) => (
-            <li key={optionId}>
-              <strong>{optionId}:</strong> {rationale}
+          {incorrectRationalesForDisplay(item).map(({ displayLetter, rationale }) => (
+            <li key={displayLetter}>
+              <strong>{displayLetter}:</strong> {rationale}
             </li>
           ))}
         </ul>
@@ -925,7 +949,7 @@ function App() {
                 <div className="option-list" role="radiogroup" aria-label="Answer choices">
                   {currentItem.optionOrder.map((optionId, optionIndex) => {
                     const option = currentItem.question.options.find((entry) => entry.id === optionId)!;
-                    const displayLetter = String.fromCharCode('A'.charCodeAt(0) + optionIndex);
+                    const displayLetter = displayLetterForIndex(optionIndex);
                     const selected = session.answers[currentItem.itemId] === option.id;
                     const revealed = session.settings.mode === 'study' ? session.revealed[currentItem.itemId] : Boolean(session.submittedAt);
                     const correct = currentItem.question.correct === option.id;
@@ -958,11 +982,14 @@ function App() {
 
                 {((session.settings.mode === 'study' && session.revealed[currentItem.itemId]) || session.submittedAt) && (
                   <div className="explanation-card">
-                    <p>{currentItem.question.explanation.rationale_correct}</p>
+                    <p>
+                      <strong>Correct answer ({displayLetterForOptionId(currentItem.optionOrder, currentItem.question.correct)}):</strong>{' '}
+                      {currentItem.question.explanation.rationale_correct}
+                    </p>
                     <ul className="plain-list">
-                      {Object.entries(currentItem.question.explanation.rationale_incorrect).map(([optionId, rationale]) => (
-                        <li key={optionId}>
-                          <strong>{optionId}:</strong> {rationale}
+                      {incorrectRationalesForDisplay(currentItem).map(({ displayLetter, rationale }) => (
+                        <li key={displayLetter}>
+                          <strong>{displayLetter}:</strong> {rationale}
                         </li>
                       ))}
                     </ul>
