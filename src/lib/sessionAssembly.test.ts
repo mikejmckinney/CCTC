@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createSession, getScaledDomainTolerance, summarizeSoftTargets } from './sessionAssembly';
+import { createSession, getScaledDomainTolerance, isBlueprintApplicable, summarizeSoftTargets } from './sessionAssembly';
+import { LEGACY_BLUEPRINT } from '../data/blueprints';
 import { getBlueprint } from '../data/blueprints';
 import type { Question, SessionSettings } from '../types/exam';
 
@@ -79,6 +80,20 @@ describe('createSession', () => {
     const blueprint = getBlueprint('cctc-from-2026-07');
     expect(getScaledDomainTolerance(blueprint, 150)).toBe(2);
     expect(getScaledDomainTolerance(blueprint, 15)).toBe(0);
+  });
+
+  it('excludes legacy-inapplicable items from legacy blueprint sessions', () => {
+    const unmapped = { ...reviewedQuestion('cctc-3001', 1, '010100'), task: undefined };
+    expect(isBlueprintApplicable(LEGACY_BLUEPRINT, unmapped)).toBe(false);
+
+    const session = createSession(
+      [unmapped, reviewedQuestion('cctc-3002', 2, '020100')],
+      { ...baseSettings, blueprintId: 'cctc-thru-2026-06', questionCount: 1, includeDrafts: true },
+      new Set()
+    );
+
+    expect(session.items).toHaveLength(1);
+    expect(session.items[0].itemId).toBe('cctc-3002');
   });
 
   it('biases selection toward under-represented cognitive levels when possible', () => {

@@ -18,6 +18,14 @@ function shuffleList<T>(items: T[]): T[] {
   return copy;
 }
 
+export function isBlueprintApplicable(blueprint: Blueprint, question: Question): boolean {
+  if (blueprint.structure === 'domain_task') {
+    return true;
+  }
+
+  return Boolean(question.legacy_section || (question.task && blueprint.crosswalk_from_new_task[question.task]));
+}
+
 function resolveCategory(blueprint: Blueprint, question: Question): { id: string; label: string } {
   if (blueprint.structure === 'domain_task') {
     const domain = blueprint.domains.find((entry) => entry.id === question.domain);
@@ -176,7 +184,10 @@ export function createSession(
   recentIds: Set<string>
 ): ActiveSession {
   const blueprint = getBlueprint(settings.blueprintId);
-  const filteredQuestions = questions.filter((question) => settings.includeDrafts || question.status === 'reviewed');
+  const filteredQuestions = questions.filter(
+    (question) =>
+      (settings.includeDrafts || question.status === 'reviewed') && isBlueprintApplicable(blueprint, question)
+  );
   const targets = getBindingTargets(blueprint, settings.questionCount);
   const domainTolerance = getScaledDomainTolerance(blueprint, settings.questionCount);
   const buckets = buildCandidateBuckets(blueprint, filteredQuestions, recentIds);

@@ -1,5 +1,5 @@
 const CACHE_NAME = 'ccte-shell-v1';
-const APP_SHELL = ['/', '/index.html', '/manifest.webmanifest'];
+const APP_SHELL = ['./index.html', './manifest.webmanifest'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));
@@ -32,7 +32,7 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(() => {
           if (event.request.mode === 'navigate') {
-            return caches.match('/index.html');
+            return caches.match('./index.html');
           }
           return cached;
         });

@@ -175,6 +175,15 @@ function collectSchemaErrors(value, schema, valuePath, errors) {
     }
   }
 
+  if (typeof value === 'number') {
+    if (schema.minimum !== undefined && value < schema.minimum) {
+      errors.push(`${valuePath} must be >= ${schema.minimum}`);
+    }
+    if (schema.maximum !== undefined && value > schema.maximum) {
+      errors.push(`${valuePath} must be <= ${schema.maximum}`);
+    }
+  }
+
   if (typeof value === 'string') {
     if (schema.minLength !== undefined && value.length < schema.minLength) {
       errors.push(`${valuePath} must have length >= ${schema.minLength}`);

@@ -1,7 +1,7 @@
 # CCTE Roadmap
 
 > **Purpose**: Track the product phases for the CCTE static practice-exam app so agents can align implementation work to the actual learner-facing outcome.
-
+>
 > **Canonical product specs**: This roadmap is a phase tracker, not a substitute for the numbered prompts. For full requirements, read in order: [`.github/prompts/00-onboarding.md`](../.github/prompts/00-onboarding.md) → [`01-build-app.md`](../.github/prompts/01-build-app.md) → [`02-author-questions.md`](../.github/prompts/02-author-questions.md) → [`03-validate.md`](../.github/prompts/03-validate.md).
 
 ## Roadmap Principles

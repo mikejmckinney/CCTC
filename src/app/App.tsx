@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
 import { loadQuestionBank } from '../data/questionBank';
-import { buildDefaultSettings, countAnswered, createSession } from '../lib/sessionAssembly';
+import { buildDefaultSettings, countAnswered, createSession, isBlueprintApplicable } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
 import {
@@ -70,8 +70,24 @@ function downloadJson(filename: string, data: unknown): void {
   const link = document.createElement('a');
   link.href = url;
   link.download = filename;
+  document.body.appendChild(link);
   link.click();
+  link.remove();
   URL.revokeObjectURL(url);
+}
+
+function sessionPersistFingerprint(session: ActiveSession): string {
+  return JSON.stringify({
+    id: session.id,
+    settings: session.settings,
+    items: session.items.map((item) => ({ itemId: item.itemId, optionOrder: item.optionOrder })),
+    answers: session.answers,
+    revealed: session.revealed,
+    flaggedForReview: session.flaggedForReview,
+    currentIndex: session.currentIndex,
+    timerHidden: session.timerHidden,
+    submittedAt: session.submittedAt
+  });
 }
 
 function clampQuestionCount(value: number, max: number): number {
@@ -90,11 +106,7 @@ function getAvailableQuestionCount(questions: Question[], blueprintId: Blueprint
       return false;
     }
 
-    if (blueprint.structure === 'domain_task') {
-      return true;
-    }
-
-    return Boolean(question.legacy_section || (question.task && blueprint.crosswalk_from_new_task[question.task]));
+    return isBlueprintApplicable(blueprint, question);
   }).length;
 }
 
@@ -207,6 +219,9 @@ function App() {
   const [reviewIndex, setReviewIndex] = useState(0);
   const [flags, setFlags] = useState<ItemFlag[]>([]);
   const [flagDraft, setFlagDraft] = useState<FlagDraft | null>(null);
+  const [isFinalizing, setIsFinalizing] = useState(false);
+  const lastPersistFingerprint = useRef('');
+  const timerPersistTimeout = useRef<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -247,24 +262,72 @@ function App() {
 
   useEffect(() => {
     if (!ready) {
-      return;
+      return undefined;
     }
 
-    if (activeSession) {
-      void saveActiveSession(activeSession);
-    } else {
+    if (!activeSession) {
+      lastPersistFingerprint.current = '';
+      if (timerPersistTimeout.current !== null) {
+        window.clearTimeout(timerPersistTimeout.current);
+        timerPersistTimeout.current = null;
+      }
       void clearActiveSession();
+      return undefined;
     }
+
+    const fingerprint = sessionPersistFingerprint(activeSession);
+    if (fingerprint !== lastPersistFingerprint.current) {
+      lastPersistFingerprint.current = fingerprint;
+      void saveActiveSession(activeSession);
+      return undefined;
+    }
+
+    if (timerPersistTimeout.current !== null) {
+      window.clearTimeout(timerPersistTimeout.current);
+    }
+
+    timerPersistTimeout.current = window.setTimeout(() => {
+      void saveActiveSession(activeSession);
+    }, 15000);
+
+    return () => {
+      if (timerPersistTimeout.current !== null) {
+        window.clearTimeout(timerPersistTimeout.current);
+        timerPersistTimeout.current = null;
+      }
+    };
   }, [activeSession, ready]);
 
   useEffect(() => {
-    if (!ready || !activeSession || activeSession.submittedAt || activeSession.remainingSeconds === null) {
+    const flushSession = () => {
+      if (activeSession) {
+        void saveActiveSession(activeSession);
+      }
+    };
+
+    window.addEventListener('beforeunload', flushSession);
+    return () => window.removeEventListener('beforeunload', flushSession);
+  }, [activeSession]);
+
+  const timedSessionId =
+    ready && activeSession && !activeSession.submittedAt && activeSession.remainingSeconds !== null
+      ? activeSession.id
+      : null;
+
+  useEffect(() => {
+    if (!timedSessionId) {
       return undefined;
     }
 
     const intervalId = window.setInterval(() => {
       setActiveSession((current) => {
-        if (!current || current.submittedAt || current.remainingSeconds === null || current.remainingSeconds <= 0) {
+        if (
+          !current ||
+          current.id !== timedSessionId ||
+          current.submittedAt ||
+          current.remainingSeconds === null ||
+          current.remainingSeconds <= 0
+        ) {
           return current;
         }
 
@@ -276,7 +339,7 @@ function App() {
     }, 1000);
 
     return () => window.clearInterval(intervalId);
-  }, [activeSession, ready]);
+  }, [timedSessionId]);
 
   const session = activeSession;
   const currentItem = session ? session.items[session.currentIndex] : null;
@@ -330,7 +393,7 @@ function App() {
   function updateSettings(next: Partial<SessionSettings>): void {
     const merged = { ...settings, ...next };
     const max = getAvailableQuestionCount(bank.questions, merged.blueprintId, merged.includeDrafts);
-    merged.questionCount = clampQuestionCount(merged.questionCount, max || merged.questionCount);
+    merged.questionCount = clampQuestionCount(merged.questionCount, max);
     persistSettings(merged);
   }
 
@@ -341,7 +404,7 @@ function App() {
     persistSettings({
       ...settings,
       blueprintId: nextBlueprintId,
-      questionCount: clampQuestionCount(blueprint.default_exam_items, max || blueprint.default_exam_items),
+      questionCount: clampQuestionCount(blueprint.default_exam_items, max),
       timeMinutes: blueprint.default_time_minutes,
       includeDrafts
     });
@@ -354,7 +417,7 @@ function App() {
       ...settings,
       mode: nextMode,
       includeDrafts,
-      questionCount: clampQuestionCount(settings.questionCount, max || settings.questionCount)
+      questionCount: clampQuestionCount(settings.questionCount, max)
     });
   }
 
@@ -444,43 +507,49 @@ function App() {
   }
 
   async function finalizeSession(): Promise<void> {
-    if (!activeSession) {
+    if (!activeSession || isFinalizing) {
       return;
     }
 
-    const unanswered = activeSession.items.length - countAnswered(activeSession);
-    if (activeSession.settings.mode === 'exam') {
-      const shouldSubmit = window.confirm(
-        unanswered > 0
-          ? `Submit exam with ${unanswered} unanswered item(s)? There is no guessing penalty in this practice result.`
-          : 'Submit exam and score the results?'
-      );
-      if (!shouldSubmit) {
-        return;
+    setIsFinalizing(true);
+
+    try {
+      const unanswered = activeSession.items.length - countAnswered(activeSession);
+      if (activeSession.settings.mode === 'exam') {
+        const shouldSubmit = window.confirm(
+          unanswered > 0
+            ? `Submit exam with ${unanswered} unanswered item(s)? There is no guessing penalty in this practice result.`
+            : 'Submit exam and score the results?'
+        );
+        if (!shouldSubmit) {
+          return;
+        }
       }
+
+      const result = scoreSession(
+        activeSession.settings.blueprintId,
+        activeSession.items,
+        activeSession.answers,
+        activeSession.settings.targetThreshold
+      );
+      const completedSession = updateSessionTimestamp({
+        ...activeSession,
+        submittedAt: new Date().toISOString(),
+        result
+      });
+      const historyEntry = toHistoryEntry(completedSession);
+
+      await saveHistoryEntry(historyEntry);
+      await clearActiveSession();
+
+      setHistory((current) => [historyEntry, ...current]);
+      setSelectedHistory(historyEntry);
+      setReviewIndex(0);
+      setActiveSession(null);
+      setView('history-detail');
+    } finally {
+      setIsFinalizing(false);
     }
-
-    const result = scoreSession(
-      activeSession.settings.blueprintId,
-      activeSession.items,
-      activeSession.answers,
-      activeSession.settings.targetThreshold
-    );
-    const completedSession = updateSessionTimestamp({
-      ...activeSession,
-      submittedAt: new Date().toISOString(),
-      result
-    });
-    const historyEntry = toHistoryEntry(completedSession);
-
-    await saveHistoryEntry(historyEntry);
-    await clearActiveSession();
-
-    setHistory((current) => [historyEntry, ...current]);
-    setSelectedHistory(historyEntry);
-    setReviewIndex(0);
-    setActiveSession(null);
-    setView('history-detail');
   }
 
   function openFlagComposer(item: Question, sessionId: string, blueprint: BlueprintId, mode: ExamMode): void {
@@ -865,7 +934,8 @@ function App() {
                         ]
                           .filter(Boolean)
                           .join(' ')}
-                        aria-pressed={selected}
+                        role="radio"
+                        aria-checked={selected}
                         onClick={() => handleAnswer(option.id)}
                       >
                         <span className="option-letter">{option.id}</span>
@@ -909,7 +979,7 @@ function App() {
                   <button className="ghost-button" onClick={() => openFlagComposer(currentItem.question, session.id, session.settings.blueprintId, session.settings.mode)}>
                     Flag this item
                   </button>
-                  <button className="primary-button" onClick={() => void finalizeSession()}>
+                  <button className="primary-button" onClick={() => void finalizeSession()} disabled={isFinalizing}>
                     {session.settings.mode === 'exam' ? 'Submit exam' : 'Complete session'}
                   </button>
                 </div>

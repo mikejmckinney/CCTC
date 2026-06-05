@@ -78,6 +78,7 @@ export interface CurrentBlueprint {
   id: 'cctc-from-2026-07';
   label: string;
   structure: 'domain_task';
+  scored_items: number;
   default_exam_items: number;
   default_time_minutes: number;
   domain_tolerance_items: number;
