@@ -5,7 +5,7 @@ import './app.css';
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register(new URL('sw.js', import.meta.env.BASE_URL).href).catch(() => undefined);
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => undefined);
   });
 }
 

@@ -221,7 +221,7 @@ function App() {
   const [flagDraft, setFlagDraft] = useState<FlagDraft | null>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
   const lastPersistFingerprint = useRef('');
-  const timerPersistTimeout = useRef<number | null>(null);
+  const activeSessionRef = useRef<ActiveSession | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -261,16 +261,16 @@ function App() {
   }, [ready, settings]);
 
   useEffect(() => {
+    activeSessionRef.current = activeSession;
+  }, [activeSession]);
+
+  useEffect(() => {
     if (!ready) {
       return undefined;
     }
 
     if (!activeSession) {
       lastPersistFingerprint.current = '';
-      if (timerPersistTimeout.current !== null) {
-        window.clearTimeout(timerPersistTimeout.current);
-        timerPersistTimeout.current = null;
-      }
       void clearActiveSession();
       return undefined;
     }
@@ -279,23 +279,9 @@ function App() {
     if (fingerprint !== lastPersistFingerprint.current) {
       lastPersistFingerprint.current = fingerprint;
       void saveActiveSession(activeSession);
-      return undefined;
     }
 
-    if (timerPersistTimeout.current !== null) {
-      window.clearTimeout(timerPersistTimeout.current);
-    }
-
-    timerPersistTimeout.current = window.setTimeout(() => {
-      void saveActiveSession(activeSession);
-    }, 15000);
-
-    return () => {
-      if (timerPersistTimeout.current !== null) {
-        window.clearTimeout(timerPersistTimeout.current);
-        timerPersistTimeout.current = null;
-      }
-    };
+    return undefined;
   }, [activeSession, ready]);
 
   useEffect(() => {
@@ -313,6 +299,20 @@ function App() {
     ready && activeSession && !activeSession.submittedAt && activeSession.remainingSeconds !== null
       ? activeSession.id
       : null;
+
+  useEffect(() => {
+    if (!ready || !timedSessionId) {
+      return undefined;
+    }
+
+    const intervalId = window.setInterval(() => {
+      if (activeSessionRef.current) {
+        void saveActiveSession(activeSessionRef.current);
+      }
+    }, 15000);
+
+    return () => window.clearInterval(intervalId);
+  }, [ready, timedSessionId]);
 
   useEffect(() => {
     if (!timedSessionId) {
@@ -363,22 +363,26 @@ function App() {
         return;
       }
 
-      const choice = event.key.toUpperCase();
-      const letterIndex = choice.charCodeAt(0) - 'A'.charCodeAt(0);
-      if (letterIndex >= 0 && letterIndex < currentItem.optionOrder.length) {
-        event.preventDefault();
-        handleAnswer(currentItem.optionOrder[letterIndex]);
-        return;
-      }
-
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         navigateSession(-1);
+        return;
       }
 
       if (event.key === 'ArrowRight' || event.key === 'Enter') {
         event.preventDefault();
         navigateSession(1);
+        return;
+      }
+
+      if (event.key.length !== 1) {
+        return;
+      }
+
+      const letterIndex = event.key.toUpperCase().charCodeAt(0) - 'A'.charCodeAt(0);
+      if (letterIndex >= 0 && letterIndex < currentItem.optionOrder.length) {
+        event.preventDefault();
+        handleAnswer(currentItem.optionOrder[letterIndex]);
       }
     };
 
@@ -505,6 +509,7 @@ function App() {
 
   function discardActiveSession(): void {
     setActiveSession(null);
+    void clearActiveSession();
   }
 
   async function finalizeSession(): Promise<void> {

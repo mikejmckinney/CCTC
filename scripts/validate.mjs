@@ -300,6 +300,10 @@ function validateIntegrity(allItems, taskToDomain, legacySectionIds, errors) {
 }
 
 function validateItemIntegrity(item, location, taskToDomain, legacySectionIds, errors) {
+  if (!Array.isArray(item.options)) {
+    return;
+  }
+
   const optionIds = Array.isArray(item.options)
     ? item.options
         .filter((option) => isPlainObject(option) && typeof option.id === 'string')
