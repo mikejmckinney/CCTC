@@ -61,7 +61,7 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 
 **Description**: A client-side practice-exam web app for the ABTC Certified Clinical Transplant Coordinator (CCTC) exam. The repo is a derived implementation project, not the template itself.
 
-**Current Phase**: Phase 2 — exam engine and persistence (see [roadmap.md](roadmap.md); Phase 1 scaffold largely complete in the working tree).
+**Current Phase**: Phase 3 — question-bank growth and validation (see [roadmap.md](roadmap.md); Phases 1–2 complete on `main`).
 
 **Primary Stack**: Static web app scaffolding for a Vite-style React frontend, JSON content assets, and the inherited multi-agent governance/process files.
 
@@ -79,6 +79,6 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 
 ## Next Steps
 
-- Land bootstrap scaffold work (commit + PR on `feature/op-ccte-bootstrap`).
-- Close Phase 2 gaps: resume verification, `domain_tolerance_items`, soft cognitive/organ sampling in the assembler.
-- Begin Phase 3 bank growth per [`.github/prompts/02-author-questions.md`](../.github/prompts/02-author-questions.md) and the authoring checklist in [roadmap.md](roadmap.md).
+- Author first draft question shards under `questions/domain-*` per [`.github/prompts/02-author-questions.md`](../.github/prompts/02-author-questions.md) and the checklist in [roadmap.md](roadmap.md).
+- Keep `npm run validate` green after each authoring batch.
+- Plan Phase 4 polish (GitHub Pages deploy, device/a11y pass) once a small real bank exists.
