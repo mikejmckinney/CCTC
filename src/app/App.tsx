@@ -364,9 +364,10 @@ function App() {
       }
 
       const choice = event.key.toUpperCase();
-      if (['A', 'B', 'C', 'D', 'E'].includes(choice) && currentItem.optionOrder.includes(choice)) {
+      const letterIndex = choice.charCodeAt(0) - 'A'.charCodeAt(0);
+      if (letterIndex >= 0 && letterIndex < currentItem.optionOrder.length) {
         event.preventDefault();
-        handleAnswer(choice);
+        handleAnswer(currentItem.optionOrder[letterIndex]);
         return;
       }
 
@@ -917,8 +918,9 @@ function App() {
                 )}
 
                 <div className="option-list" role="radiogroup" aria-label="Answer choices">
-                  {currentItem.optionOrder.map((optionId) => {
+                  {currentItem.optionOrder.map((optionId, optionIndex) => {
                     const option = currentItem.question.options.find((entry) => entry.id === optionId)!;
+                    const displayLetter = String.fromCharCode('A'.charCodeAt(0) + optionIndex);
                     const selected = session.answers[currentItem.itemId] === option.id;
                     const revealed = session.settings.mode === 'study' ? session.revealed[currentItem.itemId] : Boolean(session.submittedAt);
                     const correct = currentItem.question.correct === option.id;
@@ -936,9 +938,10 @@ function App() {
                           .join(' ')}
                         role="radio"
                         aria-checked={selected}
+                        aria-label={`${displayLetter}. ${option.text}`}
                         onClick={() => handleAnswer(option.id)}
                       >
-                        <span className="option-letter">{option.id}</span>
+                        <span className="option-letter">{displayLetter}</span>
                         <span>
                           {option.text}
                           {option.selects && <small className="option-helper">Selects: {option.selects.join(', ')}</small>}

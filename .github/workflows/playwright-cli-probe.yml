@@ -1,0 +1,43 @@
+name: Playwright CLI Probe
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+concurrency:
+  group: playwright-cli-probe-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Probe playwright test --list (60s cap)
+        run: |
+          set +e
+          timeout 60 npx playwright test -c playwright.config.mjs --list
+          code=$?
+          echo "playwright --list exit code: $code"
+          if [ "$code" -eq 124 ]; then
+            echo "::error::playwright test --list timed out after 60s"
+            exit 1
+          fi
+          exit "$code"
