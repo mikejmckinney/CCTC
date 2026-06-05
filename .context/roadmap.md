@@ -13,15 +13,15 @@
 
 ## Current Phase
 
-**Phase 2 - Exam engine and persistence** (in progress)
+**Phase 3 — Question-bank growth and validation**
 
-Phase 1 bootstrap and the static app scaffold are largely complete in the working tree. The session engine, IndexedDB persistence, validation tooling, and most learner-facing flows from `01-build-app.md` exist in code, but several Phase 2 acceptance checks (resume verification, soft sampling targets) and all real bank growth from `02-author-questions.md` remain open.
+Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/mikejmckinney/CCTE/pull/1)). The static app, exam engine, persistence, validation tooling, and browser resume e2e coverage are in place. The next product-critical work is authoring real question shards under `questions/domain-*` per `02-author-questions.md`.
 
 ---
 
 ## Phase 1: Bootstrap and App Scaffold
 
-**Status**: Complete (working tree; land via PR)
+**Status**: Complete (on `main`)
 
 **Objective**: Replace template-era context with product context and stand up the static browser app shell.
 
@@ -40,7 +40,7 @@ Phase 1 bootstrap and the static app scaffold are largely complete in the workin
 
 ## Phase 2: Exam Engine and Persistence
 
-**Status**: In Progress
+**Status**: Complete (on `main`)
 
 **Objective**: Implement the session engine that assembles exams, freezes order, and survives interruptions.
 
@@ -58,11 +58,16 @@ Phase 1 bootstrap and the static app scaffold are largely complete in the workin
 - Closing and reopening the app restores the active session without reshuffling.
 - Score reports show overall and per-category raw breakdowns.
 
-### Open items (known gaps vs `01-build-app.md`)
-- [x] Automated proof that serialized session state preserves order, option order, answers, bookmarks, and remaining time (`src/lib/sessionResume.test.ts`).
+### Verification (closed on `main`)
+- [x] Unit proof that serialized session state preserves order, option order, answers, bookmarks, and timer fields (`src/lib/sessionResume.test.ts`).
+- [x] Browser e2e resume smoke: reload restores answers, bookmarks, and item position via IndexedDB (`e2e/resume.spec.mjs`; CI runs `npm run test:e2e:playwright`).
 - [x] Runtime sampler honors blueprint `domain_tolerance_items` when reporting category shortages (`getScaledDomainTolerance`).
 - [x] Runtime sampler approximates `cognitive_level_targets` and `organ_targets` as soft targets during bucket selection.
-- [x] Align `src/data/questionBank.ts` example fallback with `questions/README.md` (documented bootstrap fallback until domain shards exist).
+- [x] Prefer unseen items over recently seen items within each blueprint bucket before soft-target ranking.
+- [x] Example-bank fallback documented and implemented in `src/data/questionBank.ts` until domain shards exist.
+
+### Deferred to Phase 4
+- Richer history trend view (current UI shows a short recent-score list only).
 
 ---
 
@@ -147,7 +152,6 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 
 ## Near-Term Sequencing
 
-1. Land Phase 1 bootstrap work on `feature/op-ccte-bootstrap` (commit + PR).
-2. Continue Phase 2 hardening: browser-level resume smoke, richer history trends, device/a11y pass.
-3. Start Phase 3 bank growth per `02-author-questions.md` — add first reviewed JSON shards under `questions/domain-*`; keep `npm run validate` green.
-4. Finish Phase 4 polish and static hosting after the core study/exam loops are stable on a real (not example-only) bank.
+1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTE/pull/1)).
+2. **Start Phase 3 bank growth** per `02-author-questions.md` — add first draft JSON shards under `questions/domain-*`; keep `npm run validate` green.
+3. **Phase 4 polish and static hosting** — GitHub Pages deploy, device/a11y pass, richer history trends after a small real bank exists.
