@@ -9,7 +9,11 @@
     "build": "npm run validate && tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:e2e": "node scripts/run-e2e.mjs",
+    "test:e2e:smoke": "node scripts/run-resume-smoke.mjs",
+    "test:e2e:playwright": "playwright test -c playwright.config.mjs",
+    "test:e2e:install": "playwright install chromium"
   },
   "dependencies": {
     "idb": "^8.0.3",
@@ -17,6 +21,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.52.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
