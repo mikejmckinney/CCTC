@@ -1,0 +1,121 @@
+[
+  {
+    "id": "cctc-1001",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010501", "010504"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pre-transplant education, a kidney candidate asks why immunosuppressive medications must be taken every day even when they feel well. Which response BEST reflects the core teaching point a coordinator should reinforce?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Missing doses mainly increases cosmetic side effects but does not change rejection risk." },
+      { "id": "B", "text": "Therapeutic drug levels depend on consistent dosing; skipped doses can allow rejection before symptoms appear." },
+      { "id": "C", "text": "Immunosuppression is needed only during the first month after transplant." },
+      { "id": "D", "text": "Doses can be stopped whenever infection symptoms resolve without notifying the team." }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Maintenance immunosuppression prevents subclinical rejection that can progress to graft injury before the recipient feels ill. Coordinators emphasize adherence, trough monitoring when ordered, and contacting the team before changing doses.",
+      "rationale_incorrect": {
+        "A": "Nonadherence raises rejection and infection risk; it is not limited to cosmetic effects.",
+        "C": "Lifelong immunosuppression is required for most solid-organ recipients unless a specific research or medical exception applies.",
+        "D": "Recipients should not independently stop immunosuppression; infection management requires coordinated dose adjustments."
+      }
+    },
+    "references": [
+      {
+        "citation": "AST/ASTS Clinical Practice Guidelines on the Management of the Kidney Transplant Recipient (patient education and immunosuppression adherence).",
+        "locator": "Patient education / medication adherence section",
+        "kind": "guideline"
+      }
+    ],
+    "notes": "Reviewer: confirm current AST guideline citation and add a verified public URL if available before promoting to reviewed.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1002",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010601", "010603"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A liver transplant recipient completed education two weeks ago. Today they report oral white patches, fever to 38.3°C (101°F), and fatigue but deny cough or dysuria. Which instruction is MOST appropriate for the coordinator to give before the clinic team reviews the case?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Stop all immunosuppression until the fever resolves." },
+      { "id": "B", "text": "Continue prescribed medications, avoid live vaccines, and contact the transplant team today for same-day guidance." },
+      { "id": "C", "text": "Treat with leftover oral antibiotics from a prior prescription without reporting symptoms." },
+      { "id": "D", "text": "Wait one week unless temperature exceeds 40°C (104°F)." }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Fever and mucosal changes in an immunosuppressed recipient warrant prompt team contact because infection and rejection can present subtly. Education stresses early reporting, medication continuity unless directed otherwise, and infection-prevention practices.",
+      "rationale_incorrect": {
+        "A": "Stopping immunosuppression without medical direction can trigger rejection and is not appropriate first-line advice.",
+        "C": "Using unprescribed antibiotics delays proper evaluation and may mask culture data.",
+        "D": "Immunosuppressed recipients are taught to report fever early rather than waiting for extreme temperatures."
+      }
+    },
+    "references": [
+      {
+        "citation": "CDC Guidelines for Preventing Opportunistic Infections Among Hematopoietic Stem Cell Transplant Recipients (infection prevention principles applicable to solid-organ immunosuppression education).",
+        "url": "https://www.cdc.gov/mmwr/preview/mmwrhtml/rr4910a1.htm",
+        "locator": "General infection-prevention recommendations",
+        "kind": "public_authoritative"
+      }
+    ],
+    "notes": "Reviewer: verify whether a more current CDC solid-organ transplant patient-education source should be cited instead of this MMWR reference.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1003",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010101", "010102"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A potential living kidney donor asks whether donation guarantees a transplant for their intended recipient. Which explanation is MOST accurate for the coordinator to provide?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Living donation automatically moves the intended recipient to the top of every national deceased-donor list." },
+      { "id": "B", "text": "Directed donation can proceed when immunologic compatibility and program criteria are met, but listing and allocation rules still apply to other candidates." },
+      { "id": "C", "text": "Living donors are evaluated only for blood type and do not require medical or psychosocial clearance." },
+      { "id": "D", "text": "Recipients never need additional testing once a living donor volunteers." }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Living donation education clarifies that donors undergo full independent evaluation, compatibility must be confirmed, and program/OPTN policies govern how organs are allocated even in directed donation scenarios.",
+      "rationale_incorrect": {
+        "A": "Directed living donation does not grant automatic priority on unrelated deceased-donor allocation pathways.",
+        "C": "Living donors require comprehensive medical, surgical, and psychosocial evaluation beyond ABO typing.",
+        "D": "Recipients still need updated testing and clearance before transplant can proceed."
+      }
+    },
+    "references": [
+      {
+        "citation": "OPTN Policies — living donor requirements and allocation principles.",
+        "url": "https://optn.transplant.hrsa.gov",
+        "locator": "Living donation policy sections",
+        "kind": "public_authoritative"
+      }
+    ],
+    "notes": "Reviewer: replace base URL with verified deep links to current OPTN living-donor policy sections before promoting to reviewed.",
+    "last_updated": "2026-06-05"
+  }
+]

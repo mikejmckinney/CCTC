@@ -1,0 +1,164 @@
+[
+  {
+    "id": "cctc-3001",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030101", "030102"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "Ten days after kidney transplant, a recipient's serum creatinine rises from 1.4 mg/dL to 2.1 mg/dL over 48 hours. Urine output remains adequate and the patient is afebrile. Which action is MOST appropriate for the coordinator to prioritize first?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Document the trend, verify recent tacrolimus trough and relevant labs, and notify the transplant provider the same day." },
+      { "id": "B", "text": "Advise the patient to stop all immunosuppression until repeat labs are drawn next week." },
+      { "id": "C", "text": "Assume normal postoperative variation and schedule routine labs in one month." },
+      { "id": "D", "text": "Order discharge without communicating the change to the transplant team." }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "A rising creatinine in the early post-transplant period may signal rejection, infection, dehydration, or drug toxicity. Coordinators escalate abnormal trends promptly and ensure immunosuppression levels and basic labs are current for provider review.",
+      "rationale_incorrect": {
+        "B": "Stopping immunosuppression without orders risks rejection and is not appropriate.",
+        "C": "A 50% creatinine rise over 48 hours warrants timely evaluation rather than delayed follow-up.",
+        "D": "Abnormal post-transplant labs must be communicated to the transplant team before disposition decisions."
+      }
+    },
+    "references": [
+      {
+        "citation": "AST/ASTS Clinical Practice Guidelines on the Management of the Kidney Transplant Recipient (monitoring allograft function).",
+        "locator": "Post-transplant laboratory monitoring section",
+        "kind": "guideline"
+      }
+    ],
+    "notes": "Reviewer: confirm AST monitoring thresholds and add verified public citation before promoting to reviewed.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3002",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": ["030701", "030703"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "At discharge education, which instruction BEST describes when a solid-organ transplant recipient should seek emergency care rather than waiting for routine clinic follow-up?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Mild heartburn after a large meal" },
+      { "id": "B", "text": "Temperature at or above 38.0°C (100.4°F) with chills or inability to take prescribed medications" },
+      { "id": "C", "text": "Routine postoperative incision itching without redness" },
+      { "id": "D", "text": "Need to reschedule a routine laboratory draw by one day" }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Immunosuppressed recipients are taught to seek urgent evaluation for fever, inability to take medications, severe pain, breathing difficulty, or other acute changes because infection and rejection can progress quickly.",
+      "rationale_incorrect": {
+        "A": "Isolated mild reflux symptoms without red flags are usually addressed in routine follow-up.",
+        "C": "Mild itching without signs of infection or dehiscence is commonly managed non-emergently.",
+        "D": "Rescheduling routine labs is administrative and not an emergency indication."
+      }
+    },
+    "references": [
+      {
+        "citation": "AST patient education materials on post-transplant warning signs.",
+        "locator": "When to call / emergency symptoms section",
+        "kind": "guideline"
+      }
+    ],
+    "notes": "Reviewer: align fever threshold language with program-specific discharge instructions and cite an AST or program-approved patient handout.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3003",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030301", "030304"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A heart transplant recipient on cyclosporine starts clarithromycin for community-acquired pneumonia per their primary care clinician. The patient calls the transplant clinic concerned about drug interactions. Which guidance is MOST appropriate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Clarithromycin inhibits CYP3A4 and may raise cyclosporine levels; the transplant team should review levels and doses promptly." },
+      { "id": "B", "text": "Clarithromycin always lowers cyclosporine levels, so the dose should be doubled immediately." },
+      { "id": "C", "text": "Macrolide antibiotics have no interaction with calcineurin inhibitors." },
+      { "id": "D", "text": "The patient should stop cyclosporine until the antibiotic course ends." }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Clarithromycin is a CYP3A4 inhibitor that can increase calcineurin inhibitor exposure, raising toxicity risk. Coordinators facilitate pharmacist/physician review and level monitoring rather than unsupervised dose changes.",
+      "rationale_incorrect": {
+        "B": "Clarithromycin increases, not decreases, cyclosporine levels through CYP3A4 inhibition.",
+        "C": "Macrolides are classic CYP3A4 inhibitors with clinically relevant calcineurin inhibitor interactions.",
+        "D": "Stopping cyclosporine risks rejection; dose adjustments require medical direction and monitoring."
+      }
+    },
+    "references": [
+      {
+        "citation": "FDA Prescribing Information, cyclosporine (Drug Interactions).",
+        "locator": "Drug Interactions / CYP3A4 inhibitors",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Reviewer: confirm interaction language against current cyclosporine label and add verified FDA label URL.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3004",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030201", "030203"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "Three weeks after kidney transplant, a recipient reports new painless swelling over the graft, low-grade evening temperatures, and fatigue. Which findings would MOST strongly prompt the coordinator to escalate for possible post-transplant complication workup?",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Rising serum creatinine compared with the prior clinic visit" },
+      { "id": "II", "text": "Stable creatinine with unchanged immunosuppression levels and no other symptoms" },
+      { "id": "III", "text": "New graft-site fullness on exam reported by the covering clinician" },
+      { "id": "IV", "text": "Patient attribute alone without objective data or provider assessment" }
+    ],
+    "options": [
+      { "id": "A", "text": "I and III only", "selects": ["I", "III"] },
+      { "id": "B", "text": "II and IV only", "selects": ["II", "IV"] },
+      { "id": "C", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "D", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Rising creatinine and new graft-site fullness are objective concerns for rejection, fluid collection, or infection in the early post-transplant period. Stable labs without symptoms (II) or symptoms without evaluation (IV) are weaker escalation triggers alone.",
+      "rationale_incorrect": {
+        "B": "Stable creatinine (II) and unverified symptoms alone (IV) do not meet the strongest escalation pattern described.",
+        "C": "Stable creatinine (II) argues against the same urgency as rising creatinine when other concerning signs are present.",
+        "D": "Stable creatinine (II) should not outweigh rising creatinine and exam findings when both patterns are listed."
+      }
+    },
+    "references": [
+      {
+        "citation": "AST/ASTS Clinical Practice Guidelines on the Management of the Kidney Transplant Recipient (early complications).",
+        "locator": "Diagnosis of rejection and surgical complications",
+        "kind": "guideline"
+      }
+    ],
+    "notes": "Reviewer: verify complication triage language against current AST guidance and program escalation protocols.",
+    "last_updated": "2026-06-05"
+  }
+]

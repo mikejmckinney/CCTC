@@ -114,6 +114,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 
 **Structure and growth**
 - [x] Shard directories created: `questions/domain-1-education/`, `domain-2-pretx/`, `domain-3-postop/` (add JSON shards at ≤50 items per file).
+- [x] First draft shards landed: `batch-01.json` in each domain (11 draft items total; all `status: "draft"`).
 - [ ] After each batch, run `npm run validate` and fill under-represented domains, tasks, cognitive levels, and organs.
 - [ ] Grow reviewed items toward ~500 so sampling has variety beyond a single exam.
 

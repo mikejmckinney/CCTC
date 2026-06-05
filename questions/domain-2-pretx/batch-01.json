@@ -1,0 +1,166 @@
+[
+  {
+    "id": "cctc-2001",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501", "020503"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney waitlist candidate is temporarily medically unsuitable for transplant because of an active untreated infection. Which OPTN waitlist status category is MOST appropriate while the issue is being treated?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Active with standard allocation priority while infection is untreated" },
+      { "id": "B", "text": "Inactive due to temporary medical condition" },
+      { "id": "C", "text": "Permanent removal for psychosocial reasons only" },
+      { "id": "D", "text": "No status change is required until the infection has been present for 30 days" }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Candidates who are temporarily not transplantable should be placed inactive so they do not accrue undesirable allocation priority while unsuitable, then reactivated when documentation supports readiness.",
+      "rationale_incorrect": {
+        "A": "Active status is inappropriate while a treatable contraindication to transplant remains unresolved.",
+        "C": "Temporary infection does not require permanent removal from the waitlist.",
+        "D": "Waitlist status should reflect current medical suitability without arbitrary delays."
+      }
+    },
+    "references": [
+      {
+        "citation": "OPTN Policies — kidney waiting list and candidate status.",
+        "url": "https://optn.transplant.hrsa.gov",
+        "locator": "Kidney waiting list / candidate inactive status",
+        "kind": "public_authoritative"
+      }
+    ],
+    "notes": "Reviewer: confirm exact inactive-status nomenclature and policy section against the current OPTN kidney waiting-list policy.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2002",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101", "020102"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver transplant evaluation packet shows decompensated cirrhosis, new exertional chest pressure, and an unreconciled outside hospital admission for syncope. Which next step is MOST appropriate for the coordinator to initiate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Proceed directly to waitlist activation without further cardiac assessment." },
+      { "id": "B", "text": "Request cardiology consultation and obtain records from the outside admission before multidisciplinary sign-off." },
+      { "id": "C", "text": "Remove the candidate from consideration because any cardiac symptom is an absolute contraindication." },
+      { "id": "D", "text": "Schedule transplant immediately to avoid further decompensation." }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Pre-transplant coordinators anticipate additional consults when objective data suggest unresolved cardiopulmonary risk. Syncope and chest pressure warrant cardiac evaluation and record reconciliation before suitability decisions.",
+      "rationale_incorrect": {
+        "A": "Unresolved cardiac symptoms require further workup rather than automatic activation.",
+        "C": "Cardiac symptoms trigger evaluation; they are not universally absolute contraindications without assessment.",
+        "D": "Transplant timing depends on completed evaluation and risk mitigation, not urgency alone."
+      }
+    },
+    "references": [
+      {
+        "citation": "AASLD/ACG clinical guidance on evaluation for liver transplantation (cardiovascular risk assessment).",
+        "locator": "Pre-transplant cardiovascular evaluation section",
+        "kind": "guideline"
+      }
+    ],
+    "notes": "Reviewer: verify current AASLD guidance citation/year and add a public URL if available.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2003",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020601", "020602"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A coordinator is assembling information for the transplant physician to review a deceased-donor kidney offer. Which of the following data elements should be included in the presentation packet for a sound accept/decline discussion?",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Current recipient dialysis access function and most recent relevant laboratory values" },
+      { "id": "II", "text": "Donor KDPI, creatinine trend, and procurement timing details provided in the offer" },
+      { "id": "III", "text": "The recipient's personal social media posts about their health journey" },
+      { "id": "IV", "text": "Current immunologic crossmatch status and any donor-specific antibody history" }
+    ],
+    "options": [
+      { "id": "A", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "B", "text": "I and III only", "selects": ["I", "III"] },
+      { "id": "C", "text": "II and IV only", "selects": ["II", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Offer presentations combine recipient clinical status, donor quality metrics from the offer, and immunologic compatibility data. Social media content is not a standard clinical data element for allocation decisions.",
+      "rationale_incorrect": {
+        "B": "Social media posts (III) are not appropriate clinical packet elements.",
+        "C": "Recipient clinical status (I) is essential context for physicians reviewing an offer.",
+        "D": "Including social media (III) does not support a clinical accept/decline discussion."
+      }
+    },
+    "references": [
+      {
+        "citation": "OPTN Policies — deceased-donor kidney allocation and offer documentation.",
+        "url": "https://optn.transplant.hrsa.gov",
+        "locator": "Kidney allocation / offer review",
+        "kind": "public_authoritative"
+      }
+    ],
+    "notes": "Reviewer: confirm KDPI terminology and required offer fields against current OPTN policy.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2004",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301", "020302"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During multidisciplinary selection conference, a lung candidate is noted to have ongoing active tobacco use despite repeated education and documented agreements to quit. Which outcome is MOST consistent with standard transplant program practice?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Proceed to listing because tobacco use never affects lung transplant candidacy." },
+      { "id": "B", "text": "Defer or deny listing until documented smoking cessation requirements in program policy are met." },
+      { "id": "C", "text": "List immediately under inactive status without informing the candidate." },
+      { "id": "D", "text": "Remove the candidate permanently without further discussion or re-evaluation pathway." }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Active tobacco use is a common relative contraindication for lung transplant programs. Teams typically require demonstrated cessation and adherence to program criteria before approval or activation.",
+      "rationale_incorrect": {
+        "A": "Tobacco use is a major lung transplant candidacy concern because it affects outcomes and compliance expectations.",
+        "C": "Status changes require candidate communication and documented policy-based criteria.",
+        "D": "Programs usually allow re-evaluation after cessation rather than permanent removal for a modifiable behavior."
+      }
+    },
+    "references": [
+      {
+        "citation": "ISHLT consensus statements on lung transplant candidate selection (tobacco cessation requirements).",
+        "locator": "Candidate selection / substance use section",
+        "kind": "guideline"
+      }
+    ],
+    "notes": "Reviewer: verify current ISHLT language on tobacco cessation timelines and cite the latest consensus document.",
+    "last_updated": "2026-06-05"
+  }
+]
