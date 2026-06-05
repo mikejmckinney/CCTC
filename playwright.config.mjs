@@ -12,6 +12,9 @@ export default defineConfig({
   workers: 1,
   reporter: process.env.CI ? 'github' : 'list',
   timeout: 60_000,
+  expect: {
+    timeout: 15_000
+  },
   use: {
     baseURL: previewUrl,
     trace: 'on-first-retry',

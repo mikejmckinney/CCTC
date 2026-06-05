@@ -5,7 +5,8 @@ import {
   dismissDisclaimerIfPresent,
   ensureAppReady,
   resumeActiveSession,
-  startStudySession
+  startStudySession,
+  waitForPersistedSessionState
 } from '../e2e/helpers.mjs';
 
 const baseURL = process.env.PREVIEW_URL ?? 'http://127.0.0.1:4173';
@@ -24,7 +25,8 @@ async function main() {
     const firstStem = await page.locator('.question-card h3').first().textContent();
     await page.getByRole('radio').first().click();
     await page.getByRole('button', { name: 'Bookmark item' }).click();
-    await page.getByText('Bookmarks 1').waitFor();
+    await page.getByRole('button', { name: 'Remove bookmark' }).waitFor();
+    await waitForPersistedSessionState(page);
 
     await page.reload();
     await ensureAppReady(page);

@@ -1,5 +1,12 @@
 import { expect, test } from '@playwright/test';
-import { dismissDisclaimerIfPresent, ensureAppReady, resumeActiveSession, startStudySession } from './helpers.mjs';
+import {
+  dismissDisclaimerIfPresent,
+  ensureAppReady,
+  expectSessionStats,
+  resumeActiveSession,
+  startStudySession,
+  waitForPersistedSessionState
+} from './helpers.mjs';
 
 test.describe('session resume', () => {
   test('reload restores answers, bookmarks, and item order via IndexedDB', async ({ page }) => {
@@ -13,7 +20,8 @@ test.describe('session resume', () => {
     await expect(firstOption).toHaveAttribute('aria-checked', 'true');
 
     await page.getByRole('button', { name: 'Bookmark item' }).click();
-    await expect(page.getByText('Bookmarks 1')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Remove bookmark' })).toBeVisible();
+    await waitForPersistedSessionState(page);
 
     await page.reload();
     await ensureAppReady(page);
@@ -25,8 +33,8 @@ test.describe('session resume', () => {
     await expect(page.getByRole('heading', { name: /Item 1 of 2/i })).toBeVisible();
     await expect(page.locator('.question-card h3').first()).toHaveText(firstStem ?? '');
     await expect(page.getByRole('radio').first()).toHaveAttribute('aria-checked', 'true');
-    await expect(page.getByText('Bookmarks 1')).toBeVisible();
-    await expect(page.getByText('Answered 1')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Remove bookmark' })).toBeVisible();
+    await expectSessionStats(page, { answered: 1, bookmarks: 1 });
 
     await page.getByRole('button', { name: 'Next' }).click();
     await expect(page.getByRole('heading', { name: /Item 2 of 2/i })).toBeVisible();
