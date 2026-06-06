@@ -334,6 +334,22 @@ button:focus {
   margin: 0 0 0.4rem;
 }
 
+.reference-item + .reference-item {
+  margin-top: 0.65rem;
+}
+
+.reference-citation {
+  display: inline;
+  font-weight: 500;
+}
+
+.reference-locator {
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
 .tracker-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));

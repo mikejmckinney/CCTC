@@ -73,15 +73,16 @@ Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/m
 
 ## Phase 3: Question-Bank Growth and Validation
 
-**Status**: In Progress (validation tooling present; bank growth not started)
+**Status**: In Progress (validation + reference index in place; 25 draft items across all blueprint tasks)
 
 **Objective**: Make the bank safe to expand while keeping schema integrity and blueprint coverage visible.
 
 **Canonical specs**:
 - Validation and CI: [`.github/prompts/03-validate.md`](../.github/prompts/03-validate.md)
 - Question authoring: [`.github/prompts/02-author-questions.md`](../.github/prompts/02-author-questions.md) and [`questions/README.md`](../questions/README.md)
+- **Why** reference/locator rules: [`docs/decisions/adr-030-verifiable-question-references.md`](../docs/decisions/adr-030-verifiable-question-references.md)
 
-This phase is **not complete** until non-`_` shards exist under `questions/`, `npm run validate` passes on them, and reviewed coverage is growing toward the ~500-item target.
+This phase is **not complete** until reviewed coverage is growing toward the ~500-item target with verifiable references on every item.
 
 ### Deliverables
 - Build-time validation for every question file against the schema.
@@ -89,6 +90,8 @@ This phase is **not complete** until non-`_` shards exist under `questions/`, `n
 - Coverage reporting for both blueprint versions.
 - Authoring workflow support for draft versus reviewed items.
 - Sharded bank layout under `questions/domain-*` (≤50 items per file).
+- Local PDF reference index (`npm run reference:*`) including OPTN policies bundle — see ADR-030.
+- `primary_anchor` + verifiable locator standard enforced in validator — see ADR-030.
 
 ### Acceptance Criteria
 - Invalid question files fail validation and block the build.
@@ -103,7 +106,8 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [ ] Every new item is original expression (facts OK; no copied stems, vignettes, or brain-dump material). See `00-onboarding.md` guardrails.
 - [ ] Every authored item starts as `"status": "draft"`; only a human SME promotes to `"reviewed"`.
 - [ ] One defensible correct answer; plausible distractors; coordinator-level scope (not NP/PA).
-- [ ] `references` with locators; use public authoritative sources where possible (OPTN/UNOS, CMS, guidelines).
+- [ ] `primary_anchor` set source-first; `references` with findable locators per ADR-030 / `02-author-questions.md` (textbook outline + `PDF p. N`; OPTN Policy § + `#page=N` when citing the policies PDF; no generic OPTN index URLs).
+- [ ] Add OPTN policies-PDF corroboration only when a specific Policy § is already cited and verified on the indexed page (additive — keep useful HRSA URLs).
 - [ ] `notes` field states what the reviewer must verify (policy versions, lab ranges, drug interactions, etc.).
 
 **Tagging (2026-07 blueprint; legacy via crosswalk)**
@@ -114,7 +118,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 
 **Structure and growth**
 - [x] Shard directories created: `questions/domain-1-education/`, `domain-2-pretx/`, `domain-3-postop/` (add JSON shards at ≤50 items per file).
-- [x] First draft shards landed: `batch-01.json` in each domain (11 draft items total; all `status: "draft"`).
+- [x] First draft shards landed: `batch-01.json` + `batch-02.json` in each domain (25 draft items; all `status: "draft"`; at least one item per blueprint task).
 - [ ] After each batch, run `npm run validate` and fill under-represented domains, tasks, cognitive levels, and organs.
 - [ ] Grow reviewed items toward ~500 so sampling has variety beyond a single exam.
 

@@ -1,0 +1,143 @@
+[
+  {
+    "id": "cctc-3006",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When counseling a kidney recipient about long-term risks of maintenance immunosuppression, which complication pair is emphasized in transplant pharmacology references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Opportunistic infection and malignancy" },
+      { "id": "B", "text": "Acute hyperkalemia and iron overload only" },
+      { "id": "C", "text": "Immediate primary nonfunction at two years post-transplant" },
+      { "id": "D", "text": "Permanent resolution of all pre-transplant allergies" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term immunosuppression references emphasize opportunistic infection and malignancy among the most significant feared complications of prolonged therapy.",
+      "rationale_incorrect": {
+        "B": "Electrolyte and iron issues are not the primary long-term immunosuppression complication pair cited in these references.",
+        "C": "Primary nonfunction is an early graft event, not the described long-term immunosuppression risk pairing.",
+        "D": "Immunosuppression does not permanently cure pre-transplant allergic disease."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 168,
+      "section": "Ch. 6, Immunosuppressive Medications — long-term side effects paragraph",
+      "quote_hint": "opportunistic infection and malignancy",
+      "keywords": ["opportunistic", "infection", "malignancy", "immunosuppression", "long-term"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 6 → Immunosuppressive Medications (long-term side effects: infection and malignancy); PDF p. 168 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/danovitch-handbook-kidney-transplantation.pdf p. 168.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-3007",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient is eight months post-transplant with stable graft function. According to long-term follow-up references, what clinic visit interval is generally recommended through the end of the first post-transplant year?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Monthly visits" },
+      { "id": "B", "text": "One visit every two years" },
+      { "id": "C", "text": "Visits only when the recipient feels ill" },
+      { "id": "D", "text": "No transplant center follow-up after month three" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Follow-up references recommend transitioning to monthly clinic visits by six months post-transplant and maintaining that monthly schedule through the end of the first year for functioning grafts.",
+      "rationale_incorrect": {
+        "B": "Biennial visits are far less frequent than the recommended first-year schedule.",
+        "C": "Scheduled surveillance continues even when the recipient feels well.",
+        "D": "Transplant center follow-up continues throughout the first year and beyond."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 302,
+      "section": "Ch. 11, Post-transplant: Long-term Management → follow-up visit frequency paragraph",
+      "quote_hint": "monthly at 6 months, this monthly schedule should be maintained until the end of the first year",
+      "keywords": ["monthly", "visits", "first", "year", "follow-up", "schedule"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 11 → follow-up visit frequency (monthly through end of first year); PDF p. 302 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/danovitch-handbook-kidney-transplantation.pdf p. 302.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-3008",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": ["030601"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient on discharge calls because they vomited and could not take their evening immunosuppression dose. Which instruction aligns with standard medication education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "They should understand what to do if they miss a dose or cannot take medication due to nausea or vomiting" },
+      { "id": "B", "text": "They should permanently stop all immunosuppression after one missed dose" },
+      { "id": "C", "text": "They should double the next dose without contacting the team" },
+      { "id": "D", "text": "They should wait one week before reporting missed doses" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Discharge medication education includes teaching recipients what to do if they miss a dose or cannot take medication because of nausea, vomiting, or prolonged diarrhea.",
+      "rationale_incorrect": {
+        "B": "Recipients should not independently discontinue immunosuppression after vomiting; they need team guidance.",
+        "C": "Dose adjustments require coordinated medical direction, not automatic doubling.",
+        "D": "Missed doses during illness require timely team contact, not delayed reporting."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "section": "Ch. 3, Patient Education → medication education (missed dose / nausea / vomiting)",
+      "quote_hint": "what to do if they miss a dose of medication, or they are unable to take medication due to nausea/vomiting",
+      "keywords": ["miss", "dose", "nausea", "vomiting", "medication", "unable"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication education (missed dose / nausea / vomiting instructions); PDF p. 107 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 107.",
+    "last_updated": "2026-06-06"
+  }
+]

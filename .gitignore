@@ -46,6 +46,10 @@
 !.vscode/settings.json
 .idea/*
 
+# --- Maintainer-owned reference PDFs (copyrighted textbooks; local use only) ---
+docs/reference/*.pdf
+docs/reference/.index/
+
 # --- Build / dist outputs ---
 dist/
 build/

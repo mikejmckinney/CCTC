@@ -3,6 +3,16 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
+import {
+  extractPdfPageFromLocator,
+  extractPdfPageFromUrl,
+  getPageText,
+  isOptnPoliciesPdfUrl,
+  keywordMatchScore,
+  loadManifest,
+  loadSourceIndex,
+  resolveIndexPath,
+} from './lib/reference-index.mjs';
 
 const ROOT_DIR = process.cwd();
 const QUESTIONS_DIR = path.join(ROOT_DIR, 'questions');
@@ -23,6 +33,8 @@ async function main() {
   const fileLevelErrors = [];
   const schemaErrors = [];
   const integrityErrors = [];
+  const anchorErrors = [];
+  const anchorWarnings = [];
   const coverageWarnings = [];
 
   const taskToDomain = buildTaskDomainMap(newBlueprint);
@@ -62,6 +74,7 @@ async function main() {
   }
 
   validateIntegrity(allItems, taskToDomain, legacySectionIds, integrityErrors);
+  await validatePrimaryAnchors(allItems, anchorErrors, anchorWarnings);
   const coverage = buildCoverageReport(allItems, newBlueprint, legacyBlueprint, coverageWarnings);
 
   const hardFailures = [
@@ -69,6 +82,7 @@ async function main() {
     ...fileLevelErrors,
     ...schemaErrors,
     ...integrityErrors,
+    ...anchorErrors,
   ];
 
   printSummary({
@@ -80,6 +94,8 @@ async function main() {
     fileLevelErrors,
     schemaErrors,
     integrityErrors,
+    anchorErrors,
+    anchorWarnings,
     coverageWarnings,
     coverage,
   });
@@ -299,6 +315,93 @@ function validateIntegrity(allItems, taskToDomain, legacySectionIds, errors) {
   }
 }
 
+async function validatePrimaryAnchors(allItems, errors, warnings) {
+  let manifest;
+  try {
+    manifest = await loadManifest();
+  } catch (error) {
+    warnings.push(`[anchor] Could not load scripts/reference/sources.json: ${error.message}`);
+    return;
+  }
+
+  const indexAvailability = new Map();
+  for (const source of manifest.sources) {
+    const indexPath = resolveIndexPath(manifest, source.id);
+    try {
+      await fs.access(indexPath);
+      indexAvailability.set(source.id, true);
+    } catch {
+      indexAvailability.set(source.id, false);
+    }
+  }
+
+  const anyIndex = [...indexAvailability.values()].some(Boolean);
+  if (!anyIndex) {
+    warnings.push(
+      '[anchor] Reference index not built. Run `npm run reference:index` locally to enable PDF anchor keyword checks.',
+    );
+    return;
+  }
+
+  for (const { item, location } of allItems) {
+    if (!isPlainObject(item) || !isPlainObject(item.primary_anchor)) {
+      continue;
+    }
+
+    const anchor = item.primary_anchor;
+    if (anchor.type === 'url') {
+      if (!isAbsoluteUrl(anchor.url)) {
+        errors.push(formatItemError(location, '$.primary_anchor.url must be a well-formed absolute URL'));
+      }
+      continue;
+    }
+
+    if (anchor.type !== 'pdf') {
+      errors.push(formatItemError(location, '$.primary_anchor.type must be "pdf" or "url"'));
+      continue;
+    }
+
+    if (!indexAvailability.get(anchor.source_id)) {
+      warnings.push(
+        formatItemError(
+          location,
+          `$.primary_anchor.source_id ${anchor.source_id} has no local index; run npm run reference:index ${anchor.source_id}`,
+        ),
+      );
+      continue;
+    }
+
+    let index;
+    try {
+      index = await loadSourceIndex(anchor.source_id);
+    } catch (error) {
+      warnings.push(formatItemError(location, `$.primary_anchor index load failed: ${error.message}`));
+      continue;
+    }
+
+    const pageText = getPageText(index, anchor.pdf_page);
+    if (!pageText) {
+      errors.push(
+        formatItemError(
+          location,
+          `$.primary_anchor.pdf_page ${anchor.pdf_page} is out of range for ${anchor.source_id} (1-${index.page_count})`,
+        ),
+      );
+      continue;
+    }
+
+    const { matched, required } = keywordMatchScore(pageText, anchor.keywords);
+    if (matched.length < required) {
+      errors.push(
+        formatItemError(
+          location,
+          `$.primary_anchor keywords matched ${matched.length}/${required} on ${anchor.source_id} PDF p.${anchor.pdf_page} (matched: ${matched.join(', ') || 'none'}; expected at least: ${anchor.keywords.join(', ')})`,
+        ),
+      );
+    }
+  }
+}
+
 function validateItemIntegrity(item, location, taskToDomain, legacySectionIds, errors) {
   if (!Array.isArray(item.options)) {
     return;
@@ -371,7 +474,82 @@ function validateItemIntegrity(item, location, taskToDomain, legacySectionIds, e
     if (reference?.url !== undefined && !isAbsoluteUrl(reference.url)) {
       errors.push(formatItemError(location, `$.references[${index}].url must be a well-formed absolute URL`));
     }
+    if (typeof reference?.url === 'string' && reference.url.includes('optn.transplant.hrsa.gov')) {
+      errors.push(
+        formatItemError(
+          location,
+          `$.references[${index}].url uses legacy optn.transplant.hrsa.gov host (redirects to generic landing page; use hrsa.gov/optn/... and verify)`,
+        ),
+      );
+    }
+    if (typeof reference?.url === 'string' && isGenericOptnIndexUrl(reference.url)) {
+      errors.push(
+        formatItemError(
+          location,
+          `$.references[${index}].url is a generic OPTN index page — cite a specific policy §, document, or PDF page instead`,
+        ),
+      );
+    }
+    if (
+      typeof reference?.url === 'string' &&
+      isOptnOrHhsUrl(reference.url) &&
+      !isGenericOptnIndexUrl(reference.url) &&
+      !hasSpecificPublicLocator(reference.locator)
+    ) {
+      errors.push(
+        formatItemError(
+          location,
+          `$.references[${index}].locator must name a specific policy §, regulation, or document section when $.references[${index}].url is OPTN/HHS`,
+        ),
+      );
+    }
+    if (reference?.kind === 'textbook' && !hasTextbookLocator(reference.locator)) {
+      errors.push(
+        formatItemError(
+          location,
+          `$.references[${index}].locator must include a findable outline path (→, §, item/table, or monograph) and PDF p. N when kind is textbook`,
+        ),
+      );
+    }
+    if (isOptnPoliciesPdfUrl(reference?.url) && !hasOptnPolicyLocator(reference.locator)) {
+      errors.push(
+        formatItemError(
+          location,
+          `$.references[${index}].locator must name Policy § (e.g. Policy 18.3) and PDF p. N when $.references[${index}].url is the OPTN policies PDF`,
+        ),
+      );
+    }
+    if (isOptnPoliciesPdfUrl(reference?.url)) {
+      const locatorPage = extractPdfPageFromLocator(reference.locator);
+      const urlPage = extractPdfPageFromUrl(reference.url);
+      if (locatorPage && !urlPage) {
+        errors.push(
+          formatItemError(
+            location,
+            `$.references[${index}].url must include #page=${locatorPage} when citing the OPTN policies PDF (locator names PDF p. ${locatorPage})`,
+          ),
+        );
+      }
+      if (locatorPage && urlPage && locatorPage !== urlPage) {
+        errors.push(
+          formatItemError(
+            location,
+            `$.references[${index}].url #page=${urlPage} does not match locator PDF p. ${locatorPage}`,
+          ),
+        );
+      }
+    }
   });
+
+  const anchorUrl = item.primary_anchor?.url;
+  if (typeof anchorUrl === 'string' && anchorUrl.includes('optn.transplant.hrsa.gov')) {
+    errors.push(
+      formatItemError(
+        location,
+        '$.primary_anchor.url uses legacy optn.transplant.hrsa.gov host (redirects to generic landing page; use hrsa.gov/optn/... and verify)',
+      ),
+    );
+  }
 
   if (item.task !== undefined) {
     const expectedDomain = taskToDomain.get(item.task);
@@ -568,10 +746,17 @@ function printSummary({
   fileLevelErrors,
   schemaErrors,
   integrityErrors,
+  anchorErrors,
+  anchorWarnings,
   coverageWarnings,
   coverage,
 }) {
-  const hardFailureCount = parsingErrors.length + fileLevelErrors.length + schemaErrors.length + integrityErrors.length;
+  const hardFailureCount =
+    parsingErrors.length +
+    fileLevelErrors.length +
+    schemaErrors.length +
+    integrityErrors.length +
+    anchorErrors.length;
   const strictFailureCount = STRICT_MODE ? coverageWarnings.length : 0;
   const passed = hardFailureCount === 0 && strictFailureCount === 0;
 
@@ -597,7 +782,10 @@ function printSummary({
     ...fileLevelErrors,
     ...schemaErrors,
     ...integrityErrors,
+    ...anchorErrors,
   ]);
+
+  printSection('Anchor warnings', anchorWarnings);
 
   printCoverageTable('2026-07 domain coverage', coverage.domainCoverage);
   printCoverageTable('Legacy section coverage', coverage.legacyCoverage);
@@ -610,6 +798,8 @@ function printSummary({
   console.log('Summary');
   console.log(`- Schema violations: ${schemaErrors.length}`);
   console.log(`- Integrity violations: ${integrityErrors.length}`);
+  console.log(`- Anchor violations: ${anchorErrors.length}`);
+  console.log(`- Anchor warnings: ${anchorWarnings.length}`);
   console.log(`- Coverage warnings: ${coverageWarnings.length}${STRICT_MODE ? ' (treated as failures)' : ''}`);
   console.log(`- Exit code: ${passed ? 0 : 1}`);
 }
@@ -687,6 +877,63 @@ function isAbsoluteUrl(value) {
   } catch {
     return false;
   }
+}
+
+function isOptnOrHhsUrl(url) {
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return host === 'hrsa.gov' || host.endsWith('.hrsa.gov') || host === 'hhs.gov' || host.endsWith('.hhs.gov');
+  } catch {
+    return false;
+  }
+}
+
+function isGenericOptnIndexUrl(url) {
+  try {
+    const { pathname } = new URL(url);
+    const normalized = pathname.replace(/\/$/, '').toLowerCase();
+    return (
+      normalized === '/optn' ||
+      normalized === '/optn/policies-bylaws' ||
+      normalized === '/optn/policies-bylaws/policies'
+    );
+  } catch {
+    return false;
+  }
+}
+
+function hasSpecificPublicLocator(locator) {
+  if (typeof locator !== 'string' || locator.trim().length === 0) {
+    return false;
+  }
+  return (
+    /Policy\s+\d+(?:\.\d+)+/i.test(locator) ||
+    /PDF\s+p\.\s*\d+/i.test(locator) ||
+    /42\s+C\.?F\.?R\.?\s*§?\s*\d+/i.test(locator) ||
+    /§\s*\d+(\.\d+)*/.test(locator)
+  );
+}
+
+function hasTextbookLocator(locator) {
+  if (typeof locator !== 'string' || locator.trim().length === 0) {
+    return false;
+  }
+  const hasPdfPage = /PDF\s+p\.\s*\d+/i.test(locator);
+  const hasOutlinePath =
+    /→/.test(locator) ||
+    /§\s*\d/.test(locator) ||
+    /\bitem\s+\d+/i.test(locator) ||
+    /\btable\b/i.test(locator) ||
+    /\bmonograph\b/i.test(locator) ||
+    /Part\s+[IVX]+/i.test(locator);
+  return hasPdfPage && hasOutlinePath;
+}
+
+function hasOptnPolicyLocator(locator) {
+  if (typeof locator !== 'string' || locator.trim().length === 0) {
+    return false;
+  }
+  return /Policy\s+\d+(?:\.\d+)+/i.test(locator) && /PDF\s+p\.\s*\d+/i.test(locator);
 }
 
 function isDateString(value) {

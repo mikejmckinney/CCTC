@@ -157,18 +157,20 @@ function References({ question }: { question: Question }) {
   return (
     <div className="reference-list">
       <h5>References</h5>
-      {question.references.map((reference) => (
-        <p key={`${reference.citation}-${reference.locator ?? ''}`}>
-          {reference.url ? (
-            <a href={reference.url} target="_blank" rel="noreferrer">
-              {reference.citation}
-            </a>
-          ) : (
-            <span>{reference.citation}</span>
-          )}
-          {reference.locator ? ` (${reference.locator})` : ''}
-        </p>
-      ))}
+      <ul className="plain-list">
+        {question.references.map((reference) => (
+          <li key={`${reference.citation}-${reference.locator ?? ''}`} className="reference-item">
+            {reference.url ? (
+              <a className="reference-citation" href={reference.url} target="_blank" rel="noreferrer">
+                {reference.citation}
+              </a>
+            ) : (
+              <span className="reference-citation">{reference.citation}</span>
+            )}
+            {reference.locator ? <div className="reference-locator">{reference.locator}</div> : null}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -118,12 +118,13 @@ Use these files as the current product ground truth:
 
 | File | Purpose |
 |---|---|
-| `package.json` | Defines local scripts: `npm test`, `npm run build`, `npm run validate`, plus Vite dev/preview commands |
+| `package.json` | Defines local scripts: `npm test`, `npm run build`, `npm run validate`, `npm run reference:*`, plus Vite dev/preview commands |
 | `src/app/App.tsx` | Current top-level app shell for starting sessions, resuming, history, and flags UI |
 | `src/data/questionBank.ts` | Loads live bank shards and falls back to `_examples` when no primary shards exist |
 | `src/lib/sessionAssembly.ts` | Builds weighted sessions and default settings from blueprint data |
 | `src/lib/sessionPersistence.ts` | Tracks recently seen item ids and stale-flag pruning helpers |
-| `scripts/validate.mjs` | Local validator for schema, integrity checks, and coverage warnings |
+| `scripts/validate.mjs` | Local validator for schema, integrity checks, `primary_anchor` keyword checks, and coverage warnings |
+| `scripts/reference.mjs` | Builds and searches the gitignored PDF page index (`docs/reference/.index/`) |
 | `.github/workflows/validate.yml` | Runs `npm ci` and `npm run validate` on push and pull request |
 
 ### Exam data
@@ -176,11 +177,18 @@ These commands were verified against the current repo contents on 2026-06-01:
 npm test
 npm run build
 npm run validate
+npm run reference:fetch-optn                         # download OPTN policies PDF (gitignored)
+npm run reference:index                              # local; requires docs/reference/*.pdf
+npm run reference:search -- cupples "urgent matters"
+npm run reference:search -- optn-policies "Policy 18.3"
+npm run reference:page -- cupples 111
 ```
 
 Supporting file-grounded verification for those commands:
 
-- `package.json` defines `test`, `build`, and `validate` scripts.
+- `package.json` defines `test`, `build`, `validate`, and `reference:*` scripts.
+- `scripts/reference.mjs` builds a gitignored page index under `docs/reference/.index/` for PDF lookup during authoring.
+- `scripts/validate.mjs` checks each item's `primary_anchor.keywords` against the index when present locally.
 - `.github/workflows/validate.yml` runs `npm ci` and `npm run validate` on push and pull request.
 - `scripts/validate.mjs` is the validator invoked by both the local script and the workflow.
 - `src/data/questionBank.ts` confirms the current example fallback behavior when no primary shards exist.

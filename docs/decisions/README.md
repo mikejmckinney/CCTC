@@ -42,6 +42,7 @@
 | [ADR-026](./adr-026-compliance-contracts.md) | Agent compliance contracts and role receipt evidence | Accepted |
 | [ADR-027](./adr-027-opportunity-feedback-channel.md) | Opportunity feedback channel for in-scope agent observations | Accepted |
 | [ADR-029](./adr-029-sandbox-dogfood-evidence-and-canary-placeholder.md) | Sandbox dogfood evidence requirement on every PR + canary placeholder convention; narrows ADR-021 §"Per-file cadence bump" scope | Accepted |
+| [ADR-030](./adr-030-verifiable-question-references.md) | Verifiable question references: source-first authoring, textbook/OPTN locator standards, local PDF index, additive OPTN policies-PDF corroboration | Accepted |
 
 When you add a new ADR, add a row above and update its status if it later
 changes.

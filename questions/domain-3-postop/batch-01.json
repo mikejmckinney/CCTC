@@ -2,124 +2,163 @@
   {
     "id": "cctc-3001",
     "schema_version": 1,
-    "version": 1,
+    "version": 8,
     "status": "draft",
     "type": "one_best",
     "domain": 3,
     "task": "030100",
-    "knowledge_codes": ["030101", "030102"],
+    "knowledge_codes": ["030101"],
     "cognitive_level": "application",
     "organ": "kidney",
     "recipient_age": "adult",
-    "stem": "Ten days after kidney transplant, a recipient's serum creatinine rises from 1.4 mg/dL to 2.1 mg/dL over 48 hours. Urine output remains adequate and the patient is afebrile. Which action is MOST appropriate for the coordinator to prioritize first?",
+    "stem": "A kidney recipient two months post-transplant feels well but serial labs show a rising serum creatinine without fever, graft pain, or urinary symptoms. Which presentation is MOST consistent with this pattern?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Document the trend, verify recent tacrolimus trough and relevant labs, and notify the transplant provider the same day." },
-      { "id": "B", "text": "Advise the patient to stop all immunosuppression until repeat labs are drawn next week." },
-      { "id": "C", "text": "Assume normal postoperative variation and schedule routine labs in one month." },
-      { "id": "D", "text": "Order discharge without communicating the change to the transplant team." }
+      { "id": "A", "text": "Acute rejection presenting as asymptomatic renal dysfunction" },
+      { "id": "B", "text": "Expected immediate postoperative diuresis" },
+      { "id": "C", "text": "Normal trough variability requiring no clinical follow-up" },
+      { "id": "D", "text": "Rejection that always presents with fever and graft tenderness" }
     ],
     "correct": "A",
     "explanation": {
-      "rationale_correct": "A rising creatinine in the early post-transplant period may signal rejection, infection, dehydration, or drug toxicity. Coordinators escalate abnormal trends promptly and ensure immunosuppression levels and basic labs are current for provider review.",
+      "rationale_correct": "Acute rejection episodes most commonly present as an asymptomatic rise in serum creatinine or failure of creatinine to fall. Classic fever, malaise, and graft tenderness are seen less frequently with modern immunosuppression.",
       "rationale_incorrect": {
-        "B": "Stopping immunosuppression without orders risks rejection and is not appropriate.",
-        "C": "A 50% creatinine rise over 48 hours warrants timely evaluation rather than delayed follow-up.",
-        "D": "Abnormal post-transplant labs must be communicated to the transplant team before disposition decisions."
+        "B": "Postoperative diuresis is an early operative phenomenon, not a pattern at two months with rising creatinine.",
+        "C": "A rising creatinine warrants clinical evaluation; it is not assumed to be benign trough variability.",
+        "D": "Fever and graft tenderness are classic but now less common presentations; asymptomatic creatinine rise is the typical pattern."
       }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 288,
+      "section": "Ch. 10 → Clinical Manifestations of Acute Rejection (opening paragraph)",
+      "quote_hint": "most commonly present as asymptomatic rise in serum creatinine",
+      "keywords": ["asymptomatic", "creatinine", "rejection", "acute", "graft"]
     },
     "references": [
       {
-        "citation": "AST/ASTS Clinical Practice Guidelines on the Management of the Kidney Transplant Recipient (monitoring allograft function).",
-        "locator": "Post-transplant laboratory monitoring section",
-        "kind": "guideline"
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 10 → Clinical Manifestations of Acute Rejection; PDF p. 288 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → iii. Urgent matters (signs and symptoms of rejection); PDF p. 111.",
+        "kind": "textbook"
       }
     ],
-    "notes": "Reviewer: confirm AST monitoring thresholds and add verified public citation before promoting to reviewed.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. Anchor verified against docs/reference/danovitch-handbook-kidney-transplantation.pdf p. 288.",
+    "last_updated": "2026-06-06"
   },
   {
     "id": "cctc-3002",
     "schema_version": 1,
-    "version": 1,
+    "version": 8,
     "status": "draft",
     "type": "one_best",
     "domain": 3,
     "task": "030700",
-    "knowledge_codes": ["030701", "030703"],
-    "cognitive_level": "recall",
-    "organ": "general",
+    "knowledge_codes": ["030701"],
+    "cognitive_level": "application",
+    "organ": "liver",
     "recipient_age": "adult",
-    "stem": "At discharge education, which instruction BEST describes when a solid-organ transplant recipient should seek emergency care rather than waiting for routine clinic follow-up?",
+    "stem": "A liver recipient three weeks post-transplant reports oral white patches and increasing fatigue. Based on standard teaching about when to contact the transplant team, what is the MOST appropriate coordinator instruction?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Mild heartburn after a large meal" },
-      { "id": "B", "text": "Temperature at or above 38.0°C (100.4°F) with chills or inability to take prescribed medications" },
-      { "id": "C", "text": "Routine postoperative incision itching without redness" },
-      { "id": "D", "text": "Need to reschedule a routine laboratory draw by one day" }
+      { "id": "A", "text": "Contact the transplant team promptly because possible infection symptoms are urgent matters" },
+      { "id": "B", "text": "Treat this as a non-urgent matter to discuss at the next medication refill request" },
+      { "id": "C", "text": "Stop all immunosuppression until symptoms resolve" },
+      { "id": "D", "text": "Defer contact until temperature exceeds 40°C (104°F)" }
     ],
-    "correct": "B",
+    "correct": "A",
     "explanation": {
-      "rationale_correct": "Immunosuppressed recipients are taught to seek urgent evaluation for fever, inability to take medications, severe pain, breathing difficulty, or other acute changes because infection and rejection can progress quickly.",
+      "rationale_correct": "Signs and symptoms of infection are listed as urgent reasons to contact the transplant team. Coordinators instruct recipients to reach the team promptly rather than defer concerning symptoms.",
       "rationale_incorrect": {
-        "A": "Isolated mild reflux symptoms without red flags are usually addressed in routine follow-up.",
-        "C": "Mild itching without signs of infection or dehiscence is commonly managed non-emergently.",
-        "D": "Rescheduling routine labs is administrative and not an emergency indication."
+        "B": "Non-urgent matters include appointment verification and general diet questions—not new symptoms suggesting infection.",
+        "C": "Recipients should not independently stop immunosuppression; infection evaluation requires coordinated management.",
+        "D": "Urgent contact is indicated for infection symptoms without waiting for extreme fever thresholds."
       }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education — §h. Communication with the transplant team → iii. Urgent matters",
+      "quote_hint": "Urgent matters may include signs and symptoms of infection",
+      "keywords": ["urgent", "infection", "symptoms", "transplant", "team"]
     },
     "references": [
       {
-        "citation": "AST patient education materials on post-transplant warning signs.",
-        "locator": "When to call / emergency symptoms section",
-        "kind": "guideline"
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → iii. Urgent matters (signs and symptoms of infection); PDF p. 111.",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Transplantation Nursing Secrets (Cupples & Ohler, eds., 2003).",
+        "locator": "Ch. 25, Patient Education — table “Topics for Discharge Education”, item 4 “Signs and symptoms of infection”; PDF p. 320.",
+        "kind": "textbook"
       }
     ],
-    "notes": "Reviewer: align fever threshold language with program-specific discharge instructions and cite an AST or program-approved patient handout.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 111.",
+    "last_updated": "2026-06-06"
   },
   {
     "id": "cctc-3003",
     "schema_version": 1,
-    "version": 1,
+    "version": 8,
     "status": "draft",
     "type": "one_best",
     "domain": 3,
     "task": "030300",
-    "knowledge_codes": ["030301", "030304"],
+    "knowledge_codes": ["030302"],
     "cognitive_level": "application",
-    "organ": "general",
+    "organ": "kidney",
     "recipient_age": "adult",
-    "stem": "A heart transplant recipient on cyclosporine starts clarithromycin for community-acquired pneumonia per their primary care clinician. The patient calls the transplant clinic concerned about drug interactions. Which guidance is MOST appropriate?",
+    "stem": "A kidney recipient maintained on cyclosporine is prescribed clarithromycin for a respiratory infection. Based on the documented drug interaction profile, what should the coordinator anticipate?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Clarithromycin inhibits CYP3A4 and may raise cyclosporine levels; the transplant team should review levels and doses promptly." },
-      { "id": "B", "text": "Clarithromycin always lowers cyclosporine levels, so the dose should be doubled immediately." },
-      { "id": "C", "text": "Macrolide antibiotics have no interaction with calcineurin inhibitors." },
-      { "id": "D", "text": "The patient should stop cyclosporine until the antibiotic course ends." }
+      { "id": "A", "text": "Increased cyclosporine blood levels from CYP3A4 inhibition" },
+      { "id": "B", "text": "Decreased cyclosporine levels from CYP3A4 induction" },
+      { "id": "C", "text": "No interaction because macrolides do not affect calcineurin inhibitors" },
+      { "id": "D", "text": "Mandatory independent discontinuation of cyclosporine by the patient" }
     ],
     "correct": "A",
     "explanation": {
-      "rationale_correct": "Clarithromycin is a CYP3A4 inhibitor that can increase calcineurin inhibitor exposure, raising toxicity risk. Coordinators facilitate pharmacist/physician review and level monitoring rather than unsupervised dose changes.",
+      "rationale_correct": "Strong CYP3A4 inhibitors such as clarithromycin may increase cyclosporine concentration and effect. The team should anticipate closer drug-level monitoring and possible dose adjustment.",
       "rationale_incorrect": {
-        "B": "Clarithromycin increases, not decreases, cyclosporine levels through CYP3A4 inhibition.",
-        "C": "Macrolides are classic CYP3A4 inhibitors with clinically relevant calcineurin inhibitor interactions.",
-        "D": "Stopping cyclosporine risks rejection; dose adjustments require medical direction and monitoring."
+        "B": "CYP3A4 inducers lower calcineurin inhibitor levels; clarithromycin is an inhibitor, not an inducer.",
+        "C": "The cyclosporine monograph explicitly lists clarithromycin among strong CYP3A4 inhibitors that raise levels.",
+        "D": "Medication changes require physician-directed management, not independent discontinuation by the recipient."
       }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "nursing-drug-handbook",
+      "pdf_page": 841,
+      "section": "cycloSPORINE monograph → INTERACTIONS (monograph begins PDF p. 840)",
+      "quote_hint": "Strong CYP3A4 inhibitors (e.g., clarithromycin",
+      "keywords": ["clarithromycin", "CYP3A4", "inhibitors", "cyclosporine", "concentration"]
     },
     "references": [
       {
-        "citation": "FDA Prescribing Information, cyclosporine (Drug Interactions).",
-        "locator": "Drug Interactions / CYP3A4 inhibitors",
-        "kind": "regulation"
+        "citation": "Saunders Nursing Drug Handbook 2024 (Wolters Kluwer; ABTC handbook lists 2020 ed.).",
+        "locator": "cycloSPORINE monograph → INTERACTIONS → strong CYP3A4 inhibitors (e.g., clarithromycin); PDF p. 841 (monograph begins p. 840).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication education → Right way → drug–drug and drug–food interactions; PDF p. 108.",
+        "kind": "textbook"
       }
     ],
-    "notes": "Reviewer: confirm interaction language against current cyclosporine label and add verified FDA label URL.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. Anchor verified against docs/reference/nursing-drug-handbook-2024.pdf p. 841.",
+    "last_updated": "2026-06-06"
   },
   {
     "id": "cctc-3004",
     "schema_version": 1,
-    "version": 1,
+    "version": 8,
     "status": "draft",
     "type": "complex_combo",
     "domain": 3,
@@ -128,37 +167,103 @@
     "cognitive_level": "analysis",
     "organ": "kidney",
     "recipient_age": "adult",
-    "stem": "Three weeks after kidney transplant, a recipient reports new painless swelling over the graft, low-grade evening temperatures, and fatigue. Which findings would MOST strongly prompt the coordinator to escalate for possible post-transplant complication workup?",
+    "stem": "A kidney recipient in the first three months post-transplant has graft dysfunction. Evaluate the following statements about differential diagnosis and presentation:",
     "shuffle": false,
     "elements": [
-      { "id": "I", "text": "Rising serum creatinine compared with the prior clinic visit" },
-      { "id": "II", "text": "Stable creatinine with unchanged immunosuppression levels and no other symptoms" },
-      { "id": "III", "text": "New graft-site fullness on exam reported by the covering clinician" },
-      { "id": "IV", "text": "Patient attribute alone without objective data or provider assessment" }
+      { "id": "I", "text": "Fever with graft tenderness may reflect acute rejection or pyelonephritis." },
+      { "id": "II", "text": "Calcineurin inhibitor toxicity commonly presents with graft tenderness." },
+      { "id": "III", "text": "Acute rejection often presents as an asymptomatic rise in serum creatinine." },
+      { "id": "IV", "text": "Oliguria makes calcineurin inhibitor toxicity a less likely sole explanation." }
     ],
     "options": [
-      { "id": "A", "text": "I and III only", "selects": ["I", "III"] },
-      { "id": "B", "text": "II and IV only", "selects": ["II", "IV"] },
-      { "id": "C", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
-      { "id": "D", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] }
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, III, and IV only", "selects": ["I", "III", "IV"] },
+      { "id": "C", "text": "II and III only", "selects": ["II", "III"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
     ],
-    "correct": "A",
+    "correct": "B",
     "explanation": {
-      "rationale_correct": "Rising creatinine and new graft-site fullness are objective concerns for rejection, fluid collection, or infection in the early post-transplant period. Stable labs without symptoms (II) or symptoms without evaluation (IV) are weaker escalation triggers alone.",
+      "rationale_correct": "A tender graft with fever and rising creatinine may reflect rejection or pyelonephritis. Rejection commonly presents with asymptomatic creatinine rise, while CNI toxicity does not produce graft tenderness. Oliguria shifts the differential away from isolated drug toxicity toward anatomical or severe rejection causes.",
       "rationale_incorrect": {
-        "B": "Stable creatinine (II) and unverified symptoms alone (IV) do not meet the strongest escalation pattern described.",
-        "C": "Stable creatinine (II) argues against the same urgency as rising creatinine when other concerning signs are present.",
-        "D": "Stable creatinine (II) should not outweigh rising creatinine and exam findings when both patterns are listed."
+        "A": "Statement II is incorrect—CNI toxicity does not produce graft tenderness.",
+        "C": "Statement II is incorrect even though III is correct.",
+        "D": "Statement II is incorrect; not all four statements are true."
       }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 288,
+      "section": "Ch. 10 → Clinical Manifestations of Acute Rejection (CNI toxicity, oliguria, asymptomatic creatinine)",
+      "quote_hint": "CNI toxicity and CMV or BK virus infection do not produce graft tenderness",
+      "keywords": ["rejection", "tenderness", "creatinine", "CNI", "toxicity", "oliguria"]
     },
     "references": [
       {
-        "citation": "AST/ASTS Clinical Practice Guidelines on the Management of the Kidney Transplant Recipient (early complications).",
-        "locator": "Diagnosis of rejection and surgical complications",
-        "kind": "guideline"
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 10 → Clinical Manifestations of Acute Rejection (statements III–IV and negation of II); PDF p. 288.",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 9 → SURGICAL COMPLICATIONS OF KIDNEY TRANSPLANTATION opening paragraph (statement I: fever and graft tenderness); PDF p. 266.",
+        "kind": "textbook"
       }
     ],
-    "notes": "Reviewer: verify complication triage language against current AST guidance and program escalation protocols.",
-    "last_updated": "2026-06-05"
+    "notes": "Synthesized item. Statements I–IV from Danovitch Ch. 9 p. 266 and Ch. 10 p. 288; primary anchor on p. 288.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-3005",
+    "schema_version": 1,
+    "version": 3,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030800",
+    "knowledge_codes": ["030801"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is reviewing national outcome tracking for transplant programs. According to standard references on OPTN data flow, clinical data submitted by transplant centers are aggregated into which national registry?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Scientific Registry of Transplant Recipients (SRTR)" },
+      { "id": "B", "text": "Centers for Medicare & Medicaid Services Physician Fee Schedule" },
+      { "id": "C", "text": "FDA MedWatch adverse event database only" },
+      { "id": "D", "text": "National Marrow Donor Program registry" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The SRTR contains current and past information about the full continuum of transplant activity. Data are collected by the OPTN from hospitals and OPOs and used for policy development, program analysis, and outcome reporting.",
+      "rationale_incorrect": {
+        "B": "CMS fee schedules govern reimbursement, not the national transplant outcomes registry described in OPTN/SRTR references.",
+        "C": "FDA MedWatch is a drug and device adverse-event system, not the primary national transplant outcomes registry.",
+        "D": "The National Marrow Donor Program registry supports hematopoietic cell transplantation, not the solid-organ SRTR database."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 113,
+      "section": "Ch. 5 → Scientific Registry of Transplant Recipients subsection",
+      "quote_hint": "Data in the registry are collected by the OPTN from hospitals and OPOs",
+      "keywords": ["SRTR", "OPTN", "collected", "hospitals", "recipients", "registry"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 5 → Scientific Registry of Transplant Recipients (SRTR) subsection; PDF p. 113 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Scientific Registry of Transplant Recipients (SRTR).",
+        "url": "https://www.srtr.org/about-the-registry/",
+        "locator": "About the SRTR page — describes the national transplant statistics registry (corroborates registry name in the answer).",
+        "kind": "public_authoritative"
+      }
+    ],
+    "notes": "Source-first item. Primary fact from Danovitch PDF p. 113. SRTR URL corroborates the named registry; SME should confirm page text matches current SRTR/OPTN data-flow description.",
+    "last_updated": "2026-06-06"
   }
 ]
