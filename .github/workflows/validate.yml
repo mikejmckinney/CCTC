@@ -27,8 +27,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run question bank validation
-        run: npm run validate
+      - name: Install poppler utilities
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Fetch and index OPTN policies PDF
+        run: npm run reference:fetch-optn && npm run reference:index -- optn-policies
+
+      # CI subset: schema + integrity + reference format + OPTN-indexed content.
+      # Textbook anchor content requires local `npm run reference:index && npm run validate` before merge.
+      # See .github/prompts/03-validate.md and docs/reference/verification-stubs/README.md.
+      - name: Run question bank validation (CI subset)
+        run: npm run validate:ci
 
   e2e:
     runs-on: ubuntu-latest

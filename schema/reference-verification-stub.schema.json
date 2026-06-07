@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mikejmckinney/CCTE/schema/reference-verification-stub.schema.json",
+  "title": "CCTE Reference Verification Stub",
+  "description": "Committable expected anchor metadata for CI content verification without gitignored PDF indexes. Generated locally; validated in CI.",
+  "type": "object",
+  "required": ["item_id", "schema_version", "generated_at", "primary_anchor"],
+  "additionalProperties": false,
+  "properties": {
+    "item_id": { "type": "string", "pattern": "^cctc-[0-9]{4,}$" },
+    "schema_version": { "type": "integer", "const": 1 },
+    "generated_at": { "type": "string", "format": "date" },
+    "index_sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["filename", "page_count"],
+        "additionalProperties": false,
+        "properties": {
+          "filename": { "type": "string" },
+          "page_count": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "primary_anchor": {
+      "type": "object",
+      "required": ["source_id", "pdf_page", "keywords"],
+      "additionalProperties": false,
+      "properties": {
+        "source_id": { "type": "string" },
+        "pdf_page": { "type": "integer", "minimum": 1 },
+        "keywords": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "minLength": 2 }
+        },
+        "keyword_hash": { "type": "string", "pattern": "^sha256:" }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ref_index", "source_id", "pdf_page"],
+        "additionalProperties": false,
+        "properties": {
+          "ref_index": { "type": "integer", "minimum": 0 },
+          "source_id": { "type": "string" },
+          "pdf_page": { "type": "integer", "minimum": 1 },
+          "policy": { "type": "string", "pattern": "^\\d+(?:\\.\\d+)+$" },
+          "keywords": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 2 }
+          },
+          "keyword_hash": { "type": "string", "pattern": "^sha256:" }
+        }
+      }
+    }
+  }
+}

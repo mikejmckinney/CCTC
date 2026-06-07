@@ -47,7 +47,10 @@ these rules:
 
 Operational detail lives in
 [`.github/prompts/02-author-questions.md`](../../.github/prompts/02-author-questions.md).
-Enforcement: `scripts/validate.mjs` (schema + integrity + keyword anchor checks).
+Enforcement: `scripts/validate.mjs` (orchestrator) and `scripts/lib/verify-references.mjs`.
+**Local gate:** `npm run validate` (full index required).
+**CI gate:** `npm run validate:ci` (necessary but not sufficient for textbook anchors).
+**Future CI:** committed verification stubs — [`docs/reference/verification-stubs/README.md`](../../docs/reference/verification-stubs/README.md).
 
 ### 2. Textbook locator standard
 

@@ -177,11 +177,13 @@ These commands were verified against the current repo contents on 2026-06-01:
 npm test
 npm run build
 npm run validate
-npm run reference:fetch-optn                         # download OPTN policies PDF (gitignored)
-npm run reference:index                              # local; requires docs/reference/*.pdf
-npm run reference:search -- cupples "urgent matters"
-npm run reference:search -- optn-policies "Policy 18.3"
-npm run reference:page -- cupples 111
+npm run validate                              # full local gate (required before merge)
+npm run validate:ci                           # CI subset (format + OPTN content where indexed)
+npm run validate:references                   # reference phase only
+npm run validate:references -- --item cctc-2004
+npm run validate:strict
+npm run reference:fetch-optn
+npm run reference:index
 ```
 
 Supporting file-grounded verification for those commands:
