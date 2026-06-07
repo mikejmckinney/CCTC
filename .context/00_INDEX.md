@@ -79,6 +79,6 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 
 ## Next Steps
 
-- Author first draft question shards under `questions/domain-*` per [`.github/prompts/02-author-questions.md`](../.github/prompts/02-author-questions.md) and the checklist in [roadmap.md](roadmap.md).
-- Keep `npm run validate` green after each authoring batch.
-- Plan Phase 4 polish (GitHub Pages deploy, device/a11y pass) once a small real bank exists.
+- Continue question-bank growth under `questions/domain-*` (37 draft items across `batch-01`–`batch-03` as of 2026-06-06) per [`.github/prompts/02-author-questions.md`](../.github/prompts/02-author-questions.md) and the checklist in [roadmap.md](roadmap.md).
+- Keep `npm run validate` green after each authoring batch; use `npm run validate:coverage` for gap dashboards.
+- Plan Phase 4 polish (GitHub Pages deploy, device/a11y pass) as the reviewed bank grows.

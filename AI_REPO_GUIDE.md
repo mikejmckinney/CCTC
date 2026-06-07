@@ -162,9 +162,15 @@ Use these files as the current product ground truth:
 - Tests for the app shell and session helpers
 - Governance docs inherited from the bootstrap template
 
+### Question bank (current)
+
+- **37 draft items** in `questions/domain-*/batch-01.json` through `batch-03.json` (IDs `cctc-1001`–`1013`, `2001`–`2012`, `3001`–`3012`).
+- All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
+- Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
+
 ### Planned next
 
-- Expand the real question bank under domain directories
+- Expand the real question bank under domain directories (batch 04+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land
