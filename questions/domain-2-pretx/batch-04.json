@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2013",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "According to standard organ-specific indication references, isolated pancreas transplantation is indicated for which patient population?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Patients with labile type 1 or type 2 diabetes mellitus, or to halt or prevent secondary complications of diabetes" },
+      { "id": "B", "text": "Patients with isolated end-stage renal disease without diabetes" },
+      { "id": "C", "text": "Patients with reversible acute kidney injury requiring short-term dialysis only" },
+      { "id": "D", "text": "Patients with untreated active bloodstream infection" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pancreas transplantation is indicated for labile type 1 or type 2 diabetes or to halt or prevent secondary diabetic complications; simultaneous kidney/pancreas transplant is indicated when ESRD is also present.",
+      "rationale_incorrect": {
+        "B": "Isolated ESRD without diabetes is an indication for kidney transplant, not isolated pancreas transplant.",
+        "C": "Reversible acute kidney injury alone does not define pancreas transplant candidacy.",
+        "D": "Active untreated infection is a contraindication to transplantation, not an indication for pancreas transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 50,
+      "section": "Ch. 1, Organ-specific indications → G. Pancreas transplantation or simultaneous kidney/pancreas transplantation → item 1",
+      "quote_hint": "Pancreas transplantation is indicated for patients with labile type 1 or type 2 diabetes mellitus",
+      "keywords": ["Pancreas", "transplantation", "labile", "diabetes", "type", "indicated"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → G. Pancreas transplantation or simultaneous K/P (isolated pancreas indications); PDF p. 50 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First pancreas organ tag in bank; anchor verified on Cupples p. 50.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2014",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During a liver transplant evaluation, the psychologist recommends additional specialty input before a final team decision. Which coordinator action aligns with standard evaluation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Facilitate additional consultations such as infectious disease or cardiology based on transplant team recommendations" },
+      { "id": "B", "text": "Proceed to listing without any further consultations regardless of team input" },
+      { "id": "C", "text": "Limit evaluation testing to chest radiography only" },
+      { "id": "D", "text": "Defer all psychosocial assessment permanently after initial screening" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant evaluation references state that additional medical consultations may be required based on recommendations from transplant team members, including psychologists, infectious disease specialists, and cardiologists.",
+      "rationale_incorrect": {
+        "B": "Team-recommended consultations are part of compiling multidisciplinary evaluation recommendations.",
+        "C": "Evaluation includes organ-specific diagnostic protocols beyond chest radiography alone.",
+        "D": "Psychosocial evaluation remains part of living donor and candidate assessment pathways."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → evaluation process → viii. Other medical consultations",
+      "quote_hint": "Other medical consultations may be required based on recommendations from transplant team members",
+      "keywords": ["consultations", "required", "recommendations", "transplant", "team", "Psychologist", "Cardiologist"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → evaluation process → viii. Other medical consultations (psychologist, ID, cardiology, etc.); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 020200 angle from cctc-2006 (PRA frequency); anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2015",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020601"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A deceased-donor kidney becomes available and the allocation system generates an offer for an listed candidate. Where is relevant donor information made available for the transplant team's acceptance decision?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "DonorNet" },
+      { "id": "B", "text": "The candidate's personal health record portal only" },
+      { "id": "C", "text": "A paper fax sent exclusively to the dialysis unit without transplant center access" },
+      { "id": "D", "text": "The SRTR public outcomes website at the moment of offer" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Relevant information about a potential deceased donor is made available to transplant programs through DonorNet for physician decision-making, while refusal documentation is required when offers are declined.",
+      "rationale_incorrect": {
+        "B": "Offer-time donor data flows through the UNOS allocation and DonorNet systems, not solely the candidate portal.",
+        "C": "Transplant programs receive donor offer information centrally via DonorNet.",
+        "D": "SRTR provides program outcomes data but is not the real-time organ-offer presentation system."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 113,
+      "section": "Ch. 5, Allocation of Deceased Donor Kidneys → DonorNet offer paragraph",
+      "quote_hint": "Relevant information about a potential donor is made available to transplant programs on a Web-based program called DonorNet",
+      "keywords": ["DonorNet", "donor", "information", "transplant", "programs", "offer"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 5 → DonorNet paragraph (donor information available to programs for acceptance decisions); PDF p. 113 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 020600 angle from cctc-2004 (refusal codes); anchor verified on Danovitch p. 113.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2016",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020702"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant candidate is completing pre-operative evaluation before scheduled surgery. Which study is performed to establish a preoperative urinary baseline?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Urine volume, protein, microscopy, and culture and sensitivity" },
+      { "id": "B", "text": "Lung allocation score calculation" },
+      { "id": "C", "text": "Coronary angiography for every candidate regardless of cardiac history" },
+      { "id": "D", "text": "PELD score update only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Kidney transplant preoperative evaluation includes specific urine testing with volume, protein, microscopy, and culture and sensitivity to establish a baseline before surgery.",
+      "rationale_incorrect": {
+        "B": "LAS applies to lung allocation, not kidney preoperative urine studies.",
+        "C": "Cardiac testing is individualized; universal coronary angiography is not the described urine baseline requirement.",
+        "D": "PELD is a pediatric liver allocation score, not a kidney preoperative urine study."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 46,
+      "section": "Ch. 1, Kidney transplantation → preoperative evaluation → 5.a.i. Specific urine tests",
+      "quote_hint": "Urine volume, protein, microscopy, and culture and sensitivity are assessed to establish a preoperative baseline",
+      "keywords": ["Urine", "protein", "microscopy", "culture", "sensitivity", "preoperative", "baseline"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → kidney transplantation preoperative evaluation → specific urine tests; PDF p. 46 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 020700 angle from cctc-2008 (heart chest radiograph); anchor verified on Cupples p. 46.",
+    "last_updated": "2026-06-05"
+  }
+]

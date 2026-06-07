@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-1014",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010702"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A potential living kidney donor asks whether donation-related costs could affect employment and income. Which teaching point should the coordinator include in living donor education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Lost wages related to donation might not be reimbursed" },
+      { "id": "B", "text": "All employers are legally required to provide paid leave for every living donor" },
+      { "id": "C", "text": "Living donors never incur any personal travel or child care expenses" },
+      { "id": "D", "text": "Future donor health problems are always covered by the recipient's insurance" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor education includes indirect financial impacts such as lost wages that might not be reimbursed, along with other potential employment and insurance consequences.",
+      "rationale_incorrect": {
+        "B": "References describe potential lost wages and employment impact, not a universal paid-leave guarantee.",
+        "C": "Personal expenses such as travel and child care are listed among direct donation-related costs donors should understand.",
+        "D": "Future donor health problems may not be covered by the recipient's insurance and require disclosure."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 341,
+      "section": "Ch. 7, Living Donation → donor education → item 12 (financial impact) → b.i.",
+      "quote_hint": "Lost wages related to donation that might not be reimbursed",
+      "keywords": ["Lost", "wages", "donation", "reimbursed", "financial", "living", "donor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → living donor education → item 12 (financial impact: indirect costs/lost wages); PDF p. 341 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 341.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1015",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010102"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "During pre-transplant risk counseling, a candidate asks what can happen if a newly transplanted kidney never functions. Which outcome is explicitly included in standard transplantation risk teaching?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Primary nonfunction may require immediate relisting and retransplantation" },
+      { "id": "B", "text": "Primary nonfunction is impossible after a technically successful implant" },
+      { "id": "C", "text": "Primary nonfunction resolves spontaneously without any relisting consideration" },
+      { "id": "D", "text": "Primary nonfunction affects only cosmetic wound healing without graft consequences" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Organ failure risk education includes that primary nonfunction may require immediate relisting and retransplantation, distinguishing it from delayed graft function that may require supportive care.",
+      "rationale_incorrect": {
+        "B": "Primary nonfunction is a recognized early graft failure risk discussed in pre-transplant counseling.",
+        "C": "Primary nonfunction may necessitate relisting and retransplantation rather than assumed spontaneous recovery.",
+        "D": "Primary nonfunction threatens graft function and may require retransplantation, not only cosmetic effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Patient Education → §6. Risks associated with transplantation → c. Organ failure → i.",
+      "quote_hint": "Primary nonfunction may require immediate relisting and retransplantation",
+      "keywords": ["Primary", "nonfunction", "relisting", "retransplantation", "organ", "failure"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks associated with transplantation → c. Organ failure (primary nonfunction vs delayed graft function); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 010100 angle from cctc-1006 (rejection timing); anchor verified on Cupples p. 98.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1016",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010300",
+    "knowledge_codes": ["010302"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A living liver donor is on the surgical unit the evening of donation. Which postoperative monitoring priority aligns with standard living donor nursing education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Monitor for bleeding, wound drainage, and evidence of complications" },
+      { "id": "B", "text": "Defer all wound assessment until the two-year follow-up visit" },
+      { "id": "C", "text": "Assume complications cannot occur because donors are prescreened as healthy" },
+      { "id": "D", "text": "Limit pulmonary monitoring because donors do not receive general anesthesia" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Despite prescreening, living donors can develop postoperative complications; nursing care includes monitoring for bleeding, wound drainage, and other complication signs.",
+      "rationale_incorrect": {
+        "B": "Wound inspection and complication monitoring begin in the immediate postoperative period, not only at long-term follow-up.",
+        "C": "References explicitly note that complications can occur even in prescreened healthy donors.",
+        "D": "Donors receive general anesthesia and require pulmonary monitoring including oxygen saturation in the immediate postoperative period."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 351,
+      "section": "Ch. 7, Living Donation → C. Postoperative Nursing Care of the Live Organ Donor → items 6–7",
+      "quote_hint": "The living donor must be monitored for bleeding, wound drainage, and evidence of complications",
+      "keywords": ["bleeding", "wound", "drainage", "complications", "living", "donor", "monitored"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → postoperative nursing care of live organ donor (complications despite prescreening; bleeding/wound monitoring); PDF p. 351 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 010300 angle from cctc-1007 (CMS policy); anchor verified on Cupples p. 351.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1017",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "recall",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "According to standard organ-specific indications references, simultaneous heart/lung transplantation is indicated for which candidate profile?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Concurrent end-stage heart and lung disease, or severe fixed pulmonary hypertension" },
+      { "id": "B", "text": "Isolated end-stage renal disease without cardiopulmonary disease" },
+      { "id": "C", "text": "Stable coronary artery disease amenable to percutaneous intervention only" },
+      { "id": "D", "text": "Acute urinary tract infection without structural heart disease" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Simultaneous heart/lung transplantation is indicated for concurrent end-stage heart and lung disease or severe fixed pulmonary hypertension, including selected congenital cardiac conditions with pulmonary hypertension.",
+      "rationale_incorrect": {
+        "B": "Isolated ESRD is an indication for kidney transplantation, not simultaneous heart/lung transplant.",
+        "C": "Revascularizable coronary disease is managed medically or surgically without necessarily requiring heart/lung transplant.",
+        "D": "Untreated infection is a contraindication; it is not an indication for heart/lung transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "section": "Ch. 1, Organ-specific indications → C. Simultaneous heart/lung transplantation → item 1",
+      "quote_hint": "indicated for either patients with concurrent end-stage heart and lung disease or those with severe, fixed pulmonary hypertension",
+      "keywords": ["heart", "lung", "concurrent", "end-stage", "pulmonary", "hypertension", "simultaneous"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → C. Simultaneous heart/lung transplantation (indications); PDF p. 39 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First heart_lung organ tag in bank; anchor verified on Cupples p. 39.",
+    "last_updated": "2026-06-05"
+  }
+]
