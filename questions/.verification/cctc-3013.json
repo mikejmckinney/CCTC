@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3013",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 681,
+    "keywords": [
+      "TPN",
+      "discontinued",
+      "recipients",
+      "months",
+      "posttransplant",
+      "outcome"
+    ],
+    "keyword_hash": "sha256:677838c8aaf75456fc871c1b6819c7887fcc7920d2f3c45b578e1b4d1433d51c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 681,
+      "keywords": [
+        "intestinal",
+        "outcomes",
+        "months",
+        "activities",
+        "discontinuation"
+      ],
+      "keyword_hash": "sha256:35a6b41e92de6772768215cd933ebec89469441b729c7dffb4868d23daec1e6e"
+    }
+  ]
+}

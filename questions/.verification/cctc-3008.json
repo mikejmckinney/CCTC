@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3008",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 107,
+    "keywords": [
+      "miss",
+      "dose",
+      "nausea",
+      "vomiting",
+      "medication",
+      "unable"
+    ],
+    "keyword_hash": "sha256:4210146b39e30efaf1dfa089246682cdbffb7868c8aca7340af6da29bb9d95db"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "keywords": [
+        "medication",
+        "education",
+        "missed",
+        "nausea",
+        "vomiting",
+        "instructions"
+      ],
+      "keyword_hash": "sha256:390d98bc4516876ad682984cdb182a1483cba077e0cdc5dd94faf9187fd3f168"
+    }
+  ]
+}

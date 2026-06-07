@@ -9,8 +9,8 @@ function pathSegments(path: string): string[] {
   return path.split('/').filter(Boolean);
 }
 
-function isUnderscorePath(path: string): boolean {
-  return pathSegments(path).some((segment) => segment.startsWith('_'));
+function isExcludedQuestionPath(path: string): boolean {
+  return pathSegments(path).some((segment) => segment.startsWith('_') || segment === '.verification');
 }
 
 function flattenQuestionModules(entries: Array<[string, Question[]]>): Question[] {
@@ -38,7 +38,7 @@ export function resolveLoadedBank(primaryQuestions: Question[], exampleQuestions
 
 export function loadQuestionBank(): LoadedBank {
   const allEntries = Object.entries(questionModules);
-  const primaryEntries = allEntries.filter(([path]) => !isUnderscorePath(path));
+  const primaryEntries = allEntries.filter(([path]) => !isExcludedQuestionPath(path));
   const exampleEntries = allEntries.filter(([path]) => path.includes('/_examples/'));
 
   return resolveLoadedBank(flattenQuestionModules(primaryEntries), flattenQuestionModules(exampleEntries));

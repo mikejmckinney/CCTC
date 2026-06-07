@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-2024",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 100,
+    "keywords": [
+      "approved",
+      "candidate",
+      "conditions",
+      "smoking",
+      "cessation",
+      "program"
+    ],
+    "keyword_hash": "sha256:e76c795611b7d66e3af92ed32e5363be4bc86363b69a03139994a0a6b175696b"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 100,
+      "keywords": [
+        "approved",
+        "conditions"
+      ],
+      "keyword_hash": "sha256:55b625000fe3a6c70cf32b7814f2508030e58b896e43ad728f1157c88e8fa400"
+    }
+  ]
+}

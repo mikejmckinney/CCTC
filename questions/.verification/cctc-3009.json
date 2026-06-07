@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3009",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 352,
+    "keywords": [
+      "Genitourinary",
+      "infection",
+      "most",
+      "common",
+      "kidney",
+      "transplantation"
+    ],
+    "keyword_hash": "sha256:cbafee19dd6697815dd9d2842aef677bf1de6e48521fa225d35757ca41faeba7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 352,
+      "keywords": [
+        "urinary",
+        "tract",
+        "infection",
+        "common",
+        "complication",
+        "early"
+      ],
+      "keyword_hash": "sha256:3e0a99026f07faa978918737e0877a045496aa5f2c6b5be5125968e4bb3c2208"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2022",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 410,
+    "keywords": [
+      "crossmatch",
+      "PRA",
+      "10%",
+      "preoperative",
+      "heart",
+      "recipient"
+    ],
+    "keyword_hash": "sha256:7de5338327faba7953cb09564250584339a8bb06ff107af3ebc8c1db47b9e2ba"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 410,
+      "keywords": [
+        "preoperative",
+        "tests",
+        "crossmatch"
+      ],
+      "keyword_hash": "sha256:2eb525af755f08e0642067f3ebdee99e18ce240a75d49906a2f604db0da88b5e"
+    }
+  ]
+}

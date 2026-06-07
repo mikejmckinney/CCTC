@@ -84,7 +84,7 @@ async function collectQuestionFiles(currentDir, bankFiles, excludedEntries) {
     const absolutePath = path.join(currentDir, entry.name);
     const relativePath = path.relative(ROOT_DIR, absolutePath).replaceAll(path.sep, '/');
 
-    if (entry.name.startsWith('_')) {
+    if (entry.name.startsWith('_') || entry.name === '.verification') {
       excludedEntries.push(relativePath + (entry.isDirectory() ? '/' : ''));
       continue;
     }

@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3023",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 173,
+    "keywords": [
+      "cyclosporine",
+      "tacrolimus",
+      "gingival",
+      "hypertrophy",
+      "switching",
+      "cosmetic"
+    ],
+    "keyword_hash": "sha256:face5bf8c401b036a440bc9cc36cd3d4329a27808c3b064bb3e890bf73095f59"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 173,
+      "keywords": [
+        "switching",
+        "calcineurin",
+        "inhibitors",
+        "cyclosporine",
+        "gingival",
+        "hypertrophy"
+      ],
+      "keyword_hash": "sha256:63d9eadab16724af2584824ec1973b6ee136e2113e3560723feda30caa59f6c0"
+    }
+  ]
+}

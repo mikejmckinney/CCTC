@@ -1,0 +1,50 @@
+{
+  "item_id": "cctc-1024",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Avoid",
+      "individuals",
+      "infection",
+      "crowded",
+      "raw",
+      "eggs",
+      "hand-washing"
+    ],
+    "keyword_hash": "sha256:284f7c57fd2a21bfd535509758b0d044aa78dd73650108b427498f1711e70c33"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "airborne",
+        "infections",
+        "dietary",
+        "precautions",
+        "statements"
+      ],
+      "keyword_hash": "sha256:524b9fedff412d88ed088cd80c1dfe58aa8e875f47da9aa39597b044590fe563"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "hygiene",
+        "statement"
+      ],
+      "keyword_hash": "sha256:f7345ed4e576bb7e76ce153d069d75c0d5ffa97d712a7784da3d0dbc59f853cb"
+    }
+  ]
+}

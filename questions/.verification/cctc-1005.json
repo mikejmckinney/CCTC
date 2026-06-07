@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-1005",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 45,
+    "keywords": [
+      "MELD",
+      "PELD",
+      "candidates",
+      "years",
+      "liver",
+      "score"
+    ],
+    "keyword_hash": "sha256:96046133222c424c6085b44a52a1fb074ba26ab4324a53f4ce56353f2288ab16"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 45,
+      "keywords": [
+        "candidates",
+        "years"
+      ],
+      "keyword_hash": "sha256:c8969cd6a1338ca4d0324374ac5e082cd13139a0e3614848a81bc9039683b3b8"
+    }
+  ]
+}

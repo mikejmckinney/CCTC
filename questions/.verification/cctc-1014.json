@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1014",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 341,
+    "keywords": [
+      "Lost",
+      "wages",
+      "donation",
+      "reimbursed",
+      "financial",
+      "living",
+      "donor"
+    ],
+    "keyword_hash": "sha256:0d9a254fa5f2369082dc987d5ff815aa77e1f20004a7bad4b2918cf61bd60a32"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 341,
+      "keywords": [
+        "financial",
+        "impact",
+        "indirect",
+        "costs",
+        "wages"
+      ],
+      "keyword_hash": "sha256:e9e1b57db4733d75f20297ddbc07dfdfdc75236abe7a3c976084113522e6d227"
+    }
+  ]
+}

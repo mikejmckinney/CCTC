@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-1019",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "hand-washing",
+      "best",
+      "practice",
+      "prevent",
+      "hands",
+      "frequently"
+    ],
+    "keyword_hash": "sha256:2463469cf46e81a049e15330777987ec0a8640d1e66be0b040a2738dca34b4ca"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "hygiene",
+        "hands"
+      ],
+      "keyword_hash": "sha256:717cf6a693aa973b9036787b57365ff732cf78ca4dd8d08c57cd6236491e8c5c"
+    }
+  ]
+}

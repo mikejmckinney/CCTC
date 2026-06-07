@@ -138,15 +138,13 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] CI subset: `npm run validate:ci` (format + OPTN-indexed content; textbook content skipped with logged skips).
 - [x] Authoring loop: `npm run validate:references`.
 - [x] OPTN policies PDF index (`npm run reference:fetch-optn`, `reference:index -- optn-policies`).
-- [x] Verification stub **design** — [`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), [`schema/reference-verification-stub.schema.json`](../schema/reference-verification-stub.schema.json).
+- [x] Verification stubs — [`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), [`schema/reference-verification-stub.schema.json`](../schema/reference-verification-stub.schema.json), `questions/.verification/` (73 items as of batch 06).
+- [x] `npm run reference:export-stubs` — generate `questions/.verification/<item-id>.json` from local full validate + index.
+- [x] `npm run validate:stubs` — CI hard-fail: question JSON must match committed stubs (keywords, pages, Policy §).
+- [x] Wire `validate:stubs` into `.github/workflows/validate.yml`.
+- [x] After anchor changes: local `npm run validate` + `reference:export-stubs -- --force`; CI enforces stubs for all bank items.
 
-**Deferred (CI hard-fail for textbook anchors without PDFs)**
-- [ ] `npm run reference:export-stubs` — generate `questions/.verification/<item-id>.json` from local full validate + index.
-- [ ] `npm run validate:stubs` — CI hard-fail: question JSON must match committed stubs (keywords, pages, Policy §).
-- [ ] Wire `validate:stubs` into `.github/workflows/validate.yml` after stubs exist for the bank.
-- [ ] PR checklist / template note: local `npm run validate` required before merge until stubs cover all items.
-
-Until stubs ship, **local full validate is the textbook content gate**; CI alone is necessary but not sufficient (see `03-validate.md`).
+**Authoring gate:** run full `npm run validate` locally before merge when changing anchors; regenerate stubs when reference metadata changes (see `03-validate.md`).
 
 ---
 
@@ -181,5 +179,5 @@ Until stubs ship, **local full validate is the textbook content gate**; CI alone
 
 1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTE/pull/1)).
 2. **Phase 3 bank growth** per `02-author-questions.md` — batch 07+ shards; keep `npm run validate` green locally before merge (73 draft items as of batch 06).
-3. **Phase 3 deferred:** verification stubs + `validate:stubs` in CI (see Phase 3 checklist).
+3. ~~**Phase 3 deferred:** verification stubs + `validate:stubs` in CI~~ (done — 73 stubs committed).
 4. **Phase 4 polish and static hosting** — GitHub Pages deploy, device/a11y pass, richer history trends after a small real bank exists.

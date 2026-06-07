@@ -33,11 +33,14 @@ jobs:
       - name: Fetch and index OPTN policies PDF
         run: npm run reference:fetch-optn && npm run reference:index -- optn-policies
 
-      # CI subset: schema + integrity + reference format + OPTN-indexed content.
-      # Textbook anchor content requires local `npm run reference:index && npm run validate` before merge.
+      # CI subset: schema + integrity + reference format + OPTN-indexed content,
+      # then committed verification stubs for textbook anchors.
       # See .github/prompts/03-validate.md and docs/reference/verification-stubs/README.md.
       - name: Run question bank validation (CI subset)
         run: npm run validate:ci
+
+      - name: Verify committed reference stubs
+        run: npm run validate:stubs
 
   e2e:
     runs-on: ubuntu-latest

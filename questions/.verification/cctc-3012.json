@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3012",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 352,
+    "keywords": [
+      "most",
+      "common",
+      "urine",
+      "leaks",
+      "lymphoceles",
+      "female",
+      "UTI"
+    ],
+    "keyword_hash": "sha256:44a1d8ad44f163e297d1f357f3d0621aa071a314c547a69a1e7e29b481c90af0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 352,
+      "keywords": [
+        "urinary",
+        "tract",
+        "infection",
+        "statements",
+        "negation"
+      ],
+      "keyword_hash": "sha256:117557d32b8ec306097159e91df8974e69f93a38ecea7e9cf636fb6922412840"
+    }
+  ]
+}

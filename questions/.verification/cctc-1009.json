@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1009",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 335,
+    "keywords": [
+      "Reporting",
+      "requirements",
+      "live",
+      "donor",
+      "follow-up",
+      "2-year"
+    ],
+    "keyword_hash": "sha256:b2a7e1921a1324f40625b104cd1b9a8485d89189812dcea66bc7b5e6e1a34dde"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 335,
+      "keywords": [
+        "2-year",
+        "donor",
+        "follow-up",
+        "reporting"
+      ],
+      "keyword_hash": "sha256:3b12b4c4a9826ea1632d87b10fdc0c804fa3a1a03c49b15f1df9af1624de3f44"
+    }
+  ]
+}

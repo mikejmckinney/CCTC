@@ -1,0 +1,35 @@
+{
+  "item_id": "cctc-2008",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 410,
+    "keywords": [
+      "Chest",
+      "radiograph",
+      "preoperative",
+      "Preparation",
+      "Surgery"
+    ],
+    "keyword_hash": "sha256:905610d692251f086a2eceef00c6fa4beaafea55db4e5608d3a616d3760f0fc7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 410,
+      "keywords": [
+        "chest",
+        "radiograph"
+      ],
+      "keyword_hash": "sha256:5f8186f62ecac32aebef490084dc9fd2531ee149c4fc1a38ddca464fd2d9cf46"
+    }
+  ]
+}

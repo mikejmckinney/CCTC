@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2002",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 646,
+    "keywords": [
+      "echocardiogram",
+      "cardiac",
+      "stress",
+      "liver",
+      "evaluation"
+    ],
+    "keyword_hash": "sha256:d42d7299b1a96e952463fcd68f147ed2e38947d2b73c8d0ba3c649cfb54c5922"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 646,
+      "keywords": [
+        "echocardiogram",
+        "cardiac",
+        "stress",
+        "testing"
+      ],
+      "keyword_hash": "sha256:99979b283cb8fec1c9564fcb5f356f5bb11710fef2c111fc6d8a5cd12d21c6f3"
+    }
+  ]
+}

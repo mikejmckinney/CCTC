@@ -8,7 +8,9 @@ Each module owns one validation phase and can be imported independently for test
 | Script | Command | When to use |
 |---|---|---|
 | `validate` | Full local verification | **Required before merge** when changing questions |
-| `validate:ci` | `--ci` subset | GitHub Actions; necessary but not sufficient for textbook anchors |
+| `validate:ci` | `--ci` subset | GitHub Actions (schema + integrity + format + OPTN live content) |
+| `validate:stubs` | stub compare | GitHub Actions after `validate:ci`; textbook anchor metadata without PDFs |
+| `reference:export-stubs` | stub generation | Local only; after full reference validate passes |
 | `validate:coverage` | `--coverage-only` | Gap tables only (fast dashboard) |
 | `validate:references` | `--references-only` | Fast loop while fixing locators/anchors |
 | `validate:strict` | Full + coverage warnings fail | Milestone gating |
@@ -26,8 +28,8 @@ Each module owns one validation phase and can be imported independently for test
 
 - Same as full for schema, integrity, reference **format**
 - Reference **content** hard-fails when an index exists in the runner (CI builds OPTN policies index)
-- Skips content checks for sources without a local index (textbooks) — logged under `Reference skips (CI — no local index)`
-- **Does not replace** local full validate before merge
+- Skips live content checks for sources without a local index (textbooks) — logged under `Reference skips (CI — no local index)`
+- Pair with `npm run validate:stubs` for committed textbook anchor metadata
 
 ### `npm run validate:references` (authoring loop)
 
@@ -43,10 +45,17 @@ Implemented in `scripts/lib/verify-references.mjs`:
 2. **Index presence** — cited PDF page exists in local index (full mode only)
 3. **Content** — keywords on cited page; Policy § on OPTN page
 
-## Future: verification stubs
+## Verification stubs
 
 See [`docs/reference/verification-stubs/README.md`](../../docs/reference/verification-stubs/README.md).
-Committed stubs will let CI hard-fail textbook anchor content without gitignored PDFs.
+Committed stubs in `questions/.verification/` let CI hard-fail textbook anchor metadata without gitignored PDFs.
+
+```bash
+npm run reference:export-stubs
+npm run reference:export-stubs -- --check
+npm run reference:export-stubs -- --force
+npm run validate:stubs
+```
 
 ## Module ordering
 

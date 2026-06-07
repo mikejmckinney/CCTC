@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-1021",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 341,
+    "keywords": [
+      "program-specific",
+      "graft",
+      "survival",
+      "SRTR",
+      "national",
+      "living",
+      "donor"
+    ],
+    "keyword_hash": "sha256:3488ed6b996d18e996c3a760c16d8476324252cbeef26f32233b332438c4ba4d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 341,
+      "keywords": [
+        "outcome",
+        "disclosure"
+      ],
+      "keyword_hash": "sha256:73a836903048a16149c5a265b5a687f68bce3256e2aa4718a48bfd1f2615e78f"
+    }
+  ]
+}

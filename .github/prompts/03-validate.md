@@ -6,19 +6,19 @@ Build a validation step that runs locally and in CI so the question bank cannot 
 
 | Gate | Command | What it proves |
 |---|---|---|
-| **CI** | `npm run validate:ci` | Schema, integrity, reference **format**, OPTN PDF **content** (where CI builds the index), coverage report |
-| **Local (required before merge)** | `npm run validate` | Everything CI runs **plus** full textbook anchor **content** via local `docs/reference/.index/` |
+| **CI** | `npm run validate:ci` + `npm run validate:stubs` | Schema, integrity, reference **format**, OPTN PDF **content** (live index), committed stub match for all anchors |
+| **Local (required before merge)** | `npm run validate` | Full textbook anchor **content** via local `docs/reference/.index/` (regenerate stubs when anchors change) |
 
-**CI is necessary but not sufficient for references.** Textbook PDFs and page indexes are gitignored (copyright + size). GitHub Actions cannot run full Cupples/Danovitch keyword verification today.
+Textbook PDFs and page indexes are gitignored (copyright + size). CI enforces textbook anchor metadata via committed stubs in `questions/.verification/` — see [verification stubs](../docs/reference/verification-stubs/README.md).
 
-Before merging question-bank changes, maintainers must run locally:
+Before merging question-bank changes that touch references or anchors:
 
 ```bash
-npm run reference:index    # requires docs/reference/*.pdf
-npm run validate           # hard-fails on any reference content mismatch
+npm run reference:index              # requires docs/reference/*.pdf
+npm run validate                     # hard-fails on any reference content mismatch
+npm run reference:export-stubs -- --force   # when anchor metadata changed
+npm run validate:stubs
 ```
-
-Future: committed [verification stubs](../docs/reference/verification-stubs/README.md) will let CI hard-fail textbook content without PDFs.
 
 ## Implementation layout
 
@@ -66,6 +66,8 @@ npm run validate:coverage       # gap tables only (exam coverage dashboard)
 npm run validate:ci           # CI subset (.github/workflows/validate.yml)
 npm run validate:references   # reference phase only
 npm run validate:strict       # full + coverage warnings fail
+npm run reference:export-stubs       # regenerate questions/.verification/ (after validate passes)
+npm run validate:stubs        # compare bank JSON to committed stubs
 ```
 
 Flags: `--item <cctc-id>`, `--strict`, `--ci`, `--coverage-only`, `--references-only`.
@@ -75,14 +77,14 @@ Coverage output uses ASCII tables (Area / Current / Target / Gap). Use `validate
 ## Wire it into the build and CI
 
 - `npm run build` runs full `npm run validate` first.
-- `.github/workflows/validate.yml` runs `npm run validate:ci` after fetching/indexing OPTN policies PDF.
+- `.github/workflows/validate.yml` runs `npm run validate:ci` then `npm run validate:stubs` after fetching/indexing OPTN policies PDF.
 
 ## Output
 
 Human-readable summary (counts, pass/fail, gap tables) plus non-zero exit on failure. CI logs list reference content checks skipped for missing textbook indexes under **Reference skips (CI — no local index)**.
 
-## Verification stubs (future CI hard-fail for textbooks)
+## Verification stubs (CI hard-fail for textbook anchors)
 
-Design: [`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), schema: `schema/reference-verification-stub.schema.json`.
+[`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), schema: `schema/reference-verification-stub.schema.json`.
 
-Stubs store per-item expected `source_id`, `pdf_page`, and `keywords` (no page text). Generated locally after full validate; compared in CI via future `npm run validate:stubs`.
+Stubs store per-item expected `source_id`, `pdf_page`, and `keywords` (no page text). Generated locally after full validate (`npm run reference:export-stubs`); compared in CI via `npm run validate:stubs`.

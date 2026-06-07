@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1017",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 39,
+    "keywords": [
+      "heart",
+      "lung",
+      "concurrent",
+      "end-stage",
+      "pulmonary",
+      "hypertension",
+      "simultaneous"
+    ],
+    "keyword_hash": "sha256:57741807f9747f385813e86358cf43a7c495ef4684e3ad9dcf4b88959629e600"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "keywords": [
+        "simultaneous",
+        "heart",
+        "transplantation",
+        "indications"
+      ],
+      "keyword_hash": "sha256:159127ae2e7ca5adff77a8cec2631d53cfe4b39d70791ad5dd6e4f1d47693a3e"
+    }
+  ]
+}

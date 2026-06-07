@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3024",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 302,
+    "keywords": [
+      "every",
+      "months",
+      "second",
+      "year",
+      "visits",
+      "follow-up",
+      "functioning"
+    ],
+    "keyword_hash": "sha256:9832dcdc30873464ad22f3e18c68e8126d766395ad578ddc24bc36881e374a5c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 302,
+      "keywords": [
+        "follow-up",
+        "visit",
+        "frequency",
+        "second",
+        "every",
+        "months"
+      ],
+      "keyword_hash": "sha256:8b730df523ec0bd9eed406425ce9f948b899954ca97e699f551c62599970779c"
+    }
+  ]
+}

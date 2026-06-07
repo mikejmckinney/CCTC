@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1015",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 98,
+    "keywords": [
+      "Primary",
+      "nonfunction",
+      "relisting",
+      "retransplantation",
+      "organ",
+      "failure"
+    ],
+    "keyword_hash": "sha256:e990ae567b5526834c1c071e830601dba94d98e3456913e6eabfa7bfc8410abb"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "keywords": [
+        "organ",
+        "failure",
+        "primary",
+        "nonfunction",
+        "delayed",
+        "graft",
+        "function"
+      ],
+      "keyword_hash": "sha256:a2b0054a81f27c930a278e8bc588b7f41277acedb01b42bbc0d390cffb382252"
+    }
+  ]
+}

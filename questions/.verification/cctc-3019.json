@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-3019",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 101,
+    "keywords": [
+      "blood",
+      "type",
+      "height",
+      "weight",
+      "clinical",
+      "variables",
+      "UNet"
+    ],
+    "keyword_hash": "sha256:ad997c42aff6c6094d56d919331aa2c117cfcc0e9a08d98431b82fc85c7d8188"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "keywords": [
+        "candidate",
+        "registration"
+      ],
+      "keyword_hash": "sha256:24977fe89782be620587aded6b165ee38e1e4a8b456f2eb8f2fd8b342b07f7e1"
+    }
+  ]
+}

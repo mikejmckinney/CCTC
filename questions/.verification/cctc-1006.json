@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-1006",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 98,
+    "keywords": [
+      "rejection",
+      "implantation",
+      "organ",
+      "transplantation",
+      "risks"
+    ],
+    "keyword_hash": "sha256:f2b068700e87d1a519f8ff7b8fdecd2a28fedc06522fe360b49db76a8743164a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "keywords": [
+        "organ",
+        "rejection",
+        "items"
+      ],
+      "keyword_hash": "sha256:234edfd25e8ffdb77c14f65eb011f1da78669c54a5d626229e0724e0ab5c9296"
+    }
+  ]
+}

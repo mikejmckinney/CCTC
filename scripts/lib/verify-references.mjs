@@ -243,7 +243,7 @@ async function verifyReferenceContent(reference, index, item, location, context,
   }
 }
 
-function buildReferenceKeywords(reference, item, sourceId, pdfPage) {
+export function buildReferenceKeywords(reference, item, sourceId, pdfPage) {
   const fromLocator = extractLocatorKeywords(reference?.locator);
   if (fromLocator.length >= 2) {
     return fromLocator;

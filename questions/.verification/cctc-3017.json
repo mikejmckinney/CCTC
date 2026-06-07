@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3017",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "stroke",
+      "FAST",
+      "Facial",
+      "weakness",
+      "Arm",
+      "Speech",
+      "urgent"
+    ],
+    "keyword_hash": "sha256:47024657f2e486b60ac0dedfd4e29702beed4656bda710ec5c0c378f1d1dfe4d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "urgent",
+        "matters",
+        "stroke",
+        "symptoms"
+      ],
+      "keyword_hash": "sha256:0b9f8dbf81d59e4f2990c16b3057a712bc2a990018ab552a560490a3c6577215"
+    }
+  ]
+}

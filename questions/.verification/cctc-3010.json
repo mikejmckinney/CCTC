@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3010",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 142,
+    "keywords": [
+      "diarrhea",
+      "MMF",
+      "GI",
+      "dose",
+      "reduction",
+      "colitis"
+    ],
+    "keyword_hash": "sha256:e042b1213b4bddfedfaf40f3a60053c85cd3d52fbfa8382936c6fa55c66e0d66"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 142,
+      "keywords": [
+        "adverse",
+        "effects",
+        "diarrhea",
+        "incidence",
+        "reduction",
+        "avoid",
+        "persistent",
+        "administration"
+      ],
+      "keyword_hash": "sha256:2afbc43139a3905386e0cd751e0be1607dc4b429256d2eab81ac47d436a7e070"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1011",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "Non-urgent",
+      "Urgent",
+      "rejection",
+      "Shortness",
+      "breath",
+      "Medication",
+      "refills"
+    ],
+    "keyword_hash": "sha256:0c16aeb61775d9dfd85a9a74b4025bdebc8f3b4e32ed66e30cbe0691b7e2b004"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "non-urgent",
+        "matters",
+        "urgent"
+      ],
+      "keyword_hash": "sha256:7f83ff59de961b2ac7fb52bf786cea1a58849096c9b9d384c3c79f1383011528"
+    }
+  ]
+}

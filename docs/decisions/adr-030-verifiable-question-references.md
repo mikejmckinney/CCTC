@@ -50,7 +50,7 @@ Operational detail lives in
 Enforcement: `scripts/validate.mjs` (orchestrator) and `scripts/lib/verify-references.mjs`.
 **Local gate:** `npm run validate` (full index required).
 **CI gate:** `npm run validate:ci` (necessary but not sufficient for textbook anchors).
-**Future CI:** committed verification stubs — [`docs/reference/verification-stubs/README.md`](../../docs/reference/verification-stubs/README.md).
+**CI stubs:** committed verification stubs — [`docs/reference/verification-stubs/README.md`](../../docs/reference/verification-stubs/README.md) (`npm run validate:stubs` in `.github/workflows/validate.yml`).
 
 ### 2. Textbook locator standard
 

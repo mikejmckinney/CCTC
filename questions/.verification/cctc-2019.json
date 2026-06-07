@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2019",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 44,
+    "keywords": [
+      "HLA",
+      "World",
+      "Health",
+      "Organization",
+      "WHO",
+      "nomenclature",
+      "registered"
+    ],
+    "keyword_hash": "sha256:8a2097f3bc517584718750a925befcaf4c7ed1d8ea2d637ec3f63d6ca08dc04a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 44,
+      "policy": "3.4",
+      "keywords": [
+        "waiting",
+        "registration",
+        "reporting",
+        "using",
+        "nomenclature"
+      ],
+      "keyword_hash": "sha256:9860730dd5322f5d23f94154a931d4e88951efc4ee3fde1248c6b3a0840eaa56"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Reference verification stubs (design)
+# Reference verification stubs
 
 Committed verification stubs let CI **hard-fail reference content** without gitignored
 textbook PDFs or full page-text indexes. They are a hash-sized, committable substitute
@@ -11,13 +11,15 @@ for `docs/reference/.index/` when the full index cannot live in the repo.
 | Textbook PDFs | `docs/reference/*.pdf` (gitignored) | Not available |
 | Full page index | `docs/reference/.index/` (gitignored) | Not available |
 | Question JSON | In git | In git |
+| Verification stubs | `questions/.verification/` (in git) | In git |
 
 `npm run validate` (full) requires local indexes. `npm run validate:ci` verifies
-format + OPTN-indexed content only. Stubs close the gap for textbook anchors in CI.
+format + OPTN-indexed live content. `npm run validate:stubs` compares question JSON
+to committed stubs so textbook anchors are enforced in CI without PDFs.
 
-## Stub file layout (proposed)
+## Stub file layout
 
-One stub per item, sharded by id prefix:
+One stub per item:
 
 ```text
 questions/.verification/
@@ -26,14 +28,7 @@ questions/.verification/
   ...
 ```
 
-Or a single manifest (less merge-friendly):
-
-```text
-questions/.verification/manifest.json
-```
-
-**Recommendation:** one file per item under `questions/.verification/` (same shard
-discipline as the bank; excluded from exam sampling like `_examples`).
+Excluded from exam sampling and bank loading (like `_examples`).
 
 ## Stub shape (example)
 
@@ -41,9 +36,9 @@ discipline as the bank; excluded from exam sampling like `_examples`).
 {
   "item_id": "cctc-2004",
   "schema_version": 1,
-  "generated_at": "2026-06-06",
+  "generated_at": "2026-06-07",
   "index_sources": {
-    "danovitch": { "filename": "danovitch-handbook-kidney-transplantation.pdf", "page_count": 512 },
+    "danovitch": { "filename": "danovitch-handbook-kidney-transplantation.pdf", "page_count": 625 },
     "optn-policies": { "filename": "optn-policies.pdf", "page_count": 372 }
   },
   "primary_anchor": {
@@ -57,7 +52,7 @@ discipline as the bank; excluded from exam sampling like `_examples`).
       "ref_index": 0,
       "source_id": "danovitch",
       "pdf_page": 113,
-      "keywords": ["DonorNet", "declined", "refusal"],
+      "keywords": ["whenever", "offer", "declined", "reason", "refusal", "code", "must", "provided"],
       "keyword_hash": "sha256:…"
     },
     {
@@ -65,7 +60,7 @@ discipline as the bank; excluded from exam sampling like `_examples`).
       "source_id": "optn-policies",
       "pdf_page": 332,
       "policy": "18.3",
-      "keywords": ["Policy 18.3", "refusal", "PTR"],
+      "keywords": ["recording", "reporting", "outcomes", "organ", "offers", "refusal", "codes", "declined"],
       "keyword_hash": "sha256:…"
     }
   ]
@@ -77,42 +72,50 @@ discipline as the bank; excluded from exam sampling like `_examples`).
 | Field | Purpose |
 |---|---|
 | `item_id` | Must match question `id` |
-| `index_sources` | Records PDF bundle version used when stub was generated |
+| `index_sources` | PDF bundle version used when stub was generated (`page_count` drift fails CI when index is present) |
 | `primary_anchor.*` | Expected source, page, keywords for content check |
 | `references[].ref_index` | Index into question `references[]` array |
 | `policy` | For OPTN PDF refs — Policy § expected on page |
-| `keyword_hash` | Optional — normalized hash of matched terms on page (detect index drift without storing page text) |
+| `keyword_hash` | Normalized hash of keywords (integrity check on stub file) |
 
 Stubs store **keywords and page numbers only** — never full PDF page text.
 
-## Generation (proposed command)
+Schema: [`schema/reference-verification-stub.schema.json`](../../schema/reference-verification-stub.schema.json).
+
+## Commands
 
 ```bash
 npm run reference:index              # local, all PDFs present
-npm run reference:export-stubs       # writes/updates questions/.verification/<id>.json
-npm run validate:stubs               # CI: compare question JSON vs stubs
+npm run reference:export-stubs       # writes questions/.verification/<id>.json (after full reference validate)
+npm run reference:export-stubs -- --check   # fail if stubs would change (no writes)
+npm run reference:export-stubs -- --force   # overwrite changed stubs; remove orphans
+npm run validate:stubs               # CI: compare question JSON vs committed stubs
 ```
 
-`reference:export-stubs` would:
+`reference:export-stubs`:
 
-1. Run the same checks as full `validate` references phase
-2. Write stub files for passing items
-3. Fail if an existing stub would change (forces intentional regen when sources shift)
+1. Runs the same reference checks as full `validate` (all indexes required)
+2. Writes stub files for passing items
+3. Refuses to overwrite existing stubs unless `--force` (or use `--check` to detect drift)
 
-## CI integration (future)
+`validate:stubs`:
 
-```yaml
-# After validate:ci
-- run: npm run validate:stubs
+- Hard-fails if stub missing for any bank item
+- Hard-fails if `primary_anchor` / indexed `references[]` disagree with stub (source, page, keywords, Policy §)
+- Hard-fails if stub `index_sources.page_count` differs from a source index present in the runner (e.g. OPTN policies PDF updates in CI)
+
+## CI integration
+
+`.github/workflows/validate.yml` runs `validate:ci` then `validate:stubs` after fetching/indexing OPTN policies.
+
+When changing anchors or references, run locally:
+
+```bash
+npm run reference:index
+npm run validate
+npm run reference:export-stubs -- --force
+npm run validate:stubs
 ```
-
-`validate:stubs` would:
-
-- Hard-fail if stub missing for any bank item with PDF anchor
-- Hard-fail if `primary_anchor` / indexed `references[]` disagree with stub (source, page, keywords)
-- Hard-fail if stub `index_sources.page_count` differs from committed optn bundle metadata (policy PDF updates)
-
-Until `reference:export-stubs` is implemented, use **local full `npm run validate`** before merge.
 
 ## Relationship to ADR-030
 

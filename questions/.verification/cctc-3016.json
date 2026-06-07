@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3016",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 847,
+    "keywords": [
+      "creatinine",
+      "surrogate",
+      "pancreas",
+      "rejection",
+      "urine",
+      "amylase",
+      "Hyperglycemia",
+      "early"
+    ],
+    "keyword_hash": "sha256:4af0fb87442f71c2c096211bcb4883a34f5ab880c038fb48de64a0f999dc845d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 847,
+      "keywords": [
+        "acute",
+        "pancreas",
+        "rejection",
+        "monitoring",
+        "statements",
+        "negation"
+      ],
+      "keyword_hash": "sha256:369e117ade61af26e45a58ec03510066042ad5a90ba60fd867a5f2507f91bec7"
+    }
+  ]
+}

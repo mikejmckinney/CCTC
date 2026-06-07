@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1013",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "hyperglycemia",
+      "post-transplant",
+      "diabetes",
+      "transplant",
+      "phase"
+    ],
+    "keyword_hash": "sha256:78c7ba466dc88d87ae8847e5b0bf68de20fda142ca7869e777475ba5154898e5"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "hyperglycemia",
+        "post-transplant",
+        "diabetes",
+        "during",
+        "phase"
+      ],
+      "keyword_hash": "sha256:42d655f29a264423109583f3a9d067967e82477498f53aa3aee924012eff9fea"
+    }
+  ]
+}

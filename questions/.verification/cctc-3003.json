@@ -1,0 +1,46 @@
+{
+  "item_id": "cctc-3003",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    },
+    "nursing-drug-handbook": {
+      "filename": "nursing-drug-handbook-2024.pdf",
+      "page_count": 2315
+    }
+  },
+  "primary_anchor": {
+    "source_id": "nursing-drug-handbook",
+    "pdf_page": 841,
+    "keywords": [
+      "clarithromycin",
+      "CYP3A4",
+      "inhibitors",
+      "cyclosporine",
+      "concentration"
+    ],
+    "keyword_hash": "sha256:4bbe1886d1e6b7382fc929c0a879c7a7c13afac6e45bd8a88284a0c10c2c5873"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "nursing-drug-handbook",
+      "pdf_page": 841,
+      "keywords": [
+        "strong",
+        "cyp3a4",
+        "inhibitors",
+        "clarithromycin"
+      ],
+      "keyword_hash": "sha256:c056b5a56fe26d19a95f69969f9a4abb8f8c6b9126cc3163440fcaaf862b43a3"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 108
+    }
+  ]
+}

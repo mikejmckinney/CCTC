@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-2001",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 227,
+    "keywords": [
+      "contraindication",
+      "untreated",
+      "infection",
+      "transplantation",
+      "major"
+    ],
+    "keyword_hash": "sha256:ff087bcd7f08d298d89be4d159f7a40b547b500506b52b7f00f7732edf695a61"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 227,
+      "keywords": [
+        "untreated",
+        "current",
+        "infection"
+      ],
+      "keyword_hash": "sha256:8a3f2a09d8f87709931aaec4789568fedab26b6d70e3b659290905ff99956d11"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1010",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "Non-urgent",
+      "appointment",
+      "date",
+      "time",
+      "transplant",
+      "team"
+    ],
+    "keyword_hash": "sha256:c8fe6123adb3c7649c3c336bcc7e60f33236a1e0eafc0bc4094f1e6014592f11"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "non-urgent",
+        "matters",
+        "appointment",
+        "verification"
+      ],
+      "keyword_hash": "sha256:16d2aab677a049a5cbdb2a3adb2472a6d33816ff7c5825021c2ebe1ce4bbca4c"
+    }
+  ]
+}

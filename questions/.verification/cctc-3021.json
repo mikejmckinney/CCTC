@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3021",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "Bleeding",
+      "Rectal",
+      "urgent",
+      "transplant",
+      "team",
+      "sources"
+    ],
+    "keyword_hash": "sha256:1cdd1d4e39e2600b44d8482459cc8ffee346f46f4c2d4b18ac485e8c6648212d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "urgent",
+        "matters",
+        "bleeding",
+        "sources",
+        "including",
+        "rectal"
+      ],
+      "keyword_hash": "sha256:c02dcc6fa25c6b8b1ecc2e7624551cfdfe57eb6e023fa4d66db61a76ee239d1f"
+    }
+  ]
+}

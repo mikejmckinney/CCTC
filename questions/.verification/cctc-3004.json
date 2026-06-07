@@ -1,0 +1,56 @@
+{
+  "item_id": "cctc-3004",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 288,
+    "keywords": [
+      "rejection",
+      "tenderness",
+      "creatinine",
+      "CNI",
+      "toxicity",
+      "oliguria"
+    ],
+    "keyword_hash": "sha256:4131a51d4c442b1271af70a8fa223227e9596b366c09f8b631409d9766a90d28"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 288,
+      "keywords": [
+        "clinical",
+        "manifestations",
+        "acute",
+        "rejection",
+        "statements",
+        "negation"
+      ],
+      "keyword_hash": "sha256:b4526192effde37150d56af324ae3a09cc074bf80b192462d9cc4542a9ed28a9"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "danovitch",
+      "pdf_page": 266,
+      "keywords": [
+        "surgical",
+        "complications",
+        "kidney",
+        "transplantation",
+        "opening",
+        "paragraph",
+        "statement",
+        "fever"
+      ],
+      "keyword_hash": "sha256:042f920900686a60e94c9f48338e93a04d8be5f3626ef2fc9b543d3823625688"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "item_id": "cctc-3002",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    },
+    "secrets": {
+      "filename": "transplantation-nursing-secrets.pdf",
+      "page_count": 356
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "urgent",
+      "infection",
+      "symptoms",
+      "transplant",
+      "team"
+    ],
+    "keyword_hash": "sha256:1c947eec8a5d93e29594d68865f0c452c37f291a442f8da8714db9831999ff80"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "urgent",
+        "matters",
+        "signs",
+        "symptoms",
+        "infection"
+      ],
+      "keyword_hash": "sha256:5e2ac9354e8ab3a6ecc3832a6c92c39fc254b8695c829c389e94f22a5d8eb92f"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "secrets",
+      "pdf_page": 320,
+      "keywords": [
+        "topics",
+        "discharge",
+        "education",
+        "signs",
+        "symptoms",
+        "infection"
+      ],
+      "keyword_hash": "sha256:347391cd12547d88f04e1ca9523c28029d44925e147c101616e519d0ccbcff21"
+    }
+  ]
+}

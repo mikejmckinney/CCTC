@@ -1,0 +1,56 @@
+{
+  "item_id": "cctc-1001",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    },
+    "secrets": {
+      "filename": "transplantation-nursing-secrets.pdf",
+      "page_count": 356
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "non-urgent",
+      "appointment",
+      "verification",
+      "urgent",
+      "infection"
+    ],
+    "keyword_hash": "sha256:d0709c5a9ca58f415213c9a9a7cb6f02e6f4651ddeffc3e3ae4611619340603a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "non-urgent",
+        "matters",
+        "urgent"
+      ],
+      "keyword_hash": "sha256:7f83ff59de961b2ac7fb52bf786cea1a58849096c9b9d384c3c79f1383011528"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "secrets",
+      "pdf_page": 319,
+      "keywords": [
+        "topics",
+        "candidate",
+        "education",
+        "programs",
+        "during",
+        "waiting",
+        "period",
+        "when"
+      ],
+      "keyword_hash": "sha256:03160bdc23603785ebfaa432d5bf77e45fe79db32c3304004275158be854cd17"
+    }
+  ]
+}

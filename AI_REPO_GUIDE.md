@@ -187,13 +187,15 @@ npm test
 npm run build
 npm run validate
 npm run validate                              # full local gate (required before merge)
-npm run validate:ci                           # CI subset (format + OPTN content where indexed)
+npm run validate:ci                           # CI subset (format + OPTN live content)
+npm run validate:stubs                        # compare bank JSON to questions/.verification/
 npm run validate:coverage                   # gap tables only (dashboard)
 npm run validate:references                   # reference phase only
 npm run validate:references -- --item cctc-2004
 npm run validate:strict
 npm run reference:fetch-optn
 npm run reference:index
+npm run reference:export-stubs                # regenerate stubs after anchor changes (--force)
 ```
 
 Supporting file-grounded verification for those commands:
@@ -201,7 +203,7 @@ Supporting file-grounded verification for those commands:
 - `package.json` defines `test`, `build`, `validate`, and `reference:*` scripts.
 - `scripts/reference.mjs` builds a gitignored page index under `docs/reference/.index/` for PDF lookup during authoring.
 - `scripts/validate.mjs` checks each item's `primary_anchor.keywords` against the index when present locally.
-- `.github/workflows/validate.yml` runs `npm ci` and `npm run validate` on push and pull request.
+- `.github/workflows/validate.yml` runs `npm ci`, `npm run validate:ci`, and `npm run validate:stubs` on push and pull request.
 - `scripts/validate.mjs` is the validator invoked by both the local script and the workflow.
 - `src/data/questionBank.ts` confirms the current example fallback behavior when no primary shards exist.
 

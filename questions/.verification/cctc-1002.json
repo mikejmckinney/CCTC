@@ -1,0 +1,46 @@
+{
+  "item_id": "cctc-1002",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 130,
+    "keywords": [
+      "inadequate",
+      "immunosuppression",
+      "rejection",
+      "nonadherent",
+      "associated"
+    ],
+    "keyword_hash": "sha256:fb6506900fd20acbaa06655faa9ccf805c8b1dc775cc6fa3404851fc4b8ef4cb"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 130,
+      "keywords": [
+        "risks",
+        "associated",
+        "immunosuppression"
+      ],
+      "keyword_hash": "sha256:65eb225a4a44f4cf372e329d2c3f2dcf5827075c676457ffd645a954a9e3ca49"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "keywords": [
+        "lifetime",
+        "immunosuppression"
+      ],
+      "keyword_hash": "sha256:a66c6139a95d5654ec79d5c4fe687c0ff0d053e1e2853edb096320468b769b9e"
+    }
+  ]
+}

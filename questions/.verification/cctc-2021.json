@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2021",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 39,
+    "keywords": [
+      "LAS",
+      "updated",
+      "every",
+      "months",
+      "candidate",
+      "lung"
+    ],
+    "keyword_hash": "sha256:54c6d88681d3e6bec3d13b2c07ddc34245d03daa13ca22765610b4524a3650c7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "keywords": [
+        "updated",
+        "every",
+        "months"
+      ],
+      "keyword_hash": "sha256:309c4c1b2982f5b4b33ab0b745d1a3696f5650af362a0c240108bddbb293bb6e"
+    }
+  ]
+}

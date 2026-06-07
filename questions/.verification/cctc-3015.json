@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3015",
+  "schema_version": 1,
+  "generated_at": "2026-06-07",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 107,
+    "keywords": [
+      "same",
+      "time",
+      "every",
+      "day",
+      "tacrolimus",
+      "cyclosporine",
+      "therapeutic",
+      "drug"
+    ],
+    "keyword_hash": "sha256:154a8ccbaf5fd99432d2aac9627f4e610c76a47804c8d880d5dcd01584ba6c26"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "keywords": [
+        "right",
+        "critical-dose",
+        "drugs",
+        "trough",
+        "timing"
+      ],
+      "keyword_hash": "sha256:36750e83a3801c3a69bb27615f4b6468e0338f4cab658bc26d95e1411343c2cc"
+    }
+  ]
+}
