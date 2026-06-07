@@ -164,15 +164,16 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **61 draft items** in `questions/domain-*/batch-01.json` through `batch-05.json` (IDs `cctc-1001`–`1021`, `2001`–`2020`, `3001`–`3020`).
+- **73 draft items** in `questions/domain-*/batch-01.json` through `batch-06.json` (IDs `cctc-1001`–`1025`, `2001`–`2024`, `3001`–`3024`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
 - Batch 05 (2026-06-05): evaluation/screening depth, OPTN HLA/WHO listing, UNet data, FAST stroke urgent contact, tacrolimus nephrotoxicity (Nursing Drug Handbook), late-mortality `complex_combo`.
+- Batch 06 (2026-06-05): LAS updates, PHS donor consent, CMV prophylaxis, cyclosporine gingival hypertrophy, infection-prevention `complex_combo`, deeper lung/heart/liver organ coverage.
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 06+)
+- Expand the real question bank under domain directories (batch 07+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land

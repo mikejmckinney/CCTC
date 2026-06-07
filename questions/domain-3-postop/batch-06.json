@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-3021",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": ["030701"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver recipient calls reporting bright red blood on the toilet paper after a bowel movement. According to urgent-contact education, how should the coordinator classify this symptom?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "An urgent matter because rectal bleeding is a potential source requiring prompt team contact" },
+      { "id": "B", "text": "A non-urgent matter to address at the next routine refill call" },
+      { "id": "C", "text": "An expected finding that never requires transplant team notification" },
+      { "id": "D", "text": "A reason to permanently stop all immunosuppression without team guidance" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bleeding from potential sources including rectal, oral, wound, or ostomy sites is listed as an urgent reason to contact the transplant team.",
+      "rationale_incorrect": {
+        "B": "Rectal bleeding is categorized among urgent matters, not routine non-urgent contacts.",
+        "C": "Bleeding after transplant requires prompt evaluation rather than assumed normalcy.",
+        "D": "Bleeding prompts team contact and coordinated evaluation, not independent immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication → iii. Urgent matters → Bleeding",
+      "quote_hint": "Bleeding: potential sources: … Rectal",
+      "keywords": ["Bleeding", "Rectal", "urgent", "transplant", "team", "sources"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication → iii. Urgent matters (bleeding sources including rectal); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third 030700 item; anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3022",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": ["030603"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When planning discharge antimicrobial teaching for a kidney recipient, what determines the need for cytomegalovirus (CMV) prophylaxis?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Recipient and donor CMV IgG status at the time of transplantation" },
+      { "id": "B", "text": "The recipient's favorite foods only" },
+      { "id": "C", "text": "Whether the recipient prefers brand-name versus generic immunosuppressants" },
+      { "id": "D", "text": "CMV prophylaxis is never used after kidney transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Discharge medication education includes that CMV prophylaxis is determined by recipient and donor CMV IgG status at transplantation, which guides need and duration.",
+      "rationale_incorrect": {
+        "B": "CMV prophylaxis decisions are based on serologic risk, not dietary preferences.",
+        "C": "Brand versus generic preference does not determine CMV prophylaxis protocols.",
+        "D": "CMV prophylaxis is commonly individualized based on donor/recipient CMV status."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "section": "Ch. 3, Patient Education → discharge medications → v. CMV prophylaxis",
+      "quote_hint": "CMV prophylaxis is determined by the recipient and donor CMV IgG status at the time of transplantation",
+      "keywords": ["CMV", "prophylaxis", "recipient", "donor", "IgG", "status", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → discharge medication teaching → v. (CMV prophylaxis by donor/recipient CMV IgG status); PDF p. 107 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 030600 angle from cctc-3008/3015; anchor verified on Cupples p. 107.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3023",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030303"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient on cyclosporine reports gum overgrowth and requests a switch to tacrolimus. Which adverse effect pairing is consistent with standard CNI references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Cyclosporine is associated with gingival hypertrophy; switching to tacrolimus may be considered for this cosmetic side effect" },
+      { "id": "B", "text": "Cyclosporine never causes gingival changes; only tacrolimus does" },
+      { "id": "C", "text": "Gingival hypertrophy requires immediate graft nephrectomy" },
+      { "id": "D", "text": "CNIs have no cosmetic or mucosal side effects" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "References note cyclosporine-associated gingival hypertrophy as a common reason to switch to tacrolimus, alongside other CNI cosmetic effects such as hirsutism.",
+      "rationale_incorrect": {
+        "B": "Gingival hypertrophy is described with cyclosporine, not exclusively with tacrolimus.",
+        "C": "Gingival overgrowth is managed medically and may prompt CNI switching, not nephrectomy.",
+        "D": "CNIs have recognized cosmetic and mucosal adverse effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 173,
+      "section": "Ch. 6 → Switching Calcineurin Inhibitors (gingival hypertrophy with cyclosporine)",
+      "quote_hint": "cyclosporine to tacrolimus for gingival hypertrophy",
+      "keywords": ["cyclosporine", "tacrolimus", "gingival", "hypertrophy", "switching", "cosmetic"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 6 → Switching Calcineurin Inhibitors (cyclosporine gingival hypertrophy); PDF p. 173 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 030300 angle from cctc-3010/3018; anchor verified on Danovitch p. 173.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3024",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient with stable graft function is 14 months post-transplant. According to long-term follow-up references, what clinic visit interval is generally recommended during the second post-transplant year?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Every 1 to 2 months" },
+      { "id": "B", "text": "One visit every five years" },
+      { "id": "C", "text": "No follow-up after the first anniversary" },
+      { "id": "D", "text": "Daily in-person visits at the transplant center" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "After monthly visits through the first year, follow-up references recommend every 1 to 2 months during the second year for functioning grafts, then every 3 to 4 months thereafter.",
+      "rationale_incorrect": {
+        "B": "Biennial or less frequent visits do not match the recommended second-year schedule.",
+        "C": "Transplant follow-up continues throughout the second year and beyond.",
+        "D": "Daily center visits are not the described long-term surveillance interval."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 302,
+      "section": "Ch. 11, Post-transplant Long-term Management → follow-up visit frequency paragraph",
+      "quote_hint": "For the next year, the visits should be every 1 to 2 months",
+      "keywords": ["every", "months", "second", "year", "visits", "follow-up", "functioning"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 11 → follow-up visit frequency (second year: every 1–2 months); PDF p. 302 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 030500 angles from cctc-3007 (first-year monthly) and cctc-3014 (community coordination); anchor verified on Danovitch p. 302.",
+    "last_updated": "2026-06-05"
+  }
+]

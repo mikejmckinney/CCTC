@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-1022",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010101"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "When counseling a pediatric transplant candidate's family about transplantation risks before listing, which outcome is explicitly included in standard risk teaching?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Death may occur while on the transplant waiting list" },
+      { "id": "B", "text": "Waitlist mortality never occurs for pediatric candidates" },
+      { "id": "C", "text": "Death risk is limited to the first 24 hours after implantation only" },
+      { "id": "D", "text": "Listing eliminates all mortality risk before transplant surgery" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant risk education includes death as a risk on the waiting list, during surgery, and following transplantation.",
+      "rationale_incorrect": {
+        "B": "Waitlist mortality is explicitly listed among transplantation risks.",
+        "C": "Death risk is not confined to the first day after implantation; waitlist and later periods are also discussed.",
+        "D": "Listing does not eliminate pretransplant mortality risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Patient Education → §6. Risks associated with transplantation → a. Death → i.",
+      "quote_hint": "Death … On the waiting list",
+      "keywords": ["Death", "waiting", "list", "transplantation", "risks"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks associated with transplantation → a. Death (waitlist, surgery, post-transplant); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third pediatric-tagged item; distinct 010100 angle from cctc-1006/1015; anchor verified on Cupples p. 98.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1023",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010300",
+    "knowledge_codes": ["010303"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "During living donor education, a potential donor expresses concern about emotional effects after donation. Which psychosocial risk should the coordinator include in teaching?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Postdonation depression or anxiety" },
+      { "id": "B", "text": "Guaranteed permanent elimination of all future stress" },
+      { "id": "C", "text": "Mandatory loss of employment after every donation" },
+      { "id": "D", "text": "Absence of any psychosocial risks because donors are prescreened" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor psychosocial education includes risks such as postdonation depression or anxiety, body image concerns, and distress if the recipient has complications.",
+      "rationale_incorrect": {
+        "B": "Donor education discusses psychosocial risks rather than guaranteeing permanent stress elimination.",
+        "C": "Employment loss is not a universal mandatory outcome of donation.",
+        "D": "Psychosocial risks remain part of donor education despite medical prescreening."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 341,
+      "section": "Ch. 7, Living Donation → donor education → item 11 (psychosocial risks) → b.",
+      "quote_hint": "Postdonation depression or anxiety",
+      "keywords": ["Postdonation", "depression", "anxiety", "psychosocial", "living", "donor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → living donor education → item 11 (psychosocial risks including depression/anxiety); PDF p. 341 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 010300 angle from cctc-1007/1016; anchor verified on Cupples p. 341.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1024",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604", "010605"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant infection-prevention teaching materials. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should avoid individuals with known infection when possible." },
+      { "id": "II", "text": "Recipients should avoid crowded areas when community influenza rates are high." },
+      { "id": "III", "text": "Consuming raw or undercooked eggs is recommended for immunosuppressed recipients." },
+      { "id": "IV", "text": "Frequent hand-washing is a best practice to prevent infection." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II and III only", "selects": ["II", "III"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes avoiding known infection contacts, crowded areas during high influenza activity, and frequent hand hygiene. Raw or undercooked eggs are not recommended.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—hand-washing is emphasized as a best practice.",
+        "C": "Statement III is false; dietary teaching advises against raw or undercooked eggs.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → ii. Airborne infections and iii. Dietary precautions",
+      "quote_hint": "Avoid individuals with known infection … Avoid crowded areas … Do not consume raw eggs",
+      "keywords": ["Avoid", "individuals", "infection", "crowded", "raw", "eggs", "hand-washing"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → ii. Airborne infections and iii. Dietary precautions (statements I–III); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (statement IV); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Statements I–II and IV from Cupples pp. 115–116; fifth complex_combo in bank.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1025",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010601"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung recipient planning extensive travel two weeks after discharge asks whether this is advisable. What teaching aligns with standard early post-discharge guidance?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Extensive travel should be avoided immediately after discharge because close monitoring and unplanned visits may be needed" },
+      { "id": "B", "text": "Long-distance travel is encouraged before the first clinic follow-up" },
+      { "id": "C", "text": "Travel restrictions apply only to international flights longer than 12 hours" },
+      { "id": "D", "text": "Recipients may discontinue immunosuppression during travel to reduce infection risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Early discharge education advises against extensive travel immediately after discharge due to the need for close monitoring, potential unplanned tests or clinic visits, and possible readmission.",
+      "rationale_incorrect": {
+        "B": "Early post-discharge guidance discourages extensive travel before stable follow-up.",
+        "C": "Travel guidance is not limited to a specific flight duration threshold.",
+        "D": "Immunosuppression must continue as prescribed; travel does not justify stopping therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication → iv. Travel",
+      "quote_hint": "Patients should not travel extensively immediately after discharge",
+      "keywords": ["travel", "extensively", "discharge", "monitoring", "follow-up", "readmission"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → iv. Travel; PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third lung organ tag; anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05"
+  }
+]
