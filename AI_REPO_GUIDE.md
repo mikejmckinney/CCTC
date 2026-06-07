@@ -179,6 +179,7 @@ npm run build
 npm run validate
 npm run validate                              # full local gate (required before merge)
 npm run validate:ci                           # CI subset (format + OPTN content where indexed)
+npm run validate:coverage                   # gap tables only (dashboard)
 npm run validate:references                   # reference phase only
 npm run validate:references -- --item cctc-2004
 npm run validate:strict

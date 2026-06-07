@@ -9,6 +9,7 @@ Each module owns one validation phase and can be imported independently for test
 |---|---|---|
 | `validate` | Full local verification | **Required before merge** when changing questions |
 | `validate:ci` | `--ci` subset | GitHub Actions; necessary but not sufficient for textbook anchors |
+| `validate:coverage` | `--coverage-only` | Gap tables only (fast dashboard) |
 | `validate:references` | `--references-only` | Fast loop while fixing locators/anchors |
 | `validate:strict` | Full + coverage warnings fail | Milestone gating |
 
@@ -68,4 +69,4 @@ npm run validate:references -- --item cctc-2004
 npm run validate:strict
 ```
 
-Legacy: `--allow-missing-index` is an alias for `--ci`.
+Use `npm run validate:ci` in CI — not `--allow-missing-index` (removed; use the explicit script instead).

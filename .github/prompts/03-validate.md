@@ -62,12 +62,15 @@ Use `npm run validate:strict` to fail on coverage warnings.
 
 ```bash
 npm run validate              # full local gate (required before merge)
+npm run validate:coverage       # gap tables only (exam coverage dashboard)
 npm run validate:ci           # CI subset (.github/workflows/validate.yml)
 npm run validate:references   # reference phase only
 npm run validate:strict       # full + coverage warnings fail
 ```
 
-Flags: `--item <cctc-id>`, `--strict`, `--ci`, `--references-only`. Legacy: `--allow-missing-index` (= `--ci`).
+Flags: `--item <cctc-id>`, `--strict`, `--ci`, `--coverage-only`, `--references-only`.
+
+Coverage output uses ASCII tables (Area / Current / Target / Gap). Use `validate:coverage` when you only want the dashboard.
 
 ## Wire it into the build and CI
 

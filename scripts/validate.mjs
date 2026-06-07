@@ -10,6 +10,7 @@ import {
 import { validateSchemaForItems } from './validate/10-schema.mjs';
 import { validateIntegrityForItems } from './validate/20-integrity.mjs';
 import { validateReferencesForItems } from './validate/30-references.mjs';
+import { createReferenceVerificationContext } from './lib/verify-references.mjs';
 import { buildCoverageReport } from './validate/40-coverage.mjs';
 import { printValidationReport } from './validate/90-report.mjs';
 import { filterItems, parseCliFlags, resolveValidationMode } from './validate/lib.mjs';
@@ -29,16 +30,25 @@ async function main() {
   const taskToDomain = buildTaskDomainMap(newBlueprint);
   const legacySectionIds = buildLegacySectionIds(legacyBlueprint);
 
-  if (mode !== 'references-only') {
+  if (mode !== 'references-only' && !flags.coverageOnly) {
     validateSchemaForItems(allItems, schema, schemaErrors);
     validateIntegrityForItems(allItems, taskToDomain, legacySectionIds, integrityErrors);
   }
 
   const requireFullIndex = mode === 'full' || mode === 'references-only';
-  const { errors: referenceErrors, context } = await validateReferencesForItems(allItems, {
-    allowMissingIndex: !requireFullIndex,
-    referenceWarnings,
-  });
+  let referenceErrors = [];
+  let context = { manifest: null, indexAvailability: new Map() };
+
+  if (!flags.coverageOnly) {
+    const referenceResult = await validateReferencesForItems(allItems, {
+      allowMissingIndex: !requireFullIndex,
+      referenceWarnings,
+    });
+    referenceErrors = referenceResult.errors;
+    context = referenceResult.context;
+  } else {
+    context = await createReferenceVerificationContext({ allowMissingIndex: true, referenceWarnings });
+  }
 
   const coverage =
     mode === 'references-only'
@@ -46,7 +56,8 @@ async function main() {
       : await buildCoverageReport(allItems, newBlueprint, legacyBlueprint, context, coverageWarnings);
 
   printValidationReport({
-    mode,
+    mode: flags.coverageOnly ? 'full' : mode,
+    coverageOnly: flags.coverageOnly,
     schema,
     bankFiles,
     excludedEntries,
@@ -65,9 +76,9 @@ async function main() {
   const hardFailures = [
     ...parsingErrors,
     ...fileLevelErrors,
-    ...(mode === 'references-only' ? [] : schemaErrors),
-    ...(mode === 'references-only' ? [] : integrityErrors),
-    ...referenceErrors,
+    ...(flags.coverageOnly || mode === 'references-only' ? [] : schemaErrors),
+    ...(flags.coverageOnly || mode === 'references-only' ? [] : integrityErrors),
+    ...(flags.coverageOnly ? [] : referenceErrors),
   ];
 
   if (hardFailures.length > 0 || (flags.strict && coverageWarnings.length > 0)) {

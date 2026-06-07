@@ -1,6 +1,7 @@
 import {
   formatPercent,
 } from './lib.mjs';
+import { renderTable } from './table.mjs';
 
 export function printValidationReport({
   mode = 'full',
@@ -17,13 +18,14 @@ export function printValidationReport({
   coverageWarnings,
   coverage,
   strictMode,
+  coverageOnly = false,
 }) {
   const hardFailureCount =
     parsingErrors.length +
     fileLevelErrors.length +
     (mode === 'references-only' ? 0 : schemaErrors.length) +
     (mode === 'references-only' ? 0 : integrityErrors.length) +
-    referenceErrors.length;
+    (coverageOnly ? 0 : referenceErrors.length);
   const strictFailureCount = strictMode ? coverageWarnings.length : 0;
   const passed = hardFailureCount === 0 && strictFailureCount === 0;
 
@@ -32,88 +34,209 @@ export function printValidationReport({
       ? 'CI subset'
       : mode === 'references-only'
         ? 'references only'
-        : 'full (local)';
+        : coverageOnly
+          ? 'coverage dashboard'
+          : 'full (local)';
 
   console.log(`Question bank validation ${passed ? 'PASSED' : 'FAILED'} — ${modeLabel}${strictMode ? ' + strict coverage' : ''}`);
   console.log('');
 
-  if (mode === 'ci') {
-    console.log('CI note: this run verifies schema, integrity, reference format, and indexed content where CI built an index (OPTN policies).');
-    console.log('Textbook anchor content requires local `npm run reference:index && npm run validate` before merge.');
-    console.log('Future: committed verification stubs (`docs/reference/verification-stubs/README.md`) will hard-fail textbook content in CI.');
+  if (coverageOnly) {
+    console.log('Coverage-only mode: gap tables below; run `npm run validate` for full schema/reference checks.');
     console.log('');
-  }
-
-  if (mode === 'references-only') {
+  } else if (mode === 'ci') {
+    console.log('CI note: textbook anchor content requires local `npm run reference:index && npm run validate` before merge.');
+    console.log('');
+  } else if (mode === 'references-only') {
     console.log('References-only mode: schema, integrity, and coverage checks skipped.');
     console.log('');
   }
 
-  console.log('Inputs');
-  console.log(`- Schema: ${schema.title ?? 'question schema'}`);
-  console.log(`- Bank files loaded: ${bankFiles.length}`);
-  console.log(`- Files skipped under _-prefixed paths: ${excludedEntries.length}`);
-  console.log(`- Items evaluated: ${allItems.length}`);
-  if (coverage) {
-    console.log(`- Reviewed items: ${coverage.reviewedCount}`);
-    console.log(`- Draft items: ${coverage.draftCount}`);
-  }
-  console.log(`- Validation mode: ${mode}`);
-  console.log(`- Coverage mode: ${strictMode ? 'strict (warnings fail)' : 'default (warnings informational)'}`);
-  console.log('');
-
-  if (excludedEntries.length > 0) {
-    console.log(`Skipped paths: ${excludedEntries.join(', ')}`);
+  if (!coverageOnly) {
+    console.log('Inputs');
+    console.log(`- Schema: ${schema.title ?? 'question schema'}`);
+    console.log(`- Bank files loaded: ${bankFiles.length}`);
+    console.log(`- Items evaluated: ${allItems.length}`);
+    if (coverage) {
+      console.log(`- Reviewed: ${coverage.reviewedCount} | Draft: ${coverage.draftCount}`);
+    }
+    console.log(`- Mode: ${mode}${strictMode ? ' (strict)' : ''}`);
     console.log('');
-  }
 
-  printSection('Hard failures', [
-    ...parsingErrors,
-    ...fileLevelErrors,
-    ...(mode === 'references-only' ? [] : schemaErrors),
-    ...(mode === 'references-only' ? [] : integrityErrors),
-    ...referenceErrors,
-  ]);
+    if (excludedEntries.length > 0) {
+      console.log(`Skipped paths: ${excludedEntries.join(', ')}`);
+      console.log('');
+    }
 
-  printSection('Reference skips (CI — no local index)', referenceWarnings);
-
-  if (coverage) {
-    printGapTable('Bank progress', [
-      {
-        area: 'Total bank',
-        current: `${coverage.draftCount} draft, ${coverage.reviewedCount} reviewed (${coverage.totalCount} total)`,
-        target: `~${coverage.statusSummary.reviewedTarget} reviewed (planning)`,
-        gap: String(coverage.statusSummary.reviewedGap),
-      },
-      ...coverage.domainCoverage.map((row) => ({
-        area: `Domain ${row.id}`,
-        current: `${row.total} total (${row.reviewed} reviewed, ${row.draft} draft)`,
-        target: String(row.target),
-        gap: String(row.gap),
-      })),
+    printSection('Hard failures', [
+      ...parsingErrors,
+      ...fileLevelErrors,
+      ...(mode === 'references-only' ? [] : schemaErrors),
+      ...(mode === 'references-only' ? [] : integrityErrors),
+      ...referenceErrors,
     ]);
 
-    printTaskDepthTable('Per-task depth (all bank items vs blueprint targets)', coverage.taskCoverage);
-    printAgeTable('Recipient age mix', coverage.ageSummary);
-    printCognitiveTable('Cognitive distribution (reviewed / all bank)', coverage.cognitiveSummary);
-    printOrganTable('Organ distribution (reviewed / all bank)', coverage.organSummary);
-    printInfrastructureTable('Reference infrastructure', coverage.infrastructure);
-
-    printCoverageTable('2026-07 domain coverage (reviewed only)', coverage.domainCoverage);
-    printCoverageTable('Legacy section coverage (reviewed only)', coverage.legacyCoverage);
-    printDomainProgressTable('Review progress by domain', coverage.reviewedByDomain, coverage.draftByDomain);
-    printSection('Coverage warnings', coverageWarnings);
+    printSection('Reference skips (CI — no local index)', referenceWarnings);
   }
 
-  console.log('Summary');
-  console.log(`- Schema violations: ${mode === 'references-only' ? 'skipped' : schemaErrors.length}`);
-  console.log(`- Integrity violations: ${mode === 'references-only' ? 'skipped' : integrityErrors.length}`);
-  console.log(`- Reference violations: ${referenceErrors.length}`);
-  console.log(`- Reference CI skips: ${referenceWarnings.length}`);
   if (coverage) {
-    console.log(`- Coverage warnings: ${coverageWarnings.length}${strictMode ? ' (treated as failures)' : ''}`);
+    printCoverageDashboard(coverage, coverageWarnings);
   }
-  console.log(`- Exit code: ${passed ? 0 : 1}`);
+
+  if (!coverageOnly) {
+    console.log('Summary');
+    console.log(`- Schema violations: ${mode === 'references-only' ? 'skipped' : schemaErrors.length}`);
+    console.log(`- Integrity violations: ${mode === 'references-only' ? 'skipped' : integrityErrors.length}`);
+    console.log(`- Reference violations: ${referenceErrors.length}`);
+    console.log(`- Reference CI skips: ${referenceWarnings.length}`);
+    if (coverage) {
+      console.log(`- Coverage warnings: ${coverageWarnings.length}${strictMode ? ' (treated as failures)' : ''}`);
+    }
+    console.log(`- Exit code: ${passed ? 0 : 1}`);
+  } else if (!passed) {
+    console.log(`Exit code: 1 (${strictMode ? 'coverage strict mode' : 'parse/load errors'})`);
+  }
+}
+
+export function printCoverageDashboard(coverage, coverageWarnings = []) {
+  console.log('Exam coverage & gaps (2026-07 blueprint)');
+  console.log('');
+
+  console.log(renderTable(
+    [
+      { header: 'Area', minWidth: 12, maxWidth: 14 },
+      { header: 'Current', minWidth: 16, maxWidth: 28 },
+      { header: 'Target', minWidth: 10, maxWidth: 22 },
+      { header: 'Gap', minWidth: 4, maxWidth: 6 },
+    ],
+    [
+      [
+        'Total bank',
+        `${coverage.draftCount} draft, ${coverage.reviewedCount} reviewed`,
+        `~${coverage.statusSummary.reviewedTarget} reviewed`,
+        String(coverage.statusSummary.reviewedGap),
+      ],
+      ...coverage.domainCoverage.map((row) => [
+        `Domain ${row.id}`,
+        `${row.total} total (${row.reviewed} rev, ${row.draft} drf)`,
+        String(row.target),
+        String(row.gap),
+      ]),
+    ],
+  ));
+
+  console.log('Per-task depth (all bank items)');
+  console.log('');
+  console.log(renderTable(
+    [
+      { header: 'Task', minWidth: 8, maxWidth: 8 },
+      { header: 'Current', minWidth: 8, maxWidth: 8 },
+      { header: 'Target', minWidth: 8, maxWidth: 8 },
+      { header: 'Gap', minWidth: 4, maxWidth: 6 },
+      { header: 'Name', minWidth: 12, maxWidth: 36 },
+    ],
+    coverage.taskCoverage.map((row) => [
+      row.code,
+      String(row.count),
+      String(row.target),
+      String(row.gap),
+      row.name,
+    ]),
+  ));
+
+  console.log('Cognitive mix (reviewed / bank / target %)');
+  console.log('');
+  if (coverage.cognitiveSummary.length === 0) {
+    console.log('(no cognitive data yet)\n');
+  } else {
+    console.log(renderTable(
+      [
+        { header: 'Level', minWidth: 12 },
+        { header: 'Reviewed', minWidth: 10 },
+        { header: 'Bank', minWidth: 10 },
+        { header: 'Target', minWidth: 10 },
+      ],
+      coverage.cognitiveSummary.map((row) => [
+        row.level,
+        `${row.reviewedCount} (${formatPercent(row.reviewedShare)})`,
+        `${row.bankCount} (${formatPercent(row.bankShare)})`,
+        formatPercent(row.targetShare),
+      ]),
+    ));
+  }
+
+  console.log('Organ mix (reviewed / bank / blueprint target of 150)');
+  console.log('');
+  console.log(renderTable(
+    [
+      { header: 'Organ', minWidth: 14 },
+      { header: 'Reviewed', minWidth: 10 },
+      { header: 'Bank', minWidth: 8 },
+      { header: 'Target', minWidth: 8 },
+      { header: 'Gap', minWidth: 8 },
+    ],
+    coverage.organSummary.map((row) => [
+      row.organ,
+      String(row.reviewedCount),
+      String(row.bankCount),
+      String(row.targetCount),
+      String(Math.max(row.targetCount - row.bankCount, 0)),
+    ]),
+  ));
+
+  console.log('Recipient age');
+  console.log('');
+  console.log(renderTable(
+    [
+      { header: 'Age', minWidth: 10 },
+      { header: 'Count', minWidth: 8 },
+    ],
+    [
+      ['adult', String(coverage.ageSummary.adult)],
+      ['pediatric', String(coverage.ageSummary.pediatric)],
+      ['both', String(coverage.ageSummary.both)],
+    ],
+  ));
+
+  console.log('Reference infrastructure');
+  console.log('');
+  console.log(renderTable(
+    [
+      { header: 'Source', minWidth: 18 },
+      { header: 'PDF', minWidth: 8 },
+      { header: 'Index', minWidth: 8 },
+    ],
+    [
+      ...coverage.infrastructure.referenceSources.map((row) => [
+        row.source_id,
+        row.pdfPresent ? 'yes' : 'no',
+        row.indexed ? 'yes' : 'no',
+      ]),
+      ['examples (excluded)', coverage.infrastructure.examplesFileExcludedFromBank ? 'yes' : 'no', 'n/a'],
+      ['NATCO guide', coverage.infrastructure.natcoPdfPresent ? 'yes' : 'no', 'n/a'],
+    ],
+  ));
+
+  console.log('Reviewed-only exam fill (150-scored exam)');
+  console.log('');
+  console.log(renderTable(
+    [
+      { header: 'Domain', minWidth: 8 },
+      { header: 'Reviewed', minWidth: 10 },
+      { header: 'Target', minWidth: 8 },
+      { header: 'Gap', minWidth: 6 },
+      { header: 'Name', minWidth: 20, maxWidth: 34 },
+    ],
+    coverage.domainCoverage.map((row) => [
+      String(row.id),
+      String(row.reviewed),
+      String(row.target),
+      String(row.gap),
+      row.name,
+    ]),
+  ));
+
+  printSection('Coverage warnings', coverageWarnings);
 }
 
 function printSection(title, entries) {
@@ -126,96 +249,5 @@ function printSection(title, entries) {
   for (const entry of entries) {
     console.log(`- ${entry}`);
   }
-  console.log('');
-}
-
-function printGapTable(title, rows) {
-  console.log(title);
-  for (const row of rows) {
-    console.log(`- ${row.area}: current ${row.current}; target ${row.target}; gap ${row.gap}`);
-  }
-  console.log('');
-}
-
-function printTaskDepthTable(title, rows) {
-  console.log(title);
-  const shallow = rows.filter((row) => row.count > 0 && row.count < row.target);
-  const empty = rows.filter((row) => row.count === 0);
-  console.log(`- Tasks with items: ${rows.filter((row) => row.count > 0).length}/${rows.length}`);
-  console.log(`- Tasks below target depth: ${shallow.length}`);
-  console.log(`- Tasks with zero items: ${empty.length}`);
-  for (const row of rows.filter((entry) => entry.count < entry.target).slice(0, 12)) {
-    console.log(`- ${row.code}: ${row.count}/${row.target} (${row.name}); gap ${row.gap}`);
-  }
-  if (rows.filter((entry) => entry.count < entry.target).length > 12) {
-    console.log(`- … and ${rows.filter((entry) => entry.count < entry.target).length - 12} more under-target task(s)`);
-  }
-  console.log('');
-}
-
-function printAgeTable(title, counts) {
-  console.log(title);
-  console.log(`- adult: ${counts.adult}`);
-  console.log(`- pediatric: ${counts.pediatric}`);
-  console.log(`- both: ${counts.both}`);
-  console.log('');
-}
-
-function printCoverageTable(title, rows) {
-  console.log(title);
-  for (const row of rows) {
-    const reviewed = row.reviewed ?? row.available ?? 0;
-    console.log(`- ${row.id}: ${reviewed}/${row.target} reviewed (${row.name}); gap ${row.gap}`);
-  }
-  console.log('');
-}
-
-function printDomainProgressTable(title, reviewedByDomain, draftByDomain) {
-  console.log(title);
-  for (const [domainId, reviewedCount] of reviewedByDomain.entries()) {
-    console.log(`- Domain ${domainId}: ${reviewedCount} reviewed, ${draftByDomain.get(domainId) ?? 0} draft`);
-  }
-  console.log('');
-}
-
-function printCognitiveTable(title, rows) {
-  console.log(title);
-  if (rows.length === 0) {
-    console.log('- No reviewed items yet');
-    console.log('');
-    return;
-  }
-  for (const row of rows) {
-    console.log(
-      `- ${row.level}: reviewed ${row.reviewedCount} (${formatPercent(row.reviewedShare)}) | bank ${row.bankCount} (${formatPercent(row.bankShare)}) | target ${formatPercent(row.targetShare)}`,
-    );
-  }
-  console.log('');
-}
-
-function printOrganTable(title, rows) {
-  console.log(title);
-  if (rows.length === 0) {
-    console.log('- No reviewed items yet');
-    console.log('');
-    return;
-  }
-  for (const row of rows) {
-    console.log(
-      `- ${row.organ}: reviewed ${row.reviewedCount} vs expected ${row.expectedReviewed.toFixed(1)} | bank ${row.bankCount} | blueprint target ${row.targetCount}/150`,
-    );
-  }
-  console.log('');
-}
-
-function printInfrastructureTable(title, infrastructure) {
-  console.log(title);
-  for (const row of infrastructure.referenceSources) {
-    console.log(
-      `- ${row.source_id}: pdf ${row.pdfPresent ? 'present' : 'missing'}; index ${row.indexed ? 'built' : 'missing'} (${row.indexPath})`,
-    );
-  }
-  console.log(`- examples file excluded from bank: ${infrastructure.examplesFileExcludedFromBank ? 'present' : 'missing'}`);
-  console.log(`- NATCO Clinician's Guide PDF indexed: ${infrastructure.natcoPdfPresent ? 'yes' : 'no (not in sources manifest yet)'}`);
   console.log('');
 }

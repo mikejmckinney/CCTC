@@ -7,6 +7,7 @@
     "dev": "vite",
     "validate": "node -e \"const fs=require('node:fs'); const { spawnSync } = require('node:child_process'); if (fs.existsSync('scripts/validate.mjs')) { const result = spawnSync(process.execPath, ['scripts/validate.mjs'], { stdio: 'inherit' }); process.exit(result.status ?? 1); } console.log('scripts/validate.mjs not present yet; skipping validation.');\"",
     "validate:ci": "node scripts/validate.mjs --ci",
+    "validate:coverage": "node scripts/validate.mjs --coverage-only",
     "validate:references": "node scripts/validate.mjs --references-only",
     "validate:strict": "node scripts/validate.mjs --strict",
     "reference:index": "node scripts/reference.mjs index",

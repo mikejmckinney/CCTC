@@ -39,18 +39,19 @@ export function formatSignedPercent(value) {
 }
 
 export function parseCliFlags(argv = process.argv.slice(2)) {
-  const ci = argv.includes('--ci');
   return {
     strict: argv.includes('--strict'),
-    ci,
+    ci: argv.includes('--ci'),
     referencesOnly: argv.includes('--references-only'),
-    /** @deprecated use --ci */
-    allowMissingIndex: ci || argv.includes('--allow-missing-index'),
+    coverageOnly: argv.includes('--coverage-only'),
     itemFilter: extractFlagValue(argv, '--item'),
   };
 }
 
 export function resolveValidationMode(flags) {
+  if (flags.coverageOnly) {
+    return 'coverage-only';
+  }
   if (flags.referencesOnly) {
     return 'references-only';
   }

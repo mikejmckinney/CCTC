@@ -126,6 +126,24 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [ ] Triage exported flags (`ccte-flags.json` from the app) alongside new authoring.
 - [ ] On fix: edit item in repo, bump `version`, set back to `draft`, re-review; stale app flags drop on version mismatch.
 
+### Validation tooling (done vs deferred)
+
+**Done**
+- [x] Decomposed validator (`scripts/validate/` modules + orchestrator).
+- [x] Full local gate: `npm run validate` (schema + integrity + reference format + indexed content).
+- [x] CI subset: `npm run validate:ci` (format + OPTN-indexed content; textbook content skipped with logged skips).
+- [x] Authoring loop: `npm run validate:references`.
+- [x] OPTN policies PDF index (`npm run reference:fetch-optn`, `reference:index -- optn-policies`).
+- [x] Verification stub **design** — [`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), [`schema/reference-verification-stub.schema.json`](../schema/reference-verification-stub.schema.json).
+
+**Deferred (CI hard-fail for textbook anchors without PDFs)**
+- [ ] `npm run reference:export-stubs` — generate `questions/.verification/<item-id>.json` from local full validate + index.
+- [ ] `npm run validate:stubs` — CI hard-fail: question JSON must match committed stubs (keywords, pages, Policy §).
+- [ ] Wire `validate:stubs` into `.github/workflows/validate.yml` after stubs exist for the bank.
+- [ ] PR checklist / template note: local `npm run validate` required before merge until stubs cover all items.
+
+Until stubs ship, **local full validate is the textbook content gate**; CI alone is necessary but not sufficient (see `03-validate.md`).
+
 ---
 
 ## Phase 4: Review Feedback, Polish, and Release Readiness
@@ -158,5 +176,6 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 ## Near-Term Sequencing
 
 1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTE/pull/1)).
-2. **Start Phase 3 bank growth** per `02-author-questions.md` — add first draft JSON shards under `questions/domain-*`; keep `npm run validate` green.
-3. **Phase 4 polish and static hosting** — GitHub Pages deploy, device/a11y pass, richer history trends after a small real bank exists.
+2. **Phase 3 bank growth** per `02-author-questions.md` — expand shards; keep `npm run validate` green locally before merge.
+3. **Phase 3 deferred:** verification stubs + `validate:stubs` in CI (see Phase 3 checklist).
+4. **Phase 4 polish and static hosting** — GitHub Pages deploy, device/a11y pass, richer history trends after a small real bank exists.
