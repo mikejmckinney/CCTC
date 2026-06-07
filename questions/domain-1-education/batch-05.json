@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-1018",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": ["010401"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant candidate asks why the evaluation includes many organ-specific tests rather than one standard panel for every patient. Which explanation aligns with standard evaluation education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Transplant programs define organ-specific protocols to validate end-organ disease and overall health for safe transplantation" },
+      { "id": "B", "text": "Every candidate receives identical testing regardless of organ or comorbidities" },
+      { "id": "C", "text": "Diagnostic testing is optional once psychosocial evaluation is complete" },
+      { "id": "D", "text": "Only blood type testing is required before listing" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Evaluation education explains that transplant programs define organ-specific diagnostic protocols to confirm end-organ disease and determine whether the patient can safely undergo transplantation.",
+      "rationale_incorrect": {
+        "B": "References describe individualized, organ-specific evaluation protocols rather than one identical test panel for all candidates.",
+        "C": "Diagnostic testing is a required component of evaluation, not replaced by psychosocial assessment alone.",
+        "D": "Listing requires comprehensive evaluation beyond blood type alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → evaluation process → c. Diagnostic testing → i.",
+      "quote_hint": "Transplant programs define organ-specific protocols for diagnostic studies",
+      "keywords": ["organ-specific", "protocols", "diagnostic", "studies", "transplant", "programs"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → evaluation process → c. Diagnostic testing → i. (organ-specific protocols); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 010400 angle from cctc-1008 (ILDA); anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1019",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010605"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During post-transplant infection-prevention teaching, a recipient asks what personal practice is emphasized as a best method to reduce infection risk at home. Which teaching point is correct?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Frequent hand-washing, including before meals and after contact with secretions" },
+      { "id": "B", "text": "Avoiding all contact with the transplant team after discharge" },
+      { "id": "C", "text": "Stopping immunosuppression when at home to reduce infection risk" },
+      { "id": "D", "text": "Relying only on antibacterial gel and never using soap and water" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention education instructs recipients to wash hands frequently as a best practice, including before preparing or eating meals and after contact with excretions or secretions.",
+      "rationale_incorrect": {
+        "B": "Recipients maintain transplant team contact; infection prevention does not replace team communication.",
+        "C": "Immunosuppression must continue as prescribed; stopping therapy increases rejection and infection risk.",
+        "D": "Hand hygiene includes soap and water when hands are visibly soiled; gel supplements but does not replace washing when needed."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "hand-washing is a best practice to prevent",
+      "keywords": ["hand-washing", "best", "practice", "prevent", "hands", "frequently"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (when to wash hands); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1020",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": ["010403"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Which health-maintenance tests may be required during transplant evaluation to remain current with national prevention guidelines?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Mammogram, Papanicolaou test, bone densitometry, and colonoscopy as age- and gender-appropriate" },
+      { "id": "B", "text": "Elective cosmetic surgery assessment for all candidates" },
+      { "id": "C", "text": "Routine dental extraction for every candidate regardless of dentition" },
+      { "id": "D", "text": "Annual lung allocation score recertification for kidney candidates" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Evaluation references include age- and gender-specific health maintenance testing such as mammography, Papanicolaou testing, bone densitometry, and colonoscopy per national prevention guidelines.",
+      "rationale_incorrect": {
+        "B": "Cosmetic surgery assessment is not listed among required health-maintenance screening tests.",
+        "C": "Dentition is assessed, but routine extraction for every candidate is not a universal evaluation requirement.",
+        "D": "LAS applies to lung allocation, not kidney candidate health-maintenance screening."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → evaluation process → c. Diagnostic testing → iii.",
+      "quote_hint": "Mammogram Papanicolaou test Bone densitometry Colonoscopy",
+      "keywords": ["Mammogram", "Papanicolaou", "Bone", "densitometry", "Colonoscopy", "health", "maintenance"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → c. Diagnostic testing → iii. (age- and gender-specific health maintenance); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Second 010400 item; anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1021",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010702"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "During living kidney donor education, which disclosure must transplant programs provide regarding program performance?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Program-specific recipient patient and graft survival rates compared with national SRTR data" },
+      { "id": "B", "text": "A guarantee that every donated kidney will function perfectly for 20 years" },
+      { "id": "C", "text": "The donor's personal MELD score after donation" },
+      { "id": "D", "text": "Confidential refusal codes from unrelated deceased-donor offers" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor education requires disclosure of program-specific patient and graft survival rates and how those rates compare with national SRTR data.",
+      "rationale_incorrect": {
+        "B": "Donor education discusses risks and outcomes; perfect long-term graft function cannot be guaranteed.",
+        "C": "MELD scoring applies to liver waitlist candidates, not living kidney donors.",
+        "D": "Unrelated deceased-donor refusal codes are not part of living donor outcome disclosure."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 341,
+      "section": "Ch. 7, Living Donation → donor education → item 13",
+      "quote_hint": "program-specific recipient patient and graft survival rates and how these rates compare to national data from the Scientific Registry of Transplant Recipients (SRTR)",
+      "keywords": ["program-specific", "graft", "survival", "SRTR", "national", "living", "donor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → living donor education → item 13 (SRTR outcome disclosure); PDF p. 341 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 010700 angle from cctc-1009 (two-year follow-up) and cctc-1014 (financial impact); anchor verified on Cupples p. 341.",
+    "last_updated": "2026-06-05"
+  }
+]

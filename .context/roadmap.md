@@ -73,7 +73,7 @@ Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/m
 
 ## Phase 3: Question-Bank Growth and Validation
 
-**Status**: In Progress (validation + reference index in place; 49 draft items across all blueprint tasks)
+**Status**: In Progress (validation + reference index in place; 61 draft items across all blueprint tasks)
 
 **Objective**: Make the bank safe to expand while keeping schema integrity and blueprint coverage visible.
 
@@ -121,6 +121,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] First draft shards landed: `batch-01.json` + `batch-02.json` in each domain (25 draft items; all `status: "draft"`; at least one item per blueprint task).
 - [x] **Batch 03** (`batch-03.json` in each domain): +12 draft items (`cctc-1010`–`1013`, `2009`–`2012`, `3009`–`3012`); targeted depth on tasks `010500`, `010600`, `020100`, `020500`, `030100`, `030200`, `030300`; first **lung** organ tag; second **pediatric** item; second **`complex_combo`**; first **OPTN-primary** waitlist items (`020500`, Policy 3.4.E inactive status, `optn_policies.pdf` p. 44). Full `npm run validate` green (2026-06-06).
 - [x] **Batch 04** (`batch-04.json` in each domain): +12 draft items (`cctc-1014`–`1017`, `2013`–`2016`, `3013`–`3016`); living donor financial/complication education, primary nonfunction risk, **heart/lung** and **pancreas** indications, multidisciplinary consults, DonorNet offer presentation, kidney preop urine baseline, **intestine** long-term outcomes, community MD coordination, timed IS dosing, **SPK** rejection `complex_combo` (**kidney_pancreas**). First bank coverage of `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags. Full `npm run validate` green (2026-06-05).
+- [x] **Batch 05** (`batch-05.json` in each domain): +12 draft items (`cctc-1018`–`1021`, `2017`–`2020`, `3017`–`3020`); evaluation protocols & health-maintenance screening, hand-hygiene infection prevention, SRTR outcome disclosure, not-listed communication, selection-committee synthesis, **OPTN HLA/WHO** listing (`020502`), lung smoking cessation/cotinine, FAST stroke urgent contact, tacrolimus nephrotoxicity (Nursing Drug Handbook), **UNet** listing data, late-mortality `complex_combo`. Full `npm run validate` green (2026-06-05).
 - [ ] After each batch, run `npm run validate` and fill under-represented domains, tasks, cognitive levels, and organs.
 - [ ] Grow reviewed items toward ~500 so sampling has variety beyond a single exam.
 
@@ -178,6 +179,6 @@ Until stubs ship, **local full validate is the textbook content gate**; CI alone
 ## Near-Term Sequencing
 
 1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTE/pull/1)).
-2. **Phase 3 bank growth** per `02-author-questions.md` — batch 05+ shards; keep `npm run validate` green locally before merge (49 draft items as of batch 04).
+2. **Phase 3 bank growth** per `02-author-questions.md` — batch 06+ shards; keep `npm run validate` green locally before merge (61 draft items as of batch 05).
 3. **Phase 3 deferred:** verification stubs + `validate:stubs` in CI (see Phase 3 checklist).
 4. **Phase 4 polish and static hosting** — GitHub Pages deploy, device/a11y pass, richer history trends after a small real bank exists.
