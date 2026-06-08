@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3115",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Routine",
+      "cancer",
+      "screening",
+      "American",
+      "Cancer",
+      "Society",
+      "guidelines"
+    ],
+    "keyword_hash": "sha256:1283646c30276c90c45f3b157760c8936e562bd4c4348cb6fa5260bf2586fe99"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "routine",
+        "cancer",
+        "screening",
+        "guidelines"
+      ],
+      "keyword_hash": "sha256:b4a1656cd1da931fd6f95375c2b9f7db395acfc21bb4f4a9906ac03b7fe5ff6a"
+    }
+  ]
+}

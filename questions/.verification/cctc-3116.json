@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3116",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Smoking",
+      "cessation",
+      "Routine",
+      "self-examination",
+      "skin",
+      "tanning",
+      "beds",
+      "Broad-brimmed"
+    ],
+    "keyword_hash": "sha256:f068fcb511cb1d7e47f5f731b63927d72a50409f28ac41538886b0ee30bd3b3a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "smoking",
+        "cessation",
+        "self-exam",
+        "avoid",
+        "tanning",
+        "protective",
+        "clothing"
+      ],
+      "keyword_hash": "sha256:32338da853316e4458159da452f7b012107fe7e9de1993704a10b683dd8e83f4"
+    }
+  ]
+}

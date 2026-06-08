@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1114",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching malignancy-prevention measures after transplantation, which sun-exposure guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Avoid tanning beds" },
+      { "id": "B", "text": "Use tanning beds daily to improve vitamin D without risk" },
+      { "id": "C", "text": "Tanning beds are safer than outdoor sun for transplant recipients" },
+      { "id": "D", "text": "Tanning beds are recommended instead of sunscreen" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cancer-prevention teaching includes sun precautions such as avoiding undue sunlight exposure and avoiding tanning beds, along with protective clothing and sunscreen.",
+      "rationale_incorrect": {
+        "B": "Tanning beds are avoided rather than used daily for vitamin D.",
+        "C": "Tanning beds are not described as safer than outdoor sun exposure.",
+        "D": "Sunscreen and sun avoidance are recommended rather than tanning beds."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → Sun precautions",
+      "quote_hint": "Avoiding tanning beds",
+      "keywords": ["Avoiding", "tanning", "beds", "Sun", "precautions", "sunscreen"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.b. (avoid tanning beds); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Tanning-bed avoidance angle distinct from SPF greater than 50 teaching (cctc-1103) and hepatitis B HCC prevention (cctc-1112); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1115",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant recipient on cyclosporine develops elevated lipids. Which long-term management approach aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Medications, dietary changes, and exercise as indicated" },
+      { "id": "B", "text": "No treatment because immunosuppression prevents hyperlipidemia" },
+      { "id": "C", "text": "Complete dietary fat elimination with no exercise or medications" },
+      { "id": "D", "text": "Defer all lipid management until twenty years post-transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hyperlipidemia may develop as a side effect of immunosuppressive medications and may be managed with medications, dietary changes, and exercise.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressants can cause hyperlipidemia rather than preventing it.",
+        "C": "Management includes medications and exercise in addition to dietary modification.",
+        "D": "Lipid management begins when hyperlipidemia develops rather than being deferred for decades."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects of immunosuppression → iii. Hyperlipidemia",
+      "quote_hint": "May be managed with medications … dietary changes, and exercise",
+      "keywords": ["Hyperlipidemia", "managed", "medications", "dietary", "changes", "exercise"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → iii. Hyperlipidemia (medications, diet, exercise); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Hyperlipidemia lifestyle-management angle distinct from sirolimus hyperlipidemia adverse effect (cctc-3077) and long-term IS combo (cctc-1038); anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1116",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching animal-safety precautions after transplantation, which pet-care guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Keep pets immunized and in good health" },
+      { "id": "B", "text": "Household pets require no vaccinations after transplant" },
+      { "id": "C", "text": "Only stray animals need immunizations" },
+      { "id": "D", "text": "Pet health is unrelated to transplant infection risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Animal-safety teaching includes keeping pets immunized and in good health, along with precautions for litter, fecal matter, and new pets.",
+      "rationale_incorrect": {
+        "B": "Pet immunization and health maintenance are recommended for household pets.",
+        "C": "Household pets should be immunized and healthy, not only stray animals.",
+        "D": "Pet-related exposures can transmit infection to immunosuppressed recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → v. Animal safety",
+      "quote_hint": "Keep pets immunized and in good health",
+      "keywords": ["Keep", "pets", "immunized", "good", "health", "Animal", "safety"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (keep pets immunized and in good health); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pet-immunization angle distinct from cat-litter precautions (cctc-1099) and new-pet timing (cctc-1100); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1117",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating animal-safety infection-prevention teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should avoid handling cat litter when possible because bacteria may become airborne." },
+      { "id": "II", "text": "If cat litter handling is unavoidable, disposable gloves and a surgical mask should be used." },
+      { "id": "III", "text": "Recipients should avoid contact with pets that have diarrhea." },
+      { "id": "IV", "text": "Stray animals may be petted freely because bites and scratches never transmit infection." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Teaching includes avoiding cat litter and fecal matter when possible, using gloves and a mask if unavoidable, and avoiding pets with diarrhea. Stray animals should be avoided because they may bite or scratch.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—contact with pets with diarrhea should be avoided.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because stray animals may bite or scratch and should not be petted."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → v. Animal safety",
+      "quote_hint": "Avoid handling fecal matter especially cat litter … wear gloves … surgical mask … Avoid contact with pets … with diarrhea … Avoid stray animals",
+      "keywords": ["cat", "litter", "gloves", "surgical", "mask", "diarrhea", "stray", "animals"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (litter, gloves/mask, diarrhea, stray animals); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Animal-safety combo distinct from pet-immunization recall (cctc-1116) and visitor-precaution combo (cctc-1113); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  }
+]

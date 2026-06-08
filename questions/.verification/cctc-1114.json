@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-1114",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Avoiding",
+      "tanning",
+      "beds",
+      "Sun",
+      "precautions",
+      "sunscreen"
+    ],
+    "keyword_hash": "sha256:1439a25aab1a6bcdb12d212fed359407b6e2b1c787108cb8e20648d94dd57474"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "avoid",
+        "tanning"
+      ],
+      "keyword_hash": "sha256:a1b5d16ca0e8ccc13f7f611c72af14d037f36fb1a0b09ee983be2473897e1e75"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2113",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Prevent",
+      "cross-contamination",
+      "raw",
+      "cooked",
+      "foods",
+      "preparing",
+      "food"
+    ],
+    "keyword_hash": "sha256:9df3845f50f8439ffa440cd4ec5fc8fa08ef466cb4533e2afedcab84a400b881"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "dietary",
+        "precautions",
+        "prevent",
+        "cross-contamination",
+        "between",
+        "cooked",
+        "foods"
+      ],
+      "keyword_hash": "sha256:4645a4e28ce72178aa3afcf76c82820253f268dfa11125ff95a9dc63a77ed4b0"
+    }
+  ]
+}

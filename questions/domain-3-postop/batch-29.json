@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3113",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During long-term follow-up, a transplant recipient has persistently elevated low-density lipoprotein cholesterol on immunosuppression. Which coordination step aligns with standard post-transplant care references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Assess lipid profile and treat hyperlipidemia aggressively" },
+      { "id": "B", "text": "Ignore lipid elevations because transplantation prevents cardiovascular disease" },
+      { "id": "C", "text": "Defer all lipid assessment until twenty years post-transplant" },
+      { "id": "D", "text": "Discontinue immunosuppression immediately whenever cholesterol rises" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term post-transplant care includes assessing lipid profiles and treating hyperlipidemia aggressively, with monitoring of treatment response and medication side effects.",
+      "rationale_incorrect": {
+        "B": "Transplant recipients remain at cardiovascular risk and require lipid management.",
+        "C": "Lipid assessment is part of ongoing care rather than being deferred for decades.",
+        "D": "Immunosuppression changes require transplant-team guidance rather than abrupt discontinuation by the coordinator alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 321,
+      "section": "Ch. 6, Noninfectious Diseases → Long-term care → E. Treat hyperlipidemia aggressively",
+      "quote_hint": "Assess lipid profile … Treat hyperlipidemia aggressively",
+      "keywords": ["Assess", "lipid", "profile", "Treat", "hyperlipidemia", "aggressively"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Long-term care → E.1. (assess lipid profile; treat hyperlipidemia aggressively); PDF p. 321 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Aggressive hyperlipidemia treatment coordination angle distinct from hyperlipidemia lifestyle teaching (cctc-1115) and sirolimus lipid side effects (cctc-3077); anchor verified on Cupples p. 321.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3114",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating long-term post-transplant care for a recipient with new hypertension on cyclosporine, which management principle aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Treat hypertension aggressively and monitor blood pressure response to therapy" },
+      { "id": "B", "text": "Ignore blood pressure because immunosuppression prevents hypertension" },
+      { "id": "C", "text": "Hypertension requires no monitoring after the first post-transplant week" },
+      { "id": "D", "text": "All antihypertensive agents are permanently contraindicated after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term post-transplant care includes treating hypertension aggressively, assessing risk factors, and monitoring blood pressure response and antihypertensive side effects.",
+      "rationale_incorrect": {
+        "B": "Hypertension may develop as an immunosuppressant side effect and requires treatment.",
+        "C": "Blood pressure monitoring continues long term rather than ending after one week.",
+        "D": "Antihypertensive therapy is used when indicated rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 321,
+      "section": "Ch. 6, Noninfectious Diseases → Long-term care → F. Treat hypertension aggressively",
+      "quote_hint": "Treat hypertension aggressively … Monitor response to antihypertensive therapy",
+      "keywords": ["Treat", "hypertension", "aggressively", "Monitor", "response", "antihypertensive", "therapy"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Long-term care → F. (treat hypertension aggressively; monitor BP response); PDF p. 321 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Aggressive hypertension management angle distinct from hypertension as IS side-effect teaching (cctc-1038) and glucose-control coordination (cctc-3111); anchor verified on Cupples p. 321.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3115",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When coordinating long-term malignancy surveillance after transplantation, which screening guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Routine cancer screening per American Cancer Society guidelines" },
+      { "id": "B", "text": "No cancer screening because immunosuppression prevents malignancy" },
+      { "id": "C", "text": "Screening only once at transplant discharge with no follow-up" },
+      { "id": "D", "text": "Screening deferred until thirty years post-transplant for all recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cancer-prevention care includes routine cancer screening per American Cancer Society guidelines, with more aggressive or frequent screening when individual risk warrants.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressed recipients have increased malignancy risk and require screening.",
+        "C": "Ongoing screening is recommended rather than a single discharge assessment.",
+        "D": "Screening begins per guideline timelines rather than being deferred for decades."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer",
+      "quote_hint": "Routine cancer screening per American Cancer Society guidelines",
+      "keywords": ["Routine", "cancer", "screening", "American", "Cancer", "Society", "guidelines"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 5. (routine cancer screening per ACS guidelines); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. ACS routine cancer-screening coordination angle distinct from hepatitis B HCC prevention (cctc-1112) and skin self-examination teaching (cctc-3102); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3116",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant malignancy-prevention teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Smoking cessation is recommended as part of cancer prevention." },
+      { "id": "II", "text": "Routine self-examination of skin is recommended." },
+      { "id": "III", "text": "Tanning beds are a safe alternative to sun avoidance for transplant recipients." },
+      { "id": "IV", "text": "Broad-brimmed hats and protective clothing are sun precautions for recipients." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Cancer-prevention teaching includes smoking cessation, routine skin self-examination, and protective clothing such as broad-brimmed hats. Statement III is false because tanning beds should be avoided.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—protective clothing is recommended.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because tanning beds are not a safe alternative."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer",
+      "quote_hint": "Smoking cessation … Routine self-examination of skin … Avoiding tanning beds … Broad-brimmed hats",
+      "keywords": ["Smoking", "cessation", "Routine", "self-examination", "skin", "tanning", "beds", "Broad-brimmed"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 1.–4.c.i. (smoking cessation, skin self-exam, avoid tanning beds, protective clothing); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Malignancy-prevention combo distinct from prior malignancy-prevention combo (cctc-3043) and PTLD combo (cctc-3112); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  }
+]
