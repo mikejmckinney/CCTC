@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3006",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 168,
+    "keywords": [
+      "opportunistic",
+      "infection",
+      "malignancy",
+      "immunosuppression",
+      "long-term"
+    ],
+    "keyword_hash": "sha256:6c331716eedc957b9b83f612fdd34a7035b62ae7d88a7a273aa9756108a2db8c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 168,
+      "keywords": [
+        "immunosuppressive",
+        "medications",
+        "long-term",
+        "effects",
+        "infection",
+        "malignancy"
+      ],
+      "keyword_hash": "sha256:6683706874b48d3bdc23d785f27981c7c7bafc39aa8a960858ded710c35830ce"
+    }
+  ]
+}

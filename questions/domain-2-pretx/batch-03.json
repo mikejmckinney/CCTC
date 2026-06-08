@@ -1,0 +1,197 @@
+[
+  {
+    "id": "cctc-2009",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant candidate has a history of chronic obstructive pulmonary disease and a prior smoking history. Which additional pre-transplant evaluation step is indicated according to standard pulmonary assessment references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Pulmonary function testing" },
+      { "id": "B", "text": "Immediate listing without pulmonary studies" },
+      { "id": "C", "text": "Waiving chest radiography for all candidates with COPD" },
+      { "id": "D", "text": "Deferring oxygen saturation assessment until after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "All referred candidates should have chest radiography and pulse oximetry; patients with smoking history or COPD should additionally undergo pulmonary function testing, with abnormal findings referred for pulmonology evaluation.",
+      "rationale_incorrect": {
+        "B": "COPD and smoking history warrant pulmonary function testing before listing decisions.",
+        "C": "Chest radiography is required for all referred candidates regardless of COPD history.",
+        "D": "Oxygen saturation is evaluated during initial pulmonary screening, not deferred until after transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Pretransplant Evaluation → §2. Pulmonary evaluation → b.",
+      "quote_hint": "patients with a smoking history or a history of chronic obstructive lung disease should undergo pulmonary function testing",
+      "keywords": ["smoking", "chronic", "obstructive", "pulmonary", "function", "testing"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → §2. Pulmonary evaluation → a–b (chest radiograph, pulse oximetry, PFT for smoking/COPD); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 33.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-2010",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "recall",
+    "organ": "liver",
+    "recipient_age": "pediatric",
+    "stem": "A transplant coordinator is explaining liver waitlist scoring to the parents of a 9-year-old candidate. Which scoring system applies to this child's allocation priority?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Pediatric End-Stage Liver Disease (PELD) score" },
+      { "id": "B", "text": "Model for End-Stage Liver Disease (MELD) score" },
+      { "id": "C", "text": "LAS score used for lung allocation only" },
+      { "id": "D", "text": "Status 1A heart allocation priority" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The MELD/PELD system assigns MELD to candidates age 12 years or older and PELD to candidates younger than 12 years of age.",
+      "rationale_incorrect": {
+        "B": "MELD applies to liver candidates age 12 and older; this child is under 12.",
+        "C": "LAS is the lung allocation score, not pediatric liver allocation.",
+        "D": "Status 1A is a heart allocation category, not pediatric liver scoring."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 45,
+      "section": "Ch. 1, Liver transplantation → MELD/PELD scoring → b.i.",
+      "quote_hint": "PELD Score is for candidates <12 years of age",
+      "keywords": ["PELD", "candidates", "12", "years", "age", "MELD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → liver MELD/PELD scoring (MELD ≥12 years; PELD <12 years); PDF p. 45 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 45.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-2011",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "According to OPTN waitlist policy, what happens to organ offers for a candidate classified as inactive because they are temporarily unsuitable for transplant?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "The candidate will not receive any organ offers" },
+      { "id": "B", "text": "The candidate continues to receive offers at the same priority as active candidates" },
+      { "id": "C", "text": "The candidate is automatically removed from the waitlist permanently" },
+      { "id": "D", "text": "The candidate receives offers only for non-standard criteria organs" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Policy 3.4.E allows programs to classify temporarily unsuitable candidates as inactive, and inactive candidates do not receive organ offers until reactivated.",
+      "rationale_incorrect": {
+        "B": "Inactive status suspends organ offers; active and inactive candidates are not offered organs equivalently.",
+        "C": "Inactive status is temporary unsuitability, not automatic permanent removal.",
+        "D": "Inactive candidates receive no offers under Policy 3.4.E, not a separate non-standard offer stream."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 44,
+      "section": "Policy 3.4.E → Inactive Status",
+      "quote_hint": "the candidate will not receive any organ offers",
+      "keywords": ["inactive", "candidate", "organ", "offers", "temporarily", "unsuitable"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=44",
+        "locator": "Policy 3.4.E → Inactive Status (inactive candidates do not receive organ offers); PDF p. 44 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. OPTN-primary anchor verified against indexed optn_policies.pdf p. 44 (Policy 3.4.E).",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-2012",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney waitlist candidate develops an active infection requiring hospitalization and is temporarily unsuitable for transplant surgery. The transplant program places the candidate on inactive status per OPTN policy. What should the coordinator tell the patient about organ offers during this period?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "No organ offers will be made while inactive status remains in effect" },
+      { "id": "B", "text": "Organ offers will continue at full allocation priority" },
+      { "id": "C", "text": "Only local offers within the transplant hospital will continue" },
+      { "id": "D", "text": "The candidate must re-register as a new waitlist entry before any future offers" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "When a program classifies a temporarily unsuitable candidate as inactive under Policy 3.4.E, the candidate does not receive organ offers until returned to active status.",
+      "rationale_incorrect": {
+        "B": "Inactive status specifically suspends offers; allocation priority does not continue during inactivity.",
+        "C": "Policy 3.4.E applies to all offers, not only out-of-center offers.",
+        "D": "Inactive status is a modification of the existing registration, not mandatory re-registration as a new candidate."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 44,
+      "section": "Policy 3.4.E → Inactive Status",
+      "quote_hint": "the candidate will not receive any organ offers",
+      "keywords": ["inactive", "temporarily", "unsuitable", "organ", "offers"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=44",
+        "locator": "Policy 3.4.E → Inactive Status; PDF p. 44 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      },
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 8 → waiting list mortality discussion (inactive status and waitlist deaths); PDF p. 253 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. OPTN-primary on Policy 3.4.E p. 44; Danovitch p. 253 additive context on inactive waitlist mortality.",
+    "last_updated": "2026-06-06"
+  }
+]

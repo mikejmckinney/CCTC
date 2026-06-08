@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2129",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When reviewing post-transplant lymphoproliferative disease (PTLD) presentation during evaluation teaching, which statement aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "PTLD may be asymptomatic" },
+      { "id": "B", "text": "PTLD always presents with isolated graft tenderness and fever" },
+      { "id": "C", "text": "Asymptomatic PTLD never occurs in transplant recipients" },
+      { "id": "D", "text": "PTLD presentation is limited to skin lesions only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Clinical presentation of PTLD is noted to include a range of symptoms, and PTLD may be asymptomatic.",
+      "rationale_incorrect": {
+        "B": "Presentation is variable and may be asymptomatic rather than always presenting with classic graft tenderness and fever.",
+        "C": "Asymptomatic PTLD is explicitly noted as possible.",
+        "D": "PTLD may involve multiple organ systems and presentations beyond skin lesions alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation",
+      "quote_hint": "PTLD may be asymptomatic",
+      "keywords": ["PTLD", "may", "be", "asymptomatic", "Clinical", "presentation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3. Clinical presentation (PTLD may be asymptomatic); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Asymptomatic-PTLD recall angle distinct from PTLD combo distractor use (cctc-2111) and extranodal epidemiology (cctc-2112); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2130",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant recipient with abdominal pain and peritoneal signs is being evaluated for possible PTLD. Which gastrointestinal complication aligns with standard PTLD presentation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "GI tract involvement with intestinal perforation and peritonitis" },
+      { "id": "B", "text": "PTLD never involves the gastrointestinal tract" },
+      { "id": "C", "text": "Intestinal perforation excludes PTLD from the differential" },
+      { "id": "D", "text": "GI involvement occurs only as asymptomatic colon polyps without peritoneal signs" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include GI tract involvement with intestinal perforation and peritonitis, among other systemic and localizing symptoms.",
+      "rationale_incorrect": {
+        "B": "GI tract involvement is specifically listed in PTLD presentation.",
+        "C": "Intestinal perforation and peritonitis are cited complications rather than excluding PTLD.",
+        "D": "GI involvement may present with perforation and peritonitis rather than only silent polyps."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → j.",
+      "quote_hint": "GI tract involvement: intestinal perforation and peritonitis",
+      "keywords": ["GI", "tract", "involvement", "intestinal", "perforation", "peritonitis"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.j. (GI tract involvement: intestinal perforation and peritonitis); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. GI-perforation presentation angle distinct from extranodal epidemiology (cctc-2112) and PTLD symptom list (cctc-2111); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2131",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pretransplant evaluation of bone-health planning, which treatment option aligns with standard references for osteopenia or osteoporosis?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hormone replacement therapy in carefully selected patients" },
+      { "id": "B", "text": "Hormone replacement therapy is universally required for all transplant candidates" },
+      { "id": "C", "text": "No pharmacologic or hormonal options exist for bone loss" },
+      { "id": "D", "text": "Hormone therapy is permanently contraindicated in every candidate" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bone-health treatment options include hormone replacement therapy in carefully selected patients, along with calcium and vitamin D, bisphosphonates, calcitonin, denosumab, and exercise.",
+      "rationale_incorrect": {
+        "B": "Hormone replacement is an option in carefully selected patients rather than a universal requirement.",
+        "C": "Multiple pharmacologic bone therapies are listed when indicated.",
+        "D": "Hormone replacement may be considered in selected patients rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Prevent or treat osteopenia/osteoporosis → e.",
+      "quote_hint": "Hormone replacement therapy in carefully selected patients",
+      "keywords": ["Hormone", "replacement", "therapy", "carefully", "selected", "patients"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 2.e. (hormone replacement therapy in carefully selected patients); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. HRT bone-therapy angle distinct from baseline DEXA screening (cctc-2107) and denosumab post-transplant item (cctc-3121); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2132",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling a seronegative recipient about Epstein-Barr virus (EBV) risk after transplantation, which outcome spectrum aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Sequelae may range from a mononucleosis-like syndrome to post-transplant lymphoproliferative disease (PTLD)" },
+      { "id": "B", "text": "EBV infection causes only mild cold symptoms and never progresses" },
+      { "id": "C", "text": "PTLD is unrelated to EBV infection" },
+      { "id": "D", "text": "Mononucleosis-like illness excludes PTLD risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Effects of EBV infection include sequelae ranging from a mononucleosis-like syndrome to post-transplant lymphoproliferative disease, particularly relevant in primary infection during the early post-transplant period.",
+      "rationale_incorrect": {
+        "B": "EBV sequelae may be more severe than mild cold symptoms and can include PTLD.",
+        "C": "PTLD is among the cited sequelae of EBV infection.",
+        "D": "Mononucleosis-like illness is on the spectrum that may progress to PTLD rather than excluding it."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 2. Incidence → c.i. → ii.",
+      "quote_hint": "sequelae of EBV infection range from a mononucleosis-like syndrome to posttransplant lymphoproliferative disease",
+      "keywords": ["sequelae", "EBV", "infection", "mononucleosis-like", "syndrome", "lymphoproliferative", "disease"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 2.c.ii. (sequelae from mononucleosis-like syndrome to PTLD); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. EBV-sequelae spectrum angle distinct from reactivation incidence (cctc-2125) and primary-infection timing (cctc-2110); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  }
+]

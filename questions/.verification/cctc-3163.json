@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3163",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 737,
+    "keywords": [
+      "Isolated",
+      "fever",
+      "without",
+      "symptoms",
+      "rejection",
+      "Aspergillus"
+    ],
+    "keyword_hash": "sha256:5f70bc325fbc46a11fb6675f117645763012c82426319e19bf8a8da1961c94b4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "keywords": [
+        "symptoms",
+        "isolated",
+        "fever",
+        "without",
+        "rejection"
+      ],
+      "keyword_hash": "sha256:49d4d121e75005a5d9b5acdc0837f16432ef99ad4fbe0f0cbd1ce9405572e13e"
+    }
+  ]
+}

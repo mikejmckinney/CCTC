@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-3165",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 737,
+    "keywords": [
+      "Dyspnea",
+      "hypoxia",
+      "Symptoms",
+      "Aspergillus",
+      "fever",
+      "rejection"
+    ],
+    "keyword_hash": "sha256:cdf1f190e31b44d22d7148f7e0f443394f58136a7b42d0ee09a5a8e6ef7287fd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "keywords": [
+        "symptoms",
+        "dyspnea",
+        "hypoxia"
+      ],
+      "keyword_hash": "sha256:a1a1ad49fe0246b4af0d92e5b6aeceeaa391e7fe51b9858a4e7faf9e0b7cfd2f"
+    }
+  ]
+}

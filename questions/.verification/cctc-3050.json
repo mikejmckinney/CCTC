@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3050",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 230,
+    "keywords": [
+      "Surgical",
+      "wound",
+      "infections",
+      "debridement",
+      "antimicrobial",
+      "therapy",
+      "empiric"
+    ],
+    "keyword_hash": "sha256:9951b27063fe39154dc0e940480d44a04e423cf1a44e77543a22597bf9e3ee5a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 230,
+      "keywords": [
+        "surgical",
+        "wound",
+        "infections",
+        "debridement",
+        "antimicrobial",
+        "therapy"
+      ],
+      "keyword_hash": "sha256:e692bb769156b55f93df66eb64bb3ac27b568f7c65bcb75c7211a7fd89c1346c"
+    }
+  ]
+}

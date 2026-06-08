@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2011",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 44,
+    "keywords": [
+      "inactive",
+      "candidate",
+      "organ",
+      "offers",
+      "temporarily",
+      "unsuitable"
+    ],
+    "keyword_hash": "sha256:7c6fc8721bd591daa38820c06745ebee43c2a4daf8a3fba91ca6c7b650737349"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 44,
+      "policy": "3.4",
+      "keywords": [
+        "inactive",
+        "status",
+        "candidates",
+        "receive",
+        "organ",
+        "offers"
+      ],
+      "keyword_hash": "sha256:0112091c9522042d26ded84547cd26e44a4f5e26edab94bce8aa565d9876df91"
+    }
+  ]
+}

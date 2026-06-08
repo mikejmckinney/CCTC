@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3048",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 150,
+    "keywords": [
+      "Azathioprine",
+      "Bone",
+      "marrow",
+      "suppression",
+      "leukopenia",
+      "pancytopenia",
+      "thrombocytopenia"
+    ],
+    "keyword_hash": "sha256:4da323a3c3185dd7b4fc1e5e16ee2af333c120489885601bcf2cc77f2fb6c8eb"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 150,
+      "keywords": [
+        "marrow",
+        "suppression",
+        "leukopenia",
+        "pancytopenia"
+      ],
+      "keyword_hash": "sha256:18b29cb886b61dc819d68a5385c7db38522579185252bb7bd658d67a0a9ce488"
+    }
+  ]
+}

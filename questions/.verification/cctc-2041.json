@@ -1,0 +1,45 @@
+{
+  "item_id": "cctc-2041",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 46,
+    "keywords": [
+      "10",
+      "business",
+      "days",
+      "registered",
+      "waiting",
+      "list",
+      "date",
+      "patient"
+    ],
+    "keyword_hash": "sha256:679e7717becafa9a49435c55e0bf8554d2b928c601babaa3be53cdb0c1413bf7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "policy": "3.5",
+      "keywords": [
+        "table",
+        "hospital",
+        "patient",
+        "notification",
+        "requirements",
+        "written",
+        "within",
+        "business"
+      ],
+      "keyword_hash": "sha256:21e11d9db547e56a688f32f5f69eb59f7269839bad3c8c8060808ae11f0d5d34"
+    }
+  ]
+}

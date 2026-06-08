@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1033",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 108,
+    "keywords": [
+      "grapefruit",
+      "serum",
+      "levels",
+      "notify",
+      "transplant",
+      "team",
+      "non-steroidal"
+    ],
+    "keyword_hash": "sha256:158416bcde8afce116d23e10d4c91b3222386f1dd3d4af02fd1c11cec9defefe"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 108,
+      "keywords": [
+        "right",
+        "grapefruit",
+        "interactions",
+        "other",
+        "notify",
+        "avoid",
+        "nsaids",
+        "written"
+      ],
+      "keyword_hash": "sha256:929ee95aa9b030f0f05935c99316365bdb0b6c648b8d8d5d573b4db8c1f391f4"
+    }
+  ]
+}

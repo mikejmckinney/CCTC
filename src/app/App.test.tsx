@@ -23,13 +23,13 @@ vi.mock('../lib/storage', () => ({
 }));
 
 describe('App', () => {
-  it('renders the start screen and example-bank messaging', async () => {
+  it('renders the start screen and loaded-bank summary', async () => {
     render(<App />);
 
     await waitFor(() => expect(screen.getByRole('heading', { name: /build a practice session/i })).toBeInTheDocument());
 
     expect(screen.getByRole('heading', { name: 'CCTE Practice Exam' })).toBeInTheDocument();
-    expect(screen.getByText(/Only example questions are available right now/i)).toBeInTheDocument();
+    expect(screen.getByText(/Loaded bank:/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /start session/i })).toBeInTheDocument();
   });

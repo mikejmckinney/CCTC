@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-2016",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 46,
+    "keywords": [
+      "Urine",
+      "protein",
+      "microscopy",
+      "culture",
+      "sensitivity",
+      "preoperative",
+      "baseline"
+    ],
+    "keyword_hash": "sha256:7525efeea691266c82585acd3f08c2c9135a847a736d1a22cc1d207ca5f780bb"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 46,
+      "keywords": [
+        "specific",
+        "urine",
+        "tests"
+      ],
+      "keyword_hash": "sha256:64eef2b5d1822834e8586523a5084c051d78dfe64773eea2a4509c95f345ed15"
+    }
+  ]
+}

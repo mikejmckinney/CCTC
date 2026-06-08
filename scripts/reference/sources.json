@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "index_dir": "docs/reference/.index",
+  "sources": [
+    {
+      "id": "cupples",
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "title": "Core Curriculum for Transplant Nurses, 2nd ed."
+    },
+    {
+      "id": "secrets",
+      "filename": "transplantation-nursing-secrets.pdf",
+      "title": "Transplantation Nursing Secrets"
+    },
+    {
+      "id": "organ-transplantation",
+      "filename": "organ-transplantation-2e.pdf",
+      "title": "Organ Transplantation, 2nd ed."
+    },
+    {
+      "id": "danovitch",
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "title": "Handbook of Kidney Transplantation, 6th ed."
+    },
+    {
+      "id": "nursing-drug-handbook",
+      "filename": "nursing-drug-handbook-2024.pdf",
+      "title": "Saunders Nursing Drug Handbook 2024"
+    },
+    {
+      "id": "mosbys",
+      "filename": "mosbys-diagnostic-lab-reference-14e.pdf",
+      "title": "Mosby's Diagnostic and Laboratory Test Reference, 14th ed."
+    },
+    {
+      "id": "optn-policies",
+      "filename": "optn-policies.pdf",
+      "title": "OPTN Policies (effective policy bundle)",
+      "kind": "optn_policy",
+      "public_url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf"
+    }
+  ]
+}

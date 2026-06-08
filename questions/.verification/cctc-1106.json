@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-1106",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 118,
+    "keywords": [
+      "Breast",
+      "health",
+      "Monthly",
+      "self-examination",
+      "Mammograms"
+    ],
+    "keyword_hash": "sha256:2c2edc20927fc718f5fc63beca8b4fa5753b80ff57c0488e7d33ae839d7c4851"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "keywords": [
+        "breast",
+        "health",
+        "monthly",
+        "self-examination"
+      ],
+      "keyword_hash": "sha256:64cfb41cb662f97880b5b661a50fcec582ef024499a61f3dfc97d509d0a4c962"
+    }
+  ]
+}

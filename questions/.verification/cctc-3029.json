@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-3029",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "Chest",
+      "pain",
+      "urgent",
+      "matters",
+      "transplant",
+      "team",
+      "contact"
+    ],
+    "keyword_hash": "sha256:002e4ece8d65e7796d74eab91b568c1b9b6b6067099c399400f5c2c75978c54e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "urgent",
+        "matters",
+        "chest"
+      ],
+      "keyword_hash": "sha256:3cd65e9b80e34399aaceb3ff543f10ef97f1d3ce19e1c17a71d0af397b38d467"
+    }
+  ]
+}

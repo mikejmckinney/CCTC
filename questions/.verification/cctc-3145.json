@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3145",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "Wound",
+      "treatment",
+      "varies",
+      "drainage",
+      "granulation",
+      "tissue",
+      "location"
+    ],
+    "keyword_hash": "sha256:83d636d504e0e942eee9138cd7ec9974304f4e293d960fa97c499ea0e0d532bd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "wound",
+        "treatment",
+        "individualized",
+        "depth",
+        "drainage",
+        "granulation",
+        "location"
+      ],
+      "keyword_hash": "sha256:073a4d1a7bd49a629c981e13ba55aaab3777ecc36cff8de3b308c09a15a2b5fb"
+    }
+  ]
+}

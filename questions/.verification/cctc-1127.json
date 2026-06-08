@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1127",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Sexual",
+      "dysfunction",
+      "changes",
+      "libido",
+      "medications",
+      "communicate",
+      "healthcare",
+      "providers"
+    ],
+    "keyword_hash": "sha256:6e5769a9e1ca8337d3882e8b550a0935233fc5dc20096dced69eb87d16c04a18"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "libido",
+        "changes",
+        "relate",
+        "medications",
+        "encourage",
+        "provider",
+        "communication"
+      ],
+      "keyword_hash": "sha256:be2abdb98dfad730eb1c68e68141ac4cdf7b15d73268fa72dcdfbc7ad1d64710"
+    }
+  ]
+}

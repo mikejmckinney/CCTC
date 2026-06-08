@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3099",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 209,
+    "keywords": [
+      "Frequent",
+      "cause",
+      "disease",
+      "SOT",
+      "recipients",
+      "Lower",
+      "respiratory",
+      "morbidity"
+    ],
+    "keyword_hash": "sha256:a19e680bb1f1caca5e75b74aeff28a4b56cdac11239590c8c78b7e5dd0461a8a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 209,
+      "keywords": [
+        "lower",
+        "respiratory",
+        "morbidity",
+        "mortality"
+      ],
+      "keyword_hash": "sha256:dfa4ed689141969f3a723e1afc5d221e07b10ca14499b293a232f8da87ba7ffb"
+    }
+  ]
+}

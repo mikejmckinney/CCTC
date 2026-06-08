@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1144",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 122,
+    "keywords": [
+      "Risk",
+      "infection",
+      "endemic",
+      "infections",
+      "area",
+      "travel"
+    ],
+    "keyword_hash": "sha256:210bd5bad5c44620725d946b9012d3fa4328f22ca7abac195295cd50f68088b2"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "keywords": [
+        "destination",
+        "selection",
+        "includes",
+        "endemic",
+        "infection"
+      ],
+      "keyword_hash": "sha256:482c78359abcd67db14644bf94f9fb9f62ae34abb9aa6b8a01c2703d3dc22181"
+    }
+  ]
+}

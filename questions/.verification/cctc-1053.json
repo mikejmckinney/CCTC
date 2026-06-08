@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1053",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "infection",
+      "prevention",
+      "guidelines",
+      "tap",
+      "water",
+      "hot",
+      "tubs"
+    ],
+    "keyword_hash": "sha256:9f7f7a91d629840b895bc54692431efba843a2837bb2a5a32dc687659ba069bf"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "program",
+        "guidelines",
+        "water",
+        "filters"
+      ],
+      "keyword_hash": "sha256:a59cf4eec086cf78756f6ac88ff82875cb44d4ab6b5e02cf02bd619e5bcebecc"
+    }
+  ]
+}

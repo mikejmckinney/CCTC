@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-2046",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 46,
+    "keywords": [
+      "evaluation",
+      "completed",
+      "patient",
+      "not",
+      "registered",
+      "waiting",
+      "list"
+    ],
+    "keyword_hash": "sha256:e7030aa2c06ff36792b9ad4bc7282ae7add699dab4ed21570806175fe187bd7e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "policy": "3.5",
+      "keywords": [
+        "table",
+        "written",
+        "notification",
+        "evaluation",
+        "complete",
+        "patient",
+        "registered",
+        "waiting"
+      ],
+      "keyword_hash": "sha256:58598bafef6f150bd6756ea30af83b78ac3cb71e06425ac2590a451a895c1d77"
+    }
+  ]
+}

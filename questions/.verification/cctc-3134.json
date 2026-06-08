@@ -1,0 +1,35 @@
+{
+  "item_id": "cctc-3134",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "colonized",
+      "VRE",
+      "linezolid",
+      "should",
+      "considered"
+    ],
+    "keyword_hash": "sha256:78ed61e2b38135c81ed8797cc346752524b4b21a167641d520d895b48e6ac7fd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "linezolid",
+        "colonized"
+      ],
+      "keyword_hash": "sha256:5d2918e4784a018a5c3a75d4c437e1315a82600e71bd5a6b531e63989695d098"
+    }
+  ]
+}

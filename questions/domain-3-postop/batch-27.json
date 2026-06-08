@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3105",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "After transplantation, when should bone mineral density be reassessed per standard bone-health references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "At six months post-transplant and then every 12 or 24 months thereafter" },
+      { "id": "B", "text": "Only once at ten years post-transplant with no earlier reassessment" },
+      { "id": "C", "text": "Never after baseline because immunosuppression prevents bone loss" },
+      { "id": "D", "text": "Daily DEXA scans for the first year only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "DEXA screening includes baseline pretransplantation, reassessment at six months post-transplant, and every 12 or 24 months thereafter to assess bone health.",
+      "rationale_incorrect": {
+        "B": "Six-month and periodic reassessment is recommended rather than a single decennial study.",
+        "C": "Recipients remain at bone-loss risk and require ongoing DEXA monitoring.",
+        "D": "Periodic 12- to 24-month intervals are referenced rather than daily scanning."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Screen for decreased bone mineral density",
+      "quote_hint": "Six months posttransplant … Every 12 or 24 months thereafter to assess bone health",
+      "keywords": ["Six", "months", "posttransplant", "Every", "months", "thereafter", "bone", "health"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → DEXA at 6 months then every 12–24 months; PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant DEXA interval angle distinct from baseline pretransplant screening (cctc-2107) and osteopenia teaching (cctc-1047); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3106",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching long-term skin surveillance, which anatomic distribution aligns with standard references for basal and squamous cell carcinoma in transplant recipients?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Seventy-five percent occur on the head, neck, or dorsal surface of the hands" },
+      { "id": "B", "text": "All lesions occur exclusively on the soles of the feet" },
+      { "id": "C", "text": "Lesions occur only on sun-protected mucosa with no head or neck involvement" },
+      { "id": "D", "text": "Skin cancers never involve the hands or neck in transplant recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Seventy-five percent of squamous and basal cell carcinomas in solid-organ transplant recipients occur on the head, neck, or dorsal surface of the hands.",
+      "rationale_incorrect": {
+        "B": "Head, neck, and dorsal hand surfaces are the predominant sites rather than soles alone.",
+        "C": "Head and neck are among the most common involved sites.",
+        "D": "The dorsal surface of the hands is a common site for these carcinomas."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Basal cell and squamous cell carcinoma",
+      "quote_hint": "75% of squamous and basal cell carcinomas occur on the head, neck, or dorsal surface of the hands",
+      "keywords": ["75%", "squamous", "basal", "cell", "carcinomas", "head", "neck", "hands"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → 75% of BCC/SCC on head, neck, or dorsal hands; PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anatomic distribution angle distinct from sun-exposed site teaching (cctc-3101) and 95% epidemiology (cctc-2105); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3107",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator compares cutaneous carcinoma behavior in transplant recipients with the general population. Which pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Skin lesions are more aggressive and multiple squamous cell carcinomas develop more frequently" },
+      { "id": "B", "text": "Skin lesions are always benign and never recur after transplantation" },
+      { "id": "C", "text": "Basal cell carcinomas never recur or metastasize in recipients" },
+      { "id": "D", "text": "Transplant recipients develop fewer skin cancers than the general population" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Compared with the general population, transplant recipients have more aggressive skin lesions and develop multiple squamous cell carcinomas more frequently.",
+      "rationale_incorrect": {
+        "B": "Lesions are described as more aggressive rather than uniformly benign.",
+        "C": "Basal cell carcinomas in recipients are more likely to recur or metastasize than in the general population.",
+        "D": "Transplant recipients have markedly elevated skin-cancer risk rather than lower risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Evolution of cutaneous carcinomas",
+      "quote_hint": "Skin lesions are more aggressive … Multiple squamous cell carcinomas develop more frequently",
+      "keywords": ["Skin", "lesions", "more", "aggressive", "Multiple", "squamous", "cell", "carcinomas"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → aggressive lesions and multiple SCC in recipients; PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Aggressive lesion behavior angle distinct from anatomic distribution (cctc-3106) and SCC-versus-BCC frequency (cctc-2106); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3108",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating long-term post-transplant health maintenance. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Annual influenza vaccination is recommended unless otherwise contraindicated." },
+      { "id": "II", "text": "DEXA reassessment at six months post-transplant is part of bone-health monitoring." },
+      { "id": "III", "text": "Calcium and vitamin D supplements may be used to prevent or treat osteopenia or osteoporosis." },
+      { "id": "IV", "text": "Bone mineral density never needs reassessment after the pretransplant baseline." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Annual influenza vaccination, six-month DEXA reassessment, and calcium/vitamin D supplementation are recommended components of long-term care. Statement IV is false because DEXA is repeated at six months and every 12 or 24 months thereafter.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—calcium and vitamin D are listed for osteopenia/osteoporosis prevention or treatment.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because ongoing DEXA monitoring is recommended after baseline."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Prevent infection / Preserve bone health",
+      "quote_hint": "Annual influenza vaccination … Six months posttransplant … Calcium and vitamin D supplements",
+      "keywords": ["Annual", "influenza", "vaccination", "Six", "months", "posttransplant", "Calcium", "vitamin"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevent infection (annual influenza vaccine) and Preserve bone health (DEXA intervals, calcium/vitamin D); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant infection-and-bone-health combo distinct from dental-care combo (cctc-3104) and skin-cancer combo (cctc-1105); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  }
+]

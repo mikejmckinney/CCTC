@@ -1,5 +1,8 @@
 import { expect } from '@playwright/test';
 
+/** Matches `QUESTION_MIN` in `src/app/App.tsx`. */
+export const MIN_SESSION_QUESTIONS = 10;
+
 export async function ensureAppReady(page) {
   await page.getByText('Loading local study data').waitFor({ state: 'hidden', timeout: 30_000 });
 }
@@ -17,15 +20,32 @@ export async function dismissDisclaimerIfPresent(page) {
   await expect(modal).toBeHidden();
 }
 
-export async function startStudySession(page, questionCount = 2) {
+export function sessionItemHeading(page, itemNumber, total) {
+  return page.getByRole('heading', { name: new RegExp(`Item ${itemNumber} of ${total}`, 'i') });
+}
+
+export async function readSessionItemTotal(page) {
+  const heading = page.getByRole('heading', { name: /Item \d+ of \d+/i });
+  await expect(heading).toBeVisible();
+  const text = await heading.textContent();
+  const match = text?.match(/Item \d+ of (\d+)/i);
+  if (!match) {
+    throw new Error(`Could not parse session item total from heading: ${text}`);
+  }
+  return Number(match[1]);
+}
+
+export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
   await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
 
-  await page.locator('.settings-grid select').nth(1).selectOption('study');
-  await page.locator('.settings-grid input[type="number"]').first().fill(String(questionCount));
+  await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
+  await page.getByRole('spinbutton', { name: /^Question count/i }).fill(String(questionCount));
   await page.getByRole('button', { name: 'Start session' }).click();
-  await expect(page.getByRole('heading', { name: new RegExp(`Item 1 of ${questionCount}`, 'i') })).toBeVisible();
+
+  await expect(page.getByRole('heading', { name: /Item 1 of \d+/i })).toBeVisible();
+  return readSessionItemTotal(page);
 }
 
 export async function resumeActiveSession(page) {

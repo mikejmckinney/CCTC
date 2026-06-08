@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1035",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 54,
+    "keywords": [
+      "pulmonary",
+      "rehabilitation",
+      "several",
+      "times",
+      "week",
+      "lung",
+      "transplantation"
+    ],
+    "keyword_hash": "sha256:d472b5927a510545e16b9e38115ae16f3e0b09c4aad496c78c4741e51ade927d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 54,
+      "keywords": [
+        "pulmonary",
+        "rehabilitation",
+        "requirement"
+      ],
+      "keyword_hash": "sha256:8db4035a183d877aef4ed70fcd0180ce7435dc41a8f0499c87029fa34be53346"
+    }
+  ]
+}

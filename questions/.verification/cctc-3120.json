@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3120",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 322,
+    "keywords": [
+      "Calcium",
+      "vitamin",
+      "Bisphosphonates",
+      "Exercise",
+      "Recheck",
+      "months",
+      "drug",
+      "treatment"
+    ],
+    "keyword_hash": "sha256:14a730f9caf6dde9954586723dae1e3ec57c72093ea547b1c1444234c51fcd6e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "keywords": [
+        "calcium",
+        "vitamin",
+        "bisphosphonates",
+        "exercise",
+        "recheck",
+        "after",
+        "therapy"
+      ],
+      "keyword_hash": "sha256:22b92292705b29cbb3c412b8385d2297f1981e658d8a183e6b54fa395195bca7"
+    }
+  ]
+}

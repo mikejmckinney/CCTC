@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2013",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 50,
+    "keywords": [
+      "Pancreas",
+      "transplantation",
+      "labile",
+      "diabetes",
+      "type",
+      "indicated"
+    ],
+    "keyword_hash": "sha256:07489c744bad64d9fcfdb84557b837080374357f80fc541883cbd762deea3358"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 50,
+      "keywords": [
+        "pancreas",
+        "transplantation",
+        "simultaneous",
+        "isolated",
+        "indications"
+      ],
+      "keyword_hash": "sha256:fda73eddf8881e2c51053c20301f656bf0a5e882c82e18d95cb09d7b3a246f04"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3107",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 280,
+    "keywords": [
+      "Skin",
+      "lesions",
+      "more",
+      "aggressive",
+      "Multiple",
+      "squamous",
+      "cell",
+      "carcinomas"
+    ],
+    "keyword_hash": "sha256:c318ea16668dcb128faab59c980a0ac1c0e37e365b93b882bf5c2467be5d10a4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "aggressive",
+        "lesions",
+        "multiple",
+        "recipients"
+      ],
+      "keyword_hash": "sha256:21930c195ea5037971355c41705d05e16d5a40925a42caf325401c0a9f205426"
+    }
+  ]
+}

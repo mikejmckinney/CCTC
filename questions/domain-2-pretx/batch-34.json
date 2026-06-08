@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-2133",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When explaining posttransplant lymphoproliferative disease (PTLD) epidemiology during evaluation, which organ-involvement pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "The disease may involve single or multiple organs" },
+      { "id": "B", "text": "PTLD is limited to the transplanted allograft only" },
+      { "id": "C", "text": "Multiorgan involvement never occurs in PTLD" },
+      { "id": "D", "text": "PTLD involves skin only and never visceral sites" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD may involve single or multiple organs and is often extranodal, with involvement of sites such as the gastrointestinal tract, lung, or kidney.",
+      "rationale_incorrect": {
+        "B": "PTLD may involve organs beyond the allograft, including extranodal sites.",
+        "C": "Single or multiple organ involvement is specifically described.",
+        "D": "Visceral and extranodal involvement such as GI tract, lung, or kidney may occur."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 1. Epidemiology → d.",
+      "quote_hint": "May involve single or multiple organs",
+      "keywords": ["May", "involve", "single", "multiple", "organs", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 1.d. (may involve single or multiple organs); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Single/multiple-organ involvement angle distinct from extranodal epidemiology in malignancy combo (cctc-3112) and GI-perforation presentation (cctc-2130); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2134",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A lung transplant recipient develops sore throat and tonsillar enlargement several months post-transplant. Which PTLD presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Tonsillitis may be part of PTLD clinical presentation" },
+      { "id": "B", "text": "Tonsillar symptoms exclude PTLD from the differential" },
+      { "id": "C", "text": "PTLD never involves the upper airway or tonsils" },
+      { "id": "D", "text": "Tonsillitis indicates only bacterial streptococcal infection and never PTLD" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include tonsillitis along with mononucleosis-like symptoms, fever, lymphadenopathy, and upper respiratory infection.",
+      "rationale_incorrect": {
+        "B": "Tonsillitis is listed among PTLD presentations rather than excluding it.",
+        "C": "Upper airway and tonsillar involvement may occur in PTLD.",
+        "D": "Tonsillitis may be part of PTLD presentation and requires clinical evaluation rather than assuming a single etiology."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → i.",
+      "quote_hint": "Tonsillitis",
+      "keywords": ["Tonsillitis", "Clinical", "presentation", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.i. (tonsillitis among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Tonsillitis presentation angle distinct from mononucleosis-like symptom cluster (cctc-2111) and GI-perforation item (cctc-2130); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2135",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "When teaching about posttransplant lymphoproliferative disease (PTLD) during evaluation, which pulmonary presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Lung lesion or visceral mass" },
+      { "id": "B", "text": "PTLD never produces pulmonary or visceral masses" },
+      { "id": "C", "text": "Pulmonary PTLD is limited to isolated graft tenderness without lesions" },
+      { "id": "D", "text": "Visceral masses occur only in kidney recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include lung lesion or visceral mass along with systemic and gastrointestinal symptoms.",
+      "rationale_incorrect": {
+        "B": "Lung lesions and visceral masses are specifically listed presentations.",
+        "C": "Pulmonary lesions may occur rather than being limited to graft tenderness alone.",
+        "D": "Lung and visceral involvement is described across solid-organ transplant recipients rather than kidney recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → k.",
+      "quote_hint": "Lung lesion or visceral mass",
+      "keywords": ["Lung", "lesion", "visceral", "mass", "PTLD", "presentation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.k. (lung lesion or visceral mass); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pulmonary-mass presentation angle distinct from tonsillitis item (cctc-2134) and asymptomatic PTLD recall (cctc-2129); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2136",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating PTLD recognition teaching for the evaluation team. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "PTLD may involve single or multiple organs." },
+      { "id": "II", "text": "Tonsillitis may be part of PTLD clinical presentation." },
+      { "id": "III", "text": "Weight loss is never associated with PTLD." },
+      { "id": "IV", "text": "Lung lesion or visceral mass may occur with PTLD." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Single or multiple organ involvement, tonsillitis, and lung or visceral masses are cited PTLD features. Statement III is false because weight loss is listed among clinical presentations.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—lung lesion or visceral mass may occur.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because weight loss is among listed PTLD symptoms."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 1. Epidemiology and 3. Clinical presentation",
+      "quote_hint": "May involve single or multiple organs … Tonsillitis … Weight loss … Lung lesion or visceral mass",
+      "keywords": ["single", "multiple", "organs", "Tonsillitis", "Weight", "loss", "Lung", "lesion"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 1.d. and 3.e., i., k. (organ involvement, tonsillitis, weight loss, lung/visceral mass); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. PTLD recognition combo distinct from presentation one-best (cctc-2111) and treatment-principle item (cctc-2112); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  }
+]

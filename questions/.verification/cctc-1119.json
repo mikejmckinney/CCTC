@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-1119",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "consume",
+      "raw",
+      "eggs",
+      "thoroughly",
+      "cooked",
+      "batter",
+      "cookie",
+      "dough"
+    ],
+    "keyword_hash": "sha256:7bb02c64d1d355d15c6004361511c939a791e2ec29a61e9b4287289471c6822b"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "dietary",
+        "precautions",
+        "avoid",
+        "undercooked",
+        "including",
+        "batter",
+        "cookie",
+        "dough"
+      ],
+      "keyword_hash": "sha256:b95f0a27feb12e117798f96841dd90ed897d7bb5199039da2242442ebff6f7c5"
+    }
+  ]
+}

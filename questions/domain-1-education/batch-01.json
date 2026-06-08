@@ -1,0 +1,252 @@
+[
+  {
+    "id": "cctc-1001",
+    "schema_version": 1,
+    "version": 10,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010502"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant recipient calls the coordinator to confirm the date and time of an upcoming clinic visit. According to standard teaching on communication with the transplant team, how should this contact be categorized?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "An urgent matter requiring immediate after-hours contact" },
+      { "id": "B", "text": "A non-urgent matter such as appointment verification" },
+      { "id": "C", "text": "An emergency that requires activating local EMS before notifying the team" },
+      { "id": "D", "text": "A matter that should wait until the next unscheduled clinic visit" }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Verification of appointment date and time is explicitly listed as a non-urgent reason to contact the transplant team. Coordinators teach recipients to distinguish routine questions from urgent clinical changes.",
+      "rationale_incorrect": {
+        "A": "Urgent matters include infection symptoms, rejection signs, wound drainage, chest pain, shortness of breath, bleeding, and stroke symptoms—not routine scheduling questions.",
+        "C": "Routine appointment confirmation does not constitute a local EMS emergency.",
+        "D": "Non-urgent matters are still appropriate to address through normal team communication channels rather than deferred indefinitely."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education — §h. Communication with the transplant team → ii. Non-urgent matters",
+      "quote_hint": "Non-urgent matters may include verification of appointment date and time",
+      "keywords": ["non-urgent", "appointment", "verification", "urgent", "infection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → ii. Non-urgent matters / iii. Urgent matters; PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Transplantation Nursing Secrets (Cupples & Ohler, eds., 2003).",
+        "locator": "Ch. 25, Patient Education — table “Topics for Candidate Education Programs During the Waiting Period”, item 12 “When to call the coordinator after transplantation”; PDF p. 319.",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 111.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1002",
+    "schema_version": 1,
+    "version": 10,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pre-transplant education, a candidate asks why immunosuppressive medications must be taken consistently even when they feel well. Which teaching point BEST reflects the risk described in transplant pharmacology references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Skipped doses mainly change cosmetic side effects without affecting graft outcomes." },
+      { "id": "B", "text": "Inadequate immunosuppression places the patient at risk for rejection." },
+      { "id": "C", "text": "Maintenance immunosuppression is required only during the first week after transplant." },
+      { "id": "D", "text": "Recipients may stop immunosuppression whenever they feel fatigued without notifying the team." }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Transplant pharmacology references identify inadequate immunosuppression as a direct risk factor for rejection. Coordinators reinforce consistent maintenance dosing and team contact before changes.",
+      "rationale_incorrect": {
+        "A": "Immunosuppression risks include rejection and infection, not only cosmetic effects.",
+        "C": "Maintenance therapy begins at transplant and continues long term for most recipients.",
+        "D": "Recipients should not independently stop immunosuppression; dose changes require coordinated medical management."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 130,
+      "section": "Ch. 4, Transplant Pharmacology — Introduction, A. Overview, item 3 (Risks associated to immunosuppression), subitem a.",
+      "quote_hint": "Inadequate immunosuppression places the patient at risk for rejection",
+      "keywords": ["inadequate", "immunosuppression", "rejection", "nonadherent", "associated"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Introduction → A. Overview → item 3 “Risks associated to immunosuppression” → subitem a.; PDF p. 130 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks associated with transplantation → b. Organ rejection → iii. Need for lifetime immunosuppression; PDF p. 98.",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 130. Book wording uses “associated to” (not “with”).",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1003",
+    "schema_version": 1,
+    "version": 10,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010605"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Which topic is explicitly listed among standard transplant discharge education subjects?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Signs and symptoms of infection" },
+      { "id": "B", "text": "DonorNet refusal code entry" },
+      { "id": "C", "text": "KDPI calculation variables" },
+      { "id": "D", "text": "Independent living donor advocate credentialing" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Discharge education curricula explicitly include signs and symptoms of infection alongside rejection recognition, medications, follow-up testing, and self-monitoring at home.",
+      "rationale_incorrect": {
+        "B": "DonorNet refusal documentation is a program/UNOS operational task, not a standard patient discharge education topic.",
+        "C": "KDPI is an allocation metric for clinicians and policy, not a listed discharge teaching subject.",
+        "D": "Independent donor advocate roles are part of living donation evaluation, not the discharge education topic list for recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "secrets",
+      "pdf_page": 320,
+      "section": "Ch. 25, Patient Education — “Topics for Discharge Education” table, item 4",
+      "quote_hint": "Signs and symptoms of infection",
+      "keywords": ["discharge", "education", "infection", "rejection", "medications"]
+    },
+    "references": [
+      {
+        "citation": "Transplantation Nursing Secrets (Cupples & Ohler, eds., 2003).",
+        "locator": "Ch. 25, Patient Education — table “Topics for Discharge Education”, item 4 “Signs and symptoms of infection”; PDF p. 320.",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → iii. Urgent matters (signs and symptoms of infection); PDF p. 111.",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/transplantation-nursing-secrets.pdf p. 320.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1004",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "Which patient population meets standard indications for heart transplantation according to organ-specific selection references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Patients with end-stage heart failure and advanced NYHA Class III to IV symptoms when no other medical or surgical options remain" },
+      { "id": "B", "text": "Patients with mild, stable angina controlled on a single antianginal medication" },
+      { "id": "C", "text": "Asymptomatic patients with incidentally discovered mild valvular regurgitation" },
+      { "id": "D", "text": "Patients who decline all medical therapy but have preserved ejection fraction and no heart failure symptoms" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cardiac transplantation is indicated for patients with end-stage heart failure and advanced congestive heart failure (NYHA Class III to IV) when no other medical or surgical options can improve quality of life and survival.",
+      "rationale_incorrect": {
+        "B": "Stable mild angina without advanced heart failure does not meet end-stage heart failure indications for transplant.",
+        "C": "Incidental mild valvular disease without advanced heart failure is not the standard transplant indication population.",
+        "D": "Transplant is reserved for advanced heart failure when other options are exhausted, not for asymptomatic patients declining therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 34,
+      "section": "Ch. 1, Organ-Specific Evaluation → A. Heart transplantation → item 1",
+      "quote_hint": "end-stage heart failure and advanced congestive heart failure (New York Heart Association Class III to IV)",
+      "keywords": ["transplantation", "indicated", "failure", "NYHA", "Class"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Organ-Specific Evaluation → A. Heart transplantation → item 1; PDF p. 34 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 34.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1005",
+    "schema_version": 1,
+    "version": 3,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "pediatric",
+    "stem": "A 9-year-old liver transplant candidate is being evaluated for waitlist priority in the United States. Which allocation score applies to this candidate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "PELD score" },
+      { "id": "B", "text": "MELD score" },
+      { "id": "C", "text": "Lung Allocation Score (LAS)" },
+      { "id": "D", "text": "KDPI" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In the U.S. liver allocation system, MELD applies to candidates age 12 years or older, while PELD applies to candidates younger than 12 years.",
+      "rationale_incorrect": {
+        "B": "MELD is used for liver candidates who are 12 years of age or older, not for a 9-year-old.",
+        "C": "LAS is the lung allocation score, not used for pediatric liver waitlist priority.",
+        "D": "KDPI is a kidney donor quality index, not a pediatric liver urgency score."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 45,
+      "section": "Ch. 1, Liver evaluation → §6. Organ allocation → b.i (MELD/PELD age thresholds)",
+      "quote_hint": "PELD Score is for candidates <12 years of age",
+      "keywords": ["MELD", "PELD", "candidates", "years", "liver", "score"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Liver evaluation → §6. Organ allocation → b.i (MELD for candidates ≥12 years; PELD for candidates <12 years); PDF p. 45 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 45.",
+    "last_updated": "2026-06-06"
+  }
+]

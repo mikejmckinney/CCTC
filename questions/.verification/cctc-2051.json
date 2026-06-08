@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2051",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 97,
+    "keywords": [
+      "Skin",
+      "assessment",
+      "Assessment",
+      "dentition",
+      "Colonoscopy",
+      "health",
+      "maintenance"
+    ],
+    "keyword_hash": "sha256:88a727dcf724cd395b7023ce898f80f4f3f9f8420c00bfc16bc7650f9bda5eed"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "keywords": [
+        "health-maintenance",
+        "testing",
+        "including",
+        "assessment",
+        "dentition"
+      ],
+      "keyword_hash": "sha256:0751a663a003040ec80c05c0c037aa4dff8f5780b75bcf640729a576f8d99e0f"
+    }
+  ]
+}

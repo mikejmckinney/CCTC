@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2005",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 253,
+    "keywords": [
+      "inactive",
+      "waiting",
+      "list",
+      "evaluation",
+      "incomplete",
+      "contraindication"
+    ],
+    "keyword_hash": "sha256:d4710e2b0d379b834edfa4c6c927deffdf2c405cbc5402b59099592c796ad09f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 253,
+      "keywords": [
+        "management",
+        "waiting",
+        "deceased",
+        "donor",
+        "kidney",
+        "inactive",
+        "active",
+        "candidates"
+      ],
+      "keyword_hash": "sha256:5b02fb0fe74c04fd0dc86cf97064f80e0af6196a12146d38c6170c4c2f2b5bfc"
+    }
+  ]
+}

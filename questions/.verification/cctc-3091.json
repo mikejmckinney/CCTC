@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3091",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 210,
+    "keywords": [
+      "RSV",
+      "large",
+      "droplets",
+      "fomites",
+      "survive",
+      "surfaces",
+      "skin",
+      "gloves"
+    ],
+    "keyword_hash": "sha256:f1e7c71cd1e4e930edeaecd32431fd7f8645d100e5c5e04bfa3a3a8f4ffb0ef0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 210,
+      "keywords": [
+        "droplet",
+        "fomite",
+        "spread",
+        "surface",
+        "survival"
+      ],
+      "keyword_hash": "sha256:1a39085425ce85ad39177b096cdf667cf0bb2b821e3b22bfaf8e892a03f5f829"
+    }
+  ]
+}

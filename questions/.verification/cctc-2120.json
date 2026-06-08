@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2120",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Prevention",
+      "PTLD",
+      "IVIG",
+      "EBV",
+      "replication",
+      "inhibitors",
+      "ganciclovir"
+    ],
+    "keyword_hash": "sha256:f76f2e41b073c6dfd92e6989905296b49cfeefc02047321280a0ff31ecacbd95"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "Prevention",
+        "PTLD",
+        "IVIG",
+        "EBV",
+        "replication",
+        "inhibitors",
+        "ganciclovir"
+      ],
+      "keyword_hash": "sha256:f76f2e41b073c6dfd92e6989905296b49cfeefc02047321280a0ff31ecacbd95"
+    }
+  ]
+}

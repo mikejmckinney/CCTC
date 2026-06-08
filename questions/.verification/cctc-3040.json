@@ -1,0 +1,45 @@
+{
+  "item_id": "cctc-3040",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 330,
+    "keywords": [
+      "90",
+      "days",
+      "six-month",
+      "annual",
+      "anniversary",
+      "transplant",
+      "TRF",
+      "Follow-up"
+    ],
+    "keyword_hash": "sha256:f37caa37bd205c7e4d562d574e2bc08768a3249085246def721a5665d41c1a6c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 330,
+      "policy": "18.1",
+      "keywords": [
+        "submission",
+        "requirements",
+        "organ-specific",
+        "recipient",
+        "follow-up",
+        "within",
+        "after",
+        "six-month"
+      ],
+      "keyword_hash": "sha256:e0492e6180a48600d1f978521215b38aae19db82481d2b93f5f099d518d64ad5"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1157",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "bathroom",
+      "animals",
+      "Wash",
+      "hands",
+      "Age",
+      "decades",
+      "permission"
+    ],
+    "keyword_hash": "sha256:de1471378cca73e94cee384b7c206e545f2ac820009ea53f67097011b5fe1ffd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "bathroom",
+        "animal",
+        "hygiene",
+        "general",
+        "age-decade",
+        "sharing"
+      ],
+      "keyword_hash": "sha256:0ddc0a3d2074378c46f322534c2928b07bea186a0444cf5c9d1f196399bfb672"
+    }
+  ]
+}

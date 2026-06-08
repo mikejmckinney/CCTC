@@ -1,0 +1,143 @@
+[
+  {
+    "id": "cctc-2006",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020201"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A highly sensitized kidney waitlist candidate is due for routine waitlist management testing. According to common center practice described in pre-transplant references, how often should panel reactive antibody (PRA) testing typically be obtained?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Monthly or more frequently" },
+      { "id": "B", "text": "Once every five years regardless of clinical change" },
+      { "id": "C", "text": "Only at the time of transplant surgery" },
+      { "id": "D", "text": "Never after initial listing" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "For sensitized kidney candidates, references describe monthly or more frequent PRA testing as part of waitlist management and risk monitoring.",
+      "rationale_incorrect": {
+        "B": "Sensitized candidates require much more frequent antibody monitoring than every five years.",
+        "C": "PRA monitoring occurs during the waiting period, not only intraoperatively.",
+        "D": "Ongoing PRA surveillance continues after listing for sensitized candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 55,
+      "section": "Ch. 1, Kidney waitlist management → §7.c.ii",
+      "quote_hint": "Monthly (or more frequent) PRAs for candidates who are sensitized",
+      "keywords": ["Monthly", "PRAs", "sensitized", "candidates", "kidney"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → kidney waitlist management → §7.c.ii (monthly or more frequent PRAs for sensitized candidates); PDF p. 55 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 55.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-2007",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": ["020402"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A liver candidate's MELD score changes after updated labs, affecting waitlist priority. What is the coordinator's responsibility regarding this change?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Educate the candidate about the waitlist status change and rationale for additional testing or procedures" },
+      { "id": "B", "text": "Withhold all waitlist information until the candidate is called in for transplant" },
+      { "id": "C", "text": "Remove the candidate from the list without team discussion" },
+      { "id": "D", "text": "Delegate all waitlist communication to the dialysis unit without transplant team involvement" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waitlist management references assign coordinators responsibility to educate candidates about changes in waitlist status and the rationale for additional tests or procedures.",
+      "rationale_incorrect": {
+        "B": "Candidates should receive education about waitlist status changes rather than being kept uninformed.",
+        "C": "Listing changes require interdisciplinary team processes, not unilateral coordinator removal.",
+        "D": "Transplant coordinators remain responsible for waitlist education even when dialysis centers participate in care."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → §9. Waitlist management → c.i. Transplant coordinator responsibilities → iv.",
+      "quote_hint": "Educate candidates about any changes in their waitlist status and rationale",
+      "keywords": ["Educate", "candidates", "waitlist", "status", "rationale", "testing"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §9. Waitlist management → coordinator responsibilities → item iv.; PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 102.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-2008",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "During pre-operative coordination for an adult heart transplant, which test is listed among typical preoperative requirements before surgery?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Chest radiograph" },
+      { "id": "B", "text": "Routine elective coronary bypass for all candidates" },
+      { "id": "C", "text": "Lung allocation score calculation" },
+      { "id": "D", "text": "PELD score update" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Typical preoperative protocols include obtaining a chest radiograph along with laboratory tests and other required studies before transplant surgery.",
+      "rationale_incorrect": {
+        "B": "Coronary bypass is not a universal preoperative requirement for every heart candidate.",
+        "C": "LAS applies to lung allocation, not standard heart preoperative protocols.",
+        "D": "PELD applies to pediatric liver allocation, not heart preoperative coordination."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 410,
+      "section": "Ch. 9, Heart Transplantation → Preparation of Patient for Surgery → A.1",
+      "quote_hint": "Chest radiograph",
+      "keywords": ["Chest", "radiograph", "preoperative", "Preparation", "Surgery"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 9 → Preparation of Patient for Surgery → A. Obtain preoperative tests → item 1 (chest radiograph); PDF p. 410 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 410.",
+    "last_updated": "2026-06-06"
+  }
+]

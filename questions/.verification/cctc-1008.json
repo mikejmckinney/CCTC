@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1008",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 334,
+    "keywords": [
+      "ILDA",
+      "independent",
+      "donor",
+      "advocate",
+      "informed",
+      "consent"
+    ],
+    "keyword_hash": "sha256:ae99e9f36b77d296360a1a7e185a86279ced944671db32fdceebe4be06903b3a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 334,
+      "keywords": [
+        "ILDA",
+        "independent",
+        "donor",
+        "advocate",
+        "informed",
+        "consent"
+      ],
+      "keyword_hash": "sha256:ae99e9f36b77d296360a1a7e185a86279ced944671db32fdceebe4be06903b3a"
+    }
+  ]
+}

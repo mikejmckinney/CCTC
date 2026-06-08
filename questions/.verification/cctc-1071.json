@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1071",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 202,
+    "keywords": [
+      "Liver",
+      "vanishing",
+      "bile",
+      "duct",
+      "Heart",
+      "coronary",
+      "Lung",
+      "glomerulopathy"
+    ],
+    "keyword_hash": "sha256:4c5129698ca3504530f391d92d1f27d96ee5fc8f3597d4e3812d037fdde8fbcf"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "keywords": [
+        "organ-specific",
+        "effects",
+        "allograft",
+        "liver",
+        "heart",
+        "kidney"
+      ],
+      "keyword_hash": "sha256:85b32f9458a2869bd97d5005eb23ef21a0a118eb19684ce5082e85254647916f"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3148",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 735,
+    "keywords": [
+      "antimicrobial",
+      "culture",
+      "sensitivities",
+      "Blood",
+      "cultures",
+      "daily",
+      "Removal",
+      "CVL"
+    ],
+    "keyword_hash": "sha256:1f22bc94793ba7d0f5adf6d56efc603fab7861e60646475f4fea6d96812cb67a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "keywords": [
+        "sensitivity-guided",
+        "therapy",
+        "daily",
+        "cultures",
+        "possible",
+        "removal",
+        "exchange"
+      ],
+      "keyword_hash": "sha256:583c4dd1ef6ed3708d6921277fa9e65df3006ca428bf8a12fb84a40cdf07761f"
+    }
+  ]
+}

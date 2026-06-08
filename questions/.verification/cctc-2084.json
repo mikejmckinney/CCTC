@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2084",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 181,
+    "keywords": [
+      "Psychosocial",
+      "history",
+      "Alcohol",
+      "drug",
+      "abuse",
+      "Incarceration",
+      "donor",
+      "risk"
+    ],
+    "keyword_hash": "sha256:a6cefd0ffb038de3a3fac852cf8b9b4e14fdc563e795ad5d718174f5cb47b55f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 181,
+      "keywords": [
+        "psychosocial",
+        "history",
+        "including",
+        "alcohol",
+        "abuse",
+        "incarceration"
+      ],
+      "keyword_hash": "sha256:f468fac8520f46d24a77dcf6c7fdf59bfe76e980701c553101927f2345e0c4df"
+    }
+  ]
+}

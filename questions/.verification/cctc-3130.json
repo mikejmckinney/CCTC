@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3130",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 322,
+    "keywords": [
+      "Hormone",
+      "replacement",
+      "therapy",
+      "carefully",
+      "selected",
+      "patients",
+      "osteopenia"
+    ],
+    "keyword_hash": "sha256:93b51be1be38c60b514d362d44c2fe572a272ec974dbe143f5bb036d29b5d268"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "keywords": [
+        "hormone",
+        "replacement",
+        "therapy",
+        "carefully",
+        "selected",
+        "patients"
+      ],
+      "keyword_hash": "sha256:3c2b01ea960663ffeba97e563354eb588126ac6c6c1230418ee539a767f3a24b"
+    }
+  ]
+}

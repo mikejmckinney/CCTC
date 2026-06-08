@@ -1,4 +1,8 @@
 {
+  "ignores": [
+    // Converted ABTC handbook excerpt — duplicate headings and list numbering from source PDF.
+    "docs/reference/ABTC Candidate Handbook.md"
+  ],
   "config": {
     "default": true,
     // Heading increment is noisy in extracted rule/ADR content with fixed anchors.

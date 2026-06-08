@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-3161",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant recipient with a central venous line develops candidemia. Which diagnostic step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Echocardiography to rule out cardiac vegetations" },
+      { "id": "B", "text": "No cardiac evaluation is needed when a central line is present" },
+      { "id": "C", "text": "Skin examination alone confirms or excludes candidemia" },
+      { "id": "D", "text": "Echocardiography is required only before transplantation, never afterward" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidemia diagnosis includes blood culture and sensitivities, CT scan to rule out abscess formation, and echocardiography to rule out cardiac vegetations in patients with central venous lines.",
+      "rationale_incorrect": {
+        "B": "Echocardiography is specifically recommended to evaluate for cardiac vegetations when central venous lines are present.",
+        "C": "Blood cultures and imaging evaluation are required rather than skin examination alone.",
+        "D": "Post-transplant candidemia evaluation may include echocardiography rather than being limited to pretransplant assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia → iii.",
+      "quote_hint": "ECHO to rule out cardiac vegetations in patients with CVLs",
+      "keywords": ["ECHO", "rule", "cardiac", "vegetations", "patients", "CVLs", "Diagnosis"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → iii. Diagnosis (echocardiography for cardiac vegetations with CVL); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Candidemia echocardiography angle distinct from candidemia presentation (cctc-3158) and severity epidemiology (cctc-3157); anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3162",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant recipient on tacrolimus requires intravenous liposomal amphotericin B for candidemia. Which medication-safety step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Monitor renal function closely due to increased nephrotoxicity risk with concomitant tacrolimus" },
+      { "id": "B", "text": "No renal monitoring is needed because amphotericin never affects kidney function" },
+      { "id": "C", "text": "Tacrolimus should be permanently discontinued before any antifungal therapy" },
+      { "id": "D", "text": "Liposomal amphotericin B is contraindicated in every transplant recipient on tacrolimus" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Intravenous liposomal amphotericin B for candidemia requires close renal function monitoring because of increased nephrotoxicity risk from concomitant use with tacrolimus.",
+      "rationale_incorrect": {
+        "B": "Nephrotoxicity risk is specifically cited with concomitant tacrolimus use.",
+        "C": "Tacrolimus continues with careful renal monitoring rather than being permanently stopped.",
+        "D": "Liposomal amphotericin B is a treatment option with renal monitoring rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia → iv. Treatment",
+      "quote_hint": "Monitor renal function closely due to the increased risk of nephrotoxicity from concomitant use with tacrolimus",
+      "keywords": ["Monitor", "renal", "function", "closely", "nephrotoxicity", "concomitant", "tacrolimus"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → iv. Treatment (liposomal amphotericin B; monitor renal function with tacrolimus); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Amphotericin–tacrolimus nephrotoxicity angle distinct from fluconazole–tacrolimus interaction (cctc-3154) and candidemia diagnosis (cctc-3161); anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3163",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant recipient months post-transplant reports fever without biopsy-proven rejection. Which Aspergillus presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Isolated fever without symptoms of rejection" },
+      { "id": "B", "text": "Fever always indicates acute cellular rejection and never fungal infection" },
+      { "id": "C", "text": "Aspergillus never causes fever in transplant recipients" },
+      { "id": "D", "text": "Fever excludes Aspergillus unless rejection symptoms are also present" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Aspergillus symptoms may include isolated fever without symptoms of rejection, along with dyspnea or hypoxia, sinusitis, gastrointestinal findings, or central nervous system symptoms.",
+      "rationale_incorrect": {
+        "B": "Isolated fever without rejection symptoms is specifically described and warrants fungal evaluation.",
+        "C": "Fever is among cited Aspergillus presentations.",
+        "D": "Isolated fever without rejection symptoms may occur rather than requiring rejection symptoms to consider Aspergillus."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → v.",
+      "quote_hint": "Isolated fever without symptoms of rejection",
+      "keywords": ["Isolated", "fever", "without", "symptoms", "rejection", "Aspergillus"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → v. Symptoms (isolated fever without rejection symptoms); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Isolated-fever Aspergillus presentation angle distinct from operative-risk item (cctc-3159) and later-timing epidemiology in combo (cctc-3160); anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3164",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating candidemia and Aspergillus management teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Echocardiography may be used to rule out cardiac vegetations in candidemia patients with central venous lines." },
+      { "id": "II", "text": "Liposomal amphotericin B requires close renal monitoring when used with tacrolimus." },
+      { "id": "III", "text": "Aspergillus may present with isolated fever without symptoms of rejection." },
+      { "id": "IV", "text": "Aspergillus is diagnosed by blood culture alone without imaging or biopsy." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Candidemia echocardiography with central lines, amphotericin–tacrolimus renal monitoring, and isolated Aspergillus fever are supported. Statement IV is false because diagnosis includes chest imaging, sinus or brain CT, and tissue biopsies rather than blood culture alone.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—isolated fever without rejection may occur with Aspergillus.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because imaging and tissue biopsy are cited diagnostic approaches."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia and Aspergillus",
+      "quote_hint": "ECHO to rule out cardiac vegetations … Monitor renal function closely … Isolated fever without symptoms of rejection … CXR and CT scan … Tissue biopsies",
+      "keywords": ["ECHO", "cardiac", "vegetations", "renal", "function", "nephrotoxicity", "tacrolimus", "fever"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → iii.–iv. (echocardiography; liposomal amphotericin renal monitoring with tacrolimus); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → v.–vi. (isolated fever; CXR/CT and tissue biopsy diagnosis); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Candidemia/Aspergillus management combo distinct from candidemia/Aspergillus epidemiology combo (cctc-3160) and early fungal-risk combo (cctc-3152); corroborating locators on p. 736 and p. 737 verified.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1155",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 122,
+    "keywords": [
+      "Age",
+      "decades",
+      "General",
+      "status",
+      "health",
+      "Gender",
+      "permission"
+    ],
+    "keyword_hash": "sha256:805249015e2b15edc95db7c11397f4e4310dde966aa0d7ea3d4bdcf6ed7e21af"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "keywords": [
+        "general",
+        "recipient",
+        "information",
+        "shareable",
+        "without",
+        "permission",
+        "decade",
+        "health"
+      ],
+      "keyword_hash": "sha256:786bb8798f7cd11d6bd2c7c31de36cbad1fb79fe49197411b0bdd2afeefce047"
+    }
+  ]
+}

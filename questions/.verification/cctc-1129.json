@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1129",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Emergency",
+      "contraception",
+      "intrauterine",
+      "devices",
+      "Sexual",
+      "dysfunction",
+      "oral",
+      "contraception"
+    ],
+    "keyword_hash": "sha256:06da30a7a34efa4de2e6e59ca82e7a5c66345aa5c0819b5c1c86192331e79b88"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "emergency",
+        "contraception",
+        "libido",
+        "communication",
+        "thromboembolic"
+      ],
+      "keyword_hash": "sha256:301e2362df58e1d478a34af750153071b22eecf72c5c022abbd64af9a518e25a"
+    }
+  ]
+}

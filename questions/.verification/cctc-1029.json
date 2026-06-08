@@ -1,0 +1,57 @@
+{
+  "item_id": "cctc-1029",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 669,
+    "keywords": [
+      "Fever",
+      "Jaundice",
+      "rejection",
+      "transplant",
+      "team",
+      "symptoms",
+      "chronic"
+    ],
+    "keyword_hash": "sha256:b679cbf8554ff2e19dcb6c0a0b35658afbd3cb56aef271d3847061432fc43e4a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 669,
+      "keywords": [
+        "acute",
+        "rejection",
+        "manifestations",
+        "statements",
+        "patient",
+        "caregiver",
+        "education",
+        "statement"
+      ],
+      "keyword_hash": "sha256:8d4398b9514591c012a013a654a0c72416337e5d0ed3e76684571059b0a69480"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 669,
+      "keywords": [
+        "chronic",
+        "rejection",
+        "generally",
+        "irreversible",
+        "statement",
+        "false"
+      ],
+      "keyword_hash": "sha256:741d5acec982f531f60e3dddee341a178cd20c77f6970ff0bf92e9ae61ad056d"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3089",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 904,
+    "keywords": [
+      "Chronic",
+      "rejection",
+      "slow",
+      "progressive",
+      "increase",
+      "creatinine",
+      "hypertension",
+      "proteinuria"
+    ],
+    "keyword_hash": "sha256:27e40ff5d6aa2441f204a4247b775f650a8e698fd1168c3018ae060df3433146"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 904,
+      "keywords": [
+        "creatinine",
+        "hypertension",
+        "proteinuria"
+      ],
+      "keyword_hash": "sha256:2fefa649779ac9fc88d815a741955212c5a5e7550d7a3560c65e7c07482204ee"
+    }
+  ]
+}

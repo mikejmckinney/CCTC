@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1061",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 354,
+    "keywords": [
+      "Activity",
+      "restrictions",
+      "lifting",
+      "exercise",
+      "travel",
+      "return",
+      "work",
+      "donor"
+    ],
+    "keyword_hash": "sha256:ee4e15e2b96e4998154781f696623720b18810b8adc6b9d89c32336b569000d5"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 354,
+      "keywords": [
+        "activity",
+        "restrictions",
+        "including",
+        "lifting",
+        "exercise",
+        "travel",
+        "return"
+      ],
+      "keyword_hash": "sha256:e2c2885e63a32ef1fe4fa3629cbc1a9f499d9127fd642a177a6605eaec526dce"
+    }
+  ]
+}

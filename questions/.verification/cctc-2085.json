@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2085",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 74,
+    "keywords": [
+      "positive",
+      "crossmatch",
+      "donor-specific",
+      "HLA",
+      "antibody",
+      "DSA",
+      "PRA",
+      "percentage"
+    ],
+    "keyword_hash": "sha256:823ec10823bed99ccbc528af1ca5a56379c27acb99b1d22df01c4f49e709a616"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 74,
+      "keywords": [
+        "versus",
+        "distinction",
+        "percentage",
+        "donor-specific",
+        "antigen",
+        "identification"
+      ],
+      "keyword_hash": "sha256:f2f54e2d4a5119ae857dd361299c2ac2a3fda615ca5408836079e89ce75a1abd"
+    }
+  ]
+}

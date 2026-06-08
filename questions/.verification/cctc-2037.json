@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-2037",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 46,
+    "keywords": [
+      "Kidney",
+      "Unlimited",
+      "time",
+      "inactive",
+      "waiting",
+      "accrue",
+      "candidates"
+    ],
+    "keyword_hash": "sha256:972fbe82f1045ec3f8ae55441126b7b47a8a4d912606d5656afb82e9213dcac6"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "policy": "3.6",
+      "keywords": [
+        "table",
+        "waiting",
+        "inactive",
+        "candidates",
+        "kidney",
+        "accrue",
+        "unlimited",
+        "while"
+      ],
+      "keyword_hash": "sha256:aa3294cdec01ff5a2e08deb2cf247ea095edec73f27eb173fba5e28ca384e5a3"
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-1166",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching mealtime infection prevention after transplantation, which hand-hygiene step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wash hands before and after eating" },
+      { "id": "B", "text": "Hand-washing is needed only after meals, not before" },
+      { "id": "C", "text": "Eating never requires hand-washing at home" },
+      { "id": "D", "text": "Mealtime hand hygiene applies only to pediatric recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands before and after eating, along with washing before preparing meals and after bathroom use or secretions contact.",
+      "rationale_incorrect": {
+        "B": "Hand-washing is recommended both before and after eating rather than only afterward.",
+        "C": "Home mealtime hand hygiene is specifically recommended rather than omitted.",
+        "D": "Mealtime hand-washing guidance applies to all recipients, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "Before and after eating",
+      "keywords": ["Before", "after", "eating", "Wash", "hands", "meals"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands before and after eating); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Mealtime hand-hygiene angle distinct from meal-preparation timing (cctc-1158) and general best-practice hand-washing (cctc-1019); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1167",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When reinforcing home infection-prevention teaching, which hand-hygiene step aligns with standard references after handling potentially contaminated household items?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wash hands after touching any items that may have come in contact with feces" },
+      { "id": "B", "text": "Fecal-contact items never require hand-washing if gloves were briefly used" },
+      { "id": "C", "text": "Only hospital staff must wash hands after fecal exposure" },
+      { "id": "D", "text": "Household fecal-contact items pose no infection risk to recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hand-hygiene teaching includes washing after touching any items that may have come in contact with feces, whether human or animal, along with washing after animals, soil, and secretions.",
+      "rationale_incorrect": {
+        "B": "Hand-washing after fecal-contact items is specifically recommended rather than being optional after brief glove use.",
+        "C": "Recipients themselves should wash hands after such exposures.",
+        "D": "Fecal-contact items are among exposures that warrant hand hygiene."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After touching any items that may have come in contact with feces (human or animal)",
+      "keywords": ["After", "touching", "items", "contact", "feces", "human", "animal", "Wash"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash after items contacting feces); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fecal-contact-item hand-hygiene angle distinct from animal-contact timing (cctc-1156) and cat-litter precautions (cctc-1100); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1168",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A transplant recipient with a household dog asks about infection prevention after routine pet contact. Which teaching point aligns with standard animal-safety references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Follow strict hand hygiene guidelines after contact" },
+      { "id": "B", "text": "Hand hygiene after pet contact is unnecessary for immunosuppressed recipients" },
+      { "id": "C", "text": "Pet contact requires permanent removal of all household animals" },
+      { "id": "D", "text": "Only veterinary staff need hand hygiene after animal contact" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Animal-safety teaching includes following strict hand hygiene guidelines after contact with pets, along with keeping pets immunized, avoiding animals with diarrhea, and postponing new pets until immunosuppression is more stable.",
+      "rationale_incorrect": {
+        "B": "Hand hygiene after pet contact is specifically recommended rather than omitted.",
+        "C": "Routine pet ownership may continue with precautions rather than requiring permanent removal of all animals.",
+        "D": "Recipients themselves should follow hand hygiene after contact rather than delegating it to veterinary staff alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → v. Animal safety",
+      "quote_hint": "Follow strict hand hygiene guidelines after contact",
+      "keywords": ["Follow", "strict", "hand", "hygiene", "guidelines", "after", "contact"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (strict hand hygiene after pet contact); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-contact hand-hygiene after pets angle distinct from animal-contact hand-washing on p. 115 (cctc-1156) and keep-pets-immunized teaching (cctc-1102); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1169",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating mealtime and household infection-prevention teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should wash hands before and after eating." },
+      { "id": "II", "text": "Recipients should wash hands after touching items that may have contacted feces." },
+      { "id": "III", "text": "Recipients should follow strict hand hygiene guidelines after pet contact." },
+      { "id": "IV", "text": "Hand-washing before meals is unnecessary if food will be cooked." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Mealtime hand-washing, hand hygiene after fecal-contact items, and strict hand hygiene after pet contact are supported. Statement IV is false because hand-washing before and after eating is specifically recommended regardless of cooking.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—strict hand hygiene after pet contact is recommended.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because mealtime hand-washing remains recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene and v. Animal safety",
+      "quote_hint": "Before and after eating … items that may have come in contact with feces … Follow strict hand hygiene guidelines after contact",
+      "keywords": ["Before", "after", "eating", "feces", "contact", "hand", "hygiene", "guidelines"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (mealtime and fecal-contact item hand-washing); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (strict hand hygiene after pet contact); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Mealtime/household hygiene combo distinct from hand-hygiene/animal-safety combo (cctc-1165) and hand-hygiene combo (cctc-1161); corroborating locators on p. 115 and p. 116 verified.",
+    "last_updated": "2026-06-05"
+  }
+]

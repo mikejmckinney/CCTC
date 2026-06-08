@@ -1,0 +1,191 @@
+[
+  {
+    "id": "cctc-2049",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A waitlisted candidate receives a transplant at the listing hospital. When must the program remove the candidate from the waitlist and notify OPTN?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Within 24 hours of the transplant or death event" },
+      { "id": "B", "text": "Only on the five-year transplant anniversary" },
+      { "id": "C", "text": "Within 90 days after the six-month follow-up form is due" },
+      { "id": "D", "text": "Never; waitlist removal is optional after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Policy 3.9 requires registering transplant hospitals to remove candidates from waitlists and notify OPTN within 24 hours when a candidate receives a transplant or dies while awaiting transplant.",
+      "rationale_incorrect": {
+        "B": "Waitlist removal is required promptly after transplant or death, not deferred for years.",
+        "C": "Ninety-day follow-up form timing applies to post-transplant data submission, not waitlist removal.",
+        "D": "Waitlist removal and OPTN notification within 24 hours are required, not optional."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 53,
+      "section": "Policy 3.9 → Removing Candidates from the Waiting List",
+      "quote_hint": "remove the candidate from the hospital's organ waiting lists and notify the OPTN within 24 hours",
+      "keywords": ["remove", "candidate", "waiting", "lists", "notify", "OPTN", "24", "hours"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=53",
+        "locator": "Policy 3.9 → Removing Candidates from the Waiting List (notify OPTN within 24 hours of transplant or death); PDF p. 53 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. Eighth 020500 item; waitlist removal timing distinct from inactive accrual (cctc-2037/2045) and registration notice (cctc-2041); anchor verified on optn-policies p. 53.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2050",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "kidney_pancreas",
+    "recipient_age": "adult",
+    "stem": "A patient with type 1 diabetes already has a functioning kidney transplant and now seeks pancreas transplantation. Which evaluation outcome description is MOST appropriate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Pancreas after kidney (PAK) transplantation for diabetes with an existing kidney graft" },
+      { "id": "B", "text": "Simultaneous pancreas-kidney (SPK) transplantation before any kidney graft" },
+      { "id": "C", "text": "Isolated liver transplantation for diabetes management" },
+      { "id": "D", "text": "Pancreas transplant is never performed after a kidney graft" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pancreas transplant alone or pancreas after kidney (PAK) transplantation is indicated for candidates with diabetes who already have a kidney transplant, distinct from simultaneous pancreas-kidney transplantation.",
+      "rationale_incorrect": {
+        "B": "SPK is performed when diabetes and renal insufficiency are present together before kidney transplant, not after an existing functioning kidney graft.",
+        "C": "Diabetes management with an existing kidney graft is addressed through pancreas transplantation, not isolated liver transplant.",
+        "D": "PAK transplantation is a recognized option after kidney transplant for appropriate candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → Indications → A.",
+      "quote_hint": "Pancreas transplant alone (PTA) or pancreas after kidney (PAK) transplant",
+      "keywords": ["Pancreas", "after", "kidney", "PAK", "transplant", "diabetes", "alone"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → Indications → A. Pancreas transplant alone or pancreas after kidney (PAK); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 020300 item; third kidney_pancreas organ tag; PAK angle distinct from SPK suitability (cctc-2038); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2051",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020203"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating age- and gender-appropriate health-maintenance testing during transplant evaluation, which assessments are included in standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Skin assessment and assessment of dentition" },
+      { "id": "B", "text": "Only cosmetic dermatology procedures without clinical assessment" },
+      { "id": "C", "text": "Dental evaluation is permanently contraindicated before transplant" },
+      { "id": "D", "text": "Skin assessment is omitted for all transplant candidates" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Evaluation health-maintenance testing may include mammogram, Papanicolaou test, bone densitometry, colonoscopy, skin assessment, and assessment of dentition per national prevention guidelines.",
+      "rationale_incorrect": {
+        "B": "Health-maintenance screening includes clinical skin and dental assessment, not cosmetic procedures alone.",
+        "C": "Dentition assessment is part of evaluation rather than being contraindicated.",
+        "D": "Skin assessment is explicitly listed among health-maintenance evaluation components."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → b.c.iii.",
+      "quote_hint": "Colonoscopy Skin assessment Assessment of dentition",
+      "keywords": ["Skin", "assessment", "Assessment", "dentition", "Colonoscopy", "health", "maintenance"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → b.c.iii. (health-maintenance testing including skin assessment and dentition); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 020200 item; skin/dentition screening distinct from bronchoscopy (cctc-2043) and infectious disease consult (cctc-2034); anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2052",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A postmenopausal transplant candidate with a smoking history is completing pretransplant evaluation. Which screening study should the coordinator arrange per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Bone densitometry to assess for osteopenia or osteoporosis" },
+      { "id": "B", "text": "No bone health screening because immunosuppression prevents bone loss" },
+      { "id": "C", "text": "Routine daily bone biopsy for every candidate" },
+      { "id": "D", "text": "Bone screening deferred until ten years after transplant only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Osteoporosis screening with bone densitometry is recommended for postmenopausal women and candidates with smoking history, chronic corticosteroid use, or cholestatic liver disease.",
+      "rationale_incorrect": {
+        "B": "Solid-organ transplant recipients are at increased bone-loss risk from immunosuppression and require assessment.",
+        "C": "Bone densitometry is the screening method referenced, not routine daily biopsy.",
+        "D": "Pretransplant osteoporosis screening is part of evaluation rather than deferred exclusively until ten years post-transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 31,
+      "section": "Ch. 1, Evaluation → h. Osteoporosis screening",
+      "quote_hint": "assessed for osteopenia or osteoporosis by bone densitometry",
+      "keywords": ["osteopenia", "osteoporosis", "bone", "densitometry", "postmenopausal", "smoking", "screening"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → h. Osteoporosis screening (bone densitometry for postmenopausal women and smokers); PDF p. 31 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 020700 item; pretransplant bone densitometry distinct from liver HCC surveillance (cctc-2040) and kidney urine baseline (cctc-2016); anchor verified on Cupples p. 31.",
+    "last_updated": "2026-06-05"
+  }
+]

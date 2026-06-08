@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-3053",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric solid-organ recipient develops fever without an obvious source two weeks after transplant. Which initial evaluation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Septic workup including CBC with differential, blood and urine cultures, metabolic panel, and assessment for latent CMV and EBV" },
+      { "id": "B", "text": "No laboratory evaluation because fever is expected and never requires workup" },
+      { "id": "C", "text": "Isolated cosmetic wound inspection without cultures or laboratory studies" },
+      { "id": "D", "text": "Permanent cessation of all immunosuppression before any assessment" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "When no fever source is immediately identified in a pediatric solid-organ recipient, a septic workup is required including CBC with differential, blood and urine cultures, complete metabolic panel, and assessment for latent viruses such as CMV and EBV.",
+      "rationale_incorrect": {
+        "B": "Fever evaluation includes thorough history, examination, and septic workup when no source is identified.",
+        "C": "Evaluation requires laboratory and culture data rather than inspection alone.",
+        "D": "Fever prompts diagnostic evaluation and team management rather than unilateral immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 944,
+      "section": "Ch. 17, Pediatric Populations → Infections Principles → C.",
+      "quote_hint": "septic workup is required, including a. CBC with differential b. Blood and urine cultures c. Complete metabolic panel d. Assessment for latent viruses (CMV, EBV)",
+      "keywords": ["septic", "workup", "CBC", "Blood", "urine", "cultures", "CMV", "EBV"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → Infections Principles → C. (septic workup with CBC, cultures, metabolic panel, CMV/EBV assessment when fever source not identified); PDF p. 944 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 030100 item; seventh pediatric recipient in bank; pediatric fever-workup angle distinct from urinary-leak labs (cctc-3034) and cholangitis pattern (cctc-3039); anchor verified on Cupples p. 944.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3054",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During long-term follow-up of a solid-organ recipient, which malignancy risk counseling point aligns with standard complication references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Skin cancer is the most common post-transplant malignancy, with risk markedly higher than the general population" },
+      { "id": "B", "text": "Immunosuppression eliminates malignancy risk after the first post-transplant year" },
+      { "id": "C", "text": "Post-transplant malignancy never affects long-term survival" },
+      { "id": "D", "text": "Only pediatric recipients develop post-transplant skin cancer" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Post-transplant malignancy is the second most common cause of late mortality; skin cancer is the most common post-transplant malignancy with risk up to 20-fold higher than the general population.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression increases malignancy risk rather than eliminating it after one year.",
+        "C": "Post-transplant malignancy is a major late mortality cause requiring ongoing surveillance and prevention teaching.",
+        "D": "Skin cancer risk after transplant applies to solid-organ recipients broadly, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 674,
+      "section": "Ch. 12, Long-Term Outcomes → F. Posttransplant malignancy → 2.",
+      "quote_hint": "Skin cancer is the most common cause of posttransplant malignancy with risk up to 20fold higher than general population",
+      "keywords": ["Skin", "cancer", "most", "common", "posttransplant", "malignancy", "risk", "population"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 12 → F. Posttransplant malignancy → 2. (skin cancer most common post-transplant malignancy; markedly elevated risk); PDF p. 674 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 030400 item; skin-cancer long-term complication angle distinct from post-transplant diabetes incidence (cctc-3028) and malignancy-prevention combo (cctc-3043); anchor verified on Cupples p. 674.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3055",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient was discharged yesterday after solid-organ transplantation. Which post-discharge coordination step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Call the patient the day after discharge to answer questions and review medications" },
+      { "id": "B", "text": "Defer all contact until the one-year anniversary visit" },
+      { "id": "C", "text": "Avoid medication review because discharge teaching is never reinforced" },
+      { "id": "D", "text": "Transfer all follow-up solely to the pharmacy with no transplant team contact" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Because the initial discharge event may be overwhelming, coordinators should call the patient the day after discharge to answer questions and review medications.",
+      "rationale_incorrect": {
+        "B": "Early post-discharge contact is recommended the day after discharge rather than waiting a year.",
+        "C": "Medication review is a key purpose of the early post-discharge call.",
+        "D": "The transplant team remains involved in early post-discharge coordination alongside other providers."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 112,
+      "section": "Ch. 3, Patient Education → C. Posttransplant Phase → 2.a.",
+      "quote_hint": "call the patient the day after discharge to answer questions and review medications",
+      "keywords": ["call", "patient", "day", "after", "discharge", "questions", "review", "medications"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → C. Posttransplant Phase → 2.a. (call patient day after discharge to answer questions and review medications); PDF p. 112 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 030500 item; day-after-discharge call angle distinct from lymphocele monitoring (cctc-3052) and clinic intervals (cctc-3024); anchor verified on Cupples p. 112.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3056",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": ["030601"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient on mycophenolate mofetil (MMF) is prescribed a proton pump inhibitor after transplant. What discharge medication counseling is MOST important?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "PPI use with MMF may lower mycophenolic acid levels and increase rejection risk if doses are not adjusted" },
+      { "id": "B", "text": "PPIs always increase MMF levels and mandate immediate graft removal" },
+      { "id": "C", "text": "PPI and MMF interactions never affect immunosuppression monitoring" },
+      { "id": "D", "text": "MMF must be stopped permanently whenever any antacid is prescribed" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Proton pump inhibitors combined with MMF may lower mycophenolic acid levels and lead to rejection if immunosuppression medications are not adjusted, so team coordination is required.",
+      "rationale_incorrect": {
+        "B": "The concern is lowered mycophenolic acid levels and rejection risk, not automatic graft removal.",
+        "C": "Drug interactions between PPIs and MMF can affect immunosuppression efficacy and require monitoring.",
+        "D": "Management involves team review and possible dose adjustment rather than permanent MMF cessation for every PPI prescription."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 161,
+      "section": "Ch. 4, Immunosuppression → D. Medications to manage GI symptoms → 4.",
+      "quote_hint": "proton pump inhibitors … when combined with MMF, mycophenolic acid levels are lower and may lead to rejection if medications are not adjusted",
+      "keywords": ["proton", "pump", "inhibitors", "MMF", "mycophenolic", "acid", "levels", "rejection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → D. Medications to manage GI symptoms → 4. (PPI with MMF may lower mycophenolic acid levels and increase rejection risk if not adjusted); PDF p. 161 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 030600 item; PPI–MMF interaction angle distinct from PCP prophylaxis (cctc-3042), grapefruit teaching (cctc-3031), and medication complex_combo (cctc-1033); anchor verified on Cupples p. 161.",
+    "last_updated": "2026-06-05"
+  }
+]

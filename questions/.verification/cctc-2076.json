@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2076",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 181,
+    "keywords": [
+      "Donor",
+      "chart",
+      "review",
+      "Risk",
+      "Assessment",
+      "Transmitted",
+      "Infections",
+      "procurement"
+    ],
+    "keyword_hash": "sha256:1af2671d24f6edc6f0f5cc9306d69de93d1f89bfa4f7e4637b78eda731d3ccf4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 181,
+      "keywords": [
+        "donor",
+        "chart",
+        "review"
+      ],
+      "keyword_hash": "sha256:f1369c51875bff38237483824ae751c076aec280be4e878e214e44fe17c6d907"
+    }
+  ]
+}

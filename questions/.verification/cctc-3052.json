@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3052",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 230,
+    "keywords": [
+      "Unilateral",
+      "leg",
+      "edema",
+      "kidney",
+      "transplant",
+      "lymphocele",
+      "allograft"
+    ],
+    "keyword_hash": "sha256:7a5ecadb75c342c6894d7192e6cbfbf1ce76a572b8d61940dfcfbae760559b8c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 230,
+      "keywords": [
+        "unilateral",
+        "edema",
+        "possible",
+        "lymphocele",
+        "kidney",
+        "allograft"
+      ],
+      "keyword_hash": "sha256:80b69cc0869e9e73f70d3cb79991b43a5dec9dcde500e9f62fe5b95d1feffc72"
+    }
+  ]
+}

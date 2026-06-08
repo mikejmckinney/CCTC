@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3129",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "promptly",
+      "report",
+      "exposure",
+      "communicable",
+      "disease",
+      "transplant",
+      "team"
+    ],
+    "keyword_hash": "sha256:a3a83e9d47660e94201d47138456e09104fbf7458c14ae48335999242d1a6bec"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "infection",
+        "prevention",
+        "report",
+        "communicable-disease",
+        "exposure"
+      ],
+      "keyword_hash": "sha256:38aa09c38b84ee64df13e9c3fd1eb67f92559b1909f87be13cd2b8d23f1927af"
+    }
+  ]
+}

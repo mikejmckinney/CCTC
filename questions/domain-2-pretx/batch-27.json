@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2105",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling a transplant candidate about long-term skin-cancer risk, which epidemiologic pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Basal cell and squamous cell carcinoma account for 95% of skin cancers in solid-organ transplant recipients" },
+      { "id": "B", "text": "Melanoma accounts for 95% of skin cancers in solid-organ transplant recipients" },
+      { "id": "C", "text": "Skin cancer is rare and accounts for less than 5% of malignancies in transplant recipients" },
+      { "id": "D", "text": "Only squamous cell carcinoma occurs in transplant recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Basal cell and squamous cell carcinoma account for 95% of all skin cancers in solid-organ transplant recipients.",
+      "rationale_incorrect": {
+        "B": "Nonmelanoma basal and squamous cell carcinomas predominate rather than melanoma alone.",
+        "C": "Skin cancer is the most common malignancy in transplant recipients, not a rare minority.",
+        "D": "Both basal cell and squamous cell carcinomas occur; squamous cell is seen more frequently than basal cell in recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Basal cell and squamous cell carcinoma",
+      "quote_hint": "Squamous cell and basal cell carcinoma: account for 95% of all skin cancers in solid organ transplant recipients",
+      "keywords": ["Squamous", "cell", "basal", "carcinoma", "95%", "skin", "cancers", "solid"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → basal/squamous cell carcinoma (95% of SOT skin cancers); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. 95% BCC/SCC epidemiology angle distinct from squamous-over-time teaching (cctc-1102) and sun-exposed site recall (cctc-3101); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2106",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator compares skin-cancer patterns in transplant recipients with the general population. Which statement aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Squamous cell carcinoma is seen more frequently than basal cell carcinoma in transplant recipients, whereas basal cell is more common in the general population" },
+      { "id": "B", "text": "Basal cell carcinoma is always more common than squamous cell in both populations" },
+      { "id": "C", "text": "Neither basal nor squamous cell carcinoma occurs in transplant recipients" },
+      { "id": "D", "text": "Melanoma is the only skin cancer that increases after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In solid-organ transplant recipients, squamous cell carcinoma is seen more frequently than basal cell carcinoma, whereas in the general population basal cell carcinomas are more common than squamous cell carcinomas.",
+      "rationale_incorrect": {
+        "B": "The relative frequency of basal versus squamous cell carcinoma differs between transplant recipients and the general population.",
+        "C": "Basal and squamous cell carcinomas account for most skin cancers in recipients.",
+        "D": "Nonmelanoma basal and squamous cell carcinomas are the predominant transplant skin cancers discussed."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Basal cell and squamous cell carcinoma",
+      "quote_hint": "Squamous cell carcinoma (SCC) seen more frequently than basal cell carcinoma (BCC) … In the general population, the opposite is true",
+      "keywords": ["Squamous", "cell", "carcinoma", "basal", "frequently", "general", "population"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → SCC more frequent than BCC in SOT vs opposite in general population; PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. SCC-versus-BCC frequency comparison distinct from 95% epidemiology recall (cctc-2105); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2107",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pretransplant evaluation, which bone-health screening study aligns with standard references for establishing a baseline before transplantation?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "DEXA scan of the lumbar spine and hip" },
+      { "id": "B", "text": "No bone screening because transplantation prevents osteoporosis" },
+      { "id": "C", "text": "Routine daily bone marrow biopsy" },
+      { "id": "D", "text": "Bone screening deferred until ten years after transplant only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bone health preservation includes screening for decreased bone mineral density with DEXA scan of the lumbar spine and hip, with baseline assessment obtained pretransplantation.",
+      "rationale_incorrect": {
+        "B": "Recipients are at increased bone-loss risk and require baseline bone assessment.",
+        "C": "DEXA densitometry is the referenced screening method rather than routine biopsy.",
+        "D": "Baseline DEXA is obtained pretransplant rather than deferred exclusively for a decade."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Screen for decreased bone mineral density",
+      "quote_hint": "DEXA scan of the lumbar spine and hip … Baseline (pretransplantation)",
+      "keywords": ["DEXA", "scan", "lumbar", "spine", "hip", "Baseline", "pretransplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → DEXA lumbar spine/hip baseline pretransplant; PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Baseline DEXA protocol angle distinct from risk-group bone densitometry (cctc-2052, p. 31) and osteopenia teaching (cctc-1047); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2108",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart transplant candidate asks which organ recipients have the highest skin-cancer incidence. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Incidence is highest in heart and lung transplant recipients" },
+      { "id": "B", "text": "Incidence is highest only in kidney transplant recipients" },
+      { "id": "C", "text": "Skin cancer incidence is equal across all organ types with no variation" },
+      { "id": "D", "text": "Skin cancer does not occur in heart transplant recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin cancer incidence is highest in heart and lung transplant recipients, followed in decreasing order by kidney and liver transplant recipients.",
+      "rationale_incorrect": {
+        "B": "Kidney recipients have lower incidence than heart and lung recipients in the referenced ordering.",
+        "C": "Incidence varies by transplant type rather than being uniform.",
+        "D": "Heart transplant recipients have among the highest skin-cancer incidence."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Risk factors",
+      "quote_hint": "Incidence is highest in heart and lung transplant recipients, followed in decreasing order by kidney and liver transplant recipients",
+      "keywords": ["Incidence", "highest", "heart", "lung", "transplant", "recipients", "kidney", "liver"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer risk factors → highest incidence in heart/lung recipients; PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Organ-specific skin-cancer incidence counseling distinct from SCC/BCC frequency (cctc-2106); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  }
+]

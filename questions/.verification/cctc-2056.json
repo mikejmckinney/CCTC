@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2056",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 950,
+    "keywords": [
+      "Pediatric",
+      "adult",
+      "transplant",
+      "coordinators",
+      "critical",
+      "role",
+      "transition",
+      "process"
+    ],
+    "keyword_hash": "sha256:33c2a8a80e0acc3bd18baf4e10549fd81c8f3e351d78118ed9d9e88c3c36ef93"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 950,
+      "keywords": [
+        "coordinator",
+        "education",
+        "communication",
+        "during",
+        "transition"
+      ],
+      "keyword_hash": "sha256:a67f0b62367a3840183b1936257637eb17c9a1022dd361a9e40a830f1066268d"
+    }
+  ]
+}

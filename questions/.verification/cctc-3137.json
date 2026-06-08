@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-3137",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "Central",
+      "peripheral",
+      "blood",
+      "cultures",
+      "Diagnosis"
+    ],
+    "keyword_hash": "sha256:19454b50b1c75ff1cb515060a667e5fec2b4b0c3f7f13168e5b7b5421899a556"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "central",
+        "peripheral",
+        "blood",
+        "cultures"
+      ],
+      "keyword_hash": "sha256:116531d82498d907a1952fa0cef51da6c9d8da48c40bf86dca35a72477d0ffa9"
+    }
+  ]
+}

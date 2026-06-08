@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1122",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Encourage",
+      "condoms",
+      "prevent",
+      "sexually",
+      "transmitted",
+      "diseases"
+    ],
+    "keyword_hash": "sha256:7ef9af335fe1307ef6b9ae657116425372f0e5de0b555bf2174e2478683828a8"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "condoms",
+        "prevent",
+        "sexually",
+        "transmitted",
+        "diseases"
+      ],
+      "keyword_hash": "sha256:7b92cabb7464b3328eecacd7e96769bef558dd516f6ed8e5e1d5d9c124ac25d1"
+    }
+  ]
+}

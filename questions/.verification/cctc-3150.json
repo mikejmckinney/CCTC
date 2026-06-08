@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-3150",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 735,
+    "keywords": [
+      "Usually",
+      "occur",
+      "early",
+      "postoperative",
+      "period",
+      "Fungal"
+    ],
+    "keyword_hash": "sha256:9bb86e68ee4c2dca8e1ea5d07112a05826349a5298946ba1ab09ec163c002997"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "keywords": [
+        "usually",
+        "early",
+        "postoperative",
+        "period"
+      ],
+      "keyword_hash": "sha256:a1e82c34a5c06e34b06f3ac3af638b14191c684d680b2550d36347f636328869"
+    }
+  ]
+}

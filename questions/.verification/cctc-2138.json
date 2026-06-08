@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-2138",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Upper",
+      "respiratory",
+      "infection",
+      "Clinical",
+      "presentation"
+    ],
+    "keyword_hash": "sha256:c18862c2456fe9b8fd0f210112deaa555d0d39736ff09ca5ae741c0233fb678e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "upper",
+        "respiratory",
+        "infection",
+        "among",
+        "presentations"
+      ],
+      "keyword_hash": "sha256:e1538c56bfe1daa8784cd41d43648a2ebdc1df2dc163fdf0e39b4e8be2a76812"
+    }
+  ]
+}

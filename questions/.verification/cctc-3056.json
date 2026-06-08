@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3056",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 161,
+    "keywords": [
+      "proton",
+      "pump",
+      "inhibitors",
+      "MMF",
+      "mycophenolic",
+      "acid",
+      "levels",
+      "rejection"
+    ],
+    "keyword_hash": "sha256:3ef08785afe66fbfdb24b6f79ee3f5e97b38d22b0aad8f2973182a1a38db5e5c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 161,
+      "keywords": [
+        "lower",
+        "mycophenolic",
+        "levels",
+        "increase",
+        "rejection",
+        "adjusted"
+      ],
+      "keyword_hash": "sha256:b2904dd1b7f0ade9d039629a3020a96996cfc4fa117cef85a9a8f40b76c4399f"
+    }
+  ]
+}

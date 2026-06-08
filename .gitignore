@@ -45,6 +45,11 @@
 .vscode/*
 !.vscode/settings.json
 .idea/*
+.cursor/mcp.json
+
+# --- Maintainer-owned reference PDFs (copyrighted textbooks; local use only) ---
+docs/reference/*.pdf
+docs/reference/.index/
 
 # --- Build / dist outputs ---
 dist/

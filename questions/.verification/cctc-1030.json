@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1030",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 340,
+    "keywords": [
+      "donor",
+      "commit",
+      "postoperative",
+      "follow-up",
+      "testing",
+      "live",
+      "donor"
+    ],
+    "keyword_hash": "sha256:347a994262620c6e6921952684779238ec360946d18ac1d6455e6015fd7cb03c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "keywords": [
+        "postoperative",
+        "follow-up",
+        "testing",
+        "commitment"
+      ],
+      "keyword_hash": "sha256:d3074051f85a41f285ef5af1d89f2e55cb9f2b1950e60bfa7b75a20a13331ba9"
+    }
+  ]
+}

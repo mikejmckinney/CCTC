@@ -1,0 +1,191 @@
+[
+  {
+    "id": "cctc-2037",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Waiting time accrues without limit while the candidate remains inactive" },
+      { "id": "B", "text": "No waiting time accrues for any kidney candidate while inactive" },
+      { "id": "C", "text": "Waiting time accrues only for the first 30 cumulative inactive days" },
+      { "id": "D", "text": "Waiting time resets to zero whenever inactive status is assigned" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Table 3-3 specifies that kidney candidates accrue unlimited waiting time while inactive, although inactive candidates do not receive organ offers.",
+      "rationale_incorrect": {
+        "B": "Heart candidates do not accrue waiting time while inactive, but kidney candidates accrue unlimited time.",
+        "C": "A 30-day cumulative limit applies to intestine candidates, not kidney candidates.",
+        "D": "Kidney waiting time continues to accrue during inactive periods rather than resetting to zero."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Kidney",
+      "quote_hint": "Kidney … Unlimited time … Candidates accrue waiting time while inactive",
+      "keywords": ["Kidney", "Unlimited", "time", "inactive", "waiting", "accrue", "candidates"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (kidney candidates accrue unlimited waiting time while inactive); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. Sixth 020500 item; kidney inactive waiting-time accrual distinct from no-offers (cctc-2012) and inactive-reason (cctc-2005); anchor verified on optn-policies p. 46.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2038",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "kidney_pancreas",
+    "recipient_age": "adult",
+    "stem": "A candidate with type 1 diabetes and progressive renal insufficiency completes multidisciplinary evaluation. For which transplant option is simultaneous pancreas-kidney transplantation MOST appropriate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Diabetes with renal insufficiency meeting SPK selection criteria" },
+      { "id": "B", "text": "Isolated end-stage renal disease without diabetes" },
+      { "id": "C", "text": "Stable type 2 diabetes with normal renal function only" },
+      { "id": "D", "text": "Primary biliary cirrhosis without diabetes" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Simultaneous pancreas-kidney transplantation is indicated for candidates with diabetes or pancreatic exocrine insufficiency together with renal insufficiency.",
+      "rationale_incorrect": {
+        "B": "Isolated ESRD without diabetes is an indication for kidney transplant alone, not SPK.",
+        "C": "SPK requires renal insufficiency in addition to diabetes; normal renal function alone does not indicate SPK.",
+        "D": "Primary biliary cirrhosis without diabetes is a liver transplant indication, not SPK."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → B. Simultaneous pancreas-kidney (SPK) → 1.",
+      "quote_hint": "Diagnosis of diabetes or pancreatic exocrine insufficiency with renal insufficiency",
+      "keywords": ["Simultaneous", "pancreas-kidney", "diabetes", "renal", "insufficiency", "SPK", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → B. Simultaneous pancreas-kidney (SPK) transplantation → 1. (diabetes with renal insufficiency); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 020300 item; second kidney_pancreas organ tag; SPK suitability distinct from pancreas-alone approval (cctc-2029); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2039",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020601"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When presenting deceased-donor organ offer information to a transplant physician team, which donor detail must be disclosed to the recipient if it is critical to informed consent?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Possible donor-transmitted disease risks" },
+      { "id": "B", "text": "The donor family's vacation plans" },
+      { "id": "C", "text": "Unrelated donor employment history with no clinical relevance" },
+      { "id": "D", "text": "The procurement coordinator's personal contact list" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipients may be informed of specific donor information critical to informed consent, including possible donor-transmitted disease risks and organ characteristics that could affect function.",
+      "rationale_incorrect": {
+        "B": "Donor family vacation plans are not clinically relevant donor information for transplant consent.",
+        "C": "Unrelated employment history without clinical relevance is not required donor disclosure.",
+        "D": "Staff personal contact information is not part of donor-offer clinical disclosure."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → p. Donor–recipient confidentiality → i.",
+      "quote_hint": "Possible donor-transmitted disease risks",
+      "keywords": ["donor-transmitted", "disease", "risks", "recipient", "informed", "consent", "donor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → p. Donor–recipient confidentiality → i. (donor information critical to informed consent including donor-transmitted disease risks); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 020600 item; donor-disclosure angle distinct from DonorNet (cctc-2015), PHS consent (cctc-2023), and offer factors (cctc-2036); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2040",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020703"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver waitlist candidate with known hepatocellular carcinoma (HCC) has overdue surveillance testing. What re-evaluation interval is required to maintain UNOS MELD exception eligibility?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Imaging and alpha-fetoprotein testing every 3 months" },
+      { "id": "B", "text": "No surveillance after initial listing" },
+      { "id": "C", "text": "Annual testing only after five years on the waitlist" },
+      { "id": "D", "text": "Daily liver biopsy while waitlisted" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Patients with known HCC require imaging studies and alpha-fetoprotein testing every 3 months; this testing is required by UNOS to continue receiving MELD exception points.",
+      "rationale_incorrect": {
+        "B": "HCC candidates require ongoing surveillance, not one-time testing only at listing.",
+        "C": "HCC surveillance is required every 3 months, not annually after five years.",
+        "D": "Routine daily biopsy is not the UNOS HCC surveillance standard described for waitlisted candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 54,
+      "section": "Ch. 1, Waitlist Management → 6.a.i.",
+      "quote_hint": "Patients with known HCC: every 3 months. Imaging studies AFP",
+      "keywords": ["HCC", "every", "months", "Imaging", "AFP", "UNOS", "MELD", "exception"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → 6. Liver transplant candidates → a.i. (HCC imaging and AFP every 3 months for MELD exception); PDF p. 54 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 020700 item; liver HCC surveillance angle distinct from LAS testing (cctc-2021) and pulmonary baseline (cctc-2032); anchor verified on Cupples p. 54.",
+    "last_updated": "2026-06-05"
+  }
+]

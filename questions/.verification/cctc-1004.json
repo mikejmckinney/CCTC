@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1004",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 34,
+    "keywords": [
+      "transplantation",
+      "indicated",
+      "failure",
+      "NYHA",
+      "Class"
+    ],
+    "keyword_hash": "sha256:7a79442bc340841fd6b112236355b4eacf1041966688c95cd104ab41faf694a3"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 34,
+      "keywords": [
+        "transplantation",
+        "indicated",
+        "failure",
+        "NYHA",
+        "Class"
+      ],
+      "keyword_hash": "sha256:7a79442bc340841fd6b112236355b4eacf1041966688c95cd104ab41faf694a3"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1037",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 33,
+    "keywords": [
+      "Cigarette",
+      "smoking",
+      "liver",
+      "transplant",
+      "cardiovascular",
+      "hepatic",
+      "artery"
+    ],
+    "keyword_hash": "sha256:e3e8b34f8ffcaa594c518ff5f7a2c3c35f7562c4d275cbc114486c8a25d043f3"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "keywords": [
+        "liver",
+        "cardiovascular",
+        "mortality",
+        "hepatic",
+        "artery",
+        "thrombosis"
+      ],
+      "keyword_hash": "sha256:20f11a0f1f15802dbccc7951faea25fa0b2b73e3b16d94a3ce672dea9f99e063"
+    }
+  ]
+}

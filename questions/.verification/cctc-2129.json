@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2129",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "PTLD",
+      "may",
+      "be",
+      "asymptomatic",
+      "Clinical",
+      "presentation"
+    ],
+    "keyword_hash": "sha256:5a1c21ab6f97d12374840f8a56fbfdc827f0a3d24c6bdb3ea39ffb1aced3fd95"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "clinical",
+        "presentation",
+        "asymptomatic"
+      ],
+      "keyword_hash": "sha256:187fa31c5c56380a251a299184fd4c45887294c9830323029dd6644901577d18"
+    }
+  ]
+}

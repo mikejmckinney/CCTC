@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3077",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 155,
+    "keywords": [
+      "common",
+      "side",
+      "effects",
+      "Hyperlipidemia",
+      "Hypercholesterolemia",
+      "Hypertriglyceridemia",
+      "sirolimus",
+      "everolimus"
+    ],
+    "keyword_hash": "sha256:3bc01d3ad3b082b6e5a98b94d1ae43531960e4dda43e3be74d5ab183772a5d72"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 155,
+      "keywords": [
+        "hyperlipidemia",
+        "among",
+        "common",
+        "effects"
+      ],
+      "keyword_hash": "sha256:483de9962427732a36b9a12a69b823695e10d3c5d3b8ac012ab6f46b5e1f7e42"
+    }
+  ]
+}

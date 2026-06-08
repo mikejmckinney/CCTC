@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2078",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 152,
+    "keywords": [
+      "mammalian",
+      "target",
+      "rapamycin",
+      "mTOR",
+      "inhibitors",
+      "Sirolimus",
+      "proliferation",
+      "signal"
+    ],
+    "keyword_hash": "sha256:eb247ca5d3b5598643f934d501fc50512dbc2197159c5fb63bbaa2d8435d4903"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 152,
+      "keywords": [
+        "inhibitors",
+        "sirolimus",
+        "first",
+        "inhibitor"
+      ],
+      "keyword_hash": "sha256:455aa50aeb987f693884a0b5fdb7ac62c88bc75a307bafb8a96b4ac9ea708e39"
+    }
+  ]
+}

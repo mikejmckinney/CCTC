@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1132",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Refer",
+      "patients",
+      "Social",
+      "Worker",
+      "Vocational",
+      "Rehabilitation",
+      "previous",
+      "employment"
+    ],
+    "keyword_hash": "sha256:a7d11eb8f97914fc6f0a18a4c0c519602f988835018e01f884c6034ce5949673"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "social",
+        "worker",
+        "vocational",
+        "rehabilitation",
+        "referral"
+      ],
+      "keyword_hash": "sha256:3d9c5aebd677b2edd911614eeb5354214637dbcc5322b75e006ca5cf8b3b0a58"
+    }
+  ]
+}

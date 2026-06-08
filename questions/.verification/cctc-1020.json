@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1020",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 97,
+    "keywords": [
+      "Mammogram",
+      "Papanicolaou",
+      "Bone",
+      "densitometry",
+      "Colonoscopy",
+      "health",
+      "maintenance"
+    ],
+    "keyword_hash": "sha256:08bf52d810e241ad7d70a73af0763af53692ee4bf566ab5792a79bae2229f22e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "keywords": [
+        "gender-specific",
+        "health",
+        "maintenance"
+      ],
+      "keyword_hash": "sha256:3d13b1ab0a627e205d168220612b4201ce042da0e90e39ca50d6a1ec6546b04a"
+    }
+  ]
+}

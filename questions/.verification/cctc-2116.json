@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-2116",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Switching",
+      "adding",
+      "mTOR",
+      "inhibitor",
+      "antineoplastic",
+      "sirolimus",
+      "everolimus"
+    ],
+    "keyword_hash": "sha256:fe68617d4ad87129e6495ebdccc74ea81b59f90160301e536513187a2b1a4954"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "inhibitor",
+        "antineoplastic",
+        "therapy"
+      ],
+      "keyword_hash": "sha256:463754ee7ef143833dce8778e0b042d85b2c1851fea8b17f42859764a885d09d"
+    }
+  ]
+}

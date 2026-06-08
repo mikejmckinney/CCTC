@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2110",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 198,
+    "keywords": [
+      "Primary",
+      "infections",
+      "approximately",
+      "70%",
+      "80%",
+      "EBV-seronegative",
+      "recipients"
+    ],
+    "keyword_hash": "sha256:9b02c5063b81e90d915c0cc0b9267fa88d2a2f0029fc03999140cfcafb344d59"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "keywords": [
+        "primary",
+        "infection",
+        "ebv-seronegative",
+        "recipients"
+      ],
+      "keyword_hash": "sha256:039d27394d0820ea2c3eebe2a3312f4e77999f1d009822539edfb30140b29713"
+    }
+  ]
+}

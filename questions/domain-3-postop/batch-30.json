@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3117",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating post-transplant bone-health care, which supplement aligns with standard references for osteopenia or osteoporosis prevention?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Calcium and vitamin D supplements" },
+      { "id": "B", "text": "No supplements because transplantation prevents bone loss" },
+      { "id": "C", "text": "High-dose iron supplements as the sole bone-health therapy" },
+      { "id": "D", "text": "Calcium supplementation is contraindicated in all transplant recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Prevention and treatment of osteopenia or osteoporosis includes calcium and vitamin D supplements along with other therapies such as bisphosphonates and exercise when indicated.",
+      "rationale_incorrect": {
+        "B": "Recipients are at increased bone-loss risk and may require supplementation.",
+        "C": "Calcium and vitamin D are the referenced supplements rather than iron alone.",
+        "D": "Calcium and vitamin D supplementation is recommended rather than contraindicated for all recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Prevent or treat osteopenia/osteoporosis",
+      "quote_hint": "Calcium and vitamin D supplements",
+      "keywords": ["Calcium", "vitamin", "supplements", "osteopenia", "osteoporosis", "Prevent", "treat"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 2.a. (calcium and vitamin D supplements); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Calcium/vitamin D supplementation angle distinct from osteopenia exercise teaching (cctc-1047) and DEXA interval recall (cctc-3105); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3118",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A post-transplant recipient with declining bone mineral density on DEXA asks about medication options. Which therapy aligns with standard bone-health references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Bisphosphonates to reverse bone loss and increase bone mass" },
+      { "id": "B", "text": "No bone medications because immunosuppression strengthens bone" },
+      { "id": "C", "text": "Routine daily bone marrow biopsy instead of medication" },
+      { "id": "D", "text": "Bisphosphonates are permanently contraindicated after every transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Treatment of osteopenia or osteoporosis may include bisphosphonates to reverse bone loss and increase bone mass, along with calcium, vitamin D, and exercise.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression contributes to bone loss rather than preventing it.",
+        "C": "Bisphosphonates are pharmacologic therapy rather than routine daily biopsy.",
+        "D": "Bisphosphonates are treatment options when indicated rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Prevent or treat osteopenia/osteoporosis",
+      "quote_hint": "Bisphosphonates to reverse bone loss and increase bone mass",
+      "keywords": ["Bisphosphonates", "reverse", "bone", "loss", "increase", "bone", "mass"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 2.b. (bisphosphonates to reverse bone loss and increase bone mass); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Bisphosphonate therapy angle distinct from calcium/vitamin D recall (cctc-3117) and baseline DEXA screening (cctc-2107); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3119",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator schedules bone-health follow-up after starting a new osteoporosis medication. When should DEXA be repeated per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Six months after initiating the new drug treatment to assess effectiveness" },
+      { "id": "B", "text": "Never after starting bone medication" },
+      { "id": "C", "text": "Only once at thirty years post-transplant" },
+      { "id": "D", "text": "Daily DEXA scans for the first week only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "DEXA screening includes rechecking six months after initiating a new drug treatment to assess effectiveness, in addition to baseline, six-month post-transplant, and periodic reassessment.",
+      "rationale_incorrect": {
+        "B": "Medication effectiveness is monitored with repeat DEXA rather than omitting reassessment.",
+        "C": "Six-month post-treatment initiation reassessment is recommended rather than decennial-only scanning.",
+        "D": "Six-month reassessment after new therapy is referenced rather than daily scanning."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Screen for decreased bone mineral density",
+      "quote_hint": "Recheck 6 months after initiating a new drug treatment to assess effectiveness",
+      "keywords": ["Recheck", "months", "after", "initiating", "new", "drug", "treatment", "effectiveness"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 1.d. (DEXA recheck 6 months after new bone drug therapy); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-treatment DEXA timing angle distinct from six-month post-transplant DEXA (cctc-3105) and 12–24 month intervals (cctc-3105); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3120",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant bone-health teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Calcium and vitamin D supplements may be used to prevent or treat osteopenia or osteoporosis." },
+      { "id": "II", "text": "Bisphosphonates may reverse bone loss and increase bone mass." },
+      { "id": "III", "text": "Exercise is not recommended for transplant recipients with bone disease." },
+      { "id": "IV", "text": "DEXA may be rechecked six months after initiating a new bone medication." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Calcium and vitamin D supplementation, bisphosphonate therapy, and six-month post-treatment DEXA reassessment are supported. Statement III is false because exercise is listed as part of bone-health management.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—DEXA may be rechecked six months after starting new bone therapy.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because exercise is recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health",
+      "quote_hint": "Calcium and vitamin D supplements … Bisphosphonates … Exercise … Recheck 6 months after initiating a new drug treatment",
+      "keywords": ["Calcium", "vitamin", "Bisphosphonates", "Exercise", "Recheck", "months", "drug", "treatment"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 1.d. and 2.a.–f. (calcium/vitamin D, bisphosphonates, exercise, DEXA recheck after new therapy); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Bone-health treatment combo distinct from infection/bone-health combo (cctc-3108) and osteopenia exercise teaching (cctc-1047); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  }
+]

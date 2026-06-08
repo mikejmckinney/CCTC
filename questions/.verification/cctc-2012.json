@@ -1,0 +1,55 @@
+{
+  "item_id": "cctc-2012",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    },
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 44,
+    "keywords": [
+      "inactive",
+      "temporarily",
+      "unsuitable",
+      "organ",
+      "offers"
+    ],
+    "keyword_hash": "sha256:9722421b181a7e64de930348e8ec77678a1df17407b8d1db1a8d52279ef6c8a9"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 44,
+      "policy": "3.4",
+      "keywords": [
+        "inactive",
+        "status"
+      ],
+      "keyword_hash": "sha256:2cad30094d6914aa194c81ad5c34a4566235c99f2ae43d2796743492e3e54cc6"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "danovitch",
+      "pdf_page": 253,
+      "keywords": [
+        "waiting",
+        "mortality",
+        "discussion",
+        "inactive",
+        "status",
+        "waitlist",
+        "deaths"
+      ],
+      "keyword_hash": "sha256:6f0633f5d1a631cbb500b9142eec927b2c730e8ee4ef52887c6a351ac52560af"
+    }
+  ]
+}

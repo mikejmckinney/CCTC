@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1140",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Wear",
+      "gloves",
+      "mask",
+      "garden",
+      "activity",
+      "working",
+      "dirt"
+    ],
+    "keyword_hash": "sha256:294436251a3200aecb67ef0f84c8149b2938574b42fa705e5d671bf7f5b7b957"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "others",
+        "gloves",
+        "garden",
+        "activity"
+      ],
+      "keyword_hash": "sha256:9db8e7997f3301215aeeaf644713a6b15cb6fff75b3051f13b795b185eee7004"
+    }
+  ]
+}

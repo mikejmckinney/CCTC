@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-2029",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 100,
+    "keywords": [
+      "met",
+      "eligibility",
+      "criteria",
+      "approved",
+      "candidate",
+      "evaluation"
+    ],
+    "keyword_hash": "sha256:f59639f905e5cef5019e705dfe37c54f8ece891aba8a4af671c811bff9e70c98"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 100,
+      "keywords": [
+        "approved",
+        "candidate"
+      ],
+      "keyword_hash": "sha256:a224bd9a6c756ba0c63fc8c38e9f3afcdbd7eece058dfeec3cbcab6fb285705a"
+    }
+  ]
+}

@@ -2,42 +2,90 @@
 
 Build a validation step that runs locally and in CI so the question bank cannot silently drift as items are added or removed. Read `00-onboarding.md` first.
 
-## Create `scripts/validate.mjs` (or equivalent)
+## Two gates: CI vs local (required before merge)
 
-A Node script (no network) that loads `schema/question.schema.json`, both blueprint configs, and every `questions/**/*.json` except `_`-prefixed paths, then reports and exits non-zero on any failure.
+| Gate | Command | What it proves |
+|---|---|---|
+| **CI** | `npm run validate:ci` + `npm run validate:stubs` | Schema, integrity, reference **format**, OPTN PDF **content** (live index), committed stub match for all anchors |
+| **Local (required before merge)** | `npm run validate` | Full textbook anchor **content** via local `docs/reference/.index/` (regenerate stubs when anchors change) |
+
+Textbook PDFs and page indexes are gitignored (copyright + size). CI enforces textbook anchor metadata via committed stubs in `questions/.verification/` — see [verification stubs](../docs/reference/verification-stubs/README.md).
+
+Before merging question-bank changes that touch references or anchors:
+
+```bash
+npm run reference:index              # requires docs/reference/*.pdf
+npm run validate                     # hard-fails on any reference content mismatch
+npm run reference:export-stubs -- --force   # when anchor metadata changed
+npm run validate:stubs
+```
+
+## Implementation layout
+
+Split into modules under `scripts/validate/` (see `scripts/validate/README.md`) — same pattern as `scripts/setup/` + `setup.sh`.
+
+Orchestrator: `scripts/validate.mjs`.
 
 ### A. Per-item schema validation
 
-Validate each item against the JSON Schema (use a standard validator, e.g. `ajv` with formats). Report file + item id + the specific violation.
+Validate each item against the JSON Schema. Report file + item id + the specific violation.
 
-### B. Cross-field integrity (beyond what JSON Schema can express)
+### B. Cross-field integrity (beyond JSON Schema)
 
-For every item, confirm:
+- `id` unique across the bank
+- `correct` matches exactly one option
+- `explanation.rationale_incorrect` complete
+- `complex_combo` rules
+- `task` / `domain` / `knowledge_codes` alignment
 
-- `id` is **unique** across the entire bank.
-- `correct` matches the `id` of **exactly one** existing option.
-- `explanation.rationale_incorrect` has an entry for **every non-correct option** (and none for the correct one).
-- For `complex_combo`: every `options[].selects` entry references a defined `element` id; `shuffle` is `false`.
-- `references` has at least one entry; any `url` is a well-formed absolute URL.
-- `task` (if present) is a real task code in the 2026-07 blueprint, and its `domain` matches the task's domain prefix.
-- `knowledge_codes` (if present) share the item's domain prefix.
+### B2. Reference verification
 
-### C. Blueprint-coverage report (warn, don't necessarily fail)
+Runs in `scripts/validate/30-references.mjs` via `scripts/lib/verify-references.mjs`:
 
-For **each** blueprint, report against `reviewed` items only:
+- **Tier A — Format:** locators, URLs, `#page=N`, no generic OPTN index URLs — **always hard fail**
+- **Tier B — Index:** cited page in local index — **hard fail** in full mode; skipped in CI when index absent
+- **Tier C — Content:** keywords on page, Policy § on OPTN page — **hard fail** when index present; never warn-only
 
-- Items available per **domain** (2026-07) / per **section** (legacy, via `crosswalk_from_new_task` + any `legacy_section` override). Flag any domain/section that cannot fill its weighted share of a full 150-scored exam within `domain_tolerance_items`.
-- Distribution vs. `cognitive_level_targets` and `organ_targets` (soft — warn on large deviations).
-- Count of `draft` vs `reviewed` items per domain, so the maintainer can see review progress.
-- Total reviewed items vs. the ~500 target.
+Authoring loop: `npm run validate:references` (references only, full index required).
 
-Make A and B **hard failures** (exit non-zero). Make C **warnings** by default, with a `--strict` flag that turns coverage gaps into failures once the bank is mature.
+### C. Blueprint-coverage report (warn by default)
+
+- Domain / legacy section gaps (reviewed items)
+- Per-task depth vs blueprint targets (all bank items)
+- Bank progress toward ~500 reviewed
+- Cognitive / organ / age mix
+- Reference infrastructure (PDF + index presence)
+
+Use `npm run validate:strict` to fail on coverage warnings.
+
+## npm scripts
+
+```bash
+npm run validate              # full local gate (required before merge)
+npm run validate:coverage       # gap tables only (exam coverage dashboard)
+npm run validate:ci           # CI subset (.github/workflows/validate.yml)
+npm run validate:references   # reference phase only
+npm run validate:strict       # full + coverage warnings fail
+npm run reference:export-stubs       # regenerate questions/.verification/ (after validate passes)
+npm run validate:stubs        # compare bank JSON to committed stubs
+```
+
+Flags: `--item <cctc-id>`, `--strict`, `--ci`, `--coverage-only`, `--references-only`.
+
+Coverage output uses ASCII tables (Area / Current / Target / Gap). Use `validate:coverage` when you only want the dashboard.
 
 ## Wire it into the build and CI
 
-- `npm run validate` runs the script. The app build (`01-build-app.md`) runs validation first and **fails the build on any A/B error**, so schema-invalid items never reach the app.
-- Add a GitHub Actions workflow (`.github/workflows/validate.yml`) that runs `npm ci && npm run validate` on push and pull request. This is the review checkpoint for new questions.
+- `npm run build` runs full `npm run validate` first (local gate).
+- `npm run build:ci` runs `validate:ci` then `tsc` + `vite build` — used by the e2e CI job (no textbook PDFs).
+- `.github/workflows/validate.yml`: **`validate` job** runs `validate:ci` then `validate:stubs` after fetching/indexing OPTN policies PDF; **`e2e` job** runs `build:ci` then Playwright.
 
 ## Output
 
-Human-readable summary (counts, pass/fail, warnings) plus a non-zero exit on failure. Optionally emit a `coverage.json` the app or a dashboard can display so the maintainer can see, at a glance, which domains/tasks still need items and how many remain in `draft`.
+Human-readable summary (counts, pass/fail, gap tables) plus non-zero exit on failure. CI logs list reference content checks skipped for missing textbook indexes under **Reference skips (CI — no local index)**.
+
+## Verification stubs (CI hard-fail for textbook anchors)
+
+[`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), schema: `schema/reference-verification-stub.schema.json`.
+
+Stubs store per-item expected `source_id`, `pdf_page`, and `keywords` (no page text). Generated locally after full validate (`npm run reference:export-stubs`); compared in CI via `npm run validate:stubs`.

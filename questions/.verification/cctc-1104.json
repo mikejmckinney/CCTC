@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1104",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Observe",
+      "local",
+      "boil",
+      "water",
+      "advisories",
+      "Waterborne",
+      "infections"
+    ],
+    "keyword_hash": "sha256:04d160e3164de6a376edb83f781ddd1ca477c40a982dcc4e1991e60560b3c6a3"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "waterborne",
+        "infections",
+        "observe",
+        "boil-water",
+        "advisories"
+      ],
+      "keyword_hash": "sha256:020a0796e42b0e42bad3c29c77f5931fd9e5b4eb73fbd88087f087c019da6d25"
+    }
+  ]
+}

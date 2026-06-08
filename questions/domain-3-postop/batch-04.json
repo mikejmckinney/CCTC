@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3013",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "adult",
+    "stem": "When assessing long-term outcomes for intestinal transplant recipients beyond six months, which finding is reported in standard outcome references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Total parenteral nutrition has been discontinued in a majority of recipients" },
+      { "id": "B", "text": "Every recipient remains TPN-dependent indefinitely in all reported cohorts" },
+      { "id": "C", "text": "Intestinal transplant recipients never return to normal activities" },
+      { "id": "D", "text": "Graft survival is unaffected by recipient age in all studies" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term intestinal transplant outcome data report that most recipients are well or have only minor issues after six months, and TPN has been discontinued in a majority of recipients.",
+      "rationale_incorrect": {
+        "B": "Outcome references report TPN discontinuation in 67% of recipients, not universal lifelong TPN dependence.",
+        "C": "Most recipients have returned to normal activities at greater than six months post-transplant.",
+        "D": "Improved graft survival is associated with younger recipient age among reported outcome factors."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 681,
+      "section": "Ch. 13, Intestine Transplantation → outcomes → m.ii.",
+      "quote_hint": "TPN has been discontinued in 67% of recipients",
+      "keywords": ["TPN", "discontinued", "recipients", "months", "posttransplant", "outcome"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → intestinal transplant outcomes (>6 months: activities, TPN discontinuation); PDF p. 681 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First intestine organ tag in bank; anchor verified on Cupples p. 681.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3014",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030502"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient living three hours from the transplant center has stable graft function and follows with a community nephrologist. According to long-term management references, what coordination expectation applies?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "There should be frequent and open communication between community physicians and the transplantation center" },
+      { "id": "B", "text": "The transplant center should cease involvement once a community nephrologist is identified" },
+      { "id": "C", "text": "Community physicians should manage immunosuppression changes without ever contacting the transplant team" },
+      { "id": "D", "text": "Follow-up may occur only at the transplant center and never with community providers" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term follow-up may occur with the transplant center or experienced community physicians, but frequent open communication between community providers and the transplantation center is expected.",
+      "rationale_incorrect": {
+        "B": "The transplant center should remain a source of care and expertise even when community follow-up occurs.",
+        "C": "Immunosuppression changes require coordinated communication with the transplant center.",
+        "D": "References explicitly allow follow-up with community nephrologists or internists experienced in transplant care."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 302,
+      "section": "Ch. 11, Post-transplant Long-term Management → follow-up setting and communication paragraph",
+      "quote_hint": "There should be frequent and open communication between the community physicians and the transplantation center",
+      "keywords": ["frequent", "open", "communication", "community", "physicians", "transplantation", "center"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 11 → follow-up with community nephrologist/internist and center communication; PDF p. 302 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 030500 angle from cctc-3007 (visit frequency); anchor verified on Danovitch p. 302.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3015",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": ["030602"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "During discharge medication teaching for a kidney recipient starting tacrolimus, which instruction is MOST important to emphasize about dosing schedule?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Take critical-dose immunosuppressants at the same time every day for therapeutic drug monitoring" },
+      { "id": "B", "text": "Take tacrolimus at different random times each day to improve absorption" },
+      { "id": "C", "text": "Skip trough-level blood draws on the day doses are taken on schedule" },
+      { "id": "D", "text": "Double the dose automatically after any single late dose without team contact" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Discharge teaching stresses taking medications at the same time every day; critical-dose drugs such as tacrolimus must be taken at specific intervals to allow therapeutic drug monitoring, especially on blood-draw days.",
+      "rationale_incorrect": {
+        "B": "Inconsistent dosing times undermine trough monitoring and are not appropriate teaching.",
+        "C": "Recipients must understand dosing timing relative to scheduled trough levels.",
+        "D": "Dose adjustments require transplant team guidance rather than automatic doubling."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "section": "Ch. 3, Patient Education → medication education → Right time",
+      "quote_hint": "Taking medications at the same time every day is very important",
+      "keywords": ["same", "time", "every", "day", "tacrolimus", "cyclosporine", "therapeutic", "drug"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication education → Right time (critical-dose drugs and trough timing); PDF p. 107 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 030600 angle from cctc-3008 (missed dose/vomiting); anchor verified on Cupples p. 107.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3016",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030101", "030102"],
+    "cognitive_level": "analysis",
+    "organ": "kidney_pancreas",
+    "recipient_age": "adult",
+    "stem": "A simultaneous pancreas-kidney recipient two weeks post-transplant has rising creatinine and decreased urine amylase from a bladder-drained pancreas graft. Evaluate the following statements about pancreas allograft monitoring:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "In SPK transplantation, elevated serum creatinine can serve as a surrogate marker of pancreas rejection." },
+      { "id": "II", "text": "Decreased urine amylase may occur with pancreas graft rejection when the graft is bladder drained." },
+      { "id": "III", "text": "Hyperglycemia is an early sign of pancreas transplant rejection." },
+      { "id": "IV", "text": "Glucose levels may remain normal in the initial stages of pancreas rejection." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II and III only", "selects": ["II", "III"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "SPK recipients share immunologic risk, so rising creatinine may reflect pancreas rejection; decreased urine amylase can signal rejection in bladder-drained grafts. Hyperglycemia is a later sign, while glucose may remain normal early in rejection.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—glucose can remain normal early in pancreas rejection.",
+        "C": "Statement III is false; hyperglycemia is not an early rejection sign.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 847,
+      "section": "Ch. 15, Pancreas Transplantation → acute rejection monitoring (SPK creatinine, urine amylase, hyperglycemia timing)",
+      "quote_hint": "elevated serum creatinine levels can serve as a surrogate marker of pancreas rejection … Hyperglycemia: Not an early sign",
+      "keywords": ["creatinine", "surrogate", "pancreas", "rejection", "urine", "amylase", "Hyperglycemia", "early"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → acute pancreas rejection monitoring (statements I–II, IV; negation of III); PDF p. 847 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. First kidney_pancreas organ tag; third complex_combo in bank; anchor verified on Cupples p. 847.",
+    "last_updated": "2026-06-05"
+  }
+]

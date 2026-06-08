@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3113",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 321,
+    "keywords": [
+      "Assess",
+      "lipid",
+      "profile",
+      "Treat",
+      "hyperlipidemia",
+      "aggressively"
+    ],
+    "keyword_hash": "sha256:a687071135c16e634f71b87a84c8238b182f1e7b12c6d5fa1b5d652ca3bc49ee"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 321,
+      "keywords": [
+        "assess",
+        "lipid",
+        "profile",
+        "treat",
+        "hyperlipidemia",
+        "aggressively"
+      ],
+      "keyword_hash": "sha256:a687071135c16e634f71b87a84c8238b182f1e7b12c6d5fa1b5d652ca3bc49ee"
+    }
+  ]
+}

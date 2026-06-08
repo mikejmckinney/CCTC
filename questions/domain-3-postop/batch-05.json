@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-3017",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": ["030701"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart recipient's caregiver calls reporting sudden facial drooping, arm weakness, and slurred speech. Which instruction aligns with standard urgent-contact education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Contact the transplant team promptly because stroke symptoms are urgent matters" },
+      { "id": "B", "text": "Schedule this concern for discussion at the next routine medication refill call" },
+      { "id": "C", "text": "Wait 72 hours to see if symptoms resolve before any outreach" },
+      { "id": "D", "text": "Stop all immunosuppression at home without notifying the team" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Signs of stroke using FAST recognition (facial weakness, arm weakness, speech problems, time to act) are listed as urgent reasons to contact the transplant team.",
+      "rationale_incorrect": {
+        "B": "Stroke symptoms are urgent matters, not non-urgent refill or scheduling calls.",
+        "C": "Acute neurologic symptoms require prompt evaluation without multi-day delay.",
+        "D": "Immunosuppression changes require coordinated team management during acute neurologic evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication with the transplant team → iii. Urgent matters (FAST stroke)",
+      "quote_hint": "Signs of stroke: FAST … Facial weakness Arm weakness Speech problems Time to act",
+      "keywords": ["stroke", "FAST", "Facial", "weakness", "Arm", "Speech", "urgent"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication → iii. Urgent matters (FAST stroke symptoms); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 030700 angle from cctc-3002 (infection symptoms); anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3018",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030301"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient on tacrolimus develops rising serum creatinine and hypertension. Which adverse effect profile is MOST consistent with this medication class?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Nephrotoxicity and hypertension" },
+      { "id": "B", "text": "Permanent cure of pre-transplant diabetes without monitoring" },
+      { "id": "C", "text": "Graft tenderness as the hallmark of calcineurin inhibitor toxicity" },
+      { "id": "D", "text": "No effect on blood pressure or renal function" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Tacrolimus is a calcineurin inhibitor associated with nephrotoxicity, hypertension, hyperglycemia, and other adverse effects requiring therapeutic monitoring.",
+      "rationale_incorrect": {
+        "B": "Tacrolimus may cause hyperglycemia; it does not permanently cure diabetes.",
+        "C": "Calcineurin inhibitor toxicity does not produce graft tenderness; rising creatinine and hypertension are more characteristic.",
+        "D": "CNIs commonly affect renal function and blood pressure."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "nursing-drug-handbook",
+      "pdf_page": 421,
+      "section": "Ch. 23, Immunosuppressive Agents — Tacrolimus (Prograf) adverse effects row",
+      "quote_hint": "Nephrotoxicity, neurotoxicity, hyperglycemia … hypertension",
+      "keywords": ["Nephrotoxicity", "hypertension", "hyperglycemia", "Tacrolimus", "Prograf"]
+    },
+    "references": [
+      {
+        "citation": "Nursing Drug Handbook (Wolters Kluwer; current annual edition).",
+        "locator": "Ch. 23 → Immunosuppressive Agents table → Tacrolimus (Prograf) adverse effects; PDF p. 421 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 6 → CNI nephrotoxicity overview (Table 6.2 syndromes); PDF p. 124 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Primary anchor on Nursing Drug Handbook p. 421; Danovitch p. 124 additive CNI nephrotoxicity context.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3019",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020502"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When a candidate is listed in the UNOS candidate database (UNet), which candidate information is entered as part of standard waitlist registration data?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Blood type, height, weight, and other clinical variables" },
+      { "id": "B", "text": "Only the candidate's personal social media identifiers" },
+      { "id": "C", "text": "Only post-transplant discharge medication schedules" },
+      { "id": "D", "text": "Only the surgeon's operative note from a prior unrelated surgery" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waitlist registration in UNet includes candidate blood type, height, weight, and other clinical variables used for allocation matching.",
+      "rationale_incorrect": {
+        "B": "UNet registration uses clinical and demographic listing variables, not social media identifiers.",
+        "C": "Discharge medication schedules are post-transplant care documents, not primary UNet listing fields.",
+        "D": "Prior unrelated operative notes are not the described UNet candidate registration data set."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education → §8. Organ allocation → c. Candidates listed in UNet → i.",
+      "quote_hint": "blood type, height, weight, and other clinical variables",
+      "keywords": ["blood", "type", "height", "weight", "clinical", "variables", "UNet"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §8. Organ allocation → c.i. (UNet candidate registration data); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Retagged to Domain 2 task 020502 (UNet waitlist registration); distinct from cctc-3005 (SRTR outcomes registry); anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-3020",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A coordinator is teaching staff about late post-transplant mortality and long-term complication surveillance. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Cardiovascular disease is among the leading causes of death in the late post-transplantation period." },
+      { "id": "II", "text": "Cancer is among the leading causes of death in the late post-transplantation period." },
+      { "id": "III", "text": "Infection plays no role in late post-transplant mortality." },
+      { "id": "IV", "text": "Immunosuppression contributes to the pathogenesis of late cardiovascular, cancer, and infectious complications." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II and III only", "selects": ["II", "III"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Late post-transplant mortality is driven substantially by cardiovascular disease, cancer, and infection, with immunosuppression contributing to each. Statement III is false because infection remains a leading late cause of death.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—immunosuppression contributes to late CVD, cancer, and infection.",
+        "C": "Statement III is false; infection is a leading late mortality cause.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 302,
+      "section": "Ch. 11, Post-transplant Long-term Management → late mortality paragraph (CVD, cancer, infection)",
+      "quote_hint": "CVD, cancer, and infection are the leading causes of death in the late post-transplantation period, and immunosuppression plays a major role",
+      "keywords": ["CVD", "cancer", "infection", "leading", "causes", "death", "immunosuppression"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 11 → late post-transplant mortality (statements I, II, IV; negation of III); PDF p. 302 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Fourth complex_combo in bank; anchor verified on Danovitch p. 302.",
+    "last_updated": "2026-06-05"
+  }
+]

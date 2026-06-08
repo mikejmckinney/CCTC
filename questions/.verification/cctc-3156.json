@@ -1,0 +1,58 @@
+{
+  "item_id": "cctc-3156",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 736,
+    "keywords": [
+      "Prophylaxis",
+      "nystatin",
+      "clotrimazole",
+      "Fluconazole",
+      "tacrolimus",
+      "levels",
+      "monitored",
+      "dose"
+    ],
+    "keyword_hash": "sha256:36dc00289606c56788db5c1184f06a6abab9bc6137648dfe64c6c4f820ac7131"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "keywords": [
+        "treatment",
+        "nystatin",
+        "clotrimazole",
+        "prophylaxis",
+        "fluconazole",
+        "tacrolimus",
+        "interaction"
+      ],
+      "keyword_hash": "sha256:96a4f4174638d53532ce34299247189cdffff02c75d19412371b6998bded107e"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "keywords": [
+        "lungs",
+        "common",
+        "primary",
+        "later",
+        "infection",
+        "months",
+        "post-transplant"
+      ],
+      "keyword_hash": "sha256:00894b8d5d01c5a6993f5a1880960b90fbd76f3419435e169d959756efe6c670"
+    }
+  ]
+}

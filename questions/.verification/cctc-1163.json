@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1163",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "After",
+      "contact",
+      "excretions",
+      "secretions",
+      "including",
+      "nasal",
+      "Wash",
+      "hands"
+    ],
+    "keyword_hash": "sha256:439b2a63e4faf4a28c5ce810e4bb4824e72df6f7495f24ae40ebcd8215383d00"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "hygiene",
+        "after",
+        "secretions",
+        "including",
+        "nasal"
+      ],
+      "keyword_hash": "sha256:73034496f2aa64f145a24d745de990a1732dfa4c4ea18a5839aebad7729d77eb"
+    }
+  ]
+}

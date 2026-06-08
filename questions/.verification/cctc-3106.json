@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-3106",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 280,
+    "keywords": [
+      "75%",
+      "squamous",
+      "basal",
+      "cell",
+      "carcinomas",
+      "head",
+      "neck",
+      "hands"
+    ],
+    "keyword_hash": "sha256:a90b2e4a2719113ca58aaa7b9227cd3ca09ccff9c9e29e4402d014d4ff74adcd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "dorsal",
+        "hands"
+      ],
+      "keyword_hash": "sha256:b5874b0fd543d9211735428d652dec81c64b512b14ad85019c884ec1ab36bda9"
+    }
+  ]
+}

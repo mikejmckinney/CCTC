@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-1060",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 110,
+    "keywords": [
+      "Soaking",
+      "tub",
+      "swimming",
+      "hot",
+      "Contact",
+      "sports",
+      "Driving",
+      "prohibited"
+    ],
+    "keyword_hash": "sha256:0c3d296b3b93d5a888f54fb816a75d28d3823bf34bbbdac143cfd99f5785c273"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "keywords": [
+        "lifestyle",
+        "changes",
+        "swimming",
+        "limits",
+        "contact",
+        "sports",
+        "driving",
+        "prohibition"
+      ],
+      "keyword_hash": "sha256:bf6e2e41dee6b411f592c3e20f5f219571be8204ccb492b836f9ac2db65efda8"
+    }
+  ]
+}

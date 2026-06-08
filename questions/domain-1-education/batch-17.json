@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1066",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010101"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "When educating the family of a pediatric kidney transplant recipient with early post-transplant oliguria, which teaching point about acute tubular necrosis (ATN) aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Children with ATN may present with oliguria before becoming anuric, and hyperkalemia can develop rapidly" },
+      { "id": "B", "text": "Pediatric ATN always presents with immediate anuria without an oliguric phase" },
+      { "id": "C", "text": "Serum potassium monitoring is unnecessary during pediatric ATN" },
+      { "id": "D", "text": "ATN in children never requires dialysis therapy" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pediatric kidney recipients with ATN may present with oliguria before anuria; close potassium monitoring is vital because anuric patients quickly become hyperkalemic and may require dialysis.",
+      "rationale_incorrect": {
+        "B": "Standard references describe oliguria preceding anuria in children with ATN rather than immediate anuria in every case.",
+        "C": "Close observation of serum potassium is specifically emphasized during pediatric ATN.",
+        "D": "Dialysis therapy may be required during ATN when renal failure persists."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 901,
+      "section": "Ch. 17, Pediatric Transplantation → kidney early complications → ATN → v.–vii.",
+      "quote_hint": "Children with ATN present with oliguria prior to becoming anuric … Close observation of serum potassium levels … Dialysis therapy is required",
+      "keywords": ["Children", "ATN", "oliguria", "anuric", "serum", "potassium", "Dialysis", "therapy"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → kidney early complications → ATN → v.–vii. (pediatric oliguria before anuria, hyperkalemia monitoring, dialysis); PDF p. 901 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pediatric ATN teaching angle distinct from adult primary-nonfunction risk combo (cctc-1054) and pre-emptive transplant benefit (cctc-1042); anchor verified on Cupples p. 901.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1067",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "both",
+    "stem": "When educating an intestinal transplant recipient about graft-versus-host disease (GVHD), which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "GVHD incidence is highest in intestine transplant recipients compared with other solid-organ transplants" },
+      { "id": "B", "text": "GVHD occurs only after bone marrow transplantation and never after solid-organ transplant" },
+      { "id": "C", "text": "Intestinal transplant recipients have the lowest GVHD risk among solid-organ recipients" },
+      { "id": "D", "text": "GVHD always resolves without morbidity after intestine transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Although GVHD is rare in solid-organ transplantation, incidence is highest in intestine recipients—approximately five to ten times higher than other solid organs—because of abundant lymphoid tissue in the graft.",
+      "rationale_incorrect": {
+        "B": "GVHD is common after bone marrow transplantation but can also occur, rarely, after solid-organ transplantation.",
+        "C": "Intestine recipients have the highest, not lowest, GVHD incidence among solid-organ transplants.",
+        "D": "GVHD after intestine transplant leads to significant morbidity and mortality in affected patients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 729,
+      "section": "Ch. 13, Intestine Transplantation → 8. Graft-versus-host disease → b.–c.",
+      "quote_hint": "Incidence is highest in intestine transplant recipients … 5 to 10 times higher … significant morbidity and mortality",
+      "keywords": ["Incidence", "highest", "intestine", "transplant", "recipients", "solid", "organ", "morbidity"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → 8. Graft-versus-host disease → b.–c. (highest incidence in intestine recipients; morbidity/mortality); PDF p. 729 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. GVHD-incidence angle distinct from pediatric oral aversion (cctc-1063) and heart-lung toxoplasmosis combo (cctc-1064); anchor verified on Cupples p. 729.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1068",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "When educating a heart transplant candidate about long-term allograft complications, how is coronary artery vasculopathy (CAV) classified in standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A form of chronic graft rejection" },
+      { "id": "B", "text": "A form of hyperacute rejection" },
+      { "id": "C", "text": "An expected benign finding unrelated to rejection" },
+      { "id": "D", "text": "A complication limited to the donor procurement phase only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Coronary artery vasculopathy is thought to be a form of chronic graft rejection and is a major long-term complication affecting heart allografts.",
+      "rationale_incorrect": {
+        "B": "Hyperacute rejection occurs immediately after implantation and is distinct from the chronic vasculopathy process.",
+        "C": "CAV is a clinically significant chronic allograft complication rather than a benign expected finding.",
+        "D": "CAV develops in the transplanted heart over time rather than being confined to procurement."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 506,
+      "section": "Ch. 9, Heart Transplantation → Study Questions → 23.",
+      "quote_hint": "Coronary artery vasculopathy is thought to be a form of: chronic graft rejection",
+      "keywords": ["Coronary", "artery", "vasculopathy", "thought", "form", "chronic", "graft", "rejection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 9 → Study Questions → 23. (CAV as chronic graft rejection); PDF p. 506 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Heart CAV classification angle distinct from heart lifting restrictions (cctc-1059) and lifestyle combo (cctc-1060); anchor verified on Cupples p. 506.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1069",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is revising cytomegalovirus (CMV) prevention teaching for solid-organ recipients. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Universal prophylaxis gives antiviral therapy for a defined period to patients who are donor and/or recipient CMV IgG seropositive." },
+      { "id": "II", "text": "Preemptive therapy monitors patients intensively and treats CMV only after infection is detected." },
+      { "id": "III", "text": "CMV is never a cause of morbidity or mortality in solid-organ transplant recipients." },
+      { "id": "IV", "text": "CMV prevention strategies vary by transplanted organ, program protocol, and donor–recipient serostatus." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Standard references describe universal prophylaxis for seropositive donor and/or recipient pairs, preemptive therapy after surveillance detection, and program-specific strategies based on organ and serostatus. CMV is a major cause of morbidity and mortality, so statement III is false.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—prevention strategies are organ- and serostatus-specific.",
+        "C": "Statements I and II are also true; statement III is false.",
+        "D": "Statement III is false; CMV is a major cause of morbidity and mortality in transplant recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 159,
+      "section": "Ch. 4, Pharmacology → 4. Antiviral therapy → c. Strategies",
+      "quote_hint": "Universal prophylaxis … donor CMV IgG seropositive and/or recipient CMV IgG seropositive … Preemptive therapy … major cause of morbidity and mortality … specific to the transplanted organ … serostatus",
+      "keywords": ["Universal", "prophylaxis", "Preemptive", "therapy", "CMV", "morbidity", "mortality", "serostatus"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → 4. Antiviral therapy → c. Strategies (universal prophylaxis, preemptive therapy, organ/serostatus-specific prevention); PDF p. 159 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Sixteenth complex_combo in bank; CMV-strategy angle distinct from discharge serostatus teaching (cctc-3023) and lifestyle combo (cctc-1060); anchor verified on Cupples p. 159.",
+    "last_updated": "2026-06-05"
+  }
+]

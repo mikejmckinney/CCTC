@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2061",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "During pancreas transplant evaluation, a candidate reports frequent severe hypoglycemic episodes despite optimized management. How should the coordinator classify this finding?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A frequent or severe metabolic complication supporting end-organ failure assessment" },
+      { "id": "B", "text": "An irrelevant symptom that never affects pancreas candidacy" },
+      { "id": "C", "text": "An automatic contraindication that prohibits any transplant evaluation" },
+      { "id": "D", "text": "Evidence that the candidate no longer has diabetes" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pancreas candidate selection includes frequent or severe metabolic complications such as hypo- or hyperglycemia, ketoacidosis, and hypoglycemic unawareness despite optimized medical management.",
+      "rationale_incorrect": {
+        "B": "Metabolic complications are objective measures of end-organ failure considered during pancreas evaluation.",
+        "C": "Severe metabolic complications are assessed for suitability rather than automatically prohibiting evaluation.",
+        "D": "Hypoglycemic episodes reflect ongoing diabetes-related metabolic instability rather than resolution of diabetes."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → Candidate Selection Criteria → B.2.",
+      "quote_hint": "Frequent or severe metabolic complications … Hypo- or hyperglycemia … Hypoglycemic unawareness despite optimized medical management",
+      "keywords": ["Frequent", "severe", "metabolic", "complications", "Hypoglycemic", "unawareness", "optimized", "management"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → Candidate Selection Criteria → B.2. (frequent/severe metabolic complications including hypoglycemic unawareness); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Twelfth 020300 item; pancreas metabolic-complication angle distinct from PAK (cctc-2050) and alcohol contract (cctc-2058); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2062",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "recall",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "A candidate is referred for simultaneous heart-lung transplantation. Which evaluation scope aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Evaluation includes procedures outlined for both heart and lung transplantation" },
+      { "id": "B", "text": "Only isolated kidney evaluation is required" },
+      { "id": "C", "text": "No cardiac or pulmonary testing is performed before heart-lung transplant" },
+      { "id": "D", "text": "Only dental assessment is required without cardiopulmonary studies" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The heart-lung transplant evaluation process includes procedures outlined in the sections on heart transplantation and lung transplantation.",
+      "rationale_incorrect": {
+        "B": "Heart-lung evaluation requires cardiopulmonary assessment rather than isolated kidney studies alone.",
+        "C": "Standard references describe comprehensive heart and lung evaluation procedures.",
+        "D": "Cardiopulmonary diagnostic evaluation is required beyond dental assessment alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "section": "Ch. 1, Evaluation → Heart/lung transplantation → 4.",
+      "quote_hint": "The evaluation process includes those procedures outlined in the sections above on heart and lung transplantation",
+      "keywords": ["evaluation", "process", "procedures", "outlined", "heart", "lung", "transplantation", "sections"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart/lung transplantation → 4. (evaluation includes heart and lung transplant procedures); PDF p. 39 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth heart_lung organ tag in D2; evaluation-scope angle distinct from Eisenmenger indication (cctc-2013) and RHC monitoring (cctc-2057); anchor verified on Cupples p. 39.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2063",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "both",
+    "stem": "A candidate with short-bowel syndrome remains dependent on parenteral nutrition. Which finding supports the definition of intestinal failure used in transplant evaluation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Gut function is insufficient and intravenous supplementation is required to maintain health or growth" },
+      { "id": "B", "text": "The patient eats a full oral diet without any nutritional support" },
+      { "id": "C", "text": "Intestinal failure is defined only by cosmetic abdominal scarring" },
+      { "id": "D", "text": "Intravenous supplementation is never part of intestinal failure definitions" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Intestinal failure is defined as gut function below the minimum needed for absorption of macronutrients and/or water and electrolytes such that intravenous supplementation is required to maintain health and/or growth.",
+      "rationale_incorrect": {
+        "B": "Intestinal failure implies insufficient gut function requiring intravenous supplementation rather than unrestricted oral intake alone.",
+        "C": "Intestinal failure is a functional nutritional definition, not a cosmetic diagnosis.",
+        "D": "Required intravenous supplementation is central to the definition of intestinal failure."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 681,
+      "section": "Ch. 13, Intestine Transplantation → Intestinal Failure → A.1.",
+      "quote_hint": "intravenous supplementation is required to maintain health and/or growth",
+      "keywords": ["intravenous", "supplementation", "required", "maintain", "health", "growth", "Intestinal", "Failure"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → Intestinal Failure → A.1. (IV supplementation required to maintain health/growth); PDF p. 681 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Thirteenth 020300 item; intestinal-failure definition distinct from SOC suitability (cctc-2048) and late TPN discontinuation outcomes (cctc-3037); anchor verified on Cupples p. 681.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2064",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020203"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "When coordinating multidisciplinary consults for a pediatric solid-organ transplant candidate, which evaluation component aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Psychosocial assessment including child development evaluation" },
+      { "id": "B", "text": "Psychosocial assessment is omitted for all pediatric candidates" },
+      { "id": "C", "text": "Only financial review without psychology or child development input" },
+      { "id": "D", "text": "Child development evaluation replaces all medical testing" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pediatric transplant psychosocial evaluation is completed by social work, psychology/psychiatry, and child development specialists and includes psychological status, coping, family support, adherence history, and related factors.",
+      "rationale_incorrect": {
+        "B": "Psychosocial and child development assessment is part of pediatric evaluation rather than being omitted.",
+        "C": "Child development and psychology input supplement rather than replace broader multidisciplinary assessment.",
+        "D": "Child development evaluation complements medical testing rather than replacing it."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 697,
+      "section": "Ch. 13, Pediatric Populations → psychosocial evaluation → vi.",
+      "quote_hint": "Completed by social work, psychology/psychiatry, and child development (pediatrics)",
+      "keywords": ["child", "development", "pediatrics", "psychosocial", "social", "work", "psychology", "psychiatry"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → psychosocial evaluation → vi. (child development evaluation with social work and psychology/psychiatry); PDF p. 697 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Tenth 020200 item; ninth pediatric recipient in bank; child-development consult angle distinct from PCP coordination (cctc-2053); anchor verified on Cupples p. 697.",
+    "last_updated": "2026-06-05"
+  }
+]

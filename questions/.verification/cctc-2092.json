@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2092",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 34,
+    "keywords": [
+      "Patients",
+      "referred",
+      "cardiac",
+      "transplantation",
+      "require",
+      "both",
+      "right",
+      "left"
+    ],
+    "keyword_hash": "sha256:6f0cd39fa7b685955c032d12f87a533b8abb8c99ce4da2ff1bb46aced6caf132"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 34,
+      "keywords": [
+        "cardiac",
+        "catheterization",
+        "right",
+        "heart",
+        "required"
+      ],
+      "keyword_hash": "sha256:149009327c003305defb9db6ab21803fd827f07f175121d28281e7b3c872c1b6"
+    }
+  ]
+}

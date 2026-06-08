@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2101",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 943,
+    "keywords": [
+      "cryptococcosis",
+      "coccidioidomycosis",
+      "histoplasmosis",
+      "pretransplant",
+      "minimum",
+      "months",
+      "antifungal",
+      "fluconazole"
+    ],
+    "keyword_hash": "sha256:bf1a1c9f6f90d31ac74d8d24371cb067f7ad6cb5d90ecfd9c6499049f7889dab"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "keywords": [
+        "pretransplant",
+        "cryptococcosis",
+        "coccidioidomycosis",
+        "histoplasmosis",
+        "months",
+        "fluconazole"
+      ],
+      "keyword_hash": "sha256:06bad2b340d2a7cd0645aad452c8dac3c8e39ecba723ed66d59ea9c7c51adaf7"
+    }
+  ]
+}

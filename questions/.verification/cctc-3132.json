@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3132",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "Fever",
+      "101°F",
+      "irritability",
+      "behavior",
+      "Wound",
+      "erythema",
+      "respiratory",
+      "tachypnea"
+    ],
+    "keyword_hash": "sha256:7b1762679c14cbbd13b72f11b7e703d3753f7ad563f582de6a2d0b88dc1f8690"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "fever",
+        "pediatric",
+        "symptoms",
+        "wound",
+        "respiratory",
+        "signs"
+      ],
+      "keyword_hash": "sha256:d27f3eaeba3765d492029494f20f56ce75125d8fb43ea38fc73156552f641259"
+    }
+  ]
+}

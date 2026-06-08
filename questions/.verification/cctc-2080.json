@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2080",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 153,
+    "keywords": [
+      "Everolimus",
+      "black",
+      "box",
+      "warning",
+      "heart",
+      "transplantation",
+      "increased",
+      "mortality"
+    ],
+    "keyword_hash": "sha256:d21af97233ff11425bc2ba721957146532606f101e45ecfb685f3198e9853409"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 153,
+      "keywords": [
+        "everolimus",
+        "black",
+        "warning",
+        "heart",
+        "transplantation"
+      ],
+      "keyword_hash": "sha256:4fb5b016c6b921cf876ec023337b9a73c4a28c547947e78005f442cd4a48bcdb"
+    }
+  ]
+}

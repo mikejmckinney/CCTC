@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1052",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "raw",
+      "seed",
+      "sprouts",
+      "unpasteurized",
+      "juices",
+      "bagged",
+      "lettuce"
+    ],
+    "keyword_hash": "sha256:80f55e896404feb2b0db1312dcafc95b28b5402fce693e7cb2ed2155115e1aed"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "dietary",
+        "precautions",
+        "sprouts",
+        "bagged",
+        "lettuce",
+        "washing",
+        "unpasteurized",
+        "juices"
+      ],
+      "keyword_hash": "sha256:8202eb458091037992970611888a549154f4461f7a7f1b727551090d3c8181f9"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2006",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 55,
+    "keywords": [
+      "Monthly",
+      "PRAs",
+      "sensitized",
+      "candidates",
+      "kidney"
+    ],
+    "keyword_hash": "sha256:74c2771e31dea2ac7d1d2499b35e8dde0ccf5526680da8aa01e8bfb5f463fa80"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 55,
+      "keywords": [
+        "monthly",
+        "frequent",
+        "sensitized",
+        "candidates"
+      ],
+      "keyword_hash": "sha256:acef2de14befe1dd6636a1b80e3a03c4b22a66f4f9af82cf4d84c41d65bf3cdb"
+    }
+  ]
+}

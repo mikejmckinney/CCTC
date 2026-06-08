@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3133",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "CVL",
+      "present",
+      "begin",
+      "vancomycin",
+      "organism",
+      "identified"
+    ],
+    "keyword_hash": "sha256:7d4a371685496a358c2be04a09256dabaf047862c14a5312d55214ae75483bda"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "vancomycin",
+        "present",
+        "until",
+        "organism",
+        "identified"
+      ],
+      "keyword_hash": "sha256:d786d8ba548ed38d05d8af9883b4d1960bb7f40c49a90f4fa92665d0dce7a149"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1067",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 729,
+    "keywords": [
+      "Incidence",
+      "highest",
+      "intestine",
+      "transplant",
+      "recipients",
+      "solid",
+      "organ",
+      "morbidity"
+    ],
+    "keyword_hash": "sha256:06fc1942e8b6108fcbde4374bfe88272b69fa6cf697c1a427c5f387085455796"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 729,
+      "keywords": [
+        "highest",
+        "incidence",
+        "intestine",
+        "recipients",
+        "morbidity",
+        "mortality"
+      ],
+      "keyword_hash": "sha256:fb126f2a36bc3eb35ffba300b3d1394949e7840dad4856a0efb3492b03ea1b80"
+    }
+  ]
+}

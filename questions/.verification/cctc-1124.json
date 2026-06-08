@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1124",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Weight",
+      "gain",
+      "hair",
+      "loss",
+      "certain",
+      "medications",
+      "Appearance",
+      "body"
+    ],
+    "keyword_hash": "sha256:0cf91acfed9960879b53c78402d98c815b0bdd1d0d6d7a88f0682bdb28ddd084"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "weight",
+        "certain",
+        "medications"
+      ],
+      "keyword_hash": "sha256:8075e4b232b39036cf163ab4ea22edbc7b28f90811303599a588f648ecf67846"
+    }
+  ]
+}

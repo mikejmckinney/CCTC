@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1133",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "telework",
+      "part-time",
+      "work",
+      "activities",
+      "weightlifting",
+      "Social",
+      "Worker",
+      "Vocational"
+    ],
+    "keyword_hash": "sha256:e122b0e69aa18d18ff794de0ed41a2ba112f3509e663624f6c018703a173c701"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "gradual",
+        "return",
+        "restrictions",
+        "vocational",
+        "referral"
+      ],
+      "keyword_hash": "sha256:07af322ea7b2a28f06223ab34d87f00a8497313faca8f96adfd9c2ef4060cf1f"
+    }
+  ]
+}

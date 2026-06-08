@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3044",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 146,
+    "keywords": [
+      "Tacrolimus",
+      "less",
+      "likely",
+      "cosmetic",
+      "problems",
+      "cyclosporine",
+      "hyperlipidemia"
+    ],
+    "keyword_hash": "sha256:bf14604e642c521075173ac623b7ea34bcf09c58dca9f0cfe7c407d6a61434a7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 146,
+      "keywords": [
+        "tacrolimus",
+        "likely",
+        "cause",
+        "cosmetic",
+        "problems",
+        "cyclosporine"
+      ],
+      "keyword_hash": "sha256:c30fb19e54f6473ed9e2cb74b969064a3a663d8c36ac8e3f8a1af769846eadf3"
+    }
+  ]
+}

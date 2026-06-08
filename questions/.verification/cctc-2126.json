@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2126",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 198,
+    "keywords": [
+      "EBV",
+      "replication",
+      "approximately",
+      "80%",
+      "recipients",
+      "antilymphocyte",
+      "antibody",
+      "therapy"
+    ],
+    "keyword_hash": "sha256:e941e8cee65a318210ab056d10dc9552fff89d7bfd535d2616357a477770c270"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "keywords": [
+        "replication",
+        "antilymphocyte",
+        "antibody",
+        "therapy"
+      ],
+      "keyword_hash": "sha256:ca01b9b84b78c2e74107b91b26614520024b11b767e070e8a11c2a5a1acdbf76"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2035",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 101,
+    "keywords": [
+      "unable",
+      "determination",
+      "further",
+      "evaluation",
+      "required",
+      "transplant",
+      "team"
+    ],
+    "keyword_hash": "sha256:6fbdbe3ad29f644e881a27a74aacec984954aa83e433543c75be6c73c20be1d5"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "keywords": [
+        "unable",
+        "determination",
+        "further",
+        "evaluation",
+        "required"
+      ],
+      "keyword_hash": "sha256:226764a4e12d94b1b08f2c1a762ca2fd7d4f39e73c6d312d3bca3b3978aa37a7"
+    }
+  ]
+}

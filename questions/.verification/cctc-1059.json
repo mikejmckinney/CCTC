@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1059",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 110,
+    "keywords": [
+      "Lifting",
+      "item",
+      "pounds",
+      "activity",
+      "restrictions",
+      "posttransplant",
+      "lifestyle"
+    ],
+    "keyword_hash": "sha256:7c031c3772a57736c89005d989fd7334a0527556e063946c4aa340bc1b8eccea"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "keywords": [
+        "potential",
+        "activity",
+        "restrictions",
+        "lifting",
+        "related",
+        "limits"
+      ],
+      "keyword_hash": "sha256:55f5a27eec4efd25d5ef2bafbff3d7e191f325e3e7f83cc5d274fe5e34e9670d"
+    }
+  ]
+}

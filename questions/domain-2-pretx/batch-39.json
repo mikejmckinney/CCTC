@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-2153",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling a transplant candidate about long-term skin-cancer risk, which patient characteristic aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Fitzpatrick skin types I to III" },
+      { "id": "B", "text": "Fitzpatrick skin types V to VI only" },
+      { "id": "C", "text": "Skin type never influences post-transplant skin-cancer risk" },
+      { "id": "D", "text": "Only recipients younger than 18 years are at increased skin-cancer risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin-cancer risk factors in transplant recipients include skin type (Fitzpatrick I to III), cumulative sun exposure, older age at transplant, immunosuppression intensity, and transplant type.",
+      "rationale_incorrect": {
+        "B": "Lighter Fitzpatrick skin types I to III are specifically listed rather than types V to VI alone.",
+        "C": "Skin type is among cited risk factors rather than having no influence.",
+        "D": "Risk factors apply across adult recipients rather than being limited to recipients younger than 18 years."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Risk factors → i.",
+      "quote_hint": "Skin type (Fitzpatrick I to III)",
+      "keywords": ["Skin", "type", "Fitzpatrick", "III", "Risk", "factors"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → i. (Fitzpatrick skin types I–III); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fitzpatrick skin-type risk angle distinct from heart/lung incidence counseling (cctc-2108) and 95% BCC/SCC epidemiology (cctc-2105); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2154",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "During pretransplant malignancy-prevention teaching, which sun-precaution principle aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Avoid undue exposure to sunlight" },
+      { "id": "B", "text": "Maximize midday sun exposure to improve vitamin D without precautions" },
+      { "id": "C", "text": "Sun avoidance is unnecessary after transplantation" },
+      { "id": "D", "text": "Only kidney recipients need sun precautions" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cancer-prevention teaching includes sun precautions such as avoiding undue exposure to sunlight, avoiding tanning beds, wearing protective clothing, and using sunscreen with minimum SPF 50.",
+      "rationale_incorrect": {
+        "B": "Sun precautions are recommended rather than maximizing unprotected midday exposure.",
+        "C": "Sun precautions remain important after transplantation because immunosuppression increases skin-cancer risk.",
+        "D": "Sun precautions apply to transplant recipients broadly rather than kidney recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 4.a.",
+      "quote_hint": "Avoiding undue exposure to sunlight",
+      "keywords": ["Avoiding", "undue", "exposure", "sunlight", "Sun", "precautions"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.a. (avoid undue sunlight exposure); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Undue-sunlight avoidance angle distinct from tanning-bed item (cctc-1102) and ACS screening minimum (cctc-2151); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2155",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A liver transplant candidate asks what sunscreen characteristics align with standard malignancy-prevention references. Which counseling point is correct?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Use sunscreen that provides ultraviolet-B protection with minimum SPF 50" },
+      { "id": "B", "text": "Any sunscreen with SPF 15 is sufficient regardless of transplant status" },
+      { "id": "C", "text": "Sunscreen is never recommended for transplant candidates or recipients" },
+      { "id": "D", "text": "Only tanning-bed lotions provide adequate post-transplant sun protection" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sun precautions include using sunscreen lotion that provides protection against ultraviolet-B rays with a minimum sun protection factor of 50, along with protective clothing and avoiding tanning beds.",
+      "rationale_incorrect": {
+        "B": "Minimum SPF 50 ultraviolet-B protection is specified rather than SPF 15 alone.",
+        "C": "Sunscreen is recommended as part of cancer-prevention teaching.",
+        "D": "Tanning beds should be avoided rather than using tanning-bed lotions for protection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 4.e.",
+      "quote_hint": "sunscreen lotion that provides protection against ultraviolet-B rays (minimum sun protection factor [SPF] = 50)",
+      "keywords": ["sunscreen", "lotion", "ultraviolet-B", "minimum", "sun", "protection", "factor", "SPF"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.e. (sunscreen with UV-B protection, minimum SPF 50); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ch. 6 minimum SPF 50/UV-B angle distinct from Ch. 3 health-maintenance SPF greater than 50 teaching (cctc-1103, p. 118) and undue-sunlight item (cctc-2154); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2156",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102", "020701"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating skin-cancer prevention teaching for the evaluation team. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Fitzpatrick skin types I to III are cited skin-cancer risk factors." },
+      { "id": "II", "text": "Recipients should avoid undue exposure to sunlight." },
+      { "id": "III", "text": "Tanning beds are a safe alternative to sun avoidance." },
+      { "id": "IV", "text": "Sunscreen should provide ultraviolet-B protection with minimum SPF 50." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Fitzpatrick skin types I to III, avoiding undue sunlight, and minimum SPF 50 ultraviolet-B sunscreen are supported. Statement III is false because tanning beds should be avoided rather than used as a safe alternative.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—minimum SPF 50 ultraviolet-B sunscreen is recommended.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because tanning beds are specifically avoided."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 4. and skin cancer risk factors",
+      "quote_hint": "Avoiding undue exposure to sunlight … Avoiding tanning beds … ultraviolet-B rays (minimum … SPF] = 50)",
+      "keywords": ["Avoiding", "undue", "sunlight", "tanning", "beds", "ultraviolet-B", "SPF", "protection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → i. (Fitzpatrick skin types I–III); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.a., b., e. (avoid undue sunlight, avoid tanning beds, SPF 50 UV-B sunscreen); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Skin-cancer prevention combo distinct from cancer-screening combo (cctc-2152) and malignancy-prevention combo (cctc-3116); corroborating locators on p. 280 and p. 282 verified.",
+    "last_updated": "2026-06-05"
+  }
+]

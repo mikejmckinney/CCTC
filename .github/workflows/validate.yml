@@ -27,8 +27,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run question bank validation
-        run: npm run validate
+      - name: Install poppler utilities
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Fetch and index OPTN policies PDF
+        run: npm run reference:fetch-optn && npm run reference:index -- optn-policies
+
+      # CI subset: schema + integrity + reference format + OPTN-indexed content,
+      # then committed verification stubs for textbook anchors.
+      # See .github/prompts/03-validate.md and docs/reference/verification-stubs/README.md.
+      - name: Run question bank validation (CI subset)
+        run: npm run validate:ci
+
+      - name: Verify committed reference stubs
+        run: npm run validate:stubs
 
   e2e:
     runs-on: ubuntu-latest
@@ -51,8 +63,10 @@ jobs:
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
 
+      # Full `npm run build` requires local textbook indexes; CI uses validate:ci only.
+      # Stub enforcement runs in the `validate` job above (validate:stubs).
       - name: Build app for browser tests
-        run: npm run build
+        run: npm run build:ci
 
       - name: Run browser resume tests (Playwright runner)
         env:

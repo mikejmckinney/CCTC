@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3037",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "Bleeding",
+      "Oral",
+      "emesis",
+      "urgent",
+      "matters",
+      "wound",
+      "Rectal"
+    ],
+    "keyword_hash": "sha256:fe119726aaad8ab5b00680c98c5e13844069aa2cb711b52923b558486a3dbe5f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "bleeding",
+        "emesis",
+        "source",
+        "listed"
+      ],
+      "keyword_hash": "sha256:fe61bef29af998e3f701f7d06559e2f98da513ae3d3d54952999aac735171da1"
+    }
+  ]
+}

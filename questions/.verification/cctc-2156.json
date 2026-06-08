@@ -1,0 +1,51 @@
+{
+  "item_id": "cctc-2156",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Avoiding",
+      "undue",
+      "sunlight",
+      "tanning",
+      "beds",
+      "ultraviolet-B",
+      "SPF",
+      "protection"
+    ],
+    "keyword_hash": "sha256:a57ee1b4fbc22346e6ba2ea4f82c3d60699d05d73bc2e60af80719e91c18b845"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "fitzpatrick",
+        "types"
+      ],
+      "keyword_hash": "sha256:74b066ac985a353a9682abc9e0d63667b6125cf90fe7af0d75ac0a93e9d79304"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "avoid",
+        "undue",
+        "sunlight",
+        "tanning",
+        "sunscreen"
+      ],
+      "keyword_hash": "sha256:96497a159d7f84b3b95c5e76a54e2e6df08787c5be9b01d3eb01e5b4825334c0"
+    }
+  ]
+}

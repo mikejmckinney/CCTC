@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3069",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 202,
+    "keywords": [
+      "Liver",
+      "vanishing",
+      "bile",
+      "duct",
+      "syndrome",
+      "CMV",
+      "allograft",
+      "organ-specific"
+    ],
+    "keyword_hash": "sha256:fcdce5445e2a1b71cb358dbf6f69ab50354f9d0a0da6dd9546e540986b5cf99d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "keywords": [
+        "liver",
+        "vanishing",
+        "syndrome"
+      ],
+      "keyword_hash": "sha256:02e6a97f756c2dce9a72fc27c5a9e2f85caa928f2d5d5ba531e20bbaf8c79fa9"
+    }
+  ]
+}

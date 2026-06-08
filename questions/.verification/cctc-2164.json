@@ -1,0 +1,50 @@
+{
+  "item_id": "cctc-2164",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Wearing",
+      "sunglasses",
+      "sun",
+      "visors",
+      "Sun",
+      "precautions",
+      "Older",
+      "age"
+    ],
+    "keyword_hash": "sha256:35123680bd03ade112fd9c74243c8b5bdeee4d070e7f4feed2e5075b1875d104"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "older",
+        "lymphoma",
+        "leukemia",
+        "history"
+      ],
+      "keyword_hash": "sha256:1ea0add2d97ac2b16d5091ea54e13cc7063b92d5d9f86fa3bf3409ea100f3c47"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "sunglasses",
+        "visors"
+      ],
+      "keyword_hash": "sha256:106405bbec2b8f512776dd01aa3f86bad58b54cd42ecc9b3ed427241b38a6a7f"
+    }
+  ]
+}

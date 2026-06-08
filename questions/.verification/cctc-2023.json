@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2023",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 101,
+    "keywords": [
+      "PHS",
+      "increased",
+      "risk",
+      "donor",
+      "notified",
+      "consent",
+      "offer"
+    ],
+    "keyword_hash": "sha256:31a8db9736ee4eb212bf040a047ebb8c22fd336c01647cb948c15ae3e60699e1"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "keywords": [
+        "increased-risk",
+        "donor",
+        "notification",
+        "consent"
+      ],
+      "keyword_hash": "sha256:2c1ed1802060f575e903d6d34e19f66ea988b9706a79f2cb5b4082c23e3b4668"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-1146",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Hepatitis",
+      "immunized",
+      "pretransplant",
+      "vaccinations",
+      "Health"
+    ],
+    "keyword_hash": "sha256:461988c4f96af9a6594574605d59a9e3048e0e3cdc09b055c7ccbf380eccb7f2"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "hepatitis",
+        "immunized",
+        "pretransplant"
+      ],
+      "keyword_hash": "sha256:25c7cea01e8e1b69062fd8ce4879154fa233dabecb4bccd31f6820b4792eeabc"
+    }
+  ]
+}

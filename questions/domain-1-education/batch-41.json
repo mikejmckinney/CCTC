@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-1162",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching wound-care infection prevention after transplantation, which hand-hygiene step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wash hands before and after touching wounds or mucous membranes" },
+      { "id": "B", "text": "Hand-washing is needed only after wound care, not before" },
+      { "id": "C", "text": "Gloves alone replace all hand-washing around wounds" },
+      { "id": "D", "text": "Wound-contact hand hygiene applies only in the hospital" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands before and after touching wounds or mucous membranes, along with washing after secretions, bathroom use, and animal contact.",
+      "rationale_incorrect": {
+        "B": "Hand-washing is recommended both before and after wound or mucous membrane contact.",
+        "C": "Hand-washing with soap and water remains emphasized in addition to appropriate glove use.",
+        "D": "Home wound-care teaching includes hand hygiene rather than limiting it to inpatient settings."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "Before and after touching wounds or mucous membranes",
+      "keywords": ["Before", "after", "touching", "wounds", "mucous", "membranes", "Wash", "hands"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash before and after wounds or mucous membranes); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Wound/mucous-membrane hand-hygiene angle distinct from meal-preparation timing (cctc-1158) and clean/cover cuts teaching (cctc-1136); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1163",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When reinforcing infection-prevention teaching for a recipient with seasonal rhinitis, which hand-hygiene step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wash hands after contact with excretions or secretions, including nasal secretions" },
+      { "id": "B", "text": "Nasal secretions never require hand-washing in transplant recipients" },
+      { "id": "C", "text": "Only laboratory staff must wash hands after secretions contact" },
+      { "id": "D", "text": "Secretions contact requires stopping immunosuppression temporarily" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hand-hygiene teaching includes washing after contact with any excretions or secretions, including nasal secretions, along with other high-risk exposures such as wounds and animals.",
+      "rationale_incorrect": {
+        "B": "Nasal secretions are specifically listed among exposures requiring hand-washing.",
+        "C": "Recipients themselves should practice hand hygiene after secretions contact.",
+        "D": "Immunosuppression continues as prescribed; infection prevention emphasizes hygiene rather than stopping therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After contact with any excretions or secretions, including nasal secretions",
+      "keywords": ["After", "contact", "excretions", "secretions", "including", "nasal", "Wash", "hands"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash after secretions including nasal secretions); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Nasal-secretions hand-hygiene angle distinct from wound-contact timing (cctc-1162) and bathroom hand-washing (cctc-1154); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1164",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A transplant recipient planning summer recreation asks about water-related infection prevention. Which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Assess cleanliness of pools, lakes, rivers, and the ocean prior to entering" },
+      { "id": "B", "text": "Any natural or recreational water is always safe without assessment" },
+      { "id": "C", "text": "Swimming is permanently contraindicated after every transplant" },
+      { "id": "D", "text": "Only ocean water requires assessment; pools and lakes never do" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waterborne infection-prevention teaching includes assessing cleanliness of pools, lakes, rivers, and the ocean prior to entering, along with avoiding swallowing untreated water and observing boil-water advisories.",
+      "rationale_incorrect": {
+        "B": "Cleanliness assessment is recommended rather than assuming all recreational water is safe.",
+        "C": "Guidance emphasizes precautions and assessment rather than permanent prohibition of all swimming.",
+        "D": "Pools, lakes, rivers, and the ocean are all included in cleanliness assessment teaching."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iv. Waterborne infections",
+      "quote_hint": "Assess cleanliness of pools, lakes, rivers, and the ocean prior to entering",
+      "keywords": ["Assess", "cleanliness", "pools", "lakes", "rivers", "ocean", "entering"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iv. Waterborne infections (assess pool/lake/river/ocean cleanliness before entering); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Recreational-water cleanliness angle distinct from boil-water advisory (cctc-1104) and avoid-swallowing-lake-water teaching (cctc-1104); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1165",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating hand-hygiene and animal-safety teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should wash hands before and after touching wounds or mucous membranes." },
+      { "id": "II", "text": "Recipients should wash hands after contact with secretions, including nasal secretions." },
+      { "id": "III", "text": "Recipients should avoid contact with pets or other animals with diarrhea." },
+      { "id": "IV", "text": "Hand-washing after wound care is unnecessary if gloves were worn briefly." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Wound and secretion hand-washing and avoiding animals with diarrhea are supported. Statement IV is false because hand-washing before and after wound contact is specifically recommended regardless of brief glove use.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—contact with animals with diarrhea should be avoided.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because wound-contact hand-washing remains recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene and v. Animal safety",
+      "quote_hint": "Before and after touching wounds or mucous membranes … secretions, including nasal secretions … Avoid contact with pets or other animals with diarrhea",
+      "keywords": ["wounds", "mucous", "membranes", "secretions", "nasal", "Wash", "hands", "diarrhea"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wound/secretions hand-washing); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (avoid contact with animals with diarrhea); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Hand-hygiene/animal-safety combo distinct from hand-hygiene combo (cctc-1161) and animal-safety combo (cctc-1101); corroborating locators on p. 115 and p. 116 verified.",
+    "last_updated": "2026-06-05"
+  }
+]

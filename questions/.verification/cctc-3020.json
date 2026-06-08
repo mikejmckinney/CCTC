@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3020",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 302,
+    "keywords": [
+      "CVD",
+      "cancer",
+      "infection",
+      "leading",
+      "causes",
+      "death",
+      "immunosuppression"
+    ],
+    "keyword_hash": "sha256:4e9269aaac731ac3e266f3bbffc0d24811bf02458d9447e94323c11385a7fcb7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 302,
+      "keywords": [
+        "post-transplant",
+        "mortality",
+        "statements",
+        "negation"
+      ],
+      "keyword_hash": "sha256:a7ca827e787d8efb3afe50fce4bf134f553464a108ec6b6de7b255c64cdfa618"
+    }
+  ]
+}

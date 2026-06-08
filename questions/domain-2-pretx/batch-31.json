@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2121",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling a transplant candidate about posttransplant lymphoproliferative disease (PTLD) risk, which cytomegalovirus (CMV) factor aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "CMV disease" },
+      { "id": "B", "text": "CMV serostatus has no relationship to PTLD risk" },
+      { "id": "C", "text": "Only donor age determines CMV-related PTLD risk" },
+      { "id": "D", "text": "CMV disease prevents PTLD from ever occurring" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Risk factors for PTLD include CMV disease and CMV mismatch with a CMV-seropositive donor and CMV-seronegative recipient, along with Epstein-Barr virus factors and potent immunosuppression.",
+      "rationale_incorrect": {
+        "B": "CMV disease and mismatch are listed among PTLD risk factors.",
+        "C": "CMV disease and serostatus patterns are key viral risk factors rather than donor age alone.",
+        "D": "CMV disease increases rather than eliminates PTLD risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 3. Risk factors for PTLD",
+      "quote_hint": "CMV disease",
+      "keywords": ["CMV", "disease", "Risk", "factors", "PTLD", "mismatch", "EBV"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 3.e. (CMV disease as PTLD risk factor); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. CMV-disease PTLD risk angle distinct from CMV D+/R− mismatch (cctc-2115) and EBV D+/R− recall (cctc-2109); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2122",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pretransplant teaching about posttransplant lymphoproliferative disease (PTLD) management, which therapy aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Rituximab" },
+      { "id": "B", "text": "Immediate intensification of all immunosuppression without evaluation" },
+      { "id": "C", "text": "Rituximab is contraindicated in every PTLD case" },
+      { "id": "D", "text": "PTLD is treated only with routine daily skin biopsy" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Treatment options for PTLD include reduction or withdrawal of immunosuppression, mTOR inhibitors, rituximab, IVIG, antiviral therapy, surgery for localized disease, and cytotoxic chemotherapy such as R-CHOP.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression is reduced or modified rather than intensified as initial PTLD management.",
+        "C": "Rituximab is a listed treatment option rather than being universally contraindicated.",
+        "D": "Targeted therapies such as rituximab are used rather than biopsy alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Rituximab (Rituxan)",
+      "keywords": ["Rituximab", "Rituxan", "Treatment", "options", "PTLD", "immunosuppression"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.c. (rituximab as treatment option); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Rituximab PTLD-treatment angle distinct from heart desensitization rituximab risks (cctc-2066) and mTOR therapy (cctc-2116); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2123",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When explaining advanced posttransplant lymphoproliferative disease (PTLD) treatment options, which cytotoxic chemotherapy regimen aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "R-CHOP with rituximab, cyclophosphamide, doxorubicin, vincristine, and prednisone" },
+      { "id": "B", "text": "No chemotherapy is ever used for PTLD" },
+      { "id": "C", "text": "Routine daily oral aspirin as the sole cytotoxic regimen" },
+      { "id": "D", "text": "Chemotherapy is limited to pretransplant candidates only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cytotoxic chemotherapy options for PTLD include R-CHOP with rituximab, cyclophosphamide, doxorubicin, vincristine, and prednisone, along with other listed therapies.",
+      "rationale_incorrect": {
+        "B": "Cytotoxic chemotherapy is among advanced PTLD treatment options.",
+        "C": "R-CHOP is the referenced regimen rather than aspirin alone.",
+        "D": "Chemotherapy may be used post-transplant for PTLD rather than being limited to pretransplant evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options → Cytotoxic chemotherapy",
+      "quote_hint": "R-CHOP: rituximab, cyclophosphamide, doxorubicin, vincristine, and prednisone",
+      "keywords": ["R-CHOP", "rituximab", "cyclophosphamide", "doxorubicin", "vincristine", "prednisone"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.g.i. (R-CHOP regimen); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. R-CHOP regimen angle distinct from rituximab monotherapy counseling (cctc-2122) and IS-reduction recall (cctc-2112); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2124",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator explains posttransplant lymphoproliferative disease (PTLD) treatment to a lung transplant candidate. Which option aligns with standard references for localized disease?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Surgery for localized disease" },
+      { "id": "B", "text": "No surgical option exists for any PTLD presentation" },
+      { "id": "C", "text": "Routine daily bone marrow biopsy as the only localized treatment" },
+      { "id": "D", "text": "Surgery is contraindicated in every transplant recipient with PTLD" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD treatment options include surgery for localized disease, along with immunosuppression reduction, rituximab, IVIG, antiviral therapy, and chemotherapy.",
+      "rationale_incorrect": {
+        "B": "Surgery is listed for localized PTLD disease.",
+        "C": "Surgical resection is a treatment option rather than routine biopsy alone.",
+        "D": "Surgery may be used for localized disease when indicated rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Surgery for localized disease",
+      "keywords": ["Surgery", "localized", "disease", "Treatment", "options", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.f. (surgery for localized disease); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Localized-PTLD surgery angle distinct from rituximab therapy (cctc-2122) and R-CHOP chemotherapy (cctc-2123); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  }
+]

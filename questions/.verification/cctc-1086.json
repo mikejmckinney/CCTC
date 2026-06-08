@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1086",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 180,
+    "keywords": [
+      "Rabies",
+      "exposure",
+      "potential",
+      "exposures",
+      "vocations",
+      "only",
+      "Recommended",
+      "Pretransplant"
+    ],
+    "keyword_hash": "sha256:568209ab1b299a94f69517e42e0d973f0b5661a025da6c68f6b24b7361ef7f70"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 180,
+      "keywords": [
+        "rabies",
+        "vocation-related",
+        "exposure"
+      ],
+      "keyword_hash": "sha256:2ac568107c8e9e42a5c5bd148a301e223e60144a0b6d6f0bbe30566fb4699f19"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1078",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During living donor informed consent, which legal counseling point must the coordinator include per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "It is a federal crime to offer to donate any human organ for anything of value" },
+      { "id": "B", "text": "Financial compensation for organ donation is legally encouraged" },
+      { "id": "C", "text": "Only state law, not federal law, governs organ sales" },
+      { "id": "D", "text": "Vacation packages may be exchanged for organ donation without restriction" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor education must confirm that the donor understands it is a federal crime to offer to donate any human organ for anything of value, including cash, property, and vacations.",
+      "rationale_incorrect": {
+        "B": "Federal law prohibits organ sales and inducements rather than encouraging compensation.",
+        "C": "Federal law specifically prohibits offering organs for valuable consideration.",
+        "D": "Vacations and other items of value are explicitly named as prohibited inducements."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "section": "Ch. 7, Care of Living Donors → F. Elements Included in Education and Informed Consent → 1.d.",
+      "quote_hint": "federal crime to offer to donate any human organ for anything of value including … cash, property, and vacations",
+      "keywords": ["federal", "crime", "donate", "human", "organ", "value", "cash", "property"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → F. Elements Included in Education and Informed Consent → 1.d. (federal crime to offer organ for anything of value); PDF p. 340 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Federal organ-sales prohibition angle distinct from donor decline right (cctc-1074) and separate live donor team (cctc-1045); anchor verified on Cupples p. 340.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1079",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating JC virus teaching for solid-organ recipients. Evaluate the following statements about progressive multifocal leukoencephalopathy (PML):",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "JC virus causes progressive multifocal leukoencephalopathy." },
+      { "id": "II", "text": "PML is typically associated with fever and meningeal signs such as nuchal rigidity." },
+      { "id": "III", "text": "Onset may occur more than 6 months to several years after transplantation." },
+      { "id": "IV", "text": "PML has been reported in renal, liver, heart, and lung transplant recipients." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, III, and IV only", "selects": ["I", "III", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "JC virus causes PML with progressive neurological deficits; onset is typically delayed months to years after transplant; cases are reported across solid-organ groups. PML is a noninflammatory CNS infection not associated with fever or meningeal signs, so statement II is false.",
+      "rationale_incorrect": {
+        "A": "Statement II is false; statements III and IV are also correct.",
+        "C": "Statement I is also true; statement II is false.",
+        "D": "Statement II is false—PML is not typically associated with fever or nuchal rigidity."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "section": "Ch. 5, Infectious Diseases → J. Polyomaviruses → 3. JC virus → a.–b.",
+      "quote_hint": "Causes progressive multifocal leukoencephalopathy … more than 6 months to several years … not associated with fever or meningeal signs … renal, liver, heart, and lung",
+      "keywords": ["progressive", "multifocal", "leukoencephalopathy", "fever", "meningeal", "years", "posttransplant", "renal"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → J. Polyomaviruses → 3. JC virus → a.–b. (PML cause, delayed onset, noninflammatory presentation, multi-organ reports); PDF p. 208 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Twenty-first complex_combo in bank; first JC-virus/PML teaching item; distinct from BK-virus combo (cctc-1075); anchor verified on Cupples p. 208.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1080",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "When educating the family of a 3-year-old kidney transplant recipient about early vascular complications, which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Children younger than 5 years are at highest risk for vascular thrombosis from low-flow states" },
+      { "id": "B", "text": "Pediatric recipients older than 12 years have the highest thrombosis risk" },
+      { "id": "C", "text": "Arterial thrombosis in children typically presents with polyuria rather than anuria" },
+      { "id": "D", "text": "Vascular thrombosis never causes graft loss in pediatric kidney recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Children younger than 5 years are at highest risk for vascular thrombosis secondary to low flow states; arterial thrombosis may present with sudden anuria and is often irreversible, resulting in graft loss.",
+      "rationale_incorrect": {
+        "B": "Younger children, not adolescents, are described as highest risk for vascular thrombosis.",
+        "C": "Arterial thrombosis presents with sudden anuria rather than polyuria.",
+        "D": "Arterial thrombosis is often irreversible and may result in graft loss."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 901,
+      "section": "Ch. 17, Pediatric Transplantation → kidney early complications → Thrombus → b.",
+      "quote_hint": "Children younger than 5 years are at highest risk for vascular thrombosis … Arterial thrombosis presents with sudden anuria … graft loss",
+      "keywords": ["Children", "younger", "years", "highest", "risk", "vascular", "thrombosis", "anuria"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → kidney early complications → Thrombus → b. (children <5 years highest thrombosis risk; sudden anuria; graft loss); PDF p. 901 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Thirteenth pediatric recipient in bank; vascular-thrombosis angle distinct from pediatric ATN (cctc-1066) and fever workup (cctc-3056); anchor verified on Cupples p. 901.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1081",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010101"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When counseling a transplant candidate about pretransplant immunizations, why is early vaccination emphasized in standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Vaccine response may be diminished with organ failure and further reduced after immunosuppression" },
+      { "id": "B", "text": "All live vaccines are preferred immediately after transplantation" },
+      { "id": "C", "text": "Immunizations are unnecessary before transplant if the candidate feels well" },
+      { "id": "D", "text": "Post-transplant vaccines always produce stronger immunity than pretransplant doses" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidates and recipients are at increased infection risk; response to many vaccines is diminished in organ failure, and transplant recipients may have suboptimal vaccination responses due to immunosuppression, so immunizations should be updated before transplantation when possible.",
+      "rationale_incorrect": {
+        "B": "Live vaccines require careful timing and are generally avoided after transplant rather than preferred immediately.",
+        "C": "Early immunization is emphasized because organ failure and later immunosuppression reduce vaccine response.",
+        "D": "Post-transplant vaccination responses are often suboptimal rather than stronger than pretransplant immunization."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 180,
+      "section": "Ch. 5, Infectious Diseases → Immunizations → A.2.–4.",
+      "quote_hint": "response to many vaccines is diminished in organ failure … suboptimal response to vaccinations due to their immunosuppressed status … update immunizations prior to transplantation",
+      "keywords": ["response", "vaccines", "diminished", "organ", "failure", "suboptimal", "immunosuppressed", "immunizations"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Immunizations → A.2.–4. (diminished vaccine response with organ failure/immunosuppression; update before transplant); PDF p. 180 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pretransplant vaccine-response angle distinct from live-vaccine interval (cctc-1077) and post-transplant restart timing (cctc-3074); anchor verified on Cupples p. 180.",
+    "last_updated": "2026-06-05"
+  }
+]

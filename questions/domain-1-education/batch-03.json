@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1010",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010603"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient discharged last week calls the transplant coordinator only to confirm the date and time of an upcoming clinic visit. According to standard post-discharge communication teaching, how should this contact be classified?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A non-urgent matter" },
+      { "id": "B", "text": "An urgent matter requiring immediate evaluation for rejection" },
+      { "id": "C", "text": "An urgent matter because all post-discharge calls must be triaged within 15 minutes" },
+      { "id": "D", "text": "A matter that should be redirected to the emergency department without transplant team contact" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Verification of appointment date and time is explicitly listed among non-urgent reasons to contact the transplant team, distinct from urgent concerns such as infection, rejection symptoms, chest pain, or shortness of breath.",
+      "rationale_incorrect": {
+        "B": "Rejection-related symptoms are urgent matters; confirming a scheduled clinic time is not.",
+        "C": "References distinguish urgent from non-urgent contacts; not every call requires immediate rejection evaluation.",
+        "D": "Routine appointment verification should be handled through transplant team communication channels, not automatic ED referral."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication with the transplant team → ii. Non-urgent matters",
+      "quote_hint": "Verification of appointment date and time",
+      "keywords": ["Non-urgent", "appointment", "date", "time", "transplant", "team"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → ii. Non-urgent matters (appointment verification); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 111.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1011",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010603", "010605"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is revising the post-discharge call guide for recipients and caregivers. Evaluate the following statements about when to contact the transplant team:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Medication refill requests are examples of non-urgent matters." },
+      { "id": "II", "text": "Signs and symptoms of rejection are urgent matters." },
+      { "id": "III", "text": "General concerns about diet, activity, and exercise are urgent matters." },
+      { "id": "IV", "text": "Shortness of breath is an urgent matter." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II and III only", "selects": ["II", "III"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Medication refills and similar routine needs are non-urgent, while rejection symptoms, infection concerns, chest pain, and shortness of breath require urgent outreach. General diet and activity questions are explicitly non-urgent.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—shortness of breath is listed as urgent.",
+        "C": "Statement III is false; diet and exercise questions are non-urgent.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication with the transplant team → ii–iii (non-urgent vs urgent matters)",
+      "quote_hint": "Non-urgent matters may include Medication refills … Urgent matters may include Signs and symptoms of rejection … Shortness of breath",
+      "keywords": ["Non-urgent", "Urgent", "rejection", "Shortness", "breath", "Medication", "refills"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → ii. Non-urgent matters and iii. Urgent matters; PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Statements I–IV from Cupples Ch. 3 §h ii–iii; primary anchor on p. 111.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1012",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010601"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching a post-transplant recipient about immunosuppression, which statement should NOT be included in the teaching plan?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Transplant patients are more likely to become sick compared to non-transplant patients" },
+      { "id": "B", "text": "Immunosuppressant doses may be taken at different times each day without concern" },
+      { "id": "C", "text": "Notify the transplant coordinator if a new medicine is prescribed by the primary care doctor" },
+      { "id": "D", "text": "Some foods and medications may change the metabolism of immunosuppressant drugs" }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Standard immunosuppression teaching includes infection risk, drug–drug and drug–food interactions, and notifying the transplant team about new prescriptions. Taking immunosuppressants at inconsistent times each day is the exception—not appropriate teaching.",
+      "rationale_incorrect": {
+        "A": "Increased susceptibility to illness is part of standard immunosuppression education.",
+        "C": "Coordinators must be notified when outside prescribers add medications that may interact with transplant drugs.",
+        "D": "Food and medication interactions affecting immunosuppressant metabolism are taught routinely."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 128,
+      "section": "Ch. 4, Posttransplant Patient Education → immunosuppression teaching item 6 (EXCEPT)",
+      "quote_hint": "medication may be taken at different times each day",
+      "keywords": ["immunosuppression", "different", "times", "EXCEPT", "transplant"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → posttransplant immunosuppression teaching (item 6: all included EXCEPT inconsistent dosing times); PDF p. 128 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 128.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1013",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010601"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "During post-transplant education for a liver recipient, which metabolic complication should the coordinator include as a condition that may be newly identified during the transplant phase?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hyperglycemia or post-transplant diabetes" },
+      { "id": "B", "text": "Primary graft nonfunction diagnosed only at five years post-transplant" },
+      { "id": "C", "text": "Permanent cure of pre-transplant type 1 diabetes without monitoring" },
+      { "id": "D", "text": "Iron overload requiring immediate splenectomy in every recipient" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Post-transplant education includes that patients may be diagnosed with hyperglycemia or post-transplant diabetes during the transplant phase, warranting glucose monitoring and teaching.",
+      "rationale_incorrect": {
+        "B": "Primary nonfunction is an early graft event, not a metabolic diagnosis introduced at five years.",
+        "C": "Diabetes may persist or newly develop; immunosuppression does not guarantee permanent cure without monitoring.",
+        "D": "Splenectomy for iron overload is not a universal transplant-phase metabolic teaching point."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication with the transplant team → v.",
+      "quote_hint": "Patients may be diagnosed with hyperglycemia or post-transplant diabetes during the transplant phase",
+      "keywords": ["hyperglycemia", "post-transplant", "diabetes", "transplant", "phase"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → v. (hyperglycemia/post-transplant diabetes during transplant phase); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 111.",
+    "last_updated": "2026-06-06"
+  }
+]

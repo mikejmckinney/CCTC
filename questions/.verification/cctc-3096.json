@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3096",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 943,
+    "keywords": [
+      "Urinary",
+      "tract",
+      "infection",
+      "pyelonephritis",
+      "Mediastinitis",
+      "Staphylococcus",
+      "cholangitis",
+      "Pseudomonas"
+    ],
+    "keyword_hash": "sha256:9b8d9687eab7c739ee4502cfe31a17e880c3d0e3cb9dc075b3b6d0d396ee7159"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "keywords": [
+        "organ-specific",
+        "pediatric",
+        "bacterial",
+        "infection",
+        "patterns"
+      ],
+      "keyword_hash": "sha256:e8f9c91b25433984b2847fb1ba56fbee561de6de1d6009523e0b2a3787d2261c"
+    }
+  ]
+}

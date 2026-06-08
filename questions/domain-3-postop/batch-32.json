@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3125",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030201"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating care during antirejection therapy, which infection-prevention measure aligns with standard post-transplant references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Infection prophylaxis during periods of antirejection therapy" },
+      { "id": "B", "text": "No infection prophylaxis is needed during antirejection treatment" },
+      { "id": "C", "text": "Prophylaxis is required only after ten years post-transplant" },
+      { "id": "D", "text": "Antirejection therapy eliminates infection risk without prophylaxis" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term infection prevention includes infection prophylaxis during periods of antirejection therapy, along with annual influenza vaccination and strict glucose control in patients with diabetes.",
+      "rationale_incorrect": {
+        "B": "Prophylaxis is recommended during antirejection therapy rather than omitted.",
+        "C": "Prophylaxis during antirejection periods is part of early and ongoing care rather than being deferred for a decade.",
+        "D": "Antirejection therapy increases infection risk and warrants prophylaxis."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Prevent infection → I.1.",
+      "quote_hint": "Infection prophylaxis during periods of antirejection therapy",
+      "keywords": ["Infection", "prophylaxis", "during", "periods", "antirejection", "therapy"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevent infection → I.1. (infection prophylaxis during antirejection therapy); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Antirejection prophylaxis angle distinct from annual influenza vaccination in bone/infection combo (cctc-3108) and ganciclovir PTLD prevention (cctc-3109); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3126",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When explaining advanced posttransplant lymphoproliferative disease (PTLD) treatment options, which modality aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Radiotherapy" },
+      { "id": "B", "text": "Radiotherapy is never used for PTLD" },
+      { "id": "C", "text": "PTLD is treated only with routine daily skin biopsy" },
+      { "id": "D", "text": "Radiotherapy is limited to pretransplant evaluation only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Treatment options for PTLD include radiotherapy, reduction of immunosuppression, rituximab, IVIG, antiviral therapy, surgery for localized disease, and cytotoxic chemotherapy.",
+      "rationale_incorrect": {
+        "B": "Radiotherapy is listed among PTLD treatment modalities.",
+        "C": "Targeted and systemic therapies are used rather than biopsy alone.",
+        "D": "Radiotherapy may be used post-transplant for PTLD when indicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Radiotherapy",
+      "keywords": ["Radiotherapy", "Treatment", "options", "PTLD", "rituximab", "immunosuppression"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4. Treatment options (includes radiotherapy among listed modalities); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Radiotherapy recall angle distinct from PTLD treatment-modality combo (cctc-3124) and rituximab counseling (cctc-2122); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3127",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator reviews refractory posttransplant lymphoproliferative disease (PTLD) treatment options with the transplant team. Which therapy aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Interferon-α" },
+      { "id": "B", "text": "Interferon-α is the only first-line therapy before any immunosuppression change" },
+      { "id": "C", "text": "Interferon-α is contraindicated in every PTLD case" },
+      { "id": "D", "text": "PTLD never requires systemic therapy beyond observation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Advanced PTLD treatment options include interferon-α, radiotherapy, rituximab-based chemotherapy such as R-CHOP, and reduction of immunosuppression.",
+      "rationale_incorrect": {
+        "B": "Reduction or modification of immunosuppression is a primary approach; interferon-α is among additional listed therapies.",
+        "C": "Interferon-α is a listed treatment option rather than being universally contraindicated.",
+        "D": "PTLD requires active treatment rather than observation alone in many cases."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Interferon-α",
+      "keywords": ["Interferon", "Treatment", "options", "PTLD", "Radiotherapy", "R-CHOP"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4. Treatment options (includes interferon-α among listed modalities); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Interferon-α therapy angle distinct from radiotherapy recall (cctc-3126) and R-CHOP chemotherapy (cctc-2123); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3128",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030201"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating visitor infection-prevention teaching on the transplant unit. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Family members and visitors should wash their hands well before and after contact with the patient." },
+      { "id": "II", "text": "Visitors should cover their mouth and nose when coughing and sneezing." },
+      { "id": "III", "text": "Visitors with illness should have unrestricted close contact without any precautions." },
+      { "id": "IV", "text": "Sanitizing hand gel may be used when soap and water are not immediately available." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Visitor teaching includes hand-washing before and after patient contact, respiratory etiquette when coughing or sneezing, and use of sanitizing gel when soap and water are unavailable. Statement III is false because ill visitors should avoid contact with the patient.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—sanitizing gel may be used when soap and water are unavailable.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because visitors should avoid patient contact when ill."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "section": "Ch. 3, Patient Education → g. Lifestyle changes → iii. Infection prevention",
+      "quote_hint": "Family members and visitors should Wash their hands well … Cover mouth and nose when coughing and sneezing … Avoid contact with the patient if they are ill … Sanitizing hand gels",
+      "keywords": ["Family", "members", "visitors", "Wash", "hands", "Cover", "mouth", "coughing"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Lifestyle changes → iii. Infection prevention (visitor hand hygiene, cough etiquette, avoid contact when ill, sanitizing gel); PDF p. 110 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Visitor infection-prevention combo distinct from hand-hygiene recipient combo (cctc-1121) and visitor surgical-mask teaching (cctc-1113); anchor verified on Cupples p. 110.",
+    "last_updated": "2026-06-05"
+  }
+]

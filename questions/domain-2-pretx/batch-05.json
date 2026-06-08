@@ -1,0 +1,191 @@
+[
+  {
+    "id": "cctc-2017",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": ["020401"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "After interdisciplinary evaluation, the transplant team determines that a candidate does not meet selection criteria. What is the appropriate coordinator communication with the candidate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Inform the patient that they do not meet selection criteria and will not be placed on the waiting list" },
+      { "id": "B", "text": "List the patient immediately without discussing the team decision" },
+      { "id": "C", "text": "Defer all communication until an organ offer is received" },
+      { "id": "D", "text": "Refer the patient to the OPO to self-register on the national waiting list" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Evaluation outcome references include informing patients when they do not meet selection criteria and will not be placed on the waiting list, as part of communicating team recommendations.",
+      "rationale_incorrect": {
+        "B": "Candidates who do not meet selection criteria are not listed without team communication.",
+        "C": "Team recommendations must be communicated at evaluation conclusion, not deferred until organ offer.",
+        "D": "Waitlist registration occurs through the transplant program after selection, not independent OPO self-registration."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education → §7. Selection criteria and evaluation outcome → c.iv.",
+      "quote_hint": "The patient does not meet selection criteria and will not be placed on the waiting list",
+      "keywords": ["does", "not", "meet", "selection", "criteria", "waiting", "list"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §7. Selection criteria and evaluation outcome → c.iv. (not listed); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 020400 angle from cctc-2007 (MELD change education); anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2018",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Before the selection committee meeting, which coordinator responsibility is described in standard interdisciplinary evaluation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Synthesize information from interdisciplinary team members and physical assessments for presentation at the selection committee meeting" },
+      { "id": "B", "text": "Unilaterally approve or deny transplantation without team input" },
+      { "id": "C", "text": "Perform the transplant operation when the surgeon is unavailable" },
+      { "id": "D", "text": "Set OPTN allocation policy for the region" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The transplant coordinator synthesizes interdisciplinary evaluation information and physical assessment findings for presentation at the selection committee meeting.",
+      "rationale_incorrect": {
+        "B": "Selection decisions are interdisciplinary; coordinators synthesize information rather than unilaterally approving transplantation.",
+        "C": "Coordinators do not perform transplant surgery.",
+        "D": "OPTN allocation policy is set at the national policy level, not by individual coordinators."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 96,
+      "section": "Ch. 3, Patient Education → interdisciplinary team → iii. Transplant coordinator",
+      "quote_hint": "Synthesizes information from interdisciplinary team members and physical assessments for presentation at selection committee meeting",
+      "keywords": ["Synthesizes", "information", "interdisciplinary", "selection", "committee", "coordinator"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → interdisciplinary team roles → iii. Transplant coordinator (selection committee presentation); PDF p. 96 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 020300 angle from cctc-2001/2003; anchor verified on Cupples p. 96.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2019",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020502"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When registering a candidate on the OPTN waiting list, how must transplant programs report HLA typing information?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Using current World Health Organization (WHO) nomenclature" },
+      { "id": "B", "text": "Using only informal center-specific abbreviations not reported to OPTN" },
+      { "id": "C", "text": "HLA typing is optional and never submitted at registration" },
+      { "id": "D", "text": "Using only donor-specific refusal codes instead of HLA data" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN policy requires transplant programs to report HLA information using current WHO nomenclature when the candidate is registered on the waiting list.",
+      "rationale_incorrect": {
+        "B": "Listing documentation requires standardized WHO HLA nomenclature reported to OPTN, not informal abbreviations only.",
+        "C": "HLA reporting is required for waiting list registration per OPTN policy tables.",
+        "D": "Refusal codes document declined offers; they do not replace HLA registration requirements."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 44,
+      "section": "Policy 3.4 → Waiting List Registration (HLA reporting table before 3.4.E)",
+      "quote_hint": "report this HLA information using current World Health Organization (WHO) nomenclature when the candidate is registered",
+      "keywords": ["HLA", "World", "Health", "Organization", "WHO", "nomenclature", "registered"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=44",
+        "locator": "Policy 3.4 → Waiting List Registration (HLA reporting using WHO nomenclature); PDF p. 44 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. OPTN-primary anchor verified on indexed optn_policies.pdf p. 44.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2020",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant candidate with a recent smoking history is being considered for listing. Which pre-transplant requirement aligns with standard pulmonary evaluation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A period of smoking cessation confirmed by random urine cotinine testing" },
+      { "id": "B", "text": "Immediate listing without pulmonary function testing" },
+      { "id": "C", "text": "Waiving oxygen saturation assessment for all smokers" },
+      { "id": "D", "text": "Permanent exclusion from transplantation after any lifetime smoking exposure" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Most lung transplant programs require a period of smoking cessation before listing patients who currently smoke or have recent smoking history, with cessation confirmed by random urine cotinine testing.",
+      "rationale_incorrect": {
+        "B": "Smoking history warrants pulmonary function testing and smoking-cessation requirements before listing.",
+        "C": "All referred candidates should have pulse oximetry; smoking history adds further requirements.",
+        "D": "Recent smoking requires cessation and confirmation, not automatic permanent exclusion for all prior exposure."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Pretransplant Evaluation → §2. Pulmonary evaluation → d.",
+      "quote_hint": "period of smoking cessation before listing patients who are currently smoking … Smoking cessation is confirmed by random urine cotinine testing",
+      "keywords": ["smoking", "cessation", "cotinine", "listing", "pulmonary", "lung"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → §2. Pulmonary evaluation → d. (smoking cessation and cotinine testing before listing); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Second lung organ item; anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05"
+  }
+]

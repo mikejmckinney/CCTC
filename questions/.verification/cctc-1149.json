@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1149",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Hepatitis",
+      "boosters",
+      "earlier",
+      "live-virus",
+      "vaccines",
+      "depression",
+      "anxiety"
+    ],
+    "keyword_hash": "sha256:a2e3f8c8ccefe21ce5f426c0a6957f5417a09df89869808bf511775bfce2e392"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "hepatitis",
+        "earlier",
+        "boosters",
+        "live-vaccine",
+        "contraindication",
+        "depression",
+        "anxiety",
+        "monitoring"
+      ],
+      "keyword_hash": "sha256:02c723f5903ecfeb18dfeb1bcd9a58fdcd9763c654a7065c0fcbc22f4a44d020"
+    }
+  ]
+}

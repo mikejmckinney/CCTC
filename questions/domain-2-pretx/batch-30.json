@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2117",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "During pretransplant infection-prevention teaching, which animal-care activity should recipients avoid per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Cleaning aquariums, bird cages, and feeders" },
+      { "id": "B", "text": "Walking a healthy immunized dog on a leash with routine hand hygiene afterward" },
+      { "id": "C", "text": "Keeping household pets immunized and in good health" },
+      { "id": "D", "text": "Following strict hand hygiene after any pet contact" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Animal-safety teaching includes avoiding cleaning aquariums, bird cages, and feeders, and avoiding handling fecal matter especially cat litter when possible.",
+      "rationale_incorrect": {
+        "B": "Routine dog walking with hand hygiene is not the activity specifically listed to avoid.",
+        "C": "Keeping pets immunized and healthy is recommended rather than avoided.",
+        "D": "Hand hygiene after pet contact is encouraged rather than avoided."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → v. Animal safety",
+      "quote_hint": "Avoid cleaning aquariums, bird cages, and feeders",
+      "keywords": ["Avoid", "cleaning", "aquariums", "bird", "cages", "feeders", "Animal", "safety"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (avoid cleaning aquariums, bird cages, and feeders); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Aquarium/bird-cage avoidance angle distinct from pet-immunization recall (cctc-1116) and animal-safety combo (cctc-1117 in batch-29); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2118",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "An Epstein-Barr virus–seronegative candidate asks when primary Epstein-Barr virus infection most commonly occurs after transplantation. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Typically during the first 6 months post-transplant" },
+      { "id": "B", "text": "Only after ten years post-transplant" },
+      { "id": "C", "text": "Primary Epstein-Barr virus infection never occurs after transplantation" },
+      { "id": "D", "text": "Only before the transplant operation with no post-transplant risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Primary Epstein-Barr virus infections occur in approximately 70% to 80% of seronegative recipients, and Epstein-Barr virus infection typically occurs during the first 6 months post-transplant.",
+      "rationale_incorrect": {
+        "B": "Primary infection timing is described in the early post-transplant period rather than a decade later.",
+        "C": "Primary Epstein-Barr virus infection is common in seronegative recipients after transplant.",
+        "D": "Recipients may acquire primary infection from the community, allograft, or blood products after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 2. Incidence",
+      "quote_hint": "EBV infection typically occurs during the first 6 months posttransplant",
+      "keywords": ["EBV", "infection", "typically", "occurs", "during", "first", "months", "posttransplant"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 2.c.i. (primary EBV infection typically in first 6 months post-transplant); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Primary-EBV timing angle distinct from incidence percentage counseling (cctc-2110) and PTLD risk-factor recall (cctc-2109); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2119",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling a transplant candidate about posttransplant lymphoproliferative disease (PTLD) risk, which Epstein-Barr virus factor aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "High Epstein-Barr virus viral load" },
+      { "id": "B", "text": "Undetectable Epstein-Barr virus viral load eliminates all PTLD risk" },
+      { "id": "C", "text": "Epstein-Barr virus viral load is unrelated to PTLD" },
+      { "id": "D", "text": "Only donor age determines Epstein-Barr virus–related PTLD risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Risk factors for PTLD include high Epstein-Barr virus viral load, primary Epstein-Barr virus infection, cytomegalovirus mismatch, and potent immunosuppression.",
+      "rationale_incorrect": {
+        "B": "Multiple factors beyond viral load contribute to PTLD risk.",
+        "C": "High Epstein-Barr virus viral load is specifically listed as a PTLD risk factor.",
+        "D": "Viral load and mismatch patterns are key factors rather than donor age alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 3. Risk factors for PTLD",
+      "quote_hint": "High EBV viral load",
+      "keywords": ["High", "EBV", "viral", "load", "Risk", "factors", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 3.b. (high EBV viral load as PTLD risk factor); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. High-EBV-viral-load risk angle distinct from EBV D+/R− mismatch (cctc-2109) and CMV mismatch (cctc-2115); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2120",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When explaining posttransplant lymphoproliferative disease (PTLD) prevention options during evaluation, which intervention aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Intravenous immunoglobulin (IVIG)" },
+      { "id": "B", "text": "Permanent discontinuation of all infection-prevention teaching" },
+      { "id": "C", "text": "Routine live-virus vaccination during peak immunosuppression without planning" },
+      { "id": "D", "text": "IVIG is contraindicated in every transplant candidate" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Prevention of PTLD may include Epstein-Barr virus replication inhibitors such as ganciclovir or valganciclovir and IVIG in selected cases.",
+      "rationale_incorrect": {
+        "B": "Infection-prevention and targeted prophylaxis remain important rather than being discontinued.",
+        "C": "Live vaccines require careful timing around immunosuppression.",
+        "D": "IVIG is listed as a preventive option rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 5. Prevention of PTLD",
+      "quote_hint": "Prevention of PTLD … IVIG",
+      "keywords": ["Prevention", "PTLD", "IVIG", "EBV", "replication", "inhibitors", "ganciclovir"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 5.b. (IVIG for PTLD prevention); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. IVIG PTLD-prevention angle distinct from ganciclovir post-transplant coordination (cctc-3109) and mTOR treatment counseling (cctc-2116); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  }
+]

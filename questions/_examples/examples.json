@@ -2,7 +2,7 @@
   {
     "id": "cctc-0001",
     "schema_version": 1,
-    "version": 1,
+    "version": 4,
     "status": "draft",
     "type": "one_best",
     "domain": 3,
@@ -28,17 +28,38 @@
         "D": "Carbamazepine is a CYP3A4 inducer and lowers tacrolimus levels rather than raising them."
       }
     },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "nursing-drug-handbook",
+      "pdf_page": 1112,
+      "section": "Tacrolimus (Prograf) — INTERACTIONS: calcium channel blockers and CYP3A4 inhibitors",
+      "quote_hint": "calcium channel blockers (e.g., diltiazem) … raise tacrolimus levels",
+      "keywords": ["diltiazem", "calcium", "channel", "blockers", "CYP3A4", "tacrolimus", "levels"]
+    },
     "references": [
-      { "citation": "FDA Prescribing Information, tacrolimus (Drug Interactions: CYP3A inhibitors and inducers).", "locator": "Drug Interactions section", "kind": "regulation" },
-      { "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016) — immunosuppressive pharmacology.", "locator": "Pharmacologic agents chapter", "kind": "textbook" }
+      {
+        "citation": "Saunders Nursing Drug Handbook 2024 (Wolters Kluwer; ABTC handbook lists 2020 ed.).",
+        "locator": "Tacrolimus (Prograf) — INTERACTIONS: calcium channel blockers (e.g., diltiazem) and strong CYP3A4 inhibitors raise levels; PDF p. 1112 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Saunders Nursing Drug Handbook 2024 (Wolters Kluwer; ABTC handbook lists 2020 ed.).",
+        "locator": "dilTIAZem — may increase calcineurin inhibitor concentration (see cycloSPORINE/tacrolimus interactions); PDF p. 336 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4, Transplant Pharmacology — calcineurin inhibitor metabolism and CYP3A4 interactions.",
+        "kind": "textbook"
+      }
     ],
-    "notes": "Stable pharmacology fact. Reviewer: confirm wording stays generic (CYP3A4 inhibitor raises levels) and add a verified FDA label or UpToDate-equivalent deep link before promoting to reviewed.",
-    "last_updated": "2026-06-01"
+    "notes": "Stable pharmacology fact. Local source: docs/reference/nursing-drug-handbook-2024.pdf.",
+    "last_updated": "2026-06-06"
   },
   {
     "id": "cctc-0002",
     "schema_version": 1,
-    "version": 1,
+    "version": 4,
     "status": "draft",
     "type": "complex_combo",
     "domain": 2,
@@ -70,11 +91,28 @@
         "D": "Only ABO (I) is required from this set; identical HLA matching (III) and same-sex matching (IV) are not prerequisites for acceptance."
       }
     },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 46,
+      "section": "Ch. 3 — ABO compatibility, crossmatching, and DSA prerequisites",
+      "quote_hint": "ABO compatibility … crossmatch … donor-specific antibody",
+      "keywords": ["ABO", "compatibility", "crossmatch", "donor-specific", "antibody", "kidney"]
+    },
     "references": [
-      { "citation": "OPTN Policies — kidney allocation and histocompatibility requirements.", "url": "https://optn.transplant.hrsa.gov", "locator": "OPTN Policy: Allocation of Kidneys; Histocompatibility", "kind": "public_authoritative" },
-      { "citation": "Handbook of Kidney Transplantation, 7th ed. (Danovitch) — histocompatibility, crossmatching, immune monitoring.", "locator": "Histocompatibility/crossmatch chapter", "kind": "textbook" }
+      {
+        "citation": "OPTN/UNOS — Kidney allocation policies (PDF).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=120",
+        "locator": "Policy 8.4–8.7: Kidney allocation; histocompatibility and crossmatch requirements before acceptance; PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "public_authoritative"
+      },
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 3 → ABO compatibility, crossmatching, and DSA prerequisites; PDF p. 46 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
     ],
-    "notes": "Reviewer: confirm against the CURRENT OPTN kidney allocation and histocompatibility policy and replace the base URL with the verified deep link to the specific policy section before promoting to reviewed.",
-    "last_updated": "2026-06-01"
+    "notes": "Reviewer: confirm against current OPTN kidney allocation and histocompatibility policy.",
+    "last_updated": "2026-06-06"
   }
 ]

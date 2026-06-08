@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3062",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 224,
+    "keywords": [
+      "Toxoplasmosis",
+      "mimic",
+      "rejection",
+      "endomyocardial",
+      "biopsy",
+      "definitive",
+      "diagnosis",
+      "heart"
+    ],
+    "keyword_hash": "sha256:a23e05f998b490962eddfe304ccb5f66ed493c05adc5fb4b60862346e5b0c436"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 224,
+      "keywords": [
+        "toxoplasmosis",
+        "mimic",
+        "rejection",
+        "endomyocardial",
+        "biopsy",
+        "definitive",
+        "diagnosis"
+      ],
+      "keyword_hash": "sha256:86310e033115a7db5316fde6b8da9421d8097c0e1f9bb4514bf42cc5656c7675"
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2093",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "During cardiac transplantation evaluation, the team reviews left heart catheterization results. What is a primary purpose of coronary angiography in this setting?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Determine whether coronary lesions amenable to intervention could relieve symptoms and obviate the need for transplantation" },
+      { "id": "B", "text": "Confirm that every candidate has uncorrectable coronary disease requiring transplant only" },
+      { "id": "C", "text": "Replace all right heart hemodynamic assessment permanently" },
+      { "id": "D", "text": "Document donor organ quality before procurement" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Coronary angiography, or left heart catheterization, is performed to determine whether lesions amenable to intervention would relieve the patient's symptoms and obviate the need for transplantation.",
+      "rationale_incorrect": {
+        "B": "Angiography identifies whether revascularization may obviate transplant rather than assuming all disease is uncorrectable.",
+        "C": "Left heart catheterization complements rather than replaces right heart hemodynamic evaluation.",
+        "D": "Donor organ assessment is separate from recipient coronary angiography during evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 35,
+      "section": "Ch. 1, Evaluation → Heart transplantation → 4.a.ii. Coronary angiography",
+      "quote_hint": "Coronary angiography … determine if there are any lesions amenable to intervention that would relieve the patient's symptoms and obviate the need for transplantation",
+      "keywords": ["Coronary", "angiography", "lesions", "amenable", "intervention", "relieve", "symptoms", "obviate"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart transplantation → 4.a.ii. (coronary angiography to identify revascularization alternatives); PDF p. 35 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Coronary-angiography purpose angle distinct from initial R+L cath requirement (cctc-2092) and heart-catheterization teaching combo (cctc-1097); anchor verified on Cupples p. 35.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2094",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart transplant candidate has elevated pulmonary pressures on right heart catheterization. Which next step aligns with standard evaluation references when assessing reversibility?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Vasodilator testing with agents such as oxygen, nitric oxide, or milrinone during catheterization" },
+      { "id": "B", "text": "Immediate listing without any hemodynamic reassessment" },
+      { "id": "C", "text": "Permanent exclusion from all transplant evaluation without further testing" },
+      { "id": "D", "text": "Discontinuation of all diuretics before any pulmonary assessment" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Patients with pulmonary hypertension may receive additional therapy—including vasodilators such as oxygen, nitric oxide, nitroglycerin, milrinone, nesiritide, or prostaglandin during catheterization—to determine whether hypertension can be reversed before transplant candidacy is finalized.",
+      "rationale_incorrect": {
+        "B": "Pulmonary hemodynamics are reassessed and treated when indicated rather than ignoring elevated pressures.",
+        "C": "Reversible pulmonary hypertension may be treated and re-evaluated rather than automatic permanent exclusion.",
+        "D": "Evaluation uses vasodilator testing during catheterization rather than skipping pulmonary assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 35,
+      "section": "Ch. 1, Evaluation → Heart transplantation → 4.a.i. vasodilator testing",
+      "quote_hint": "vasodilators, such as oxygen, nitric oxide, nitroglycerin, milrinone (Primacor), nesiritide (Natrecor), or prostaglandin (Flolan) during the catheterization procedure",
+      "keywords": ["vasodilators", "oxygen", "nitric", "oxide", "milrinone", "catheterization", "pulmonary", "hypertension"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart transplantation → 4.a.i. (vasodilator testing during RHC for reversible pulmonary hypertension); PDF p. 35 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pulmonary-vasodilator testing angle distinct from fixed-PHTN contraindication teaching (cctc-1094) and waitlist RHC monitoring (cctc-2057); anchor verified on Cupples p. 35.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2095",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "When counseling a liver transplant candidate who continues to smoke, which long-term post-transplant risk should the coordinator emphasize per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Increased cardiovascular mortality and increased hepatic artery thrombosis" },
+      { "id": "B", "text": "Complete immunity to all post-transplant infections" },
+      { "id": "C", "text": "Guaranteed prevention of all rejection episodes" },
+      { "id": "D", "text": "Smoking affects only kidney recipients and not liver recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cigarette smoking has been implicated in adverse outcomes in liver transplant recipients including cardiovascular mortality and an increased incidence of hepatic artery thrombosis.",
+      "rationale_incorrect": {
+        "B": "Smoking increases complication risk rather than conferring infection immunity.",
+        "C": "Smoking does not guarantee rejection prevention.",
+        "D": "Liver recipients who smoke have specific documented risks including hepatic artery thrombosis."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Consultations → Pulmonary evaluation → 2.e.ii.",
+      "quote_hint": "Cigarette smoking has been implicated … liver transplant recipients including cardiovascular mortality and an increased incidence of hepatic artery thrombosis",
+      "keywords": ["Cigarette", "smoking", "liver", "transplant", "recipients", "cardiovascular", "mortality", "hepatic"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Pulmonary evaluation → 2.e.ii. (liver smoking risks: cardiovascular mortality and hepatic artery thrombosis); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Liver-smoking complication angle distinct from lung/heart smoking cessation before listing (cctc-2020, cctc-2035) and liver alcohol abstinence (cctc-1057); anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2096",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During general solid-organ transplant evaluation, which vascular testing is indicated for candidates with diabetes or coronary artery disease per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Doppler imaging and ankle-brachial index testing" },
+      { "id": "B", "text": "No vascular testing because comorbidities do not affect evaluation" },
+      { "id": "C", "text": "Coronary angiography for every candidate regardless of history" },
+      { "id": "D", "text": "Vascular testing deferred until 5 years after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Patients with diabetes, coronary artery disease, claudication, or cerebrovascular accident should undergo Doppler imaging and ankle-brachial index testing, including bilateral lower extremity and carotid imaging.",
+      "rationale_incorrect": {
+        "B": "Vascular evaluation is indicated when candidates have relevant comorbid vascular disease.",
+        "C": "Vascular screening is history-driven; abnormal findings may prompt angiography rather than universal coronary angiography for all candidates.",
+        "D": "Vascular evaluation occurs during pretransplant assessment rather than being deferred for years after transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 34,
+      "section": "Ch. 1, Evaluation → Vascular evaluation → 3.a.",
+      "quote_hint": "patients with a history of diabetes, coronary artery disease, claudication, or cerebrovascular accident should undergo Doppler imaging and ankle-brachial index testing",
+      "keywords": ["diabetes", "coronary", "artery", "disease", "Doppler", "imaging", "ankle-brachial", "index"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Vascular evaluation → 3.a. (Doppler and ankle-brachial index for vascular comorbidity); PDF p. 34 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First ankle-brachial-index evaluation item in bank; distinct from cardiac stress testing (cctc-2028) and evaluation biopsies (cctc-2088); anchor verified on Cupples p. 34.",
+    "last_updated": "2026-06-05"
+  }
+]

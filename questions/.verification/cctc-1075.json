@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-1075",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 207,
+    "keywords": [
+      "reactivation",
+      "kidney",
+      "transplant",
+      "recipients",
+      "common",
+      "Tubulointerstitial",
+      "nephritis",
+      "respiratory"
+    ],
+    "keyword_hash": "sha256:dae33761ebf33cd6cdaedeecca682c029a41ccb1b2567de8936ca0dd3a23e2b1"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 207,
+      "keywords": [
+        "reactivation",
+        "prevalence",
+        "occasional",
+        "nephropathy",
+        "tubulointerstitial",
+        "nephritis",
+        "respiratory",
+        "transmission"
+      ],
+      "keyword_hash": "sha256:3fe8018ed3e998121f21e3137b6dabc298867f9d999327e52d6ba1872d3b4b0b"
+    }
+  ]
+}

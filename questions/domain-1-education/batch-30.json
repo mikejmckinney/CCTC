@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1118",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A transplant recipient recovering well asks when they may resume running and gym workouts. Which counseling point aligns with standard lifestyle references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Discuss resumption of more vigorous activity with the transplant team before starting" },
+      { "id": "B", "text": "Resume marathon training immediately on hospital discharge without team input" },
+      { "id": "C", "text": "All physical activity is permanently prohibited after every transplant" },
+      { "id": "D", "text": "Vigorous exercise requires no transplant-team discussion if the recipient feels well" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Physical activity is encouraged, including walking and activities of daily living, but resumption of more vigorous activity such as running or gym workouts should be discussed first with the transplant team.",
+      "rationale_incorrect": {
+        "B": "Vigorous activity should be discussed with the transplant team rather than started immediately at discharge.",
+        "C": "Walking and activities of daily living are encouraged rather than permanent activity prohibition.",
+        "D": "Team discussion is recommended before vigorous exercise even when the recipient feels well."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "section": "Ch. 3, Patient Education → g. Lifestyle changes → i. Potential activity restrictions",
+      "quote_hint": "Resumption of more vigorous activity such as running or gym workouts should be discussed first with the transplant team",
+      "keywords": ["Resumption", "vigorous", "activity", "running", "gym", "workouts", "transplant", "team"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Lifestyle changes → i. (discuss vigorous activity with transplant team before resuming); PDF p. 110 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Vigorous-activity counseling angle distinct from early lifting restrictions (cctc-1056) and lifestyle-restriction combo (cctc-1058); anchor verified on Cupples p. 110.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1119",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching dietary infection-prevention measures, which egg-related precaution aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Do not consume raw eggs or eggs that are not thoroughly cooked, including eggs in batter and cookie dough" },
+      { "id": "B", "text": "Raw eggs in cookie dough are safe for immunosuppressed recipients" },
+      { "id": "C", "text": "Only unpasteurized milk poses egg-related infection risk" },
+      { "id": "D", "text": "Thorough cooking is required only for meat and never for eggs" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Dietary teaching includes not consuming raw eggs or eggs that are not thoroughly cooked, including eggs in batter, cookie dough, and certain salad dressings.",
+      "rationale_incorrect": {
+        "B": "Raw or undercooked eggs in batter and cookie dough are not safe for immunosuppressed recipients.",
+        "C": "Egg handling is a separate dietary precaution from unpasteurized dairy.",
+        "D": "Egg precautions are explicitly included along with meat and seafood guidance."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iii. Dietary precautions",
+      "quote_hint": "Do not consume raw eggs or eggs that are not thoroughly cooked, including eggs in batter, cookie dough",
+      "keywords": ["consume", "raw", "eggs", "thoroughly", "cooked", "batter", "cookie", "dough"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iii. Dietary precautions (avoid raw/undercooked eggs including batter and cookie dough); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Raw-egg dietary angle distinct from dietary infection-prevention combo (cctc-1052) and cross-contamination teaching (cctc-2113); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1120",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching food-safety precautions after transplantation, which community-surveillance step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Monitor local reports of foodborne illness outbreaks" },
+      { "id": "B", "text": "Ignore local outbreak reports because immunosuppression prevents foodborne illness" },
+      { "id": "C", "text": "Foodborne outbreak monitoring applies only before transplantation" },
+      { "id": "D", "text": "Recipients should seek out foods linked to active outbreaks" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Dietary infection-prevention teaching includes monitoring local reports of foodborne illness outbreaks along with safe food-handling practices.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressed recipients remain at increased foodborne infection risk and should monitor outbreak reports.",
+        "C": "Outbreak monitoring continues as part of post-transplant dietary teaching.",
+        "D": "Recipients should avoid foods linked to outbreaks rather than seeking them out."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iii. Dietary precautions",
+      "quote_hint": "Monitor local reports of foodborne illness outbreaks",
+      "keywords": ["Monitor", "local", "reports", "foodborne", "illness", "outbreaks"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iii. Dietary precautions (monitor local foodborne illness outbreaks); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Foodborne-outbreak surveillance angle distinct from boil-water advisories (cctc-1104) and cross-contamination teaching (cctc-2113); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1121",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating hand-hygiene and visitor infection-prevention teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should wash their hands frequently as a best practice to prevent infection." },
+      { "id": "II", "text": "Family members and visitors should wash their hands well before and after contact with the patient." },
+      { "id": "III", "text": "Sanitizing hand gel may be used when soap and water are not immediately available." },
+      { "id": "IV", "text": "Hand hygiene is unnecessary because immunosuppression prevents all infection." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Recipients should wash hands frequently, visitors should wash before and after patient contact, and sanitizing gel may be used when soap and water are unavailable. Statement IV is false because immunosuppressed recipients remain infection-prone and require hand hygiene.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—sanitizing gel may supplement hand hygiene when soap and water are unavailable.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because hand hygiene remains essential after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "Wash their hands frequently … Family members and visitors should Wash their hands well … Sanitizing hand gels may be used if soap and water are not immediately available",
+      "keywords": ["Wash", "hands", "frequently", "visitors", "Sanitizing", "hand", "gels", "soap"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (recipient and visitor hand-washing; sanitizing gel); PDF p. 110 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Hand-hygiene visitor combo distinct from patient hand-washing recall (cctc-1019) and visitor surgical-mask combo (cctc-1113); anchor verified on Cupples pp. 110, 115.",
+    "last_updated": "2026-06-05"
+  }
+]

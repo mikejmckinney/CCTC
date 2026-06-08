@@ -1,0 +1,54 @@
+{
+  "item_id": "cctc-3001",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    },
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 288,
+    "keywords": [
+      "asymptomatic",
+      "creatinine",
+      "rejection",
+      "acute",
+      "graft"
+    ],
+    "keyword_hash": "sha256:1d587ed071326db36f06d3f15796d71b78761eb04a5ecdca79b64ea6cc2e242a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 288,
+      "keywords": [
+        "clinical",
+        "manifestations",
+        "acute",
+        "rejection"
+      ],
+      "keyword_hash": "sha256:d7faae753106badccc27bd45dd058b18e6e040b79264e8ec332536a73f8e6ff5"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "urgent",
+        "matters",
+        "signs",
+        "symptoms",
+        "rejection"
+      ],
+      "keyword_hash": "sha256:b550968b9478eb3237de4ae4ab8bdbd8be868be367c6c30a603686b6ca8c92a8"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-2125",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 198,
+    "keywords": [
+      "Reactivation",
+      "infections",
+      "approximately",
+      "30%",
+      "40%",
+      "EBV-seropositive",
+      "recipients"
+    ],
+    "keyword_hash": "sha256:42660a94f40461d92deea3d6474e47b05a84ac4617795c84c8eeff694b1408cc"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "keywords": [
+        "reactivation",
+        "ebv-seropositive",
+        "recipients"
+      ],
+      "keyword_hash": "sha256:b6c90db78f39575ba62944db6ebd73b0117f356e5648dbd2b9ebb9842e994a77"
+    }
+  ]
+}

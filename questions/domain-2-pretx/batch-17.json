@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2065",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When coordinating immunologic monitoring for a kidney transplant recipient, which post-transplant test is supported by evolving antibody-detection technology in standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Donor-specific antibody (DSA) testing after transplant" },
+      { "id": "B", "text": "Panel-reactive antibody (PRA) testing only after transplant with no pretransplant role" },
+      { "id": "C", "text": "ABO typing repeated monthly solely to detect acute cellular rejection" },
+      { "id": "D", "text": "Crossmatch testing only before procurement with no post-transplant monitoring" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Improved HLA antibody, PRA, and donor-specific antibody detection technologies support pretransplant sensitization assessment and post-transplant DSA monitoring as protocols evolve.",
+      "rationale_incorrect": {
+        "B": "PRA and HLA testing are emphasized prior to transplant to identify highly sensitized patients; DSA testing is specifically noted after transplant.",
+        "C": "ABO typing is part of compatibility assessment, not the evolving post-transplant antibody surveillance described.",
+        "D": "Post-transplant DSA testing is explicitly described alongside pretransplant PRA/HLA testing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 134,
+      "section": "Ch. 4, Pharmacology → Immunosuppressive Antibody Therapy → B.",
+      "quote_hint": "donor-specific antibody (DSA) testing after transplant",
+      "keywords": ["donor-specific", "antibody", "DSA", "testing", "after", "transplant", "HLA", "PRA"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Immunosuppressive Antibody Therapy → B. (DSA testing after transplant alongside pretransplant PRA/HLA testing); PDF p. 134 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant DSA angle distinct from hypercoagulability screening (cctc-2059) and intestine-failure definition (cctc-2064); anchor verified on Cupples p. 134.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2066",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020703"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A highly sensitized heart transplant candidate is scheduled for pretransplant rituximab desensitization. Which long-term risk should the coordinator include in informed consent counseling per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Increased antibody-mediated rejection and post-transplant coronary artery vasculopathy with decreased graft survival" },
+      { "id": "B", "text": "Guaranteed elimination of all donor-specific antibodies with no rejection risk" },
+      { "id": "C", "text": "Rituximab desensitization is contraindicated in every heart transplant candidate" },
+      { "id": "D", "text": "Desensitization permanently prevents coronary artery vasculopathy in all recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term data on pretransplant rituximab or plasmapheresis in highly sensitized recipients have shown increased antibody-mediated rejection and post-transplant coronary artery vasculopathy with decreased overall graft survival, although experience remains limited.",
+      "rationale_incorrect": {
+        "B": "Desensitization may improve crossmatch feasibility but does not guarantee antibody elimination or absence of rejection.",
+        "C": "Rituximab is used to desensitize selected heart candidates rather than being universally contraindicated.",
+        "D": "CAV risk may increase rather than being permanently prevented by desensitization."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 412,
+      "section": "Ch. 9, Heart Transplantation → desensitization → Rituximab → 3.",
+      "quote_hint": "rituximab … increase in antibody-mediated rejection (AMR) and posttransplant coronary artery vasculopathy (CAV) and a decrease in overall graft survival",
+      "keywords": ["rituximab", "antibody-mediated", "rejection", "AMR", "coronary", "artery", "vasculopathy", "CAV"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 9 → desensitization → Rituximab → 3. (increased AMR and CAV with decreased graft survival); PDF p. 412 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First rituximab/desensitization item in bank; distinct from heart PRA crossmatch coordination (cctc-2026) and right-heart catheterization (cctc-2057); anchor verified on Cupples p. 412.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2067",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "recall",
+    "organ": "kidney_pancreas",
+    "recipient_age": "adult",
+    "stem": "When explaining simultaneous pancreas-kidney (SPK) transplantation to a candidate with diabetes and renal insufficiency, which indication aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Diabetes or pancreatic exocrine insufficiency with renal insufficiency" },
+      { "id": "B", "text": "Isolated type 2 diabetes without any renal disease" },
+      { "id": "C", "text": "Renal insufficiency without any metabolic or pancreatic disorder" },
+      { "id": "D", "text": "SPK is indicated only when the candidate no longer requires insulin" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Simultaneous pancreas-kidney transplantation is indicated for diagnosis of diabetes or pancreatic exocrine insufficiency with renal insufficiency.",
+      "rationale_incorrect": {
+        "B": "Type 2 diabetes accounts for a small minority of pancreas transplants; SPK pairs pancreatic and renal failure indications.",
+        "C": "SPK addresses combined pancreatic/metabolic and renal insufficiency rather than isolated renal disease alone.",
+        "D": "Insulin-treated diabetes with metabolic complications is typical of pancreas transplant populations rather than an exclusion."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → Indications → B. Simultaneous pancreas-kidney → 1.",
+      "quote_hint": "Diagnosis of diabetes or pancreatic exocrine insufficiency with renal insufficiency",
+      "keywords": ["Diagnosis", "diabetes", "pancreatic", "exocrine", "insufficiency", "renal", "insufficiency", "SPK"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → Indications → B. Simultaneous pancreas-kidney → 1. (diabetes or exocrine insufficiency with renal insufficiency); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. SPK-indication angle distinct from SPK suitability (cctc-2038), PAK evaluation (cctc-2050), and SPK rejection combo (cctc-3016); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2068",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020703"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "During preoperative coordination for a heart transplant candidate, which psychosocial support action aligns with standard heart transplant protocols?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Give the patient and family opportunity to ask questions and verbalize concerns" },
+      { "id": "B", "text": "Discourage questions until one year after transplant to reduce anxiety" },
+      { "id": "C", "text": "Limit all communication to the surgeon without involving caregivers" },
+      { "id": "D", "text": "Defer emotional support until after hospital discharge only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Heart preoperative protocols include providing emotional support by giving the patient and family opportunity to ask questions or verbalize their concerns.",
+      "rationale_incorrect": {
+        "B": "Preoperative protocols encourage questions and concern expression rather than deferring discussion.",
+        "C": "Caregiver involvement and open communication are part of preoperative emotional support.",
+        "D": "Emotional support is part of preoperative coordination, not deferred exclusively to post-discharge."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 412,
+      "section": "Ch. 9, Heart Transplantation → preoperative coordination → J.",
+      "quote_hint": "Provide emotional support … Give patient/family opportunity to ask questions or verbalize their concerns",
+      "keywords": ["emotional", "support", "patient", "family", "opportunity", "ask", "questions", "concerns"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 9 → preoperative coordination → J. (emotional support; opportunity to ask questions and verbalize concerns); PDF p. 412 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Heart preop emotional-support angle distinct from rituximab desensitization counseling (cctc-2066) and return-to-work postop counseling (cctc-3059); anchor verified on Cupples p. 412.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-3057",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 674,
+    "keywords": [
+      "Metabolic",
+      "bone",
+      "disease",
+      "greatest",
+      "risk",
+      "transplantation",
+      "steroid",
+      "doses"
+    ],
+    "keyword_hash": "sha256:9b04b427a33da05796cc733b2258fd4799b39e8768991ff39d9fd4352cf33b05"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 674,
+      "keywords": [
+        "metabolic",
+        "disease",
+        "greatest",
+        "steroid",
+        "doses",
+        "highest",
+        "long-term",
+        "persists"
+      ],
+      "keyword_hash": "sha256:f6b2733aa851e8808c544049444896513b012bc7af72d845c8c4e6efdf07b5ee"
+    }
+  ]
+}

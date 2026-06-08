@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-3005",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 113,
+    "keywords": [
+      "SRTR",
+      "OPTN",
+      "collected",
+      "hospitals",
+      "recipients",
+      "registry"
+    ],
+    "keyword_hash": "sha256:fc0dbbf6ec81edcd17ce9a2eb0d57223c08fbc3176fd19b3959d2d5e9edae118"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 113,
+      "keywords": [
+        "scientific",
+        "registry",
+        "recipients",
+        "subsection"
+      ],
+      "keyword_hash": "sha256:55e236c5ded823e172464eef47f08441debb1dad1f745f7af4ccffa1e9d06f95"
+    }
+  ]
+}

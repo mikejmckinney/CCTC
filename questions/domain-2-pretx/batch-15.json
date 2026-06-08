@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2057",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart transplant candidate on the waitlist develops worsening dyspnea. Which repeat evaluation study aligns with standard waitlist monitoring references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Right heart catheterization to evaluate pulmonary pressures" },
+      { "id": "B", "text": "Colonoscopy to calculate lung allocation score" },
+      { "id": "C", "text": "Bone densitometry as the sole required cardiac study" },
+      { "id": "D", "text": "No repeat cardiac testing is ever indicated while waitlisted" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Heart waitlist candidates undergo repeated testing to reevaluate health status, including right heart catheterization to evaluate pulmonary pressures when clinically indicated.",
+      "rationale_incorrect": {
+        "B": "Colonoscopy is a health-maintenance study, not a cardiac waitlist monitoring test for pulmonary pressures.",
+        "C": "Bone densitometry does not replace cardiac hemodynamic assessment on the heart waitlist.",
+        "D": "Repeat testing is performed as necessary to monitor candidacy and listing status."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 54,
+      "section": "Ch. 1, Evaluation → Heart transplant candidates → 4.b.i.",
+      "quote_hint": "Right heart catheterization to evaluate pulmonary pressures",
+      "keywords": ["Right", "heart", "catheterization", "evaluate", "pulmonary", "pressures", "repeated", "tests"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → heart transplant candidates → 4.b.i. (repeat right heart catheterization for pulmonary pressures); PDF p. 54 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 020100 item; heart waitlist hemodynamic monitoring distinct from positive stress-test referral (cctc-2033) and PELD rule (cctc-2010); anchor verified on Cupples p. 54.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2058",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020302"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "During liver transplant evaluation of a candidate with alcohol-related liver disease, which adherence measure may a center require per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A behavioral contract to abstain from alcohol with random toxicology screening" },
+      { "id": "B", "text": "Continued daily alcohol use until the transplant operation" },
+      { "id": "C", "text": "Permanent exclusion from rehabilitation programs" },
+      { "id": "D", "text": "No documentation of abstinence is ever permitted" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Centers may require patients with alcohol-related liver disease to sign a behavioral contract indicating they will abstain from alcohol and undergo random toxicology screening to confirm ongoing abstinence.",
+      "rationale_incorrect": {
+        "B": "Candidates for liver transplantation are expected to remain abstinent rather than continue alcohol use.",
+        "C": "Formal rehabilitation or Alcoholics Anonymous participation may be required depending on center protocol and patient suitability.",
+        "D": "Abstinence assessment and behavioral contracts are common components of alcohol screening."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 43,
+      "section": "Ch. 1, Evaluation → e. Alcohol screening → v.",
+      "quote_hint": "behavioral contract indicating that they will abstain from alcohol and undergo random toxicology screening",
+      "keywords": ["behavioral", "contract", "abstain", "alcohol", "random", "toxicology", "screening", "abstinence"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → e. Alcohol screening → v. (behavioral contract and random toxicology screening for ongoing abstinence); PDF p. 43 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Tenth 020300 item; liver alcohol-contract angle distinct from PAK (cctc-2050), transition (cctc-2056), and indeterminate outcome (cctc-2035); anchor verified on Cupples p. 43.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2059",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A pulmonologist refers a patient with advanced lung disease for transplant evaluation. Which referral-timing consideration aligns with standard lung evaluation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Late referral when the patient is too sick may preclude transplantation" },
+      { "id": "B", "text": "Referral timing has no effect on transplant candidacy" },
+      { "id": "C", "text": "Only patients already on mechanical ventilation at referral are acceptable candidates" },
+      { "id": "D", "text": "Early referral is contraindicated for all lung disease" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Timing of referral is a key aspect of lung transplantation; referrals late in the disease process may result in the patient being too sick for transplantation.",
+      "rationale_incorrect": {
+        "B": "Referral timing directly affects whether the patient remains a suitable transplant candidate.",
+        "C": "Late referral leading to excessive illness is the concern described, not a requirement for pre-referral ventilation.",
+        "D": "Appropriately timed early referral is encouraged rather than contraindicated for all patients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 567,
+      "section": "Ch. 11, Lung Transplantation → Patient Referral → 3.a.",
+      "quote_hint": "Referrals that are late in the disease process may result in the patient being too sick for transplantation",
+      "keywords": ["Referrals", "late", "disease", "process", "too", "sick", "transplantation", "timing"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 11 → Patient Referral → 3.a. (late referral may leave patient too sick for transplant); PDF p. 567 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eleventh 020300 item; lung referral-timing angle distinct from pulmonary rehab requirement (cctc-2034) and LAS reporting (cctc-2044); anchor verified on Cupples p. 567.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2060",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant candidate has a history of prior graft or shunt thrombosis. Which preoperative coordination step aligns with standard evaluation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Screen for hypercoagulability with tests such as activated protein C resistance and antiphospholipid studies" },
+      { "id": "B", "text": "Omit all coagulation testing because thrombosis history is irrelevant" },
+      { "id": "C", "text": "Proceed without evaluation because hypercoagulability cannot be assessed" },
+      { "id": "D", "text": "Cancel transplantation permanently for any prior clot without further workup" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Kidney preoperative evaluation includes hypercoagulability screening for patients with a history of graft or shunt thrombosis, including tests such as activated protein C resistance, factor V and prothrombin mutations, and antiphospholipid antibodies.",
+      "rationale_incorrect": {
+        "B": "Thrombosis history triggers additional preoperative coagulation evaluation rather than being ignored.",
+        "C": "Standard references list specific hypercoagulability tests for at-risk candidates.",
+        "D": "Thrombosis history prompts evaluation and risk mitigation rather than automatic permanent cancellation without assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 46,
+      "section": "Ch. 1, Kidney transplantation → preoperative evaluation → 5.a.ii.",
+      "quote_hint": "history of grafts or shunt thrombosis should be screened for hypercoagulability",
+      "keywords": ["grafts", "shunt", "thrombosis", "screened", "hypercoagulability", "Activated", "protein", "resistance"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → kidney preoperative evaluation → 5.a.ii. (hypercoagulability screening after graft/shunt thrombosis history); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 020700 item; kidney hypercoagulability screening distinct from urine baseline (cctc-2016), liver MELD removal data (cctc-2044), and cardiac stress testing (cctc-2028); anchor verified on Cupples p. 46.",
+    "last_updated": "2026-06-05"
+  }
+]

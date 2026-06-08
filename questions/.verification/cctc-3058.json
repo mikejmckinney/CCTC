@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3058",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 107,
+    "keywords": [
+      "medication",
+      "box",
+      "day",
+      "hour",
+      "subdivisions",
+      "pharmacist",
+      "discharge",
+      "pre-loaded"
+    ],
+    "keyword_hash": "sha256:bcad02722b08a4eb37611d9122ec5f10bf32e0beec60895ed1257d72f8401be9"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "keywords": [
+        "structured",
+        "approach",
+        "medication",
+        "pre-loaded",
+        "pharmacist",
+        "discharge"
+      ],
+      "keyword_hash": "sha256:1820f1cf6f417dac0f92c7f7cf62a92b585052cc1313a59f8785d2a5e8796e1f"
+    }
+  ]
+}

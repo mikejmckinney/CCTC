@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1139",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "caregivers",
+      "family",
+      "members",
+      "co-workers",
+      "annual",
+      "influenza",
+      "vaccinations"
+    ],
+    "keyword_hash": "sha256:3f6eb1f813eb94f206bd908c3ee5dc55c1c9a7209d07d6958f7dc8318c4a78e4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "caregiver",
+        "family",
+        "co-worker",
+        "annual",
+        "influenza",
+        "vaccination"
+      ],
+      "keyword_hash": "sha256:0133b0fbac1c2e4e5dc4111b53648a7b5d5d4c60a78605512210b62fa4e94ef7"
+    }
+  ]
+}

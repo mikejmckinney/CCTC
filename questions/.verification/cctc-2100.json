@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2100",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 49,
+    "keywords": [
+      "Kidney",
+      "paired",
+      "donation",
+      "KPD",
+      "living",
+      "donor",
+      "incompatible",
+      "OPTN"
+    ],
+    "keyword_hash": "sha256:5e73cb24bb1e876fd570481b93727da55e5cd3087e0beb384d7a274140588abc"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 49,
+      "keywords": [
+        "incompatible",
+        "living",
+        "donor",
+        "program"
+      ],
+      "keyword_hash": "sha256:bd8d1c8acc95c039c7345c2e562b168e3a43988456ea71b27cb582dadd21ea86"
+    }
+  ]
+}

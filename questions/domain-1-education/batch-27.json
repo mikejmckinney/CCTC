@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1106",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching breast health maintenance after transplantation, which self-care practice aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Monthly breast self-examination" },
+      { "id": "B", "text": "Breast self-examination only once every ten years" },
+      { "id": "C", "text": "No breast self-examination because immunosuppression prevents breast cancer" },
+      { "id": "D", "text": "Breast self-examination is discouraged for transplant recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Breast health teaching includes monthly self-examination along with mammograms per provider assessment or American Cancer Society recommendations.",
+      "rationale_incorrect": {
+        "B": "Standard references recommend monthly rather than decennial self-examination.",
+        "C": "Immunosuppression increases malignancy risk; breast self-examination remains recommended.",
+        "D": "Monthly breast self-examination is part of health-maintenance teaching rather than being discouraged."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Breast health",
+      "quote_hint": "Monthly self-examination",
+      "keywords": ["Breast", "health", "Monthly", "self-examination", "Mammograms"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Breast health (monthly self-examination); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Monthly breast self-exam angle distinct from mammography screening combo (cctc-1020) and skin-cancer teaching (cctc-1102); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1107",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A male transplant recipient asks about prostate health maintenance. Which screening practice aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Annual prostate-specific antigen screening" },
+      { "id": "B", "text": "Prostate screening only after twenty years post-transplant" },
+      { "id": "C", "text": "No prostate screening because immunosuppression prevents prostate disease" },
+      { "id": "D", "text": "Monthly prostate biopsy for all recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Prostate health maintenance includes annual prostate screening antigen testing, with urology consultation for urinary obstruction or recurrent urinary tract infection symptoms.",
+      "rationale_incorrect": {
+        "B": "Annual rather than exclusively late post-transplant screening is referenced.",
+        "C": "Immunosuppressed recipients still require age-appropriate prostate health maintenance.",
+        "D": "Annual PSA screening is referenced rather than routine monthly biopsy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Prostate health",
+      "quote_hint": "Annual prostate screening antigen (PSA)",
+      "keywords": ["Prostate", "health", "Annual", "prostate", "screening", "antigen", "PSA"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Prostate health (annual PSA, urology consult for obstruction/UTI); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Prostate PSA teaching angle distinct from breast self-exam (cctc-1106) and colonoscopy screening (cctc-2104); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1108",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching testicular health maintenance after transplantation, which self-care practice aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Monthly testicular self-examination" },
+      { "id": "B", "text": "Testicular examination only once at transplant discharge" },
+      { "id": "C", "text": "No testicular self-examination because immunosuppression prevents testicular cancer" },
+      { "id": "D", "text": "Annual testicular biopsy for every recipient" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Testicular health teaching includes monthly self-examination as part of long-term health maintenance.",
+      "rationale_incorrect": {
+        "B": "Monthly rather than one-time self-examination is recommended.",
+        "C": "Immunosuppressed recipients still benefit from routine testicular self-examination teaching.",
+        "D": "Monthly self-examination is referenced rather than routine annual biopsy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Testicular health",
+      "quote_hint": "Monthly self-examination",
+      "keywords": ["Testicular", "health", "Monthly", "self-examination"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Testicular health (monthly self-examination); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Testicular self-exam angle distinct from prostate PSA teaching (cctc-1107) and breast health (cctc-1106); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1109",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating gender-specific health-maintenance teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Monthly breast self-examination is recommended for breast health maintenance." },
+      { "id": "II", "text": "Annual prostate-specific antigen screening is part of prostate health maintenance." },
+      { "id": "III", "text": "Testicular health maintenance requires no self-examination because immunosuppression prevents cancer." },
+      { "id": "IV", "text": "Papanicolaou testing includes regular assessment by a gynecologist." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Monthly breast self-examination, annual PSA screening, and regular gynecologic Papanicolaou assessment are recommended. Statement III is false because testicular health teaching includes monthly self-examination.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—Papanicolaou testing includes regular gynecologic assessment.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because monthly testicular self-examination is recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance",
+      "quote_hint": "Monthly self-examination … Annual prostate screening antigen … Testicular health … Papanicolaou test: Regular assessment by gynecologist",
+      "keywords": ["Breast", "health", "Prostate", "Testicular", "Papanicolaou", "Monthly", "self-examination"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Breast, prostate, testicular, and Papanicolaou screening teaching; PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Gender-specific health-maintenance combo distinct from skin-cancer combo (cctc-1105) and evaluation screening list (cctc-1020); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  }
+]

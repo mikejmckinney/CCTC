@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3129",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030503"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A transplant recipient reports household exposure to a communicable illness. Which teaching point aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Promptly report any exposure to a communicable disease to the transplant team" },
+      { "id": "B", "text": "Communicable exposures should be managed privately without notifying the team" },
+      { "id": "C", "text": "Only hospital-acquired infections require team notification" },
+      { "id": "D", "text": "Exposure reporting is deferred until one year after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching instructs patients to promptly report any exposure to a communicable disease to the transplant team.",
+      "rationale_incorrect": {
+        "B": "Communicable-disease exposure should be reported to the transplant team rather than managed without notification.",
+        "C": "Community and household communicable exposures also warrant prompt reporting.",
+        "D": "Exposure reporting applies during recovery and ongoing care rather than being deferred for a year."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → g. Activity → iii. Infection prevention",
+      "quote_hint": "promptly report any exposure to a communicable disease to the transplant team",
+      "keywords": ["promptly", "report", "exposure", "communicable", "disease", "transplant", "team"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Activity → iii. Infection prevention (report communicable-disease exposure to transplant team); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Communicable-disease exposure reporting angle distinct from travel restriction (cctc-1023) and urgent infection-symptom contact (cctc-3002); anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3130",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A postmenopausal kidney recipient with osteopenia asks about hormone therapy as part of bone-health management. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hormone replacement therapy may be considered in carefully selected patients as part of osteopenia or osteoporosis treatment" },
+      { "id": "B", "text": "Hormone replacement is required for every transplant recipient regardless of indication" },
+      { "id": "C", "text": "Hormone therapy is never an option after transplantation" },
+      { "id": "D", "text": "Bone treatment includes only calcium supplements with no hormonal options" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Treatment of osteopenia or osteoporosis may include hormone replacement therapy in carefully selected patients, along with calcium and vitamin D, bisphosphonates, calcitonin, denosumab, and exercise.",
+      "rationale_incorrect": {
+        "B": "Hormone replacement is an option in carefully selected patients rather than a universal requirement.",
+        "C": "Hormone replacement may be considered when appropriately selected rather than being categorically excluded.",
+        "D": "Multiple pharmacologic options beyond calcium alone are listed when indicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Prevent or treat osteopenia/osteoporosis → e.",
+      "quote_hint": "Hormone replacement therapy in carefully selected patients",
+      "keywords": ["Hormone", "replacement", "therapy", "carefully", "selected", "patients", "osteopenia"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 2.e. (hormone replacement therapy in carefully selected patients); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant HRT coordination angle distinct from denosumab recall (cctc-3121) and pretransplant HRT evaluation item (cctc-2131); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3131",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "Parents of a pediatric transplant recipient call because the child has decreased appetite and unusual irritability without a measured fever yet. Which bacterial-infection teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Flu-like symptoms such as malaise, lethargy, decreased appetite, irritability, or change in behavior may indicate bacterial infection in pediatrics" },
+      { "id": "B", "text": "Behavior change never indicates infection in pediatric recipients" },
+      { "id": "C", "text": "Pediatric infection is suspected only when fever exceeds 104°F (40°C)" },
+      { "id": "D", "text": "Decreased appetite alone always indicates rejection rather than infection" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Signs and symptoms of bacterial infection include flu-like symptoms such as malaise, lethargy, decreased appetite, irritability, or change in behavior in pediatrics, along with fever and localized findings.",
+      "rationale_incorrect": {
+        "B": "Irritability and behavior change are specifically cited pediatric infection symptoms.",
+        "C": "Fever is usually ≥101°F (38.5°C), and non-febrile behavioral changes may still warrant evaluation.",
+        "D": "Nonspecific symptoms may indicate infection and require clinical assessment rather than assuming rejection alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Signs and symptoms → ii.",
+      "quote_hint": "malaise, lethargy, decreased appetite, irritability, or change in behavior (pediatrics)",
+      "keywords": ["malaise", "lethargy", "decreased", "appetite", "irritability", "behavior", "pediatrics"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → f.ii. (pediatric malaise, irritability, behavior change); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pediatric nonspecific bacterial-infection signs angle distinct from organ-specific pediatric bacterial combo (cctc-3096) and fever threshold teaching; anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3132",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant bacterial infection teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Fever with bacterial infection is usually ≥101°F (38.5°C)." },
+      { "id": "II", "text": "In pediatrics, irritability or change in behavior may accompany bacterial infection." },
+      { "id": "III", "text": "Wound site abnormalities may include erythema, purulent drainage, tenderness, and swelling." },
+      { "id": "IV", "text": "Changes in respiratory status such as tachypnea and cough never occur with bacterial infection." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Fever threshold, pediatric behavioral symptoms, and wound abnormalities are cited bacterial-infection signs. Statement IV is false because changes in respiratory status such as tachypnea, decreased breath sounds, and cough are listed.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—wound erythema, purulent drainage, tenderness, and swelling are cited findings.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because respiratory status changes are listed among bacterial-infection signs."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Signs and symptoms",
+      "quote_hint": "Fever, usually ≥101°F or 38.5°C … irritability, or change in behavior (pediatrics) … Wound site abnormalities … Changes in respiratory status: tachypnea",
+      "keywords": ["Fever", "101°F", "irritability", "behavior", "Wound", "erythema", "respiratory", "tachypnea"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → f.i.–vi. (fever, pediatric symptoms, wound and respiratory signs); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Adult bacterial-infection sign combo distinct from pediatric organ-specific bacterial combo (cctc-3096) and pediatric irritability item (cctc-3131); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  }
+]

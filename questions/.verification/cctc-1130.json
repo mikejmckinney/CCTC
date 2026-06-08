@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1130",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "Encourage",
+      "healthy",
+      "diet",
+      "fat",
+      "sugar",
+      "salt",
+      "fiber"
+    ],
+    "keyword_hash": "sha256:fb119b30286ef5e9f275ccd4626af10d89a4c8bd64604e4fa5d7862ebafcd45d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "healthy",
+        "sugar",
+        "fiber"
+      ],
+      "keyword_hash": "sha256:863afb22eed830010fc748383656f7ba93f1b132dccf8c4d767557073f4eddef"
+    }
+  ]
+}

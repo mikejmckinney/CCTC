@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3094",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 943,
+    "keywords": [
+      "Urinary",
+      "tract",
+      "infection",
+      "especially",
+      "pyelonephritis",
+      "most",
+      "common",
+      "gram-negative"
+    ],
+    "keyword_hash": "sha256:9a6e9ff54444c5adf6925056515f36bfaf1d6308821c315312be43032373e1b3"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "keywords": [
+        "pediatric",
+        "kidney",
+        "pyelonephritis",
+        "common"
+      ],
+      "keyword_hash": "sha256:e132a6afb71913099da73c606847b0fd10e1cf907329146126ad6c3d64e3bad1"
+    }
+  ]
+}

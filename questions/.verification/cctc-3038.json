@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3038",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 228,
+    "keywords": [
+      "Cholangitis",
+      "elevated",
+      "bilirubin",
+      "transaminases",
+      "alkaline",
+      "phosphatase",
+      "Fever"
+    ],
+    "keyword_hash": "sha256:f008c9e865691591bf047bd5fdc35d0505d8ad11489c1084c91f1ebc70b2046f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 228,
+      "keywords": [
+        "laboratory",
+        "findings",
+        "elevated",
+        "bilirubin",
+        "transaminases",
+        "alkaline",
+        "phosphatase"
+      ],
+      "keyword_hash": "sha256:537dc2dffca14b1e6064fcc2ed7e81a9e4fcb5a4b64d26de281243541991f8b1"
+    }
+  ]
+}

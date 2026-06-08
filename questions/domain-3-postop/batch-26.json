@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3101",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A long-term transplant survivor asks which anatomic sites are most associated with squamous cell carcinoma. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Sun-exposed areas of skin are the predominant location" },
+      { "id": "B", "text": "Squamous cell carcinoma occurs only on soles of the feet never exposed to light" },
+      { "id": "C", "text": "Only mucosal surfaces inside the mouth are ever affected" },
+      { "id": "D", "text": "Skin cancer in transplant recipients is limited to covered abdominal skin only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sun-exposed areas of skin are the predominant location of squamous cell carcinomas in transplant recipients, supporting sun-protection counseling.",
+      "rationale_incorrect": {
+        "B": "Sun-exposed rather than strictly non-exposed sites are described as predominant.",
+        "C": "Cutaneous sun-exposed sites are emphasized rather than oral mucosa alone.",
+        "D": "Sun-exposed areas are cited as predominant rather than covered abdominal skin exclusively."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Skin care → Risk of skin cancer",
+      "quote_hint": "Sun exposed areas of skin are the predominant location of squamous cell carcinomas",
+      "keywords": ["Sun", "exposed", "areas", "skin", "predominant", "location", "squamous", "cell"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Skin care (sun-exposed areas predominant for squamous cell carcinoma); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sun-exposed-site counseling angle paired with education combo (cctc-1105); distinct from skin-cancer incidence item (cctc-3054); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3102",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "Which self-care practice for skin cancer surveillance aligns with standard post-transplant health-maintenance references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Routine self-examination with immediate reporting of any changes" },
+      { "id": "B", "text": "Avoid all skin examination because changes are never significant" },
+      { "id": "C", "text": "Self-examination only once every 10 years regardless of findings" },
+      { "id": "D", "text": "Report skin changes only if they occur before transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin care teaching includes routine self-examination with immediate reporting of any changes, along with annual examination by a health care provider.",
+      "rationale_incorrect": {
+        "B": "Routine self-examination is recommended because skin cancer risk is elevated after transplant.",
+        "C": "Self-examination is ongoing rather than once per decade.",
+        "D": "Post-transplant skin surveillance continues after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Skin care",
+      "quote_hint": "Routine self-examination; report any changes immediately",
+      "keywords": ["Routine", "self-examination", "report", "any", "changes", "immediately", "Skin", "care"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Skin care (routine self-exam and report changes immediately); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Skin self-examination surveillance angle distinct from annual provider exam emphasis (cctc-3103); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3103",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating long-term follow-up for a transplant recipient, how often should skin examination by a health care provider occur per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Annually" },
+      { "id": "B", "text": "Only once before transplant with no further skin exams" },
+      { "id": "C", "text": "Every 10 years regardless of findings" },
+      { "id": "D", "text": "Skin examination is discouraged after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin care includes examination by a health care provider annually, along with routine self-examination and sun precautions.",
+      "rationale_incorrect": {
+        "B": "Annual provider skin examination continues after transplantation.",
+        "C": "Annual rather than decennial examination is recommended.",
+        "D": "Skin examination is part of long-term health maintenance rather than being discouraged."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Skin care",
+      "quote_hint": "Examination by a health care provider annually",
+      "keywords": ["Examination", "health", "care", "provider", "annually", "Skin", "care"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Skin care (annual provider skin examination); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Annual provider skin-exam coordination angle paired with self-examination item (cctc-3102); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3104",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant dental health teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Regular visits to the dentist are recommended for transplant recipients." },
+      { "id": "II", "text": "Recipients should inform the dentist of immunosuppressed status." },
+      { "id": "III", "text": "Dental antibiotic prophylaxis may be required depending on the type of dental procedure." },
+      { "id": "IV", "text": "Recipients should never discuss dental procedures with the transplant team." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Regular dental visits, informing the dentist of immunosuppressed status, and possible procedure-specific prophylaxis are recommended; the transplant team should be consulted at least a week before dental appointments, so statement IV is false.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—prophylaxis may be required depending on the procedure.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because transplant-team consultation is advised before dental procedures."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Dental care",
+      "quote_hint": "Regular visits to the dentist … Inform dentist of immunosuppressed status … Dental prophylaxis may be required … Discuss with transplant team at least a week before appointment",
+      "keywords": ["Regular", "visits", "dentist", "immunosuppressed", "Dental", "prophylaxis", "transplant", "team"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Dental care (regular visits, inform dentist, prophylaxis, team consult); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant dental-care combo paired with pretransplant dental coordination (cctc-2103); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  }
+]

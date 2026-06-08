@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2082",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 181,
+    "keywords": [
+      "Evidence",
+      "recent",
+      "drug",
+      "use",
+      "track",
+      "marks",
+      "Physical",
+      "Examination"
+    ],
+    "keyword_hash": "sha256:37122d01542a240ed1270b8d8d459d64bfb198c9c422ffb8766b86c20a6d8b4e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 181,
+      "keywords": [
+        "track",
+        "marks",
+        "suggesting",
+        "recent"
+      ],
+      "keyword_hash": "sha256:067bf99fc1beb73eeb389310334b85521aa47369010f4b9b50b6652446e67b04"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3078",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 208,
+    "keywords": [
+      "progressive",
+      "neurological",
+      "deficits",
+      "Noninflammatory",
+      "CNS",
+      "fever",
+      "meningeal",
+      "signs"
+    ],
+    "keyword_hash": "sha256:b68a091b04dd4da82b3842d9dcf658ec1e0ffd6bef26ef0747edaeb3d0919a3f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "keywords": [
+        "progressive",
+        "neurologic",
+        "deficits",
+        "fever",
+        "meningeal",
+        "signs"
+      ],
+      "keyword_hash": "sha256:e18f7b338ec1bb7746232ae5fc64c5c6e0cdaedbc5c1d36800802ebae7436616"
+    }
+  ]
+}

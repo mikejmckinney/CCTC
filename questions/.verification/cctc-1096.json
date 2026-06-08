@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1096",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 944,
+    "keywords": [
+      "Acetaminophen",
+      "recommended",
+      "temperature",
+      "elevations",
+      "nonsteroidal",
+      "anti-inflammatory",
+      "hepatic",
+      "renal"
+    ],
+    "keyword_hash": "sha256:04306185cf11a43cabe67bbcff718cb7856576b2e07a1b441b2c406035168bfa"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 944,
+      "keywords": [
+        "acetaminophen",
+        "preferred",
+        "nsaids",
+        "pediatric",
+        "recipients"
+      ],
+      "keyword_hash": "sha256:4d044ac6f9905c446b2de6573bd48f50a9e1b12092bbf74ec72cc458836c8caa"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1070",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 44,
+    "keywords": [
+      "HPS",
+      "associated",
+      "increased",
+      "mortality",
+      "liver",
+      "transplant",
+      "only",
+      "treatment"
+    ],
+    "keyword_hash": "sha256:2311ad22b4214d1d265007bfc22c9c6e4a53821aceb119b9b3c32c84104fb2d1"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 44,
+      "keywords": [
+        "mortality",
+        "liver",
+        "treatment"
+      ],
+      "keyword_hash": "sha256:2dfc38025904084186ae43e2c1a9520d4b9b51ae23762cd60fda1977c85b9456"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1143",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Clean",
+      "cover",
+      "recent",
+      "cuts",
+      "wounds"
+    ],
+    "keyword_hash": "sha256:c4a1292e4bf21e143caa6cd869a9e327a19c75c2b37b31fb8fcdd04d138bcda5"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "others",
+        "clean",
+        "cover",
+        "recent",
+        "wounds"
+      ],
+      "keyword_hash": "sha256:c9a715b216fea134aec5cc7446fd71eb35c147b1c3397fb2df261f82f89a88d4"
+    }
+  ]
+}

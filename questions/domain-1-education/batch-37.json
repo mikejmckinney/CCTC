@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1146",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When updating post-transplant vaccination teaching, which inactivated vaccine aligns with standard health-maintenance references for recipients not immunized before transplantation?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hepatitis A and B vaccines if not immunized pretransplant" },
+      { "id": "B", "text": "Live varicella vaccine for all recipients immediately after transplant" },
+      { "id": "C", "text": "No hepatitis vaccination is ever recommended after transplantation" },
+      { "id": "D", "text": "Only live herpes zoster vaccine is recommended post-transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Health maintenance after transplantation includes obtaining recommended inactivated vaccinations such as hepatitis A and B if the recipient was not immunized pretransplant, along with annual inactivated influenza and pneumococcal vaccine.",
+      "rationale_incorrect": {
+        "B": "Live varicella vaccine is contraindicated after transplantation.",
+        "C": "Hepatitis A and B vaccination is recommended when pretransplant immunization was incomplete.",
+        "D": "Live herpes zoster vaccine is contraindicated after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "Hepatitis A and B if not immunized pretransplant",
+      "keywords": ["Hepatitis", "immunized", "pretransplant", "vaccinations", "Health"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance → ii. (hepatitis A and B if not immunized pretransplant); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Hepatitis A/B post-transplant vaccination angle distinct from household influenza teaching (cctc-1139) and vaccination combo (cctc-1048); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1147",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient asks why post-transplant vaccine timing differs from the general population. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Transplant recipients may require vaccine boosters earlier due to immunosuppression" },
+      { "id": "B", "text": "Immunosuppression eliminates the need for any post-transplant vaccinations" },
+      { "id": "C", "text": "Vaccine boosters should always be deferred until ten years after transplant" },
+      { "id": "D", "text": "Immunosuppression makes live-virus vaccines the preferred post-transplant option" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Health maintenance teaching notes that transplant recipients may require vaccine boosters earlier because immunosuppression can reduce vaccine response, while live-virus vaccines remain contraindicated.",
+      "rationale_incorrect": {
+        "B": "Inactivated vaccinations remain important after transplantation rather than being eliminated.",
+        "C": "Earlier boosters may be needed rather than deferring all vaccination for a decade.",
+        "D": "Immunosuppressed patients should not receive live-virus vaccines after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "Transplant recipients may require boosters earlier, due to immunosuppression",
+      "keywords": ["Transplant", "recipients", "require", "boosters", "earlier", "immunosuppression"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance → ii. (earlier boosters due to immunosuppression); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Earlier-booster counseling angle distinct from pneumococcal timing in health-maintenance combo (cctc-1141) and hepatitis A/B recall (cctc-1146); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1148",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010605"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A transplant recipient reports disappointment that recovery progress is slower than expected and feels increasingly anxious. Which psychological-care teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Differences between perceived expectation and actual outcome may affect psychological health" },
+      { "id": "B", "text": "Psychological distress never occurs after successful transplantation" },
+      { "id": "C", "text": "Expectation mismatch is unrelated to post-transplant mental health" },
+      { "id": "D", "text": "Psychological concerns should never be discussed with the transplant team" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Psychological care teaching recognizes that differences in perceived expectation versus actual outcome may contribute to the patient's psychological health, along with monitoring for depression and anxiety.",
+      "rationale_incorrect": {
+        "B": "Psychological distress including depression and anxiety may occur and warrants monitoring.",
+        "C": "Expectation-versus-outcome differences are specifically cited as a psychological health factor.",
+        "D": "Open monitoring and support for psychological concerns are part of post-transplant care."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → f. Psychological care → iii.",
+      "quote_hint": "Differences in perceived expectation versus actual outcome may contribute to patient's psychological health",
+      "keywords": ["Differences", "perceived", "expectation", "actual", "outcome", "psychological", "health"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → f. Psychological care → iii. (perceived expectation versus actual outcome); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Expectation-outcome psychological angle distinct from depression/anxiety monitoring recall (cctc-1138) and living-donor psychosocial risks (cctc-1023); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1149",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604", "010605"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is revising post-transplant health-maintenance and psychological-care teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Hepatitis A and B vaccines should be given if the recipient was not immunized pretransplant." },
+      { "id": "II", "text": "Transplant recipients may require vaccine boosters earlier due to immunosuppression." },
+      { "id": "III", "text": "Live-virus vaccines are appropriate routine post-transplant immunization for all recipients." },
+      { "id": "IV", "text": "The patient should be monitored for signs of depression and anxiety." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Hepatitis A/B vaccination when indicated, earlier boosters due to immunosuppression, and depression/anxiety monitoring are supported. Statement III is false because immunosuppressed patients should not receive live-virus vaccines.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—psychological monitoring for depression and anxiety is recommended.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because live-virus vaccines are contraindicated after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → f. Psychological care and g. Health maintenance",
+      "quote_hint": "Hepatitis A and B if not immunized pretransplant … boosters earlier … should not receive live-virus vaccines … Monitor patient for signs of depression and anxiety",
+      "keywords": ["Hepatitis", "boosters", "earlier", "live-virus", "vaccines", "depression", "anxiety"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → f. Psychological care → ii. and g. Health maintenance → ii. (hepatitis A/B, earlier boosters, live-vaccine contraindication, depression/anxiety monitoring); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Health-maintenance/psychological combo distinct from prior health-maintenance combo (cctc-1141) and vaccination combo (cctc-1048); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  }
+]

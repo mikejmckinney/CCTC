@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3035",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 903,
+    "keywords": [
+      "Urine",
+      "leaks",
+      "treated",
+      "indwelling",
+      "urinary",
+      "catheters",
+      "surgical",
+      "intervention"
+    ],
+    "keyword_hash": "sha256:3e1a02bbf2563028f54430d47f114d99a50901d4a5728d641f3f08404ce7e9bb"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 903,
+      "keywords": [
+        "treatment",
+        "indwelling",
+        "catheter",
+        "surgical",
+        "intervention",
+        "minor",
+        "leaks"
+      ],
+      "keyword_hash": "sha256:42bc013a5ff5c06b7907927dd9a3ddeb47ce20d1ceaaba3e5f41a64db892889c"
+    }
+  ]
+}

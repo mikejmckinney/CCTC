@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1023",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 341,
+    "keywords": [
+      "Postdonation",
+      "depression",
+      "anxiety",
+      "psychosocial",
+      "living",
+      "donor"
+    ],
+    "keyword_hash": "sha256:2ce0828d2f46a97d33f934f95065e3196a3a42617369f2afcf642cd7cf39e83c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 341,
+      "keywords": [
+        "psychosocial",
+        "risks",
+        "including",
+        "depression",
+        "anxiety"
+      ],
+      "keyword_hash": "sha256:4daab5c428b19c3b65967c07b30ab06162122a0477d40b318dd5f1731e4f522e"
+    }
+  ]
+}

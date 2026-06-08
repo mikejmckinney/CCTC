@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-3157",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching transplant recipients about candidemia, which clinical significance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A significant infection associated with high mortality and graft loss" },
+      { "id": "B", "text": "A benign colonization that never affects graft function" },
+      { "id": "C", "text": "An infection limited exclusively to the pretransplant period" },
+      { "id": "D", "text": "A condition that never causes mortality in transplant recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidemia is described as a significant infection associated with high mortality and graft loss, warranting prompt evaluation and treatment.",
+      "rationale_incorrect": {
+        "B": "Candidemia is a significant invasive infection rather than benign colonization without graft impact.",
+        "C": "Candidemia is a post-transplant complication rather than being limited to pretransplant.",
+        "D": "High mortality is specifically cited rather than candidemia being harmless."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia → i.",
+      "quote_hint": "Significant infection associated with high mortality and graft loss",
+      "keywords": ["Significant", "infection", "associated", "high", "mortality", "graft", "loss"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → i. (high mortality and graft loss); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Candidemia severity epidemiology angle distinct from Candida prophylaxis timing (cctc-3153) and fluconazole interaction (cctc-3154); anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3158",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recently transplanted recipient develops fever, lymphadenopathy, and a new rash. Which fungal-infection teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Candidemia may present with fever, lymphadenopathy, and rash" },
+      { "id": "B", "text": "Fever with rash always indicates acute cellular rejection and never infection" },
+      { "id": "C", "text": "Lymphadenopathy excludes candidemia from the differential" },
+      { "id": "D", "text": "Candidemia never causes fever in immunosuppressed recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidemia symptoms may include fever, lymphadenopathy, and rash, and diagnosis includes blood cultures with evaluation for abscess or cardiac vegetations when central venous lines are present.",
+      "rationale_incorrect": {
+        "B": "Fever with rash may reflect candidemia or other infections and requires evaluation rather than assuming rejection alone.",
+        "C": "Lymphadenopathy is among cited candidemia symptoms rather than excluding it.",
+        "D": "Fever is specifically listed among candidemia symptoms."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia → ii.",
+      "quote_hint": "Fever … Lymphadenopathy … Rash",
+      "keywords": ["Fever", "Lymphadenopathy", "Rash", "Candidemia", "Symptoms"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → ii. (fever, lymphadenopathy, rash); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Candidemia presentation angle distinct from candidemia severity recall (cctc-3157) and pediatric Candida rash (cctc-3155); anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3159",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant recipient with prolonged surgery and reexploration develops isolated fever months after transplant. Which Aspergillus risk or presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Extended operative time greater than 12 hours and reexploration are cited risk factors" },
+      { "id": "B", "text": "Aspergillus occurs only when operative time is under 30 minutes" },
+      { "id": "C", "text": "Reexploration eliminates Aspergillus risk after lung transplantation" },
+      { "id": "D", "text": "Operative duration never influences post-transplant fungal risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Aspergillus risk factors include extended operative time greater than 12 hours, reexplorations, retransplantation, neutropenia, high immunosuppressive load, and prolonged broad-spectrum antibiotics.",
+      "rationale_incorrect": {
+        "B": "Extended operative time greater than 12 hours is a cited risk factor rather than very short surgery alone.",
+        "C": "Reexploration increases risk rather than eliminating Aspergillus concern.",
+        "D": "Operative time and reexploration are specifically listed among risk factors."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → iv.",
+      "quote_hint": "Extended operative time >12 hours … Reexplorations",
+      "keywords": ["Extended", "operative", "time", "hours", "Reexplorations", "Risk", "factors"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → iv. (extended operative time >12 hours and reexploration as risk factors); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Aspergillus operative-risk angle distinct from later-timing epidemiology in combo (cctc-3156) and pulmonary primary-site recall; anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3160",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating candidemia and Aspergillus teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Candidemia is associated with high mortality and graft loss." },
+      { "id": "II", "text": "Candidemia may present with fever, lymphadenopathy, and rash." },
+      { "id": "III", "text": "Aspergillus infection may occur 6 months or more post-transplant." },
+      { "id": "IV", "text": "Lungs are never a site of Aspergillus infection." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Candidemia severity, candidemia symptoms, and later Aspergillus timing are supported. Statement IV is false because lungs are the most common primary site of Aspergillus infection.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—Aspergillus may occur 6 months or more post-transplant.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because pulmonary involvement is specifically described."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia and Aspergillus",
+      "quote_hint": "high mortality and graft loss … Fever … Lymphadenopathy … Rash … Later infection, occurring 6 months or more posttransplant",
+      "keywords": ["mortality", "graft", "loss", "Fever", "Lymphadenopathy", "Rash", "Later", "infection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → i.–ii. (mortality/graft loss; fever, lymphadenopathy, rash); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → i.–ii. (later infection ≥6 months; lungs most common primary site); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Candidemia/Aspergillus combo distinct from Candida/Aspergillus combo (cctc-3156) and early fungal-risk combo (cctc-3152); corroborating locators on p. 736 and p. 737 verified.",
+    "last_updated": "2026-06-05"
+  }
+]

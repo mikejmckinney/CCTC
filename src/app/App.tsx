@@ -53,6 +53,30 @@ const FLAG_REASONS: FlagReason[] = [
 
 const QUESTION_MIN = 10;
 
+function displayLetterForIndex(optionIndex: number): string {
+  return String.fromCharCode('A'.charCodeAt(0) + optionIndex);
+}
+
+function displayLetterForOptionId(optionOrder: string[], optionId: string): string {
+  const optionIndex = optionOrder.indexOf(optionId);
+  return optionIndex >= 0 ? displayLetterForIndex(optionIndex) : optionId;
+}
+
+function incorrectRationalesForDisplay(item: SessionItemSnapshot): Array<{ displayLetter: string; rationale: string }> {
+  return item.optionOrder.flatMap((optionId, optionIndex) => {
+    if (optionId === item.question.correct) {
+      return [];
+    }
+
+    const rationale = item.question.explanation.rationale_incorrect?.[optionId];
+    if (!rationale) {
+      return [];
+    }
+
+    return [{ displayLetter: displayLetterForIndex(optionIndex), rationale }];
+  });
+}
+
 function formatDuration(totalSeconds: number | null): string {
   if (totalSeconds === null) {
     return 'Untimed';
@@ -133,18 +157,20 @@ function References({ question }: { question: Question }) {
   return (
     <div className="reference-list">
       <h5>References</h5>
-      {question.references.map((reference) => (
-        <p key={`${reference.citation}-${reference.locator ?? ''}`}>
-          {reference.url ? (
-            <a href={reference.url} target="_blank" rel="noreferrer">
-              {reference.citation}
-            </a>
-          ) : (
-            <span>{reference.citation}</span>
-          )}
-          {reference.locator ? ` (${reference.locator})` : ''}
-        </p>
-      ))}
+      <ul className="plain-list">
+        {question.references.map((reference) => (
+          <li key={`${reference.citation}-${reference.locator ?? ''}`} className="reference-item">
+            {reference.url ? (
+              <a className="reference-citation" href={reference.url} target="_blank" rel="noreferrer">
+                {reference.citation}
+              </a>
+            ) : (
+              <span className="reference-citation">{reference.citation}</span>
+            )}
+            {reference.locator ? <div className="reference-locator">{reference.locator}</div> : null}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -169,7 +195,7 @@ function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: s
         </ol>
       )}
       <div className="option-list">
-        {item.optionOrder.map((optionId) => {
+        {item.optionOrder.map((optionId, optionIndex) => {
           const option = item.question.options.find((entry) => entry.id === optionId)!;
           const selected = answer === option.id;
           const correct = option.id === item.question.correct;
@@ -185,18 +211,24 @@ function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: s
                 .filter(Boolean)
                 .join(' ')}
             >
-              <span className="option-letter">{option.id}</span>
-              <span>{option.text}</span>
+              <span className="option-letter">{displayLetterForIndex(optionIndex)}</span>
+              <span>
+                {option.text}
+                {option.selects && <small className="option-helper">Selects: {option.selects.join(', ')}</small>}
+              </span>
             </div>
           );
         })}
       </div>
       <div className="explanation-card">
-        <p>{item.question.explanation.rationale_correct}</p>
+        <p>
+          <strong>Correct answer ({displayLetterForOptionId(item.optionOrder, item.question.correct)}):</strong>{' '}
+          {item.question.explanation.rationale_correct}
+        </p>
         <ul className="plain-list">
-          {Object.entries(item.question.explanation.rationale_incorrect).map(([optionId, rationale]) => (
-            <li key={optionId}>
-              <strong>{optionId}:</strong> {rationale}
+          {incorrectRationalesForDisplay(item).map(({ displayLetter, rationale }) => (
+            <li key={displayLetter}>
+              <strong>{displayLetter}:</strong> {rationale}
             </li>
           ))}
         </ul>
@@ -220,6 +252,8 @@ function App() {
   const [flags, setFlags] = useState<ItemFlag[]>([]);
   const [flagDraft, setFlagDraft] = useState<FlagDraft | null>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
+  const [sessionReplacePromptOpen, setSessionReplacePromptOpen] = useState(false);
+  const [pendingSessionSettings, setPendingSessionSettings] = useState<SessionSettings | null>(null);
   const lastPersistFingerprint = useRef('');
   const activeSessionRef = useRef<ActiveSession | null>(null);
 
@@ -479,6 +513,13 @@ function App() {
     }));
   }
 
+  function beginNewSession(nextSettings: SessionSettings = settings): void {
+    const recentIds = buildRecentItemIds(history.map((entry) => ({ itemIds: entry.itemIds })));
+    const nextSession = createSession(bank.questions, nextSettings, recentIds);
+    setActiveSession(nextSession);
+    setView('session');
+  }
+
   function startSession(): void {
     let nextSettings = settings;
 
@@ -494,17 +535,28 @@ function App() {
     }
 
     if (activeSession && !activeSession.submittedAt) {
-      const resumeCurrent = window.confirm('An unfinished session already exists. Click OK to resume it, or Cancel to replace it with a new one.');
-      if (resumeCurrent) {
-        setView('session');
-        return;
-      }
+      setPendingSessionSettings(nextSettings);
+      setSessionReplacePromptOpen(true);
+      return;
     }
 
-    const recentIds = buildRecentItemIds(history.map((entry) => ({ itemIds: entry.itemIds })));
-    const nextSession = createSession(bank.questions, nextSettings, recentIds);
-    setActiveSession(nextSession);
+    beginNewSession(nextSettings);
+  }
+
+  function dismissSessionReplacePrompt(): void {
+    setSessionReplacePromptOpen(false);
+    setPendingSessionSettings(null);
+  }
+
+  function resumeExistingSession(): void {
+    dismissSessionReplacePrompt();
     setView('session');
+  }
+
+  function replaceActiveSession(): void {
+    const nextSettings = pendingSessionSettings ?? settings;
+    dismissSessionReplacePrompt();
+    beginNewSession(nextSettings);
   }
 
   function discardActiveSession(): void {
@@ -663,6 +715,32 @@ function App() {
             <button className="primary-button" onClick={() => void acknowledgeDisclaimer()}>
               I understand
             </button>
+          </div>
+        </section>
+      )}
+
+      {sessionReplacePromptOpen && (
+        <section className="modal-backdrop" aria-label="Unfinished session">
+          <div className="modal-card">
+            <h2>Unfinished session</h2>
+            <p>
+              You already have a session in progress. Resume it, or start a new session with your current setup (this discards
+              in-progress answers and bookmarks).
+            </p>
+            <p>
+              <strong>Resume your in-progress session?</strong>
+            </p>
+            <div className="modal-actions">
+              <button className="ghost-button" onClick={dismissSessionReplacePrompt}>
+                Cancel
+              </button>
+              <button className="secondary-button" onClick={replaceActiveSession}>
+                No, start new
+              </button>
+              <button className="primary-button" onClick={resumeExistingSession}>
+                Yes, resume
+              </button>
+            </div>
           </div>
         </section>
       )}
@@ -925,7 +1003,7 @@ function App() {
                 <div className="option-list" role="radiogroup" aria-label="Answer choices">
                   {currentItem.optionOrder.map((optionId, optionIndex) => {
                     const option = currentItem.question.options.find((entry) => entry.id === optionId)!;
-                    const displayLetter = String.fromCharCode('A'.charCodeAt(0) + optionIndex);
+                    const displayLetter = displayLetterForIndex(optionIndex);
                     const selected = session.answers[currentItem.itemId] === option.id;
                     const revealed = session.settings.mode === 'study' ? session.revealed[currentItem.itemId] : Boolean(session.submittedAt);
                     const correct = currentItem.question.correct === option.id;
@@ -958,11 +1036,14 @@ function App() {
 
                 {((session.settings.mode === 'study' && session.revealed[currentItem.itemId]) || session.submittedAt) && (
                   <div className="explanation-card">
-                    <p>{currentItem.question.explanation.rationale_correct}</p>
+                    <p>
+                      <strong>Correct answer ({displayLetterForOptionId(currentItem.optionOrder, currentItem.question.correct)}):</strong>{' '}
+                      {currentItem.question.explanation.rationale_correct}
+                    </p>
                     <ul className="plain-list">
-                      {Object.entries(currentItem.question.explanation.rationale_incorrect).map(([optionId, rationale]) => (
-                        <li key={optionId}>
-                          <strong>{optionId}:</strong> {rationale}
+                      {incorrectRationalesForDisplay(currentItem).map(({ displayLetter, rationale }) => (
+                        <li key={displayLetter}>
+                          <strong>{displayLetter}:</strong> {rationale}
                         </li>
                       ))}
                     </ul>

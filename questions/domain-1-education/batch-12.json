@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1046",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient's grandchild receives a routine live-virus childhood vaccine. What infection-prevention teaching should the coordinator provide the recipient household?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Avoid contact with family members who received a live-virus vaccine within the past 2 weeks" },
+      { "id": "B", "text": "No precautions are needed because live vaccines cannot shed after administration" },
+      { "id": "C", "text": "Recipients should receive the same live-virus vaccine immediately at home" },
+      { "id": "D", "text": "Permanently isolate the recipient from all children regardless of vaccination status" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Post-transplant infection-prevention teaching includes avoiding contact with family members who have had a live-virus vaccine within 2 weeks because shedding may continue for days to months.",
+      "rationale_incorrect": {
+        "B": "Live-virus vaccine shedding may continue for days, weeks, or months depending on the vaccine and host factors.",
+        "C": "Live-virus vaccines are contraindicated after transplantation; household precautions are used instead.",
+        "D": "Teaching specifies temporary avoidance after recent live-virus vaccination, not permanent isolation from all children."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "Avoid contact with family members who have had live virus vaccine within 2 weeks",
+      "keywords": ["Avoid", "contact", "family", "live", "virus", "vaccine", "weeks"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance after transplantation → ii. (avoid contact with family members after live-virus vaccination within 2 weeks); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 010600 item; live-virus household-contact angle distinct from infection-prevention combo (cctc-1024) and HPV teaching (cctc-1036); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1047",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010505"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During long-term post-transplant education, a recipient asks how to protect bone health while on immunosuppression. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Exercise, and calcium and vitamin D supplements as indicated" },
+      { "id": "B", "text": "Complete bed rest to prevent all bone stress" },
+      { "id": "C", "text": "Stop all immunosuppression to reverse bone loss without medical guidance" },
+      { "id": "D", "text": "Bone health requires no monitoring after the first postoperative week" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term immunosuppression teaching for osteopenia or osteoporosis includes exercise to slow bone loss and may require medication, calcium, and vitamin D supplements.",
+      "rationale_incorrect": {
+        "B": "Exercise is recommended to slow bone loss rather than complete immobilization.",
+        "C": "Bone health is managed with exercise and supplements under team guidance, not unilateral immunosuppression cessation.",
+        "D": "Bone health monitoring and counseling continue beyond the first postoperative week."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects → v.",
+      "quote_hint": "Exercise recommended to slow bone loss … calcium and vitamin D supplements",
+      "keywords": ["Osteopenia", "osteoporosis", "Exercise", "bone", "loss", "calcium", "vitamin"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → v. Osteopenia or osteoporosis (exercise, calcium, vitamin D); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 010500 item; osteopenia counseling distinct from medication combo (cctc-1033) and travel restriction (cctc-1025); anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1048",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604", "010605"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is revising post-transplant vaccination teaching materials. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Varicella and herpes zoster vaccines are contraindicated after transplantation." },
+      { "id": "II", "text": "Annual influenza vaccine should use the inactivated formulation." },
+      { "id": "III", "text": "Live herpes zoster vaccine should be given routinely to all recipients immediately after transplant." },
+      { "id": "IV", "text": "Recipients should avoid contact with family members who received a live-virus vaccine within 2 weeks." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II and III only", "selects": ["II", "III"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Post-transplant vaccination teaching includes inactivated annual influenza vaccine, contraindication of live varicella and zoster vaccines, and temporary avoidance of contact with recently live-vaccinated family members. Live zoster vaccine is not routinely given after transplant.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—household contact precautions after live-virus vaccination are part of teaching.",
+        "C": "Statements I and IV are also true; statement III is false.",
+        "D": "Statement III is false; live zoster vaccine is contraindicated after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "Varicella and herpes zoster vaccines are contraindicated … Annual influenza vaccine (not the live vaccine option) … Avoid contact with family members who have had live virus vaccine within 2 weeks",
+      "keywords": ["Varicella", "herpes", "zoster", "contraindicated", "influenza", "live", "vaccine"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance after transplantation → ii. (inactivated influenza, live varicella/zoster contraindicated, household live-vaccine contact precautions); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Ninth complex_combo in bank; distinct from infection-prevention combo (cctc-1024); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1049",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient and partner ask when sexual activity may resume after transplant. Which teaching aligns with standard post-discharge education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Resume when comfortable unless otherwise contraindicated" },
+      { "id": "B", "text": "Sexual activity is permanently prohibited after any transplant" },
+      { "id": "C", "text": "Resume only after five years without any team discussion" },
+      { "id": "D", "text": "Partners never need information about sexual activity after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching notes that recipients and partners want information regarding sexual activity and may typically resume when comfortable unless otherwise contraindicated.",
+      "rationale_incorrect": {
+        "B": "Sexual activity is not permanently prohibited for all recipients; timing depends on recovery and medical guidance.",
+        "C": "Resumption is based on comfort and clinical status rather than an automatic five-year delay.",
+        "D": "Partners are included in sexual-health education rather than excluded from information."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects → k. Sexual health → ii.",
+      "quote_hint": "Typically may resume sexual activity when they are comfortable in doing so, unless otherwise contraindicated",
+      "keywords": ["resume", "sexual", "activity", "comfortable", "partners", "information", "contraindicated"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → k. Sexual health → ii. (resume sexual activity when comfortable unless contraindicated); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ninth 010500 item; sexual-health counseling distinct from osteopenia (cctc-1047) and medication teaching; anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05"
+  }
+]

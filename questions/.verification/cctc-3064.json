@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3064",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 744,
+    "keywords": [
+      "Oral",
+      "aversion",
+      "pediatric",
+      "intestinal",
+      "recipients",
+      "intestine",
+      "transplantation",
+      "feeding"
+    ],
+    "keyword_hash": "sha256:b448c884e59993c62ef538b8ba4c06277240e6b2e77ea71f6f7d246c643df90c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 744,
+      "keywords": [
+        "common",
+        "pediatric",
+        "intestinal",
+        "recipients",
+        "feeding",
+        "support",
+        "needed"
+      ],
+      "keyword_hash": "sha256:06199b730a66242234b7f899970128b69f1bb5d846c6e92838670d83a529ad01"
+    }
+  ]
+}

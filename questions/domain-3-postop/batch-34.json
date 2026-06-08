@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3133",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A febrile transplant recipient with a central venous line is started on empiric antibiotics after cultures are obtained. Which initial antibiotic choice aligns with standard bacterial-infection references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Begin vancomycin until the organism is identified when a central venous line is present" },
+      { "id": "B", "text": "Withhold all antibiotics until culture results return in two weeks" },
+      { "id": "C", "text": "Oral metronidazole alone is always sufficient for central-line bacteremia" },
+      { "id": "D", "text": "Empiric therapy never covers line-related infection when a CVL is present" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bacterial infection treatment includes broad-spectrum antibiotics after cultures are obtained; if a central venous line is present, vancomycin is begun until the organism is identified.",
+      "rationale_incorrect": {
+        "B": "Broad-spectrum antibiotics are administered after cultures are obtained rather than withholding all therapy.",
+        "C": "Line-related bacteremia management includes vancomycin when a CVL is present rather than metronidazole alone in every case.",
+        "D": "CVL presence specifically guides empiric vancomycin therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.i.",
+      "quote_hint": "If a CVL is present, begin vancomycin until the organism is identified",
+      "keywords": ["CVL", "present", "begin", "vancomycin", "organism", "identified"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.i. (vancomycin when CVL present until organism identified); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. CVL/vancomycin empiric therapy angle distinct from bacterial-sign combo (cctc-3132) and pediatric irritability item (cctc-3131); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3134",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When managing a febrile transplant recipient colonized with vancomycin-resistant enterococcus (VRE), which antibiotic consideration aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Linezolid should be considered if the patient is colonized with VRE" },
+      { "id": "B", "text": "VRE colonization requires no change in empiric antibiotic selection" },
+      { "id": "C", "text": "VRE colonization mandates routine oral metronidazole monotherapy for all fevers" },
+      { "id": "D", "text": "Colonized patients should never receive any empiric antibiotics" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "When a central venous line is present, vancomycin is started until the organism is identified; if the patient is colonized with VRE, linezolid should be considered.",
+      "rationale_incorrect": {
+        "B": "VRE colonization influences antibiotic selection rather than being ignored.",
+        "C": "Linezolid is specifically considered for VRE colonization rather than universal metronidazole monotherapy.",
+        "D": "Empiric broad-spectrum therapy after cultures is still indicated with adjustments for colonization status."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.i.",
+      "quote_hint": "If the patient is colonized with VRE, linezolid should be considered",
+      "keywords": ["colonized", "VRE", "linezolid", "should", "considered"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.i. (linezolid if colonized with VRE); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. VRE/linezolid selection angle distinct from CVL vancomycin item (cctc-3133) and wound-culture management; anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3135",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant recipient reports cloudy urine and increased drainage odor without fever yet. Which finding aligns with standard bacterial-infection teaching?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Changes in drainage or output such as purulence, cloudy urine, or altered stool odor may indicate bacterial infection" },
+      { "id": "B", "text": "Cloudy urine never indicates infection in transplant recipients" },
+      { "id": "C", "text": "Drainage changes are expected and never require evaluation" },
+      { "id": "D", "text": "Only fever above 104°F indicates possible bacterial infection" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Signs of bacterial infection include changes in drainage or output such as purulence, cloudy urine, and changes in stool consistency, amount, or odor.",
+      "rationale_incorrect": {
+        "B": "Cloudy urine is specifically listed among output changes that may indicate infection.",
+        "C": "Drainage and output changes warrant clinical evaluation rather than being dismissed as always expected.",
+        "D": "Fever is usually ≥101°F (38.5°C), and output changes may occur with or before high fever."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Signs and symptoms → vii.",
+      "quote_hint": "Changes in drainage or output: purulence, cloudy urine, stool consistency, amount, and odor",
+      "keywords": ["Changes", "drainage", "output", "purulence", "cloudy", "urine", "odor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → f.vii. (changes in drainage/output including cloudy urine); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Drainage/output-change angle distinct from fever/wound combo (cctc-3132) and CVL vancomycin therapy (cctc-3133); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3136",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating bacterial-infection management protocols. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Broad-spectrum antibiotics should be administered after cultures are obtained based on the apparent or suspected etiology of fever." },
+      { "id": "II", "text": "If a central venous line is present, vancomycin may be started until the organism is identified." },
+      { "id": "III", "text": "Immunosuppression may be decreased with caution during severe bacterial infection while monitoring for rejection." },
+      { "id": "IV", "text": "Tacrolimus levels never need monitoring during bacterial infection treatment." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Culture-directed empiric antibiotics, CVL vancomycin, and cautious immunosuppression reduction with rejection monitoring are supported. Statement IV is false because tacrolimus levels should be closely monitored and reported when not therapeutic.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—immunosuppression may be decreased cautiously with rejection monitoring.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because tacrolimus levels require close monitoring during infection treatment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.",
+      "quote_hint": "Broad-spectrum antibiotics administered after cultures … vancomycin … Immunosuppression may be decreased … Closely monitor tacrolimus levels",
+      "keywords": ["Broad-spectrum", "antibiotics", "cultures", "vancomycin", "Immunosuppression", "decreased", "tacrolimus", "levels"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.i.–iii. (empiric antibiotics after cultures, CVL vancomycin, cautious IS reduction, tacrolimus monitoring); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Bacterial-infection management combo distinct from sign-recognition combo (cctc-3132) and VRE linezolid recall (cctc-3134); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  }
+]

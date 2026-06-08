@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3081",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030402"],
+    "cognitive_level": "recall",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver transplant recipient with advanced liver disease develops rapid renal-function decline consistent with hepatorenal failure. Which management need aligns with standard complication references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Dialysis may be required" },
+      { "id": "B", "text": "Renal replacement therapy is never indicated in hepatorenal failure" },
+      { "id": "C", "text": "Immediate isolated kidney transplantation without liver evaluation" },
+      { "id": "D", "text": "Permanent discontinuation of all transplant follow-up" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hepatorenal failure involves rapid decrease in renal function in patients with advanced liver disease and may need to be treated with dialysis.",
+      "rationale_incorrect": {
+        "B": "Dialysis may be required when hepatorenal failure develops.",
+        "C": "Hepatorenal failure in advanced liver disease is evaluated in the context of liver transplantation rather than isolated kidney transplant alone.",
+        "D": "Hepatorenal failure requires ongoing transplant-team management rather than ending follow-up."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 643,
+      "section": "Ch. 12, Liver Transplantation → hepatorenal failure → 6.c.",
+      "quote_hint": "Hepatorenal failure … rapid decrease in renal function … May need to be treated with dialysis",
+      "keywords": ["Hepatorenal", "failure", "rapid", "decrease", "renal", "function", "dialysis", "advanced"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 12 → hepatorenal failure → 6.c. (may require dialysis); PDF p. 643 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Hepatorenal-failure management angle paired with education item (cctc-1084); distinct from metabolic bone disease (cctc-3058); anchor verified on Cupples p. 643.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3082",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "A school-age pediatric transplant recipient develops slapped-cheek rash and severe anemia. Which infectious complication should the coordinator include in the differential?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Parvovirus B19 with possible pure red blood cell aplasia" },
+      { "id": "B", "text": "Expected benign postoperative healing without infection evaluation" },
+      { "id": "C", "text": "Oral aversion as the sole explanation for anemia" },
+      { "id": "D", "text": "Hyperacute rejection presenting as slapped-cheek rash" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Parvovirus B19 is typically acquired during the school-age period and may cause a slapped-cheek rash with pure red blood cell aplasia and low hematocrit.",
+      "rationale_incorrect": {
+        "B": "Slapped-cheek rash with severe anemia warrants evaluation for infections such as parvovirus.",
+        "C": "Oral aversion is a feeding complication unrelated to parvovirus hematologic presentation.",
+        "D": "Hyperacute rejection does not present as slapped-cheek rash with aplastic anemia."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "section": "Ch. 5, Infectious Diseases → 4. Parvovirus B19 → a.",
+      "quote_hint": "school-age period … slapped cheek rash … pure red blood cell aplasia with low hematocrit",
+      "keywords": ["school-age", "slapped", "cheek", "rash", "pure", "red", "blood", "cell"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → 4. Parvovirus B19 → a. (school-age acquisition, slapped-cheek rash, red blood cell aplasia); PDF p. 208 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifteenth pediatric recipient in bank; parvovirus presentation angle paired with teaching combo (cctc-1083); anchor verified on Cupples p. 208.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3083",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030101", "030102"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is reviewing deceased-donor infection-prevention protocols with the procurement team. Evaluate the following statements about donor-transmitted infections:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Donor-transmitted infection can cause significant recipient morbidity and mortality." },
+      { "id": "II", "text": "Unexpected donor-to-recipient infection transmission never occurs after transplantation." },
+      { "id": "III", "text": "Donor chart review is part of donor risk assessment." },
+      { "id": "IV", "text": "Donor physical examination may reveal track marks suggesting recent drug use." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, III, and IV only", "selects": ["I", "III", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Donor-transmitted infections may cause significant morbidity and mortality; donor chart review and physical examination including track marks are standard risk-assessment steps. Unexpected transmission can still occur, so statement II is false.",
+      "rationale_incorrect": {
+        "A": "Statement II is false; statements III and IV are also correct.",
+        "C": "Statement I is also true; statement II is false.",
+        "D": "Statement II is false—unexpected donor-to-recipient infection transmission remains an infrequent but recognized complication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 181,
+      "section": "Ch. 5, Infectious Diseases → Donor-Transmitted Infections → A.–C.",
+      "quote_hint": "significant recipient morbidity and mortality … unexpected transmission … Donor chart review … track marks",
+      "keywords": ["Donor-transmitted", "infection", "morbidity", "mortality", "Donor", "chart", "review", "track"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Donor-Transmitted Infections → A.–C. (morbidity/mortality risk, chart review, physical exam with track marks); PDF p. 181 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Twenty-fourth complex_combo in bank; donor-transmitted-infection angle distinct from BK risk combo (cctc-3076); anchor verified on Cupples p. 181.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3084",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030402"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart transplant recipient more than one year post-transplant is being considered for calcineurin inhibitor (CNI) withdrawal with sirolimus. Which long-term benefit aligns with standard medication references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Decreased allograft vasculopathy and improved long-term survival compared with continued CNI" },
+      { "id": "B", "text": "Guaranteed elimination of all rejection risk without monitoring" },
+      { "id": "C", "text": "Mandatory use in every heart recipient immediately after implantation" },
+      { "id": "D", "text": "Complete avoidance of any immunosuppression after conversion" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Late conversion of CNI to sirolimus more than one year after heart transplantation has been associated with decreased allograft vasculopathy and improved long-term survival compared with continued CNI therapy.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression conversion requires ongoing monitoring and does not eliminate all rejection risk.",
+        "C": "Sirolimus conversion is a selected late strategy rather than mandatory immediate therapy for every recipient.",
+        "D": "Sirolimus replaces CNI as maintenance immunosuppression rather than eliminating all immunosuppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 153,
+      "section": "Ch. 4, Pharmacology → E. Proliferation Signal Inhibitors → 1.e.ii.",
+      "quote_hint": "late conversion (>1 year post heart transplantation) of CNI to sirolimus is associated with decreased allograft vasculopathy and improved long-term survival",
+      "keywords": ["late", "conversion", "heart", "transplantation", "CNI", "sirolimus", "vasculopathy", "survival"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → E. Proliferation Signal Inhibitors → 1.e.ii. (late CNI-to-sirolimus conversion and reduced vasculopathy/survival benefit in heart recipients); PDF p. 153 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Heart late CNI-to-sirolimus benefit angle distinct from CAV/LV dysfunction (cctc-3066) and everolimus black box (cctc-2080); anchor verified on Cupples p. 153.",
+    "last_updated": "2026-06-05"
+  }
+]

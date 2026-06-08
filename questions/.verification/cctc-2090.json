@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2090",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 62,
+    "keywords": [
+      "cold",
+      "ischemia",
+      "time",
+      "organ",
+      "outside",
+      "human",
+      "body",
+      "revascularization"
+    ],
+    "keyword_hash": "sha256:108b84a94ba669cdf0bfd8c65d7e45b9190d859b37df3ad85db795b0bbb74c55"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 62,
+      "keywords": [
+        "ischemia-reperfusion",
+        "injury",
+        "ischemia",
+        "versus",
+        "definitions"
+      ],
+      "keyword_hash": "sha256:f41bcd8da12424bf922648e782708a725eca27499f7585e21ee7b16dd005a074"
+    }
+  ]
+}

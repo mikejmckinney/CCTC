@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1054",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 98,
+    "keywords": [
+      "Rejection",
+      "occur",
+      "any",
+      "time",
+      "implantation",
+      "organ",
+      "rejection"
+    ],
+    "keyword_hash": "sha256:ac5c534a761c9b270092df84ee87929b80bcae97d91bfb733daee95d76a94e07"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "keywords": [
+        "rejection",
+        "occur",
+        "after",
+        "implantation"
+      ],
+      "keyword_hash": "sha256:91fe2353956b61dc891bdae528011ca64bca4b2e9d70d0fbd08e9d2e9d6aab48"
+    }
+  ]
+}

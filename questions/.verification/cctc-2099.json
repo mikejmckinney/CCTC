@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-2099",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 33,
+    "keywords": [
+      "Heart",
+      "transplant",
+      "recipients",
+      "smoking",
+      "history",
+      "coronary",
+      "atherosclerosis",
+      "graft"
+    ],
+    "keyword_hash": "sha256:9a5b12678c90d6f977d4ed6b498def9c7c87ea531a8874258fc3c9630eafe4bd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "keywords": [
+        "heart",
+        "smoking",
+        "risks",
+        "coronary",
+        "atherosclerosis",
+        "graft",
+        "dysfunction"
+      ],
+      "keyword_hash": "sha256:9efbbc5781203bf91217139d48460c6f45603890c6812643ce86e79e1741aa27"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-3157",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 736,
+    "keywords": [
+      "Significant",
+      "infection",
+      "associated",
+      "high",
+      "mortality",
+      "graft",
+      "loss"
+    ],
+    "keyword_hash": "sha256:79de7f4ac942b2791ea229ef0c7025b224f0161a187361e5148190298895998a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "keywords": [
+        "mortality",
+        "graft"
+      ],
+      "keyword_hash": "sha256:e394c33dd93675707e77b68e4962a9385b1ab6adf259131dca22e603dcde48e3"
+    }
+  ]
+}

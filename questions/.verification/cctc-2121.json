@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2121",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 198,
+    "keywords": [
+      "CMV",
+      "disease",
+      "Risk",
+      "factors",
+      "PTLD",
+      "mismatch",
+      "EBV"
+    ],
+    "keyword_hash": "sha256:1ecd8c85b7d8c6dc2164cb6530c8b5ceec0e2fb0c998457419bf9e992295cade"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "keywords": [
+        "disease",
+        "factor"
+      ],
+      "keyword_hash": "sha256:8935dc83cc520e309e8a34a0da9922b8b7d9e77b99b1897125ab1038fab6ac56"
+    }
+  ]
+}

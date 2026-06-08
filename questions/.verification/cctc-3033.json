@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3033",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "Urgent",
+      "matters",
+      "Shortness",
+      "breath",
+      "symptoms",
+      "rejection",
+      "infection"
+    ],
+    "keyword_hash": "sha256:9cdadd3f6f326276269f428329ca1c7384cf34e25fadc206fb284e570f6c586f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "urgent",
+        "matters",
+        "shortness",
+        "breath",
+        "listed"
+      ],
+      "keyword_hash": "sha256:9502c1a564eebadaa2f8665aa68c8797c0aa079dbc3752b87097f7279e82ecae"
+    }
+  ]
+}

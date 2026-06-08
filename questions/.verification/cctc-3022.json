@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3022",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 107,
+    "keywords": [
+      "CMV",
+      "prophylaxis",
+      "recipient",
+      "donor",
+      "IgG",
+      "status",
+      "transplantation"
+    ],
+    "keyword_hash": "sha256:72c4319c15ca363acf7e543f6d74dac94a6ffb9b77673d46299dfb05eb5358cd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "keywords": [
+        "prophylaxis",
+        "donor",
+        "recipient",
+        "status"
+      ],
+      "keyword_hash": "sha256:9760db00975be0be660a84ec2f717dcdbedb758f698520b70a24f6c00c4576b4"
+    }
+  ]
+}

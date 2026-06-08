@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2139",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Diarrhea",
+      "Clinical",
+      "presentation",
+      "PTLD",
+      "Weight"
+    ],
+    "keyword_hash": "sha256:d4c3d8f66cbb2988d3bb1691b5a38641e451965ea067c8806866ff68ef3f97c8"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "diarrhea",
+        "among",
+        "clinical",
+        "presentations"
+      ],
+      "keyword_hash": "sha256:ea2d92d42d3a7548a0e5e9eb6b03f07a1519c99d33164283c473a062cf11d0fb"
+    }
+  ]
+}

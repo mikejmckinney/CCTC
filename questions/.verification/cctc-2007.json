@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2007",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 102,
+    "keywords": [
+      "Educate",
+      "candidates",
+      "waitlist",
+      "status",
+      "rationale",
+      "testing"
+    ],
+    "keyword_hash": "sha256:1ff2e774385c733a692933b35e1b70a6ae55da3b9f5f56ece0c6191f5ff70968"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "keywords": [
+        "Educate",
+        "candidates",
+        "waitlist",
+        "status",
+        "rationale",
+        "testing"
+      ],
+      "keyword_hash": "sha256:1ff2e774385c733a692933b35e1b70a6ae55da3b9f5f56ece0c6191f5ff70968"
+    }
+  ]
+}

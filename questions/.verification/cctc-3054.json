@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3054",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 674,
+    "keywords": [
+      "Skin",
+      "cancer",
+      "most",
+      "common",
+      "posttransplant",
+      "malignancy",
+      "risk",
+      "population"
+    ],
+    "keyword_hash": "sha256:cdd1918f84af368a469fb06c98a09abd5719fd9a1074b435171f9c98dd3fc11b"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 674,
+      "keywords": [
+        "cancer",
+        "common",
+        "post-transplant",
+        "malignancy",
+        "markedly",
+        "elevated"
+      ],
+      "keyword_hash": "sha256:ad049e00fcd6b157d05034fa81e242460fe8476e271e21ee7734e973b2b5af74"
+    }
+  ]
+}

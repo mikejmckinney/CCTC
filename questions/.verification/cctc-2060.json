@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-2060",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 46,
+    "keywords": [
+      "grafts",
+      "shunt",
+      "thrombosis",
+      "screened",
+      "hypercoagulability",
+      "Activated",
+      "protein",
+      "resistance"
+    ],
+    "keyword_hash": "sha256:027b0a5bee8b9f20e5305b9a2b165ad9726092ce96b33408e9c40b8cd3fe3fb3"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 46,
+      "keywords": [
+        "hypercoagulability",
+        "screening",
+        "after",
+        "graft",
+        "shunt",
+        "thrombosis",
+        "history"
+      ],
+      "keyword_hash": "sha256:717d48f7ef9273095177de699b368ec0d1f9f56771bf241663c8f2b3d7f1039c"
+    }
+  ]
+}

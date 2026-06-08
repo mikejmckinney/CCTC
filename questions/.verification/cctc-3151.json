@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-3151",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 735,
+    "keywords": [
+      "commonly",
+      "presents",
+      "oropharynx",
+      "esophagus",
+      "genitalia",
+      "Candida"
+    ],
+    "keyword_hash": "sha256:b9131f1a23548657fe44de57860b585bfd182bf15d9e424f5fadbd6af1f73a3f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "keywords": [
+        "oropharynx",
+        "esophagus",
+        "genitalia",
+        "presentation"
+      ],
+      "keyword_hash": "sha256:0e959a429a17901c80ba53331cb3ea0c61db152bd74d1241a7714b93e9c39933"
+    }
+  ]
+}

@@ -4,7 +4,9 @@ import { chromium } from 'playwright';
 import {
   dismissDisclaimerIfPresent,
   ensureAppReady,
+  MIN_SESSION_QUESTIONS,
   resumeActiveSession,
+  sessionItemHeading,
   startStudySession,
   waitForPersistedSessionState
 } from '../e2e/helpers.mjs';
@@ -20,7 +22,7 @@ async function main() {
 
   try {
     await page.goto(`${baseURL}/`);
-    await startStudySession(page, 2);
+    const questionCount = await startStudySession(page, MIN_SESSION_QUESTIONS);
 
     const firstStem = await page.locator('.question-card h3').first().textContent();
     await page.getByRole('radio').first().click();
@@ -32,7 +34,7 @@ async function main() {
     await ensureAppReady(page);
     await dismissDisclaimerIfPresent(page);
     await resumeActiveSession(page);
-    await page.getByRole('heading', { name: /Item 1 of 2/i }).waitFor();
+    await sessionItemHeading(page, 1, questionCount).waitFor();
 
     const stemAfterResume = await page.locator('.question-card h3').first().textContent();
     if (stemAfterResume !== firstStem) {
@@ -48,13 +50,13 @@ async function main() {
     await page.getByText('Answered 1').waitFor();
 
     await page.getByRole('button', { name: 'Next' }).click();
-    await page.getByRole('heading', { name: /Item 2 of 2/i }).waitFor();
+    await sessionItemHeading(page, 2, questionCount).waitFor();
 
     await page.reload();
     await ensureAppReady(page);
     await dismissDisclaimerIfPresent(page);
     await resumeActiveSession(page);
-    await page.getByRole('heading', { name: /Item 2 of 2/i }).waitFor();
+    await sessionItemHeading(page, 2, questionCount).waitFor();
 
     console.log('Resume smoke test passed');
   } finally {

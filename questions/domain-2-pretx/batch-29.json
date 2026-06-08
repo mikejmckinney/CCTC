@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2113",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "During pretransplant infection-prevention teaching, which food-preparation precaution aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Prevent cross-contamination between raw and cooked foods when preparing food" },
+      { "id": "B", "text": "Use the same unwashed cutting board for raw poultry and ready-to-eat foods without separation" },
+      { "id": "C", "text": "Cross-contamination precautions apply only to pediatric recipients" },
+      { "id": "D", "text": "Immunosuppression eliminates the need for safe food-handling practices" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Dietary infection-prevention teaching includes preventing cross-contamination between raw and cooked foods during food preparation.",
+      "rationale_incorrect": {
+        "B": "Separating raw and cooked foods prevents cross-contamination rather than using shared unwashed surfaces.",
+        "C": "Food-safety precautions apply to immunosuppressed transplant recipients broadly.",
+        "D": "Immunosuppressed recipients remain at increased infection risk and require food-safety teaching."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iii. Dietary precautions",
+      "quote_hint": "Prevent cross-contamination between raw and cooked foods when preparing food",
+      "keywords": ["Prevent", "cross-contamination", "raw", "cooked", "foods", "preparing", "food"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iii. Dietary precautions (prevent cross-contamination between raw and cooked foods); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Cross-contamination angle distinct from dietary infection-prevention combo (cctc-1052) and unpasteurized-dairy teaching (cctc-1051); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2114",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A lung transplant candidate treated with antithymocyte globulin asks about posttransplant lymphoproliferative disease (PTLD) risk. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Potent immunosuppression such as polyclonal or monoclonal antilymphocyte therapy is a PTLD risk factor" },
+      { "id": "B", "text": "Minimal immunosuppression is the only PTLD risk factor described" },
+      { "id": "C", "text": "PTLD risk is unrelated to immunosuppression intensity" },
+      { "id": "D", "text": "Antilymphocyte therapy eliminates all PTLD risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD risk factors include intense immunosuppression such as polyclonal antithymocyte globulin or monoclonal antibody therapy, along with Epstein-Barr virus mismatch and cytomegalovirus factors.",
+      "rationale_incorrect": {
+        "B": "Multiple risk factors beyond immunosuppression intensity are described, including viral mismatch.",
+        "C": "Immunosuppression intensity is a recognized PTLD risk factor.",
+        "D": "Potent immunosuppression increases rather than eliminates PTLD risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 2. Risk factors",
+      "quote_hint": "Intense immunosuppression: for example, polyclonal (antithymocyte globulin [Atgam]) or monoclonal antibody therapy",
+      "keywords": ["Intense", "immunosuppression", "polyclonal", "antithymocyte", "globulin", "monoclonal", "antibody"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 2.a. (intense immunosuppression including antithymocyte globulin); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Potent-immunosuppression PTLD risk angle distinct from EBV mismatch recall (cctc-2109) and CMV mismatch (cctc-2115); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2115",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When reviewing cytomegalovirus (CMV) serostatus during evaluation, which mismatch pattern is identified as a posttransplant lymphoproliferative disease (PTLD) risk factor?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Donor CMV seropositive and recipient CMV seronegative" },
+      { "id": "B", "text": "Donor and recipient both CMV seronegative with no other factors" },
+      { "id": "C", "text": "Recipient CMV seropositive status alone eliminates all PTLD risk" },
+      { "id": "D", "text": "CMV serostatus has no relationship to PTLD risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "CMV mismatch with a CMV-seropositive donor and CMV-seronegative recipient is listed among risk factors for PTLD, along with CMV disease and other immunosuppression-related factors.",
+      "rationale_incorrect": {
+        "B": "CMV donor-positive/recipient-negative mismatch is specifically identified as a risk factor.",
+        "C": "CMV factors contribute to risk rather than eliminating all PTLD risk alone.",
+        "D": "CMV mismatch and CMV disease are described PTLD risk factors."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 3. Risk factors for PTLD",
+      "quote_hint": "CMV mismatch (donor CMV seropositive; recipient CMV seronegative)",
+      "keywords": ["CMV", "mismatch", "donor", "CMV", "seropositive", "recipient", "seronegative", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 3.d. (CMV D+/R− mismatch as PTLD risk factor); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. CMV-mismatch PTLD risk angle distinct from EBV D+/R− recall (cctc-2109) and CMV organ-specific combo (cctc-1072); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2116",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When explaining posttransplant lymphoproliferative disease (PTLD) treatment options during evaluation, which immunosuppression strategy aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Switching to or adding an mTOR inhibitor such as sirolimus or everolimus for antineoplastic properties" },
+      { "id": "B", "text": "Permanent intensification of calcineurin inhibitor therapy without evaluation" },
+      { "id": "C", "text": "mTOR inhibitors are contraindicated in every PTLD case" },
+      { "id": "D", "text": "PTLD is managed only with routine daily skin biopsy" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD treatment options include reduction or withdrawal of immunosuppression and switching to or adding an mTOR inhibitor because of the antineoplastic properties of sirolimus and everolimus.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression is reduced or modified rather than intensified as initial PTLD management.",
+        "C": "mTOR inhibitors are treatment options rather than being universally contraindicated.",
+        "D": "Immunosuppression modification and targeted therapies are primary approaches rather than skin biopsy alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Switching to or adding an mTOR inhibitor due the antineoplastic properties of mTOR inhibitors (sirolimus [Rapamune], everolimus [Zortress])",
+      "keywords": ["Switching", "adding", "mTOR", "inhibitor", "antineoplastic", "sirolimus", "everolimus"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.b. (mTOR inhibitor antineoplastic therapy); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. mTOR-inhibitor PTLD treatment angle distinct from IS-reduction recall (cctc-2112) and sirolimus adverse-effect teaching (cctc-3077); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  }
+]

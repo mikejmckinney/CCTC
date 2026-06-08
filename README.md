@@ -59,13 +59,13 @@ Blueprint data is transcribed from the ABTC Candidate Handbook (rev. 3/12/2026),
 
 ## Status
 
-The repo now contains the first React/Vite app scaffold, local validation script, and CI validation workflow alongside the prompts, schema, and blueprint data. The question bank is still tiny: there are no live reviewed shards under `questions/` yet, so the current app falls back to the worked examples while the real bank is authored and reviewed.
+The repo now contains the first React/Vite app scaffold, local validation script, and CI validation workflow alongside the prompts, schema, and blueprint data. The question bank has **73 draft items** in eighteen shards under `questions/domain-*` (`batch-01` through `batch-06` per domain); the app loads these shards automatically. All items remain `status: "draft"` — no reviewed items yet — so exam mode still has no reviewed pool until SME promotion.
 
-Next: expand the bank beyond examples, keep validation green as shards land, and continue hardening the app against the full `01-build-app.md` product spec.
+Next: continue batch authoring toward reviewed coverage, keep `npm run validate` green locally before merge, and continue hardening the app against the full `01-build-app.md` product spec.
 
 ## Limitations
 
-- The current bank is not representative yet; it still falls back to example items until real reviewed shards are added under `questions/`.
+- The current bank is small (73 draft items) and not representative of a full 150-item exam; exam mode excludes drafts by default.
 - Practice results are unofficial estimates and are not ABTC scaled scores or pass/fail decisions.
 - The app is an exam-prep tool, not medical advice, and should not be used for patient-care decisions.
 - Content coverage and reviewed-item balance will remain incomplete until the bank grows substantially.

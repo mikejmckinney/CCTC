@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1116",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Keep",
+      "pets",
+      "immunized",
+      "good",
+      "health",
+      "Animal",
+      "safety"
+    ],
+    "keyword_hash": "sha256:4afa54c08900a3528b38e9ae5ffeba31ed34308555112b8720ada461c5d294f1"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "animal",
+        "safety",
+        "immunized",
+        "health"
+      ],
+      "keyword_hash": "sha256:1427e7b26be2e3aa98bfd146b2a6e40bf0a5eb2ac565856a03852fe022b1b19b"
+    }
+  ]
+}

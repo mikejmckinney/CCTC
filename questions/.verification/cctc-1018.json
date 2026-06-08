@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-1018",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 97,
+    "keywords": [
+      "organ-specific",
+      "protocols",
+      "diagnostic",
+      "studies",
+      "transplant",
+      "programs"
+    ],
+    "keyword_hash": "sha256:97e3b47dd00937e4d5b48f9245e03e31d5b0b34ead591e76faeaeed57bc81250"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "keywords": [
+        "organ-specific",
+        "protocols"
+      ],
+      "keyword_hash": "sha256:189bd0eb8598b48cfca2ce3619685e4fdf9d973185912579aa611314e08a0300"
+    }
+  ]
+}

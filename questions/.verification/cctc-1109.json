@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1109",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 118,
+    "keywords": [
+      "Breast",
+      "health",
+      "Prostate",
+      "Testicular",
+      "Papanicolaou",
+      "Monthly",
+      "self-examination"
+    ],
+    "keyword_hash": "sha256:008e696099a86cf2875ff3bc9aa793838399300af6569b30e3fabc277eab7980"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "keywords": [
+        "breast",
+        "prostate",
+        "testicular",
+        "papanicolaou",
+        "screening",
+        "teaching"
+      ],
+      "keyword_hash": "sha256:aa089c8e754d88f8f32427787ce6f4d0cdda25566a6cbd7e303b76d9d6ff657d"
+    }
+  ]
+}

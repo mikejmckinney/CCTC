@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1047",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 120,
+    "keywords": [
+      "Osteopenia",
+      "osteoporosis",
+      "Exercise",
+      "bone",
+      "loss",
+      "calcium",
+      "vitamin"
+    ],
+    "keyword_hash": "sha256:2b6c4588de54e095dd076b47d63aa355a9d195241ebc931684fb5ce87318aea1"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "keywords": [
+        "osteopenia",
+        "osteoporosis",
+        "exercise",
+        "calcium",
+        "vitamin"
+      ],
+      "keyword_hash": "sha256:394ca99ba7ac17735522805e20ee97b0187271023fe15a9dffc7593177c45a68"
+    }
+  ]
+}

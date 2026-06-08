@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1074",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 340,
+    "keywords": [
+      "informed",
+      "decline",
+      "donate",
+      "any",
+      "time",
+      "coercion",
+      "inducement",
+      "donor"
+    ],
+    "keyword_hash": "sha256:c2fc0a9806ff10270347fd2e3b3e80aa6f188e76421d142b8b578c3a3e6363ab"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "keywords": [
+        "donor",
+        "decline",
+        "coercion"
+      ],
+      "keyword_hash": "sha256:4e28d234cfe346200d6b5c0647d9781d0ed5938b3aa8cc1c629975e2698af677"
+    }
+  ]
+}

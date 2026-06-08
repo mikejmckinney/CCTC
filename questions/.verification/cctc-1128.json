@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1128",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Refer",
+      "pregnant",
+      "recipients",
+      "fathered",
+      "child",
+      "National",
+      "Transplant",
+      "Pregnancy"
+    ],
+    "keyword_hash": "sha256:827248ca280f92acbd496661b0e0014def2450e49c2cd12ff0d7c505b11e27a1"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "national",
+        "pregnancy",
+        "registry",
+        "referral"
+      ],
+      "keyword_hash": "sha256:414dd3d8cead00b94a806c82350a51f2da411a1ae253e9df878965518e99433a"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2165",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 280,
+    "keywords": [
+      "Duration",
+      "intensity",
+      "immunosuppression",
+      "Risk",
+      "factors",
+      "skin"
+    ],
+    "keyword_hash": "sha256:8708e1370a14d8e8605cb38f67eae1304aab662d9058b520a59f8c4f502a72a0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "duration",
+        "intensity",
+        "immunosuppression"
+      ],
+      "keyword_hash": "sha256:ad59bffcc6461dae865791a274c4eb612622524636aad2ea803001971bc98e7e"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-1088",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 211,
+    "keywords": [
+      "Adenoviruses",
+      "respiratory",
+      "GI",
+      "conjunctival",
+      "disseminated",
+      "first",
+      "months",
+      "immunosuppression"
+    ],
+    "keyword_hash": "sha256:337dcdba5f933de28d1bd8f3fedf610ab60f28db924d72862bad323cb6d2382a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 211,
+      "keywords": [
+        "respiratory",
+        "conjunctival",
+        "disseminated",
+        "pathology",
+        "range",
+        "common",
+        "first",
+        "months"
+      ],
+      "keyword_hash": "sha256:02a50c827b1b81a96daa670c120d8dfe1512380d1c03673ffbe2f986a6d1c3f2"
+    }
+  ]
+}

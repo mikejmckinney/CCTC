@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2093",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 35,
+    "keywords": [
+      "Coronary",
+      "angiography",
+      "lesions",
+      "amenable",
+      "intervention",
+      "relieve",
+      "symptoms",
+      "obviate"
+    ],
+    "keyword_hash": "sha256:213a3a9f5d37216a4630811e9f4e7807dae7630c2556c312fc0f579e6298e1bd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 35,
+      "keywords": [
+        "coronary",
+        "angiography",
+        "identify",
+        "revascularization",
+        "alternatives"
+      ],
+      "keyword_hash": "sha256:284649ffa25a1e41a7e7b3af9f2f2cc0ea893291a9d21adec266476831866434"
+    }
+  ]
+}

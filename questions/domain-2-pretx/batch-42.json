@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-2165",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling a transplant candidate about long-term skin-cancer risk, which immunosuppression-related factor aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Duration and intensity of immunosuppression" },
+      { "id": "B", "text": "Immunosuppression intensity never influences skin-cancer risk" },
+      { "id": "C", "text": "Only the first week of immunosuppression affects malignancy risk" },
+      { "id": "D", "text": "Lower immunosuppression always eliminates skin-cancer risk entirely" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin-cancer risk factors include duration and intensity of immunosuppression, along with cumulative sun exposure, skin type, age at transplant, and transplant type.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression duration and intensity are specifically listed as risk factors.",
+        "C": "Risk reflects ongoing immunosuppression exposure over time rather than only the first week.",
+        "D": "Immunosuppression intensity contributes to risk rather than lower exposure eliminating risk entirely."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Risk factors → iv.",
+      "quote_hint": "Duration and intensity of immunosuppression",
+      "keywords": ["Duration", "intensity", "immunosuppression", "Risk", "factors", "skin"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → iv. (duration and intensity of immunosuppression); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Immunosuppression-duration/intensity risk angle distinct from older-age item (cctc-2161) and Fitzpatrick skin-type item (cctc-2153); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2166",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pretransplant evaluation teaching about skin malignancy risk, which treatment-history factor aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "History of biologic therapy and phototherapy" },
+      { "id": "B", "text": "Biologic therapy and phototherapy history lower skin-cancer risk after transplant" },
+      { "id": "C", "text": "Only pretransplant antibiotic use is cited as a skin-cancer risk factor" },
+      { "id": "D", "text": "Treatment history never influences post-transplant skin-cancer risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin-cancer risk factors include history of biologic therapy and phototherapy, along with history of skin cancer, autoimmune conditions, and lymphoma or leukemia.",
+      "rationale_incorrect": {
+        "B": "Biologic therapy and phototherapy are listed as risk factors rather than lowering skin-cancer risk.",
+        "C": "Biologic therapy and phototherapy history is specifically cited among risk factors.",
+        "D": "Treatment history is among cited risk factors rather than having no influence."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Risk factors → ix.",
+      "quote_hint": "History of biologic therapy and phototherapy",
+      "keywords": ["History", "biologic", "therapy", "phototherapy", "Risk", "factors"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → ix. (history of biologic therapy and phototherapy); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Biologic/phototherapy history risk angle distinct from lymphoma/leukemia history (cctc-2162) and retransplantation item (cctc-2158); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2167",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A liver transplant candidate asks what head-protection measure aligns with standard malignancy-prevention references. Which counseling point is correct?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wear broad-brimmed hats" },
+      { "id": "B", "text": "Baseball caps with no brim are the only recommended head covering" },
+      { "id": "C", "text": "Hats are discouraged because they block all vitamin D permanently" },
+      { "id": "D", "text": "Head protection is never recommended for transplant candidates" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sun precautions include wearing protective clothing such as broad-brimmed hats and long-sleeve shirts and pants, along with sunglasses, sun visors, and sunscreen with minimum SPF 50.",
+      "rationale_incorrect": {
+        "B": "Broad-brimmed hats are specifically recommended rather than brimless caps alone.",
+        "C": "Broad-brimmed hats are recommended sun precautions rather than being discouraged.",
+        "D": "Head protection is part of cancer-prevention teaching rather than being omitted."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 4.c.i.",
+      "quote_hint": "Broad-brimmed hats",
+      "keywords": ["Broad-brimmed", "hats", "protective", "clothing", "Sun", "precautions"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.c.i. (broad-brimmed hats as protective clothing); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Broad-brimmed-hat standalone angle distinct from long-sleeve clothing item (cctc-2159) and sunglasses/sun-visor item (cctc-2163); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2168",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701", "020102"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating skin-cancer risk and sun-protection teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Duration and intensity of immunosuppression are cited skin-cancer risk factors." },
+      { "id": "II", "text": "History of biologic therapy and phototherapy is a cited risk factor." },
+      { "id": "III", "text": "Broad-brimmed hats are recommended sun precautions." },
+      { "id": "IV", "text": "Immunosuppression intensity never influences skin-cancer risk after transplantation." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Immunosuppression duration and intensity, biologic/phototherapy history, and broad-brimmed hats are supported. Statement IV is false because immunosuppression intensity is specifically listed as a skin-cancer risk factor.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—broad-brimmed hats are recommended protective clothing.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because immunosuppression intensity contributes to skin-cancer risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 4.c.i. and skin cancer risk factors",
+      "quote_hint": "Broad-brimmed hats … Duration and intensity of immunosuppression … History of biologic therapy and phototherapy",
+      "keywords": ["Broad-brimmed", "hats", "protective", "clothing", "Duration", "intensity", "immunosuppression"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → iv. and ix. (immunosuppression duration/intensity; biologic therapy and phototherapy); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.c.i. (broad-brimmed hats); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Immunosuppression/biologic-risk and hat-prevention combo distinct from skin-cancer risk/sun-prevention combo (cctc-2164) and Fitzpatrick/SPF combo (cctc-2156); corroborating locators on p. 280 and p. 282 verified.",
+    "last_updated": "2026-06-05"
+  }
+]

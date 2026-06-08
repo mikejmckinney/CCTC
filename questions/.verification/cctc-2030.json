@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2030",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 33,
+    "keywords": [
+      "smoking",
+      "cessation",
+      "listing",
+      "cotinine",
+      "testing",
+      "transplant",
+      "programs"
+    ],
+    "keyword_hash": "sha256:76552500dd1bb3f46cb69aa96c152dd4297a02ac2ee21355421fc154b7f04f4f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "keywords": [
+        "smoking",
+        "cessation",
+        "cotinine",
+        "testing",
+        "before",
+        "listing"
+      ],
+      "keyword_hash": "sha256:89133df329a45fd9f5f88533bf05914274d6255b3ccae7c7142446e1c1620f3a"
+    }
+  ]
+}

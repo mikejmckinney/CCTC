@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-3070",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 202,
+    "keywords": [
+      "Kidney",
+      "glomerulopathy",
+      "CMV",
+      "allograft",
+      "organ-specific",
+      "effects",
+      "long-term",
+      "complication"
+    ],
+    "keyword_hash": "sha256:0702b11c539e00c612cda971957775e262ab3613a0309cbecafa4581bf5cc53b"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "keywords": [
+        "kidney",
+        "glomerulopathy"
+      ],
+      "keyword_hash": "sha256:58b7cd81c932990473f759f77c94fcf33ce072e743e3bb6f9fb79865d4da454c"
+    }
+  ]
+}

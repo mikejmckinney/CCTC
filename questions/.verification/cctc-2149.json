@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2149",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "more",
+      "aggressive",
+      "screening",
+      "tests",
+      "frequent",
+      "intervals",
+      "required"
+    ],
+    "keyword_hash": "sha256:a57383c41c18e072e3b16e3e3468aafdf5d9ec401b5799e09b85f60de1ad24e6"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "aggressive",
+        "frequent",
+        "screening",
+        "indicated"
+      ],
+      "keyword_hash": "sha256:68ef765b8f4cfeaeb0bac9dae3c5d5b18370cf696f41f3caf656e3180614429c"
+    }
+  ]
+}

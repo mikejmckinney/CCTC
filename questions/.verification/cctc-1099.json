@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1099",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "cat",
+      "litter",
+      "fecal",
+      "matter",
+      "gloves",
+      "disposable",
+      "surgical",
+      "mask"
+    ],
+    "keyword_hash": "sha256:32f11e778e4aed084139a40492ae5338f88b52c6fe7b61d831494f3ab18931ae"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "animal",
+        "safety",
+        "gloves",
+        "litter",
+        "handling",
+        "unavoidable"
+      ],
+      "keyword_hash": "sha256:b2708616323b9c751a6f1111396acd24bf24fee43c7429ee8a373116314bae85"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-2049",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 53,
+    "keywords": [
+      "remove",
+      "candidate",
+      "waiting",
+      "lists",
+      "notify",
+      "OPTN",
+      "24",
+      "hours"
+    ],
+    "keyword_hash": "sha256:496e742ef89ffca6c69dacd79166562a5db23830eb0faa5d58aff2cefe6e001c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 53,
+      "policy": "3.9",
+      "keywords": [
+        "removing",
+        "candidates",
+        "waiting",
+        "notify",
+        "within",
+        "hours",
+        "death"
+      ],
+      "keyword_hash": "sha256:be7a0445515e545527701814bf0dd184761073d12cc6a80a09ee296fdd3ec8fa"
+    }
+  ]
+}

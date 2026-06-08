@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3068",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 159,
+    "keywords": [
+      "trimethoprim",
+      "sulfamethoxazole",
+      "Pneumocystis",
+      "jiroveci",
+      "Toxoplasma",
+      "gondii",
+      "Nocardia",
+      "Listeria"
+    ],
+    "keyword_hash": "sha256:c0afb728448bf63c01156a389c0a9addc22fef659a038699f795ae7bc71709db"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 159,
+      "keywords": [
+        "tmp-smx",
+        "toxoplasma",
+        "nocardia",
+        "listeria"
+      ],
+      "keyword_hash": "sha256:4205efdaf85a24e058dae9634ac314f6821fb57747541837d823c21ac5722466"
+    }
+  ]
+}

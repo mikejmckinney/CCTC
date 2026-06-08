@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3075",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 207,
+    "keywords": [
+      "Tubulointerstitial",
+      "nephritis",
+      "Ureteral",
+      "stenosis",
+      "obstructive",
+      "nephropathy",
+      "graft",
+      "dysfunction"
+    ],
+    "keyword_hash": "sha256:67f09272fafa19ff3e88c3a8a02d850532c0d3a02f3395586237b10bbfb97929"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 207,
+      "keywords": [
+        "tubulointerstitial",
+        "nephritis",
+        "ureteral",
+        "stenosis",
+        "progressive",
+        "graft",
+        "dysfunction"
+      ],
+      "keyword_hash": "sha256:3d42f271022005a289184569e02b607d3388c5145f125d881164f7dec64e821c"
+    }
+  ]
+}

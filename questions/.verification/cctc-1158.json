@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1158",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "Before",
+      "preparing",
+      "meals",
+      "Wash",
+      "hands",
+      "eating"
+    ],
+    "keyword_hash": "sha256:a9841d7b29cddd920dd82d0134138c4d9087098574df84e5d5b647afd15848d2"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "hygiene",
+        "hands",
+        "before",
+        "preparing",
+        "meals"
+      ],
+      "keyword_hash": "sha256:bd884d7c54c98209a6e629b2756d6936ad4d8a7425f887e7ea8705b6d9a37b91"
+    }
+  ]
+}

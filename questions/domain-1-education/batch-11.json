@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-1042",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010101"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When counseling a kidney candidate about the benefits of transplantation compared with remaining on dialysis, which outcome should the coordinator include in standard risk-and-benefit teaching?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Pre-emptive kidney transplantation may significantly benefit patients with ESRD through less time on dialysis" },
+      { "id": "B", "text": "Dialysis always provides better long-term outcomes than any transplant option" },
+      { "id": "C", "text": "Transplantation eliminates all future need for any medical follow-up" },
+      { "id": "D", "text": "Living donation is never an option once dialysis has started" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor transplant education includes that patients with ESRD benefit significantly with pre-emptive kidney transplantation and less time on dialysis.",
+      "rationale_incorrect": {
+        "B": "Transplantation, including pre-emptive kidney transplant, is presented as beneficial compared with prolonged dialysis for appropriate candidates.",
+        "C": "Transplant recipients require lifelong follow-up and monitoring rather than eliminating medical care.",
+        "D": "Living donation remains an option for many dialysis patients when a suitable donor is available."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "section": "Ch. 7, Care of Living Donors → Introduction → 6.b.",
+      "quote_hint": "patients with ESRD benefit significantly with pre-emptive kidney transplantation and less time on dialysis",
+      "keywords": ["ESRD", "benefit", "pre-emptive", "kidney", "transplantation", "dialysis", "significantly"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → Introduction → 6.b. (pre-emptive kidney transplantation and less time on dialysis); PDF p. 331 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 010100 item; pre-emptive transplant benefit angle distinct from rejection/primary nonfunction/waitlist death; anchor verified on Cupples p. 331.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1043",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010300",
+    "knowledge_codes": ["010301"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A potential living liver donor asks how surgical risk compares with living kidney donation. Which teaching point aligns with standard living donor education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Liver donation carries a higher risk than kidney donation but may still be performed at experienced centers" },
+      { "id": "B", "text": "Liver donation has no measurable surgical risk compared with kidney donation" },
+      { "id": "C", "text": "Kidney donation always carries higher perioperative risk than liver donation" },
+      { "id": "D", "text": "Living liver donation is prohibited at all U.S. transplant centers" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Medical outcomes show that although liver donation portends a higher risk than kidney donation, it is still believed to be safe enough to perform at experienced centers.",
+      "rationale_incorrect": {
+        "B": "Liver donation is associated with higher risk than kidney donation rather than identical risk.",
+        "C": "References describe liver donation as higher risk than kidney donation, not the reverse.",
+        "D": "Living liver donation is performed at experienced centers when appropriate."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "section": "Ch. 7, Care of Living Donors → Introduction → 5.",
+      "quote_hint": "liver donation portends a higher risk than kidney donation",
+      "keywords": ["liver", "donation", "higher", "risk", "kidney", "donation", "experienced"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → Introduction → 5. (liver donation higher risk than kidney donation); PDF p. 331 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 010300 item; comparative liver-donor risk angle distinct from bile leak (cctc-1031) and psychosocial risks (cctc-1023); anchor verified on Cupples p. 331.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1044",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": ["010401"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When explaining why living donor organs may offer advantages over some deceased-donor options, which donor characteristic should the coordinator emphasize?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "The organ is typically from a young healthy person who completed an intensive medical evaluation" },
+      { "id": "B", "text": "Living donors are never medically evaluated before donation" },
+      { "id": "C", "text": "Deceased-donor organs always function better than any living-donor organ" },
+      { "id": "D", "text": "Living donation eliminates the need for any immunosuppression after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor transplant benefits include an organ from a typically young healthy person who has undergone an intense medical evaluation.",
+      "rationale_incorrect": {
+        "B": "Living donors undergo intensive medical evaluation before donation.",
+        "C": "Living donor organs may offer advantages related to donor health and timing rather than deceased donors always functioning better.",
+        "D": "Recipients still require immunosuppression after living donor transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "section": "Ch. 7, Care of Living Donors → Introduction → 6.a.",
+      "quote_hint": "organ is from a (typically) young healthy person who has undergone an intense medical evaluation",
+      "keywords": ["organ", "young", "healthy", "intense", "medical", "evaluation", "living"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → Introduction → 6.a. (living donor organ from evaluated healthy donor); PDF p. 331 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 010400 item; living-donor quality advantage distinct from pulmonary rehab (cctc-1035) and health-maintenance screening (cctc-1020); anchor verified on Cupples p. 331.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1045",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When describing how living donors are protected during the donation process, what organizational feature should the coordinator explain?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A separate live donor team advocates on the donor's behalf" },
+      { "id": "B", "text": "The recipient's surgeon exclusively represents both recipient and donor without a separate team" },
+      { "id": "C", "text": "Donors have no structured program contact after the operative decision is made" },
+      { "id": "D", "text": "Living donor advocacy is optional and prohibited by OPTN policy" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The hospital created a separate live donor team to advocate on the live organ donor's behalf, distinct from the recipient transplant team.",
+      "rationale_incorrect": {
+        "B": "A separate live donor team exists specifically to advocate for the donor rather than sole representation by the recipient surgeon.",
+        "C": "Living donor programs include structured advocacy and follow-up rather than no program contact.",
+        "D": "Separate live donor team advocacy is part of standard living donation practice, not prohibited."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "section": "Ch. 7, Care of Living Donors → Introduction → 1.a.",
+      "quote_hint": "created a separate live donor team to advocate on the live organ donor's behalf",
+      "keywords": ["separate", "live", "donor", "team", "advocate", "organ", "donor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → Introduction → 1.a. (separate live donor team advocates for donor); PDF p. 331 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 010700 item; live donor team advocacy distinct from follow-up commitment (cctc-1030) and psychosocial evaluator (cctc-1041); anchor verified on Cupples p. 331.",
+    "last_updated": "2026-06-05"
+  }
+]

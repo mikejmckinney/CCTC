@@ -1,0 +1,45 @@
+{
+  "item_id": "cctc-2089",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 49,
+    "keywords": [
+      "waiting",
+      "time",
+      "modification",
+      "application",
+      "physician",
+      "surgeon",
+      "signature",
+      "documentation"
+    ],
+    "keyword_hash": "sha256:085190ee7f9eabe9f7c19922f077ae3bf5e00bed7f6d3d573035dfd79e74c9fa"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 49,
+      "policy": "3.7",
+      "keywords": [
+        "applications",
+        "modifications",
+        "waiting",
+        "physician",
+        "surgeon",
+        "signature",
+        "among",
+        "required"
+      ],
+      "keyword_hash": "sha256:360e8d28aaa05886801448682bf2dab3843e5230a8777f6b283f680086769d26"
+    }
+  ]
+}

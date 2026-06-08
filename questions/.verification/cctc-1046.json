@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1046",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Avoid",
+      "contact",
+      "family",
+      "live",
+      "virus",
+      "vaccine",
+      "weeks"
+    ],
+    "keyword_hash": "sha256:228e754e920f6ab2f961b29135ba764f438aa15419b9b29804fe61c520e4e2d9"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "avoid",
+        "contact",
+        "family",
+        "members",
+        "after",
+        "live-virus",
+        "vaccination",
+        "within"
+      ],
+      "keyword_hash": "sha256:93f238a95287fe21e94812a3e9cc0a777ce61ad33e9c0e2fbb4ceb8c697a248c"
+    }
+  ]
+}

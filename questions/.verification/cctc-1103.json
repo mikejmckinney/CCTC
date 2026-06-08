@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1103",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 118,
+    "keywords": [
+      "sunscreen",
+      "SPF",
+      "50",
+      "UVA",
+      "hats",
+      "clothing",
+      "outdoor",
+      "activities"
+    ],
+    "keyword_hash": "sha256:ab8f1d9650cd5b4c8b752a0b12a8e5124faa46798c771f951ba6c933d64b6abf"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "keywords": [
+        "precautions",
+        "clothing",
+        "timing"
+      ],
+      "keyword_hash": "sha256:4d874d742d01cc11fc8c8dd0cfe6e56c354eede6cfa0bcbb2f1cdf78f590e78b"
+    }
+  ]
+}

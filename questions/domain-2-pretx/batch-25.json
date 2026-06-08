@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2097",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "Which factors are used to calculate a kidney candidate's Estimated Post-Transplant Survival (EPTS) score per standard waitlist references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Time on dialysis, diabetes status, prior solid-organ transplant, and candidate age" },
+      { "id": "B", "text": "Donor creatinine and donor hypertension history only" },
+      { "id": "C", "text": "Panel reactive antibody percentage exclusively" },
+      { "id": "D", "text": "Recipient blood type without any clinical variables" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The EPTS score is based on the candidate's time on dialysis, whether the candidate has diabetes, whether the candidate received any prior solid-organ transplant, and the candidate's age.",
+      "rationale_incorrect": {
+        "B": "Donor creatinine and hypertension contribute to KDPI rather than EPTS.",
+        "C": "PRA reflects sensitization but is not the EPTS calculation basis.",
+        "D": "EPTS incorporates clinical survival predictors rather than blood type alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 49,
+      "section": "Ch. 1, Kidney transplantation → EPTS → b.ii.",
+      "quote_hint": "EPTS score is based on all of the following: Candidate's time on dialysis … diagnosis of diabetes … prior SOT … candidate's age",
+      "keywords": ["EPTS", "score", "based", "dialysis", "diabetes", "prior", "SOT", "age"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Kidney transplantation → EPTS → b.ii. (dialysis time, diabetes, prior SOT, age); PDF p. 49 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First EPTS item in bank; distinct from inactive waiting-time rules (cctc-2037) and KDPI mention in batch-01; anchor verified on Cupples p. 49.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2098",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020601"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When presenting deceased-donor kidney quality to the team, which donor characteristics contribute to the Kidney Donor Profile Index (KDPI) per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Donor age, creatinine, hypertension and diabetes history, cause of death, and HCV status among other factors" },
+      { "id": "B", "text": "Recipient time on dialysis exclusively" },
+      { "id": "C", "text": "Recipient Epstein-Barr virus serostatus only" },
+      { "id": "D", "text": "Number of post-transplant clinic visits only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "KDPI is derived from the Kidney Donor Risk Index using donor characteristics including age, ethnicity, creatinine, hypertension, diabetes, cause of death, height, weight, DCD status, and HCV status.",
+      "rationale_incorrect": {
+        "B": "Recipient dialysis time contributes to EPTS rather than KDPI.",
+        "C": "EBV serostatus guides infection prophylaxis rather than KDPI calculation.",
+        "D": "KDPI reflects donor quality metrics rather than post-transplant visit counts."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 49,
+      "section": "Ch. 1, Kidney transplantation → KDPI → c.ii.",
+      "quote_hint": "KDPI score is derived from the Kidney Donor Risk Index … Age … Creatinine … hypertension … diabetes … Cause of death … HCV status",
+      "keywords": ["KDPI", "Kidney", "Donor", "Risk", "Index", "Age", "Creatinine", "hypertension"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Kidney transplantation → KDPI → c.ii. (donor age, creatinine, comorbidities, DCD, HCV, etc.); PDF p. 49 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. KDPI donor-factor angle distinct from EPTS candidate score (cctc-2097) and DonorNet offer presentation (cctc-2016); anchor verified on Cupples p. 49.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2099",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "During heart transplant evaluation, the team reviews a candidate's smoking history. Which post-transplant risk should the coordinator include in counseling per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Increased risk of coronary atherosclerosis, graft dysfunction, and graft loss" },
+      { "id": "B", "text": "Complete elimination of coronary artery disease risk after transplant" },
+      { "id": "C", "text": "Smoking history is irrelevant once the candidate is listed" },
+      { "id": "D", "text": "Smoking protects against chronic rejection in heart recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Heart transplant recipients with a smoking history have increased risk of developing coronary atherosclerosis, graft dysfunction, and loss after transplantation.",
+      "rationale_incorrect": {
+        "B": "Smoking history increases cardiovascular and graft risks rather than eliminating coronary disease.",
+        "C": "Smoking history remains relevant to long-term heart graft outcomes after listing.",
+        "D": "Smoking is associated with worse graft outcomes rather than rejection protection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Consultations → Pulmonary evaluation → 2.e.i.",
+      "quote_hint": "Heart transplant recipients with a smoking history have an increased risk of developing coronary atherosclerosis, graft dysfunction, and loss",
+      "keywords": ["Heart", "transplant", "recipients", "smoking", "history", "coronary", "atherosclerosis", "graft"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Pulmonary evaluation → 2.e.i. (heart smoking risks: coronary atherosclerosis, graft dysfunction/loss); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Heart-smoking counseling angle distinct from kidney smoking risks (cctc-1098) and liver smoking complications (cctc-2095); anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2100",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney candidate has a willing, medically suitable living donor who is incompatible with the intended recipient. Which transplant option should the coordinator discuss per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Kidney paired donation through the OPTN KPD program" },
+      { "id": "B", "text": "Permanent exclusion from all transplantation because the donor is incompatible" },
+      { "id": "C", "text": "Immediate deceased-donor-only listing with no living-donor alternatives" },
+      { "id": "D", "text": "Kidney paired donation is available only outside the United States" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Kidney paired donation is a potential option for candidates with a willing, medically suitable living donor who is incompatible with the intended recipient; in the United States the KPD program is part of the OPTN.",
+      "rationale_incorrect": {
+        "B": "Incompatible living donation may be addressed through paired exchange rather than permanent exclusion.",
+        "C": "KPD is a living-donor pathway when direct donation is incompatible.",
+        "D": "The United States KPD Pilot Program is part of the OPTN rather than being unavailable domestically."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 49,
+      "section": "Ch. 1, Kidney transplantation → Kidney Paired Donation → 7.a.–b.",
+      "quote_hint": "Kidney paired donation (KPD) is a potential transplant option for those candidates who have a living donor … incompatible with the intended recipient … KPD Pilot Program is part of the OPTN",
+      "keywords": ["Kidney", "paired", "donation", "KPD", "living", "donor", "incompatible", "OPTN"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Kidney Paired Donation → 7.a.–b. (KPD for incompatible living donor; OPTN program); PDF p. 49 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First kidney-paired-donation item in bank; distinct from living-donor evaluation (cctc-1017) and desensitization pathways (cctc-2066); anchor verified on Cupples p. 49.",
+    "last_updated": "2026-06-05"
+  }
+]

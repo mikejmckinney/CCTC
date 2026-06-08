@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1030",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010703"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "During living kidney donor informed consent, what must the donor commit to regarding post-donation follow-up?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Postoperative follow-up testing coordinated by the live donor program" },
+      { "id": "B", "text": "No follow-up visits after hospital discharge" },
+      { "id": "C", "text": "Follow-up only if the recipient develops rejection" },
+      { "id": "D", "text": "Lifetime immunosuppression monitoring at the recipient's transplant center only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor education and consent require the donor to commit to postoperative follow-up testing coordinated by the live donor program, with OPTN living-donor follow-up reporting responsibilities.",
+      "rationale_incorrect": {
+        "B": "Donors must commit to structured postoperative follow-up, not discharge without monitoring.",
+        "C": "Donor follow-up is required regardless of recipient outcomes.",
+        "D": "Donor follow-up is coordinated by the live donor program; it is not the same as recipient immunosuppression monitoring."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "section": "Ch. 7, Living Donation → F. Informed Consent → 6.",
+      "quote_hint": "donor must commit to postoperative follow-up testing coordinated by the live donor program",
+      "keywords": ["donor", "commit", "postoperative", "follow-up", "testing", "live", "donor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → F. Elements Included in Education and Informed Consent → 6. (postoperative follow-up testing commitment); PDF p. 340 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 010700 item; distinct from discharge fever call (cctc-1026); anchor verified on Cupples p. 340.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-1031",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010300",
+    "knowledge_codes": ["010302"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A living liver donor without a surgical drain develops right shoulder pain, chills, and fever on postoperative day 4. Which complication should the coordinator include in donor teaching as a possible explanation?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Bile leak from the cut liver surface" },
+      { "id": "B", "text": "Expected normal healing that never requires evaluation" },
+      { "id": "C", "text": "Recipient acute rejection episode" },
+      { "id": "D", "text": "Mandatory graft nephrectomy in the donor" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "When no drain is placed after living liver donation, right shoulder pain, chills, fever, and elevated white blood cell count may indicate a bile leak from the cut liver surface.",
+      "rationale_incorrect": {
+        "B": "These symptoms warrant evaluation and may indicate a bile leak rather than assumed benign healing.",
+        "C": "Recipient rejection is not the donor complication described for shoulder pain and fever after liver donation.",
+        "D": "Bile leak monitoring is the concern; nephrectomy does not apply to liver donors."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 354,
+      "section": "Ch. 7, Living Donation → postoperative monitoring → f.iii.",
+      "quote_hint": "right shoulder pain, chills, fever … could indicate a bile leak",
+      "keywords": ["shoulder", "pain", "chills", "fever", "bile", "leak", "liver"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → living liver donor postoperative monitoring → f.iii. (bile leak signs without drain); PDF p. 354 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth 010300 item; anchor verified on Cupples p. 354.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-1032",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010101"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching transplant candidates about immunosuppressive medication risks, which side effect should be included in standard education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hyperglycemia" },
+      { "id": "B", "text": "Permanent elimination of all infection risk" },
+      { "id": "C", "text": "Guaranteed weight loss without dietary change" },
+      { "id": "D", "text": "Complete immunity to future malignancy" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant risk education includes common immunosuppressive and antimicrobial medication side effects such as hyperglycemia, hypertension, kidney dysfunction, and digestive problems.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression increases infection risk rather than eliminating it.",
+        "C": "Weight gain, not guaranteed weight loss, is among described medication side effects.",
+        "D": "Immunosuppression is associated with infection and malignancy risks, not cancer immunity."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 100,
+      "section": "Ch. 3, Patient Education → §6. Risks → g. Medication side effects → ii.",
+      "quote_hint": "Hyperglycemia … Hypertension … Kidney dysfunction",
+      "keywords": ["Hyperglycemia", "Hypertension", "Kidney", "dysfunction", "side", "effects", "immunosuppressive"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks → g. Medication side effects → ii. (common side effects taught to patients); PDF p. 100 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth 010100 item; medication-risk angle distinct from waitlist death risk (cctc-1022); anchor verified on Cupples p. 100.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-1033",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504", "010505"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating discharge medication teaching for kidney recipients. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Grapefruit may increase serum levels of certain immunosuppression medications." },
+      { "id": "II", "text": "Recipients should notify the transplant team before starting any new medication prescribed by another provider." },
+      { "id": "III", "text": "Nonsteroidal anti-inflammatory drugs may be used freely without renal risk after transplant." },
+      { "id": "IV", "text": "A written medication roster with times and doses supports accurate home dosing." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Medication teaching includes grapefruit interactions, notifying the transplant team before new prescriptions, avoiding nonsteroidal medications because of renal toxicity risk, and using a written roster with dosing times.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—a written medication roster supports adherence.",
+        "C": "Statement III is false; recipients should avoid nonsteroidal medications unless approved because of renal toxicity risk.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 108,
+      "section": "Ch. 3, Patient Education → medication management (Right way / Other)",
+      "quote_hint": "grapefruit … increase serum levels … notify the transplant team … avoid non-steroidal medications",
+      "keywords": ["grapefruit", "serum", "levels", "notify", "transplant", "team", "non-steroidal"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication management → Right way (grapefruit interactions, food/drug interactions) and Other (notify team, avoid NSAIDs, written roster); PDF p. 108 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Sixth complex_combo in bank; anchor verified on Cupples p. 108.",
+    "last_updated": "2026-06-08"
+  }
+]

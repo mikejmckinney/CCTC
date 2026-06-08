@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2167",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Broad-brimmed",
+      "hats",
+      "protective",
+      "clothing",
+      "Sun",
+      "precautions"
+    ],
+    "keyword_hash": "sha256:edea7ec56256e5eb9ad47acd15db7e5014af0a1d5e0cc5d8db8741ffe9f8d2de"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "broad-brimmed",
+        "protective",
+        "clothing"
+      ],
+      "keyword_hash": "sha256:43c10c63044d3b10d2b3f9e4a08c5b511fbdc6390ffc553f3db52e58f78f3509"
+    }
+  ]
+}

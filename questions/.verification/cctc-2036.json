@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-2036",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 101,
+    "keywords": [
+      "organ",
+      "offer",
+      "donor",
+      "factors",
+      "recipient",
+      "condition",
+      "availability"
+    ],
+    "keyword_hash": "sha256:3ab3969475591c78e747941c9b405c00faaeffe539abe2808fdba422f02912c8"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "keywords": [
+        "on-call",
+        "considers",
+        "donor",
+        "factors",
+        "recipient",
+        "condition",
+        "availability",
+        "logistics"
+      ],
+      "keyword_hash": "sha256:34b50288c900935a8745416cc6d23b784b9ffad7d9c1d5c80ec1c99da20284db"
+    }
+  ]
+}

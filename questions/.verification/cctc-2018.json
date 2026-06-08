@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-2018",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 96,
+    "keywords": [
+      "Synthesizes",
+      "information",
+      "interdisciplinary",
+      "selection",
+      "committee",
+      "coordinator"
+    ],
+    "keyword_hash": "sha256:26a155982afcc70b40203cca19715b6e278f4bb3fd51b2a450753b9cdd2dde74"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 96,
+      "keywords": [
+        "coordinator",
+        "selection",
+        "committee",
+        "presentation"
+      ],
+      "keyword_hash": "sha256:6c1892cca2c946df375abb1105ef02dba603ea3997e940e10eb1dbe476cfeb77"
+    }
+  ]
+}

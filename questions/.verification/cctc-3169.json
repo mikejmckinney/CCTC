@@ -1,0 +1,61 @@
+{
+  "item_id": "cctc-3169",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    },
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 332,
+    "keywords": [
+      "OPOs",
+      "reporting",
+      "outcomes",
+      "organ",
+      "offers",
+      "OPTN",
+      "30",
+      "days"
+    ],
+    "keyword_hash": "sha256:b6f5881a718f680d0802c3c8b5f1e2ff147074faf50432c7add8e9d4070a0452"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 332,
+      "policy": "18.3",
+      "keywords": [
+        "recording",
+        "reporting",
+        "outcomes",
+        "organ",
+        "offers",
+        "within",
+        "match"
+      ],
+      "keyword_hash": "sha256:cfd985d09d7bcc9026c7e4f5aefb2754c666f9c8a2f1706f0b3816b2c8675306"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "keywords": [
+        "organ",
+        "allocation",
+        "listing",
+        "systems",
+        "context"
+      ],
+      "keyword_hash": "sha256:2adacf137df23e1bd3b1cbd2ce0c0264fc4bf431969fdd1c6a64cddeaf7115d4"
+    }
+  ]
+}

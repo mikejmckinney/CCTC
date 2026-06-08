@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3014",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 302,
+    "keywords": [
+      "frequent",
+      "open",
+      "communication",
+      "community",
+      "physicians",
+      "transplantation",
+      "center"
+    ],
+    "keyword_hash": "sha256:cbfc495d38c5621d572e0fe88770bf330d39d9607322ac1454ae96bb86a145c4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 302,
+      "keywords": [
+        "follow-up",
+        "community",
+        "nephrologist",
+        "internist",
+        "center",
+        "communication"
+      ],
+      "keyword_hash": "sha256:0ffc2f2eb4584d970088a5e35776984605f1bd29995845097a8c0f399998ce34"
+    }
+  ]
+}

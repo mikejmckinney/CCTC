@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3140",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "Central",
+      "peripheral",
+      "blood",
+      "cultures",
+      "Chest",
+      "x-ray",
+      "Abdominal",
+      "CT"
+    ],
+    "keyword_hash": "sha256:d8f43d3d8165029559cb01db43fb05ca237783a469b610fc5d6f277068d33d7e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "blood",
+        "cultures",
+        "chest",
+        "x-ray",
+        "abdominal"
+      ],
+      "keyword_hash": "sha256:38b115530951601ead320fc36da59b5228387310c3c9bc0e8ba1c3f123d9d179"
+    }
+  ]
+}

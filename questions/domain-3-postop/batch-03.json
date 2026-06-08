@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3009",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030201"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "According to kidney transplant infection references, which complication is described as the most common after kidney transplantation both early and late post-transplant?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Genitourinary (urinary tract) infection" },
+      { "id": "B", "text": "Primary graft nonfunction" },
+      { "id": "C", "text": "Hyperacute rejection" },
+      { "id": "D", "text": "Post-transplant lymphoproliferative disorder as the leading early complication" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Genitourinary infection is cited as the most common complication after kidney transplantation in both early and late post-transplant periods, with incidence influenced by surgical and anatomic factors.",
+      "rationale_incorrect": {
+        "B": "Primary nonfunction is an early graft failure event, not the most common overall complication.",
+        "C": "Hyperacute rejection is rare compared with infectious complications.",
+        "D": "PTLD is a significant late complication but is not described as the most common early or overall complication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 352,
+      "section": "Ch. 12 → Urinary Tract Infection opening paragraph",
+      "quote_hint": "Genitourinary infection is the most common complication after kidney transplantation",
+      "keywords": ["Genitourinary", "infection", "most", "common", "kidney", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 12 → Urinary Tract Infection (most common complication early and late); PDF p. 352 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/danovitch-handbook-kidney-transplantation.pdf p. 352.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-3010",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030301"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient on mycophenolate mofetil reports watery diarrhea three times daily without fever. According to transplant pharmacology references, what is the MOST appropriate initial teaching point?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "GI adverse effects are common with MMF and may respond to transient dose reduction; persistent diarrhea despite MMF should not be ignored" },
+      { "id": "B", "text": "Diarrhea on MMF always indicates acute rejection and requires immediate graft biopsy" },
+      { "id": "C", "text": "Continue the same MMF dose indefinitely because GI symptoms never relate to drug toxicity" },
+      { "id": "D", "text": "Stop all immunosuppression permanently at home without contacting the transplant team" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Diarrhea occurs in up to one-third of MMF recipients and often responds to transient dose reduction; persistent administration in the face of diarrhea is discouraged and can lead to inflammatory colitis.",
+      "rationale_incorrect": {
+        "B": "MMF-related diarrhea is a known adverse effect and does not always indicate rejection.",
+        "C": "GI symptoms are among the most common MMF adverse events and may require dose adjustment.",
+        "D": "Immunosuppression changes require transplant team guidance; permanent self-discontinuation risks rejection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 142,
+      "section": "Ch. 6 → Mycophenolate mofetil → Adverse Side Effects (GI tract)",
+      "quote_hint": "diarrhea occurring in up to one-third of patients",
+      "keywords": ["diarrhea", "MMF", "GI", "dose", "reduction", "colitis"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 6 → MMF adverse effects (diarrhea incidence, dose reduction, avoid persistent administration); PDF p. 142 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/danovitch-handbook-kidney-transplantation.pdf p. 142.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-3011",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030101"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient in the first month after transplant has repeated asymptomatic bacteriuria on screening cultures. According to post-transplant infection references, which outcome association should the coordinator emphasize when explaining why the team monitors this finding?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Frequent asymptomatic bacteriuria episodes are associated with pyelonephritis and development of acute rejection" },
+      { "id": "B", "text": "Asymptomatic bacteriuria permanently prevents any future acute rejection" },
+      { "id": "C", "text": "Bacteriuria in month one has no relationship to graft outcomes" },
+      { "id": "D", "text": "Asymptomatic bacteriuria mandates immediate graft nephrectomy in all recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Early asymptomatic bacteriuria is common after kidney transplant, and frequent episodes are associated with pyelonephritis and development of acute rejection, supporting active monitoring and treatment decisions.",
+      "rationale_incorrect": {
+        "B": "Bacteriuria does not prevent rejection; it is associated with increased rejection risk when frequent.",
+        "C": "References link frequent bacteriuria to pyelonephritis and rejection, not a neutral finding.",
+        "D": "Nephrectomy is not the standard response to asymptomatic bacteriuria."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 352,
+      "section": "Ch. 12 → Urinary Tract Infection → asymptomatic bacteriuria paragraph",
+      "quote_hint": "frequent episodes are associated with development of pyelonephritis and development of acute rejection",
+      "keywords": ["asymptomatic", "bacteriuria", "pyelonephritis", "acute", "rejection", "kidney"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 12 → Urinary Tract Infection (asymptomatic bacteriuria association with pyelonephritis and rejection); PDF p. 352 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 030100 angle from cctc-3001 (asymptomatic creatinine rise); anchor verified on Danovitch p. 352.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-3012",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030201", "030203"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A coordinator is teaching new staff about early post-kidney-transplant urinary complications. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Genitourinary infection is the most common complication after kidney transplantation." },
+      { "id": "II", "text": "Surgical complications such as urine leaks and lymphoceles can predispose to bacterial superinfection." },
+      { "id": "III", "text": "Genitourinary infection is rare in the immediate post-transplant period." },
+      { "id": "IV", "text": "Female sex is among patient factors that predispose to post-transplant UTI." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II and III only", "selects": ["II", "III"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "UTI is the most common kidney transplant complication, surgical issues such as leaks and lymphoceles predispose to superinfection, and female sex increases UTI risk. Statement III is false because early post-transplant UTI risk is substantial, not rare.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—female sex is listed among predisposing factors.",
+        "C": "Statement III is false; early UTI risk is significant.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 352,
+      "section": "Ch. 12 → Urinary Tract Infection (incidence, surgical predisposition, patient factors)",
+      "quote_hint": "most common complication … urine leaks … lymphoceles … female sex",
+      "keywords": ["most", "common", "urine", "leaks", "lymphoceles", "female", "UTI"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 12 → Urinary Tract Infection (statements I, II, IV; negation of III); PDF p. 352 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Statements from Danovitch Ch. 12 p. 352; second complex_combo in bank.",
+    "last_updated": "2026-06-06"
+  }
+]

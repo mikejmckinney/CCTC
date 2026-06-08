@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-2072",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 44,
+    "keywords": [
+      "hepatopulmonary",
+      "syndrome",
+      "HPS",
+      "hepatorenal",
+      "HRS",
+      "reversible",
+      "transplantation",
+      "contraindications"
+    ],
+    "keyword_hash": "sha256:2c1c7cca4f762949ad853a2991c73014ee2e53b4f868b6e8a3c2d98adf87bb4a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 44,
+      "keywords": [
+        "reversible",
+        "contraindications"
+      ],
+      "keyword_hash": "sha256:c7273ed214d131752dadf956b4753e8848987fed459a7a7c68fef5d6c0f0893f"
+    }
+  ]
+}

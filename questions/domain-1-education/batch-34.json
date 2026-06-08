@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1134",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A transplant recipient asks about planning a vacation three months after discharge. Which travel counseling point aligns with standard post-transplant references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Patients are typically instructed to avoid traveling away from home during the first few months post-transplant" },
+      { "id": "B", "text": "Long-distance travel is encouraged before the first outpatient follow-up visit" },
+      { "id": "C", "text": "Travel timing is unrestricted immediately after hospital discharge" },
+      { "id": "D", "text": "Immunosuppression may be stopped during travel to reduce infection risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Travel teaching instructs patients to avoid traveling away from home during the first few months post-transplant, with destination planning based on current health and infection risk.",
+      "rationale_incorrect": {
+        "B": "Early travel away from home is discouraged during the first few months rather than encouraged before stable follow-up.",
+        "C": "Travel is restricted during early recovery rather than being unrestricted at discharge.",
+        "D": "Immunosuppression must continue as prescribed; travel does not justify stopping therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel → i.",
+      "quote_hint": "avoid traveling away from home during the first few months posttransplant",
+      "keywords": ["avoid", "traveling", "away", "home", "first", "few", "months", "posttransplant"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → i. (avoid travel away from home first few months post-transplant); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Early post-transplant travel-away-from-home angle distinct from extensive-travel-at-discharge teaching (cctc-1023, p. 111); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1135",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching medication planning for post-transplant travel, which instruction aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Pack a 2- to 3-day supply of medications in carry-on luggage" },
+      { "id": "B", "text": "Place all immunosuppression only in checked baggage with no carry-on supply" },
+      { "id": "C", "text": "Travel requires discontinuing immunosuppression for the duration of the trip" },
+      { "id": "D", "text": "Medications should be transferred to unlabeled containers before flying" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Travel medication teaching includes packing a 2- to 3-day supply in carry-on luggage and bringing more medication than needed in original containers in case of unexpected delays.",
+      "rationale_incorrect": {
+        "B": "A carry-on supply is specifically recommended rather than relying only on checked baggage.",
+        "C": "Immunosuppression must continue during travel as prescribed.",
+        "D": "Medications should be stored in original containers rather than unlabeled containers."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel → iv. Medications",
+      "quote_hint": "Pack 2- to 3-day supply in carry-on luggage",
+      "keywords": ["Pack", "3-day", "supply", "carry-on", "luggage", "medications"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → iv. Medications (2–3-day carry-on supply; extra meds in original containers); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Travel medication-carry-on angle distinct from timed IS dosing (cctc-3019) and discharge medication combo (cctc-1033); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1136",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient planning international travel asks how to prepare for medical care at the destination. Which coordination step aligns with standard travel references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Assist the patient in locating a health care provider at the destination should medical care be required" },
+      { "id": "B", "text": "Destination medical planning is unnecessary because transplant teams manage care worldwide remotely" },
+      { "id": "C", "text": "Recipients should travel without medication summaries to reduce luggage weight" },
+      { "id": "D", "text": "Only emergency departments at home institutions may treat transplant travelers" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Travel planning includes assisting the patient in locating a health care provider at the destination if medical care is required, along with carrying a health history summary and adequate medications.",
+      "rationale_incorrect": {
+        "B": "Destination medical planning is recommended rather than assuming remote management alone is sufficient.",
+        "C": "Travel teaching includes bringing a summary of health history and current medications.",
+        "D": "Recipients may need local care at the destination rather than limiting treatment to the home institution only."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel → iii.",
+      "quote_hint": "Assist patient in locating health care provider at destination should medical care be required",
+      "keywords": ["Assist", "patient", "locating", "health", "care", "provider", "destination"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → iii. (locate health care provider at destination); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Destination-provider planning angle distinct from early travel restriction (cctc-1134) and carry-on medication teaching (cctc-1135); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1137",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant travel teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Patients are typically instructed to avoid traveling away from home during the first few months post-transplant." },
+      { "id": "II", "text": "A 2- to 3-day medication supply should be packed in carry-on luggage." },
+      { "id": "III", "text": "All immunosuppression should be placed only in checked baggage with no carry-on supply." },
+      { "id": "IV", "text": "Depending on destination, consultation with a Travel Clinic may be needed to identify health hazards and preventive medications or vaccinations." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Early travel restriction, carry-on medication supply, and Travel Clinic consultation when indicated are supported. Statement III is false because a carry-on medication supply is specifically recommended.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—Travel Clinic consultation may be needed depending on destination.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because carry-on medication supply is recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel",
+      "quote_hint": "avoid traveling away from home … Pack 2- to 3-day supply in carry-on luggage … consultation with Travel Clinic",
+      "keywords": ["avoid", "traveling", "carry-on", "luggage", "Travel", "Clinic", "destination"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → i., iv., vii. (early travel restriction, carry-on meds, Travel Clinic consultation); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Travel-prep combo distinct from return-to-work combo (cctc-1133) and early-discharge travel restriction (cctc-1023); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  }
+]

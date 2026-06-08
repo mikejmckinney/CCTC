@@ -1,0 +1,45 @@
+{
+  "item_id": "cctc-2077",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 46,
+    "keywords": [
+      "Pancreas",
+      "Unlimited",
+      "time",
+      "inactive",
+      "waiting",
+      "accrue",
+      "candidates",
+      "Table"
+    ],
+    "keyword_hash": "sha256:37c904ed059fe0288161018474e49afd2224ad4fc7a8f413585cce5cb21a1812"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "policy": "3.6",
+      "keywords": [
+        "table",
+        "waiting",
+        "inactive",
+        "candidates",
+        "pancreas",
+        "accrue",
+        "unlimited",
+        "while"
+      ],
+      "keyword_hash": "sha256:c266a17d1a61e0f549d95570f0ddada31eeb01cb16377cbd3bf1529fb894d2e3"
+    }
+  ]
+}

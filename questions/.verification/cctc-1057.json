@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1057",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 944,
+    "keywords": [
+      "Community-acquired",
+      "infections",
+      "severe",
+      "young",
+      "children",
+      "transplantation",
+      "immunosuppressed"
+    ],
+    "keyword_hash": "sha256:3a48e2e59bbba6d62889f06853adafffc23e513968a6fc6d6fda9cc889f5c938"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 944,
+      "keywords": [
+        "severe",
+        "young",
+        "children",
+        "after",
+        "during",
+        "heavy",
+        "immunosuppression"
+      ],
+      "keyword_hash": "sha256:7e6e04d7114a99dbaeb0cb51abe518d73284ce5fe2ce10df34246d9e57dc9ab0"
+    }
+  ]
+}

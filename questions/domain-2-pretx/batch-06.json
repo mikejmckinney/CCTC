@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2021",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "According to lung allocation references, how often is each waitlist candidate's Lung Allocation Score (LAS) updated?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Every 6 months" },
+      { "id": "B", "text": "Once at initial listing only" },
+      { "id": "C", "text": "Every 5 years regardless of clinical change" },
+      { "id": "D", "text": "Only at the time of organ implantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Under the LAS system, each candidate's LAS is updated every 6 months as part of waitlist maintenance.",
+      "rationale_incorrect": {
+        "B": "LAS is recalculated periodically during the waiting period, not only at listing.",
+        "C": "Six-month updates are required, not five-year intervals.",
+        "D": "LAS updates occur during the waiting period before transplant surgery."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "section": "Ch. 1, Lung transplantation → LAS implementation → item 5",
+      "quote_hint": "Each candidate's LAS is updated every 6 months",
+      "keywords": ["LAS", "updated", "every", "months", "candidate", "lung"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → lung LAS (updated every 6 months); PDF p. 39 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third lung item; anchor verified on Cupples p. 39.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2022",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020203"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart transplant candidate has a panel reactive antibody (PRA) greater than 10%. Which preoperative coordination step aligns with standard heart transplant protocols?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Obtain a recipient/donor prospective crossmatch when indicated" },
+      { "id": "B", "text": "Skip all immunologic testing because PRA does not affect transplant planning" },
+      { "id": "C", "text": "List the patient without any viral serology testing" },
+      { "id": "D", "text": "Defer all preoperative laboratory testing until the day of discharge" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Heart preoperative protocols include laboratory testing and a prospective crossmatch when PRA is greater than 10%, indicating higher risk for unacceptable donor antibodies.",
+      "rationale_incorrect": {
+        "B": "Elevated PRA triggers additional immunologic coordination including crossmatch when required.",
+        "C": "Preoperative protocols include viral serologies and other standard tests.",
+        "D": "Preoperative tests are obtained in a timely manner before surgery, not deferred until discharge."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 410,
+      "section": "Ch. 9, Heart Transplantation → Preparation for Surgery → A. Obtain preoperative tests → 2–3",
+      "quote_hint": "Recipient/donor prospective crossmatch … if the potential recipient's PRA is >10%",
+      "keywords": ["crossmatch", "PRA", "10%", "preoperative", "heart", "recipient"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 9 → Preparation for Surgery → preoperative tests and crossmatch when PRA >10%; PDF p. 410 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third heart organ item; anchor verified on Cupples p. 410.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2023",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020603"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A deceased-donor kidney offer is generated for a listed candidate, and the donor is identified as a Public Health Service (PHS) increased-risk donor. What must occur before transplantation proceeds?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "The patient is notified at the time of the organ offer and must consent to proceed" },
+      { "id": "B", "text": "The center may proceed without notifying the candidate because PHS status is confidential" },
+      { "id": "C", "text": "The candidate is automatically removed from the waitlist if PHS risk is identified" },
+      { "id": "D", "text": "PHS increased-risk designation eliminates the need for any organ-offer discussion" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "When a donor is identified as a PHS increased-risk donor, the patient is notified at the time of the organ offer and must consent before proceeding; refusal does not affect waitlist status.",
+      "rationale_incorrect": {
+        "B": "PHS increased-risk status requires candidate notification and consent at offer time.",
+        "C": "Candidates may refuse PHS-risk organs without losing waitlist standing.",
+        "D": "PHS designation requires explicit offer-time disclosure and consent, not silent proceeding."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education → §8. Organ allocation → g.",
+      "quote_hint": "the patient is notified at the time of the organ offer and must consent to proceed",
+      "keywords": ["PHS", "increased", "risk", "donor", "notified", "consent", "offer"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §8. Organ allocation → g. (PHS increased-risk donor notification and consent); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 020600 angle from cctc-2004/2015; anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2024",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": ["020401"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "After evaluation, the interdisciplinary team approves a liver candidate with conditions pending completion of a smoking cessation program. How should this outcome be communicated?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Inform the patient they are approved as a candidate with specified conditions such as smoking cessation" },
+      { "id": "B", "text": "Tell the patient they are fully listed with no outstanding requirements" },
+      { "id": "C", "text": "Withhold the conditional approval until after transplant surgery" },
+      { "id": "D", "text": "Inform the patient they are permanently ineligible without opportunity to meet conditions" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Evaluation outcome communication includes informing patients when they are approved as candidates with conditions such as completion of smoking, drug, or alcohol cessation programs.",
+      "rationale_incorrect": {
+        "B": "Conditional approval explicitly includes outstanding requirements before full listing implementation.",
+        "C": "Conditional outcomes are communicated at evaluation conclusion, not deferred until surgery.",
+        "D": "Conditional approval is distinct from permanent ineligibility."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 100,
+      "section": "Ch. 3, Patient Education → §7. Selection criteria and evaluation outcome → c.ii.",
+      "quote_hint": "approved as a candidate with conditions, such as Completion of smoking, drug and/or alcohol cessation program",
+      "keywords": ["approved", "candidate", "conditions", "smoking", "cessation", "program"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §7. Selection criteria and evaluation outcome → c.ii. (approved with conditions); PDF p. 100 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Distinct 020400 angle from cctc-2007/2017; seventh liver organ item; anchor verified on Cupples p. 100.",
+    "last_updated": "2026-06-05"
+  }
+]

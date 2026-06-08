@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1130",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010603"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When reinforcing long-term dietary teaching after transplantation, which general diet pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A healthy diet low in fat, sugar, and salt and high in fiber" },
+      { "id": "B", "text": "A diet unrestricted in fat, sugar, and salt for all recipients indefinitely" },
+      { "id": "C", "text": "Complete elimination of all carbohydrates after discharge" },
+      { "id": "D", "text": "No dietary guidance is needed once immunosuppression is stable" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Diet teaching encourages a healthy diet low in fat, sugar, and salt and high in fiber, while recognizing that early restrictions may be individualized during recovery.",
+      "rationale_incorrect": {
+        "B": "Long-term guidance emphasizes limiting fat, sugar, and salt rather than unrestricted intake for all recipients.",
+        "C": "Fiber and balanced nutrition are encouraged rather than eliminating all carbohydrates.",
+        "D": "Diet recommendations continue to be reinforced as recovery progresses."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → d. Diet → ii.",
+      "quote_hint": "Encourage a healthy diet low in fat, sugar and salt and high in fiber",
+      "keywords": ["Encourage", "healthy", "diet", "fat", "sugar", "salt", "fiber"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → d. Diet → ii. (healthy diet low in fat, sugar, and salt; high in fiber); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. General healthy-diet angle distinct from hand-hygiene teaching (cctc-1019, p. 115) and raw-egg precautions (cctc-1119); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1131",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A warehouse worker preparing to return to employment after transplant asks about job-specific precautions. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Assess work activities for suitability and discuss potential restrictions such as weightlifting and exposure to toxic agents" },
+      { "id": "B", "text": "Return-to-work planning never considers occupational exposures" },
+      { "id": "C", "text": "All recipients must resume prior heavy labor without assessment" },
+      { "id": "D", "text": "Toxic occupational exposures are encouraged to build stamina" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Return-to-work counseling includes assessing work activities for suitability and discussing potential restrictions such as weightlifting and exposure to toxic agents along with required precautions.",
+      "rationale_incorrect": {
+        "B": "Work activities and exposures are specifically assessed rather than ignored.",
+        "C": "Return timing and restrictions depend on recovery and job demands rather than automatic resumption of heavy labor.",
+        "D": "Toxic exposures may require restrictions rather than being encouraged."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → n. Return to work → iii.",
+      "quote_hint": "Assess patient's work activities to determine suitability; discuss potential restrictions (e.g., weightlifting; exposure to toxic agents)",
+      "keywords": ["Assess", "work", "activities", "restrictions", "weightlifting", "exposure", "toxic", "agents"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → n. Return to work → iii. (assess work activities; weightlifting and toxic-agent restrictions); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Work-restriction angle distinct from telework/part-time counseling (cctc-3059) and return-to-work combo (cctc-1133); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1132",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When a transplant recipient cannot safely return to previous employment, which referral aligns with standard return-to-work references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Refer to Social Worker or Vocational Rehabilitation" },
+      { "id": "B", "text": "Discharge planning ends with no vocational resources" },
+      { "id": "C", "text": "Refer only to an unrelated subspecialty surgeon" },
+      { "id": "D", "text": "Permanent unemployment is the only supported outcome" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "When patients should not return to previous employment, references direct referral to Social Worker or Vocational Rehabilitation for vocational support.",
+      "rationale_incorrect": {
+        "B": "Vocational resources are available through social work and vocational rehabilitation referral.",
+        "C": "Vocational rehabilitation and social work—not unrelated surgical referral—is the cited pathway.",
+        "D": "Alternative employment planning is supported rather than assuming permanent unemployment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → n. Return to work → iv.",
+      "quote_hint": "Refer patients to Social Worker or Vocational Rehabilitation if patients should not return to their previous employment",
+      "keywords": ["Refer", "patients", "Social", "Worker", "Vocational", "Rehabilitation", "previous", "employment"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → n. Return to work → iv. (Social Worker or Vocational Rehabilitation referral); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Vocational-referral angle distinct from work-restriction assessment (cctc-1131) and heart return-to-work telework item (cctc-3059); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1133",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating return-to-work teaching materials. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Patients may be counseled to initially telework or work part-time and gradually increase to full-time employment as energy improves." },
+      { "id": "II", "text": "Work activities should be assessed for suitability, including potential restrictions such as weightlifting and toxic exposures." },
+      { "id": "III", "text": "All recipients must return to their previous full-time job without assessment or modification." },
+      { "id": "IV", "text": "Patients who should not return to previous employment may be referred to Social Worker or Vocational Rehabilitation." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Gradual return, work-activity assessment with restrictions, and vocational referral are supported. Statement III is false because return-to-work planning is individualized rather than mandating unmodified return to prior full-time employment.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—vocational rehabilitation referral is cited when prior employment is unsuitable.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because work suitability and restrictions are assessed."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → n. Return to work",
+      "quote_hint": "telework or work part-time … gradually increase … Assess patient's work activities … weightlifting … toxic agents … Social Worker or Vocational Rehabilitation",
+      "keywords": ["telework", "part-time", "work", "activities", "weightlifting", "Social", "Worker", "Vocational"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → n. Return to work → ii.–iv. (gradual return, work restrictions, vocational referral); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Return-to-work combo distinct from communication urgent/non-urgent combo (cctc-1011) and contraception combo (cctc-1129); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  }
+]

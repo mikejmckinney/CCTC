@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-1022",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 98,
+    "keywords": [
+      "Death",
+      "waiting",
+      "list",
+      "transplantation",
+      "risks"
+    ],
+    "keyword_hash": "sha256:6dd0702cde65a9d44c5ed409f992dd39acf5b61d2efe027630f16b1c3d29b2fa"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "keywords": [
+        "death",
+        "waitlist",
+        "surgery",
+        "post-transplant"
+      ],
+      "keyword_hash": "sha256:c5d349a458573743f7da1a13d6fab5f481b0258fa9b355a33285e4a985e62c38"
+    }
+  ]
+}

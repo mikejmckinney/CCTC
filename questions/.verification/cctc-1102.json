@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1102",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 118,
+    "keywords": [
+      "Squamous",
+      "cell",
+      "carcinoma",
+      "increases",
+      "over",
+      "time",
+      "after",
+      "transplantation"
+    ],
+    "keyword_hash": "sha256:09f760fdc9be23621ca697104e073dfa98f6ae6cacb4ef5aa94157d80ea29a93"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "keywords": [
+        "squamous",
+        "carcinoma",
+        "increases",
+        "post-transplant"
+      ],
+      "keyword_hash": "sha256:5ddd26d1034c1f0d207993f7fe14fb6c146e7028fb4e863d07b4f28a03caed1b"
+    }
+  ]
+}

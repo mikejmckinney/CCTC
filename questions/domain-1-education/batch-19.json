@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1074",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During living donor informed consent, which donor right must the coordinator confirm per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "The donor may decline to donate at any time" },
+      { "id": "B", "text": "The donor must proceed once evaluation begins and cannot withdraw" },
+      { "id": "C", "text": "Only the recipient surgeon may decide whether donation proceeds" },
+      { "id": "D", "text": "Withdrawal after consent is prohibited by federal law" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor informed consent requires confirmation that the donor is free from inducement and coercion and has been informed that he or she can decline to donate at any time.",
+      "rationale_incorrect": {
+        "B": "Donors may decline at any time rather than being locked in once evaluation begins.",
+        "C": "Donor autonomy includes the right to withdraw; separate live donor team advocacy supports donor interests.",
+        "D": "Federal law prohibits organ sales; it does not prohibit donors from declining donation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "section": "Ch. 7, Care of Living Donors → F. Elements Included in Education and Informed Consent → 1.c.",
+      "quote_hint": "Has been informed that he or she can decline to donate at any time",
+      "keywords": ["informed", "decline", "donate", "any", "time", "coercion", "inducement", "donor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → F. Elements Included in Education and Informed Consent → 1.a.–c. (donor may decline at any time; free from coercion); PDF p. 340 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Living-donor withdrawal-right angle distinct from separate live donor team (cctc-1045) and follow-up commitment (cctc-1030); anchor verified on Cupples p. 340.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1075",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating BK virus teaching for kidney transplant recipients. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "BK virus reactivation after kidney transplantation is common, with prevalence around 45% to 50%." },
+      { "id": "II", "text": "Every episode of BK reactivation inevitably progresses to graft loss." },
+      { "id": "III", "text": "BK reactivation may cause tubulointerstitial nephritis." },
+      { "id": "IV", "text": "BK virus transmission in the general population occurs primarily through the respiratory route." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, III, and IV only", "selects": ["I", "III", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "BK reactivation is common in kidney recipients but progresses to nephropathy only occasionally; it may cause tubulointerstitial nephritis, and population transmission is primarily respiratory. Statement II is false because not all reactivation leads to graft loss.",
+      "rationale_incorrect": {
+        "A": "Statement II is false; statement III is also correct.",
+        "C": "Statement I is also true; statement II is false.",
+        "D": "Statement II is false—not all BK reactivation progresses to graft loss."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 207,
+      "section": "Ch. 5, Infectious Diseases → J. Polyomaviruses → 2. BK virus → b.–c.i.",
+      "quote_hint": "reactivation in kidney transplant recipients is common (prevalence: 45% to 50%) … progresses to nephropathy only occasionally … Tubulointerstitial nephritis … Transmission: respiratory route",
+      "keywords": ["reactivation", "kidney", "transplant", "recipients", "common", "Tubulointerstitial", "nephritis", "respiratory"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → J. Polyomaviruses → 2. BK virus → b.–c.i. (reactivation prevalence, occasional nephropathy, tubulointerstitial nephritis, respiratory transmission); PDF p. 207 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Nineteenth complex_combo in bank; first BK-virus teaching item; distinct from CMV organ-specific combo (cctc-1071); anchor verified on Cupples p. 207.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1076",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "When educating a lung transplant recipient about cytomegalovirus (CMV) long-term allograft effects, which complication should the coordinator include?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Bronchiolitis obliterans" },
+      { "id": "B", "text": "Vanishing bile duct syndrome" },
+      { "id": "C", "text": "Coronary artery vasculopathy" },
+      { "id": "D", "text": "Oral aversion" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Organ-specific CMV effects on allografts include bronchiolitis obliterans in lung transplant recipients.",
+      "rationale_incorrect": {
+        "B": "Vanishing bile duct syndrome is the listed CMV organ-specific effect for liver allografts.",
+        "C": "Coronary artery vasculopathy is the listed CMV organ-specific effect for heart allografts.",
+        "D": "Oral aversion is an intestinal transplant feeding complication unrelated to CMV lung effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "section": "Ch. 5, Infectious Diseases → CMV → 8. Organ-specific effects on allograft → c.",
+      "quote_hint": "Lung: bronchiolitis obliterans",
+      "keywords": ["Lung", "bronchiolitis", "obliterans", "CMV", "organ-specific", "effects", "allograft"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CMV → 8. Organ-specific effects on allograft → c. (lung: bronchiolitis obliterans); PDF p. 202 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Lung CMV bronchiolitis teaching angle distinct from lung BOS chronic rejection (cctc-3060) and CMV organ-specific combo (cctc-1071); anchor verified on Cupples p. 202.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1077",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": ["010401"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When scheduling pretransplant immunizations for an adult or pediatric candidate, how long should live vaccines be separated from the transplant procedure per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "At least 4 weeks between live vaccine administration and transplant" },
+      { "id": "B", "text": "Live vaccines may be given the day before surgery without restriction" },
+      { "id": "C", "text": "Live vaccines are required immediately after transplant in all candidates" },
+      { "id": "D", "text": "No interval is needed between live vaccines and transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidates should wait at least 4 weeks between administration of live vaccines and the transplant procedure for all adult and pediatric candidates.",
+      "rationale_incorrect": {
+        "B": "Live vaccines require a minimum 4-week interval before transplant rather than same-day administration.",
+        "C": "Live vaccines are generally avoided after transplantation; pretransplant timing follows the 4-week rule.",
+        "D": "A defined waiting period is required between live vaccines and transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 181,
+      "section": "Ch. 5, Infectious Diseases → Recommended Pretransplant Immunizations → e.",
+      "quote_hint": "Wait at least 4 weeks between administration of live vaccines and transplant procedure for all adult and pediatric candidates",
+      "keywords": ["Wait", "least", "weeks", "live", "vaccines", "transplant", "procedure", "pediatric"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Recommended Pretransplant Immunizations → e. (≥4 weeks between live vaccines and transplant for adult and pediatric candidates); PDF p. 181 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Live-vaccine timing angle distinct from post-transplant vaccination combo (cctc-1048) and live-virus household precautions (cctc-1046); anchor verified on Cupples p. 181.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3073",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 154,
+    "keywords": [
+      "impaired",
+      "wound",
+      "healing",
+      "delay",
+      "renal",
+      "allograft",
+      "recovery",
+      "sirolimus"
+    ],
+    "keyword_hash": "sha256:561b98ccfc6e66e6e6ed9d3413484875c61ad55fdc3ab60b390fedbce412ff01"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 154,
+      "keywords": [
+        "impaired",
+        "wound",
+        "healing",
+        "delay",
+        "initiation",
+        "warranted"
+      ],
+      "keyword_hash": "sha256:52b6258f06bdc9bf40a0e0f696bb758918b8b11f163f2e94e670bf7294917c3d"
+    }
+  ]
+}

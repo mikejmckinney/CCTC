@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1134",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 122,
+    "keywords": [
+      "avoid",
+      "traveling",
+      "away",
+      "home",
+      "first",
+      "few",
+      "months",
+      "posttransplant"
+    ],
+    "keyword_hash": "sha256:df165dfc933fe9c65800049a4aacdf19708fffc3c66f10ea8666b8e8d188c34d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "keywords": [
+        "avoid",
+        "travel",
+        "first",
+        "months",
+        "post-transplant"
+      ],
+      "keyword_hash": "sha256:6b65dcab30c7793f3e3155b1722e175eac7973fdca34080d240da2164a939a9e"
+    }
+  ]
+}

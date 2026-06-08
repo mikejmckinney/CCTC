@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2068",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 412,
+    "keywords": [
+      "emotional",
+      "support",
+      "patient",
+      "family",
+      "opportunity",
+      "ask",
+      "questions",
+      "concerns"
+    ],
+    "keyword_hash": "sha256:7a004c8535c39b1c96500e0da0008e61da67e931019cf6845cd1fa963549b949"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 412,
+      "keywords": [
+        "emotional",
+        "support",
+        "opportunity",
+        "questions",
+        "verbalize",
+        "concerns"
+      ],
+      "keyword_hash": "sha256:0e1f4a3b739a6cc07991dcf7d3acffa9ff409cd7adc88bc02eb49153bcb778bb"
+    }
+  ]
+}

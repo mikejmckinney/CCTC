@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3135",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "Changes",
+      "drainage",
+      "output",
+      "purulence",
+      "cloudy",
+      "urine",
+      "odor"
+    ],
+    "keyword_hash": "sha256:af8d07e8a0c21e49414b2a71bc71decc0d4a95e423a8d1679eb6c99a2955e063"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "changes",
+        "drainage",
+        "output",
+        "including",
+        "cloudy",
+        "urine"
+      ],
+      "keyword_hash": "sha256:cf230ee310d5425b7f4283be21ab8e2e44d1cb5c08aeb3a77aaf1973c17d1ea0"
+    }
+  ]
+}

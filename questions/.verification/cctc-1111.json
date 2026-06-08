@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1111",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 120,
+    "keywords": [
+      "Diabetes",
+      "mellitus",
+      "strict",
+      "management",
+      "blood",
+      "glucose",
+      "levels",
+      "long-term"
+    ],
+    "keyword_hash": "sha256:3c9f060fa8331cef1d10a76ad650717b7651f7de4b9911fed0308bd79a1a7e1e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "keywords": [
+        "diabetes",
+        "mellitus",
+        "strict",
+        "glucose",
+        "management"
+      ],
+      "keyword_hash": "sha256:cb9d104cbe1f071ef41ecdb42829cacecc101a6c20dbeb513dc0a43c5d3eedc6"
+    }
+  ]
+}

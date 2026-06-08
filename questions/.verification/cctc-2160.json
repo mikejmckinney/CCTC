@@ -1,0 +1,51 @@
+{
+  "item_id": "cctc-2160",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Long-sleeve",
+      "shirts",
+      "pants",
+      "protective",
+      "clothing",
+      "Sun",
+      "precautions"
+    ],
+    "keyword_hash": "sha256:89cf98e92017b2c717be55807b4b5a45fe7207a4779a9fcef791513e359348d9"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "cumulative",
+        "exposure",
+        "retransplantation"
+      ],
+      "keyword_hash": "sha256:06820fed700897c86ddbaf39a7e84c4fbe2e8937334315a5d1748d87bcf15f79"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "long-sleeve",
+        "shirts",
+        "pants",
+        "protective",
+        "clothing"
+      ],
+      "keyword_hash": "sha256:f15475db1e0005f3cc55bdaac4a5d2e19c5fb0f25b8821abe0824d42a182ceba"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1058",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010202"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A candidate with alcohol-related liver disease asks how long many U.S. programs require abstinence before liver transplant waitlist placement. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Many programs require about six months of abstinence before waitlist placement" },
+      { "id": "B", "text": "Active alcohol use is encouraged until the day of transplant" },
+      { "id": "C", "text": "Abstinence is never required for any liver transplant candidate" },
+      { "id": "D", "text": "A ten-year abstinence period is required by every program without exception" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In the United States, many transplant programs require six months of abstinence before a patient can be placed on the liver transplant waiting list, although protocols vary by center.",
+      "rationale_incorrect": {
+        "B": "Alcohol abstinence is required for liver transplant candidacy rather than continued use until surgery.",
+        "C": "Abstinence requirements are commonly applied for alcohol-related liver disease.",
+        "D": "References describe a common six-month requirement, not a universal ten-year mandate."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 644,
+      "section": "Ch. 12, Liver Transplantation → alcoholic liver disease → listing requirements",
+      "quote_hint": "many transplant programs require 6 months of abstinence before a patient can be placed on the liver transplant waiting list",
+      "keywords": ["transplant", "programs", "require", "months", "abstinence", "liver", "waiting", "list"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 12 → alcoholic liver disease listing (many programs require 6 months abstinence before waitlist placement); PDF p. 644 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 010200 item; liver alcohol-abstinence angle distinct from smoking contraindications (cctc-1034/1037) and obesity (cctc-1050); anchor verified on Cupples p. 644.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1059",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "During early post-transplant education, a heart recipient asks when they may resume lifting grandchildren. Which activity guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Lifting items greater than about 5 to 10 pounds may be restricted during early recovery" },
+      { "id": "B", "text": "No lifting restrictions apply at any time after transplant" },
+      { "id": "C", "text": "Only recipients over age 80 have lifting restrictions" },
+      { "id": "D", "text": "Lifting restrictions apply only before transplant, never afterward" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Early post-transplant lifestyle teaching may include activity restrictions such as lifting any item greater than 5 to 10 pounds, along with restrictions on tub soaking, swimming, hot tubs, contact sports, and driving until team reassessment.",
+      "rationale_incorrect": {
+        "B": "Early recovery commonly includes lifting restrictions rather than unrestricted activity immediately.",
+        "C": "Lifting restrictions are described for early post-transplant recovery broadly, not a single age threshold.",
+        "D": "Post-transplant activity restrictions apply during early recovery after surgery."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "section": "Ch. 3, Patient Education → g. Lifestyle changes → i. Potential activity restrictions",
+      "quote_hint": "Lifting any item > 5 to 10 pounds",
+      "keywords": ["Lifting", "item", "pounds", "activity", "restrictions", "posttransplant", "lifestyle"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Lifestyle changes → i. Potential activity restrictions (lifting >5–10 lb and related limits); PDF p. 110 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Twelfth 010500 item; heart activity-restriction angle distinct from insulin teaching (cctc-1055) and travel restriction (cctc-1025); anchor verified on Cupples p. 110.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1060",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating early post-transplant infection-prevention and lifestyle teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Soaking in a tub, swimming, and using a hot tub may be restricted early after transplant." },
+      { "id": "II", "text": "Contact sports may be restricted during early recovery." },
+      { "id": "III", "text": "Driving may resume immediately on discharge without transplant team reassessment." },
+      { "id": "IV", "text": "Walking and activities of daily living are encouraged when appropriate." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Early lifestyle teaching includes restrictions on tub soaking, swimming, hot tubs, and contact sports, while encouraging walking and activities of daily living; driving is prohibited until the patient is reassessed by the transplant team.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—walking and activities of daily living are encouraged.",
+        "C": "Statements I and II are also true; statement III is false because driving requires team reassessment.",
+        "D": "Statement III is false; driving is not permitted immediately without reassessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "section": "Ch. 3, Patient Education → g. Lifestyle changes",
+      "quote_hint": "Soaking in a tub or swimming and using a hot tub … Contact sports … Driving will be prohibited until … reassessed … walking and activities of daily living",
+      "keywords": ["Soaking", "tub", "swimming", "hot", "Contact", "sports", "Driving", "prohibited"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Lifestyle changes (tub/swimming/hot tub limits, contact sports, driving prohibition, encouraged walking/ADLs); PDF p. 110 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Fourteenth complex_combo in bank; distinct from dietary combo (cctc-1052) and hot-tub single item (cctc-1053); anchor verified on Cupples p. 110.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1061",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010701"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "Before discharging a living liver donor, which topic should the coordinator verify is included in donor education per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Activity restrictions including lifting, exercise, travel, and return to work" },
+      { "id": "B", "text": "No follow-up is ever required after living donation" },
+      { "id": "C", "text": "Donors should ignore fever or uncontrolled pain rather than calling the team" },
+      { "id": "D", "text": "Wound assessment and when to call the living donor team are unnecessary" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living liver donor discharge teaching includes activity restrictions such as lifting, exercise, travel, and return to work, along with wound assessment and parameters for contacting the living donor team.",
+      "rationale_incorrect": {
+        "B": "Follow-up appointments and instructions are part of living donor discharge teaching.",
+        "C": "Donors should call the living donor team for fever, uncontrolled pain, shortness of breath, or other concerns.",
+        "D": "Wound assessment and team contact instructions are required discharge education elements."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 354,
+      "section": "Ch. 7, Living Donation → E. Discharge Teaching → 2.b.",
+      "quote_hint": "Activity restrictions including lifting, exercise, travel, and return to work",
+      "keywords": ["Activity", "restrictions", "lifting", "exercise", "travel", "return", "work", "donor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → E. Discharge Teaching for Living Donors → 2.b. (activity restrictions including lifting, exercise, travel, return to work); PDF p. 354 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 010700 item; living-liver donor discharge angle distinct from financial impact (cctc-1014) and separate live donor team (cctc-1045); anchor verified on Cupples p. 354.",
+    "last_updated": "2026-06-05"
+  }
+]

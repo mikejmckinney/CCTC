@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1105",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 118,
+    "keywords": [
+      "Squamous",
+      "cell",
+      "carcinoma",
+      "Skin",
+      "cancer",
+      "malignancy",
+      "Sun",
+      "exposed"
+    ],
+    "keyword_hash": "sha256:ea6893dd2546be229497968df2e22ea7a22a605a74e58f2ba2ef816d4ff0dd8d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "keywords": [
+        "squamous",
+        "timing",
+        "malignancy",
+        "frequency",
+        "sun-exposed",
+        "sites"
+      ],
+      "keyword_hash": "sha256:9ddb3ca6dc73fd1f40e31dd87cfc0cdc69ac6e5005902cbd85df7604c8db1648"
+    }
+  ]
+}

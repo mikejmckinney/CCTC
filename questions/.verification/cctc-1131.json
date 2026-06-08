@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1131",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Assess",
+      "work",
+      "activities",
+      "restrictions",
+      "weightlifting",
+      "exposure",
+      "toxic",
+      "agents"
+    ],
+    "keyword_hash": "sha256:501021b28efe38f8bcf4e2644fcb2f43f9b6352ff4a6ba322e1555747d66f186"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "assess",
+        "activities",
+        "weightlifting",
+        "toxic-agent",
+        "restrictions"
+      ],
+      "keyword_hash": "sha256:5180c8904c782437f8fb2729c3357fd9d6a88c369111a3aba601011a3a3f007e"
+    }
+  ]
+}

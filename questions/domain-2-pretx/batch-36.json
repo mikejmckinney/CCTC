@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-2141",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When explaining posttransplant lymphoproliferative disease (PTLD) epidemiology during evaluation, which anatomic pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Often extranodal; may initially involve the gastrointestinal tract, lung, or kidney" },
+      { "id": "B", "text": "PTLD is always confined to cervical lymph nodes only" },
+      { "id": "C", "text": "Extranodal involvement never occurs in transplant recipients" },
+      { "id": "D", "text": "PTLD involves only the transplanted allograft and never other organs" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD is often extranodal and may initially involve the gastrointestinal tract, lung, or kidney, and may involve single or multiple organs.",
+      "rationale_incorrect": {
+        "B": "PTLD presentation is variable and may involve multiple extranodal sites beyond cervical nodes alone.",
+        "C": "Extranodal involvement is specifically described rather than being absent.",
+        "D": "PTLD may involve organs beyond the allograft, including GI tract, lung, or kidney."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 1. Epidemiology → c.",
+      "quote_hint": "Often extranodal; may initially involve the gastrointestinal (GI) tract, lung, or kidney",
+      "keywords": ["Often", "extranodal", "involve", "gastrointestinal", "tract", "lung", "kidney"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 1.c. (often extranodal; may involve GI tract, lung, or kidney); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Extranodal-site epidemiology angle distinct from single/multiple-organ item (cctc-2133) and nonrenal-incidence item (cctc-3110); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2142",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching about posttransplant lymphoproliferative disease (PTLD) recognition, which lymphatic finding aligns with standard presentation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Lymphadenopathy" },
+      { "id": "B", "text": "Lymphadenopathy never occurs with PTLD" },
+      { "id": "C", "text": "PTLD presents only with graft tenderness and never with lymph node enlargement" },
+      { "id": "D", "text": "Lymphadenopathy excludes PTLD from the differential" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include lymphadenopathy along with fever, night sweats, and mononucleosis-like symptoms.",
+      "rationale_incorrect": {
+        "B": "Lymphadenopathy is specifically listed among PTLD presentations.",
+        "C": "PTLD may present with systemic and nodal findings rather than isolated graft tenderness alone.",
+        "D": "Lymphadenopathy is among cited presentations rather than excluding PTLD."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → h.",
+      "quote_hint": "Lymphadenopathy",
+      "keywords": ["Lymphadenopathy", "Clinical", "presentation", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.h. (lymphadenopathy among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Lymphadenopathy presentation angle distinct from symptom-cluster item (cctc-2111) and night-sweats recall (cctc-2137); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2143",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A liver transplant recipient reports persistent abdominal pain without fever. Which PTLD presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Abdominal pain may be part of PTLD clinical presentation" },
+      { "id": "B", "text": "Abdominal pain always indicates acute rejection and never PTLD" },
+      { "id": "C", "text": "PTLD never causes abdominal symptoms" },
+      { "id": "D", "text": "Abdominal pain excludes GI tract involvement in PTLD" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include abdominal pain along with diarrhea, GI tract involvement, and other systemic symptoms.",
+      "rationale_incorrect": {
+        "B": "Abdominal pain may reflect PTLD, infection, or other complications and requires clinical evaluation.",
+        "C": "Abdominal pain and GI involvement are listed among PTLD presentations.",
+        "D": "Abdominal pain may accompany GI tract PTLD involvement rather than excluding it."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → g.",
+      "quote_hint": "Abdominal pain",
+      "keywords": ["Abdominal", "pain", "Clinical", "presentation", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.g. (abdominal pain among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Abdominal-pain presentation angle distinct from GI-perforation item (cctc-2130) and diarrhea item (cctc-2139); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2144",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating PTLD risk-factor teaching for the evaluation team. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "CMV infection is a risk factor for PTLD." },
+      { "id": "II", "text": "CMV mismatch with a donor CMV-seropositive and recipient CMV-seronegative pair is a risk factor." },
+      { "id": "III", "text": "Lung and heart-lung transplant types are among higher-risk groups." },
+      { "id": "IV", "text": "Primary Epstein-Barr virus infection has no association with PTLD risk." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "CMV infection, CMV mismatch, and lung or heart-lung transplant type are cited PTLD risk factors. Statement IV is false because primary EBV infection with donor EBV-seropositive and recipient EBV-seronegative mismatch is a major risk factor.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—lung and heart-lung transplant types are listed among risk factors.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because primary EBV infection is a key PTLD risk factor."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 2. Risk factors",
+      "quote_hint": "CMV infection … CMV mismatch … Type of transplant (lung; heart-lung) … Primary Epstein-Barr virus (EBV) infection",
+      "keywords": ["CMV", "infection", "mismatch", "lung", "heart-lung", "Primary", "EBV", "infection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 2.b.–e. (primary EBV infection, CMV infection, CMV mismatch, lung/heart-lung type); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. PTLD risk-factor combo distinct from CMV-mismatch one-best (cctc-2115) and intense-immunosuppression item (cctc-2114); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-1006",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010103"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pre-transplant education about transplantation risks, a kidney candidate asks what can happen if rejection is not prevented. Which teaching point is explicitly included in standard risk counseling?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Rejection can occur at any time after implantation of the organ" },
+      { "id": "B", "text": "Rejection occurs only during the first 48 hours after surgery" },
+      { "id": "C", "text": "Rejection is prevented permanently by induction therapy alone" },
+      { "id": "D", "text": "Rejection is limited to cosmetic changes without graft injury" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant risk education includes that the immune system may recognize the graft as foreign and that rejection can occur at any time after implantation, supporting the need for lifelong immunosuppression monitoring.",
+      "rationale_incorrect": {
+        "B": "Rejection is not confined to the immediate perioperative window; it can occur long after transplant.",
+        "C": "Induction therapy does not eliminate ongoing rejection risk without maintenance immunosuppression.",
+        "D": "Rejection threatens graft function and survival, not only cosmetic effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Patient Education → §6. Risks associated with transplantation → b. Organ rejection → ii.",
+      "quote_hint": "Rejection can occur at any time after implantation of the organ",
+      "keywords": ["rejection", "implantation", "organ", "transplantation", "risks"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks associated with transplantation → b. Organ rejection (items i–iii); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 98.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1007",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010300",
+    "knowledge_codes": ["010301"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "Which CMS Conditions of Participation requirement applies specifically to living donor programs regarding the immediate post-donation period?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Centers must have a live donor postoperative management policy" },
+      { "id": "B", "text": "Centers must guarantee a fixed two-year wage replacement for every donor" },
+      { "id": "C", "text": "Centers may skip psychosocial evaluation if the donor is a family member" },
+      { "id": "D", "text": "Centers must list all living donors on the deceased-donor waiting list" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "CMS living-donor Conditions of Participation require centers to maintain a live donor postoperative management policy as part of regulated living donor care.",
+      "rationale_incorrect": {
+        "B": "Financial wage replacement is not the CMS postoperative management policy requirement described in living donor regulations.",
+        "C": "Psychosocial evaluation and informed consent remain required; familial relationship does not waive evaluation.",
+        "D": "Living donors are not listed as deceased-donor waitlist candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 334,
+      "section": "Ch. 7, Living Donation → C. Regulatory oversight → CMS Conditions of Participation → g.",
+      "quote_hint": "Centers must have a live donor postoperative management policy",
+      "keywords": ["postoperative", "management", "policy", "living", "donor", "CMS"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → C. Regulatory oversight of living donor practices → CMS Conditions of Participation → item g.; PDF p. 334 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 334.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1008",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": ["010401"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "What is the primary purpose of the independent living donor advocate (ILDA) in U.S. living donor transplantation programs?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Ensure informed consent standards and ethical principles are applied to living donor practice" },
+      { "id": "B", "text": "Select the recipient who will receive the donated organ" },
+      { "id": "C", "text": "Determine OPTN allocation priority for the donor's intended recipient" },
+      { "id": "D", "text": "Authorize immunosuppression dosing for the recipient after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The ILDA exists so living donor programs have an independent advocate to ensure informed consent standards are met and ethical principles guide donation decisions.",
+      "rationale_incorrect": {
+        "B": "Organ matching and acceptance remain physician and allocation-policy decisions, not the ILDA's primary role.",
+        "C": "Waitlist priority is determined by OPTN allocation policy, not the ILDA.",
+        "D": "Post-transplant immunosuppression management is a medical team responsibility, not the ILDA role."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 334,
+      "section": "Ch. 7, Living Donation → C. Regulatory oversight → ACOT recommendation → ILDA",
+      "quote_hint": "independent donor advocate (ILDA) to ensure that informed consent standards are adhered to",
+      "keywords": ["ILDA", "independent", "donor", "advocate", "informed", "consent"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → C. Regulatory oversight → ACOT ILDA recommendation; PDF p. 334 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 334.",
+    "last_updated": "2026-06-06"
+  },
+  {
+    "id": "cctc-1009",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010701"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "According to living donor regulatory requirements described in transplant nursing references, what follow-up reporting obligation applies to living donor programs?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Reporting requirements including two-year live donor follow-up" },
+      { "id": "B", "text": "No follow-up is required after hospital discharge" },
+      { "id": "C", "text": "Follow-up is required only when the donor requests it" },
+      { "id": "D", "text": "Follow-up reporting is limited to the first 30 days only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor regulatory requirements include reporting requirements with two-year live donor follow-up as part of standardized living donor care.",
+      "rationale_incorrect": {
+        "B": "Regulatory and consensus standards require ongoing living donor follow-up, not discharge-only monitoring.",
+        "C": "Follow-up is a program obligation, not solely donor-initiated.",
+        "D": "The cited requirement extends to two-year follow-up, not only 30 days."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 335,
+      "section": "Ch. 7, Living Donation → CMS regulatory requirements list → item 4.i",
+      "quote_hint": "Reporting requirements including 2-year live donor follow-up",
+      "keywords": ["Reporting", "requirements", "live", "donor", "follow-up", "2-year"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → CMS regulatory requirements → item 4.i (2-year live donor follow-up reporting); PDF p. 335 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 335.",
+    "last_updated": "2026-06-06"
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2014",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 97,
+    "keywords": [
+      "consultations",
+      "required",
+      "recommendations",
+      "transplant",
+      "team",
+      "Psychologist",
+      "Cardiologist"
+    ],
+    "keyword_hash": "sha256:c9d1e2eba333691bac9e3e52117f06d2bab0ee1c0e9dde68f4d7a58a522e3b49"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "keywords": [
+        "other",
+        "medical",
+        "consultations",
+        "psychologist",
+        "cardiology"
+      ],
+      "keyword_hash": "sha256:8ce23de6612d5905ee80c04227379d10125e53d1b96fe01afa4d3efa4cade910"
+    }
+  ]
+}

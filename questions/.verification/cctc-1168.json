@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1168",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Follow",
+      "strict",
+      "hand",
+      "hygiene",
+      "guidelines",
+      "after",
+      "contact"
+    ],
+    "keyword_hash": "sha256:4f64bcdae58182cd34843d7fd0d483784d61b3644c570772d50f26c3433a46f0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "animal",
+        "safety",
+        "strict",
+        "hygiene",
+        "after",
+        "contact"
+      ],
+      "keyword_hash": "sha256:260b3959ddf2d5bdfc6251ab6a3af2ceb7be48a5d238116fb5966e94d93484c1"
+    }
+  ]
+}

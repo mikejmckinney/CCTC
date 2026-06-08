@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1154",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching recipient hand-hygiene practices after transplantation, which timing aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wash hands after using the bathroom" },
+      { "id": "B", "text": "Hand-washing is needed only before the first meal of the day" },
+      { "id": "C", "text": "Soap and water are never needed after bathroom use if gel is available" },
+      { "id": "D", "text": "Bathroom hand-washing applies only to pediatric recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands after using the bathroom, along with washing before preparing or eating meals and after contact with secretions or animals.",
+      "rationale_incorrect": {
+        "B": "Hand-washing is needed at multiple times throughout the day, not only before the first meal.",
+        "C": "Soap and water remain important when hands are soiled; gel supplements but does not replace appropriate washing.",
+        "D": "Post-transplant hand-hygiene guidance applies to all recipients, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After using the bathroom",
+      "keywords": ["After", "using", "bathroom", "Wash", "hands", "soap", "water"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands after using the bathroom); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Bathroom hand-hygiene timing angle distinct from general best-practice hand-washing (cctc-1019) and visitor hand-hygiene combo (cctc-1118); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1155",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A donor family asks what general recipient information the OPO may share without recipient permission. Which example aligns with standard donor–recipient confidentiality references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Recipient age described in decades, general status of health, and gender" },
+      { "id": "B", "text": "Recipient full name, address, and telephone number" },
+      { "id": "C", "text": "Recipient employment history and income details" },
+      { "id": "D", "text": "Recipient social security number and insurance policy numbers" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The OPO may provide general recipient status information to the donor family without recipient permission, including age described in decades, general status of health, and gender.",
+      "rationale_incorrect": {
+        "B": "Identifying information such as full name and contact details is not among the general information that may be shared without permission.",
+        "C": "Employment and income details are not listed as permissible general information for donor families.",
+        "D": "Social security and insurance identifiers are not described as general information shareable without recipient permission."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → p. Donor–recipient confidentiality → ii.",
+      "quote_hint": "Age described in decades … General status of health … Gender",
+      "keywords": ["Age", "decades", "General", "status", "health", "Gender", "permission"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → p. Donor–recipient confidentiality → ii. (general recipient information shareable without permission: age decade, health status, gender); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Donor-family general-information angle distinct from anatomic-abnormality disclosure (cctc-1151) and OPO letter timing (cctc-1152); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1156",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When reinforcing home infection-prevention teaching for a recipient with household pets, which hand-hygiene step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wash hands after contact with animals" },
+      { "id": "B", "text": "Hand-washing after animal contact is unnecessary if pets are indoor only" },
+      { "id": "C", "text": "Only veterinary staff need hand hygiene after animal contact" },
+      { "id": "D", "text": "Animal contact requires stopping all immunosuppression temporarily" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands after contact with animals, along with other high-risk contacts such as soil, plants, and secretions.",
+      "rationale_incorrect": {
+        "B": "Hand-washing after animal contact is specifically recommended regardless of whether pets remain indoors.",
+        "C": "Recipients themselves should practice hand hygiene after animal contact rather than delegating it to veterinary staff alone.",
+        "D": "Immunosuppression continues as prescribed; infection prevention emphasizes hygiene rather than stopping therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After contact with animals",
+      "keywords": ["After", "contact", "animals", "Wash", "hands", "plants", "soil"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands after contact with animals); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-animal-contact hand hygiene angle distinct from cat-litter precautions (cctc-1100) and postpone-new-pets teaching (cctc-1101); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1157",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604", "010503"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating hand-hygiene and donor-confidentiality teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should wash hands after using the bathroom." },
+      { "id": "II", "text": "Recipients should wash hands after contact with animals." },
+      { "id": "III", "text": "The OPO may share recipient age described in decades with the donor family without recipient permission." },
+      { "id": "IV", "text": "Recipient identifying information may always be shared freely with donor families without restriction." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Bathroom and animal-contact hand hygiene and sharing general recipient age information without permission are supported. Statement IV is false because only limited general information may be shared without recipient permission.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—the OPO may share general age-decade information without recipient permission.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because unrestricted sharing of identifying information is not permitted."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention and p. Donor–recipient confidentiality",
+      "quote_hint": "After using the bathroom … After contact with animals … Age described in decades … without recipient permission",
+      "keywords": ["bathroom", "animals", "Wash", "hands", "Age", "decades", "permission"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene and p. Donor–recipient confidentiality → ii. (bathroom/animal hand hygiene; general age-decade sharing); PDF p. 115 and p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Hand-hygiene/confidentiality combo distinct from infection/confidentiality combo (cctc-1153) and travel-preparation combo (cctc-1145); corroborating locators on p. 115 and p. 122 verified.",
+    "last_updated": "2026-06-05"
+  }
+]

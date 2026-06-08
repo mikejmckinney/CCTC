@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1156",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "After",
+      "contact",
+      "animals",
+      "Wash",
+      "hands",
+      "plants",
+      "soil"
+    ],
+    "keyword_hash": "sha256:156239085ac0a688523c9ffdde589ec6123cd203502513f841bf5452f981f243"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "hygiene",
+        "hands",
+        "after",
+        "contact",
+        "animals"
+      ],
+      "keyword_hash": "sha256:b345a1f20b3d064ed1ca42f3aee4b7f7e89adb3ced824359e82569d971333fb5"
+    }
+  ]
+}

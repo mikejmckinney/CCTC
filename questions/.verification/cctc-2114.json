@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2114",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Intense",
+      "immunosuppression",
+      "polyclonal",
+      "antithymocyte",
+      "globulin",
+      "monoclonal",
+      "antibody"
+    ],
+    "keyword_hash": "sha256:de27250730108cb234ccde7a29d3ceddc9b39dda3ee4c406c4491d80f43f7934"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "intense",
+        "immunosuppression",
+        "including",
+        "antithymocyte",
+        "globulin"
+      ],
+      "keyword_hash": "sha256:a5a5c449aa9207ac7091630dcf22c2aeb8ff940430c404a75b1322cbfd7d618e"
+    }
+  ]
+}

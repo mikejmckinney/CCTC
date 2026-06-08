@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1123",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Discuss",
+      "oral",
+      "contraception",
+      "provider",
+      "contraindicated",
+      "thromboembolic",
+      "events"
+    ],
+    "keyword_hash": "sha256:462b93da277728ff4a21b3bf015eb99c614827169250d51a2b40c25d8f51b622"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "contraception",
+        "contraindicated",
+        "thromboembolic"
+      ],
+      "keyword_hash": "sha256:633aec889740408af702d9e16cc2eaf1037d43f2eabee508cf769dce84941427"
+    }
+  ]
+}

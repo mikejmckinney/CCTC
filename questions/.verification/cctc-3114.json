@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3114",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 321,
+    "keywords": [
+      "Treat",
+      "hypertension",
+      "aggressively",
+      "Monitor",
+      "response",
+      "antihypertensive",
+      "therapy"
+    ],
+    "keyword_hash": "sha256:3d28144f702ec836228c1b7314f9295bac0d9467ba506e0d14db7bb2c36003e6"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 321,
+      "keywords": [
+        "treat",
+        "hypertension",
+        "aggressively",
+        "monitor",
+        "response"
+      ],
+      "keyword_hash": "sha256:6dd8ca11636623fe0f464e9c4c1ce6bd870205cd1c2715d1192d874ae963334c"
+    }
+  ]
+}

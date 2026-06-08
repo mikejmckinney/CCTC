@@ -1,0 +1,61 @@
+{
+  "item_id": "cctc-3090",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    },
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 62,
+    "keywords": [
+      "Ischemia-reperfusion",
+      "injury",
+      "principal",
+      "cause",
+      "delayed",
+      "graft",
+      "function",
+      "kidney"
+    ],
+    "keyword_hash": "sha256:88099049f281fd011f13da3c96100631690cf648a0df3dda6e1a94a02aa92364"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 62,
+      "keywords": [
+        "ischemia-reperfusion",
+        "injury",
+        "principal",
+        "cause",
+        "delayed",
+        "graft",
+        "function"
+      ],
+      "keyword_hash": "sha256:bea34724f341371b548be6ab04958f97260b0c65239b58e61c5c9522e5a30312"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 106,
+      "keywords": [
+        "delayed",
+        "graft",
+        "function",
+        "supportive",
+        "until",
+        "improves"
+      ],
+      "keyword_hash": "sha256:6826bd64ae4ae8e13a1ff3a19c3f980612e062356cf1e776be842cbe0b124908"
+    }
+  ]
+}

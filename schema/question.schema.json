@@ -4,7 +4,7 @@
   "title": "CCTE Practice Exam Question",
   "description": "One CCTC practice-exam item. Questions are tagged to the 2026-07 (new) blueprint's domain/task/knowledge codes; the legacy (until 2026-06) blueprint derives its sections via the crosswalk in blueprints/cctc-thru-2026-06.json, so a single question bank serves both exam versions.",
   "type": "object",
-  "required": ["id", "status", "type", "domain", "stem", "correct", "explanation", "references"],
+  "required": ["id", "status", "type", "domain", "stem", "correct", "explanation", "references", "primary_anchor"],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -122,10 +122,50 @@
         }
       }
     },
+    "primary_anchor": {
+      "type": "object",
+      "description": "Primary source passage the item was written from. Required before promotion; used for lookup and anchor validation.",
+      "required": ["type", "section", "keywords"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "enum": ["pdf", "url"] },
+        "source_id": {
+          "type": "string",
+          "description": "When type=pdf: id from scripts/reference/sources.json (e.g. cupples, danovitch, optn-policies)."
+        },
+        "pdf_page": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "1-based PDF page in docs/reference/<filename>.pdf (repo copy)."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "When type=url: verified public source (OPTN/HHS)."
+        },
+        "section": {
+          "type": "string",
+          "minLength": 3,
+          "description": "Chapter/section heading at the anchor (e.g. 'Ch. 3 §h.iii Communication with the transplant team')."
+        },
+        "quote_hint": {
+          "type": "string",
+          "minLength": 5,
+          "description": "Short verbatim phrase from the anchor passage to speed human lookup."
+        },
+        "keywords": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": { "type": "string", "minLength": 2 },
+          "description": "Terms that must appear on the cited PDF page (or in url anchor notes) — validated against the reference index."
+        }
+      }
+    },
     "references": {
       "type": "array",
       "minItems": 1,
-      "description": "At least one source. Prefer public/authoritative sources with a clickable url; textbook citations carry a locator for human verification, no url.",
+      "description": "At least one source from the ABTC CCTC suggested reference list (see docs/reference/ABTC Candidate Handbook.md). Textbook citations carry ch./§/pp. locators; OPTN policy entries may cite the indexed HRSA policies PDF (Policy § + PDF p. N + #page=N url).",
       "items": {
         "type": "object",
         "required": ["citation"],
@@ -133,7 +173,7 @@
         "properties": {
           "citation": { "type": "string", "minLength": 3 },
           "url": { "type": "string", "format": "uri", "description": "Only include if verified live." },
-          "locator": { "type": "string", "description": "e.g. 'OPTN Policy 8.5', 'Danovitch ch. 6', '42 CFR 482.80'." },
+          "locator": { "type": "string", "description": "e.g. 'OPTN Policy 8.5', 'Danovitch ch. 6', 'PDF p. 111'." },
           "kind": { "enum": ["public_authoritative", "guideline", "textbook", "regulation", "other"] }
         }
       }
@@ -152,6 +192,14 @@
     {
       "if": { "properties": { "type": { "const": "one_best" } } },
       "then": { "required": ["options"] }
+    },
+    {
+      "if": { "properties": { "primary_anchor": { "properties": { "type": { "const": "pdf" } } } } },
+      "then": { "properties": { "primary_anchor": { "required": ["source_id", "pdf_page"] } } }
+    },
+    {
+      "if": { "properties": { "primary_anchor": { "properties": { "type": { "const": "url" } } } } },
+      "then": { "properties": { "primary_anchor": { "required": ["url"] } } }
     }
   ]
 }

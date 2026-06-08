@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2065",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 134,
+    "keywords": [
+      "donor-specific",
+      "antibody",
+      "DSA",
+      "testing",
+      "after",
+      "transplant",
+      "HLA",
+      "PRA"
+    ],
+    "keyword_hash": "sha256:93b30296e7f8a954b9c9da5d96c4d13a08e88f11388721177b9fc18cb7d5067c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 134,
+      "keywords": [
+        "testing",
+        "after",
+        "alongside",
+        "pretransplant"
+      ],
+      "keyword_hash": "sha256:5c074ad62543b78b144cfc98b580c8a38ec881dc56c9e098f2398223fe5281ec"
+    }
+  ]
+}

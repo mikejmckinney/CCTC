@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1150",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching home infection-prevention measures after transplantation, which medication-related step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Complete medication for infection prophylaxis or treatment as directed" },
+      { "id": "B", "text": "Stop all infection prophylaxis once the recipient feels well" },
+      { "id": "C", "text": "Infection prophylaxis is optional and never needs to be completed" },
+      { "id": "D", "text": "Prophylaxis should be shared with household members instead of the recipient" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes completing medication for infection prophylaxis or treatment as directed, along with wound care and other household precautions.",
+      "rationale_incorrect": {
+        "B": "Prophylaxis and treatment courses should be completed as directed rather than stopped when the recipient feels well.",
+        "C": "Completing prescribed prophylaxis or treatment is specifically recommended.",
+        "D": "The recipient completes their own prescribed prophylaxis rather than transferring it to household members."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vi. Others",
+      "quote_hint": "Complete medication for infection prophylaxis or treatment as directed",
+      "keywords": ["Complete", "medication", "infection", "prophylaxis", "treatment", "directed"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vi. Others (complete infection prophylaxis/treatment as directed); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Prophylaxis-completion teaching angle distinct from wound-cleaning precaution (cctc-1143) and CMV prophylaxis discharge teaching (cctc-3026); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1151",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A transplant recipient asks what donor-related information may be shared when it affects informed consent. Which example aligns with standard donor–recipient confidentiality references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Organ characteristics or an anatomic abnormality that could affect organ function" },
+      { "id": "B", "text": "The donor family's unrelated vacation itinerary" },
+      { "id": "C", "text": "The procurement coordinator's personal schedule" },
+      { "id": "D", "text": "Unrelated donor employment history with no clinical relevance" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipients may be informed of specific donor information critical to informed consent, including possible donor-transmitted disease risks and organ characteristics or anatomic abnormality that could affect organ function.",
+      "rationale_incorrect": {
+        "B": "Donor family vacation plans are not clinically relevant donor disclosure examples.",
+        "C": "Staff personal schedules are not part of donor information shared for consent.",
+        "D": "Unrelated employment history without clinical relevance is not required donor disclosure."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → p. Donor–recipient confidentiality → i.",
+      "quote_hint": "Organ characteristics or anatomic abnormality that could affect organ function",
+      "keywords": ["Organ", "characteristics", "anatomic", "abnormality", "affect", "organ", "function"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → p. Donor–recipient confidentiality → i. (organ characteristics/anatomic abnormality affecting function); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Recipient-facing anatomic-abnormality disclosure angle distinct from donor-transmitted-disease offer item (cctc-2039) and PHS consent teaching (cctc-2023); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1152",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching about donor–recipient confidentiality after transplantation, which communication point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Donor families will receive a letter from the OPO within 30 days of the donation" },
+      { "id": "B", "text": "Donor families never receive any communication from the OPO after donation" },
+      { "id": "C", "text": "Recipient identifying information is always shared with donor families without restriction" },
+      { "id": "D", "text": "OPO communication with donor families occurs only after ten years" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The OPO may provide general recipient status information to the donor family as part of organ allocation, and donor families will receive a letter from the OPO within 30 days of donation.",
+      "rationale_incorrect": {
+        "B": "Donor families receive OPO communication including a letter within 30 days rather than no contact.",
+        "C": "Only general information such as age decade, health status, and gender may be provided without recipient permission.",
+        "D": "Communication occurs within 30 days rather than being deferred for a decade."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → p. Donor–recipient confidentiality → ii.",
+      "quote_hint": "Donor families will receive a letter from the OPO within 30 days of the donation",
+      "keywords": ["Donor", "families", "receive", "letter", "OPO", "within", "30", "days"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → p. Donor–recipient confidentiality → ii. (OPO letter to donor family within 30 days); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. OPO donor-family letter timing angle distinct from anatomic-abnormality disclosure (cctc-1151) and deceased-donor disease-risk item (cctc-2039); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1153",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604", "010503"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating infection-prevention and donor-confidentiality teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should complete medication for infection prophylaxis or treatment as directed." },
+      { "id": "II", "text": "Recipients may be informed of organ characteristics or anatomic abnormality that could affect organ function." },
+      { "id": "III", "text": "Donor families never receive any communication from the OPO after donation." },
+      { "id": "IV", "text": "Shedding after live-virus vaccination may continue for days, weeks, or months." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Completing prophylaxis, clinically relevant donor anatomic disclosure, and prolonged live-vaccine shedding precautions are supported. Statement III is false because donor families receive an OPO letter within 30 days of donation.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—live-vaccine shedding may persist for a variable period.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because OPO communication with donor families occurs after donation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention and p. Donor–recipient confidentiality",
+      "quote_hint": "Complete medication for infection prophylaxis … Organ characteristics or anatomic abnormality … letter from the OPO within 30 days … Shedding after vaccination with live virus vaccines may continue for days, weeks or months",
+      "keywords": ["Complete", "medication", "prophylaxis", "anatomic", "abnormality", "OPO", "Shedding", "vaccination"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vi. and p. Donor–recipient confidentiality → i.–ii. (prophylaxis completion, anatomic disclosure, OPO letter, live-vaccine shedding); PDF p. 117 and p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Infection/confidentiality combo distinct from health-maintenance combo (cctc-1149) and travel-preparation combo (cctc-1145); corroborating locators on p. 117 and p. 122 verified.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3069",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver transplant recipient with cytomegalovirus (CMV) infection develops cholestatic laboratory abnormalities. Which CMV-related allograft complication should the coordinator recognize?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Vanishing bile duct syndrome" },
+      { "id": "B", "text": "Bronchiolitis obliterans syndrome" },
+      { "id": "C", "text": "Coronary artery vasculopathy" },
+      { "id": "D", "text": "Glomerulopathy without biliary involvement" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Organ-specific CMV effects on allografts include vanishing bile duct syndrome in liver transplants, which may present with cholestatic injury patterns.",
+      "rationale_incorrect": {
+        "B": "Bronchiolitis obliterans is the listed CMV organ-specific effect for lung rather than liver allografts.",
+        "C": "Coronary artery vasculopathy is the listed CMV organ-specific effect for heart allografts.",
+        "D": "Glomerulopathy is the listed CMV organ-specific kidney effect rather than the primary liver biliary complication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "section": "Ch. 5, Infectious Diseases → CMV → 8. Organ-specific effects on allograft → a.",
+      "quote_hint": "Liver: vanishing bile duct syndrome",
+      "keywords": ["Liver", "vanishing", "bile", "duct", "syndrome", "CMV", "allograft", "organ-specific"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CMV → 8. Organ-specific effects on allograft → a. (liver: vanishing bile duct syndrome); PDF p. 202 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Liver CMV vanishing-bile-duct angle distinct from cholangitis/ERCP management (cctc-3039) and metabolic bone disease (cctc-3058); anchor verified on Cupples p. 202.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3070",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030402"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When monitoring a kidney transplant recipient with recurrent cytomegalovirus (CMV) replication, which long-term allograft complication is associated with CMV in standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Glomerulopathy" },
+      { "id": "B", "text": "Vanishing bile duct syndrome" },
+      { "id": "C", "text": "Bronchiolitis obliterans syndrome" },
+      { "id": "D", "text": "Oral aversion" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Organ-specific CMV effects on allografts include glomerulopathy in kidney transplant recipients.",
+      "rationale_incorrect": {
+        "B": "Vanishing bile duct syndrome is the listed CMV organ-specific effect for liver allografts.",
+        "C": "Bronchiolitis obliterans is the listed CMV organ-specific effect for lung allografts.",
+        "D": "Oral aversion is an intestine transplant feeding complication unrelated to CMV kidney effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "section": "Ch. 5, Infectious Diseases → CMV → 8. Organ-specific effects on allograft → d.",
+      "quote_hint": "Kidney: glomerulopathy",
+      "keywords": ["Kidney", "glomerulopathy", "CMV", "allograft", "organ-specific", "effects", "long-term", "complication"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CMV → 8. Organ-specific effects on allograft → d. (kidney: glomerulopathy); PDF p. 202 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Kidney CMV glomerulopathy angle distinct from heart CAV/LV dysfunction (cctc-3066) and skin-cancer long-term risk (cctc-3055); anchor verified on Cupples p. 202.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3071",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030101", "030102"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "An adult kidney transplant recipient has delayed graft function attributed to acute tubular necrosis (ATN) without rejection or obstruction. Evaluate the following clinical statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Increased blood urea nitrogen and creatinine may be present." },
+      { "id": "II", "text": "Anuria or oliguria may occur." },
+      { "id": "III", "text": "Pulmonary edema is a characteristic isolated sign that always distinguishes ATN from other causes." },
+      { "id": "IV", "text": "Elevated potassium and magnesium levels may occur." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "ATN presents as renal failure in the absence of rejection or obstruction with increased BUN/creatinine, anuria or oliguria, and elevated potassium and magnesium. Pulmonary edema is not listed among the characteristic ATN signs in the source question set.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—elevated potassium and magnesium are listed ATN signs.",
+        "C": "Statements I and II are also true; statement III overstates pulmonary edema as a distinguishing isolated ATN sign.",
+        "D": "Statement III is false as stated—pulmonary edema is not among the listed characteristic ATN signs."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 819,
+      "section": "Ch. 7, Kidney Transplantation → review questions → ATN signs → 5.",
+      "quote_hint": "ATN presents as renal failure … Increased BUN and creatinine … Anuria or oliguria … Elevated potassium and magnesium levels",
+      "keywords": ["ATN", "presents", "renal", "failure", "Increased", "BUN", "creatinine", "Anuria"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → review questions → ATN signs → 5. (increased BUN/creatinine, oliguria/anuria, elevated potassium/magnesium); PDF p. 819–820 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Eighteenth complex_combo in bank; adult ATN signs angle distinct from pediatric ATN monitoring combo (cctc-3067) and ureteral obstruction (cctc-3047); answer key verified on Cupples p. 820 (1, 2, 4).",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3072",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030303"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When counseling a kidney recipient starting belatacept maintenance therapy, which medication-safety point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Posttransplant lymphoproliferative disease is an adverse effect and EBV IgG seropositivity is required before use" },
+      { "id": "B", "text": "Belatacept requires daily trough level monitoring like tacrolimus" },
+      { "id": "C", "text": "Belatacept is safe in all Epstein-Barr virus–seronegative recipients without added risk" },
+      { "id": "D", "text": "Belatacept replaces the need for infection monitoring after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Belatacept adverse effects include posttransplant lymphoproliferative disease, and recipients must be Epstein-Barr virus IgG seropositive to decrease PTLD risk; belatacept does not require therapeutic drug level monitoring.",
+      "rationale_incorrect": {
+        "B": "No belatacept level monitoring is necessary per standard references.",
+        "C": "EBV-seronegative recipients have higher PTLD risk; seropositivity is required before belatacept use.",
+        "D": "Recipients still require post-transplant infection and complication monitoring while on belatacept."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 157,
+      "section": "Ch. 4, Pharmacology → Belatacept → 3.c. and 4.e.",
+      "quote_hint": "seropositive for Epstein-Barr virus IgG to decrease the risk of developing PTLD … PTLD … No monitoring of levels are necessary",
+      "keywords": ["seropositive", "Epstein-Barr", "virus", "IgG", "PTLD", "Belatacept", "Adverse", "effects"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Belatacept → 3.c. and 4.e. (EBV IgG seropositivity required; PTLD adverse effect; no level monitoring); PDF p. 157 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Belatacept post-transplant counseling paired with pretransplant eligibility item (cctc-2070); distinct from tacrolimus tremor (cctc-3052) and cyclosporine cosmetic effects (cctc-3044); anchor verified on Cupples p. 157.",
+    "last_updated": "2026-06-05"
+  }
+]

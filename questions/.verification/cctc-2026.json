@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2026",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "danovitch": {
+      "filename": "danovitch-handbook-kidney-transplantation.pdf",
+      "page_count": 625
+    }
+  },
+  "primary_anchor": {
+    "source_id": "danovitch",
+    "pdf_page": 227,
+    "keywords": [
+      "optimal",
+      "ESKD",
+      "care",
+      "considerations",
+      "advocacy",
+      "evaluation",
+      "transplantation"
+    ],
+    "keyword_hash": "sha256:f0b6fe33200f81042c735a476fda340851f08f4bcbe7325e39df45b49dd403bf"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "danovitch",
+      "pdf_page": 227,
+      "keywords": [
+        "evaluation",
+        "purpose",
+        "optimal",
+        "patient",
+        "advocacy"
+      ],
+      "keyword_hash": "sha256:24ca4d5c93d6306a8c4166f2a7c752dddb19b8288b6f00eaf65c777505c0de04"
+    }
+  ]
+}

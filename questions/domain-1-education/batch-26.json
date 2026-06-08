@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1102",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching long-term malignancy risk after transplantation, which skin-cancer pattern aligns with standard health-maintenance references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Squamous cell carcinoma risk increases over time after transplantation" },
+      { "id": "B", "text": "Skin cancer risk disappears completely after the first post-transplant year" },
+      { "id": "C", "text": "Only basal cell carcinoma increases with immunosuppression duration" },
+      { "id": "D", "text": "Transplant recipients have no elevated skin cancer risk compared with the general population" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Squamous cell carcinoma increases over time after transplantation, and skin cancer is the most common malignancy in transplant recipients.",
+      "rationale_incorrect": {
+        "B": "Skin cancer risk persists and may increase with duration of immunosuppression rather than resolving after one year.",
+        "C": "Squamous cell carcinoma is specifically described as increasing over time after transplant.",
+        "D": "Transplant recipients have markedly elevated skin cancer risk compared with the general population."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Skin care → Risk of skin cancer",
+      "quote_hint": "Squamous cell carcinoma increases over time after transplantation … Skin cancer is the most common malignancy in transplant recipients",
+      "keywords": ["Squamous", "cell", "carcinoma", "increases", "over", "time", "after", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Skin care (squamous cell carcinoma increases over time post-transplant); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Squamous-cell long-term risk angle distinct from skin-cancer incidence item (cctc-3054) and malignancy-prevention combo (cctc-3043); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1103",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A transplant recipient planning outdoor activities asks about sun protection. Which teaching point aligns with standard health-maintenance references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Use sunscreen with SPF greater than 50, high UVA absorption, hats, and protective clothing" },
+      { "id": "B", "text": "Sun exposure is encouraged at midday without protection to improve vitamin D" },
+      { "id": "C", "text": "Sunscreen is unnecessary because immunosuppression prevents skin cancer" },
+      { "id": "D", "text": "Only indoor tanning salons are safe for transplant recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sun precautions include reducing sun exposure, using sunscreen with SPF greater than 50 and high UVA absorption, wearing hats and clothing, and planning outdoor activities for early or late in the day.",
+      "rationale_incorrect": {
+        "B": "Recipients are advised to reduce sun exposure and use protection rather than seeking unprotected midday sun.",
+        "C": "Immunosuppression increases skin cancer risk; sun protection remains important.",
+        "D": "Indoor tanning increases carcinogen exposure rather than being a safe alternative."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Skin care → Sun precautions",
+      "quote_hint": "sunscreen with an SPF >50, high UVA absorption, hats, and clothing … Plan outdoor activities for early or late in the day",
+      "keywords": ["sunscreen", "SPF", "50", "UVA", "hats", "clothing", "outdoor", "activities"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Skin care → Sun precautions (SPF >50, hats, clothing, timing); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sun-protection teaching angle distinct from squamous-cell risk recall (cctc-1102) and hot-tub guidance (cctc-1052); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1104",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "During waterborne-infection teaching, which precaution aligns with standard references when municipal water quality is affected?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Observe local boil-water advisories" },
+      { "id": "B", "text": "Ignore boil-water advisories because immunosuppression prevents waterborne illness" },
+      { "id": "C", "text": "Drink untreated lake water when advisories are active" },
+      { "id": "D", "text": "Boil-water advisories apply only to pediatric recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waterborne infection prevention includes observing local boil-water advisories and avoiding swallowing water from lakes, rivers, or the ocean.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressed recipients should follow boil-water advisories rather than ignoring them.",
+        "C": "Untreated surface water should be avoided, especially during advisories.",
+        "D": "Boil-water guidance applies to immunosuppressed transplant recipients broadly, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → infection prevention → iv. Waterborne infections",
+      "quote_hint": "Observe local boil water advisories",
+      "keywords": ["Observe", "local", "boil", "water", "advisories", "Waterborne", "infections"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → infection prevention → iv. Waterborne infections (observe boil-water advisories); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Boil-water advisory angle paired with well-water Cryptosporidium teaching (cctc-1095); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1105",
+    "schema_version": 1,
+    "version": 1,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating long-term skin-cancer prevention teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Squamous cell carcinoma risk increases over time after transplantation." },
+      { "id": "II", "text": "Skin cancer is the most common malignancy in transplant recipients." },
+      { "id": "III", "text": "Squamous cell carcinomas occur predominantly in sun-protected areas never exposed to ultraviolet light." },
+      { "id": "IV", "text": "Sunscreen with SPF greater than 50 is encouraged when recipients are in the sun." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Squamous cell carcinoma increases over time after transplant, skin cancer is the most common transplant malignancy, and SPF greater than 50 is recommended in the sun. Sun-exposed areas are the predominant location of squamous cell carcinomas, so statement III is false.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—SPF greater than 50 sun protection is recommended.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because sun-exposed skin is the predominant site."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Skin care",
+      "quote_hint": "Squamous cell carcinoma increases over time … Skin cancer is the most common malignancy … Sun exposed areas … predominant location … SPF >50",
+      "keywords": ["Squamous", "cell", "carcinoma", "Skin", "cancer", "malignancy", "Sun", "exposed"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Skin care (squamous cell timing, malignancy frequency, sun-exposed sites, SPF >50); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Skin-cancer prevention combo distinct from malignancy-prevention combo (cctc-3043); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  }
+]
