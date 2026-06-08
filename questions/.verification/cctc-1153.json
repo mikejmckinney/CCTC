@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1153",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Complete",
+      "medication",
+      "prophylaxis",
+      "anatomic",
+      "abnormality",
+      "OPO",
+      "Shedding",
+      "vaccination"
+    ],
+    "keyword_hash": "sha256:f0bf6df8d08c75a6af222b43caddd96645f21773027b8d60a182e3ad3ec350ff"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "prophylaxis",
+        "completion",
+        "anatomic",
+        "disclosure",
+        "letter",
+        "live-vaccine",
+        "shedding"
+      ],
+      "keyword_hash": "sha256:f4e991dd5f641e5f99ae5675c42687710002d761ecf2a5ef297a191ad10799aa"
+    }
+  ]
+}

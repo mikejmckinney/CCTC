@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-3152",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 735,
+    "keywords": [
+      "Less",
+      "common",
+      "bacterial",
+      "early",
+      "postoperative",
+      "intestinal",
+      "leaks",
+      "catheters"
+    ],
+    "keyword_hash": "sha256:6c4613cc01901ab7e990c7ecd9a74062ef61556a12f4d526c89d1f1878890c40"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "keywords": [
+        "epidemiology",
+        "early",
+        "timing",
+        "intestinal",
+        "leaks",
+        "indwelling",
+        "catheters",
+        "factors"
+      ],
+      "keyword_hash": "sha256:c9f4d69b7e239298d6279240a6a664fa377d05720ecccf8ffa759e8b44b422fa"
+    }
+  ]
+}

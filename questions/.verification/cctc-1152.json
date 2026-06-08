@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1152",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 122,
+    "keywords": [
+      "Donor",
+      "families",
+      "receive",
+      "letter",
+      "OPO",
+      "within",
+      "30",
+      "days"
+    ],
+    "keyword_hash": "sha256:d9cb188a2a87973cc743c4c91933fec0c784d7324f888660a5884b577f5af1ae"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "keywords": [
+        "letter",
+        "donor",
+        "family",
+        "within"
+      ],
+      "keyword_hash": "sha256:f11dc13d54115ceebbac9cbc9d5f6b187c9c86f10bb60e9cfc7d6213029afaaf"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3149",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching transplant recipients about post-transplant infections, which epidemiologic comparison aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Fungal infections are less common than bacterial infections" },
+      { "id": "B", "text": "Fungal infections are always more common than bacterial infections" },
+      { "id": "C", "text": "Fungal and bacterial infections occur with identical frequency" },
+      { "id": "D", "text": "Fungal infections never occur after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Fungal infections are less common than bacterial infections after transplantation, although they remain an important early postoperative concern with specific risk factors.",
+      "rationale_incorrect": {
+        "B": "Bacterial infections are more common than fungal infections.",
+        "C": "Fungal infections are specifically described as less common than bacterial infections rather than equally frequent.",
+        "D": "Fungal infections do occur, particularly in the early postoperative period."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → 5.a.",
+      "quote_hint": "Less common than bacterial infections",
+      "keywords": ["Less", "common", "bacterial", "infections", "Fungal"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → 5.a. (less common than bacterial infections); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fungal-versus-bacterial epidemiology angle distinct from bacterial-sign teaching (cctc-3132) and Candida presentation item (cctc-3151); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3150",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling a recently transplanted recipient about fungal infection risk, which timing pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Fungal infections usually occur in the early postoperative period" },
+      { "id": "B", "text": "Fungal infections occur only after ten years post-transplant" },
+      { "id": "C", "text": "Fungal infections are limited exclusively to the pretransplant period" },
+      { "id": "D", "text": "Fungal infections never occur in the first year after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Fungal infections are less common than bacterial infections but usually occur in the early postoperative period, especially when risk factors such as surgical complications or indwelling catheters are present.",
+      "rationale_incorrect": {
+        "B": "Early postoperative timing is described rather than exclusive occurrence after a decade.",
+        "C": "Fungal infections are a post-transplant concern rather than being limited to pretransplant.",
+        "D": "Early postoperative occurrence is specifically noted rather than being absent in the first year."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → 5.b.",
+      "quote_hint": "Usually occur in the early postoperative period",
+      "keywords": ["Usually", "occur", "early", "postoperative", "period", "Fungal"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → 5.b. (usually early postoperative period); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Early postoperative fungal-timing angle distinct from fungal epidemiology recall (cctc-3149) and risk-factor combo (cctc-3152); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3151",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "adult",
+    "stem": "An intestinal transplant recipient reports white plaques on the tongue and throat. Which fungal-infection teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Candida albicans commonly presents in the oropharynx, esophagus, or genitalia" },
+      { "id": "B", "text": "Oral white plaques always indicate bacterial pneumonia only" },
+      { "id": "C", "text": "Candida never affects transplant recipients" },
+      { "id": "D", "text": "Oral plaques exclude fungal infection from the differential" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candida albicans is the most common fungal species following intestinal transplantation and most commonly presents in the oropharynx, esophagus, or genitalia with symptoms such as white plaques on oral mucosa, tongue, or throat.",
+      "rationale_incorrect": {
+        "B": "Oral white plaques are described Candida symptoms rather than indicating bacterial pneumonia alone.",
+        "C": "Candida is the most common fungal species after intestinal transplantation.",
+        "D": "Oral plaques are consistent with Candida presentation rather than excluding fungal infection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candida albicans → ii.",
+      "quote_hint": "Most commonly presents in the oropharynx, esophagus, or genitalia",
+      "keywords": ["commonly", "presents", "oropharynx", "esophagus", "genitalia", "Candida"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candida albicans → d.ii. (oropharynx, esophagus, genitalia presentation); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Candida oropharyngeal presentation angle distinct from intestinal bacterial combo (cctc-3096) and fungal epidemiology items (cctc-3149/3150); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3152",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant fungal-infection teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Fungal infections are less common than bacterial infections." },
+      { "id": "II", "text": "Indwelling venous catheters are a risk factor for fungal infection." },
+      { "id": "III", "text": "Surgical complications such as intestinal leaks are risk factors for fungal infection." },
+      { "id": "IV", "text": "Fungal infections never occur in the early postoperative period." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Fungal infections are less common than bacterial infections, and indwelling venous catheters and surgical complications such as intestinal leaks are cited risk factors. Statement IV is false because fungal infections usually occur in the early postoperative period.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—intestinal leaks are listed among surgical risk factors.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because early postoperative timing is specifically described."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → 5.",
+      "quote_hint": "Less common than bacterial infections … Usually occur in the early postoperative period … Surgical complications (particularly intestinal leaks) … Indwelling venous catheters",
+      "keywords": ["Less", "common", "bacterial", "early", "postoperative", "intestinal", "leaks", "catheters"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → 5.a.–c. (epidemiology, early timing, intestinal leaks and indwelling catheters as risk factors); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fungal-infection risk combo distinct from bacterial-treatment combo (cctc-3144) and CVL-infection combo (cctc-3148); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05"
+  }
+]

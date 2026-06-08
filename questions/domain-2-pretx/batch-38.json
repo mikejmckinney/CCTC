@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-2149",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant candidate with strong family history of malignancy asks about post-transplant cancer screening. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "More aggressive screening tests and/or more frequent screening intervals may be required" },
+      { "id": "B", "text": "Family history never influences post-transplant cancer screening" },
+      { "id": "C", "text": "Cancer screening is unnecessary after transplantation" },
+      { "id": "D", "text": "Only one lifetime screening test is ever needed regardless of risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Routine cancer screening per American Cancer Society guidelines is a minimum standard, but more aggressive screening tests and/or more frequent intervals may be required based on family history, personal history, post-transplant course, and current medical status.",
+      "rationale_incorrect": {
+        "B": "Family history is among factors that may require more aggressive or frequent screening.",
+        "C": "Recommended cancer screening continues after transplantation with possible intensification when indicated.",
+        "D": "Screening intervals may be individualized rather than limited to a single lifetime test."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 5.a.",
+      "quote_hint": "more aggressive screening tests and/or more frequent screening intervals may be required",
+      "keywords": ["more", "aggressive", "screening", "tests", "frequent", "intervals", "required"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 5.a. (more aggressive/frequent screening when indicated); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Individualized cancer-screening intensity angle distinct from malignancy-prevention combo (cctc-3116) and hepatitis B HCC prevention (cctc-1112); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2150",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling transplant candidates about long-term malignancy surveillance, which screening-guideline statement aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Posttransplant cancer-screening guidelines developed for renal transplant recipients are applicable to most transplant recipients" },
+      { "id": "B", "text": "Cancer screening applies only to kidney recipients and never to other organ recipients" },
+      { "id": "C", "text": "No cancer screening is recommended after transplantation" },
+      { "id": "D", "text": "Screening guidelines are identical for every recipient regardless of organ type or risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Posttransplant cancer-screening guidelines developed for renal transplant recipients are applicable to most transplant recipients, with individualized adjustments when indicated.",
+      "rationale_incorrect": {
+        "B": "Renal-derived screening guidelines are described as applicable to most transplant recipients rather than kidney recipients alone.",
+        "C": "Routine cancer screening is recommended after transplantation.",
+        "D": "Screening may be individualized based on history and course rather than being identical for every recipient."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 5.b.",
+      "quote_hint": "Posttransplant cancer–screening guidelines have been developed for renal transplant recipients and are applicable to most transplant recipients",
+      "keywords": ["Posttransplant", "cancer-screening", "guidelines", "renal", "transplant", "recipients", "applicable"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 5.b. (renal-derived screening guidelines applicable to most recipients); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Cross-organ screening-guideline applicability angle distinct from individualized screening intensity (cctc-2149) and ACS minimum-standard item (cctc-2151); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2151",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pretransplant evaluation teaching about malignancy prevention, which baseline screening principle aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Routine cancer screening per American Cancer Society guidelines as minimum standards" },
+      { "id": "B", "text": "No routine cancer screening is recommended for transplant candidates or recipients" },
+      { "id": "C", "text": "Cancer screening is deferred until ten years after every transplant" },
+      { "id": "D", "text": "Only skin examination is ever required with no other screening" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cancer prevention includes routine cancer screening per American Cancer Society guidelines as minimum standards, with more aggressive screening when family history, personal history, or post-transplant course warrants it.",
+      "rationale_incorrect": {
+        "B": "Routine ACS-guided screening is recommended rather than omitted.",
+        "C": "Screening begins as part of health maintenance rather than being universally deferred for a decade.",
+        "D": "Multiple screening modalities are addressed rather than skin examination alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 5.",
+      "quote_hint": "Routine cancer screening per American Cancer Society guidelines",
+      "keywords": ["Routine", "cancer", "screening", "American", "Cancer", "Society", "guidelines"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 5. (routine ACS cancer screening as minimum guidelines); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. ACS minimum-screening standard angle distinct from renal-guideline applicability (cctc-2150) and individualized interval counseling (cctc-2149); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2152",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating malignancy-screening teaching for the evaluation team. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "More aggressive screening tests or more frequent intervals may be required based on family or personal history." },
+      { "id": "II", "text": "American Cancer Society guidelines represent minimum screening standards." },
+      { "id": "III", "text": "Cancer screening is never needed after transplantation." },
+      { "id": "IV", "text": "Renal transplant cancer-screening guidelines are applicable to most transplant recipients." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Individualized screening intensity, ACS minimum standards, and applicability of renal-derived guidelines to most recipients are supported. Statement III is false because routine cancer screening is recommended after transplantation.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—renal transplant screening guidelines apply to most recipients.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because cancer screening is part of post-transplant health maintenance."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 5.",
+      "quote_hint": "more aggressive screening tests and/or more frequent screening intervals … Routine cancer screening per American Cancer Society guidelines … applicable to most transplant recipients",
+      "keywords": ["aggressive", "screening", "intervals", "American", "Cancer", "Society", "renal", "recipients"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 5.a.–b. (individualized screening, ACS minimum, renal guidelines for most recipients); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Cancer-screening combo distinct from malignancy-prevention combo (cctc-3116) and PTLD presentation combo (cctc-2148); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  }
+]
