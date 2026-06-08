@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1126",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A female transplant recipient asks about intrauterine device (IUD) contraception after transplantation. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Counsel about increased infection risk with intrauterine devices" },
+      { "id": "B", "text": "Intrauterine devices have no infection risk in immunosuppressed recipients" },
+      { "id": "C", "text": "Intrauterine devices are the only recommended contraceptive method after transplant" },
+      { "id": "D", "text": "Infection risk counseling applies only to male recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching includes counseling recipients about increased risk of infection with intrauterine devices along with other contraception and pregnancy planning topics.",
+      "rationale_incorrect": {
+        "B": "Increased infection risk with intrauterine devices is specifically cited for counseling.",
+        "C": "Multiple contraceptive options are discussed rather than intrauterine devices alone.",
+        "D": "Intrauterine device counseling applies to female recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health → vi.",
+      "quote_hint": "Counsel recipients about increased risk of infection with intrauterine devices",
+      "keywords": ["Counsel", "recipients", "increased", "risk", "infection", "intrauterine", "devices"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → vi. (increased infection risk with IUDs); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. IUD infection-risk angle distinct from oral-contraception counseling (cctc-1123) and condom teaching (cctc-1122); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1127",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching sexual health after transplantation, which counseling point about libido aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Sexual dysfunction or changes in libido may be related to medications; encourage open communication with providers" },
+      { "id": "B", "text": "Libido changes never occur after transplantation" },
+      { "id": "C", "text": "Sexual concerns should never be discussed with the transplant team" },
+      { "id": "D", "text": "All libido changes require permanent discontinuation of immunosuppression" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching notes that sexual dysfunction or changes in libido may be related to medications and encourages patients to openly communicate concerns to healthcare providers.",
+      "rationale_incorrect": {
+        "B": "Medication-related sexual dysfunction and libido changes may occur.",
+        "C": "Open communication with healthcare providers is encouraged.",
+        "D": "Concerns are addressed through counseling and medication review rather than automatic cessation of all immunosuppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health → vii.",
+      "quote_hint": "Sexual dysfunction or changes in libido may be related to medications … openly communicate their concerns to healthcare providers",
+      "keywords": ["Sexual", "dysfunction", "changes", "libido", "medications", "communicate", "healthcare", "providers"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → vii. (libido changes may relate to medications; encourage provider communication); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Libido/sexual-dysfunction teaching angle distinct from appearance changes (cctc-1124) and pregnancy counseling (cctc-1091); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1128",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "After a transplant recipient becomes pregnant or a male recipient fathers a child, which referral aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "National Transplant Pregnancy Registry" },
+      { "id": "B", "text": "No registry referral is ever recommended for transplant pregnancy outcomes" },
+      { "id": "C", "text": "Referral only to a local blood bank registry" },
+      { "id": "D", "text": "Pregnancy registry referral applies only before transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pregnant recipients and males who have fathered a child after transplantation should be referred to the National Transplant Pregnancy Registry.",
+      "rationale_incorrect": {
+        "B": "Registry referral is recommended for pregnancy and fatherhood after transplant.",
+        "C": "The National Transplant Pregnancy Registry is the cited referral resource.",
+        "D": "Referral occurs after pregnancy or fathering a child rather than only pretransplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → l. Pregnancy after transplantation → iv.",
+      "quote_hint": "Refer pregnant recipients and males who have fathered a child to the National Transplant Pregnancy Registry",
+      "keywords": ["Refer", "pregnant", "recipients", "fathered", "child", "National", "Transplant", "Pregnancy"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → l. Pregnancy after transplantation → iv. (National Transplant Pregnancy Registry referral); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pregnancy-registry referral angle distinct from pregnancy-timing counseling (cctc-1091) and reproductive-health combo (cctc-1125); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1129",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating contraception and sexual-health teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Emergency contraception may be considered in certain circumstances." },
+      { "id": "II", "text": "Recipients should be counseled about increased infection risk with intrauterine devices." },
+      { "id": "III", "text": "Sexual dysfunction or libido changes should never be discussed with healthcare providers." },
+      { "id": "IV", "text": "Oral contraception should be discussed with the provider because of thromboembolic risk." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Emergency contraception, intrauterine device infection risk, and provider discussion of oral contraception are supported. Statement III is false because open communication about sexual dysfunction and libido is encouraged.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—oral contraception requires provider discussion due to thromboembolic risk.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because provider communication about sexual concerns is encouraged."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health",
+      "quote_hint": "Emergency contraception … increased risk of infection with intrauterine devices … openly communicate … oral contraception … thromboembolic events",
+      "keywords": ["Emergency", "contraception", "intrauterine", "devices", "Sexual", "dysfunction", "oral", "contraception"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → iv.–vii. (emergency contraception, IUD risk, libido communication, oral contraception thromboembolic risk); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Contraception/sexual-health combo distinct from reproductive-health combo (cctc-1125) and condom recall (cctc-1122); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  }
+]

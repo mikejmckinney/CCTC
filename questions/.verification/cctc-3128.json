@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-3128",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 110,
+    "keywords": [
+      "Family",
+      "members",
+      "visitors",
+      "Wash",
+      "hands",
+      "Cover",
+      "mouth",
+      "coughing"
+    ],
+    "keyword_hash": "sha256:34266703e687a52f3ded028916492a5fc10622b0ecab30efd9ed9d568ed5d299"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "keywords": [
+        "infection",
+        "prevention",
+        "visitor",
+        "hygiene",
+        "cough",
+        "etiquette",
+        "avoid",
+        "contact"
+      ],
+      "keyword_hash": "sha256:d30bcc5a335d46284e29ac9bb1b5a350f1cc0a9a9a26b380ca47857a52b1104f"
+    }
+  ]
+}

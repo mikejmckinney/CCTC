@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2125",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When reviewing Epstein-Barr virus (EBV) epidemiology during evaluation, which incidence pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Reactivation infections occur in approximately 30% to 40% of EBV-seropositive recipients" },
+      { "id": "B", "text": "Reactivation never occurs in EBV-seropositive transplant recipients" },
+      { "id": "C", "text": "Reactivation occurs in fewer than 5% of all seropositive recipients" },
+      { "id": "D", "text": "EBV reactivation applies only to kidney recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Reactivation Epstein-Barr virus infections occur in approximately 30% to 40% of EBV-seropositive recipients, whereas primary infection occurs in most seronegative recipients.",
+      "rationale_incorrect": {
+        "B": "Reactivation is common in seropositive recipients rather than absent.",
+        "C": "The referenced reactivation rate is substantially higher than 5%.",
+        "D": "EBV reactivation is described across solid-organ transplant recipients rather than kidney recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 2. Incidence",
+      "quote_hint": "Reactivation infections occur in approximately 30% to 40% of EBV-seropositive recipients",
+      "keywords": ["Reactivation", "infections", "approximately", "30%", "40%", "EBV-seropositive", "recipients"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 2.b. (reactivation in 30–40% of EBV-seropositive recipients); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. EBV-reactivation incidence angle distinct from primary-infection incidence (cctc-2110) and replication rates with antilymphocyte therapy; anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2126",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant candidate treated with antithymocyte globulin asks about Epstein-Barr virus (EBV) replication risk after transplant. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "EBV replication occurs in about 80% of recipients who receive antilymphocyte antibody therapy" },
+      { "id": "B", "text": "Antilymphocyte therapy eliminates all EBV replication risk" },
+      { "id": "C", "text": "EBV replication never occurs after transplantation" },
+      { "id": "D", "text": "EBV replication risk is identical whether or not antilymphocyte therapy is used" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Epstein-Barr virus replication occurs in approximately 20% to 30% of all solid-organ transplant recipients and in about 80% of recipients who receive antilymphocyte antibody therapy.",
+      "rationale_incorrect": {
+        "B": "Antilymphocyte therapy is associated with higher EBV replication rates rather than eliminating risk.",
+        "C": "EBV replication is common after transplantation, especially with potent immunosuppression.",
+        "D": "Replication rates are higher with antilymphocyte antibody therapy than in the overall recipient population."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 2. Incidence",
+      "quote_hint": "EBV replication occurs in approximately 20% to 30% of all solid organ transplant recipients and in 80% of recipients who receive antilymphocyte antibody therapy",
+      "keywords": ["EBV", "replication", "approximately", "80%", "recipients", "antilymphocyte", "antibody", "therapy"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 2.a. (EBV replication in ~80% with antilymphocyte antibody therapy); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. EBV-replication rate with antilymphocyte therapy distinct from reactivation incidence (cctc-2125) and potent-immunosuppression PTLD risk (cctc-2114); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2127",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pretransplant sexual-health teaching, which contraception guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Emergency contraception may be considered in certain circumstances" },
+      { "id": "B", "text": "Emergency contraception is contraindicated in all transplant candidates and recipients" },
+      { "id": "C", "text": "Emergency contraception is the only method ever discussed" },
+      { "id": "D", "text": "Contraception counseling applies only after ten years post-transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching includes that emergency contraception may be considered in certain circumstances along with other contraceptive and pregnancy-planning counseling.",
+      "rationale_incorrect": {
+        "B": "Emergency contraception may be considered rather than being universally contraindicated.",
+        "C": "Multiple contraceptive options are discussed rather than emergency contraception alone.",
+        "D": "Contraception counseling is part of ongoing sexual health teaching rather than being deferred for a decade."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health → v.",
+      "quote_hint": "Emergency contraception may be considered in certain circumstances",
+      "keywords": ["Emergency", "contraception", "considered", "certain", "circumstances"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → v. (emergency contraception may be considered in certain circumstances); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Emergency-contraception angle distinct from IUD counseling (cctc-1126) and oral-contraception thromboembolic risk (cctc-1123); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2128",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "When counseling about posttransplant lymphoproliferative disease (PTLD) risk in pediatric and older recipients, which age-related factor aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Young infants and children and older age recipients are at increased PTLD risk" },
+      { "id": "B", "text": "Age has no relationship to PTLD risk" },
+      { "id": "C", "text": "Only recipients aged 30 to 40 years are at PTLD risk" },
+      { "id": "D", "text": "Pediatric recipients have zero PTLD risk compared with adults" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Posttransplant lymphoproliferative disease risk factors include age at both extremes: young infants and young children and older age recipients.",
+      "rationale_incorrect": {
+        "B": "Age is listed among PTLD risk factors.",
+        "C": "Young pediatric and older recipients are specifically identified rather than only middle-aged adults.",
+        "D": "Pediatric recipients, especially young infants and children, have increased PTLD risk rather than zero risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 3. Risk factors for PTLD",
+      "quote_hint": "Age: young (infants and young children) and older age recipients",
+      "keywords": ["Age", "young", "infants", "young", "children", "older", "age", "recipients"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 3.h. (young infants/children and older age as PTLD risk factors); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Twenty-sixth pediatric recipient in bank; PTLD age-risk angle distinct from pediatric acetaminophen fever guidance (cctc-1096) and pediatric bacterial-infection combo (cctc-1097); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  }
+]

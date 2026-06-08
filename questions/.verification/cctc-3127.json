@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3127",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Interferon",
+      "Treatment",
+      "options",
+      "PTLD",
+      "Radiotherapy",
+      "R-CHOP"
+    ],
+    "keyword_hash": "sha256:8361b60c436281f4a5c1782044c073436a891f4830a399f0a34e4bcaaae2feb7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "treatment",
+        "options",
+        "includes",
+        "interferon-",
+        "among",
+        "listed",
+        "modalities"
+      ],
+      "keyword_hash": "sha256:95d08418c76a4943793fd1ce8a9a61f684268667bbbb84fdc79f08c3e73fcaec"
+    }
+  ]
+}

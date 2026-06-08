@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **373 draft items** in `questions/domain-*/batch-01.json` through `batch-31.json` (IDs `cctc-1001`–`1125`, `2001`–`2124`, `3001`–`3124`).
+- **385 draft items** in `questions/domain-*/batch-01.json` through `batch-32.json` (IDs `cctc-1001`–`1129`, `2001`–`2128`, `3001`–`3128`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Bank authoring soft targets (see `questions/README.md`, `02-author-questions.md`): cognitive mix ~35/52/13%; `recipient_age: pediatric` **5–7%** of bank (`both` excluded; live CCTC exam ~5% pediatric).
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
@@ -196,10 +196,11 @@ Use these files as the current product ground truth:
 - Batch 29 (2026-06-05): tanning-bed avoidance, hyperlipidemia/hypertension long-term care, pet safety, food cross-contamination, PTLD CMV/mTOR depth, ACS cancer screening combos (adult/both batch).
 - Batch 30 (2026-06-05): exercise counseling, dietary egg/outbreak teaching, hand-hygiene combo, aquarium avoidance, EBV/IVIG PTLD depth, bisphosphonate/DEXA bone-health combo (adult/both batch; pediatric share within 5–7%).
 - Batch 31 (2026-06-05): sexual/reproductive health, PTLD rituximab/R-CHOP/surgery depth, denosumab/calcitonin bone therapy, renal-dysfunction progression (adult/both batch).
+- Batch 32 (2026-06-05): IUD/libido/pregnancy-registry teaching, EBV incidence depth, pediatric PTLD age risk, antirejection prophylaxis, radiotherapy/interferon therapy, visitor hygiene combo.
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 32+)
+- Expand the real question bank under domain directories (batch 33+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land
