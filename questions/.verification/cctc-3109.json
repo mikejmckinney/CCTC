@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3109",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "EBV",
+      "replication",
+      "inhibitors",
+      "antiviral",
+      "ganciclovir",
+      "Valcyte",
+      "Prevention",
+      "PTLD"
+    ],
+    "keyword_hash": "sha256:24fb322a656eb4b0abd28c8d4d47bb9bef53651f8d679abb3e04e5333b178cdd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "replication",
+        "inhibitors",
+        "ganciclovir",
+        "valganciclovir"
+      ],
+      "keyword_hash": "sha256:c9f96d2d4ffed245bc793cc069be623b6bd2a9bef4afd55f8e31e51050f449da"
+    }
+  ]
+}

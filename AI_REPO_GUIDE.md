@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **325 draft items** in `questions/domain-*/batch-01.json` through `batch-27.json` (IDs `cctc-1001`–`1109`, `2001`–`2108`, `3001`–`3108`).
+- **337 draft items** in `questions/domain-*/batch-01.json` through `batch-28.json` (IDs `cctc-1001`–`1113`, `2001`–`2112`, `3001`–`3112`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Bank authoring soft targets (see `questions/README.md`, `02-author-questions.md`): cognitive mix ~35/52/13%; `recipient_age: pediatric` **5–7%** of bank (`both` excluded; live CCTC exam ~5% pediatric).
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
@@ -192,10 +192,11 @@ Use these files as the current product ground truth:
 - Batch 25 (2026-06-05): kidney/heart smoking risks, pet-safety teaching, Listeria/Nocardia combo, EPTS/KDPI, kidney paired donation, CARV/influenza post-transplant depth (adult/both batch to nudge pediatric share toward 5–7%).
 - Batch 26 (2026-06-05): squamous-cell/sun-protection teaching, boil-water advisories, cryptococcosis pretransplant therapy, kidney perfusion allocation, colonoscopy/dental health maintenance, long-term skin surveillance combos.
 - Batch 27 (2026-06-05): gender-specific screening teaching, BCC/SCC epidemiology, baseline/post-transplant DEXA, skin-cancer behavior/distribution combos; pediatric soft target revised to 5–7% (adult/both batch).
+- Batch 28 (2026-06-05): tobacco/marijuana avoidance, diabetes glucose teaching, hepatitis B HCC prevention, visitor precautions, PTLD risk/presentation/treatment/prevention depth (adult/both batch).
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 28+)
+- Expand the real question bank under domain directories (batch 29+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land

@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1110",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Avoid",
+      "smoking",
+      "tobacco",
+      "marijuana",
+      "exposure",
+      "tobacco",
+      "smoke"
+    ],
+    "keyword_hash": "sha256:b4689a8111175796ae1ca63e0d0f42f6a9e9f7750f6b7bdd3e551294d0dc3ef7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "airborne",
+        "infections",
+        "avoid",
+        "tobacco",
+        "marijuana",
+        "smoking",
+        "smoke",
+        "exposure"
+      ],
+      "keyword_hash": "sha256:2a7e30330aa257f7968dcd5b0cb00ee0fc32d6113e6632ac8499c0672691c1a7"
+    }
+  ]
+}

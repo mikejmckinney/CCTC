@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3112",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "EBV",
+      "seronegative",
+      "seropositive",
+      "Fever",
+      "Lymphadenopathy",
+      "immunosuppression",
+      "ganciclovir"
+    ],
+    "keyword_hash": "sha256:c426b9faa62cc511fbf91bbd8ecded61857346bf0904dff1b5a38b0c755963e4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "mismatch",
+        "fever",
+        "lymphadenopathy",
+        "presentation",
+        "reduction",
+        "treatment",
+        "ganciclovir",
+        "prevention"
+      ],
+      "keyword_hash": "sha256:08a6f7da4f23be8172172f56dde18d9e76cc72485d3091085ab73179b75c97e2"
+    }
+  ]
+}

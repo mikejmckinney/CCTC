@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3109",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030201"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating post-transplant Epstein-Barr virus prevention, which intervention aligns with standard references for reducing posttransplant lymphoproliferative disease (PTLD) risk?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Epstein-Barr virus replication inhibitors such as ganciclovir or valganciclovir" },
+      { "id": "B", "text": "Routine live-virus vaccination during peak immunosuppression without interval planning" },
+      { "id": "C", "text": "Permanent discontinuation of all antiviral therapy in every recipient" },
+      { "id": "D", "text": "No preventive measures because PTLD cannot be influenced" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Prevention of PTLD may include Epstein-Barr virus replication inhibitors such as antiviral drugs including ganciclovir and valganciclovir, as well as IVIG in selected cases.",
+      "rationale_incorrect": {
+        "B": "Live vaccines require careful timing around immunosuppression rather than routine administration during peak immunosuppression.",
+        "C": "Antiviral EBV replication inhibitors are preventive options rather than being permanently discontinued in all recipients.",
+        "D": "Preventive antiviral strategies are described for PTLD risk reduction."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 5. Prevention of PTLD",
+      "quote_hint": "EBV replication inhibitors (antiviral drugs such as ganciclovir [Cytovene, Valcyte])",
+      "keywords": ["EBV", "replication", "inhibitors", "antiviral", "ganciclovir", "Valcyte", "Prevention", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 5.a. (EBV replication inhibitors such as ganciclovir/valganciclovir); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. PTLD antiviral prevention angle distinct from belatacept PTLD counseling (cctc-3072) and CMV prevention combo (cctc-1069); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3110",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "When monitoring a lung transplant recipient for malignancy risk, which epidemiologic pattern for posttransplant lymphoproliferative disease (PTLD) aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "PTLD is more common in nonrenal allograft recipients such as lung and heart-lung recipients" },
+      { "id": "B", "text": "PTLD occurs only in kidney transplant recipients" },
+      { "id": "C", "text": "PTLD incidence is identical across all organ types with no variation" },
+      { "id": "D", "text": "PTLD never involves extranodal sites such as the gastrointestinal tract" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD is more common in nonrenal allograft recipients, likely because more intense antirejection therapy may be required; lung and heart-lung transplant types are among higher-risk groups.",
+      "rationale_incorrect": {
+        "B": "PTLD occurs across organ types and is particularly noted in nonrenal recipients.",
+        "C": "Incidence varies by allograft type rather than being uniform.",
+        "D": "PTLD is often extranodal and may involve the gastrointestinal tract, lung, or kidney."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 1. Overview / 2. Risk factors",
+      "quote_hint": "More common in nonrenal allograft recipients … Type of transplant (lung; heart-lung)",
+      "keywords": ["More", "common", "nonrenal", "allograft", "recipients", "lung", "heart-lung", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 1.e. and 2.e. (higher incidence in nonrenal and lung/heart-lung recipients); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Nonrenal PTLD epidemiology angle distinct from heart/lung skin-cancer incidence (cctc-2108) and belatacept PTLD teaching (cctc-3072); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3111",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A pancreas-kidney recipient with diabetes mellitus is receiving antirejection therapy. Which long-term coordination priority aligns with standard post-transplant care references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Strict control of blood glucose levels" },
+      { "id": "B", "text": "No glucose monitoring because steroids prevent hyperglycemia" },
+      { "id": "C", "text": "Defer all diabetes management until five years after transplant" },
+      { "id": "D", "text": "Discontinue all immunosuppression whenever glucose is elevated" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term post-transplant care includes strict control of blood glucose levels in patients with diabetes mellitus, particularly during periods requiring antirejection therapy.",
+      "rationale_incorrect": {
+        "B": "Corticosteroids and other immunosuppressants can worsen glucose control rather than preventing hyperglycemia.",
+        "C": "Glucose management is ongoing rather than deferred for years.",
+        "D": "Immunosuppression changes require transplant-team guidance rather than abrupt discontinuation by the coordinator alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Prevent infection → I.3.",
+      "quote_hint": "Strict control of blood glucose levels in patients with DM",
+      "keywords": ["Strict", "control", "blood", "glucose", "levels", "patients", "DM"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevent infection → I.3. (strict blood glucose control in patients with DM); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant glucose-control coordination angle distinct from strict glucose teaching (cctc-1111) and post-transplant diabetes incidence (cctc-3028); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3112",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant posttransplant lymphoproliferative disease (PTLD) teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Epstein-Barr virus donor-seropositive to recipient-seronegative mismatch is a key PTLD risk factor." },
+      { "id": "II", "text": "PTLD may present with fever or lymphadenopathy." },
+      { "id": "III", "text": "PTLD is never treated by modifying immunosuppression." },
+      { "id": "IV", "text": "Antiviral drugs such as ganciclovir may be used in PTLD prevention." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Epstein-Barr virus mismatch, fever or lymphadenopathy, and antiviral prevention strategies are supported by standard references. Statement III is false because reduction or withdrawal of immunosuppression is a primary PTLD treatment option.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—ganciclovir-class antivirals are cited for PTLD prevention.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because immunosuppression reduction is a treatment option."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD",
+      "quote_hint": "recipient EBV seronegative; donor EBV seropositive … Fever … Lymphadenopathy … Reduction or withdrawal of immunosuppression … ganciclovir",
+      "keywords": ["EBV", "seronegative", "seropositive", "Fever", "Lymphadenopathy", "immunosuppression", "ganciclovir"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 2.b.–4.a. and 5.a. (EBV mismatch risk, fever/lymphadenopathy presentation, IS reduction treatment, ganciclovir prevention); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. PTLD risk/presentation/prevention combo distinct from belatacept PTLD counseling (cctc-3072) and infection/bone-health combo (cctc-3108); anchors verified on Cupples pp. 281–282.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1112",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Hepatitis",
+      "vaccination",
+      "nonimmune",
+      "recipients",
+      "hepatocellular",
+      "carcinoma"
+    ],
+    "keyword_hash": "sha256:de5757402686b6235ec8cbdb93e52146b174d42cb795a1301f589e0f295cff69"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "hepatitis",
+        "vaccination",
+        "nonimmune",
+        "recipients",
+        "hbv-related"
+      ],
+      "keyword_hash": "sha256:b1797ba0c7283468db2784e01daa08cf6c13c0162b5f1017be36b9f08453b8f8"
+    }
+  ]
+}

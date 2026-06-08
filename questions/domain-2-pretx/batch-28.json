@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2109",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling a solid-organ transplant candidate about posttransplant lymphoproliferative disease (PTLD) risk, which factor is described as the most important?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Transplantation of an Epstein-Barr virus–seropositive donor organ into an Epstein-Barr virus–seronegative recipient" },
+      { "id": "B", "text": "Recipient blood type O only" },
+      { "id": "C", "text": "A history of seasonal allergies without Epstein-Barr virus mismatch" },
+      { "id": "D", "text": "Donor age younger than 18 years in every case regardless of viral serostatus" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The most important risk factor for PTLD is transplantation of an Epstein-Barr virus–seropositive donor organ into an Epstein-Barr virus–seronegative recipient.",
+      "rationale_incorrect": {
+        "B": "ABO blood type is not described as the primary PTLD risk factor.",
+        "C": "Epstein-Barr virus donor-recipient mismatch is the key risk described.",
+        "D": "Young donor age alone is not identified as the most important PTLD risk factor."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 3. Risk factors for PTLD",
+      "quote_hint": "Most important risk factor is the transplantation of an EBV-seropositive donor organ into an EBV-seronegative recipient",
+      "keywords": ["Most", "important", "risk", "factor", "EBV-seropositive", "donor", "EBV-seronegative", "recipient"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 3.a. (most important PTLD risk: EBV D+/R−); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Primary PTLD risk-factor angle distinct from EBV screening purpose (cctc-1073) and belatacept EBV requirement (cctc-2074); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2110",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "An Epstein-Barr virus–seronegative adult receives a solid-organ transplant from an Epstein-Barr virus–seropositive donor. What primary-infection risk should the coordinator include in pretransplant counseling?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Primary Epstein-Barr virus infection occurs in approximately 70% to 80% of seronegative recipients" },
+      { "id": "B", "text": "Primary Epstein-Barr virus infection never occurs after transplantation" },
+      { "id": "C", "text": "Primary infection occurs in fewer than 5% of seronegative recipients" },
+      { "id": "D", "text": "Epstein-Barr virus infection is limited to donors and cannot affect recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Primary Epstein-Barr virus infections occur in approximately 70% to 80% of Epstein-Barr virus–seronegative recipients, typically during the first six months post-transplant.",
+      "rationale_incorrect": {
+        "B": "Primary Epstein-Barr virus infection is common in seronegative recipients after transplant.",
+        "C": "The referenced incidence is much higher than 5%.",
+        "D": "Recipients can acquire primary Epstein-Barr virus infection from the community, allograft, or blood products."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 2. Incidence",
+      "quote_hint": "Primary infections occur in approximately 70% to 80% of EBV-seronegative recipients",
+      "keywords": ["Primary", "infections", "approximately", "70%", "80%", "EBV-seronegative", "recipients"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 2.c.i. (primary infection in 70–80% of EBV-seronegative recipients); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Primary EBV infection incidence angle distinct from PTLD risk-factor recall (cctc-2109) and EBV screening rationale (cctc-1073); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2111",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pretransplant infectious-disease teaching, which clinical presentation should the coordinator associate with posttransplant lymphoproliferative disease (PTLD)?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Fever, night sweats, lymphadenopathy, or symptoms resembling infectious mononucleosis" },
+      { "id": "B", "text": "Isolated acute graft tenderness without any systemic symptoms in every case" },
+      { "id": "C", "text": "PTLD always presents with obvious skin rash and never with fever" },
+      { "id": "D", "text": "PTLD cannot involve the gastrointestinal tract or lungs" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD may present with symptoms resembling infectious mononucleosis, fever, night sweats, lymphadenopathy, weight loss, diarrhea, abdominal pain, or pulmonary lesions.",
+      "rationale_incorrect": {
+        "B": "PTLD may be asymptomatic or present with systemic symptoms rather than isolated graft tenderness alone.",
+        "C": "Fever and mononucleosis-like symptoms are described presentations.",
+        "D": "PTLD may involve the gastrointestinal tract, lung, kidney, or other sites."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation",
+      "quote_hint": "Symptoms that resemble infectious mononucleosis … Fever … Night sweats … Lymphadenopathy",
+      "keywords": ["Symptoms", "infectious", "mononucleosis", "Fever", "Night", "sweats", "Lymphadenopathy", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3. Clinical presentation (mono-like symptoms, fever, lymphadenopathy); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. PTLD presentation counseling angle distinct from PTLD risk factors (cctc-2109) and belatacept adverse-effect teaching (cctc-3072); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2112",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When explaining posttransplant lymphoproliferative disease (PTLD) management options during evaluation, which initial treatment principle aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Reduction or withdrawal of immunosuppression" },
+      { "id": "B", "text": "Immediate intensification of all immunosuppression without evaluation" },
+      { "id": "C", "text": "No change in immunosuppression because PTLD is always benign" },
+      { "id": "D", "text": "Routine daily bone marrow biopsy as the only treatment option" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Treatment options for PTLD include reduction or withdrawal of immunosuppression, with additional therapies such as mTOR inhibitors, rituximab-based regimens, or radiotherapy depending on disease severity.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression is reduced or withdrawn rather than intensified as initial PTLD management.",
+        "C": "PTLD represents a spectrum from benign hyperplasia to malignant lymphoma requiring treatment.",
+        "D": "Immunosuppression modification is a primary treatment approach rather than biopsy alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Reduction or withdrawal of immunosuppression",
+      "keywords": ["Reduction", "withdrawal", "immunosuppression", "Treatment", "options", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.a. (reduction or withdrawal of immunosuppression); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. PTLD treatment-principle angle distinct from presentation counseling (cctc-2111) and rituximab desensitization risks (cctc-2066); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  }
+]

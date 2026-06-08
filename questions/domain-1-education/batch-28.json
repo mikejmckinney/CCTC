@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1110",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching infection-prevention lifestyle measures, which guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Avoid smoking tobacco and marijuana and exposure to tobacco smoke" },
+      { "id": "B", "text": "Marijuana smoking is encouraged because it does not affect infection risk" },
+      { "id": "C", "text": "Secondhand tobacco smoke exposure is safe for immunosuppressed recipients" },
+      { "id": "D", "text": "Tobacco avoidance applies only before transplantation, not afterward" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes avoiding smoking tobacco and marijuana and avoiding exposure to tobacco smoke.",
+      "rationale_incorrect": {
+        "B": "Marijuana is included in smoking avoidance rather than being encouraged.",
+        "C": "Exposure to tobacco smoke should be avoided rather than considered safe.",
+        "D": "Smoking avoidance continues as part of post-transplant infection and health maintenance teaching."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → ii. Airborne infections",
+      "quote_hint": "Avoid smoking (tobacco and marijuana) and exposure to tobacco smoke",
+      "keywords": ["Avoid", "smoking", "tobacco", "marijuana", "exposure", "tobacco", "smoke"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → ii. Airborne infections (avoid tobacco and marijuana smoking and smoke exposure); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Tobacco/marijuana avoidance angle distinct from crowded-area influenza teaching (cctc-1024) and dietary combo (cctc-1052); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1111",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant recipient develops post-transplant diabetes mellitus on tacrolimus and prednisone. Which long-term counseling priority aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Strict management of blood glucose levels to minimize long-term effects" },
+      { "id": "B", "text": "No glucose monitoring because immunosuppression prevents diabetic complications" },
+      { "id": "C", "text": "Discontinue all immunosuppression immediately whenever glucose rises" },
+      { "id": "D", "text": "Defer all glucose management until ten years after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Post-transplant diabetes mellitus may be induced by immunosuppressive agents and requires strict management of blood glucose levels to minimize long-term effects.",
+      "rationale_incorrect": {
+        "B": "Post-transplant diabetes requires active glucose management rather than being ignored.",
+        "C": "Immunosuppression is modified under transplant-team guidance rather than stopped abruptly by the coordinator alone.",
+        "D": "Glucose management begins when diabetes develops rather than being deferred for a decade."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects of immunosuppression → i. Diabetes mellitus",
+      "quote_hint": "Requires strict management of blood glucose levels to minimize long-term effects",
+      "keywords": ["Diabetes", "mellitus", "strict", "management", "blood", "glucose", "levels", "long-term"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → i. Diabetes mellitus (strict glucose management); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Strict glucose-management teaching angle distinct from post-transplant diabetes incidence counseling (cctc-3028) and discharge insulin teaching (cctc-1055); anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1112",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "liver",
+    "recipient_age": "both",
+    "stem": "When teaching malignancy-prevention measures, which vaccination guidance aligns with standard references for nonimmune recipients?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hepatitis B vaccination may help prevent hepatitis B virus–related hepatocellular carcinoma" },
+      { "id": "B", "text": "Hepatitis B vaccination is contraindicated in all transplant recipients" },
+      { "id": "C", "text": "Vaccination has no role in preventing transplant-related malignancy" },
+      { "id": "D", "text": "Only live-virus vaccines are recommended for cancer prevention after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cancer-prevention teaching includes hepatitis B vaccination in nonimmune recipients, which may help prevent hepatitis B virus–related hepatocellular carcinoma.",
+      "rationale_incorrect": {
+        "B": "Hepatitis B vaccination is recommended for nonimmune recipients rather than being universally contraindicated.",
+        "C": "Vaccination is one component of malignancy-prevention teaching.",
+        "D": "Live-virus vaccines require special timing considerations; hepatitis B vaccination is an inactivated preventive measure cited for HCC risk reduction."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer",
+      "quote_hint": "Hepatitis B vaccination in nonimmune recipients (may help to prevent hepatitis B virus–related hepatocellular carcinoma)",
+      "keywords": ["Hepatitis", "vaccination", "nonimmune", "recipients", "hepatocellular", "carcinoma"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 3. (hepatitis B vaccination in nonimmune recipients for HBV-related HCC); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Hepatitis B HCC-prevention angle distinct from pediatric HPV/hepatitis B teaching (cctc-1087) and skin-cancer prevention (cctc-1102); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1113",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating visitor infection-prevention teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Visitors who have had recent infections should be asked to postpone visiting." },
+      { "id": "II", "text": "If contact with an ill person cannot be avoided, the recipient and ill person should wear surgical masks." },
+      { "id": "III", "text": "Recipients should actively seek close contact with individuals who have known infection." },
+      { "id": "IV", "text": "Surgical masks are never appropriate for transplant recipients around ill contacts." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Teaching includes asking visitors with recent infections to postpone visits and using surgical masks when contact cannot be avoided. Recipients should avoid individuals with known infection rather than seeking contact, and masks are appropriate when exposure is unavoidable.",
+      "rationale_incorrect": {
+        "B": "Statement III is false—recipients should avoid individuals with known infection.",
+        "C": "Statement I is also true; statements III and IV are false.",
+        "D": "Statements III and IV are false."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → ii. Airborne infections",
+      "quote_hint": "Avoid individuals with known infection … Ask visitors who have had recent infections to postpone visiting … should wear surgical masks",
+      "keywords": ["Avoid", "individuals", "known", "infection", "visitors", "postpone", "surgical", "masks"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → ii. Airborne infections (avoid ill contacts, postpone visits, surgical masks); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Visitor-precaution combo distinct from dietary infection-prevention combo (cctc-1052) and airborne/crowded-area combo (cctc-1024); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  }
+]

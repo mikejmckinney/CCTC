@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2111",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Symptoms",
+      "infectious",
+      "mononucleosis",
+      "Fever",
+      "Night",
+      "sweats",
+      "Lymphadenopathy",
+      "PTLD"
+    ],
+    "keyword_hash": "sha256:9526ba8583a59a1eea44a41494e8a3e03539948d0144433801cfa17c3f637916"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "clinical",
+        "presentation",
+        "mono-like",
+        "symptoms",
+        "fever",
+        "lymphadenopathy"
+      ],
+      "keyword_hash": "sha256:aab2d2c44c825d5bc6ce7fa410c7f2b1707354d4f930cf7f898e8dbeb3ae6518"
+    }
+  ]
+}
