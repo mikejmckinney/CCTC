@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1083",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 208,
+    "keywords": [
+      "Typically",
+      "acquired",
+      "school-age",
+      "slapped",
+      "cheek",
+      "rash",
+      "aplastic",
+      "hematocrit"
+    ],
+    "keyword_hash": "sha256:ad299ca215d1cf7d5b99e2f87a13f2414adecc7f4a1618be4849d5db970b71ec"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "keywords": [
+        "school-age",
+        "acquisition",
+        "blood",
+        "aplasia"
+      ],
+      "keyword_hash": "sha256:53c78f8bb02b9d5e420d5b6bc1996e3d0158146daf0a8ccff3a1c1d569759338"
+    }
+  ]
+}

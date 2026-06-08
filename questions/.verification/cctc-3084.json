@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-3084",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 153,
+    "keywords": [
+      "late",
+      "conversion",
+      "heart",
+      "transplantation",
+      "CNI",
+      "sirolimus",
+      "vasculopathy",
+      "survival"
+    ],
+    "keyword_hash": "sha256:513a3667896616a86a0d9e466bd5f4355a2b0999c1b0717c60b8cefaf7215b38"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 153,
+      "keywords": [
+        "cni-to-sirolimus",
+        "conversion",
+        "reduced",
+        "vasculopathy",
+        "survival",
+        "benefit",
+        "heart",
+        "recipients"
+      ],
+      "keyword_hash": "sha256:fd18f816e28a74e57e80ca899c8c51ba316a4e132f8e8b6266b98d673454ab87"
+    }
+  ]
+}

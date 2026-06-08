@@ -1,0 +1,191 @@
+[
+  {
+    "id": "cctc-2081",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "recall",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "A pancreas islet waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Unlimited waiting time accrues while the candidate remains inactive" },
+      { "id": "B", "text": "No waiting time accrues while the candidate remains inactive" },
+      { "id": "C", "text": "Waiting time accrues only for the first 30 cumulative inactive days" },
+      { "id": "D", "text": "Waiting time accrues only when listed for whole-organ pancreas transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Table 3-3 specifies that pancreas islet candidates accrue unlimited waiting time while inactive, similar to pancreas, kidney, and lung candidates.",
+      "rationale_incorrect": {
+        "B": "No inactive accrual applies to heart and liver candidates, not pancreas islet candidates.",
+        "C": "A 30-day cumulative inactive accrual limit applies to intestine candidates, not pancreas islet candidates.",
+        "D": "Pancreas islet inactive waiting-time rules apply to islet-listed candidates regardless of whole-organ listing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Pancreas islet",
+      "quote_hint": "Pancreas islet … Unlimited time … Candidates accrue waiting time while inactive",
+      "keywords": ["Pancreas", "islet", "Unlimited", "time", "inactive", "waiting", "accrue", "candidates"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (pancreas islet candidates accrue unlimited waiting time while inactive); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. Final OPTN Policy 3.6.A inactive-waiting-time organ entry; paired with pancreas unlimited (cctc-2077); anchor verified on optn-policies p. 46.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2082",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020601"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When assessing deceased-donor infection risk before organ acceptance, which physical examination finding aligns with standard donor risk-assessment references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Track marks suggesting recent drug use" },
+      { "id": "B", "text": "Normal healing scars that automatically prohibit all donation" },
+      { "id": "C", "text": "Absence of any donor chart or history review" },
+      { "id": "D", "text": "Only recipient preference without donor examination" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Donor physical examination includes evidence of recent drug use such as track marks, along with signs of active infection, underlying disease, and other procurement abnormalities.",
+      "rationale_incorrect": {
+        "B": "Not every scar prohibits donation; specific infection and drug-use findings guide risk assessment.",
+        "C": "Physical examination supplements donor chart review rather than replacing all donor data review.",
+        "D": "Donor risk assessment requires structured evaluation rather than recipient preference alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 181,
+      "section": "Ch. 5, Infectious Diseases → Donor-Transmitted Infections → C. Physical Examination → 3.",
+      "quote_hint": "Evidence of recent drug use such as track marks",
+      "keywords": ["Evidence", "recent", "drug", "use", "track", "marks", "Physical", "Examination"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Donor-Transmitted Infections → C. Physical Examination → 3. (track marks suggesting recent drug use); PDF p. 181 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Donor physical-exam angle distinct from donor chart review (cctc-2076) and PHS consent (cctc-2023); anchor verified on Cupples p. 181.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2083",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "application",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "During pancreas transplant evaluation, a candidate with long-standing diabetes has documented pancreatic exocrine insufficiency. How should the coordinator classify this finding?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "An indication category listed for pancreas transplant alone or pancreas after kidney transplantation" },
+      { "id": "B", "text": "A finding that permanently excludes any pancreas transplantation" },
+      { "id": "C", "text": "An indication relevant only to isolated kidney transplantation" },
+      { "id": "D", "text": "A contraindication that prohibits all immunosuppression after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pancreas transplant alone or pancreas after kidney transplantation is indicated for diagnosis of diabetes and for pancreatic exocrine insufficiency among eligible candidates.",
+      "rationale_incorrect": {
+        "B": "Pancreatic exocrine insufficiency is listed among PTA/PAK indication categories rather than automatic exclusion.",
+        "C": "Exocrine insufficiency is a pancreas-transplant indication rather than an isolated kidney indication.",
+        "D": "Exocrine insufficiency relates to transplant candidacy assessment, not prohibition of all immunosuppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → Indications → A.2.",
+      "quote_hint": "Pancreatic exocrine insufficiency",
+      "keywords": ["Pancreatic", "exocrine", "insufficiency", "Pancreas", "transplant", "alone", "indications", "diabetes"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → Indications → A.2. (pancreatic exocrine insufficiency as PTA/PAK indication); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pancreatic exocrine-insufficiency angle distinct from PTA metabolic criteria (cctc-1082) and PAK evaluation (cctc-2050); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2084",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020203"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When coordinating deceased-donor organ acceptance, which psychosocial history element is included in donor infection risk assessment per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Alcohol or drug abuse and incarceration history" },
+      { "id": "B", "text": "Only the recipient's preferred hospital room color" },
+      { "id": "C", "text": "Only post-transplant cosmetic medication preferences" },
+      { "id": "D", "text": "Psychosocial history is never reviewed during donor assessment" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Donor risk assessment includes discussion of psychosocial history such as alcohol or drug abuse, incarceration, high-risk sexual behavior, tattoos, and body piercing.",
+      "rationale_incorrect": {
+        "B": "Donor risk assessment focuses on infection and behavioral exposures rather than recipient room preferences.",
+        "C": "Donor psychosocial history guides transmitted-infection risk rather than cosmetic medication choices.",
+        "D": "Psychosocial history is explicitly included in donor risk assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 181,
+      "section": "Ch. 5, Infectious Diseases → Donor-Transmitted Infections → B. Donor Risk Assessment → 2.d.",
+      "quote_hint": "Psychosocial history … Alcohol/drug abuse … Incarceration",
+      "keywords": ["Psychosocial", "history", "Alcohol", "drug", "abuse", "Incarceration", "donor", "risk"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Donor-Transmitted Infections → B. Donor Risk Assessment → 2.d. (psychosocial history including alcohol/drug abuse and incarceration); PDF p. 181 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Donor psychosocial-risk angle distinct from multidisciplinary consult framing (cctc-2034) and donor chart review (cctc-2076); anchor verified on Cupples p. 181.",
+    "last_updated": "2026-06-05"
+  }
+]

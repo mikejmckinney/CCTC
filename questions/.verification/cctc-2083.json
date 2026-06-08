@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2083",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 825,
+    "keywords": [
+      "Pancreatic",
+      "exocrine",
+      "insufficiency",
+      "Pancreas",
+      "transplant",
+      "alone",
+      "indications",
+      "diabetes"
+    ],
+    "keyword_hash": "sha256:dc636485e098486b6a65ba6d5be325f627f6b9aebd3389137f2f7e64a5409e12"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "keywords": [
+        "pancreatic",
+        "exocrine",
+        "insufficiency",
+        "indication"
+      ],
+      "keyword_hash": "sha256:c00ffd7a0e7263fc7865d1280a1d6bdd5de8e4ed0357a73f5f9bd7969224b99a"
+    }
+  ]
+}

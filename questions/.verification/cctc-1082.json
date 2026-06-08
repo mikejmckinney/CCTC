@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1082",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 825,
+    "keywords": [
+      "insulin",
+      "C-peptide",
+      "ng/mL",
+      "BMI",
+      "28",
+      "kg",
+      "candidates",
+      "criteria"
+    ],
+    "keyword_hash": "sha256:6c1bfc6a8f56f2070c72dff6967ff5c21a3f6977d23e87a972a36649ca5a9f4d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "keywords": [
+        "insulin",
+        "c-peptide",
+        "criteria"
+      ],
+      "keyword_hash": "sha256:6d92d1ef05c4f866d66a97586b98c0c1d9f046200d60c259f8579797eb5cd522"
+    }
+  ]
+}

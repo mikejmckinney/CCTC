@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-3081",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 643,
+    "keywords": [
+      "Hepatorenal",
+      "failure",
+      "rapid",
+      "decrease",
+      "renal",
+      "function",
+      "dialysis",
+      "advanced"
+    ],
+    "keyword_hash": "sha256:ea9d4f34a5ae04428ef81066ec47f127c0ffdb102ca0dc84b5dabc347e3156c5"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 643,
+      "keywords": [
+        "require",
+        "dialysis"
+      ],
+      "keyword_hash": "sha256:517f282c0238c5c2c494dfea4068d38a5c9c6a7eb7b96a829d80169192ccd93c"
+    }
+  ]
+}
