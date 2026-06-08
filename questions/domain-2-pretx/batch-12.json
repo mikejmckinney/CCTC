@@ -1,0 +1,192 @@
+[
+  {
+    "id": "cctc-2045",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "No waiting time accrues while the candidate remains inactive" },
+      { "id": "B", "text": "Unlimited waiting time accrues, as for kidney candidates" },
+      { "id": "C", "text": "Waiting time accrues only for the first 30 cumulative inactive days" },
+      { "id": "D", "text": "Waiting time doubles each week the candidate remains inactive" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Table 3-3 specifies that heart candidates accrue no waiting time while inactive, unlike kidney candidates who accrue unlimited inactive waiting time.",
+      "rationale_incorrect": {
+        "B": "Unlimited inactive accrual applies to kidney candidates, not heart candidates.",
+        "C": "A 30-day cumulative inactive accrual limit applies to intestine candidates, not heart candidates.",
+        "D": "Heart inactive waiting time does not double weekly; it does not accrue at all."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Heart",
+      "quote_hint": "Heart … No time … Candidates accrue waiting time while inactive",
+      "keywords": ["Heart", "No", "time", "inactive", "waiting", "accrue", "candidates"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (heart candidates accrue no waiting time while inactive); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. Seventh 020500 item; heart inactive waiting-time angle paired with kidney unlimited accrual (cctc-2037); anchor verified on optn-policies p. 46.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2046",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": ["020401"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "After evaluation is complete, the interdisciplinary team determines a candidate will not be registered on the waitlist at this time. What OPTN-required communication must the program provide?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Written notification within 10 business days that evaluation is complete and the patient will not be registered on the waiting list at this time" },
+      { "id": "B", "text": "No written notice because only approved candidates receive any communication" },
+      { "id": "C", "text": "Automatic waitlist registration despite the team's determination" },
+      { "id": "D", "text": "Verbal notice only after an organ offer is generated" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Policy 3.5 requires written notification within 10 business days when evaluation is complete and the patient will not be registered on the waiting list at this time.",
+      "rationale_incorrect": {
+        "B": "Policy 3.5 explicitly requires written notification for completed evaluations that do not result in waitlist registration.",
+        "C": "The team's determination not to register must be communicated rather than overridden by automatic listing.",
+        "D": "Written notification is required at evaluation conclusion, not deferred until organ offer."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "section": "Policy 3.5 → Table 3-2 → evaluation complete, not registered",
+      "quote_hint": "evaluation has been completed and the patient will not be registered on the waiting list at this time",
+      "keywords": ["evaluation", "completed", "patient", "not", "registered", "waiting", "list"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
+        "locator": "Policy 3.5 → Table 3-2 (written notification when evaluation complete and patient not registered on waiting list); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. Seventh 020400 item; OPTN not-registered notification distinct from registration notice (cctc-2041) and not-listed counseling (cctc-2017); anchor verified on optn-policies p. 46.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2047",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020602"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A waitlisted candidate changes health insurance and moves to a new address. What is the candidate's responsibility per standard waitlist management references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Notify the transplant team of changes in health insurance and contact information" },
+      { "id": "B", "text": "Update insurance and address only with the organ procurement organization, not the transplant program" },
+      { "id": "C", "text": "Withhold all changes until after transplantation occurs" },
+      { "id": "D", "text": "Automatic delisting occurs without any requirement to notify the team" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waitlist management includes patient responsibility to notify the transplant team of changes in health status, health insurance, and contact information such as address and phone numbers.",
+      "rationale_incorrect": {
+        "B": "The transplant team must be notified directly about insurance and contact changes affecting waitlist management.",
+        "C": "Insurance and contact changes should be reported promptly while waitlisted, not deferred until after transplant.",
+        "D": "Candidates are expected to notify the team; changes do not automatically delist without program review."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education → §9. Waitlist management → b.i.",
+      "quote_hint": "Notify the transplant team of any changes in their Health insurance Contact information (address, phone numbers)",
+      "keywords": ["Notify", "transplant", "team", "Health", "insurance", "Contact", "information"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §9. Waitlist management → b.i. (notify team of health insurance and contact information changes); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 020600 item; waitlist insurance/contact reporting distinct from health-status admissions (cctc-2042) and donor disclosure (cctc-2039); anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2048",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "recall",
+    "organ": "intestine",
+    "recipient_age": "adult",
+    "stem": "When summarizing evaluation outcomes for a candidate with life-threatening intestinal failure, which transplant option is recognized as standard of care in the United States?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Intestine transplantation for adults and children with life-threatening intestinal failure" },
+      { "id": "B", "text": "Intestine transplantation is experimental and never performed in the United States" },
+      { "id": "C", "text": "Lifetime total parenteral nutrition without any surgical option" },
+      { "id": "D", "text": "Isolated cosmetic abdominal surgery without transplant evaluation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Intestine transplantation was recognized in 2000 as the standard of care for adults and children with life-threatening intestinal failure in the United States.",
+      "rationale_incorrect": {
+        "B": "Intestine transplantation is an established standard of care rather than a prohibited experimental procedure in the United States.",
+        "C": "Intestine transplantation is indicated when long-term parenteral nutrition cannot adequately treat intestinal failure.",
+        "D": "Cosmetic surgery is not the standard-of-care option for life-threatening intestinal failure."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 679,
+      "section": "Ch. 13, Intestine Transplantation → Introduction → A.",
+      "quote_hint": "recognized in 2000 as the standard of care for adults and children with life-threatening intestinal failure",
+      "keywords": ["standard", "care", "intestinal", "failure", "life-threatening", "adults", "children"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → Introduction → A. (intestine transplantation standard of care for life-threatening intestinal failure); PDF p. 679 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 020300 item; second intestine-organ tag; standard-of-care framing distinct from long-term TPN outcomes (cctc-3013); anchor verified on Cupples p. 679.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-3045",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": ["030701"],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "adult",
+    "stem": "An intestinal transplant recipient calls reporting bleeding from the ostomy site. According to urgent-contact education, how should the coordinator classify this symptom?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "An urgent matter because ostomy bleeding is a listed potential bleeding source requiring prompt team contact" },
+      { "id": "B", "text": "A non-urgent matter to address at the next routine refill call" },
+      { "id": "C", "text": "An expected finding that never requires transplant team notification" },
+      { "id": "D", "text": "A reason to permanently stop all immunosuppression without team guidance" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bleeding from ostomy sites is listed among urgent matters requiring prompt transplant team contact, alongside oral, rectal, and wound bleeding sources.",
+      "rationale_incorrect": {
+        "B": "Ostomy bleeding is explicitly urgent, not deferred to routine refill calls.",
+        "C": "Post-transplant teaching requires reporting bleeding from ostomy and other listed sources.",
+        "D": "Urgent bleeding prompts team evaluation rather than unilateral immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → h. Communication → iii. Urgent matters → Bleeding",
+      "quote_hint": "Bleeding: potential sources: … Ostomy",
+      "keywords": ["Bleeding", "Ostomy", "urgent", "matters", "Wound", "Rectal", "Oral"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → h. Communication with the transplant team → iii. Urgent matters → Bleeding (ostomy source listed); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 030700 item; intestine ostomy-bleeding angle distinct from oral (cctc-3040), rectal (cctc-3022), and other urgent-contact items; anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3046",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant recipient on a calcineurin inhibitor is started on an ACE inhibitor for hypertension. Which laboratory abnormality should the coordinator anticipate monitoring?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hyperkalemia with possible renal insufficiency" },
+      { "id": "B", "text": "Isolated hypoglycemia without any renal effect" },
+      { "id": "C", "text": "Permanent normalization of all electrolytes without monitoring" },
+      { "id": "D", "text": "Guaranteed improvement in graft function without lab review" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "ACE inhibitors used with calcineurin inhibitors require caution because of risk for hyperkalemia and renal insufficiency.",
+      "rationale_incorrect": {
+        "B": "The interaction of concern is hyperkalemia and renal insufficiency rather than isolated hypoglycemia.",
+        "C": "Combined ACE inhibitor and CNI therapy requires electrolyte and renal monitoring rather than assuming normalized labs.",
+        "D": "Drug combinations may worsen renal function and require monitoring rather than guaranteeing graft improvement."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 162,
+      "section": "Ch. 4, Immunosuppression → CNI-associated hypertension → c.i.ii.",
+      "quote_hint": "ACE inhibitors … Caution when used in combination with CNIs: Risk for hyperkalemia and renal insufficiency",
+      "keywords": ["ACE", "inhibitors", "CNIs", "hyperkalemia", "renal", "insufficiency", "Caution"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → CNI-associated hypertension → c.i.ii. ACE inhibitors (hyperkalemia and renal insufficiency risk with CNIs); PDF p. 162 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 030100 item; hyperkalemia risk with ACE+CNI distinct from urinary-leak labs (cctc-3034) and cholangitis pattern (cctc-3038); anchor verified on Cupples p. 162.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3047",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient develops sudden oliguria and rising serum creatinine months after transplant. Which complication should the coordinator include in the differential?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Obstruction at the ureterovesical anastomotic site" },
+      { "id": "B", "text": "Expected normal healing that never affects urine output" },
+      { "id": "C", "text": "Mandatory graft nephrectomy for every creatinine rise" },
+      { "id": "D", "text": "A complication that can occur only on the day of surgery" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Obstruction at the anastomotic site can occur any time after transplantation and may present with oliguria or elevation of BUN and/or creatinine, requiring surgical treatment.",
+      "rationale_incorrect": {
+        "B": "Oliguria and creatinine rise warrant evaluation for obstruction or other graft problems rather than assumed benign healing.",
+        "C": "Anastomotic obstruction is evaluated and treated surgically rather than mandating immediate nephrectomy for every creatinine rise.",
+        "D": "Anastomotic obstruction may occur at any time after transplant, not only on the day of surgery."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 903,
+      "section": "Ch. 17, Kidney Transplantation → i. Obstruction at the anastomotic site",
+      "quote_hint": "Obstruction at the anastomotic site … Presents as oliguria or elevation of BUN and/or creatinine",
+      "keywords": ["Obstruction", "anastomotic", "oliguria", "elevation", "BUN", "creatinine", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → i. Obstruction at the anastomotic site (oliguria or BUN/creatinine elevation any time after transplant); PDF p. 903 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 030200 item; ureteral obstruction angle distinct from urinary leak (cctc-3035) and rejection fever (cctc-3026); anchor verified on Cupples p. 903.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3048",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030301"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient on azathioprine develops a low white blood cell count. Which adverse effect profile is MOST consistent with this medication?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Bone marrow suppression with leukopenia or pancytopenia" },
+      { "id": "B", "text": "Permanent cure of hypertension without hematologic effects" },
+      { "id": "C", "text": "Guaranteed protection against all infections without cytopenias" },
+      { "id": "D", "text": "No hematologic side effects because azathioprine is not immunosuppressive" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Azathioprine adverse effects include bone marrow suppression resulting in leukopenia, pancytopenia, thrombocytopenia, and/or macrocytic anemia.",
+      "rationale_incorrect": {
+        "B": "Azathioprine is immunosuppressive and may cause cytopenias rather than curing hypertension.",
+        "C": "Immunosuppression increases infection risk; azathioprine may cause leukopenia rather than preventing cytopenias.",
+        "D": "Azathioprine is an antiproliferative immunosuppressant with recognized bone marrow suppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 150,
+      "section": "Ch. 4, Immunosuppression → e. Azathioprine—Adverse effects → i.",
+      "quote_hint": "Bone marrow suppression, resulting in leukopenia, pancytopenia, thrombocytopenia",
+      "keywords": ["Azathioprine", "Bone", "marrow", "suppression", "leukopenia", "pancytopenia", "thrombocytopenia"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → e. Azathioprine—Adverse effects → i. (bone marrow suppression with leukopenia/pancytopenia); PDF p. 150 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 030300 item; azathioprine hematologic toxicity distinct from CNI (cctc-3018/3023), MMF (cctc-3009), and cyclosporine cosmetic effects (cctc-3044); anchor verified on Cupples p. 150.",
+    "last_updated": "2026-06-05"
+  }
+]

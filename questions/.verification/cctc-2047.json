@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2047",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 101,
+    "keywords": [
+      "Notify",
+      "transplant",
+      "team",
+      "Health",
+      "insurance",
+      "Contact",
+      "information"
+    ],
+    "keyword_hash": "sha256:3e8b52cf831da356b1a169961b1d48e180639a8887b598c96dec465d45c9b6c4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "keywords": [
+        "notify",
+        "health",
+        "insurance",
+        "contact",
+        "information",
+        "changes"
+      ],
+      "keyword_hash": "sha256:62ee66118aef5f5be633744772c785307273a2ffde9e77cbfad3dabd224e1872"
+    }
+  ]
+}

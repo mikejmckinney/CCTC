@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3046",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 162,
+    "keywords": [
+      "ACE",
+      "inhibitors",
+      "CNIs",
+      "hyperkalemia",
+      "renal",
+      "insufficiency",
+      "Caution"
+    ],
+    "keyword_hash": "sha256:52224c19813fb4a637a0abc2cc42818f10d378b769ee60a01a14d734fce0fe1c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 162,
+      "keywords": [
+        "inhibitors",
+        "hyperkalemia",
+        "renal",
+        "insufficiency"
+      ],
+      "keyword_hash": "sha256:1c7b9eb4a85c4781565562991872d8896a93773216306ec232ced18c5a176021"
+    }
+  ]
+}

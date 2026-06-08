@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-2045",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 46,
+    "keywords": [
+      "Heart",
+      "No",
+      "time",
+      "inactive",
+      "waiting",
+      "accrue",
+      "candidates"
+    ],
+    "keyword_hash": "sha256:136567c1cb4c882a3927ffa336a6a442635dca0c3ff65a8fa30f7c18467122d2"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "policy": "3.6",
+      "keywords": [
+        "table",
+        "waiting",
+        "inactive",
+        "candidates",
+        "heart",
+        "accrue",
+        "while"
+      ],
+      "keyword_hash": "sha256:140c071df63e75b30ccf8c2b7ed63d7563004be0f45dac55202c6ef3720edd49"
+    }
+  ]
+}

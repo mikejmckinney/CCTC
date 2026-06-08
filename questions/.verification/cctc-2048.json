@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2048",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 679,
+    "keywords": [
+      "standard",
+      "care",
+      "intestinal",
+      "failure",
+      "life-threatening",
+      "adults",
+      "children"
+    ],
+    "keyword_hash": "sha256:dd7cbbe6dfb9dac60fbf11dbb7ab83fa580f5ef8557b9fa00c294dc0ae4aebdb"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 679,
+      "keywords": [
+        "intestine",
+        "transplantation",
+        "standard",
+        "life-threatening",
+        "intestinal",
+        "failure"
+      ],
+      "keyword_hash": "sha256:6066bac0d5a6f399f2f06636d423eca5f89a301f6e26c9cd62e3ecca4422b744"
+    }
+  ]
+}

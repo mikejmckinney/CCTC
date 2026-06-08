@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **133 draft items** in `questions/domain-*/batch-01.json` through `batch-11.json` (IDs `cctc-1001`–`1045`, `2001`–`2044`, `3001`–`3044`).
+- **145 draft items** in `questions/domain-*/batch-01.json` through `batch-12.json` (IDs `cctc-1001`–`1049`, `2001`–`2048`, `3001`–`3048`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
@@ -175,10 +175,11 @@ Use these files as the current product ground truth:
 - Batch 09 (2026-06-05): heart/liver smoking risks, lung pulmonary rehab, pediatric HPV teaching, cardiology referral after positive stress test, indeterminate evaluation outcome, kidney urinary-leak pattern/management, OPTN TCR timing.
 - Batch 10 (2026-06-05): nutritional hyperlipidemia risk, living-donor ESRD counseling, long-term IS `complex_combo`, OPTN inactive kidney waiting-time accrual, SPK suitability, liver HCC surveillance, cholangitis pattern/management, OPTN TRF timing.
 - Batch 11 (2026-06-05): living-donor benefit/risk depth, OPTN registration notification, lung waitlist reporting, malignancy-prevention `complex_combo`, PCP prophylaxis, cyclosporine cosmetic effects.
+- Batch 12 (2026-06-05): vaccination household precautions, heart inactive waiting-time rule, intestine standard of care, ostomy urgent contact, azathioprine cytopenias, ureteral obstruction.
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 12+)
+- Expand the real question bank under domain directories (batch 13+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land

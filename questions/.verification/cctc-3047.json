@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3047",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 903,
+    "keywords": [
+      "Obstruction",
+      "anastomotic",
+      "oliguria",
+      "elevation",
+      "BUN",
+      "creatinine",
+      "transplantation"
+    ],
+    "keyword_hash": "sha256:7fec4a0ec62583291966867a40774c08220ac3dfb67f425f20c69412e501fd1f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 903,
+      "keywords": [
+        "obstruction",
+        "anastomotic",
+        "oliguria",
+        "creatinine",
+        "elevation",
+        "after"
+      ],
+      "keyword_hash": "sha256:92f65ffb2364325fb9cfc42b8f35d23ee0d7c08037388eed9c2258c9827672ec"
+    }
+  ]
+}
