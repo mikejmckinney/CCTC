@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-3049",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": ["030701"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient calls reporting new drainage from the surgical wound. According to urgent-contact education, how should the coordinator classify this finding?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "An urgent matter requiring prompt transplant team contact" },
+      { "id": "B", "text": "A non-urgent matter appropriate for the next routine refill call" },
+      { "id": "C", "text": "An expected finding that never requires notification" },
+      { "id": "D", "text": "A reason to stop all immunosuppression without medical guidance" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "New drainage from the wound is listed among urgent matters requiring prompt transplant team contact, alongside infection symptoms, chest pain, and bleeding.",
+      "rationale_incorrect": {
+        "B": "New wound drainage is explicitly urgent rather than a routine refill matter.",
+        "C": "Post-transplant teaching requires reporting new wound drainage to the team.",
+        "D": "Urgent wound findings prompt team evaluation rather than unilateral immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → h. Communication → iii. Urgent matters",
+      "quote_hint": "New drainage from the wound",
+      "keywords": ["New", "drainage", "wound", "urgent", "matters", "symptoms", "rejection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → h. Communication with the transplant team → iii. Urgent matters (new drainage from the wound listed); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 030700 item; new-wound-drainage urgent angle distinct from bleeding sources (cctc-3045/3040) and infection symptoms (cctc-3002); anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3050",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient develops fever and purulent surgical wound drainage two weeks post-transplant. Which management approach aligns with standard complication references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Surgical wound infection may require debridement in addition to antimicrobial therapy" },
+      { "id": "B", "text": "Wound infections never occur after kidney transplantation" },
+      { "id": "C", "text": "Permanent cessation of all immunosuppression without surgical input" },
+      { "id": "D", "text": "No antimicrobial therapy because all wound drainage is benign" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Surgical wound infections may require debridement in addition to antimicrobial therapy, with empiric coverage until culture results are available.",
+      "rationale_incorrect": {
+        "B": "Surgical wound infections are a recognized post-transplant complication.",
+        "C": "Management includes antimicrobial therapy and possible debridement under team guidance, not unilateral immunosuppression cessation.",
+        "D": "Purulent wound drainage with fever warrants antimicrobial evaluation and possible debridement rather than assuming benign healing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 230,
+      "section": "Ch. 5, Infectious Diseases → b. Surgical wound infections",
+      "quote_hint": "Surgical wound infections … May require debridement in addition to antimicrobial therapy",
+      "keywords": ["Surgical", "wound", "infections", "debridement", "antimicrobial", "therapy", "empiric"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → b. Surgical wound infections (debridement plus antimicrobial therapy); PDF p. 230 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 030200 item; surgical wound infection management distinct from ureteral obstruction (cctc-3047) and urinary leak (cctc-3035); anchor verified on Cupples p. 230.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3051",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030301"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient started on tacrolimus reports new hand tremor. Which adverse effect teaching is MOST accurate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Tremor is among the common tacrolimus side effects" },
+      { "id": "B", "text": "Tacrolimus never causes neurologic or tremor symptoms" },
+      { "id": "C", "text": "Tremor always indicates the graft has failed" },
+      { "id": "D", "text": "Tremor requires permanent discontinuation of all transplant medications without team review" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Common tacrolimus adverse effects include hypertension, nephrotoxicity, hyperglycemia, tremor, diarrhea, and cosmetic effects such as alopecia.",
+      "rationale_incorrect": {
+        "B": "Tremor is listed among common tacrolimus neurologic side effects.",
+        "C": "Tremor may reflect medication adverse effects and warrants team evaluation rather than automatically indicating graft failure.",
+        "D": "Medication side effects are managed with team review and dose adjustment rather than unilateral permanent discontinuation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 145,
+      "section": "Ch. 4, Immunosuppression → f. Tacrolimus—Adverse effects → ii.",
+      "quote_hint": "The most common side effects of tacrolimus are … Tremor",
+      "keywords": ["Tacrolimus", "common", "side", "effects", "Tremor", "Nephrotoxicity", "Hypertension"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → f. Tacrolimus—Adverse effects → ii. (tremor among common side effects); PDF p. 145 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 030300 item; tacrolimus tremor angle distinct from nephrotoxicity (cctc-3018), cyclosporine cosmetic effects (cctc-3044), and azathioprine cytopenias (cctc-3048); anchor verified on Cupples p. 145.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3052",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030502"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient reports unilateral leg swelling on the side of the transplant. What complication should the coordinator include in the differential and communicate to the team?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Lymphocele near the allograft, which may be infected or uninfected" },
+      { "id": "B", "text": "Expected normal finding that never requires evaluation" },
+      { "id": "C", "text": "Mandated indication for immediate graft nephrectomy in every case" },
+      { "id": "D", "text": "A finding unrelated to the transplant surgical site" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Unilateral leg edema on the side of the kidney transplant may be a sign of a lymphocele, either infected or not infected, near the allograft.",
+      "rationale_incorrect": {
+        "B": "Unilateral transplant-side leg edema warrants evaluation for lymphocele rather than assumed benign healing.",
+        "C": "Lymphocele is evaluated and managed by the team; it does not mandate immediate nephrectomy in every case.",
+        "D": "The finding is specifically associated with the transplant side and allograft region."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 230,
+      "section": "Ch. 5, Infectious Diseases → 8.",
+      "quote_hint": "Unilateral leg edema on the side of the kidney transplant may be a sign of a lymphocele",
+      "keywords": ["Unilateral", "leg", "edema", "kidney", "transplant", "lymphocele", "allograft"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → 8. (unilateral leg edema as possible lymphocele sign near kidney allograft); PDF p. 230 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 030500 item; lymphocele monitoring angle distinct from clinic intervals (cctc-3014/3024) and lab monitoring (cctc-3041); anchor verified on Cupples p. 230.",
+    "last_updated": "2026-06-05"
+  }
+]

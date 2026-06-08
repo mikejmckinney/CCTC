@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3051",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 145,
+    "keywords": [
+      "Tacrolimus",
+      "common",
+      "side",
+      "effects",
+      "Tremor",
+      "Nephrotoxicity",
+      "Hypertension"
+    ],
+    "keyword_hash": "sha256:7740176a1a6479902650076c15ced79ce9ec71e20044ca518e80c53d7c08e3b6"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 145,
+      "keywords": [
+        "tremor",
+        "among",
+        "common",
+        "effects"
+      ],
+      "keyword_hash": "sha256:f4c0e8cae01b39b3f1c7c4ea92b700b00fc405d4394df2e61da70419caab71cd"
+    }
+  ]
+}

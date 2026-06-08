@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **145 draft items** in `questions/domain-*/batch-01.json` through `batch-12.json` (IDs `cctc-1001`–`1049`, `2001`–`2048`, `3001`–`3048`).
+- **157 draft items** in `questions/domain-*/batch-01.json` through `batch-13.json` (IDs `cctc-1001`–`1053`, `2001`–`2052`, `3001`–`3052`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
@@ -176,10 +176,11 @@ Use these files as the current product ground truth:
 - Batch 10 (2026-06-05): nutritional hyperlipidemia risk, living-donor ESRD counseling, long-term IS `complex_combo`, OPTN inactive kidney waiting-time accrual, SPK suitability, liver HCC surveillance, cholangitis pattern/management, OPTN TRF timing.
 - Batch 11 (2026-06-05): living-donor benefit/risk depth, OPTN registration notification, lung waitlist reporting, malignancy-prevention `complex_combo`, PCP prophylaxis, cyclosporine cosmetic effects.
 - Batch 12 (2026-06-05): vaccination household precautions, heart inactive waiting-time rule, intestine standard of care, ostomy urgent contact, azathioprine cytopenias, ureteral obstruction.
+- Batch 13 (2026-06-05): obesity contraindication, unpasteurized-dairy teaching, dietary `complex_combo`, hot-tub guidance, OPTN waitlist removal, PAK evaluation, skin/dentition screening, bone densitometry, wound-drainage urgent contact, surgical wound infection, tacrolimus tremor, lymphocele monitoring.
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 13+)
+- Expand the real question bank under domain directories (batch 14+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land

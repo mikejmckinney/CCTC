@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3049",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 111,
+    "keywords": [
+      "New",
+      "drainage",
+      "wound",
+      "urgent",
+      "matters",
+      "symptoms",
+      "rejection"
+    ],
+    "keyword_hash": "sha256:3685cdefd5a7a08d7ab93c60fa78533fb0617f475b3b31aaa69bc36d9e6718e6"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "keywords": [
+        "urgent",
+        "matters",
+        "drainage",
+        "wound",
+        "listed"
+      ],
+      "keyword_hash": "sha256:95a94a30eeb719361c15b14f36d3831d2659b99ea77b0ecdf94d650cce5ba994"
+    }
+  ]
+}

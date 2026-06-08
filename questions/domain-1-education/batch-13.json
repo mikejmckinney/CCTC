@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1050",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pre-transplant evaluation counseling, a candidate with severe obesity asks whether weight affects transplant eligibility. Which teaching point aligns with standard contraindication references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Severe obesity may be a contraindication to transplantation" },
+      { "id": "B", "text": "Obesity has no effect on transplant candidacy at any level" },
+      { "id": "C", "text": "Only underweight candidates are evaluated for contraindications" },
+      { "id": "D", "text": "Obesity automatically guarantees waitlist priority" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Nutritional evaluation identifies obesity as a comorbidity that, if severe, may be a contraindication to transplantation.",
+      "rationale_incorrect": {
+        "B": "Obesity is specifically addressed as a comorbidity that can affect candidacy.",
+        "C": "Both overweight and underweight candidates undergo nutritional assessment for transplant suitability.",
+        "D": "Obesity is a comorbidity reviewed for candidacy rather than an automatic priority boost."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 32,
+      "section": "Ch. 1, Evaluation → H. Nutritional evaluation → 1.a.i.",
+      "quote_hint": "Obesity is considered a comorbidity and, if severe, may be a contraindication to transplantation",
+      "keywords": ["Obesity", "comorbidity", "severe", "contraindication", "transplantation", "nutritional"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → H. Nutritional evaluation → 1.a.i. (severe obesity may be a contraindication); PDF p. 32 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 010200 item; obesity-contraindication angle distinct from smoking risks (cctc-1034/1037); anchor verified on Cupples p. 32.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1051",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient asks whether soft cheeses from a local farm are safe after transplant. Which dietary teaching aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Avoid unpasteurized milk and products made from unpasteurized milk such as certain soft cheeses" },
+      { "id": "B", "text": "All unpasteurized dairy products are encouraged for immune support" },
+      { "id": "C", "text": "Only meat restrictions apply; dairy requires no precautions" },
+      { "id": "D", "text": "Soft cheeses are safe regardless of pasteurization status" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Dietary infection-prevention teaching includes avoiding unpasteurized foods, including milk and products made from unpasteurized milk such as certain soft cheeses.",
+      "rationale_incorrect": {
+        "B": "Unpasteurized dairy increases foodborne infection risk and is not recommended.",
+        "C": "Dietary precautions include unpasteurized dairy as well as undercooked meat and seafood.",
+        "D": "Pasteurization status matters; unpasteurized soft cheeses should be avoided."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iii. Dietary precautions",
+      "quote_hint": "Do not consume unpasteurized foods including … Products made from unpasteurized milk (e.g., certain soft cheeses)",
+      "keywords": ["unpasteurized", "milk", "soft", "cheeses", "consume", "foods", "dietary"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iii. Dietary precautions (avoid unpasteurized milk and soft cheeses); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Tenth 010600 item; unpasteurized-dairy angle distinct from live-virus household contact (cctc-1046) and vaccination combo (cctc-1048); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1052",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604", "010605"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating dietary infection-prevention teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should not eat raw seed sprouts." },
+      { "id": "II", "text": "Bagged lettuce labeled pre-washed should still be washed before eating." },
+      { "id": "III", "text": "Raw or undercooked meat and seafood are safe for immunosuppressed recipients." },
+      { "id": "IV", "text": "Unpasteurized fruit or vegetable juices should be avoided." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Dietary teaching advises against raw sprouts, unpasteurized juices, and raw or undercooked meat and seafood, and recommends washing bagged lettuce even when labeled pre-washed.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—unpasteurized juices should be avoided.",
+        "C": "Statements I and II are also true; statement III is false.",
+        "D": "Statement III is false; raw or undercooked meat and seafood are not safe."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iii. Dietary precautions",
+      "quote_hint": "Do not eat raw seed sprouts … Wash bagged lettuce … Do not consume unpasteurized … fruit or vegetable juices",
+      "keywords": ["raw", "seed", "sprouts", "unpasteurized", "juices", "bagged", "lettuce"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iii. Dietary precautions (sprouts, bagged lettuce washing, unpasteurized juices, raw meat/seafood); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Tenth complex_combo in bank; distinct from infection-prevention combo (cctc-1024); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1053",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient planning to use a hotel hot tub after discharge asks about infection risk. What teaching aligns with standard post-transplant infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Follow transplant program guidance on hot tubs, tap water, and related environmental exposures" },
+      { "id": "B", "text": "Hot tubs are universally safe without any program-specific restrictions" },
+      { "id": "C", "text": "Environmental water exposures never affect immunosuppressed recipients" },
+      { "id": "D", "text": "Hot tub use requires stopping all immunosuppression permanently" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant programs may provide additional infection-prevention guidelines regarding tap water, water filters, mold exposure, and use of hot tubs.",
+      "rationale_incorrect": {
+        "B": "Hot tub and water exposures are addressed in program-specific infection-prevention guidance rather than declared universally safe.",
+        "C": "Environmental exposures including hot tubs may pose infection risk to immunosuppressed recipients.",
+        "D": "Infection-prevention teaching addresses environmental exposures; it does not require stopping immunosuppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vii.",
+      "quote_hint": "additional infection prevention guidelines regarding … tap water … use of hot tubs",
+      "keywords": ["infection", "prevention", "guidelines", "tap", "water", "hot", "tubs"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vii. (program guidelines on tap water, water filters, mold, hot tubs); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Tenth 010500 item; environmental exposure angle distinct from travel restriction (cctc-1025) and osteopenia (cctc-1047); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  }
+]
