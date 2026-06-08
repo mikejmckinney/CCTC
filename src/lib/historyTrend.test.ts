@@ -8,7 +8,7 @@ function makeEntry(id: string, completedAt: string, percent: number): HistoryEnt
     completedAt,
     settings: {
       blueprintId: 'cctc-from-2026-07',
-      itemCount: 10,
+      questionCount: 10,
       timed: false,
       timeMinutes: 180,
       showTimer: true,
@@ -18,6 +18,9 @@ function makeEntry(id: string, completedAt: string, percent: number): HistoryEnt
     },
     timeUsedSeconds: 600,
     itemIds: ['cctc-1001'],
+    items: [],
+    answers: {},
+    flaggedForReview: [],
     result: {
       correct: Math.round((percent / 100) * 10),
       total: 10,

@@ -1193,21 +1193,29 @@ function App() {
                     role="img"
                     aria-label={`Score trend across the last ${historyTrend.points.length} sessions`}
                   >
-                    {historyTrend.targetThreshold !== null && (
-                      <div className="trend-chart__target" style={{ bottom: `${historyTrend.targetThreshold}%` }}>
-                        <span className="trend-chart__target-label">Target {historyTrend.targetThreshold}%</span>
-                      </div>
-                    )}
-                    {historyTrend.points.map((point) => (
-                      <div key={point.id} className="trend-chart__bar-wrap">
-                        <div
-                          className={['trend-chart__bar', point.belowTarget ? 'is-below-target' : ''].filter(Boolean).join(' ')}
-                          style={{ height: `${point.percent}%` }}
-                          title={`${point.label}: ${point.percent}% (${point.mode})`}
-                        />
-                        <span className="trend-chart__label">{point.label}</span>
-                      </div>
-                    ))}
+                    <div className="trend-chart__plot">
+                      {historyTrend.targetThreshold !== null && (
+                        <div className="trend-chart__target" style={{ bottom: `${historyTrend.targetThreshold}%` }}>
+                          <span className="trend-chart__target-label">Target {historyTrend.targetThreshold}%</span>
+                        </div>
+                      )}
+                      {historyTrend.points.map((point) => (
+                        <div key={point.id} className="trend-chart__bar-wrap">
+                          <div
+                            className={['trend-chart__bar', point.belowTarget ? 'is-below-target' : ''].filter(Boolean).join(' ')}
+                            style={{ height: `${point.percent}%` }}
+                            title={`${point.label}: ${point.percent}% (${point.mode})`}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="trend-chart__labels">
+                      {historyTrend.points.map((point) => (
+                        <span key={point.id} className="trend-chart__label">
+                          {point.label}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                   <ul className="plain-list">

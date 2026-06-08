@@ -206,6 +206,7 @@ Use these files as the current product ground truth:
 - History trend chart + summary (`src/lib/historyTrend.ts`, History view in `App.tsx`)
 - GitHub Pages deploy workflow (`deploy-pages.yml`, `VITE_BASE_PATH`)
 - CSS dedup + `:focus-visible` + mobile sticky session toolbar
+- Trend chart uses fixed plot area (0–100% scale); `historyTrend.test.ts` matches `HistoryEntry` schema
 - Remaining: enable Pages in repo settings, category-level history drill-down, flag-export UX copy
 
 ### Planned next

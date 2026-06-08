@@ -211,8 +211,10 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] **History trend view (2026-06-08):** bar chart + average/best/latest-delta summary for last 20 sessions (`src/lib/historyTrend.ts`).
 - [x] **GitHub Pages deploy (2026-06-08):** `deploy-pages.yml` + `VITE_BASE_PATH=/CCTE/` in `vite.config.ts`.
 - [x] **CSS cleanup (2026-06-08):** removed duplicate legacy `app.css` block that overwrote responsive rules.
+- [x] **Trend chart scale fix (2026-06-08):** dedicated 160px plot area so bar heights and target line share 0–100% scale; labels below plot.
+- [x] **CI fix (2026-06-08):** `historyTrend.test.ts` uses valid `HistoryEntry` / `SessionSettings` fields (`questionCount`, `items`, `answers`, `flaggedForReview`).
 - [ ] Device-level responsive and accessibility pass (sticky session toolbar on mobile, `:focus-visible`, 44px tap targets — partial).
-- [ ] Enable GitHub Pages in repo settings and verify live deploy URL.
+- [ ] Enable GitHub Pages in repo settings and verify live deploy URL (workflow lands with PR #4).
 - [ ] Optional: category-level history drill-down and flag-export documentation in learner UI.
 
 ---

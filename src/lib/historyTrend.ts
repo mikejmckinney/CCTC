@@ -1,11 +1,11 @@
-import type { HistoryEntry } from '../types/exam';
+import type { ExamMode, HistoryEntry } from '../types/exam';
 
 export type HistoryTrendPoint = {
   id: string;
   label: string;
   percent: number;
   completedAt: string;
-  mode: string;
+  mode: ExamMode;
   belowTarget: boolean;
 };
 
@@ -36,7 +36,7 @@ export function buildHistoryTrend(entries: HistoryEntry[], limit = 20): HistoryT
     percent: entry.result.percent,
     completedAt: entry.completedAt,
     mode: entry.settings.mode,
-    belowTarget: entry.result.percent < entry.settings.targetThreshold
+    belowTarget: entry.result.percent < (entry.settings.targetThreshold ?? 70)
   }));
 
   const percents = points.map((point) => point.percent);
