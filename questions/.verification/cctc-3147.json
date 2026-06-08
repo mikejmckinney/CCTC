@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3147",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 735,
+    "keywords": [
+      "Blood",
+      "cultures",
+      "drawn",
+      "daily",
+      "until",
+      "negative"
+    ],
+    "keyword_hash": "sha256:7275f2a76c03a1e075f9c52db05787f9bfde7e167e436a907bd2f7dd365b271c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "keywords": [
+        "daily",
+        "blood",
+        "cultures",
+        "until",
+        "negative"
+      ],
+      "keyword_hash": "sha256:9ffb216016e745dc429f900feaa8c2c00719884bc728ae0c107bd3022ae1baf2"
+    }
+  ]
+}

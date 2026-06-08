@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3146",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 735,
+    "keywords": [
+      "Reposition",
+      "patient",
+      "every",
+      "hours",
+      "encourage",
+      "activity",
+      "ambulatory"
+    ],
+    "keyword_hash": "sha256:fc26b2ff4f01378d84a39d7a78aa062f67e117445e3623337dacb77288c8b449"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "keywords": [
+        "bacterial",
+        "pneumonia",
+        "reposition",
+        "every",
+        "hours",
+        "encourage",
+        "ambulatory",
+        "activity"
+      ],
+      "keyword_hash": "sha256:cdbe3639a61d3455adac81f71846feb4fc527ba03f442af837460c67a8536896"
+    }
+  ]
+}

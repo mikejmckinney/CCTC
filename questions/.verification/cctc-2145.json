@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2145",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Weight",
+      "loss",
+      "Clinical",
+      "presentation",
+      "PTLD"
+    ],
+    "keyword_hash": "sha256:470b1bbbb25099b4ea4756485929c0475c713caad437cf0f6ea7706fd83202ae"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "weight",
+        "among",
+        "clinical",
+        "presentations"
+      ],
+      "keyword_hash": "sha256:2b15fec946be0e3187442b8ae94e2bf4f949feb2f9a01d177049adef4b57afa5"
+    }
+  ]
+}

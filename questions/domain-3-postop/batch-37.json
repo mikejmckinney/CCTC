@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3145",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating care for a transplant recipient with an infected surgical wound, which wound-management principle aligns with standard bacterial-infection references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wound treatment varies based on wound type, depth, drainage, progression of granulation tissue, and location" },
+      { "id": "B", "text": "All wound infections are managed identically regardless of depth or drainage" },
+      { "id": "C", "text": "Wound care never considers granulation tissue progression" },
+      { "id": "D", "text": "Antibiotics alone replace all local wound management in every case" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Wound infection management includes appropriate antibiotics based on culture and sensitivities, with wound treatment varying by wound type, extent and depth, drainage, progression of granulation tissue, and location.",
+      "rationale_incorrect": {
+        "B": "Wound management is individualized rather than identical for all infections.",
+        "C": "Granulation tissue progression is among factors guiding wound treatment.",
+        "D": "Local wound care is individualized in addition to antibiotics rather than being replaced by antibiotics alone in every case."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.iv.",
+      "quote_hint": "Wound treatment varies based on type of wound, extent and depth, amount of drainage, progression of granulation tissue, and location",
+      "keywords": ["Wound", "treatment", "varies", "drainage", "granulation", "tissue", "location"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.iv. (wound treatment individualized by type, depth, drainage, granulation, location); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Wound-management individualization angle distinct from wound dehiscence sign (cctc-3141) and sensitivity-guided antibiotics (cctc-3143); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3146",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant recipient with bacterial pneumonia is being monitored on the unit. Which nursing intervention aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Reposition the patient every 2 hours and encourage activity if ambulatory" },
+      { "id": "B", "text": "Keep the patient in one position continuously to conserve energy" },
+      { "id": "C", "text": "Discourage coughing and deep breathing to prevent fatigue" },
+      { "id": "D", "text": "Oxygen saturation monitoring is unnecessary during bacterial pneumonia" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bacterial pneumonia management includes auscultation for respiratory changes, inhalation or percussive therapy, encouraging deep breathing and coughing, monitoring supplemental oxygen, and repositioning every 2 hours with activity when ambulatory.",
+      "rationale_incorrect": {
+        "B": "Repositioning every 2 hours is recommended rather than maintaining one position continuously.",
+        "C": "Deep breathing and coughing are encouraged rather than discouraged.",
+        "D": "Oxygen saturation and supplemental oxygen are monitored during respiratory infection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.v.",
+      "quote_hint": "Reposition the patient every 2 hours; encourage activity if ambulatory",
+      "keywords": ["Reposition", "patient", "every", "hours", "encourage", "activity", "ambulatory"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.v. Bacterial pneumonia (reposition every 2 hours, encourage ambulatory activity); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Bacterial-pneumonia repositioning angle distinct from chest-x-ray diagnostic item (cctc-3138) and respiratory sign combo (cctc-3132); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3147",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When managing a central venous line (CVL) infection in a transplant recipient, which monitoring step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Draw blood cultures daily until negative" },
+      { "id": "B", "text": "Blood cultures are obtained only once at diagnosis and never repeated" },
+      { "id": "C", "text": "CVL infections never require blood cultures" },
+      { "id": "D", "text": "Daily cultures continue indefinitely even after documented clearance" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Central venous line infection management includes appropriate antimicrobial therapy based on culture and sensitivities, with blood cultures drawn daily until negative and treatment usually continuing for 10 to 14 days from the first negative culture.",
+      "rationale_incorrect": {
+        "B": "Daily blood cultures until negative are specifically recommended rather than a single culture only.",
+        "C": "Blood cultures are part of CVL infection monitoring and management.",
+        "D": "Cultures are followed until negative with defined treatment duration rather than continuing indefinitely without clinical indication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → CVL infections → vi.",
+      "quote_hint": "Blood cultures are drawn daily until negative",
+      "keywords": ["Blood", "cultures", "drawn", "daily", "until", "negative"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → CVL infections → vi. (daily blood cultures until negative); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. CVL daily-culture monitoring angle distinct from empiric vancomycin therapy (cctc-3133) and catheter-site sign item (cctc-3139); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3148",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating central venous line (CVL) infection protocols. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Appropriate antimicrobial medications should be given based on culture and sensitivities." },
+      { "id": "II", "text": "Blood cultures should be drawn daily until negative." },
+      { "id": "III", "text": "Removal of the CVL may be necessary." },
+      { "id": "IV", "text": "CVL infections never require line removal or exchange under any circumstances." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Sensitivity-guided antimicrobials, daily cultures until negative, and possible CVL removal are supported. Statement IV is false because CVL removal or exchange over a guide wire may be necessary.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—CVL removal may be necessary in some cases.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because line removal or exchange may be required."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → CVL infections",
+      "quote_hint": "appropriate antimicrobial medications as determined through culture and sensitivities … Blood cultures are drawn daily until negative … Removal of the CVL may be necessary",
+      "keywords": ["antimicrobial", "culture", "sensitivities", "Blood", "cultures", "daily", "Removal", "CVL"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → CVL infections → vi. (sensitivity-guided therapy, daily cultures, possible line removal/exchange); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. CVL-infection management combo distinct from bacterial-treatment combo (cctc-3144) and diagnostic combo (cctc-3140); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05"
+  }
+]

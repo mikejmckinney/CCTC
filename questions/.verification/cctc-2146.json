@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-2146",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Fever",
+      "Clinical",
+      "presentation",
+      "PTLD"
+    ],
+    "keyword_hash": "sha256:0e191859514b4618ce4534b34a6b32c4be625da60c72cc35c30c242d63ec62d9"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "fever",
+        "among",
+        "clinical",
+        "presentations"
+      ],
+      "keyword_hash": "sha256:222ac23126fb064590b69c12154178254db8672a223b1e9b47c8d10caefede76"
+    }
+  ]
+}

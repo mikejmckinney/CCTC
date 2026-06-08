@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-1147",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Transplant",
+      "recipients",
+      "require",
+      "boosters",
+      "earlier",
+      "immunosuppression"
+    ],
+    "keyword_hash": "sha256:287e5a575dc19cb5e1b4a4a5cd925a692195a1ccf91606a2320e741db6a8386c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "earlier",
+        "boosters",
+        "immunosuppression"
+      ],
+      "keyword_hash": "sha256:65fc8e80f844bcc7b1a13716a9f1904cde4be5f54331d62fb53e17847e7e58ec"
+    }
+  ]
+}

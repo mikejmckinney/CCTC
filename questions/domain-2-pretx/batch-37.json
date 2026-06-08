@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-2145",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching about posttransplant lymphoproliferative disease (PTLD) recognition, which systemic symptom aligns with standard presentation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Weight loss" },
+      { "id": "B", "text": "Weight loss never occurs with PTLD" },
+      { "id": "C", "text": "PTLD always causes rapid weight gain rather than loss" },
+      { "id": "D", "text": "Weight change is unrelated to PTLD presentation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include weight loss along with fever, night sweats, lymphadenopathy, and gastrointestinal symptoms.",
+      "rationale_incorrect": {
+        "B": "Weight loss is specifically listed among PTLD presentations.",
+        "C": "Weight loss rather than gain is among cited systemic presentations.",
+        "D": "Weight loss is a described PTLD symptom requiring clinical evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → e.",
+      "quote_hint": "Weight loss",
+      "keywords": ["Weight", "loss", "Clinical", "presentation", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.e. (weight loss among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Weight-loss presentation angle distinct from diarrhea/weight-loss application item (cctc-2139) and PTLD recognition combo (cctc-2136); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2146",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When reviewing posttransplant lymphoproliferative disease (PTLD) during evaluation teaching, which fever-related statement aligns with standard presentation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Fever may be part of PTLD clinical presentation" },
+      { "id": "B", "text": "Fever never occurs with PTLD" },
+      { "id": "C", "text": "Fever indicates PTLD only when graft tenderness is absent" },
+      { "id": "D", "text": "Fever excludes PTLD when lymphadenopathy is present" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include fever along with night sweats, lymphadenopathy, and mononucleosis-like symptoms.",
+      "rationale_incorrect": {
+        "B": "Fever is specifically listed among PTLD presentations.",
+        "C": "Fever may occur with varied PTLD presentations and requires broader clinical evaluation.",
+        "D": "Fever and lymphadenopathy may occur together as PTLD presentations."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → b.",
+      "quote_hint": "Fever",
+      "keywords": ["Fever", "Clinical", "presentation", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.b. (fever among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fever presentation angle distinct from symptom-cluster item (cctc-2111) and night-sweats recall (cctc-2137); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2147",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A heart transplant recipient reports fatigue, sore throat, and lymphadenopathy resembling infectious mononucleosis. Which PTLD presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Symptoms that resemble infectious mononucleosis" },
+      { "id": "B", "text": "Mononucleosis-like symptoms exclude PTLD from the differential" },
+      { "id": "C", "text": "PTLD never mimics infectious mononucleosis" },
+      { "id": "D", "text": "Only pediatric recipients may have mononucleosis-like PTLD symptoms" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include symptoms that resemble infectious mononucleosis, along with fever, lymphadenopathy, and other systemic findings.",
+      "rationale_incorrect": {
+        "B": "Mononucleosis-like symptoms are listed PTLD presentations rather than excluding it.",
+        "C": "Infectious mononucleosis-like symptoms are specifically described in PTLD presentation.",
+        "D": "Mononucleosis-like PTLD symptoms may occur in adult and pediatric transplant recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → a.",
+      "quote_hint": "Symptoms that resemble infectious mononucleosis",
+      "keywords": ["Symptoms", "resemble", "infectious", "mononucleosis", "Clinical", "presentation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.a. (symptoms resembling infectious mononucleosis); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Mononucleosis-like presentation angle distinct from EBV-sequelae spectrum item (cctc-2132) and symptom-cluster one-best (cctc-2111); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2148",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating PTLD recognition teaching. Evaluate the following statements about clinical presentation:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "PTLD may be asymptomatic." },
+      { "id": "II", "text": "Fever may be part of PTLD presentation." },
+      { "id": "III", "text": "Weight loss may occur with PTLD." },
+      { "id": "IV", "text": "PTLD always presents with obvious graft tenderness and high fever in every case." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "PTLD may be asymptomatic, and fever and weight loss are cited presentations. Statement IV is false because presentation is variable and may be asymptomatic or systemic without isolated graft tenderness in every case.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—weight loss is among listed presentations.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because PTLD presentation is variable and may be asymptomatic."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation",
+      "quote_hint": "PTLD may be asymptomatic … Fever … Weight loss",
+      "keywords": ["PTLD", "asymptomatic", "Fever", "Weight", "loss", "Clinical", "presentation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3. Clinical presentation (asymptomatic disease, fever, weight loss); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. PTLD presentation combo distinct from recognition combo (cctc-2136) and risk-factor combo (cctc-2144); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  }
+]
