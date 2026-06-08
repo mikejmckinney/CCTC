@@ -73,7 +73,7 @@ Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/m
 
 ## Phase 3: Question-Bank Growth and Validation
 
-**Status**: SME review complete for initial bank (**505 reviewed items** across all blueprint tasks; exam-mode sampling now has full reviewed coverage per domain)
+**Status**: SME review complete for initial bank (**506 reviewed items**; all blueprint per-task targets met including task `030800`)
 
 **Objective**: Make the bank safe to expand while keeping schema integrity and blueprint coverage visible.
 
@@ -163,7 +163,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] **Batch 06** (`batch-06.json` in each domain): +12 draft items (`cctc-1022`–`1025`, `2021`–`2024`, `3021`–`3024`); waitlist death risk (**pediatric**), living-donor psychosocial risks, infection-prevention `complex_combo`, travel restriction, **LAS** 6-month updates, heart PRA/crossmatch, **PHS** increased-risk donor consent, conditional approval communication, rectal-bleeding urgent contact, **CMV** prophylaxis teaching, cyclosporine gingival hypertrophy, second-year follow-up interval. Full `npm run validate` green (2026-06-05).
 - [ ] After each batch, run `npm run validate` and fill under-represented domains, tasks, cognitive levels, and organs.
 - [x] **SME bulk review (2026-06-08):** all 505 production-bank items promoted `draft` → `reviewed` after authoring complete; PR #3 triage fixes (App review parity, examples `primary_anchor`, cctc-3019 retagged to Domain 2 task `020500`, removed `.cursor/mcp.json`, ABTC handbook markdownlint ignore).
-- [ ] Add one more reviewed item for task `030800` (current gap 4/5) when authoring resumes.
+- [x] **Task `030800` gap fill (2026-06-08):** `cctc-3169` in `domain-3-postop/batch-42.json` — OPTN Policy 18.3 organ-offer outcome reporting within 30 days of match run (`030803`).
 
 **Reviewer / flag loop**
 - [ ] Triage exported flags (`ccte-flags.json` from the app) alongside new authoring.

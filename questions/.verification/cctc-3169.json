@@ -1,0 +1,67 @@
+{
+  "item_id": "cctc-3169",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    },
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 332,
+    "keywords": [
+      "OPOs",
+      "responsible",
+      "reporting",
+      "outcomes",
+      "organ",
+      "offers",
+      "OPTN",
+      "30",
+      "days",
+      "match",
+      "run"
+    ],
+    "keyword_hash": "sha256:863a72b9c70bc595469b0cc3842b87c4ad2adead2fa44c2ad47e7c853ec0a455"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 332,
+      "policy": "18.3",
+      "keywords": [
+        "recording",
+        "reporting",
+        "outcomes",
+        "organ",
+        "offers",
+        "within",
+        "match"
+      ],
+      "keyword_hash": "sha256:cfd985d09d7bcc9026c7e4f5aefb2754c666f9c8a2f1706f0b3816b2c8675306"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 363,
+      "keywords": [
+        "deceased-donor",
+        "organ",
+        "offer",
+        "workflow",
+        "context",
+        "coordinator",
+        "documents",
+        "outcomes"
+      ],
+      "keyword_hash": "sha256:528a657d82a028d04c83da2c132b65e168da4ac0a9a5ac25765fe044c6222630"
+    }
+  ]
+}
