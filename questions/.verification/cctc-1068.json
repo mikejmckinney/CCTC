@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1068",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 506,
+    "keywords": [
+      "Coronary",
+      "artery",
+      "vasculopathy",
+      "thought",
+      "form",
+      "chronic",
+      "graft",
+      "rejection"
+    ],
+    "keyword_hash": "sha256:c7303d4e73e04d477db4464587c59e36a00df8a73f674ca883ba98846f2193c8"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 506,
+      "keywords": [
+        "chronic",
+        "graft",
+        "rejection"
+      ],
+      "keyword_hash": "sha256:e6736488c3c42cd7af59cbe44aaa851184750eb7bcc26d32950a896254c8bf8e"
+    }
+  ]
+}

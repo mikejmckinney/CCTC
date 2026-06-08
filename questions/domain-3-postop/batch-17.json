@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3065",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "both",
+    "stem": "An intestinal transplant recipient develops a new rash weeks after transplant. Which complication should the coordinator include in the differential?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Graft-versus-host disease presenting most commonly as a skin rash" },
+      { "id": "B", "text": "Expected benign finding that never involves skin after intestine transplant" },
+      { "id": "C", "text": "Hyperacute rejection that occurs only years after transplant" },
+      { "id": "D", "text": "Oral aversion, which never presents with cutaneous findings" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Graft-versus-host disease after intestinal transplantation presents most commonly as a skin rash but may also involve the liver and gastrointestinal tract and can occur from days to years post-transplant.",
+      "rationale_incorrect": {
+        "B": "Skin rash is the most common presentation of GVHD in intestine recipients.",
+        "C": "Hyperacute rejection occurs immediately after implantation rather than weeks to years later.",
+        "D": "Oral aversion is a feeding complication distinct from the cutaneous GVHD presentation described."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 729,
+      "section": "Ch. 13, Intestine Transplantation → 8. Graft-versus-host disease → d.–e.",
+      "quote_hint": "Presents most commonly as a skin rash … liver and gastrointestinal tract … days to years posttransplant",
+      "keywords": ["Presents", "commonly", "skin", "rash", "liver", "gastrointestinal", "tract", "posttransplant"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → 8. Graft-versus-host disease → d.–e. (skin rash most common; may involve liver/GI; variable timing); PDF p. 729 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Intestine GVHD presentation angle distinct from pancreas graft thrombosis (cctc-3061) and lung BOS (cctc-3060); anchor verified on Cupples p. 729.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3066",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030402"],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart transplant recipient develops declining ejection fraction and heart-failure symptoms months after transplant. Which etiology should the coordinator recognize as a potential cause of left ventricular systolic dysfunction?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Coronary artery vasculopathy" },
+      { "id": "B", "text": "Donor blood-type incompatibility discovered only at one-year anniversary" },
+      { "id": "C", "text": "Expected normal healing that never affects ejection fraction" },
+      { "id": "D", "text": "Pretransplant evaluation error unrelated to allograft pathology" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Left ventricular systolic dysfunction in heart transplant recipients may result from ischemic or reperfusion injury, primary graft dysfunction, coronary artery vasculopathy, or cellular or humoral rejection.",
+      "rationale_incorrect": {
+        "B": "ABO compatibility is established before transplant; late LV dysfunction is evaluated for allograft causes such as CAV or rejection.",
+        "C": "Declining ejection fraction and heart-failure symptoms warrant evaluation for graft dysfunction rather than assumed benign healing.",
+        "D": "Post-transplant LV dysfunction is assessed for allograft-related etiologies including vasculopathy and rejection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 461,
+      "section": "Ch. 9, Heart Transplantation → LV systolic dysfunction → 1. Etiology → f.",
+      "quote_hint": "Coronary artery vasculopathy … Cellular or humoral rejection",
+      "keywords": ["Coronary", "artery", "vasculopathy", "Cellular", "humoral", "rejection", "systolic", "dysfunction"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 9 → LV systolic dysfunction/failure → 1. Etiology → f.–g. (CAV and rejection as causes); PDF p. 461 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Heart CAV/LV-dysfunction angle distinct from return-to-work counseling (cctc-3059) and pediatric feeding coordination (cctc-3064); anchor verified on Cupples p. 461.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3067",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030101", "030102"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric kidney transplant recipient has prolonged acute tubular necrosis (ATN) with oliguria. Evaluate the following monitoring and management statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "During prolonged ATN, serial renal biopsies may be performed to assess kidney function and monitor for rejection." },
+      { "id": "II", "text": "ATN may last for variable periods from hours up to several weeks." },
+      { "id": "III", "text": "Management includes avoiding nephrotoxic drugs and conservative fluid replacement to prevent hypervolemia." },
+      { "id": "IV", "text": "Hyperkalemia never occurs during pediatric ATN because potassium is automatically excreted." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Pediatric ATN may persist for hours to weeks; prolonged ATN warrants serial biopsies to assess function and exclude rejection; management includes avoiding nephrotoxic drugs and conservative fluids. Hyperkalemia develops rapidly in anuric patients, so statement IV is false.",
+      "rationale_incorrect": {
+        "A": "Statement III is also correct—management includes avoiding nephrotoxic drugs and preventing hypervolemia.",
+        "C": "Statement IV is false; close potassium monitoring is emphasized during pediatric ATN.",
+        "D": "Statement IV is false; anuric patients quickly become hyperkalemic."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 901,
+      "section": "Ch. 17, Pediatric Transplantation → kidney early complications → ATN → ii.–vii.",
+      "quote_hint": "May last for variable periods … oliguria … hyperkalemic … serial renal biopsies … avoiding nephrotoxic drugs … conservative fluid replacement",
+      "keywords": ["variable", "periods", "serial", "renal", "biopsies", "nephrotoxic", "drugs", "hyperkalemic"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → kidney early complications → ATN → ii.–vii. (duration, biopsies, nephrotoxic avoidance, hyperkalemia); PDF p. 901 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Seventeenth complex_combo in bank; pediatric ATN monitoring angle distinct from pediatric fever workup (cctc-3056) and ureteral obstruction (cctc-3047); anchor verified on Cupples p. 901.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3068",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030303"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When counseling a kidney transplant recipient about routine trimethoprim/sulfamethoxazole prophylaxis, which additional infection-prevention benefit aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Effectiveness against Toxoplasma gondii in addition to Pneumocystis jiroveci" },
+      { "id": "B", "text": "Prevention of all viral infections including cytomegalovirus and Epstein-Barr virus" },
+      { "id": "C", "text": "Replacement for all immunosuppressive medications" },
+      { "id": "D", "text": "Guaranteed prevention of acute cellular rejection episodes" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Trimethoprim/sulfamethoxazole is routinely used to prevent Pneumocystis jiroveci pneumonitis and is also effective for preventing Toxoplasma gondii, selected Nocardia species, and Listeria monocytogenes.",
+      "rationale_incorrect": {
+        "B": "Antiviral agents, not TMP-SMX, address CMV and EBV prevention strategies.",
+        "C": "Antimicrobial prophylaxis supplements rather than replaces immunosuppressive therapy.",
+        "D": "Antimicrobial prophylaxis prevents selected infections but does not prevent rejection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 159,
+      "section": "Ch. 4, Pharmacology → 3. Antibiotic prophylaxis → b. → i.",
+      "quote_hint": "trimethoprim/sulfamethoxazole … prevent Pneumocystis jiroveci … also effective for preventing infections with Toxoplasma gondii",
+      "keywords": ["trimethoprim", "sulfamethoxazole", "Pneumocystis", "jiroveci", "Toxoplasma", "gondii", "Nocardia", "Listeria"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → 3. Antibiotic prophylaxis → b. → i. (TMP-SMX for PCP and also Toxoplasma, Nocardia, Listeria); PDF p. 159 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. TMP-SMX toxoplasma angle distinct from PCP discharge teaching (cctc-3042) and CMV serostatus prophylaxis (cctc-3023); anchor verified on Cupples p. 159.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3067",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 901,
+    "keywords": [
+      "variable",
+      "periods",
+      "serial",
+      "renal",
+      "biopsies",
+      "nephrotoxic",
+      "drugs",
+      "hyperkalemic"
+    ],
+    "keyword_hash": "sha256:05f74cc37574815698ef484bea60c99c12a1899a2d7e2b7a39b02eec204ee281"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 901,
+      "keywords": [
+        "duration",
+        "biopsies",
+        "nephrotoxic",
+        "avoidance",
+        "hyperkalemia"
+      ],
+      "keyword_hash": "sha256:f9d531de0358092eec4b4a27a2d74da945ea8c40e16095c291f91ea67af33d40"
+    }
+  ]
+}

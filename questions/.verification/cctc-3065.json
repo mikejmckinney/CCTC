@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3065",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 729,
+    "keywords": [
+      "Presents",
+      "commonly",
+      "skin",
+      "rash",
+      "liver",
+      "gastrointestinal",
+      "tract",
+      "posttransplant"
+    ],
+    "keyword_hash": "sha256:f5908aeb63670b6999e6fc086e5afb2583f54b2f8d8dd8772d05c1dc4b5b404a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 729,
+      "keywords": [
+        "common",
+        "involve",
+        "liver",
+        "variable",
+        "timing"
+      ],
+      "keyword_hash": "sha256:0bb75ededfb1015453cc97bc4eceae982ff577bcf7ee0449edd52a31faf3e17e"
+    }
+  ]
+}

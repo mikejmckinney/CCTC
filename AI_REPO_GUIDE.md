@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **193 draft items** in `questions/domain-*/batch-01.json` through `batch-16.json` (IDs `cctc-1001`–`1065`, `2001`–`2064`, `3001`–`3064`).
+- **205 draft items** in `questions/domain-*/batch-01.json` through `batch-17.json` (IDs `cctc-1001`–`1069`, `2001`–`2068`, `3001`–`3068`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
@@ -180,10 +180,11 @@ Use these files as the current product ground truth:
 - Batch 14 (2026-06-05): transplantation-risk `complex_combo`, discharge insulin teaching, pediatric community infections, PCP waitlist coordination, waitlist testing priority, pediatric transition, fever septic workup, skin-cancer long-term risk, day-after-discharge call, PPI–MMF interaction; all `general` organ (blueprint organ gap closed).
 - Batch 15 (2026-06-05): liver alcohol abstinence/contract, heart activity limits, lifestyle `complex_combo`, living-liver donor discharge, heart RHC monitoring, lung referral timing, kidney hypercoagulability screening, metabolic bone disease, medication-box teaching, return-to-work counseling, lung BOS; **all per-task blueprint targets met**.
 - Batch 16 (2026-06-05): pancreas indications/evaluation/complications, heart-lung Eisenmenger and toxoplasmosis teaching, intestine oral aversion (pediatric), child-development consult, two new `complex_combo` items (toxoplasmosis, pancreas fluid management).
+- Batch 17 (2026-06-05): pediatric kidney ATN, intestine GVHD, heart CAV/chronic rejection, CMV prevention `complex_combo`, DSA post-transplant monitoring, rituximab desensitization risks, SPK indication, heart preop emotional support, pediatric ATN monitoring `complex_combo`, TMP-SMX toxoplasma benefit.
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 17+)
+- Expand the real question bank under domain directories (batch 18+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land
