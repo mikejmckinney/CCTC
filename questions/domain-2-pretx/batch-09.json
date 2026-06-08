@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2033",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney waitlist candidate with coronary risk factors has a positive cardiac stress test during pre-transplant evaluation. What is the MOST appropriate next consultation step?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Referral to a cardiologist for further evaluation, including cardiac catheterization" },
+      { "id": "B", "text": "Proceed directly to the operating room without additional cardiac workup" },
+      { "id": "C", "text": "Remove the candidate permanently from consideration without cardiology input" },
+      { "id": "D", "text": "Defer all cardiac evaluation until five years after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Patients with a positive stress test should be referred to a cardiologist for further evaluation, including cardiac catheterization, before transplant clearance.",
+      "rationale_incorrect": {
+        "B": "A positive stress test requires cardiology evaluation rather than proceeding without further workup.",
+        "C": "Positive stress testing triggers further evaluation; it does not automatically confer permanent ineligibility without specialist assessment.",
+        "D": "Cardiac evaluation is part of pre-transplant clearance, not deferred until years after transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Evaluation → J. Consultations → 1.d.",
+      "quote_hint": "Patients with a positive stress test should be referred to a cardiologist for further evaluation, including cardiac catheterization",
+      "keywords": ["positive", "stress", "test", "referred", "cardiologist", "evaluation", "catheterization"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → J. Consultations → 1. Cardiac evaluation → d. (positive stress test cardiologist referral); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 020100 item; cardiac consult angle distinct from evaluation protocols (cctc-2017); anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2034",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During multidisciplinary transplant evaluation, which specialist consultation may be required based on transplant team recommendations beyond the core evaluation protocol?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Infectious disease specialist" },
+      { "id": "B", "text": "Cosmetic dermatology specialist for elective procedures only" },
+      { "id": "C", "text": "Sports medicine specialist for performance enhancement" },
+      { "id": "D", "text": "Veterinary medicine specialist" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Additional medical consultations may be required based on transplant team recommendations, including infectious disease specialist, cardiologist, psychologist, and anesthesiologist as indicated.",
+      "rationale_incorrect": {
+        "B": "Elective cosmetic dermatology is not among the standard additional consultations cited for transplant evaluation.",
+        "C": "Sports medicine for performance enhancement is not a standard transplant evaluation consultation.",
+        "D": "Veterinary medicine is not part of human transplant evaluation consultations."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → b.viii.",
+      "quote_hint": "Other medical consultations may be required … Infectious disease specialist Cardiologist",
+      "keywords": ["consultations", "Infectious", "disease", "specialist", "Cardiologist", "Psychologist", "transplant"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → b. Evaluation process → viii. (additional consultations including infectious disease specialist, cardiologist, psychologist); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 020200 item; multidisciplinary consult angle distinct from support resources (cctc-2031); anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2035",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "After initial transplant evaluation, the interdisciplinary team cannot determine candidacy because outstanding studies remain incomplete. How should the coordinator document and communicate the team's recommendation?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "The team is unable to make a determination and further evaluation is required" },
+      { "id": "B", "text": "The patient is approved and will be listed immediately without additional testing" },
+      { "id": "C", "text": "The patient is permanently ineligible and should not return for follow-up" },
+      { "id": "D", "text": "The patient may self-list on the national waitlist without program action" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Evaluation outcome communication includes informing patients when the transplant team is unable to make a determination at that time and further evaluation is required.",
+      "rationale_incorrect": {
+        "B": "Incomplete evaluation precludes immediate approval and listing without outstanding workup.",
+        "C": "Indeterminate evaluation requires further workup, not permanent ineligibility without team review.",
+        "D": "Waitlist registration occurs through the transplant program after a suitability determination, not by self-listing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education → §7. Selection criteria and evaluation outcome → c.iii.",
+      "quote_hint": "unable to make a determination at this time and further evaluation is required",
+      "keywords": ["unable", "determination", "further", "evaluation", "required", "transplant", "team"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §7. Selection criteria and evaluation outcome → c.iii. (unable to make determination; further evaluation required); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 020300 item; indeterminate-evaluation angle distinct from approved (cctc-2029) and not-listed (cctc-2017); anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2036",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020601"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant program receives a deceased-donor organ offer through the allocation system. When presenting the offer to the on-call physician team, which recipient factor should the coordinator include alongside donor quality data?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "The recipient's current condition and availability" },
+      { "id": "B", "text": "Only the donor's social media activity history" },
+      { "id": "C", "text": "Only the recipient's unrelated prior surgical scars" },
+      { "id": "D", "text": "Only the transplant center's cafeteria menu for the week" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The on-call team considers organ offers in terms of donor factors, recipient factors such as the recipient's condition and availability, and logistical factors including ischemic time.",
+      "rationale_incorrect": {
+        "B": "Donor social media history is not part of standard offer presentation factors.",
+        "C": "Unrelated prior surgical scars are not the primary recipient factor described for offer decisions.",
+        "D": "Center cafeteria operations are irrelevant to organ-offer clinical decision-making."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education → §8. Organ allocation → f.",
+      "quote_hint": "considers the organ offer in terms of donor factors … recipient factors (e.g., recipient's condition and availability)",
+      "keywords": ["organ", "offer", "donor", "factors", "recipient", "condition", "availability"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §8. Organ allocation → f. (on-call team considers donor factors, recipient condition/availability, and logistics); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 020600 item; lung offer-presentation angle distinct from DonorNet (cctc-2015) and refusal codes (cctc-2004); anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-05"
+  }
+]

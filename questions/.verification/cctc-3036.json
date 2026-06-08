@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-3036",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 330,
+    "keywords": [
+      "90",
+      "days",
+      "registers",
+      "candidate",
+      "waiting",
+      "list",
+      "TCR",
+      "Transplant"
+    ],
+    "keyword_hash": "sha256:2f656da6ba777991e2c3590d0df1fde1689ce74fe3e70d3f57a21edd0a0adc22"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 330,
+      "policy": "18.1",
+      "keywords": [
+        "submission",
+        "requirements",
+        "candidate",
+        "registration",
+        "within",
+        "after",
+        "waitlist"
+      ],
+      "keyword_hash": "sha256:18ce27e1789d500a0420fefec730d10048ebb53780fe05ca80eb75167a95efdc"
+    }
+  ]
+}

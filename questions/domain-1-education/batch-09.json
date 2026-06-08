@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-1034",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart transplant candidate with a significant smoking history asks why continued smoking cessation counseling matters after listing. Which post-transplant risk should the coordinator emphasize?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Increased risk of coronary atherosclerosis, graft dysfunction, and graft loss" },
+      { "id": "B", "text": "Smoking history has no measurable effect on heart graft outcomes" },
+      { "id": "C", "text": "Smoking only affects kidney grafts, not cardiac allografts" },
+      { "id": "D", "text": "Continued smoking is recommended to reduce immunosuppression side effects" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Heart transplant recipients with a smoking history have an increased risk of developing coronary atherosclerosis, graft dysfunction, and loss after transplantation.",
+      "rationale_incorrect": {
+        "B": "Smoking history is associated with measurable adverse cardiac graft outcomes.",
+        "C": "Smoking adversely affects heart transplant recipients specifically, not only kidney recipients.",
+        "D": "Smoking increases cardiovascular and graft risks; it is not recommended to offset immunosuppression effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Evaluation → J. Consultations → 2.d.e.i.",
+      "quote_hint": "Heart transplant recipients with a smoking history have an increased risk of developing coronary atherosclerosis, graft dysfunction, and loss",
+      "keywords": ["Heart", "transplant", "smoking", "coronary", "atherosclerosis", "graft", "dysfunction"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → J. Consultations → 2. Pulmonary evaluation → d. Effects of smoking in specific transplant populations → e.i. (heart graft risks); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 010200 item; first heart-organ smoking-risk angle; anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1035",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": ["010401"],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "During lung transplant evaluation education, what participation requirement should the coordinator explain for most candidates before listing?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A pulmonary rehabilitation program several times per week" },
+      { "id": "B", "text": "No structured exercise because activity is permanently contraindicated" },
+      { "id": "C", "text": "Immediate living donor identification before any other testing" },
+      { "id": "D", "text": "Annual re-listing as a new candidate entry every 12 months" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidates for lung transplantation are usually required to participate in a pulmonary rehabilitation program several times a week as part of evaluation and preparation.",
+      "rationale_incorrect": {
+        "B": "Pulmonary rehabilitation is typically required, not permanent activity restriction without structured rehab.",
+        "C": "Lung transplantation uses deceased donors; living donor identification is not the standard listing prerequisite described here.",
+        "D": "Waitlist maintenance involves status updates, not mandatory annual re-registration as a new candidate."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 54,
+      "section": "Ch. 1, Waitlist Management → 5.a.",
+      "quote_hint": "required to participate in a pulmonary rehabilitation program several times a week",
+      "keywords": ["pulmonary", "rehabilitation", "several", "times", "week", "lung", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Waitlist Management → 5. Lung transplant candidates → a. (pulmonary rehabilitation requirement); PDF p. 54 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 010400 item; lung evaluation-process angle distinct from LAS updates (cctc-2021); anchor verified on Cupples p. 54.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1036",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric solid-organ recipient is approaching adolescence. Which inactivated vaccination should post-transplant health-maintenance teaching prioritize before sexual activity?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Human papillomavirus (HPV) vaccine" },
+      { "id": "B", "text": "Live varicella vaccine after transplantation" },
+      { "id": "C", "text": "Live herpes zoster vaccine during high-dose steroid therapy" },
+      { "id": "D", "text": "No vaccinations because all are permanently contraindicated after transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Post-transplant health maintenance includes human papillomavirus (HPV) vaccination for pediatric patients prior to sexual activity, along with other inactivated vaccines per program protocol.",
+      "rationale_incorrect": {
+        "B": "Live varicella vaccine is contraindicated after transplantation.",
+        "C": "Live herpes zoster vaccine is contraindicated after transplantation.",
+        "D": "Inactivated vaccines such as HPV are recommended; live-virus vaccines are restricted, not all vaccinations."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "Human papillomavirus (HPV) for pediatric patients prior to sexual activity",
+      "keywords": ["Human", "papillomavirus", "HPV", "pediatric", "patients", "sexual", "activity"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance after transplantation → ii. (inactivated vaccinations including HPV for pediatric patients prior to sexual activity); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 010600 item; second pediatric recipient in bank; anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1037",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver transplant candidate who continues to smoke asks about transplant-specific risks beyond general cardiovascular disease. Which liver-related complication should education include?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Increased incidence of hepatic artery thrombosis" },
+      { "id": "B", "text": "Elimination of all cardiovascular mortality risk after transplant" },
+      { "id": "C", "text": "Guaranteed protection against biliary complications" },
+      { "id": "D", "text": "No association between smoking and liver graft vascular complications" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cigarette smoking in liver transplant recipients has been implicated in cardiovascular mortality and an increased incidence of hepatic artery thrombosis.",
+      "rationale_incorrect": {
+        "B": "Smoking increases cardiovascular mortality risk rather than eliminating it.",
+        "C": "Smoking does not protect against biliary or vascular complications.",
+        "D": "Smoking is specifically associated with hepatic artery thrombosis among liver recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Evaluation → J. Consultations → 2.d.e.ii.",
+      "quote_hint": "Cigarette smoking has been implicated … increased incidence of hepatic artery thrombosis",
+      "keywords": ["Cigarette", "smoking", "liver", "transplant", "cardiovascular", "hepatic", "artery"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → J. Consultations → 2. Pulmonary evaluation → d. Effects of smoking in specific transplant populations → e.ii. (liver cardiovascular mortality and hepatic artery thrombosis); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 010200 item; liver smoking-risk angle paired with cctc-1034 heart item; anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05"
+  }
+]

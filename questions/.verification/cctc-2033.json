@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2033",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 33,
+    "keywords": [
+      "positive",
+      "stress",
+      "test",
+      "referred",
+      "cardiologist",
+      "evaluation",
+      "catheterization"
+    ],
+    "keyword_hash": "sha256:f180eb15361fa97824b7831ed853fbb00393ffb64297807d97a180de0c7ffd23"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "keywords": [
+        "positive",
+        "stress",
+        "cardiologist",
+        "referral"
+      ],
+      "keyword_hash": "sha256:aa899fb220a3bea938ac5c80be4183ebbcc7d8b3f1c8238fa4cfa13c6d31c5ef"
+    }
+  ]
+}

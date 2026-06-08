@@ -1,0 +1,191 @@
+[
+  {
+    "id": "cctc-3033",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": ["030701"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung recipient calls the transplant clinic reporting new shortness of breath. According to urgent-contact education, how should the coordinator classify this symptom?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "An urgent matter requiring prompt transplant team contact" },
+      { "id": "B", "text": "A non-urgent matter appropriate for the next routine medication refill call" },
+      { "id": "C", "text": "A symptom that never requires notification after transplant" },
+      { "id": "D", "text": "A reason to stop all immunosuppression without medical guidance" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Shortness of breath is listed among urgent matters requiring prompt transplant team contact, alongside infection symptoms, rejection signs, chest pain, and bleeding.",
+      "rationale_incorrect": {
+        "B": "Shortness of breath is explicitly urgent, not a routine refill matter.",
+        "C": "Post-transplant teaching requires reporting shortness of breath to the team.",
+        "D": "Urgent symptoms prompt team contact and evaluation, not unilateral immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → h. Communication → iii.",
+      "quote_hint": "Urgent matters may include … Shortness of breath",
+      "keywords": ["Urgent", "matters", "Shortness", "breath", "symptoms", "rejection", "infection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → h. Communication with the transplant team → iii. Urgent matters (shortness of breath listed); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 030700 item; lung urgent-contact angle distinct from chest pain (cctc-3029), rectal bleeding (cctc-3022), stroke FAST (cctc-3017), and infection (cctc-3002); anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3034",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030102"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient one week post-transplant has unexplained fever, abdominal pain, decreased urinary output, and a rising serum creatinine. Which abnormality pattern is MOST consistent with a urinary leak complication?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Fever, pain, oliguria, elevated creatinine, and possible wound drainage together" },
+      { "id": "B", "text": "Stable creatinine with increased urine output and no pain" },
+      { "id": "C", "text": "Isolated mild postoperative fatigue without laboratory changes" },
+      { "id": "D", "text": "Normal graft function with only routine incision healing" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Urinary leak at the ureterovesical anastomosis may present with unexplained fever, abdominal pain, decreased urinary output, elevated creatinine, and wound drainage.",
+      "rationale_incorrect": {
+        "B": "Urinary leak typically decreases output and elevates creatinine rather than increasing output with stable creatinine.",
+        "C": "Isolated fatigue without laboratory or output changes does not match urinary leak presentation.",
+        "D": "Normal graft function without symptoms contradicts the fever, pain, oliguria, and creatinine rise described."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 903,
+      "section": "Ch. 17, Kidney Transplantation → h. Urinary leak → ii.",
+      "quote_hint": "Unexplained fever … Decreased urinary output … Elevated creatinine … Wound drainage",
+      "keywords": ["fever", "Decreased", "urinary", "output", "Elevated", "creatinine", "Wound", "drainage"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → h. Urinary leak → ii. Clinical signs (fever, pain, decreased output, elevated creatinine, wound drainage); PDF p. 903 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 030100 item; kidney urinary-leak lab pattern distinct from liver LFT monitoring (cctc-3025); anchor verified on Cupples p. 903.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3035",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient is diagnosed with a urinary leak at the ureterovesical anastomosis. What initial management approach is MOST appropriate for a minor leak?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Long-term indwelling urinary catheter drainage" },
+      { "id": "B", "text": "Permanent cessation of all immunosuppression without surgical input" },
+      { "id": "C", "text": "No intervention because urinary leaks never occur after kidney transplant" },
+      { "id": "D", "text": "Immediate graft nephrectomy for every minor leak without trial of conservative management" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Urinary leaks at the ureterovesical anastomosis are treated with long-term indwelling urinary catheters or surgical intervention for minor leaks, depending on severity.",
+      "rationale_incorrect": {
+        "B": "Management focuses on drainage or surgical repair, not unilateral immunosuppression cessation.",
+        "C": "Urinary leak is a recognized post-transplant complication at the ureterovesical anastomosis.",
+        "D": "Minor leaks may be managed conservatively with catheter drainage before considering more invasive options."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 903,
+      "section": "Ch. 17, Kidney Transplantation → h. Urinary leak → iii.",
+      "quote_hint": "Urine leaks are treated with long-term indwelling urinary catheters, or surgical intervention for minor leaks",
+      "keywords": ["Urine", "leaks", "treated", "indwelling", "urinary", "catheters", "surgical", "intervention"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → h. Urinary leak → iii. Treatment (indwelling catheter or surgical intervention for minor leaks); PDF p. 903 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 030200 item; kidney urinary-leak management angle distinct from rejection fever mechanism (cctc-3026); anchor verified on Cupples p. 903.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3036",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030800",
+    "knowledge_codes": ["030803"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "After a transplant program registers a new waitlist candidate in UNet, when must the program submit the Transplant Candidate Registration (TCR) form to meet OPTN timely data requirements?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Within 90 days after registering the candidate on the waiting list" },
+      { "id": "B", "text": "Only after the recipient's five-year transplant anniversary" },
+      { "id": "C", "text": "Within 1 day of every routine clinic medication refill" },
+      { "id": "D", "text": "Never; TCR submission is optional for transplant hospitals" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Policy 18.1 requires transplant hospitals to submit the Transplant Candidate Registration (TCR) within 90 days after registering the candidate on the waiting list.",
+      "rationale_incorrect": {
+        "B": "TCR is required early after waitlist registration, not only at five years post-transplant.",
+        "C": "Routine medication refills are not the TCR submission trigger.",
+        "D": "TCR is a required timely data instrument for registered waitlist candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 330,
+      "section": "Policy 18.1 → Data Submission Requirements → TCR",
+      "quote_hint": "90 days after the transplant hospital registers the candidate on the waiting list",
+      "keywords": ["90", "days", "registers", "candidate", "waiting", "list", "TCR", "Transplant"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=330",
+        "locator": "Policy 18.1 → Data Submission Requirements (Transplant Candidate Registration [TCR] within 90 days after waitlist registration); PDF p. 330 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. Fourth 030800 item; TCR timing distinct from TRR (cctc-3027), UNet registration fields (cctc-3019), and SRTR aggregation (cctc-3005); anchor verified on optn-policies p. 330.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1036",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Human",
+      "papillomavirus",
+      "HPV",
+      "pediatric",
+      "patients",
+      "sexual",
+      "activity"
+    ],
+    "keyword_hash": "sha256:a9ef2fb1c14293536c77eb0544e37abb460dd08be72669e227a5f9f2b734036d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "inactivated",
+        "vaccinations",
+        "including",
+        "pediatric",
+        "patients",
+        "prior",
+        "sexual",
+        "activity"
+      ],
+      "keyword_hash": "sha256:f3880dcc1e7da951723ebddda234a0334ba417b743da621b5f52fa49ae4fecdd"
+    }
+  ]
+}

@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **97 draft items** in `questions/domain-*/batch-01.json` through `batch-08.json` (IDs `cctc-1001`–`1033`, `2001`–`2032`, `3001`–`3032`).
+- **109 draft items** in `questions/domain-*/batch-01.json` through `batch-09.json` (IDs `cctc-1001`–`1037`, `2001`–`2036`, `3001`–`3036`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
@@ -172,10 +172,11 @@ Use these files as the current product ground truth:
 - Batch 06 (2026-06-05): LAS updates, PHS donor consent, CMV prophylaxis, cyclosporine gingival hypertrophy, infection-prevention `complex_combo`, deeper lung/heart/liver organ coverage.
 - Batch 07 (2026-06-08): waitlist LAS/MELD testing, liver cardiac stress, LFT/biopsy monitoring, OPTN TRR timely data, post-transplant diabetes incidence.
 - Batch 08 (2026-06-08): living-donor follow-up commitment, medication teaching `complex_combo`, pancreas/lung waitlist depth, chest-pain urgent contact, grapefruit–IS interaction, mycophenolate adverse effects.
+- Batch 09 (2026-06-05): heart/liver smoking risks, lung pulmonary rehab, pediatric HPV teaching, cardiology referral after positive stress test, indeterminate evaluation outcome, kidney urinary-leak pattern/management, OPTN TCR timing.
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 09+)
+- Expand the real question bank under domain directories (batch 10+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land
