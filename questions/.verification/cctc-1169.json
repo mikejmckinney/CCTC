@@ -1,0 +1,54 @@
+{
+  "item_id": "cctc-1169",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "Before",
+      "after",
+      "eating",
+      "feces",
+      "contact",
+      "hand",
+      "hygiene",
+      "guidelines"
+    ],
+    "keyword_hash": "sha256:70a87ae336779cc01ffa6e63b5bcdded2d4c020f6e7654192577a355ede76ab7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "hygiene",
+        "mealtime",
+        "fecal-contact",
+        "hand-washing"
+      ],
+      "keyword_hash": "sha256:669f71d6c78d13eaf63cfa4815a3fd59318f76fc05f1ff263b9b825dec7d1c66"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "animal",
+        "safety",
+        "strict",
+        "hygiene",
+        "after",
+        "contact"
+      ],
+      "keyword_hash": "sha256:260b3959ddf2d5bdfc6251ab6a3af2ceb7be48a5d238116fb5966e94d93484c1"
+    }
+  ]
+}

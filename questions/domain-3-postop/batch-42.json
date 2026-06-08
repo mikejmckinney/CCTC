@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3165",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant recipient months post-transplant reports shortness of breath without biopsy-proven rejection. Which Aspergillus symptom aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Dyspnea or hypoxia" },
+      { "id": "B", "text": "Dyspnea always indicates hyperacute rejection and never fungal infection" },
+      { "id": "C", "text": "Aspergillus never causes respiratory symptoms in transplant recipients" },
+      { "id": "D", "text": "Hypoxia excludes Aspergillus from the differential" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Aspergillus symptoms may include dyspnea or hypoxia, along with isolated fever without rejection, sinusitis, gastrointestinal findings, or central nervous system symptoms.",
+      "rationale_incorrect": {
+        "B": "Dyspnea or hypoxia is specifically listed among Aspergillus presentations rather than indicating rejection alone.",
+        "C": "Respiratory symptoms including dyspnea or hypoxia may occur with Aspergillus infection.",
+        "D": "Hypoxia is among cited presentations rather than excluding Aspergillus."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → v.",
+      "quote_hint": "Dyspnea/hypoxia",
+      "keywords": ["Dyspnea", "hypoxia", "Symptoms", "Aspergillus", "fever", "rejection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → v. Symptoms (dyspnea/hypoxia); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Dyspnea/hypoxia Aspergillus presentation angle distinct from isolated-fever item (cctc-3163) and operative-risk factors (cctc-3159); anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3166",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "When teaching about Aspergillus pulmonary infection after transplantation, which imaging finding aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Nodular pneumonias with indistinct margins on chest imaging" },
+      { "id": "B", "text": "Normal chest imaging always excludes Aspergillus infection" },
+      { "id": "C", "text": "Aspergillus produces only lobar consolidation with sharp margins exclusively" },
+      { "id": "D", "text": "Chest imaging is never used in Aspergillus evaluation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Aspergillus diagnosis includes chest radiograph and CT scan to observe for nodular pneumonias with indistinct margins, along with sinus or brain CT and tissue biopsies when indicated.",
+      "rationale_incorrect": {
+        "B": "Imaging may show nodular pneumonias with indistinct margins rather than normal studies always excluding infection.",
+        "C": "Nodular pneumonias with indistinct margins are specifically described rather than only sharp-margined lobar consolidation.",
+        "D": "Chest imaging is part of cited diagnostic evaluation rather than being omitted."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → vi.",
+      "quote_hint": "CXR and CT scan to observe for nodular pneumonias with indistinct margins",
+      "keywords": ["CXR", "CT", "scan", "nodular", "pneumonias", "indistinct", "margins"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → vi. Diagnosis (nodular pneumonias with indistinct margins on CXR/CT); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Aspergillus pulmonary imaging angle distinct from isolated-fever presentation (cctc-3163) and management combo distractors (cctc-3164); anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3167",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant recipient with invasive Aspergillus infection cannot tolerate liposomal amphotericin B. Which treatment option aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Caspofungin or voriconazole as additional or alternative therapy" },
+      { "id": "B", "text": "No alternative antifungal agents exist for Aspergillus after transplantation" },
+      { "id": "C", "text": "Oral nystatin alone is sufficient for invasive Aspergillus disease" },
+      { "id": "D", "text": "Antifungal therapy should be stopped permanently without substitution" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Aspergillus treatment includes intravenous liposomal amphotericin B with additional or alternative therapies such as caspofungin or voriconazole, with prolonged treatment up to 6 months.",
+      "rationale_incorrect": {
+        "B": "Caspofungin and voriconazole are cited alternative or additional therapies.",
+        "C": "Invasive Aspergillus requires systemic therapy rather than topical nystatin alone.",
+        "D": "Alternative systemic antifungal agents are available rather than stopping therapy without substitution."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → vii.",
+      "quote_hint": "Additional or alternative therapies with caspofungin or voriconazole",
+      "keywords": ["Additional", "alternative", "therapies", "caspofungin", "voriconazole", "amphotericin"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → vii. Treatment (caspofungin or voriconazole as alternative/additional therapy); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Aspergillus alternative-antifungal therapy angle distinct from amphotericin renal monitoring for candidemia (cctc-3162) and pulmonary imaging recall (cctc-3166); anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3168",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating Aspergillus evaluation and treatment teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Aspergillus may present with dyspnea or hypoxia." },
+      { "id": "II", "text": "Chest imaging may show nodular pneumonias with indistinct margins." },
+      { "id": "III", "text": "Voriconazole may be used as additional or alternative therapy." },
+      { "id": "IV", "text": "Metastatic Aspergillus disease never involves the central nervous system." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Dyspnea or hypoxia, nodular pneumonias on imaging, and voriconazole as alternative therapy are supported. Statement IV is false because metastatic disease may involve the central nervous system, liver, and/or kidneys.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—voriconazole may be used as alternative therapy.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because central nervous system involvement may occur with metastatic disease."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus",
+      "quote_hint": "Dyspnea/hypoxia … nodular pneumonias with indistinct margins … caspofungin or voriconazole … Metastatic disease seen in central nervous system (CNS), liver, and/or kidneys",
+      "keywords": ["Dyspnea", "hypoxia", "nodular", "pneumonias", "voriconazole", "Metastatic", "central", "nervous"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → v.–vii. (dyspnea/hypoxia; nodular pneumonias; voriconazole therapy); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Aspergillus evaluation/treatment combo distinct from candidemia/Aspergillus management combo (cctc-3164) and early fungal-risk combo (cctc-3152); anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05"
+  }
+]

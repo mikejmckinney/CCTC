@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3168",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 737,
+    "keywords": [
+      "Dyspnea",
+      "hypoxia",
+      "nodular",
+      "pneumonias",
+      "voriconazole",
+      "Metastatic",
+      "central",
+      "nervous"
+    ],
+    "keyword_hash": "sha256:360fd7aa8b4d9f4f4fb6a68862f50d4562332acd73e7927adaf09062b5e96ad7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "keywords": [
+        "dyspnea",
+        "hypoxia",
+        "nodular",
+        "pneumonias",
+        "voriconazole",
+        "therapy"
+      ],
+      "keyword_hash": "sha256:346dbed7979e916d6d783218f94ce31aac091b28380022f2e076232beecfd74c"
+    }
+  ]
+}

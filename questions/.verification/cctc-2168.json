@@ -1,0 +1,56 @@
+{
+  "item_id": "cctc-2168",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Broad-brimmed",
+      "hats",
+      "protective",
+      "clothing",
+      "Duration",
+      "intensity",
+      "immunosuppression"
+    ],
+    "keyword_hash": "sha256:b1fc25b78c339d799f69ebbff3b172f33919f70b98112e2660c2c7e6d9169183"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "immunosuppression",
+        "duration",
+        "intensity",
+        "biologic",
+        "therapy",
+        "phototherapy"
+      ],
+      "keyword_hash": "sha256:03a4756fb2d3c6e977ac56f24646411e35f4d9ef27bb6465cab82a35ef8f35ce"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "Broad-brimmed",
+        "hats",
+        "protective",
+        "clothing",
+        "Duration",
+        "intensity",
+        "immunosuppression"
+      ],
+      "keyword_hash": "sha256:b1fc25b78c339d799f69ebbff3b172f33919f70b98112e2660c2c7e6d9169183"
+    }
+  ]
+}
