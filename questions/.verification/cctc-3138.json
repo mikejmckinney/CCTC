@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-3138",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "Chest",
+      "x-ray",
+      "particularly",
+      "respiratory",
+      "symptoms"
+    ],
+    "keyword_hash": "sha256:504a7952452063e98153e8651c874c48bb51206bba7f345c17cf954a8d686718"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "chest",
+        "x-ray",
+        "respiratory",
+        "symptoms"
+      ],
+      "keyword_hash": "sha256:bddbbca67dff9ca2b32a6f8050766692333b8ebabd3d69dd9ed5421f458bda63"
+    }
+  ]
+}

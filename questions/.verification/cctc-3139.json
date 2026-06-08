@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-3139",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "Catheter",
+      "tube",
+      "insertion",
+      "erythematous",
+      "swollen",
+      "tender"
+    ],
+    "keyword_hash": "sha256:d4ec5103efc0b6962f926ad0a65efeb3f8794d885312e1cf6fc7a6b34a6add08"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "erythematous",
+        "swollen",
+        "tender",
+        "catheter",
+        "sites"
+      ],
+      "keyword_hash": "sha256:10bc0758c28deb6f0d04b6c4b72060bef171e3bfc755205aff731f6b6f12a18e"
+    }
+  ]
+}

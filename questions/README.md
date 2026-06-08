@@ -16,7 +16,7 @@ questions/
 - **Soft cap of 50 items per file.** When a file exceeds it, split it (e.g. `domain-3-postop/030100-030400.json`, `domain-3-postop/030500-030800.json`). This keeps diffs small and the app loads gracefully as the bank grows.
 - Anything under `_examples/` is for authors/reviewers and is excluded from the production bank path (the loader ignores paths beginning with `_`).
 - `questions/.verification/` holds per-item reference verification stubs (CI enforcement); excluded from exam sampling and bank loading.
-- **Bootstrap fallback:** when no non-`_` shards exist yet, the app may temporarily load `_examples` so both item formats can be exercised while the real bank is authored. Once domain shards land under `questions/domain-*`, only those files are used (currently **409 draft items** across `batch-01.json`–`batch-34.json` in each domain directory).
+- **Bootstrap fallback:** when no non-`_` shards exist yet, the app may temporarily load `_examples` so both item formats can be exercised while the real bank is authored. Once domain shards land under `questions/domain-*`, only those files are used (currently **421 draft items** across `batch-01.json`–`batch-35.json` in each domain directory).
 
 ## File format
 

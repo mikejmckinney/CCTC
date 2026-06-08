@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-2137",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching about posttransplant lymphoproliferative disease (PTLD) recognition during evaluation, which systemic symptom aligns with standard presentation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Night sweats" },
+      { "id": "B", "text": "Night sweats never occur with PTLD" },
+      { "id": "C", "text": "PTLD presents only with isolated graft tenderness without systemic symptoms" },
+      { "id": "D", "text": "Night sweats indicate PTLD only when fever is absent" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include night sweats along with fever, lymphadenopathy, weight loss, and mononucleosis-like symptoms.",
+      "rationale_incorrect": {
+        "B": "Night sweats are specifically listed among PTLD presentations.",
+        "C": "PTLD may be asymptomatic or present with systemic symptoms rather than isolated graft tenderness alone.",
+        "D": "Night sweats may occur with or without other systemic findings and warrant evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → c.",
+      "quote_hint": "Night sweats",
+      "keywords": ["Night", "sweats", "Clinical", "presentation", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.c. (night sweats among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Night-sweats presentation angle distinct from symptom-cluster item (cctc-2111) and PTLD recognition combo (cctc-2136); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2138",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant recipient develops persistent cough and upper airway symptoms several months post-transplant. Which PTLD presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Upper respiratory infection may be part of PTLD clinical presentation" },
+      { "id": "B", "text": "Upper respiratory symptoms exclude PTLD from the differential" },
+      { "id": "C", "text": "PTLD never involves the respiratory tract" },
+      { "id": "D", "text": "Respiratory symptoms indicate only bacterial pneumonia and never PTLD" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include upper respiratory infection along with pulmonary lesions, fever, lymphadenopathy, and other systemic symptoms.",
+      "rationale_incorrect": {
+        "B": "Upper respiratory infection is listed among PTLD presentations rather than excluding it.",
+        "C": "Lung lesions and upper respiratory symptoms may occur with PTLD.",
+        "D": "Respiratory symptoms may reflect PTLD or infection and require clinical evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → d.",
+      "quote_hint": "Upper respiratory infection",
+      "keywords": ["Upper", "respiratory", "infection", "Clinical", "presentation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.d. (upper respiratory infection among presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Upper-respiratory PTLD angle distinct from pulmonary-mass item (cctc-2135) and tonsillitis presentation (cctc-2134); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2139",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "adult",
+    "stem": "An intestinal transplant recipient reports chronic diarrhea and weight loss without fever. Which PTLD presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Diarrhea may be part of PTLD clinical presentation" },
+      { "id": "B", "text": "Diarrhea excludes PTLD because PTLD is always asymptomatic" },
+      { "id": "C", "text": "GI symptoms never occur with PTLD" },
+      { "id": "D", "text": "Diarrhea indicates only medication side effects and never PTLD" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include diarrhea and weight loss along with abdominal pain, GI tract involvement, and other systemic symptoms.",
+      "rationale_incorrect": {
+        "B": "PTLD may be asymptomatic but can also present with diarrhea and other GI symptoms.",
+        "C": "GI symptoms including diarrhea and intestinal perforation may occur with PTLD.",
+        "D": "Chronic diarrhea warrants evaluation for PTLD as well as other causes."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → f.",
+      "quote_hint": "Diarrhea",
+      "keywords": ["Diarrhea", "Clinical", "presentation", "PTLD", "Weight"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.f. (diarrhea among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Diarrhea presentation angle distinct from GI-perforation item (cctc-2130) and weight-loss combo element (cctc-2136); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2140",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating PTLD treatment teaching for the evaluation team. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Antiviral therapy is among PTLD treatment options." },
+      { "id": "II", "text": "Intravenous immunoglobulin (IVIG) is a listed treatment option." },
+      { "id": "III", "text": "Cytotoxic chemotherapy may be used for PTLD." },
+      { "id": "IV", "text": "Initial PTLD management always requires intensifying all immunosuppression without evaluation." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Antiviral therapy, IVIG, and cytotoxic chemotherapy are cited PTLD treatment options. Statement IV is false because reduction or withdrawal of immunosuppression is the initial principle rather than intensifying all immunosuppression.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—cytotoxic chemotherapy is among treatment options.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because immunosuppression is reduced or withdrawn rather than intensified as initial management."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Antiviral therapy … Intravenous immunoglobulin (IVIG) … Cytotoxic chemotherapy … Reduction or withdrawal of immunosuppression",
+      "keywords": ["Antiviral", "therapy", "Intravenous", "immunoglobulin", "IVIG", "Cytotoxic", "chemotherapy", "immunosuppression"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.a., d., e., g. (IS reduction, IVIG, antiviral therapy, cytotoxic chemotherapy); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. PTLD treatment-modality combo distinct from surgery recall (cctc-2124) and mTOR-inhibitor item (cctc-2116); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  }
+]

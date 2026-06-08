@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1138",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010605"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When coordinating post-transplant psychological care, which monitoring priority aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Monitor the patient for signs of depression and anxiety" },
+      { "id": "B", "text": "Psychological health requires no follow-up after hospital discharge" },
+      { "id": "C", "text": "Depression screening applies only to living donors, not recipients" },
+      { "id": "D", "text": "Anxiety is expected and should never be discussed with the team" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Psychological care teaching notes that psychological health after transplant is as important as physical health and includes monitoring for signs of depression and anxiety.",
+      "rationale_incorrect": {
+        "B": "Ongoing psychological monitoring is part of post-transplant care rather than being deferred indefinitely.",
+        "C": "Recipient psychological health is specifically addressed in post-transplant teaching.",
+        "D": "Open monitoring and support for depression and anxiety are encouraged rather than avoiding discussion."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → f. Psychological care → ii.",
+      "quote_hint": "Monitor patient for signs of depression and anxiety",
+      "keywords": ["Monitor", "patient", "signs", "depression", "anxiety"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → f. Psychological care → ii. (monitor for depression and anxiety); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Recipient psychological-monitoring angle distinct from living-donor depression/anxiety teaching (cctc-1023, p. 341) and appearance/body-image counseling (cctc-1124); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1139",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching health maintenance after transplantation, which household vaccination counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Caregivers, family members, and co-workers should receive annual influenza vaccinations unless otherwise contraindicated" },
+      { "id": "B", "text": "Only transplant recipients need influenza vaccination; household contacts are exempt" },
+      { "id": "C", "text": "Household members should receive live influenza vaccine to protect the recipient" },
+      { "id": "D", "text": "Influenza vaccination is discouraged for all household contacts" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Health maintenance teaching includes annual inactivated influenza vaccine for recipients and notes that caregivers, family members, and co-workers should also receive annual influenza vaccinations unless contraindicated.",
+      "rationale_incorrect": {
+        "B": "Household and caregiver influenza vaccination is specifically recommended to reduce exposure risk.",
+        "C": "Recipients should receive inactivated influenza vaccine rather than live formulations.",
+        "D": "Household influenza vaccination is encouraged rather than discouraged."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "caregivers, family members, and co-workers receive annual influenza vaccinations unless otherwise contraindicated",
+      "keywords": ["caregivers", "family", "members", "co-workers", "annual", "influenza", "vaccinations"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance → ii. (caregiver/family/co-worker annual influenza vaccination); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Household influenza-vaccination angle distinct from inactivated-recipient vaccine combo (cctc-1048) and meningococcal high-risk groups (cctc-1090); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1140",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient who enjoys gardening asks about infection-prevention precautions while working in soil. Which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wear gloves and a mask for garden activity or working in dirt" },
+      { "id": "B", "text": "Gardening is permanently contraindicated for all transplant recipients" },
+      { "id": "C", "text": "Bare-hand contact with soil is preferred to maintain immunity" },
+      { "id": "D", "text": "Masks are required only in hospital settings, never at home outdoors" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching for other exposures includes wearing gloves and a mask for garden activity or working in dirt, along with cleaning and covering recent cuts or wounds.",
+      "rationale_incorrect": {
+        "B": "Gardening may continue with precautions rather than being universally prohibited.",
+        "C": "Gloves and mask are recommended for soil exposure rather than bare-hand contact.",
+        "D": "Mask use is cited for garden and dirt exposure at home as well as other infection-prevention settings."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vi. Others",
+      "quote_hint": "Wear gloves and mask for garden activity or working in dirt",
+      "keywords": ["Wear", "gloves", "mask", "garden", "activity", "working", "dirt"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vi. Others (gloves and mask for garden/dirt activity); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Garden/dirt exposure angle distinct from cat-litter/animal-safety combo (cctc-1116) and hand-hygiene teaching (cctc-1019); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1141",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604", "010605"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating post-transplant health-maintenance teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "The patient should be monitored for signs of depression and anxiety." },
+      { "id": "II", "text": "Caregivers, family members, and co-workers should receive annual influenza vaccinations unless otherwise contraindicated." },
+      { "id": "III", "text": "Immunosuppressed patients should routinely receive live-virus vaccines after transplantation." },
+      { "id": "IV", "text": "Pneumococcal vaccine should be given ≥8 weeks after transplant." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Psychological monitoring, household influenza vaccination, and pneumococcal vaccination timing are supported. Statement III is false because immunosuppressed patients should not receive live-virus vaccines.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—pneumococcal vaccine is recommended ≥8 weeks after transplant.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because live-virus vaccines are contraindicated after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → f. Psychological care and g. Health maintenance",
+      "quote_hint": "Monitor patient for signs of depression and anxiety … caregivers, family members, and co-workers receive annual influenza vaccinations … Pneumococcal vaccine ≥8 weeks after transplant … should not receive live-virus vaccines",
+      "keywords": ["depression", "anxiety", "caregivers", "influenza", "Pneumococcal", "live-virus", "vaccines"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → f. Psychological care → ii. and g. Health maintenance → ii. (depression/anxiety monitoring, household influenza, pneumococcal timing, live-vaccine contraindication); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Health-maintenance/psychological combo distinct from vaccination combo (cctc-1048) and return-to-work combo (cctc-1133); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  }
+]

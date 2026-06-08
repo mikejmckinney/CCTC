@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3137",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When evaluating a febrile transplant recipient for possible bacterial infection, which diagnostic study aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Central and peripheral blood cultures" },
+      { "id": "B", "text": "Blood cultures are never indicated in febrile transplant recipients" },
+      { "id": "C", "text": "Only stool cultures are obtained for every febrile episode" },
+      { "id": "D", "text": "Cultures should be deferred until after two weeks of empiric antibiotics" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Diagnosis of bacterial infection includes central and peripheral blood cultures, along with cultures of wound, throat, urine, sputum, JP drainage, and/or stool as clinically indicated.",
+      "rationale_incorrect": {
+        "B": "Blood cultures are a standard component of bacterial-infection evaluation.",
+        "C": "Multiple culture sources may be obtained based on clinical presentation rather than stool alone in every case.",
+        "D": "Cultures are obtained as part of evaluation, with empiric antibiotics administered after cultures are collected."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Diagnosis → g.i.",
+      "quote_hint": "Central and peripheral blood cultures",
+      "keywords": ["Central", "peripheral", "blood", "cultures", "Diagnosis"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → g.i. (central and peripheral blood cultures); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Blood-culture diagnostic angle distinct from empiric vancomycin therapy (cctc-3133) and bacterial-sign combo (cctc-3132); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3138",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant recipient with fever, cough, and decreased breath sounds is being evaluated for bacterial infection. Which diagnostic study aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Chest x-ray, particularly in the setting of respiratory symptoms" },
+      { "id": "B", "text": "Chest x-ray is contraindicated in all febrile transplant recipients" },
+      { "id": "C", "text": "Respiratory symptoms require only pulse oximetry without chest imaging" },
+      { "id": "D", "text": "Chest imaging is deferred until bacterial cultures return in two weeks" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bacterial infection diagnosis includes chest x-ray particularly in the setting of respiratory symptoms, along with appropriate cultures and clinical assessment.",
+      "rationale_incorrect": {
+        "B": "Chest x-ray is specifically recommended with respiratory symptoms rather than being contraindicated.",
+        "C": "Chest x-ray is among cited studies when respiratory symptoms are present.",
+        "D": "Imaging and cultures are part of early evaluation rather than being deferred for weeks."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Diagnosis → g.iii.",
+      "quote_hint": "Chest x-ray particularly in the setting of respiratory symptoms",
+      "keywords": ["Chest", "x-ray", "particularly", "respiratory", "symptoms"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → g.iii. (chest x-ray with respiratory symptoms); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Respiratory bacterial-infection imaging angle distinct from TB chest x-ray teaching (cctc-3095) and blood-culture recall (cctc-3137); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3139",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant recipient with a central line reports tenderness and erythema at the catheter insertion site with low-grade fever. Which finding aligns with standard bacterial-infection teaching?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Catheter or tube insertion sites that are erythematous, swollen, and tender" },
+      { "id": "B", "text": "Catheter-site erythema never indicates infection in transplant recipients" },
+      { "id": "C", "text": "Line-site tenderness is expected and requires no evaluation" },
+      { "id": "D", "text": "Only wound dehiscence, never catheter sites, may show infection signs" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Signs of bacterial infection include catheter or tube insertion sites that are erythematous, swollen, and tender, along with fever and other localized or systemic findings.",
+      "rationale_incorrect": {
+        "B": "Catheter-site erythema, swelling, and tenderness are specifically listed infection signs.",
+        "C": "Catheter-site tenderness with erythema warrants evaluation rather than being dismissed as always expected.",
+        "D": "Both catheter sites and wound abnormalities may indicate bacterial infection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Signs and symptoms → iii.",
+      "quote_hint": "Catheter or tube insertion sites that are erythematous, swollen, and tender",
+      "keywords": ["Catheter", "tube", "insertion", "erythematous", "swollen", "tender"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → f.iii. (erythematous, swollen, tender catheter sites); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Catheter-site infection-sign angle distinct from CVL vancomycin therapy (cctc-3133) and wound drainage changes (cctc-3135); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3140",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating bacterial-infection diagnostic protocols. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Central and peripheral blood cultures should be obtained." },
+      { "id": "II", "text": "Chest x-ray is obtained particularly in the setting of respiratory symptoms." },
+      { "id": "III", "text": "Abdominal CT scan may assess for fluid collections." },
+      { "id": "IV", "text": "Cultures should never be obtained before empiric antibiotics are started." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Blood cultures, chest x-ray with respiratory symptoms, and abdominal CT for fluid collections are cited diagnostic steps. Statement IV is false because broad-spectrum antibiotics are administered after cultures are obtained.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—abdominal CT may assess fluid collections.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because cultures are obtained before empiric antibiotics are started."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Diagnosis",
+      "quote_hint": "Central and peripheral blood cultures … Chest x-ray particularly in the setting of respiratory symptoms … Abdominal CT scan to assess for fluid collections",
+      "keywords": ["Central", "peripheral", "blood", "cultures", "Chest", "x-ray", "Abdominal", "CT"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → g.i.–iv. (blood cultures, chest x-ray, abdominal CT); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Bacterial-infection diagnostic combo distinct from management combo (cctc-3136) and sign-recognition combo (cctc-3132); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-2137",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Night",
+      "sweats",
+      "Clinical",
+      "presentation",
+      "PTLD"
+    ],
+    "keyword_hash": "sha256:c5316d54507432154a93be9ea7ccf419839d371222f4be9c373edcdcac606a94"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "night",
+        "sweats",
+        "among",
+        "clinical",
+        "presentations"
+      ],
+      "keyword_hash": "sha256:5bc294f48b9ff2ebea8d8eaec52dc801b0c44bc1ceeccfc2857e8d87cf59f028"
+    }
+  ]
+}

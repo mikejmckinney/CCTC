@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-1138",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Monitor",
+      "patient",
+      "signs",
+      "depression",
+      "anxiety"
+    ],
+    "keyword_hash": "sha256:4f5eed19a2613fd8d1c65f92e580e489a61a6f7d3ca106a6110b897ba7ae2967"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "monitor",
+        "depression",
+        "anxiety"
+      ],
+      "keyword_hash": "sha256:1edab8aee2b73cfd569e747ea11e4a12aa6a06fb84f8ebf516e01d1e7da007f9"
+    }
+  ]
+}
