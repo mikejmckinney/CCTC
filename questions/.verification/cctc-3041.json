@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3041",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 117,
+    "keywords": [
+      "Obtain",
+      "labs",
+      "studies",
+      "monitor",
+      "immunosuppression",
+      "organ",
+      "function"
+    ],
+    "keyword_hash": "sha256:69392cfb5e23916776d132d6c82c29999a2808adf8d920df05507221d4e065b7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "keywords": [
+        "monitor",
+        "immunosuppression",
+        "levels",
+        "organ",
+        "function"
+      ],
+      "keyword_hash": "sha256:d9e14f96efd61c0eb1c63f10db096cc3f13b1f351af54b2f20f61cc7b2cbfae8"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1042",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 331,
+    "keywords": [
+      "ESRD",
+      "benefit",
+      "pre-emptive",
+      "kidney",
+      "transplantation",
+      "dialysis",
+      "significantly"
+    ],
+    "keyword_hash": "sha256:52b29e1b05a30dc669db0da0681211e17a01ca4923c4a769699002e26dd5e5c7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "keywords": [
+        "pre-emptive",
+        "kidney",
+        "transplantation",
+        "dialysis"
+      ],
+      "keyword_hash": "sha256:debb46c9f70fc3ec229c0f9dfdd074cb5733920e61b7e416fb0ddf6d3bc3d629"
+    }
+  ]
+}

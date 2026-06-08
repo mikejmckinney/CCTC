@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2042",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 101,
+    "keywords": [
+      "Notify",
+      "transplant",
+      "team",
+      "changes",
+      "Health",
+      "status",
+      "admissions"
+    ],
+    "keyword_hash": "sha256:4ccbf1c3919ead1fe27f3712eb5f66ff337407c7c28e7e102538ef1c5d24f0d3"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "keywords": [
+        "notify",
+        "health",
+        "status",
+        "changes",
+        "including",
+        "outside",
+        "admissions"
+      ],
+      "keyword_hash": "sha256:8ac9ab82b333168b7dfc3ff02bc17794265d4a80d53d6aae7303105c83f7f040"
+    }
+  ]
+}

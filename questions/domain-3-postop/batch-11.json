@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3041",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During long-term post-transplant care coordination, which monitoring responsibility should the coordinator emphasize at routine follow-up visits?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Obtain laboratory tests and studies to monitor immunosuppression levels and organ function" },
+      { "id": "B", "text": "Discontinue all laboratory monitoring after the first clinic visit" },
+      { "id": "C", "text": "Monitor only the recipient's vacation plans without clinical data" },
+      { "id": "D", "text": "Rely exclusively on patient self-report without any objective studies" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Health maintenance after transplantation includes obtaining all laboratory tests and other studies to monitor levels of immunosuppression and organ function.",
+      "rationale_incorrect": {
+        "B": "Long-term follow-up requires ongoing laboratory and clinical monitoring rather than discontinuation after one visit.",
+        "C": "Clinical monitoring of immunosuppression and organ function is required beyond nonclinical topics.",
+        "D": "Objective laboratory and study data supplement patient self-report in post-transplant coordination."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → i.",
+      "quote_hint": "Obtain all labs tests and other studies to monitor levels of immunosuppression and organ function",
+      "keywords": ["Obtain", "labs", "studies", "monitor", "immunosuppression", "organ", "function"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance after transplantation → i. (monitor immunosuppression levels and organ function); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 030500 item; general lab-monitoring coordination distinct from clinic intervals (cctc-3014/3024) and community MD communication (cctc-3015); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3042",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": ["030603"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When planning discharge antimicrobial prophylaxis for a solid-organ recipient, which infection prevention measure may be included based on patient-specific risk?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Medications to prevent Pneumocystis pneumonia (PCP) when indicated" },
+      { "id": "B", "text": "Permanent discontinuation of all antimicrobials for every recipient" },
+      { "id": "C", "text": "Prophylaxis based only on the recipient's preferred brand of toothpaste" },
+      { "id": "D", "text": "Routine live-virus vaccines at discharge for all immunosuppressed recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Antimicrobial prophylaxis decisions are patient-specific; anti-bacterial and anti-fungal medications may be given to prevent Pneumocystis pneumonia, thrush, and other infections of concern.",
+      "rationale_incorrect": {
+        "B": "Many recipients receive indicated antimicrobial prophylaxis rather than universal discontinuation.",
+        "C": "Prophylaxis is based on donor- and recipient-specific infection risk, not personal product preferences.",
+        "D": "Live-virus vaccines are contraindicated after transplantation; discharge planning uses indicated antimicrobial agents instead."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "section": "Ch. 3, Patient Education → medication management → v.",
+      "quote_hint": "medications may be given to prevent Pneumocystis pneumonia (PCP), thrush, and other infections",
+      "keywords": ["prevent", "Pneumocystis", "pneumonia", "PCP", "anti-bacterial", "anti-fungal", "medications"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication management → v. (anti-bacterial/anti-fungal prophylaxis including PCP prevention); PDF p. 107 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 030600 item; PCP prophylaxis angle distinct from CMV (cctc-3023), grapefruit interaction (cctc-3031), and missed-dose teaching (cctc-3014); anchor verified on Cupples p. 107.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3043",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating long-term malignancy-prevention teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should reduce malignancy risk through recommended screening and a healthy lifestyle." },
+      { "id": "II", "text": "Continuing smokers should be counseled about increased lung cancer risk." },
+      { "id": "III", "text": "Immunosuppression eliminates all post-transplant cancer risk without screening." },
+      { "id": "IV", "text": "Smoking cessation resources should be offered to recipients who continue to smoke." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Long-term teaching includes recommended malignancy screening, healthy lifestyle, counseling continuing smokers about lung cancer risk, and offering smoking cessation resources. Immunosuppression increases rather than eliminates cancer risk.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—smoking cessation resources should be provided.",
+        "C": "Statement III is false; immunosuppression increases malignancy risk and screening remains important.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → iii.",
+      "quote_hint": "Reduce risk of malignancy through recommended screening … Counsel recipients who continue to smoke about the increased risk of lung cancer; provide smoking cessation resources",
+      "keywords": ["malignancy", "screening", "healthy", "lifestyle", "smoke", "lung", "cancer", "cessation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance after transplantation → iii. (malignancy screening, smoking counseling, cessation resources); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Eighth complex_combo in bank; distinct from late-mortality combo (cctc-3020) and post-transplant diabetes (cctc-3028); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3044",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030303"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A recipient on cyclosporine reports bothersome excess hair growth and asks whether another calcineurin inhibitor might have fewer cosmetic effects. Which counseling point is MOST accurate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Tacrolimus is less likely to cause cosmetic problems such as hirsutism than cyclosporine" },
+      { "id": "B", "text": "Cyclosporine never causes cosmetic side effects" },
+      { "id": "C", "text": "All calcineurin inhibitors guarantee identical cosmetic side-effect profiles" },
+      { "id": "D", "text": "Cosmetic effects require immediate graft removal without medication review" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "References note tacrolimus is less likely to result in hyperlipidemia and cosmetic problems than cyclosporine, which is associated with effects such as hirsutism and gingival hypertrophy.",
+      "rationale_incorrect": {
+        "B": "Cyclosporine is specifically associated with cosmetic adverse effects including hirsutism.",
+        "C": "CNI agents differ in cosmetic side-effect profiles rather than being identical.",
+        "D": "Cosmetic CNI effects are managed through medication review and team guidance, not automatic graft removal."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 146,
+      "section": "Ch. 4, Immunosuppression → Tacrolimus vs cyclosporine → iv.",
+      "quote_hint": "Tacrolimus is less likely to result in hyperlipidemia and cosmetic problems than cyclosporine",
+      "keywords": ["Tacrolimus", "less", "likely", "cosmetic", "problems", "cyclosporine", "hyperlipidemia"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Tacrolimus versus cyclosporine comparison → iv. (tacrolimus less likely to cause cosmetic problems than cyclosporine); PDF p. 146 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 030300 item; cyclosporine cosmetic-effects angle distinct from tacrolimus nephrotoxicity (cctc-3018), gingival switch (cctc-3023), and MMF diarrhea (cctc-3009); anchor verified on Cupples p. 146.",
+    "last_updated": "2026-06-05"
+  }
+]

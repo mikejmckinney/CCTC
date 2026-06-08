@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2043",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 97,
+    "keywords": [
+      "Pulmonary",
+      "Bronchoscopy",
+      "function",
+      "tests",
+      "Arterial",
+      "blood",
+      "gas"
+    ],
+    "keyword_hash": "sha256:fbb8f62343fa69c53f8cc4e5c148a2ddf79ab80387463b28200bbc36861cd525"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "keywords": [
+        "pulmonary",
+        "testing",
+        "bronchoscopy",
+        "listed"
+      ],
+      "keyword_hash": "sha256:92e12827648680f79f23014a60887863cfec469a1ba8e53eead41c2d0fc9face"
+    }
+  ]
+}

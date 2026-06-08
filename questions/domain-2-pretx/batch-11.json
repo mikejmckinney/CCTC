@@ -1,0 +1,192 @@
+[
+  {
+    "id": "cctc-2041",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": ["020401"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "After a candidate is registered on the OPTN waiting list, when must the transplant hospital send the required written patient notification?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Within 10 business days, including the registration date" },
+      { "id": "B", "text": "Only after the candidate receives a transplant offer" },
+      { "id": "C", "text": "Within 90 days after the five-year transplant anniversary" },
+      { "id": "D", "text": "Never; verbal notification is sufficient without documentation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Policy 3.5 requires transplant hospitals to notify patients in writing within 10 business days when they are registered on the waiting list, including the registration date.",
+      "rationale_incorrect": {
+        "B": "Written notification is required at waitlist registration, not deferred until an organ offer.",
+        "C": "Ninety-day anniversary timing applies to follow-up data forms, not initial waitlist registration notification.",
+        "D": "Policy 3.5 requires documented written notification, not verbal notification alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "section": "Policy 3.5 → Table 3-2 Patient Notification Requirements",
+      "quote_hint": "within 10 business days … registered on the waiting list … date the patient was registered",
+      "keywords": ["10", "business", "days", "registered", "waiting", "list", "date", "patient"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
+        "locator": "Policy 3.5 → Table 3-2: Transplant Hospital Patient Notification Requirements (written notification within 10 business days of waitlist registration); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. Fifth 020400 item; OPTN registration-notification angle distinct from approval/not-listed/MELD-change communications; anchor verified on optn-policies p. 46.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2042",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": ["020402"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung waitlist candidate is hospitalized at a community hospital for pneumonia. What is the coordinator's appropriate communication expectation for the patient?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Notify the transplant team of changes in health status, including outside hospital admissions" },
+      { "id": "B", "text": "Withhold all health updates until the next annual clinic visit" },
+      { "id": "C", "text": "Report admissions only if they occur at the transplant center hospital" },
+      { "id": "D", "text": "Remove the patient from the waitlist automatically without team review" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waitlist management includes patient responsibility to notify the transplant team of changes in health status, including admissions to hospitals other than the transplant center.",
+      "rationale_incorrect": {
+        "B": "Health status changes should be reported promptly, not deferred to annual visits.",
+        "C": "Patients must notify the team about outside hospital admissions as well as transplant-center care.",
+        "D": "Outside admissions trigger team notification and assessment rather than automatic delisting."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education → §9. Waitlist management → b.i.",
+      "quote_hint": "Notify the transplant team of any changes in their Health status (including admissions to hospitals other than the transplant center)",
+      "keywords": ["Notify", "transplant", "team", "changes", "Health", "status", "admissions"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §9. Waitlist management → b.i. (notify team of health status changes including outside admissions); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 020400 item; lung waitlist health-status reporting distinct from OPTN registration notice (cctc-2041) and MELD-change education (cctc-2018); anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2043",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020203"],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "When coordinating pulmonary evaluation testing for a lung transplant candidate, which invasive study may be included in the transplant evaluation protocol?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Bronchoscopy" },
+      { "id": "B", "text": "Elective cosmetic dermatology biopsy" },
+      { "id": "C", "text": "Routine appendectomy without clinical indication" },
+      { "id": "D", "text": "Veterinary pulmonary assessment" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant evaluation pulmonary testing may include pulmonary function tests, bronchoscopy, and arterial blood gas among organ-specific diagnostic protocols.",
+      "rationale_incorrect": {
+        "B": "Cosmetic dermatology biopsy is not a standard pulmonary transplant evaluation study.",
+        "C": "Appendectomy without indication is not part of standard pulmonary evaluation protocols.",
+        "D": "Human transplant evaluation does not include veterinary assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → b.c.iv. → Pulmonary testing",
+      "quote_hint": "Pulmonary function tests Bronchoscopy Arterial blood gas",
+      "keywords": ["Pulmonary", "Bronchoscopy", "function", "tests", "Arterial", "blood", "gas"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → b.c.iv. Diagnostic testing examples → Pulmonary testing (bronchoscopy listed); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 020200 item; lung bronchoscopy coordination distinct from infectious disease consult (cctc-2034) and support resources (cctc-2031); anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2044",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020703"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver waitlist candidate is being removed from the waiting list after transplantation at another center. What OPTN-required data must be available to process the removal?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Current MELD or PELD score calculation data" },
+      { "id": "B", "text": "Only the donor family's contact preferences" },
+      { "id": "C", "text": "The recipient's unrelated prior employment history" },
+      { "id": "D", "text": "No data are required for any liver waitlist removal" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "For liver candidates, the data necessary to calculate the candidate's current MELD or PELD score is required to remove the candidate from the waiting list.",
+      "rationale_incorrect": {
+        "B": "Donor family contact preferences are not the OPTN-required dataset for liver waitlist removal.",
+        "C": "Employment history is not the required OPTN data element for liver waitlist removal.",
+        "D": "OPTN Policy 3.9.A requires current MELD or PELD calculation data for liver waitlist removal."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 53,
+      "section": "Policy 3.9.A → Removing Liver Candidates from the Waiting List",
+      "quote_hint": "data necessary to calculate the candidate's current MELD or PELD score is required to remove the candidate from the waiting list",
+      "keywords": ["MELD", "PELD", "score", "required", "remove", "candidate", "waiting", "list"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=53",
+        "locator": "Policy 3.9.A → Removing Liver Candidates from the Waiting List (current MELD or PELD data required for removal); PDF p. 53 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. Sixth 020700 item; liver MELD-removal data angle distinct from HCC surveillance (cctc-2040) and kidney urine baseline (cctc-2016); anchor verified on optn-policies p. 53.",
+    "last_updated": "2026-06-05"
+  }
+]

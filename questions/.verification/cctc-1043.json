@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1043",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 331,
+    "keywords": [
+      "liver",
+      "donation",
+      "higher",
+      "risk",
+      "kidney",
+      "donation",
+      "experienced"
+    ],
+    "keyword_hash": "sha256:b29a57f96dc323f64f6a378d86736694a5cbb795039da700523aea25acea66ac"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "keywords": [
+        "liver",
+        "donation",
+        "higher",
+        "kidney"
+      ],
+      "keyword_hash": "sha256:7fd37996bd45d0041d3f0cdde6f6d742b739b6d039e481957b1ba72d8bd6162b"
+    }
+  ]
+}
