@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-2074",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 46,
+    "keywords": [
+      "Intestine",
+      "cumulative",
+      "days",
+      "inactive",
+      "waiting",
+      "accrue",
+      "candidates",
+      "Table"
+    ],
+    "keyword_hash": "sha256:47ca9bd86a7bb584e32f7ee4f2143de7d92f71180d36e5c95eb9189593ca80d0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "policy": "3.6",
+      "keywords": [
+        "table",
+        "waiting",
+        "inactive",
+        "candidates",
+        "intestine",
+        "accrue",
+        "cumulative"
+      ],
+      "keyword_hash": "sha256:8e4b2d67f82fef100c0993d5d49e92a3ae446f727bb6e0dad1d094ec233268e9"
+    }
+  ]
+}

@@ -73,7 +73,7 @@ Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/m
 
 ## Phase 3: Question-Bank Growth and Validation
 
-**Status**: In Progress (validation + reference index in place; 217 draft items across all blueprint tasks)
+**Status**: In Progress (validation + reference index in place; 229 draft items across all blueprint tasks)
 
 **Objective**: Make the bank safe to expand while keeping schema integrity and blueprint coverage visible.
 
@@ -122,6 +122,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] **Batch 03** (`batch-03.json` in each domain): +12 draft items (`cctc-1010`–`1013`, `2009`–`2012`, `3009`–`3012`); targeted depth on tasks `010500`, `010600`, `020100`, `020500`, `030100`, `030200`, `030300`; first **lung** organ tag; second **pediatric** item; second **`complex_combo`**; first **OPTN-primary** waitlist items (`020500`, Policy 3.4.E inactive status, `optn_policies.pdf` p. 44). Full `npm run validate` green (2026-06-06).
 - [x] **Batch 04** (`batch-04.json` in each domain): +12 draft items (`cctc-1014`–`1017`, `2013`–`2016`, `3013`–`3016`); living donor financial/complication education, primary nonfunction risk, **heart/lung** and **pancreas** indications, multidisciplinary consults, DonorNet offer presentation, kidney preop urine baseline, **intestine** long-term outcomes, community MD coordination, timed IS dosing, **SPK** rejection `complex_combo` (**kidney_pancreas**). First bank coverage of `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags. Full `npm run validate` green (2026-06-05).
 - [x] **Batch 05** (`batch-05.json` in each domain): +12 draft items (`cctc-1018`–`1021`, `2017`–`2020`, `3017`–`3020`); evaluation protocols & health-maintenance screening, hand-hygiene infection prevention, SRTR outcome disclosure, not-listed communication, selection-committee synthesis, **OPTN HLA/WHO** listing (`020502`), lung smoking cessation/cotinine, FAST stroke urgent contact, tacrolimus nephrotoxicity (Nursing Drug Handbook), **UNet** listing data, late-mortality `complex_combo`. Full `npm run validate` green (2026-06-05).
+- [x] **Batch 19** (`batch-19.json` in each domain): +12 draft items (`cctc-1074`–`1077`, `2073`–`2076`, `3073`–`3076`); living-donor decline-right teaching, BK virus `complex_combo`, lung CMV bronchiolitis, live-vaccine interval, OPTN liver/intestine inactive waiting time, BK screening, donor chart review, sirolimus wound healing, post-transplant vaccination restart, BK nephropathy, BK risk-factor `complex_combo`. First BK-virus and sirolimus items; completes OPTN inactive-waiting-time organ set. Full `npm run validate` green (2026-06-05).
 - [x] **Batch 18** (`batch-18.json` in each domain): +12 draft items (`cctc-1070`–`1073`, `2069`–`2072`, `3069`–`3072`); liver hepatopulmonary syndrome indication/evaluation, CMV organ-specific `complex_combo`, living-liver surgical-risk teaching, EBV/PTLD screening, belatacept EBV requirement, OPTN lung inactive waiting time, adult ATN signs `complex_combo`, CMV vanishing bile duct and glomerulopathy. Full `npm run validate` green (2026-06-05).
 - [x] **Batch 17** (`batch-17.json` in each domain): +12 draft items (`cctc-1066`–`1069`, `2065`–`2068`, `3065`–`3068`); pediatric kidney ATN teaching, intestine GVHD incidence counseling, heart CAV as chronic rejection, CMV prevention-strategy `complex_combo`, post-transplant DSA monitoring, heart rituximab desensitization risks, SPK indication, heart preop emotional support, intestine GVHD skin-rash presentation, heart CAV/LV-dysfunction etiology, pediatric ATN monitoring `complex_combo`, TMP-SMX toxoplasma prophylaxis benefit. Nudged recall (27.3%) and analysis (8.8%) mix. Full `npm run validate` green (2026-06-05).
 - [x] **Batch 16** (`batch-16.json` in each domain): +12 draft items (`cctc-1062`–`1065`, `2061`–`2064`, `3061`–`3064`); pancreas hypoglycemic-unawareness indications, pediatric intestinal oral-aversion teaching, heart-lung toxoplasmosis `complex_combo`, Eisenmenger heart-lung indication, pancreas metabolic evaluation, heart-lung evaluation scope, intestinal-failure definition, pediatric child-development consult, pancreas graft-thrombosis/dehydration, toxoplasmosis-versus-rejection biopsy, pancreas long-term fluid `complex_combo`, pediatric intestinal feeding coordination. Rare-organ depth (pancreas, heart_lung, intestine). Full `npm run validate` green (2026-06-05).
@@ -150,7 +151,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] CI subset: `npm run validate:ci` (format + OPTN-indexed content; textbook content skipped with logged skips).
 - [x] Authoring loop: `npm run validate:references`.
 - [x] OPTN policies PDF index (`npm run reference:fetch-optn`, `reference:index -- optn-policies`).
-- [x] Verification stubs — [`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), [`schema/reference-verification-stub.schema.json`](../schema/reference-verification-stub.schema.json), `questions/.verification/` (217 items as of batch 18).
+- [x] Verification stubs — [`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), [`schema/reference-verification-stub.schema.json`](../schema/reference-verification-stub.schema.json), `questions/.verification/` (229 items as of batch 19).
 - [x] `npm run reference:export-stubs` — generate `questions/.verification/<item-id>.json` from local full validate + index.
 - [x] `npm run validate:stubs` — CI hard-fail: question JSON must match committed stubs (keywords, pages, Policy §).
 - [x] Wire `validate:stubs` into `.github/workflows/validate.yml`.
@@ -190,6 +191,6 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 ## Near-Term Sequencing
 
 1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTE/pull/1)).
-2. **Phase 3 bank growth** per `02-author-questions.md` — batch 19+ shards; per-task depth targets met — grow bank depth/variety, analysis/recall mix, and pediatric coverage toward ~500 reviewed (217 draft items as of batch 18).
+2. **Phase 3 bank growth** per `02-author-questions.md` — batch 20+ shards; per-task depth targets met — grow bank depth/variety, analysis/recall mix, and pediatric coverage toward ~500 reviewed (229 draft items as of batch 19).
 3. ~~**Phase 3 deferred:** verification stubs + `validate:stubs` in CI~~ (done — 73 stubs committed).
 4. **Phase 4 polish and static hosting** — GitHub Pages deploy, device/a11y pass, richer history trends after a small real bank exists.

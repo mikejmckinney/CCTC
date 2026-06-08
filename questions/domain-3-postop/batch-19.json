@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3073",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030303"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient with a recent surgical wound asks about starting sirolimus. Which counseling point aligns with standard medication references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Sirolimus may impair wound healing, so initiation may be delayed in some clinical situations" },
+      { "id": "B", "text": "Sirolimus accelerates wound healing and should always start immediately after surgery" },
+      { "id": "C", "text": "Sirolimus has no effect on wound healing or graft recovery" },
+      { "id": "D", "text": "Sirolimus is the preferred agent during active wound dehiscence" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sirolimus has been associated with impaired wound healing and delay in renal allograft recovery; delaying initiation may be warranted in these clinical situations.",
+      "rationale_incorrect": {
+        "B": "Sirolimus may impair rather than accelerate wound healing.",
+        "C": "Wound-healing impairment is a recognized sirolimus concern requiring clinical judgment.",
+        "D": "Active wound problems may warrant delaying sirolimus rather than preferential use."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 154,
+      "section": "Ch. 4, Pharmacology → Sirolimus → dosing notes → v.",
+      "quote_hint": "associated with impaired wound healing and delay in renal allograft recovery … delaying the initiation of sirolimus may be warranted",
+      "keywords": ["impaired", "wound", "healing", "delay", "renal", "allograft", "recovery", "sirolimus"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Sirolimus → dosing notes → v. (impaired wound healing; delay initiation when warranted); PDF p. 154 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First sirolimus item in bank; distinct from belatacept counseling (cctc-3072) and cyclosporine cosmetic effects (cctc-3044); anchor verified on Cupples p. 154.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3074",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When coordinating post-transplant health maintenance for a solid-organ recipient, when do most centers restart vaccinations per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Approximately 3 to 6 months after transplantation" },
+      { "id": "B", "text": "Only after 10 years of stable graft function" },
+      { "id": "C", "text": "Immediately in the recovery room before discharge" },
+      { "id": "D", "text": "Vaccinations are never restarted after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Although the ideal post-transplant vaccination timing is unknown, most centers restart vaccinations approximately 3 to 6 months after transplantation.",
+      "rationale_incorrect": {
+        "B": "Vaccination restart occurs much earlier than a 10-year interval in most programs.",
+        "C": "Most centers defer vaccination restart for several months rather than administering vaccines in the recovery room.",
+        "D": "Post-transplant vaccination restart is recommended rather than permanently avoided."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 180,
+      "section": "Ch. 5, Infectious Diseases → Immunizations → A.4.",
+      "quote_hint": "most centers restart vaccinations approximately 3 to 6 months posttransplant",
+      "keywords": ["most", "centers", "restart", "vaccinations", "approximately", "months", "posttransplant", "immunosuppressed"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Immunizations → A.4. (most centers restart vaccinations 3–6 months post-transplant); PDF p. 180 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant vaccination-restart timing distinct from live-vaccine pretransplant interval (cctc-1077) and vaccination combo (cctc-1048); anchor verified on Cupples p. 180.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3075",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant recipient with rising creatinine has confirmed BK polyomavirus-associated nephropathy. Which complication pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Tubulointerstitial nephritis with possible ureteral stenosis and progressive graft dysfunction" },
+      { "id": "B", "text": "Isolated cosmetic skin rash without renal involvement" },
+      { "id": "C", "text": "Expected benign finding that never threatens graft function" },
+      { "id": "D", "text": "Primary graft tenderness as the hallmark manifestation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "BK virus reactivation may cause tubulointerstitial nephritis, ureteral stenosis leading to obstructive nephropathy, progressive graft dysfunction, and graft loss in polyomavirus-associated nephropathy.",
+      "rationale_incorrect": {
+        "B": "BK nephropathy causes renal tubular and ureteral complications rather than isolated skin findings.",
+        "C": "BK-associated nephropathy may cause significant morbidity and graft dysfunction.",
+        "D": "Graft tenderness is not the hallmark of BK nephropathy; renal dysfunction and tubulointerstitial injury predominate."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 207,
+      "section": "Ch. 5, Infectious Diseases → J. Polyomaviruses → 2. BK virus → c.",
+      "quote_hint": "Tubulointerstitial nephritis … Ureteral stenosis … obstructive nephropathy … Progressive graft dysfunction … graft loss",
+      "keywords": ["Tubulointerstitial", "nephritis", "Ureteral", "stenosis", "obstructive", "nephropathy", "graft", "dysfunction"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → J. Polyomaviruses → 2. BK virus → c. (tubulointerstitial nephritis, ureteral stenosis, progressive graft dysfunction); PDF p. 207 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. BK nephropathy complication angle distinct from ureteral obstruction (cctc-3047) and CMV vanishing bile duct (cctc-3069); anchor verified on Cupples p. 207.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3076",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030101", "030102"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant recipient has rising BK viral replication on surveillance testing. Evaluate the following risk and complication statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Intense immunosuppression is a modulating risk factor for BK virus reactivation." },
+      { "id": "II", "text": "Ureteric stents are a post-transplant modulating factor associated with BK risk." },
+      { "id": "III", "text": "BK and JC viruses never reactivate in immunosuppressed transplant recipients." },
+      { "id": "IV", "text": "BK reactivation may cause ureteral stenosis leading to obstructive nephropathy." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "BK risk is increased by intense immunosuppression and ureteric stents and may cause ureteral stenosis with obstructive nephropathy. Statement III is false because BK and JC viruses often reactivate in immunosuppressed recipients.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—ureteral stenosis with obstructive nephropathy is a listed complication.",
+        "C": "Statements I and II are also true; statement III is false.",
+        "D": "Statement III is false—polyomaviruses often reactivate in immunosuppressed recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 207,
+      "section": "Ch. 5, Infectious Diseases → J. Polyomaviruses → 1.d. and 2. → c.–d.",
+      "quote_hint": "often reactivate in the immunosuppressed recipient … Intense immunosuppression … Ureteric stents … Ureteral stenosis … obstructive nephropathy",
+      "keywords": ["reactivate", "immunosuppressed", "recipient", "Intense", "immunosuppression", "Ureteric", "stents", "Ureteral"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → J. Polyomaviruses → 1.d. and 2. → c.–d. (reactivation in immunosuppressed recipients; intense IS and stents as risk factors; ureteral stenosis); PDF p. 207 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Twentieth complex_combo in bank; BK risk-factor angle distinct from BK teaching combo (cctc-1075) and adult ATN combo (cctc-3071); anchor verified on Cupples p. 207.",
+    "last_updated": "2026-06-05"
+  }
+]

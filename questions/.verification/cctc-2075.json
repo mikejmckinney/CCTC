@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2075",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 208,
+    "keywords": [
+      "effective",
+      "antiviral",
+      "therapies",
+      "screening",
+      "BK",
+      "virus",
+      "replication",
+      "immunosuppression"
+    ],
+    "keyword_hash": "sha256:133d7e7297dc2c38db7aa7fccd92b5359816589529671c7c71f97fc26e58ecac"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "keywords": [
+        "routine",
+        "replication",
+        "screening",
+        "guide",
+        "immunosuppression",
+        "reduction"
+      ],
+      "keyword_hash": "sha256:2a15b059d404ec9c432997f02f57872cdeb989b2394f8ead5955ab1591bd9613"
+    }
+  ]
+}

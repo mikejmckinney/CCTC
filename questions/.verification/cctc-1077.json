@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1077",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 181,
+    "keywords": [
+      "Wait",
+      "least",
+      "weeks",
+      "live",
+      "vaccines",
+      "transplant",
+      "procedure",
+      "pediatric"
+    ],
+    "keyword_hash": "sha256:2220e668f9c7ff900463c7489de681b7b116f531c44dd1ce50d4117756289ae5"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 181,
+      "keywords": [
+        "weeks",
+        "between",
+        "vaccines",
+        "adult",
+        "pediatric",
+        "candidates"
+      ],
+      "keyword_hash": "sha256:8a7fde3d244e66a23843e4f64cad9fff1b5f1836a82e0a25d999af64187ca863"
+    }
+  ]
+}

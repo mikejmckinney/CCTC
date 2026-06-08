@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **217 draft items** in `questions/domain-*/batch-01.json` through `batch-18.json` (IDs `cctc-1001`–`1073`, `2001`–`2072`, `3001`–`3072`).
+- **229 draft items** in `questions/domain-*/batch-01.json` through `batch-19.json` (IDs `cctc-1001`–`1077`, `2001`–`2076`, `3001`–`3076`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
@@ -182,10 +182,11 @@ Use these files as the current product ground truth:
 - Batch 16 (2026-06-05): pancreas indications/evaluation/complications, heart-lung Eisenmenger and toxoplasmosis teaching, intestine oral aversion (pediatric), child-development consult, two new `complex_combo` items (toxoplasmosis, pancreas fluid management).
 - Batch 17 (2026-06-05): pediatric kidney ATN, intestine GVHD, heart CAV/chronic rejection, CMV prevention `complex_combo`, DSA post-transplant monitoring, rituximab desensitization risks, SPK indication, heart preop emotional support, pediatric ATN monitoring `complex_combo`, TMP-SMX toxoplasma benefit.
 - Batch 18 (2026-06-05): liver hepatopulmonary syndrome, CMV organ-specific `complex_combo`, living-liver surgical risk, EBV/PTLD screening, belatacept EBV requirement, OPTN lung inactive waiting time, CMV vanishing bile duct/glomerulopathy, adult ATN signs `complex_combo`.
+- Batch 19 (2026-06-05): living-donor decline right, BK virus teaching/monitoring `complex_combo`, lung CMV bronchiolitis, live-vaccine interval, OPTN liver/intestine inactive waiting time, donor chart review, sirolimus wound healing, vaccination restart timing, BK nephropathy.
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 19+)
+- Expand the real question bank under domain directories (batch 20+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land
