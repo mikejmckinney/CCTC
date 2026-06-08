@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3142",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "Cultures",
+      "wound",
+      "throat",
+      "urine",
+      "sputum",
+      "JP",
+      "drainage",
+      "stool"
+    ],
+    "keyword_hash": "sha256:40bdcdd4ad171000986dda953ebc1de0761b8223d7a275fe6441d21a59774a41"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "wound",
+        "throat",
+        "urine",
+        "sputum",
+        "drainage",
+        "stool",
+        "cultures"
+      ],
+      "keyword_hash": "sha256:6152b5358dd389f893e106adbaea8f4d1ec8fe413dc4d547bb3f9437fe7e9f69"
+    }
+  ]
+}

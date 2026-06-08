@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-2142",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Lymphadenopathy",
+      "Clinical",
+      "presentation",
+      "PTLD"
+    ],
+    "keyword_hash": "sha256:6ea09d641c5f9c9b5e529fbd01bf8f6baa54d94d12be90ecbb07c7fbcc456f1a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "lymphadenopathy",
+        "among",
+        "clinical",
+        "presentations"
+      ],
+      "keyword_hash": "sha256:2e627916ec868d2485a5dead8aee24ea52e7506bc8d69c18a91d3eb2037ed608"
+    }
+  ]
+}

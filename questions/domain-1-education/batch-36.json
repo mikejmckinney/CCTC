@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1142",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A transplant recipient who helps care for young grandchildren asks about diaper changes after a grandchild received a live-virus vaccine. Which teaching point aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Avoid changing diapers of children who were recently vaccinated with live-virus vaccines" },
+      { "id": "B", "text": "Live-vaccine shedding never occurs after pediatric vaccination" },
+      { "id": "C", "text": "Diaper changes are unrestricted regardless of recent vaccinations" },
+      { "id": "D", "text": "Only hospital staff may change diapers for vaccinated children" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes avoiding changing diapers of children who were recently vaccinated, because shedding after live-virus vaccines may continue for days, weeks, or months.",
+      "rationale_incorrect": {
+        "B": "Shedding after live-virus vaccination may persist for a variable period depending on vaccine and host factors.",
+        "C": "Recent live-vaccine exposure warrants precautions including avoiding diaper changes when possible.",
+        "D": "Household caregivers are taught these precautions rather than deferring all diaper care to hospital staff."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vi. Others",
+      "quote_hint": "Avoid changing diapers of children who were recently vaccinated",
+      "keywords": ["Avoid", "changing", "diapers", "children", "recently", "vaccinated"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vi. Others (avoid diaper changes for recently live-vaccinated children); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Live-vaccine diaper-precaution angle distinct from household live-vaccine contact combo (cctc-1048) and garden/dirt gloves teaching (cctc-1140); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1143",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching routine infection-prevention measures at home, which wound-care step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Clean and cover recent cuts or wounds" },
+      { "id": "B", "text": "Leave all cuts uncovered to promote air drying" },
+      { "id": "C", "text": "Ignore minor skin breaks because immunosuppression prevents infection" },
+      { "id": "D", "text": "Apply only topical steroids to all wounds without cleaning" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching for other exposures includes cleaning and covering recent cuts or wounds, along with completing prescribed infection prophylaxis or treatment.",
+      "rationale_incorrect": {
+        "B": "Cleaning and covering recent wounds is recommended rather than leaving cuts uncovered.",
+        "C": "Immunosuppressed recipients remain at infection risk and require wound care.",
+        "D": "Wound cleaning and covering are standard rather than applying steroids without cleaning."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vi. Others",
+      "quote_hint": "Clean and cover recent cuts or wounds",
+      "keywords": ["Clean", "cover", "recent", "cuts", "wounds"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vi. Others (clean and cover recent cuts or wounds); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Wound-cleaning precaution angle distinct from garden gloves/mask teaching (cctc-1140) and surgical wound infection management (cctc-3051); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1144",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A transplant recipient planning international travel asks how to choose a destination. Which counseling factor aligns with standard travel references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Risk of infection, including risk of endemic infections in the area" },
+      { "id": "B", "text": "Endemic infection risk should be ignored when selecting travel destinations" },
+      { "id": "C", "text": "Only flight duration matters; local disease patterns are irrelevant" },
+      { "id": "D", "text": "Recipients should select destinations based solely on leisure activities" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Travel destination selection considers current health and physical limitations and risk of infection, including endemic infections in the area.",
+      "rationale_incorrect": {
+        "B": "Endemic infection risk is specifically included in destination planning.",
+        "C": "Local infection and endemic disease patterns are part of destination selection rather than being irrelevant.",
+        "D": "Health and infection risk are weighed along with other travel factors rather than ignoring medical considerations."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel → ii.",
+      "quote_hint": "Risk of infection, including risk of endemic infections in area",
+      "keywords": ["Risk", "infection", "endemic", "infections", "area", "travel"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → ii. (destination selection includes endemic infection risk); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Endemic-infection destination-risk angle distinct from early travel-away-from-home restriction (cctc-1134) and destination-provider planning (cctc-1136); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1145",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010503"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant travel-preparation teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Patients should consider travel insurance and purchase of a medic alert tag." },
+      { "id": "II", "text": "Patients should bring a basic first-aid kit that includes a thermometer." },
+      { "id": "III", "text": "Destination selection should ignore endemic infection risk." },
+      { "id": "IV", "text": "Patients should bring a summary of health history including surgical procedure and current medications." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Travel insurance and medic alert tags, a first-aid kit with thermometer, and a health-history summary are supported. Statement III is false because endemic infection risk is a destination-selection consideration.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—a health history and medication summary should be carried when traveling.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because infection and endemic disease risk should be considered when choosing destinations."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel",
+      "quote_hint": "travel insurance and purchase of a medic alert tag … first-aid kit that includes a thermometer … Risk of infection, including risk of endemic infections … Summary of health history including surgical procedure and current medications",
+      "keywords": ["travel", "insurance", "medic", "alert", "first-aid", "thermometer", "endemic", "health"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → ii., v., vi. (endemic risk, first-aid kit, medic alert/travel insurance, health summary); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Travel-preparation combo distinct from travel-restriction/carry-on combo (cctc-1137) and endemic-risk one-best (cctc-1144); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05"
+  }
+]

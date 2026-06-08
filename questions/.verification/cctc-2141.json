@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2141",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Often",
+      "extranodal",
+      "involve",
+      "gastrointestinal",
+      "tract",
+      "lung",
+      "kidney"
+    ],
+    "keyword_hash": "sha256:ff2c57546ef556f4cd0a21616dfc1c79cb4954ad6336ece37507a2b847357519"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "often",
+        "extranodal",
+        "involve",
+        "tract",
+        "kidney"
+      ],
+      "keyword_hash": "sha256:01b3db78f4cfc40b259f4192998d3c25ecee8eb6f7efb5c00dd69ed0fb945942"
+    }
+  ]
+}

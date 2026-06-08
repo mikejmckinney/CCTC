@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3141",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching signs of post-transplant bacterial infection, which wound-related finding aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wound dehiscence" },
+      { "id": "B", "text": "Wound dehiscence never indicates possible infection" },
+      { "id": "C", "text": "Only fever above 104°F can accompany wound complications" },
+      { "id": "D", "text": "Wound dehiscence is a normal expected finding that requires no evaluation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Signs of bacterial infection include wound dehiscence along with wound erythema, purulent drainage, tenderness, and swelling.",
+      "rationale_incorrect": {
+        "B": "Wound dehiscence is listed among bacterial-infection signs requiring evaluation.",
+        "C": "Fever is usually ≥101°F (38.5°C), and wound dehiscence may occur with or without high fever.",
+        "D": "Wound dehiscence warrants clinical evaluation rather than being dismissed as always benign."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Signs and symptoms → v.",
+      "quote_hint": "Wound dehiscence",
+      "keywords": ["Wound", "dehiscence", "bacterial", "infection", "signs"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → f.v. (wound dehiscence among infection signs); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Wound-dehiscence sign angle distinct from catheter-site erythema item (cctc-3139) and drainage/output changes (cctc-3135); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3142",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A febrile transplant recipient with purulent JP drain output is being evaluated for bacterial infection. Which diagnostic step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Obtain cultures of the wound, throat, urine, sputum, JP drainage, and/or stool as indicated" },
+      { "id": "B", "text": "Cultures are never indicated when drainage is present" },
+      { "id": "C", "text": "Only blood cultures are obtained and JP drainage is never cultured" },
+      { "id": "D", "text": "Empiric antibiotics should be withheld until all cultures are finalized in two weeks" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bacterial infection diagnosis includes cultures of the wound, throat, urine, sputum, JP drainage, and/or stool as clinically indicated, along with blood cultures and imaging when appropriate.",
+      "rationale_incorrect": {
+        "B": "Drainage and wound sources are among indicated culture sites.",
+        "C": "JP drainage may be cultured in addition to blood and other sources rather than being excluded.",
+        "D": "Empiric antibiotics are administered after cultures are obtained rather than being withheld for weeks."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Diagnosis → g.ii.",
+      "quote_hint": "Cultures of the wound, throat, urine, sputum, JP drainage, and/or stool",
+      "keywords": ["Cultures", "wound", "throat", "urine", "sputum", "JP", "drainage", "stool"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → g.ii. (wound, throat, urine, sputum, JP drainage, stool cultures); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Multi-site culture diagnostic angle distinct from blood-culture recall (cctc-3137) and diagnostic combo (cctc-3140); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3143",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "After bacterial infection cultures return with organism identification, which treatment principle aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Adjust antibiotic treatment based on the sensitivities of the identified bacteria" },
+      { "id": "B", "text": "Continue empiric broad-spectrum therapy indefinitely without review" },
+      { "id": "C", "text": "Discontinue all antibiotics once any culture is positive" },
+      { "id": "D", "text": "Sensitivity results are never used to guide transplant infection therapy" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "After empiric broad-spectrum antibiotics are started, antibiotic treatment is adjusted based on the sensitivities of the identified bacteria.",
+      "rationale_incorrect": {
+        "B": "Therapy is tailored to culture and sensitivity results rather than continuing empiric therapy indefinitely without adjustment.",
+        "C": "Targeted therapy follows identification and sensitivities rather than stopping all antibiotics solely because a culture is positive.",
+        "D": "Sensitivity-guided adjustment is specifically described in bacterial-infection management."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.ii.",
+      "quote_hint": "Antibiotic treatment is adjusted based on the sensitivities of the identified bacteria",
+      "keywords": ["Antibiotic", "treatment", "adjusted", "sensitivities", "identified", "bacteria"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.ii. (adjust antibiotics based on sensitivities); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sensitivity-guided antibiotic adjustment angle distinct from empiric vancomycin therapy (cctc-3133) and management combo (cctc-3136); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3144",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating bacterial-infection treatment protocols. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Antibiotic treatment should be adjusted based on the sensitivities of identified bacteria." },
+      { "id": "II", "text": "Immunosuppression may be decreased with caution during severe bacterial infection." },
+      { "id": "III", "text": "The patient should be observed for symptoms of rejection during infection treatment." },
+      { "id": "IV", "text": "Wound infections never require antibiotics." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Sensitivity-guided antibiotics, cautious immunosuppression reduction, and rejection monitoring are supported during bacterial infection treatment. Statement IV is false because wound infections are treated with appropriate antibiotics based on culture and sensitivities.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—patients should be observed for rejection symptoms during infection treatment.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because wound infections receive appropriate antibiotics determined through culture and sensitivities."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.",
+      "quote_hint": "Antibiotic treatment is adjusted based on the sensitivities … Immunosuppression may be decreased … Observe the patient for symptoms of rejection … Administer appropriate antibiotics as determined through culture and sensitivities",
+      "keywords": ["Antibiotic", "sensitivities", "Immunosuppression", "decreased", "rejection", "wound", "infections"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.ii.–iv. (sensitivity-guided therapy, cautious IS reduction, rejection monitoring, wound antibiotics); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Bacterial-infection treatment combo distinct from diagnostic combo (cctc-3140) and management combo (cctc-3136); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05"
+  }
+]

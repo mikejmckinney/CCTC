@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3144",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "Antibiotic",
+      "sensitivities",
+      "Immunosuppression",
+      "decreased",
+      "rejection",
+      "wound",
+      "infections"
+    ],
+    "keyword_hash": "sha256:1af08270cce514c1416907ca36b71ea0784773ac131d36e23aec619458f26808"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "sensitivity-guided",
+        "therapy",
+        "cautious",
+        "reduction",
+        "rejection",
+        "monitoring",
+        "wound",
+        "antibiotics"
+      ],
+      "keyword_hash": "sha256:93eaaa29165850da147e00d9d408c1ec45b6a26587377df0e2249d7346d282df"
+    }
+  ]
+}

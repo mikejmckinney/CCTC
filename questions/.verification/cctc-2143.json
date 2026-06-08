@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2143",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Abdominal",
+      "pain",
+      "Clinical",
+      "presentation",
+      "PTLD"
+    ],
+    "keyword_hash": "sha256:dacd529570e48b789c60113eca3fcd923f266556afacc5b97e2e0bb68ca562f0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "abdominal",
+        "among",
+        "clinical",
+        "presentations"
+      ],
+      "keyword_hash": "sha256:460171d0e0d11321dd7b25434c9b8940d4c8b0cb2943d4b938038380a4fed79f"
+    }
+  ]
+}
