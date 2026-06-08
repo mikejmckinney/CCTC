@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1137",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 122,
+    "keywords": [
+      "avoid",
+      "traveling",
+      "carry-on",
+      "luggage",
+      "Travel",
+      "Clinic",
+      "destination"
+    ],
+    "keyword_hash": "sha256:4993743a05e61b631f1d67018553a345be3eb9c4ed3d6ee7a761023ea03b5cbd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "keywords": [
+        "early",
+        "travel",
+        "restriction",
+        "carry-on",
+        "clinic",
+        "consultation"
+      ],
+      "keyword_hash": "sha256:b87b7d5b4abb3022ff69891c78316ae7e9dac51f7d551566f81051bdc48db503"
+    }
+  ]
+}

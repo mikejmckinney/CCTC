@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-2134",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "Tonsillitis",
+      "Clinical",
+      "presentation",
+      "PTLD"
+    ],
+    "keyword_hash": "sha256:254d14a3a05037a98217a597747e432ea78ca0622ef0db3e62d819f889385485"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "tonsillitis",
+        "among",
+        "clinical",
+        "presentations"
+      ],
+      "keyword_hash": "sha256:84a834315a4076612c0ca9c0340ac838102c286c65e593e9d7981795097441e2"
+    }
+  ]
+}

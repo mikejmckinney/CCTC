@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2136",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 281,
+    "keywords": [
+      "single",
+      "multiple",
+      "organs",
+      "Tonsillitis",
+      "Weight",
+      "loss",
+      "Lung",
+      "lesion"
+    ],
+    "keyword_hash": "sha256:c317bcf714013c576f4b2afb15152d813cd5d0febdc5953585393dd88c6a35ba"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "keywords": [
+        "organ",
+        "involvement",
+        "tonsillitis",
+        "weight",
+        "visceral"
+      ],
+      "keyword_hash": "sha256:f15b54db7ffb14a9b21049cb1d4378c01c3a7172c15adfcbe81285fd5761e6e9"
+    }
+  ]
+}

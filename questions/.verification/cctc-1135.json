@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1135",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 122,
+    "keywords": [
+      "Pack",
+      "3-day",
+      "supply",
+      "carry-on",
+      "luggage",
+      "medications"
+    ],
+    "keyword_hash": "sha256:00e543d8cef2dcab4025ebae3e6d4e2f708bdaeeff21257055dad9c85b208105"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "keywords": [
+        "medications",
+        "3-day",
+        "carry-on",
+        "supply",
+        "extra",
+        "original",
+        "containers"
+      ],
+      "keyword_hash": "sha256:20155169d5e6fd9157e65608ff7728f9e973c72b36dcecb54de430d592c2e991"
+    }
+  ]
+}
