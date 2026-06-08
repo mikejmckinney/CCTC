@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1062",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 825,
+    "keywords": [
+      "type",
+      "diabetes",
+      "hypoglycemic",
+      "unawareness",
+      "pancreas",
+      "transplantation",
+      "metabolic",
+      "control"
+    ],
+    "keyword_hash": "sha256:b8a7012fc2efddde322f7385041482b499503a76a26818e297fb6ea40782e77f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "keywords": [
+        "diabetes",
+        "metabolic",
+        "control",
+        "including",
+        "hypoglycemic",
+        "unawareness"
+      ],
+      "keyword_hash": "sha256:95ee7db7857382765d4f7c2bdc21dd39217d90159a6958d1001ffd3888dbd885"
+    }
+  ]
+}

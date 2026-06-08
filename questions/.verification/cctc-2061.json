@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-2061",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 825,
+    "keywords": [
+      "Frequent",
+      "severe",
+      "metabolic",
+      "complications",
+      "Hypoglycemic",
+      "unawareness",
+      "optimized",
+      "management"
+    ],
+    "keyword_hash": "sha256:10cf327a5e601ea0cbd3e9b697e8fdaf47b84ce4bb2e4cb80a2dfaecfa265925"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "keywords": [
+        "frequent",
+        "severe",
+        "metabolic",
+        "complications",
+        "including",
+        "hypoglycemic",
+        "unawareness"
+      ],
+      "keyword_hash": "sha256:f392b520c51c601f6844e0605161c05866e57f5a70857ddb5758254d67520629"
+    }
+  ]
+}

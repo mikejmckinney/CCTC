@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1062",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "application",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "A candidate with long-standing type 1 diabetes and recurrent severe hypoglycemic episodes asks about pancreas transplantation indications. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Pancreas transplantation may be considered for type 1 diabetes with poor metabolic control such as hypoglycemic unawareness" },
+      { "id": "B", "text": "Pancreas transplantation is indicated only for type 2 diabetes without any renal disease" },
+      { "id": "C", "text": "Hypoglycemic unawareness permanently excludes pancreas transplantation" },
+      { "id": "D", "text": "Pancreas transplant is never offered to patients already using insulin" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Most pancreas transplant candidates have type 1 diabetes with poor metabolic control, especially hypoglycemic unawareness, after many years of insulin therapy.",
+      "rationale_incorrect": {
+        "B": "Type 2 diabetes accounts for a small minority of pancreas transplants; type 1 diabetes with metabolic complications is the typical indication discussed.",
+        "C": "Hypoglycemic unawareness is a metabolic complication that may support candidacy rather than exclude transplantation.",
+        "D": "Insulin-treated type 1 diabetes with metabolic complications is the typical population considered for pancreas transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → Indications → A.1.a.",
+      "quote_hint": "type 1 diabetes manifested by poor metabolic control, especially hypoglycemic unawareness",
+      "keywords": ["type", "diabetes", "hypoglycemic", "unawareness", "pancreas", "transplantation", "metabolic", "control"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → Indications → A.1.a. (type 1 diabetes with poor metabolic control including hypoglycemic unawareness); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ninth 010200 item; pancreas-indication angle distinct from liver alcohol abstinence (cctc-1058) and SPK suitability (cctc-2038); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1063",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "pediatric",
+    "stem": "When educating the family of a pediatric intestinal transplant recipient about post-transplant feeding challenges, which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Oral aversion is common before and after intestine transplantation, especially in pediatric recipients" },
+      { "id": "B", "text": "Oral aversion never occurs after intestinal transplantation" },
+      { "id": "C", "text": "Only adult recipients develop feeding difficulties after intestine transplant" },
+      { "id": "D", "text": "Early TPN use prevents all oral feeding problems permanently" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Oral aversion is a common problem both pre- and post-intestine transplantation, particularly in pediatric intestinal recipients, related to early intestinal failure, limited oral feeding, and prolonged nothing-by-mouth periods.",
+      "rationale_incorrect": {
+        "B": "Oral aversion is specifically described as a common post-transplant feeding challenge.",
+        "C": "Pediatric intestinal recipients are particularly affected rather than adults alone.",
+        "D": "TPN and limited oral intake may contribute to oral aversion rather than preventing all feeding problems."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 744,
+      "section": "Ch. 13, Intestine Transplantation → complications → 5. Oral aversion → a.",
+      "quote_hint": "Oral aversion … particularly in pediatric intestinal recipients",
+      "keywords": ["Oral", "aversion", "pediatric", "intestinal", "recipients", "intestine", "transplantation", "TPN"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → 5. Oral aversion → a. (common in pediatric intestinal recipients pre- and post-transplant); PDF p. 744 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth pediatric recipient in bank; intestine oral-aversion angle distinct from community infections (cctc-1057) and SOC suitability (cctc-2048); anchor verified on Cupples p. 744.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1064",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating infection-prevention teaching for heart and heart-lung recipients. Evaluate the following statements about toxoplasmosis:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Toxoplasmosis is more common in heart and heart-lung recipients than in other transplant groups." },
+      { "id": "II", "text": "Toxoplasma-seronegative recipients of seropositive donor organs have higher incidence without prophylaxis." },
+      { "id": "III", "text": "Toxoplasmosis characteristically occurs only after the first year post-transplant." },
+      { "id": "IV", "text": "Toxoplasmosis can mimic rejection and may require endomyocardial biopsy for definitive diagnosis." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Toxoplasmosis is more common in heart and heart-lung recipients because the organism encysts in heart muscle; seronegative recipients of seropositive donors are at high risk without prophylaxis; infection can mimic rejection requiring biopsy. Infection typically occurs during the first two months, not only after one year.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—toxoplasmosis may mimic rejection and require endomyocardial biopsy.",
+        "C": "Statements I and II are also true; statement III is false regarding timing.",
+        "D": "Statement III is false; toxoplasmosis typically occurs in the first two months post-transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 224,
+      "section": "Ch. 5, Infectious Diseases → B. Toxoplasma gondii → 2.–4.",
+      "quote_hint": "more common in heart and heart-lung recipients … seronegative recipients … seropositive donors … first 2 months … mimic rejection; endomyocardial biopsy",
+      "keywords": ["Toxoplasmosis", "heart", "heart-lung", "recipients", "seronegative", "seropositive", "rejection", "biopsy"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → B. Toxoplasma gondii → 2.–4. (heart/heart-lung risk, donor–recipient serostatus, early timing, mimic rejection); PDF p. 224 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Fifteenth complex_combo in bank; third heart_lung organ tag; distinct from lifestyle combo (cctc-1060); anchor verified on Cupples p. 224.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1065",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "recall",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "A candidate with congenital heart disease and fixed pulmonary hypertension from longstanding cyanotic shunting asks about transplant options. Which indication aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Simultaneous heart-lung transplantation for Eisenmenger syndrome" },
+      { "id": "B", "text": "Isolated kidney transplantation for Eisenmenger syndrome" },
+      { "id": "C", "text": "Intestine transplantation as the primary treatment for Eisenmenger syndrome" },
+      { "id": "D", "text": "Heart-lung transplantation is never performed for congenital cardiac disease" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Simultaneous heart/lung transplantation is most commonly performed in adults with congenital cardiac anomalies who developed pulmonary hypertension from longstanding cyanosis or shunting (Eisenmenger syndrome).",
+      "rationale_incorrect": {
+        "B": "Eisenmenger syndrome with fixed pulmonary hypertension is addressed through heart-lung rather than isolated kidney transplantation.",
+        "C": "Intestinal transplantation is not the primary option for Eisenmenger syndrome.",
+        "D": "Congenital cardiac anomalies with Eisenmenger syndrome are a recognized heart-lung transplant indication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "section": "Ch. 1, Evaluation → Heart/lung transplantation → 2.",
+      "quote_hint": "congenital cardiac anomalies who have developed pulmonary hypertension … (Eisenmenger syndrome)",
+      "keywords": ["Eisenmenger", "syndrome", "heart", "lung", "transplantation", "pulmonary", "hypertension", "cyanosis"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart/lung transplantation → 2. (Eisenmenger syndrome as common heart-lung indication); PDF p. 39 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third heart_lung organ tag in D1; Eisenmenger indication distinct from heart-lung evaluation (cctc-2013); anchor verified on Cupples p. 39.",
+    "last_updated": "2026-06-05"
+  }
+]

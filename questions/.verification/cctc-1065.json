@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1065",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 39,
+    "keywords": [
+      "Eisenmenger",
+      "syndrome",
+      "heart",
+      "lung",
+      "transplantation",
+      "pulmonary",
+      "hypertension",
+      "cyanosis"
+    ],
+    "keyword_hash": "sha256:48c5097961ac08295800b147c1a802d940edda8449e8fbd4a03646ed504beb32"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "keywords": [
+        "eisenmenger",
+        "syndrome",
+        "common",
+        "heart-lung",
+        "indication"
+      ],
+      "keyword_hash": "sha256:754602ba46f16cf5d834b814b9abf313b4ccae4c3b58fa8966aa6d8643227895"
+    }
+  ]
+}

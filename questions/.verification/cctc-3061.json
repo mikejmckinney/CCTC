@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-3061",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 838,
+    "keywords": [
+      "pancreas",
+      "graft",
+      "thrombosis",
+      "blood",
+      "flow",
+      "intravascular",
+      "volume",
+      "dehydration"
+    ],
+    "keyword_hash": "sha256:ae7d76d7c8b203c2ba57f28cc64721641661c7e47f8c81609e011ff18a537e82"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 838,
+      "keywords": [
+        "postoperative",
+        "monitoring",
+        "low-flow",
+        "pancreas",
+        "graft",
+        "thrombosis",
+        "dehydration",
+        "signs"
+      ],
+      "keyword_hash": "sha256:464302e7e5a9bca13e74815cc3a9124ae6d64a9df266e9a208f81a14303f5ccc"
+    }
+  ]
+}

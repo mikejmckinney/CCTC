@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-3063",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 838,
+    "keywords": [
+      "dehydration",
+      "metabolic",
+      "acidosis",
+      "pancreas",
+      "graft",
+      "thrombosis",
+      "skin",
+      "turgor"
+    ],
+    "keyword_hash": "sha256:6af5e5cff3344525b00b83df7eb175a5ff5d21c9ee344216481b867ebda42f14"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 838,
+      "keywords": [
+        "fluid",
+        "management",
+        "patient",
+        "caregiver",
+        "education",
+        "lifelong",
+        "dehydration",
+        "acidosis"
+      ],
+      "keyword_hash": "sha256:06560a91cac4a51ef5f7d1d512cb7526467de15006f14cd4c768e9c9d4427929"
+    }
+  ]
+}

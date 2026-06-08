@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2064",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 697,
+    "keywords": [
+      "child",
+      "development",
+      "pediatrics",
+      "psychosocial",
+      "social",
+      "work",
+      "psychology",
+      "psychiatry"
+    ],
+    "keyword_hash": "sha256:593d721c39396b5bf351fce99f2571ff13b013152eaca4430b9475ccdec518c8"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 697,
+      "keywords": [
+        "child",
+        "development",
+        "evaluation",
+        "social",
+        "psychology",
+        "psychiatry"
+      ],
+      "keyword_hash": "sha256:096871a45d51b4ab3917b9e5c764b0e2a28f91561d0217071a2241fe7bd67a6b"
+    }
+  ]
+}

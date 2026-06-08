@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3061",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "A pancreas transplant recipient becomes hypotensive with poor skin turgor and decreased urine output. Which complication should the coordinator prioritize in the differential?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Dehydration with risk of pancreas graft thrombosis from inadequate perfusion" },
+      { "id": "B", "text": "Expected benign finding that never threatens graft perfusion" },
+      { "id": "C", "text": "Isolated cosmetic issue unrelated to intravascular volume" },
+      { "id": "D", "text": "Mandated indication for immediate graft pancreatectomy in every case" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The pancreas graft is a low blood-flow organ with higher thrombosis potential; dehydration signs such as poor skin turgor and decreased urine output require prompt reporting because adequate intravascular volume is needed for graft perfusion.",
+      "rationale_incorrect": {
+        "B": "Dehydration can compromise pancreas graft perfusion and is not a benign expected finding.",
+        "C": "Poor skin turgor and oliguria reflect volume depletion with graft risk rather than cosmetic concerns.",
+        "D": "Volume resuscitation and team evaluation are required; immediate graft removal is not mandated for every dehydration episode."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 838,
+      "section": "Ch. 15, Pancreas Transplantation → postoperative monitoring → graft thrombosis risk",
+      "quote_hint": "low blood flow organ … higher potential for graft thrombosis … maintaining an appropriate intravascular volume",
+      "keywords": ["pancreas", "graft", "thrombosis", "blood", "flow", "intravascular", "volume", "dehydration"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → postoperative monitoring (low-flow pancreas graft thrombosis risk; dehydration signs require prompt reporting); PDF p. 838 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Tenth 030200 item; third pancreas organ tag in D3; graft-thrombosis/dehydration angle distinct from lung BOS (cctc-3060) and wound infection (cctc-3050); anchor verified on Cupples p. 838.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3062",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030102"],
+    "cognitive_level": "application",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "Six weeks after heart-lung transplantation, a recipient develops fever and graft dysfunction. Which diagnostic step aligns with standard references when infection may mimic rejection?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Endomyocardial biopsy to distinguish toxoplasmosis from rejection" },
+      { "id": "B", "text": "No biopsy because infection and rejection are always clinically identical without workup" },
+      { "id": "C", "text": "Permanent discontinuation of all immunosuppression without evaluation" },
+      { "id": "D", "text": "Urinary amylase measurement as the sole diagnostic test for heart-lung recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Toxoplasmosis can mimic rejection in heart transplant recipients; endomyocardial biopsy is required for definitive diagnosis when clinical presentation is ambiguous.",
+      "rationale_incorrect": {
+        "B": "Because toxoplasmosis can mimic rejection, biopsy and further workup are needed rather than assuming identical untreatable presentations.",
+        "C": "Fever and graft dysfunction warrant diagnostic evaluation rather than unilateral immunosuppression cessation.",
+        "D": "Urinary amylase is a pancreas graft monitoring test, not the primary diagnostic approach for heart-lung rejection versus toxoplasmosis."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 224,
+      "section": "Ch. 5, Infectious Diseases → B. Toxoplasma gondii → 4.",
+      "quote_hint": "Toxoplasmosis can mimic rejection; endomyocardial biopsy is required for a definitive diagnosis",
+      "keywords": ["Toxoplasmosis", "mimic", "rejection", "endomyocardial", "biopsy", "definitive", "diagnosis", "heart"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → B. Toxoplasma gondii → 4. (toxoplasmosis may mimic rejection; endomyocardial biopsy for definitive diagnosis); PDF p. 224 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ninth 030100 item; fourth heart_lung organ tag in D3; toxoplasmosis-versus-rejection biopsy angle distinct from pediatric fever workup (cctc-3053); anchor verified on Cupples p. 224.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3063",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "analysis",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "A coordinator is teaching long-term self-care to a bladder-drained pancreas transplant recipient. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Dehydration and metabolic acidosis may remain lifelong complications for bladder-drained pancreas grafts." },
+      { "id": "II", "text": "The pancreas graft has higher thrombosis risk when intravascular volume is inadequate." },
+      { "id": "III", "text": "Adequate oral fluid intake is unimportant after pancreas transplantation." },
+      { "id": "IV", "text": "Poor skin turgor may indicate dehydration requiring team notification." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Bladder-drained pancreas recipients may have lifelong dehydration and metabolic acidosis risk; the low-flow graft is thrombosis-prone with hypovolemia; dehydration signs such as poor skin turgor should be reported; adequate oral fluids are emphasized to minimize hypotension and graft risk.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—poor skin turgor is a dehydration indicator requiring reporting.",
+        "C": "Statements I and II are also true; statement III is false because oral fluid intake is important.",
+        "D": "Statement III is false; adequate oral fluid intake is part of long-term pancreas graft care."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 838,
+      "section": "Ch. 15, Pancreas Transplantation → fluid management and patient education",
+      "quote_hint": "dehydration and metabolic acidosis will remain potential posttransplant complications for the life of the pancreas graft … low blood flow … graft thrombosis … Poor skin turgor … adequate oral fluid intake",
+      "keywords": ["dehydration", "metabolic", "acidosis", "pancreas", "graft", "thrombosis", "skin", "turgor"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → fluid management and H. Patient/caregiver education (lifelong dehydration/acidosis risk, thrombosis with hypovolemia, dehydration signs, oral fluid intake); PDF p. 838 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Sixteenth complex_combo in bank; pancreas long-term complication angle distinct from metabolic bone (cctc-3057) and diabetes incidence (cctc-3028); anchor verified on Cupples p. 838.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3064",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030502"],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric intestinal transplant recipient refuses most oral intake despite medical clearance to eat. Which post-transplant coordination priority aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Coordinate feeding support addressing oral aversion common in pediatric intestinal recipients" },
+      { "id": "B", "text": "Ignore feeding refusal because oral intake is never part of intestinal transplant recovery" },
+      { "id": "C", "text": "Discharge immediately without any feeding or nutrition resources" },
+      { "id": "D", "text": "Permanently stop all immunosuppression because of poor oral intake" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Oral aversion is common before and after intestine transplantation, particularly in pediatric recipients, and requires coordinated feeding support addressing gag reflex, taste changes, and related behavioral factors.",
+      "rationale_incorrect": {
+        "B": "Oral intake and feeding progression are central to intestinal transplant recovery rather than being irrelevant.",
+        "C": "Nutrition and feeding support are ongoing coordination needs rather than omitted at discharge.",
+        "D": "Feeding difficulties are managed with multidisciplinary support rather than unilateral immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 744,
+      "section": "Ch. 13, Intestine Transplantation → 5. Oral aversion → a.",
+      "quote_hint": "Oral aversion … particularly in pediatric intestinal recipients",
+      "keywords": ["Oral", "aversion", "pediatric", "intestinal", "recipients", "intestine", "transplantation", "feeding"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → 5. Oral aversion → a. (common in pediatric intestinal recipients; feeding support needed); PDF p. 744 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ninth 030500 item; second intestine post-transplant coordination item; pairs with education item cctc-1063; anchor verified on Cupples p. 744.",
+    "last_updated": "2026-06-05"
+  }
+]

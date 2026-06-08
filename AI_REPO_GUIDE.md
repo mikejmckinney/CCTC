@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **181 draft items** in `questions/domain-*/batch-01.json` through `batch-15.json` (IDs `cctc-1001`–`1061`, `2001`–`2060`, `3001`–`3060`).
+- **193 draft items** in `questions/domain-*/batch-01.json` through `batch-16.json` (IDs `cctc-1001`–`1065`, `2001`–`2064`, `3001`–`3064`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
@@ -179,10 +179,11 @@ Use these files as the current product ground truth:
 - Batch 13 (2026-06-05): obesity contraindication, unpasteurized-dairy teaching, dietary `complex_combo`, hot-tub guidance, OPTN waitlist removal, PAK evaluation, skin/dentition screening, bone densitometry, wound-drainage urgent contact, surgical wound infection, tacrolimus tremor, lymphocele monitoring.
 - Batch 14 (2026-06-05): transplantation-risk `complex_combo`, discharge insulin teaching, pediatric community infections, PCP waitlist coordination, waitlist testing priority, pediatric transition, fever septic workup, skin-cancer long-term risk, day-after-discharge call, PPI–MMF interaction; all `general` organ (blueprint organ gap closed).
 - Batch 15 (2026-06-05): liver alcohol abstinence/contract, heart activity limits, lifestyle `complex_combo`, living-liver donor discharge, heart RHC monitoring, lung referral timing, kidney hypercoagulability screening, metabolic bone disease, medication-box teaching, return-to-work counseling, lung BOS; **all per-task blueprint targets met**.
+- Batch 16 (2026-06-05): pancreas indications/evaluation/complications, heart-lung Eisenmenger and toxoplasmosis teaching, intestine oral aversion (pediatric), child-development consult, two new `complex_combo` items (toxoplasmosis, pancreas fluid management).
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 16+)
+- Expand the real question bank under domain directories (batch 17+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land
