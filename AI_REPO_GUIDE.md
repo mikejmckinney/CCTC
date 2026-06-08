@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **385 draft items** in `questions/domain-*/batch-01.json` through `batch-32.json` (IDs `cctc-1001`–`1129`, `2001`–`2128`, `3001`–`3128`).
+- **397 draft items** in `questions/domain-*/batch-01.json` through `batch-33.json` (IDs `cctc-1001`–`1133`, `2001`–`2132`, `3001`–`3132`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Bank authoring soft targets (see `questions/README.md`, `02-author-questions.md`): cognitive mix ~35/52/13%; `recipient_age: pediatric` **5–7%** of bank (`both` excluded; live CCTC exam ~5% pediatric).
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).

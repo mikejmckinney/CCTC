@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3131",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 734,
+    "keywords": [
+      "malaise",
+      "lethargy",
+      "decreased",
+      "appetite",
+      "irritability",
+      "behavior",
+      "pediatrics"
+    ],
+    "keyword_hash": "sha256:021e632b80372cc567108438f7989d663928f664307643c97bb240204fffe9e1"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "keywords": [
+        "pediatric",
+        "malaise",
+        "irritability",
+        "behavior",
+        "change"
+      ],
+      "keyword_hash": "sha256:2b66cae660d9e677ef4e1fb42cd77af8983a4dc69bce1d8bc7bebb0688ee948f"
+    }
+  ]
+}
