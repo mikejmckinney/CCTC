@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-1031",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 354,
+    "keywords": [
+      "shoulder",
+      "pain",
+      "chills",
+      "fever",
+      "bile",
+      "leak",
+      "liver"
+    ],
+    "keyword_hash": "sha256:9bc261c2cd59b914fc342fb036a176ebe7e0c1aef1e84cb1f91e74c231deebf4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 354,
+      "keywords": [
+        "signs",
+        "without",
+        "drain"
+      ],
+      "keyword_hash": "sha256:b200ee8efcb1aa0c05baa04b9df92e8085ef03707fe81dc35e87b8322f3b1a58"
+    }
+  ]
+}

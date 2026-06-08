@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-2031",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 102,
+    "keywords": [
+      "Social",
+      "worker",
+      "dietician",
+      "Financial",
+      "coordinator",
+      "support",
+      "resources"
+    ],
+    "keyword_hash": "sha256:fc38abf198d76d9875780a195f78a838aadc8422373d5140faf3db10d3f886b9"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "keywords": [
+        "support",
+        "resources",
+        "including",
+        "social",
+        "worker",
+        "dietician",
+        "financial",
+        "coordinator"
+      ],
+      "keyword_hash": "sha256:4a944e8cc4922c123099b8ca8736b641ef88b4b4e9844966fee550fc03b5775b"
+    }
+  ]
+}

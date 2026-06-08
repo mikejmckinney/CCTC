@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-3029",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": ["030701"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart recipient calls the transplant clinic reporting new chest pain. According to urgent-contact education, how should the coordinator classify this symptom?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "An urgent matter requiring prompt transplant team contact" },
+      { "id": "B", "text": "A non-urgent matter appropriate for the next routine medication refill call" },
+      { "id": "C", "text": "A symptom that never requires notification after transplant" },
+      { "id": "D", "text": "A reason to stop all immunosuppression without medical guidance" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Chest pain is listed among urgent matters for which patients and caregivers should contact the transplant team promptly.",
+      "rationale_incorrect": {
+        "B": "Chest pain is categorized as urgent, not a routine non-urgent contact.",
+        "C": "Post-transplant education requires reporting chest pain to the team.",
+        "D": "Chest pain prompts team evaluation rather than independent immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication → iii. Urgent matters",
+      "quote_hint": "Chest pain",
+      "keywords": ["Chest", "pain", "urgent", "matters", "transplant", "team", "contact"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication → iii. Urgent matters (chest pain); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth 030700 item; distinct from rectal bleeding (cctc-3021) and FAST stroke (cctc-3017); anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-3030",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030503"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver transplant candidate on the waitlist asks why frequent clinic visits are still required while waiting. What education aligns with standard waitlist management references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Patients must attend transplant clinic appointments on a schedule determined by disease severity or program protocol" },
+      { "id": "B", "text": "Waitlisted patients are excused from all clinic visits until an organ offer" },
+      { "id": "C", "text": "Only recipients after transplant need scheduled clinic follow-up" },
+      { "id": "D", "text": "Clinic visits may be permanently replaced by annual phone calls only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waitlist management education includes attending transplant clinic appointments on a schedule determined by the severity of end-organ disease or program protocol while awaiting transplantation.",
+      "rationale_incorrect": {
+        "B": "Active waitlist management requires ongoing clinic attendance, not exemption until organ offer.",
+        "C": "Scheduled clinic follow-up applies during the waiting period as well as after transplant.",
+        "D": "References require in-person clinic scheduling based on disease severity, not phone-only follow-up."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → §b. Waitlist management → b.iii.",
+      "quote_hint": "Patients must attend transplant clinic appointments on a schedule determined by the severity of their end-organ disease or program protocol",
+      "keywords": ["attend", "transplant", "clinic", "appointments", "schedule", "severity", "protocol"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §b. Waitlist management → b.iii. (required clinic appointments while waitlisted); PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth 030500 item; waitlist-phase coordination distinct from monthly post-transplant visits (cctc-3007) and community MD communication (cctc-3014); anchor verified on Cupples p. 102.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-3031",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": ["030604"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "During discharge medication teaching, a kidney recipient asks whether grapefruit is safe with their immunosuppression regimen. What counseling is MOST accurate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Grapefruit may increase serum levels of certain immunosuppression medications and should be avoided unless the team approves" },
+      { "id": "B", "text": "Grapefruit has no interactions with any transplant medications" },
+      { "id": "C", "text": "Grapefruit should replace all oral immunosuppression doses" },
+      { "id": "D", "text": "Grapefruit is required daily to maintain therapeutic drug levels" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Medication education includes food–drug interactions such as grapefruit, which can increase serum levels of certain immunosuppression medications.",
+      "rationale_incorrect": {
+        "B": "Grapefruit is specifically cited as interacting with immunosuppression drug levels.",
+        "C": "Grapefruit is a dietary interaction concern, not a substitute for prescribed immunosuppression.",
+        "D": "Grapefruit increases drug levels and requires caution, not mandatory daily consumption."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 108,
+      "section": "Ch. 3, Patient Education → medication management → drug–food interactions",
+      "quote_hint": "grapefruit, which increase serum levels of certain immunosuppression medications",
+      "keywords": ["grapefruit", "increase", "serum", "levels", "immunosuppression", "medications", "interactions"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication management → Right way (grapefruit and immunosuppression interactions); PDF p. 108 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth 030600 item; distinct from missed-dose teaching (cctc-3008) and CMV prophylaxis (cctc-3022); anchor verified on Cupples p. 108.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-3032",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030302"],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart transplant recipient starting mycophenolate mofetil (CellCept) asks which adverse effects are commonly associated with this medication. What teaching is MOST accurate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Diarrhea, vomiting, leukopenia, neutropenia, and infections" },
+      { "id": "B", "text": "Permanent cure of diabetes without monitoring" },
+      { "id": "C", "text": "No gastrointestinal or hematologic side effects" },
+      { "id": "D", "text": "Guaranteed protection against all post-transplant infections without risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Mycophenolate (CellCept) is associated with diarrhea, vomiting, leukopenia, neutropenia, and infections, requiring monitoring and patient education.",
+      "rationale_incorrect": {
+        "B": "Mycophenolate is immunosuppressive therapy, not a diabetes cure.",
+        "C": "Gastrointestinal and hematologic adverse effects are listed for mycophenolate.",
+        "D": "Immunosuppression increases infection risk rather than eliminating it."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "nursing-drug-handbook",
+      "pdf_page": 420,
+      "section": "Ch. 23, Immunosuppressive Agents → Mycophenolate (CellCept) side effects table",
+      "quote_hint": "Diarrhea, vomiting, leukopenia, neutropenia, infections",
+      "keywords": ["Diarrhea", "vomiting", "leukopenia", "neutropenia", "infections", "Mycophenolate", "CellCept"]
+    },
+    "references": [
+      {
+        "citation": "Saunders Nursing Drug Handbook 2024 (Wolters Kluwer).",
+        "locator": "Ch. 23 → Immunosuppressive Agents table → Mycophenolate (CellCept) side effects; PDF p. 420 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth heart-tagged D3 item; distinct from tacrolimus nephrotoxicity (cctc-3018); anchor verified on Nursing Drug Handbook p. 420.",
+    "last_updated": "2026-06-08"
+  }
+]

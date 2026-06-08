@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2029",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": ["020401"],
+    "cognitive_level": "application",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "After interdisciplinary evaluation, a pancreas transplant candidate meets all eligibility criteria without outstanding conditions. How should the coordinator communicate the team's recommendation?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Inform the patient they met eligibility criteria and are approved as a candidate" },
+      { "id": "B", "text": "Defer any communication until an organ offer is received" },
+      { "id": "C", "text": "Tell the patient they are permanently ineligible without further discussion" },
+      { "id": "D", "text": "Instruct the patient to self-register on the national waitlist without program involvement" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Evaluation outcome communication includes informing patients when they met eligibility criteria and are approved as a transplant candidate.",
+      "rationale_incorrect": {
+        "B": "Team recommendations are communicated at evaluation conclusion, not deferred until organ offer.",
+        "C": "Meeting eligibility criteria results in approval communication, not permanent ineligibility.",
+        "D": "Waitlist registration occurs through the transplant program after approval, not independent self-registration."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 100,
+      "section": "Ch. 3, Patient Education → §7. Selection criteria and evaluation outcome → c.i.",
+      "quote_hint": "met eligibility criteria and is approved as a candidate",
+      "keywords": ["met", "eligibility", "criteria", "approved", "candidate", "evaluation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §7. Selection criteria and evaluation outcome → c.i. (approved as candidate); PDF p. 100 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third 020400 item; second pancreas organ tag; distinct from not-listed (cctc-2017) and conditional approval (cctc-2024); anchor verified on Cupples p. 100.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-2030",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant candidate currently smokes cigarettes and requests immediate waitlist activation. What OPTN-aligned program requirement should the coordinator explain?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A period of smoking cessation before listing, confirmed by random urine cotinine testing" },
+      { "id": "B", "text": "Active smoking has no effect on lung transplant listing" },
+      { "id": "C", "text": "Cotinine testing is prohibited for all transplant candidates" },
+      { "id": "D", "text": "Smoking cessation is required only after transplantation, not before listing" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Most transplant programs require a period of smoking cessation before listing patients who currently smoke or have recent smoking history, with cessation confirmed by random urine cotinine testing.",
+      "rationale_incorrect": {
+        "B": "Smoking history affects listing requirements and post-transplant outcomes in lung and other organ populations.",
+        "C": "Cotinine testing is used to confirm smoking cessation before listing.",
+        "D": "Smoking cessation is required before listing, not only after transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Consultations → J.2.d. smoking cessation before listing",
+      "quote_hint": "require a period of smoking cessation before listing … confirmed by random urine cotinine testing",
+      "keywords": ["smoking", "cessation", "listing", "cotinine", "testing", "transplant", "programs"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → J. Consultations → 2. Pulmonary evaluation → d. (smoking cessation and cotinine testing before listing); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth lung organ item; waitlist maintenance angle distinct from LAS updates (cctc-2021); anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-2031",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020201"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "While compiling a multidisciplinary evaluation plan for a waitlisted candidate, which support resources should the coordinator identify per standard waitlist management references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Social worker, registered dietician, and financial coordinator" },
+      { "id": "B", "text": "Only the transplant surgeon without ancillary services" },
+      { "id": "C", "text": "Exclusive reliance on the patient's employer for all psychosocial needs" },
+      { "id": "D", "text": "No caregiver or financial support resources because they are optional" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant coordinator waitlist responsibilities include identifying patient and caregiver support resources such as social worker, registered dietician, financial coordinator, and support groups.",
+      "rationale_incorrect": {
+        "B": "Multidisciplinary evaluation and waitlist management include ancillary support services beyond surgery alone.",
+        "C": "Employers do not replace structured transplant program support resources.",
+        "D": "Support resources are explicitly identified as coordinator responsibilities during the waiting period."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → §b. Waitlist management → c.v.",
+      "quote_hint": "Social worker Registered dietician Financial coordinator",
+      "keywords": ["Social", "worker", "dietician", "Financial", "coordinator", "support", "resources"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §b. Waitlist management → c.v. (support resources including social worker, dietician, financial coordinator); PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 020200 item; anchor verified on Cupples p. 102.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-2032",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "During pretransplant evaluation coordination for a heart transplant candidate, which baseline pulmonary studies are required for all patients referred for transplantation?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Chest radiograph and pulse oximetry oxygen saturation" },
+      { "id": "B", "text": "Lung allocation score calculation only" },
+      { "id": "C", "text": "No pulmonary assessment because heart candidates are exempt" },
+      { "id": "D", "text": "PELD score update only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "All patients referred for transplantation should have a chest radiograph and oxygen saturation evaluated by pulse oximetry as part of baseline pulmonary evaluation.",
+      "rationale_incorrect": {
+        "B": "LAS applies to lung allocation, not the universal baseline pulmonary studies for all transplant referrals.",
+        "C": "Heart and other organ candidates receive baseline pulmonary screening per consultation references.",
+        "D": "PELD is a pediatric liver allocation score, not the described universal pulmonary baseline."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Consultations → J.2.a. pulmonary evaluation baseline",
+      "quote_hint": "chest radiograph and oxygen saturation evaluated by pulse oximetry",
+      "keywords": ["chest", "radiograph", "oxygen", "saturation", "pulse", "oximetry", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → J. Consultations → 2. Pulmonary evaluation → a. (chest radiograph and pulse oximetry for all referrals); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth 020700 item; fifth heart organ item; anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-08"
+  }
+]

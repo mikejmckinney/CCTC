@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-3030",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 102,
+    "keywords": [
+      "attend",
+      "transplant",
+      "clinic",
+      "appointments",
+      "schedule",
+      "severity",
+      "protocol"
+    ],
+    "keyword_hash": "sha256:47ba112d4790feda1427fe74f04ee3e1e089ba58a5a873d64d923cb6708bf459"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "keywords": [
+        "required",
+        "clinic",
+        "appointments",
+        "while",
+        "waitlisted"
+      ],
+      "keyword_hash": "sha256:c1032824a014bcd7487892e3b6f9499bf98dd4a4009e7ddffa03daa686a9d9c4"
+    }
+  ]
+}
