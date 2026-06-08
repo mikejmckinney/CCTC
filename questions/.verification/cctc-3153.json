@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3153",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 736,
+    "keywords": [
+      "Prophylaxis",
+      "oral",
+      "topical",
+      "nystatin",
+      "clotrimazole",
+      "first",
+      "months",
+      "posttransplant"
+    ],
+    "keyword_hash": "sha256:def09b3cb309d7e09f00d7c15f90f899fdc40bd5dd909af6292a2fe8ed57fe79"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "keywords": [
+        "prophylaxis",
+        "nystatin",
+        "clotrimazole",
+        "first",
+        "months",
+        "post-transplant"
+      ],
+      "keyword_hash": "sha256:62fae719fc6f67dd666793c57c49e27a9bcdd1d26a4c482e6b215989310aeeb8"
+    }
+  ]
+}

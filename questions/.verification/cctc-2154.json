@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-2154",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Avoiding",
+      "undue",
+      "exposure",
+      "sunlight",
+      "Sun",
+      "precautions"
+    ],
+    "keyword_hash": "sha256:d65fe187fad611de75e61886e79d49784a71616ac9ea3fa9d36f1ccfe1e026f7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "avoid",
+        "undue",
+        "sunlight",
+        "exposure"
+      ],
+      "keyword_hash": "sha256:af724a2bc1dbc823924f9ab23b6e2b62bd73facdd623fcb90f5b5ecee4c741ab"
+    }
+  ]
+}

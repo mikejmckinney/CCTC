@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-3153",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating post-transplant Candida prophylaxis, which timing pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Oral or topical nystatin or clotrimazole prophylaxis during the first 3 months post-transplant" },
+      { "id": "B", "text": "Antifungal prophylaxis is never used in the first year after transplant" },
+      { "id": "C", "text": "Candida prophylaxis is required only after 5 years post-transplant" },
+      { "id": "D", "text": "Prophylaxis is limited exclusively to the pretransplant period" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candida prophylaxis with oral or topical nystatin or clotrimazole may be used during the first 3 months post-transplant, when receiving higher steroid doses, or when immunosuppression is increased during rejection.",
+      "rationale_incorrect": {
+        "B": "Prophylaxis is specifically used in the early post-transplant period rather than being omitted in the first year.",
+        "C": "Early post-transplant prophylaxis is described rather than deferring prophylaxis until 5 years.",
+        "D": "Prophylaxis is a post-transplant measure rather than being limited to pretransplant only."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candida → iv. Treatment → Prophylaxis",
+      "quote_hint": "Prophylaxis with oral/topical nystatin or clotrimazole: During the first 3 months posttransplant",
+      "keywords": ["Prophylaxis", "oral", "topical", "nystatin", "clotrimazole", "first", "months", "posttransplant"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candida → iv. Treatment → Prophylaxis (nystatin/clotrimazole first 3 months post-transplant); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Candida prophylaxis timing angle distinct from Candida oropharyngeal presentation (cctc-3151) and fungal epidemiology items (cctc-3149/3150); anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3154",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant recipient on tacrolimus develops refractory mucosal candidiasis and is started on oral fluconazole. Which medication-safety step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Monitor tacrolimus levels carefully and adjust the dose as needed during fluconazole therapy" },
+      { "id": "B", "text": "No tacrolimus level monitoring is needed because fluconazole does not affect calcineurin inhibitors" },
+      { "id": "C", "text": "Stop tacrolimus permanently whenever any antifungal is prescribed" },
+      { "id": "D", "text": "Double the tacrolimus dose automatically without laboratory monitoring" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Fluconazole increases tacrolimus levels, so tacrolimus levels must be monitored carefully and the dose adjusted as needed during fluconazole therapy.",
+      "rationale_incorrect": {
+        "B": "Fluconazole specifically increases tacrolimus levels rather than having no interaction.",
+        "C": "Tacrolimus continues with careful monitoring and dose adjustment rather than being stopped permanently.",
+        "D": "Dose changes require monitoring and individualized adjustment rather than automatic doubling without labs."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candida → iv. Treatment",
+      "quote_hint": "Fluconazole increases tacrolimus levels … Tacrolimus levels must be monitored carefully and the dose adjusted",
+      "keywords": ["Fluconazole", "increases", "tacrolimus", "levels", "monitored", "carefully", "dose", "adjusted"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candida → iv. Treatment (fluconazole increases tacrolimus; monitor and adjust dose); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fluconazole–tacrolimus interaction angle distinct from Candida prophylaxis timing (cctc-3153) and candidemia treatment options on the same page; anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3155",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric solid-organ transplant recipient develops a red pinpoint rash on the buttocks. Which fungal-infection teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Candida may present with a red pinpoint rash of the buttocks or genitalia in pediatrics" },
+      { "id": "B", "text": "Pediatric buttock rashes always indicate bacterial meningitis only" },
+      { "id": "C", "text": "Candida never causes skin findings in pediatric transplant recipients" },
+      { "id": "D", "text": "Red pinpoint rashes exclude fungal infection from the differential" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candida presentation may include white plaques in the oropharynx or, in pediatrics, a red pinpoint rash of the buttocks or genitalia along with vaginal discharge and itching.",
+      "rationale_incorrect": {
+        "B": "Buttock rash is described as a Candida presentation rather than indicating bacterial meningitis alone.",
+        "C": "Candida may cause skin findings in pediatric recipients.",
+        "D": "Red pinpoint rash is consistent with Candida rather than excluding fungal infection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candida → d.iii.",
+      "quote_hint": "Red pinpoint rash of the buttocks or genitalia (pediatrics)",
+      "keywords": ["Red", "pinpoint", "rash", "buttocks", "genitalia", "pediatrics", "Candida"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candida → d.iii. (pediatric red pinpoint buttock/genital rash); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Twenty-eighth pediatric recipient in bank; pediatric Candida rash angle distinct from adult oropharyngeal presentation (cctc-3151) and fluconazole interaction (cctc-3154); anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3156",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant fungal-infection teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Candida prophylaxis with nystatin or clotrimazole may be used during the first 3 months post-transplant." },
+      { "id": "II", "text": "Fluconazole increases tacrolimus levels and requires dose monitoring." },
+      { "id": "III", "text": "Lungs are the most common primary site of Aspergillus infection." },
+      { "id": "IV", "text": "Aspergillus infections typically occur only in the first week after transplant." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Early Candida prophylaxis, fluconazole–tacrolimus interaction monitoring, and pulmonary primacy of Aspergillus infection are supported. Statement IV is false because Aspergillus is described as a later infection occurring 6 months or more post-transplant.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—lungs are the most common primary Aspergillus site.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because Aspergillus timing is later rather than limited to the first week."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candida and Aspergillus",
+      "quote_hint": "Prophylaxis with oral/topical nystatin or clotrimazole … Fluconazole increases tacrolimus levels",
+      "keywords": ["Prophylaxis", "nystatin", "clotrimazole", "Fluconazole", "tacrolimus", "levels", "monitored", "dose"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candida → iv. Treatment (nystatin/clotrimazole prophylaxis; fluconazole–tacrolimus interaction); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → i.–ii. (lungs most common primary site; later infection ≥6 months post-transplant); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Candida/Aspergillus combo distinct from early fungal-risk combo (cctc-3152) and bacterial-treatment combo (cctc-3144); corroborating locators on p. 736 and p. 737 verified.",
+    "last_updated": "2026-06-05"
+  }
+]
