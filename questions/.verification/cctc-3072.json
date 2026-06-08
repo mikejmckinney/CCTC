@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3072",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 157,
+    "keywords": [
+      "seropositive",
+      "Epstein-Barr",
+      "virus",
+      "IgG",
+      "PTLD",
+      "Belatacept",
+      "Adverse",
+      "effects"
+    ],
+    "keyword_hash": "sha256:82e59f0829dbe0b757bb72a95a067b995153e30f663c65206dc92f9957808033"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 157,
+      "keywords": [
+        "seropositivity",
+        "required",
+        "adverse",
+        "effect",
+        "level",
+        "monitoring"
+      ],
+      "keyword_hash": "sha256:586e0828f2e814a7d7fadba72cad6488537308dea5f2f61926ceca7cd9affb7a"
+    }
+  ]
+}

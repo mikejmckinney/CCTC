@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3071",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 819,
+    "keywords": [
+      "ATN",
+      "presents",
+      "renal",
+      "failure",
+      "Increased",
+      "BUN",
+      "creatinine",
+      "Anuria"
+    ],
+    "keyword_hash": "sha256:4328f48098295681feab3995670ed61e267c4ed632d36959d9776ff66607a803"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 819,
+      "keywords": [
+        "increased",
+        "creatinine",
+        "oliguria",
+        "anuria",
+        "elevated",
+        "potassium",
+        "magnesium"
+      ],
+      "keyword_hash": "sha256:2d9c0b88aeb87c1fdfb346113fb9dd6ab4cc93bd8c98954857800f33edeb1951"
+    }
+  ]
+}

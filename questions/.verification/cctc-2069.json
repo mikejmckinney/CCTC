@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2069",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 44,
+    "keywords": [
+      "evaluation",
+      "HPS",
+      "Standing",
+      "supine",
+      "arterial",
+      "blood",
+      "gas",
+      "oxygen"
+    ],
+    "keyword_hash": "sha256:d7debb05694d43ef96ae93175f4d157dc310e77af6556c1899e08520756414c9"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 44,
+      "keywords": [
+        "evaluation",
+        "arterial",
+        "blood",
+        "analyses"
+      ],
+      "keyword_hash": "sha256:548dd1bf3849c55d435b10a9440344e1bd53f581c94c96c2853d6e78ea0eee7a"
+    }
+  ]
+}

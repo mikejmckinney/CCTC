@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1070",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver transplant candidate with hepatopulmonary syndrome (HPS) asks why transplantation is recommended. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Liver transplantation is the only available treatment option for HPS" },
+      { "id": "B", "text": "HPS permanently excludes liver transplantation in every candidate" },
+      { "id": "C", "text": "HPS resolves spontaneously without transplantation in most candidates" },
+      { "id": "D", "text": "Isolated kidney transplantation is the primary treatment for HPS" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hepatopulmonary syndrome is associated with increased mortality, and liver transplant is the only available treatment option.",
+      "rationale_incorrect": {
+        "B": "HPS and hepatorenal syndrome are reversible with transplantation and are not contraindications to liver transplantation.",
+        "C": "HPS is a complication of chronic liver failure that requires transplant rather than expected spontaneous resolution.",
+        "D": "HPS is a pulmonary complication of liver failure addressed through liver rather than isolated kidney transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 44,
+      "section": "Ch. 1, Evaluation → Liver transplantation → Additional evaluation → 4.b.i.",
+      "quote_hint": "HPS is associated with increased mortality and liver transplant is the only available treatment option",
+      "keywords": ["HPS", "associated", "increased", "mortality", "liver", "transplant", "only", "treatment"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Liver transplantation → Additional evaluation → 4.b.i. (HPS mortality; liver transplant as only treatment); PDF p. 44 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First hepatopulmonary-syndrome item in bank; distinct from liver alcohol abstinence (cctc-1058) and smoking contraindication (cctc-1034); anchor verified on Cupples p. 44.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1071",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating cytomegalovirus (CMV) long-term complication teaching. Evaluate the following statements about organ-specific CMV effects on allografts:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "CMV may contribute to vanishing bile duct syndrome in liver allografts." },
+      { "id": "II", "text": "CMV may contribute to coronary artery vasculopathy in heart allografts." },
+      { "id": "III", "text": "CMV may contribute to bronchiolitis obliterans in lung allografts." },
+      { "id": "IV", "text": "CMV may contribute to glomerulopathy in kidney allografts." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "D",
+    "explanation": {
+      "rationale_correct": "Standard references list organ-specific CMV effects on allografts as vanishing bile duct syndrome in liver, coronary artery vasculopathy in heart, bronchiolitis obliterans in lung, and glomerulopathy in kidney.",
+      "rationale_incorrect": {
+        "A": "Statements III and IV are also correct—lung bronchiolitis obliterans and kidney glomerulopathy are listed organ-specific CMV effects.",
+        "B": "Statement IV is also correct—kidney glomerulopathy is a listed CMV organ-specific effect.",
+        "C": "Statements I and II are also correct—liver and heart organ-specific CMV effects are listed."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "section": "Ch. 5, Infectious Diseases → CMV → 8. Organ-specific effects on allograft",
+      "quote_hint": "Liver: vanishing bile duct syndrome … Heart: coronary artery vasculopathy … Lung: bronchiolitis obliterans … Kidney: glomerulopathy",
+      "keywords": ["Liver", "vanishing", "bile", "duct", "Heart", "coronary", "Lung", "glomerulopathy"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CMV → 8. Organ-specific effects on allograft (liver, heart, lung, kidney); PDF p. 202 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Eighteenth complex_combo in bank; CMV organ-specific angle distinct from CMV prevention strategies (cctc-1069) and toxoplasmosis combo (cctc-1064); anchor verified on Cupples p. 202.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1072",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010300",
+    "knowledge_codes": ["010301"],
+    "cognitive_level": "recall",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "When counseling a potential living liver donor about surgical risk compared with living kidney donation, which teaching point aligns with standard living donor references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Liver donation carries higher risk than kidney donation but is considered safe enough at experienced centers" },
+      { "id": "B", "text": "Living liver donation has no surgical risk when performed at any hospital" },
+      { "id": "C", "text": "Living kidney donation carries higher perioperative risk than living liver donation" },
+      { "id": "D", "text": "Living liver donation is prohibited in all transplant programs" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Medical outcomes show that although liver donation portends a higher risk than kidney donation, it is still believed to be safe enough to perform at experienced centers.",
+      "rationale_incorrect": {
+        "B": "Liver donation carries higher risk than kidney donation and requires experienced center expertise.",
+        "C": "Kidney donation is described as safe with minimal ESRD risk; liver donation carries higher risk than kidney donation.",
+        "D": "Living liver donation is performed at experienced centers rather than being universally prohibited."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "section": "Ch. 7, Care of Living Donors → Introduction → 5.",
+      "quote_hint": "liver donation portends a higher risk than kidney donation, it is still believed to be safe enough to perform at experienced centers",
+      "keywords": ["liver", "donation", "higher", "risk", "kidney", "safe", "experienced", "centers"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → Introduction → 5. (liver donation higher risk than kidney; safe at experienced centers); PDF p. 331 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Living-liver surgical-risk comparison distinct from living-kidney ESRD counseling (cctc-1039) and liver donor discharge teaching (cctc-1061); anchor verified on Cupples p. 331.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1073",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010101"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When explaining pretransplant infectious-disease screening to a solid-organ candidate, why is Epstein-Barr virus (EBV) status assessed?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "EBV is associated with posttransplant lymphoproliferative disease that can affect graft and patient survival" },
+      { "id": "B", "text": "EBV screening determines ABO compatibility before transplantation" },
+      { "id": "C", "text": "EBV status has no relationship to post-transplant malignancy risk" },
+      { "id": "D", "text": "EBV screening replaces the need for any cytomegalovirus prophylaxis planning" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "EBV is associated with immunosuppression-related lymphoproliferative disease; posttransplant lymphoproliferative disease can affect both graft and patient survival, and EBV status is established by IgG antibody testing.",
+      "rationale_incorrect": {
+        "B": "EBV serology guides PTLD risk and prophylaxis planning rather than ABO compatibility.",
+        "C": "EBV is classified as a carcinogen associated with lymphoproliferative disease after transplantation.",
+        "D": "EBV and CMV screening serve different prophylaxis roles rather than replacing one another."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 29,
+      "section": "Ch. 1, Evaluation → Infectious disease screening → v. Epstein-Barr virus",
+      "quote_hint": "immunosuppression-related lymphoproliferative disease … Posttransplant lymphoproliferative disease can affect both graft and patient survival",
+      "keywords": ["lymphoproliferative", "disease", "Posttransplant", "graft", "patient", "survival", "EBV", "antibodies"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Infectious disease screening → v. Epstein-Barr virus (PTLD risk; graft and patient survival impact; IgG testing); PDF p. 29 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. EBV/PTLD screening angle distinct from CMV prevention combo (cctc-1069) and transplantation-risk combo (cctc-1054); anchor verified on Cupples p. 29.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1073",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 29,
+    "keywords": [
+      "lymphoproliferative",
+      "disease",
+      "Posttransplant",
+      "graft",
+      "patient",
+      "survival",
+      "EBV",
+      "antibodies"
+    ],
+    "keyword_hash": "sha256:51bc052bca4eee79d86a2cdf0731257ee9421fbefac5991d23eece2263188bd4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 29,
+      "keywords": [
+        "epstein-barr",
+        "virus",
+        "graft",
+        "patient",
+        "survival",
+        "impact",
+        "testing"
+      ],
+      "keyword_hash": "sha256:c3c9f3ca68174650816f8806a6946a1fe262b8162ba192dbbe2d629038e44b53"
+    }
+  ]
+}

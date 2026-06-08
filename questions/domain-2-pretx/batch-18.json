@@ -1,0 +1,191 @@
+[
+  {
+    "id": "cctc-2069",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "While coordinating hepatopulmonary syndrome (HPS) evaluation for a liver transplant candidate, which diagnostic study aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Standing and supine arterial blood gas analyses on room air and with 100% oxygen" },
+      { "id": "B", "text": "Isolated serum amylase measurement without pulmonary testing" },
+      { "id": "C", "text": "Routine bone marrow biopsy before any pulmonary assessment" },
+      { "id": "D", "text": "HPS evaluation requires no arterial blood gas testing" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "HPS evaluation includes standing and supine arterial blood gas analyses performed on room air and with 100% oxygen, along with studies such as macroaggregated albumin scan and bubble echocardiography when indicated.",
+      "rationale_incorrect": {
+        "B": "HPS evaluation focuses on pulmonary gas exchange and shunt assessment rather than isolated amylase testing.",
+        "C": "Bone marrow biopsy is not part of standard HPS evaluation protocols.",
+        "D": "Arterial blood gas analyses are specifically listed in HPS evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 44,
+      "section": "Ch. 1, Evaluation → Liver transplantation → Additional evaluation → 4.b.ii.",
+      "quote_hint": "evaluation for HPS includes … Standing and supine arterial blood gas analyses are performed on room air and with 100% oxygen",
+      "keywords": ["evaluation", "HPS", "Standing", "supine", "arterial", "blood", "gas", "oxygen"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Liver transplantation → Additional evaluation → 4.b.ii. (HPS evaluation with arterial blood gas analyses); PDF p. 44 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. HPS diagnostic-evaluation angle distinct from liver MELD waitlist removal (cctc-2044) and cardiac stress testing (cctc-2028); anchor verified on Cupples p. 44.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2070",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When reviewing immunosuppression options for a kidney transplant candidate, which requirement applies to belatacept use per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "The recipient must be seropositive for Epstein-Barr virus IgG to decrease PTLD risk" },
+      { "id": "B", "text": "Belatacept may be used only in Epstein-Barr virus–seronegative recipients" },
+      { "id": "C", "text": "Belatacept requires daily therapeutic drug level monitoring like calcineurin inhibitors" },
+      { "id": "D", "text": "Belatacept eliminates the need for any maintenance immunosuppression" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The transplant recipient must be seropositive for Epstein-Barr virus IgG to decrease the risk of developing posttransplant lymphoproliferative disease when using belatacept.",
+      "rationale_incorrect": {
+        "B": "EBV IgG seropositivity is required, not seronegativity, because PTLD risk is higher with EBV-seronegative recipients on belatacept.",
+        "C": "Belatacept does not require therapeutic drug level monitoring.",
+        "D": "Belatacept is used as part of maintenance immunosuppression rather than replacing all immunosuppressive therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 157,
+      "section": "Ch. 4, Pharmacology → Belatacept → 3.c.",
+      "quote_hint": "transplant recipient must be seropositive for Epstein-Barr virus IgG to decrease the risk of developing PTLD",
+      "keywords": ["recipient", "seropositive", "Epstein-Barr", "virus", "IgG", "decrease", "risk", "PTLD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Belatacept → 3.c. (recipient must be seropositive for Epstein-Barr virus IgG to decrease PTLD risk); PDF p. 157 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. First belatacept item in bank; distinct from DSA monitoring (cctc-2065) and hypercoagulability screening (cctc-2059); anchor verified on Cupples p. 157.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2071",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Unlimited waiting time accrues while the candidate remains inactive" },
+      { "id": "B", "text": "No waiting time accrues while the candidate remains inactive" },
+      { "id": "C", "text": "Waiting time accrues only for the first 30 cumulative inactive days" },
+      { "id": "D", "text": "Waiting time accrues only when the candidate is younger than 18 years" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Table 3-3 specifies that lung candidates accrue unlimited waiting time while inactive, similar to kidney candidates and unlike heart or liver candidates who accrue no inactive waiting time.",
+      "rationale_incorrect": {
+        "B": "No inactive accrual applies to heart and liver candidates, not lung candidates.",
+        "C": "A 30-day cumulative inactive accrual limit applies to intestine candidates, not lung candidates.",
+        "D": "Lung inactive waiting-time rules are not limited to pediatric candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 46,
+      "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Lung",
+      "quote_hint": "Lung … Unlimited time … Candidates accrue waiting time while inactive",
+      "keywords": ["Lung", "Unlimited", "time", "inactive", "waiting", "accrue", "candidates", "Table"]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (lung candidates accrue unlimited waiting time while inactive); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Source-first item. Lung inactive waiting-time angle paired with heart no-accrual (cctc-2045) and kidney unlimited accrual (cctc-2037); anchor verified on optn-policies p. 46.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2072",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": ["020401"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "When communicating the transplant team's recommendation to a liver candidate with hepatopulmonary syndrome, which counseling point aligns with standard evaluation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hepatopulmonary syndrome is reversible with transplantation and is not a contraindication to liver transplant" },
+      { "id": "B", "text": "Hepatopulmonary syndrome permanently prohibits listing for any transplantation" },
+      { "id": "C", "text": "Hepatorenal syndrome alone mandates isolated kidney transplantation instead of liver transplant" },
+      { "id": "D", "text": "Pulmonary complications of liver failure never improve after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Both hepatopulmonary syndrome and hepatorenal syndrome are reversible with transplantation and are not contraindications to liver transplantation.",
+      "rationale_incorrect": {
+        "B": "HPS is an indication for evaluation and transplant rather than a permanent contraindication.",
+        "C": "Hepatorenal syndrome in the setting of liver failure is addressed through liver transplantation.",
+        "D": "HPS and HRS are described as reversible with transplantation rather than permanently unimproved."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 44,
+      "section": "Ch. 1, Evaluation → Liver transplantation → Additional evaluation → 4.a.",
+      "quote_hint": "Both hepatopulmonary syndrome (HPS) and hepatorenal syndrome (HRS) are reversible with transplantation and are not contraindications to liver transplantation",
+      "keywords": ["hepatopulmonary", "syndrome", "HPS", "hepatorenal", "HRS", "reversible", "transplantation", "contraindications"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Liver transplantation → Additional evaluation → 4.a. (HPS and HRS reversible; not contraindications); PDF p. 44 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Liver team-communication angle distinct from alcohol abstinence contract (cctc-2058) and approved-candidate communication (cctc-1032); anchor verified on Cupples p. 44.",
+    "last_updated": "2026-06-05"
+  }
+]
