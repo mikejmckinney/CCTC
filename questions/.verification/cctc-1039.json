@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1039",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 331,
+    "keywords": [
+      "minimal",
+      "risk",
+      "end-stage",
+      "renal",
+      "disease",
+      "ESRD",
+      "healthy",
+      "lifestyle"
+    ],
+    "keyword_hash": "sha256:7090b9fe600f63ff31aadfe930f7affecc4143d0572a0a519043d487d7839243"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "keywords": [
+        "living",
+        "kidney",
+        "donor",
+        "healthy",
+        "lifestyle"
+      ],
+      "keyword_hash": "sha256:81a50a47ec0eb2b6cba69f921cae05c4c4af0991bd2aa9921183ad6b56cfa200"
+    }
+  ]
+}

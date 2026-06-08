@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-2038",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 825,
+    "keywords": [
+      "Simultaneous",
+      "pancreas-kidney",
+      "diabetes",
+      "renal",
+      "insufficiency",
+      "SPK",
+      "transplantation"
+    ],
+    "keyword_hash": "sha256:839e93488c1c3e89ecf9612de65b3d9e37f24c57f3b8d6d30d294363e018605e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "keywords": [
+        "diabetes",
+        "renal",
+        "insufficiency"
+      ],
+      "keyword_hash": "sha256:2258c72f14b24dee75a7b2f9dbf4bee23fbd0aa06f38a45562257e0050ec7e90"
+    }
+  ]
+}

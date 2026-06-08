@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1040",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 120,
+    "keywords": [
+      "Hyperlipidemia",
+      "Hypertension",
+      "Renal",
+      "dysfunction",
+      "immunosuppressants",
+      "renal",
+      "failure"
+    ],
+    "keyword_hash": "sha256:809baed7b46c6c4fe6973065bbc26888df38a809b938dc5e4ef2f79a465ca74e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "keywords": [
+        "hypertension",
+        "hyperlipidemia",
+        "renal",
+        "dysfunction"
+      ],
+      "keyword_hash": "sha256:24658844f3e57f734e0f554ddb77d377029d768d59fef35bb332cbd654a260a4"
+    }
+  ]
+}

@@ -16,7 +16,7 @@ questions/
 - **Soft cap of 50 items per file.** When a file exceeds it, split it (e.g. `domain-3-postop/030100-030400.json`, `domain-3-postop/030500-030800.json`). This keeps diffs small and the app loads gracefully as the bank grows.
 - Anything under `_examples/` is for authors/reviewers and is excluded from the production bank path (the loader ignores paths beginning with `_`).
 - `questions/.verification/` holds per-item reference verification stubs (CI enforcement); excluded from exam sampling and bank loading.
-- **Bootstrap fallback:** when no non-`_` shards exist yet, the app may temporarily load `_examples` so both item formats can be exercised while the real bank is authored. Once domain shards land under `questions/domain-*`, only those files are used (currently **109 draft items** across `batch-01.json`–`batch-09.json` in each domain directory).
+- **Bootstrap fallback:** when no non-`_` shards exist yet, the app may temporarily load `_examples` so both item formats can be exercised while the real bank is authored. Once domain shards land under `questions/domain-*`, only those files are used (currently **121 draft items** across `batch-01.json`–`batch-10.json` in each domain directory).
 
 ## File format
 
@@ -38,9 +38,9 @@ Also tag `cognitive_level` and `organ` so the sampler can mirror the real exam's
 
 | Domain | Shards | Item IDs | Count |
 |---|---|---|---|
-| `domain-1-education` | `batch-01`–`09` | `cctc-1001`–`1037` | 37 |
-| `domain-2-pretx` | `batch-01`–`09` | `cctc-2001`–`2036` | 36 |
-| `domain-3-postop` | `batch-01`–`09` | `cctc-3001`–`3036` | 36 |
+| `domain-1-education` | `batch-01`–`10` | `cctc-1001`–`1041` | 41 |
+| `domain-2-pretx` | `batch-01`–`10` | `cctc-2001`–`2040` | 40 |
+| `domain-3-postop` | `batch-01`–`10` | `cctc-3001`–`3040` | 40 |
 
 All items are `status: "draft"`. Run `npm run validate:coverage` for live gap tables after each batch.
 

@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1038",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010101"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pre-transplant nutritional counseling, a candidate asks why diet teaching matters after transplant. Which post-transplant disorder risk should the coordinator include in standard education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Immunosuppressant-induced hyperlipidemia" },
+      { "id": "B", "text": "Complete immunity to all post-transplant infections" },
+      { "id": "C", "text": "Elimination of all cardiovascular risk after transplantation" },
+      { "id": "D", "text": "Permanent inability to absorb any dietary fat" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Nutritional evaluation includes educating patients about risks for post-transplant disorders such as immunosuppressant-induced hyperlipidemia and diabetes mellitus, supporting a heart-healthy diet.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression increases infection susceptibility rather than conferring complete immunity.",
+        "C": "Transplantation and immunosuppression do not eliminate cardiovascular risk; diet teaching addresses ongoing lipid and metabolic risks.",
+        "D": "Nutritional teaching addresses metabolic risks such as hyperlipidemia, not permanent fat malabsorption for all recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 32,
+      "section": "Ch. 1, Evaluation → H. Nutritional evaluation → 2.",
+      "quote_hint": "educating the patient about risks for posttransplant disorders such as immunosuppressant-induced hyperlipidemia",
+      "keywords": ["posttransplant", "disorders", "immunosuppressant-induced", "hyperlipidemia", "diabetes", "heart", "healthy"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → H. Nutritional evaluation → 2. (post-transplant hyperlipidemia and diabetes risks; heart-healthy diet); PDF p. 32 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 010100 item; nutritional-risk angle distinct from rejection/waitlist death/primary nonfunction; anchor verified on Cupples p. 32.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1039",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010300",
+    "knowledge_codes": ["010303"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A potential living kidney donor asks about long-term kidney health after donation. Which counseling point aligns with standard living donor education?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Most donors have minimal end-stage renal disease risk if they maintain a healthy lifestyle" },
+      { "id": "B", "text": "Donation guarantees development of dialysis-dependent kidney failure within one year" },
+      { "id": "C", "text": "Living donors require lifelong immunosuppression after nephrectomy" },
+      { "id": "D", "text": "Donors never need any post-donation medical follow-up" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Studies show most living kidney donors lead normal lives with a single kidney and have minimal risk of end-stage renal disease when they maintain a healthy lifestyle.",
+      "rationale_incorrect": {
+        "B": "Kidney donation is not associated with guaranteed early dialysis-dependent failure for most donors.",
+        "C": "Living kidney donors do not receive recipient immunosuppression after donation.",
+        "D": "Living donors commit to postoperative follow-up testing coordinated by the live donor program."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "section": "Ch. 7, Care of Living Donors → Introduction → 4.",
+      "quote_hint": "minimal risk of end-stage renal disease (ESRD) providing they lead a healthy lifestyle",
+      "keywords": ["minimal", "risk", "end-stage", "renal", "disease", "ESRD", "healthy", "lifestyle"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → Introduction → 4. (living kidney donor ESRD risk with healthy lifestyle); PDF p. 331 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fifth 010300 item; long-term ESRD-risk angle distinct from psychosocial (cctc-1023) and wound monitoring (cctc-1014); anchor verified on Cupples p. 331.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1040",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504", "010505"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is revising long-term immunosuppression side-effect teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Hyperlipidemia may develop as a side effect of immunosuppressive medications." },
+      { "id": "II", "text": "Hypertension may develop as a side effect of certain immunosuppressants." },
+      { "id": "III", "text": "Immunosuppression never contributes to renal dysfunction over time." },
+      { "id": "IV", "text": "Renal dysfunction may progress to renal failure requiring kidney transplantation." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Long-term immunosuppression teaching includes hyperlipidemia and hypertension as medication side effects and notes that renal dysfunction may progress to renal failure requiring kidney transplantation. Immunosuppression can contribute to renal dysfunction.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—renal dysfunction may progress to need for kidney transplantation.",
+        "C": "Statement III is false; medications and other factors may contribute to renal dysfunction over time.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects of immunosuppression",
+      "quote_hint": "Hyperlipidemia … Hypertension … Renal dysfunction … May progress to renal failure",
+      "keywords": ["Hyperlipidemia", "Hypertension", "Renal", "dysfunction", "immunosuppressants", "renal", "failure"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → ii.–iv. (hypertension, hyperlipidemia, renal dysfunction); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Seventh complex_combo in bank; anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1041",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Per OPTN and CMS requirements, who may perform the living donor psychosocial evaluation?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A psychiatrist, psychologist, masters-prepared social worker, or licensed clinical social worker" },
+      { "id": "B", "text": "Only the transplant surgeon without any behavioral health specialist" },
+      { "id": "C", "text": "Any hospital volunteer without clinical licensure" },
+      { "id": "D", "text": "The recipient's primary care physician exclusively" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The living donor psychosocial evaluation must be performed by a psychiatrist, psychologist, masters-prepared social worker, or licensed clinical social worker per OPTN and CMS requirements.",
+      "rationale_incorrect": {
+        "B": "Psychosocial evaluation requires qualified behavioral health professionals, not the surgeon alone.",
+        "C": "Volunteers without clinical licensure cannot perform the required psychosocial evaluation.",
+        "D": "The recipient's primary care physician is not the designated evaluator for living donor psychosocial assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 346,
+      "section": "Ch. 7, Care of Living Donors → A. The Psychosocial Evaluation → 1.",
+      "quote_hint": "psychosocial evaluation must be performed by a psychiatrist, psychologist, masters-prepared social worker, or licensed clinical social worker",
+      "keywords": ["psychosocial", "evaluation", "psychiatrist", "psychologist", "social", "worker", "OPTN"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → A. The Psychosocial Evaluation → 1. (OPTN and CMS requirements; psychosocial evaluation by psychiatrist, psychologist, or licensed clinical social worker); PDF p. 346 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixth 010700 item; psychosocial-evaluator qualification angle distinct from follow-up/discharge teaching items; anchor verified on Cupples p. 346.",
+    "last_updated": "2026-06-05"
+  }
+]

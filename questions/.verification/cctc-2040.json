@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2040",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 54,
+    "keywords": [
+      "HCC",
+      "every",
+      "months",
+      "Imaging",
+      "AFP",
+      "UNOS",
+      "MELD",
+      "exception"
+    ],
+    "keyword_hash": "sha256:d4095ff73ad628e959eeafd15236477108c1001ae9e62300e915507bbf1b9334"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 54,
+      "keywords": [
+        "imaging",
+        "every",
+        "months",
+        "exception"
+      ],
+      "keyword_hash": "sha256:957de031143f6d6291c1ea3b0802206b21abeb5d252ce060d3694a35a383bf39"
+    }
+  ]
+}
