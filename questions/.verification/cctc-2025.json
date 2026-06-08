@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2025",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 102,
+    "keywords": [
+      "Failure",
+      "required",
+      "testing",
+      "priority",
+      "waitlist",
+      "LAS",
+      "MELD"
+    ],
+    "keyword_hash": "sha256:75e830fa62642b15256da6946ee8ff4eab31cdf043d808536a3bcd32b1a8ba90"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "keywords": [
+        "coordinator",
+        "responsibilities"
+      ],
+      "keyword_hash": "sha256:d2cf1924c0e9119aa2b7475f49f0bdcdd36b87f5d8e9f6dc6baacda1f0fd5dd4"
+    }
+  ]
+}

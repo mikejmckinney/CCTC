@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2025",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020703"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A lung transplant candidate on the waitlist has overdue organ-specific laboratory studies needed to maintain an active LAS. What is the coordinator's appropriate action?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Arrange required studies and educate the candidate that failure to complete testing may change waitlist priority" },
+      { "id": "B", "text": "Remove the candidate permanently from the waitlist without discussion" },
+      { "id": "C", "text": "Defer all waitlist testing until after transplantation" },
+      { "id": "D", "text": "Assume overdue studies have no effect on allocation status" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant coordinators arrange waitlist studies and educate candidates that failure to complete required organ-specific testing, such as LAS or MELD updates, may change priority on the waitlist.",
+      "rationale_incorrect": {
+        "B": "Overdue testing triggers coordination and education; permanent delisting without process is not the described standard response.",
+        "C": "Required waitlist studies must be completed while waiting to remain viable candidates.",
+        "D": "Failure to complete required testing may change candidate priority on the waitlist."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → §b. Waitlist management → c.i.–iv.",
+      "quote_hint": "Failure to complete required testing may result in a change in candidate's priority on the waitlist",
+      "keywords": ["Failure", "required", "testing", "priority", "waitlist", "LAS", "MELD"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §b. Waitlist management → c.ii. and coordinator responsibilities c.iii.–iv.; PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third 020700 item; waitlist maintenance angle distinct from cctc-2008/2016; anchor verified on Cupples p. 102.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-2026",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020201"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When explaining the kidney transplant evaluation process to a candidate, how should the coordinator frame the purpose of evaluation?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Determine the optimal mode of ESKD care after multiple considerations, not merely a yes-or-no transplant decision" },
+      { "id": "B", "text": "Provide a one-time pass/fail verdict with no role for shared decision-making" },
+      { "id": "C", "text": "Guarantee immediate transplantation for every referred patient" },
+      { "id": "D", "text": "Exclude patient advocacy because the team decides without candidate input" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Kidney transplant evaluation should determine the optimal mode of end-stage kidney disease care after multiple considerations, with patient advocacy as the guiding principle rather than a simple thumbs-up or thumbs-down.",
+      "rationale_incorrect": {
+        "B": "Evaluation is designed for individualized care planning, not a single opaque pass/fail without discussion.",
+        "C": "Referral and evaluation do not guarantee immediate transplantation for every patient.",
+        "D": "Patient advocacy remains the guiding principle throughout evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 227,
+      "section": "Ch. 8, Evaluation of Adult Kidney Transplant Candidates → evaluation purpose paragraph",
+      "quote_hint": "determine the optimal mode of ESKD care after multiple considerations are taken into account",
+      "keywords": ["optimal", "ESKD", "care", "considerations", "advocacy", "evaluation", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 8 → Part I evaluation purpose (optimal ESKD care, patient advocacy); PDF p. 227 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth 020200 item; anchor verified on Danovitch p. 227.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-2027",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020604"],
+    "cognitive_level": "application",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "A heart-lung transplant candidate completes organ-specific tests and consultations. What is the next standard step before listing consideration?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Present the completed evaluation to the transplant selection committee" },
+      { "id": "B", "text": "Enter the candidate directly into UNet without team review" },
+      { "id": "C", "text": "Schedule transplantation before any committee review" },
+      { "id": "D", "text": "Skip documentation because heart-lung candidates are automatically listed" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Heart-lung transplant evaluation combines individual organ tests, procedures, and consults that, when completed, are presented to the transplant selection committee for listing consideration.",
+      "rationale_incorrect": {
+        "B": "Listing follows selection committee review and appropriate UNOS data entry, not automatic listing without team presentation.",
+        "C": "Surgery is not scheduled before evaluation completion and listing consideration.",
+        "D": "Heart-lung candidates require formal evaluation presentation, not automatic listing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 626,
+      "section": "Ch. 11, Heart-lung transplantation → C. Evaluation → 1.",
+      "quote_hint": "presented to the transplant selection committee for listing consideration",
+      "keywords": ["presented", "transplant", "selection", "committee", "listing", "evaluation", "heart"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 11 → heart-lung transplantation → C. Evaluation → 1. (selection committee presentation); PDF p. 626 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth 020600 item; second heart_lung organ tag; distinct from DonorNet/PHS angles; anchor verified on Cupples p. 626.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-2028",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A liver transplant candidate has a history of diabetes and former tobacco use. Which pretransplant cardiac testing is MOST appropriate per standard evaluation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Cardiac stress testing to evaluate myocardial perfusion" },
+      { "id": "B", "text": "No cardiac testing because extracardiac transplant candidates never need cardiac evaluation" },
+      { "id": "C", "text": "Immediate transplant without any cardiovascular assessment" },
+      { "id": "D", "text": "Lung allocation score calculation only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Patients with diabetes or smoking history require cardiac stress testing to evaluate myocardial perfusion as part of pretransplant consultation to identify perioperative cardiovascular risk.",
+      "rationale_incorrect": {
+        "B": "All transplant candidates receive cardiac evaluation; higher-risk histories warrant stress testing.",
+        "C": "Pretransplant evaluation identifies cardiovascular risks that may affect outcomes before proceeding.",
+        "D": "LAS applies to lung allocation, not liver candidate cardiac stress testing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Consultations → J.1.c. cardiac stress testing",
+      "quote_hint": "diabetes, or smoking will require a cardiac stress test to evaluate myocardial perfusion",
+      "keywords": ["cardiac", "stress", "test", "myocardial", "perfusion", "diabetes", "smoking"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → J. Consultations → 1. Cardiac evaluation → c. (stress testing for diabetes/smoking history); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third liver-tagged D2 item; anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-08"
+  }
+]

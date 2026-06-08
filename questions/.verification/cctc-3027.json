@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3027",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "optn-policies": {
+      "filename": "optn-policies.pdf",
+      "page_count": 372
+    }
+  },
+  "primary_anchor": {
+    "source_id": "optn-policies",
+    "pdf_page": 332,
+    "keywords": [
+      "discharged",
+      "hospital",
+      "42",
+      "days",
+      "transplant",
+      "TRR",
+      "recipient"
+    ],
+    "keyword_hash": "sha256:f2129b7fa8a2361f066eca43ed26a5341ab56fd5c2ca6c370be3308aa21c780c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "optn-policies",
+      "pdf_page": 332,
+      "policy": "18.2",
+      "keywords": [
+        "table",
+        "timely",
+        "collection",
+        "organ-specific",
+        "recipient",
+        "registration"
+      ],
+      "keyword_hash": "sha256:fde59ce6973ee838f86d9d1840476008c8875e46403975c1219ad553c81e8d03"
+    }
+  ]
+}

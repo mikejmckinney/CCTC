@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-1026",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": ["010703"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A living liver donor is being discharged after donation. Which symptom should discharge teaching identify as a reason to call the live donor team?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Development of fever" },
+      { "id": "B", "text": "Mild postoperative fatigue alone without fever or uncontrolled pain" },
+      { "id": "C", "text": "Routine healing at the incision without redness or drainage" },
+      { "id": "D", "text": "Questions about a previously reviewed pain medication schedule when pain is controlled" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor discharge instructions require donors to call the live donor team if they develop fever, have uncontrolled pain, experience shortness of breath, or have other urgent concerns.",
+      "rationale_incorrect": {
+        "B": "Expected fatigue may occur during healing, but fever is an explicit call-the-team trigger.",
+        "C": "Uncomplicated wound healing without infection signs does not require urgent team contact.",
+        "D": "Controlled pain on the prescribed regimen is not the urgent call trigger described in donor discharge teaching."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 354,
+      "section": "Ch. 7, Living Donation → E. Discharge Teaching → 2.f.i.",
+      "quote_hint": "call the live donor team if they Develop a fever",
+      "keywords": ["fever", "live", "donor", "team", "call", "discharge", "pain"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → E. Discharge Teaching for Living Donors → 2.f. (when to call the live donor team); PDF p. 354 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourth 010700 item; liver living-donor discharge angle distinct from cctc-1009/1014/1021/1023; anchor verified on Cupples p. 354.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-1027",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010202"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "During pretransplant education, a candidate asks whether an active untreated infection would prevent kidney transplantation. What teaching is MOST accurate?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Untreated current infection is a major contraindication to kidney transplantation" },
+      { "id": "B", "text": "Active infection has no bearing on transplant candidacy if the candidate is on the waitlist" },
+      { "id": "C", "text": "Only pediatric candidates are excluded for untreated infection" },
+      { "id": "D", "text": "Untreated infection is an indication for immediate transplantation without treatment" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Major contraindications to kidney transplantation include untreated current infection, which must be resolved or appropriately managed before transplantation can proceed safely.",
+      "rationale_incorrect": {
+        "B": "Untreated infection is explicitly listed among major contraindications, not an irrelevant factor.",
+        "C": "The contraindication applies to kidney transplant candidacy generally, not a pediatric-only restriction.",
+        "D": "Active untreated infection is a barrier to transplant, not an indication to proceed without treatment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 227,
+      "section": "Ch. 8, Evaluation of Adult Kidney Transplant Candidates → Table 8.1",
+      "quote_hint": "Untreated current infection",
+      "keywords": ["Untreated", "current", "infection", "contraindications", "kidney", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 8 → Table 8.1 Major Contraindications to Kidney Transplantation; PDF p. 227 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Contraindication-focused 010200 angle distinct from indication items cctc-1004/1005/1016; anchor verified on Danovitch p. 227.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-1028",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": ["010401"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During living donor education and informed consent, which disclosure must clinicians provide about recipient treatment options?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Alternate procedures or treatments for the recipient, including deceased donor transplantation" },
+      { "id": "B", "text": "A guarantee that living donation is the only legal option for every recipient" },
+      { "id": "C", "text": "The donor's future MELD score after donation" },
+      { "id": "D", "text": "Confidential refusal codes from unrelated deceased-donor offers" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor education must disclose alternate procedures or treatments for the recipient, including deceased donor transplantation, and that a deceased donor organ may become available before living donor evaluation is complete.",
+      "rationale_incorrect": {
+        "B": "Donors must be informed of alternate treatment pathways; living donation is not presented as the sole option.",
+        "C": "MELD scoring applies to liver allocation candidates, not living donor outcome disclosure.",
+        "D": "Unrelated deceased-donor refusal codes are not part of living donor informed consent disclosures."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "section": "Ch. 7, Living Donation → F. Elements Included in Education and Informed Consent → 2.a.",
+      "quote_hint": "alternate procedures or treatment for the recipient, including deceased donor transplantation",
+      "keywords": ["alternate", "procedures", "deceased", "donor", "transplantation", "recipient", "education"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → F. Elements Included in Education and Informed Consent → 2.a.–b. (alternate treatments including deceased donor transplant); PDF p. 340 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Third 010400 item; anchor verified on Cupples p. 340.",
+    "last_updated": "2026-06-08"
+  },
+  {
+    "id": "cctc-1029",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010606"],
+    "cognitive_level": "analysis",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "A coordinator is revising liver recipient education on recognizing rejection. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Fever may occur with acute liver rejection." },
+      { "id": "II", "text": "Jaundice may occur with acute liver rejection." },
+      { "id": "III", "text": "Recipients should contact the transplant team if they notice signs or symptoms of rejection." },
+      { "id": "IV", "text": "Chronic rejection is generally reversible with a single outpatient steroid dose." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II and IV only", "selects": ["II", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Acute liver rejection may present with fever, jaundice, and other symptoms, and patients are taught to contact the transplant team if rejection signs develop. Chronic rejection is generally considered irreversible.",
+      "rationale_incorrect": {
+        "A": "Statement III is also correct—patients are instructed to contact the team for rejection symptoms.",
+        "C": "Statement IV is false; chronic rejection is not described as generally reversible.",
+        "D": "Statement IV is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 669,
+      "section": "Ch. 12, Liver Transplantation → acute rejection manifestations and patient education",
+      "quote_hint": "Fever … Jaundice … contact their transplant coordinator/transplant team if they notice any signs or symptoms of rejection",
+      "keywords": ["Fever", "Jaundice", "rejection", "transplant", "team", "symptoms", "chronic"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 12 → acute rejection manifestations (statements I–II) and D. Patient/caregiver education (statement III); PDF p. 669 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 12 → chronic rejection (generally irreversible; statement IV false); PDF p. 669 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Sixth complex_combo in bank; liver rejection education; anchor verified on Cupples p. 669.",
+    "last_updated": "2026-06-08"
+  }
+]

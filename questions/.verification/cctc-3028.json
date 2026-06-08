@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3028",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 161,
+    "keywords": [
+      "DM",
+      "transplantation",
+      "occurs",
+      "solid",
+      "organ",
+      "recipients",
+      "months"
+    ],
+    "keyword_hash": "sha256:bba5a47aa6e4c2319c1eb8a24f4f2b8158882a2d3b1cd658f40283383c079490"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 161,
+      "keywords": [
+        "after",
+        "transplantation",
+        "occurs",
+        "solid",
+        "organ",
+        "recipients",
+        "within",
+        "first"
+      ],
+      "keyword_hash": "sha256:e4693acf6a3b772c23ec423b9b55112f4aec83e816df5ed4fb0569a14acc9982"
+    }
+  ]
+}

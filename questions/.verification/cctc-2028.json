@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2028",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 33,
+    "keywords": [
+      "cardiac",
+      "stress",
+      "test",
+      "myocardial",
+      "perfusion",
+      "diabetes",
+      "smoking"
+    ],
+    "keyword_hash": "sha256:5005e69cacec01c556838d8a14f29719ce82dc2b0ea95b06ce6277615d5fa50b"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "keywords": [
+        "stress",
+        "testing",
+        "diabetes",
+        "smoking",
+        "history"
+      ],
+      "keyword_hash": "sha256:182e81e14ff41beeb559419927eb1a0400629c1cc53f45bbdc5fb5303e593fd7"
+    }
+  ]
+}

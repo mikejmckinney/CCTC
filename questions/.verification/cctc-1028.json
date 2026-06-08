@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1028",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 340,
+    "keywords": [
+      "alternate",
+      "procedures",
+      "deceased",
+      "donor",
+      "transplantation",
+      "recipient",
+      "education"
+    ],
+    "keyword_hash": "sha256:704249eb306186426ad051531c2519514de0490d5c72a4a80befff12b0bf3cd0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "keywords": [
+        "alternate",
+        "treatments",
+        "including",
+        "deceased",
+        "donor"
+      ],
+      "keyword_hash": "sha256:f47edc742cd4c7802ce67b13a48ad620fd4b6b301e4994d4f253aff1ade235bb"
+    }
+  ]
+}
