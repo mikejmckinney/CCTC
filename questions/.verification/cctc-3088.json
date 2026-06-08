@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3088",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 106,
+    "keywords": [
+      "Delayed",
+      "graft",
+      "function",
+      "Supportive",
+      "therapies",
+      "maintain",
+      "optimal",
+      "Dialysis"
+    ],
+    "keyword_hash": "sha256:7e8f0cf1e60f2e2c63e227533614d087af44989832dffe3e00d179f39bfb37d2"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 106,
+      "keywords": [
+        "delayed",
+        "graft",
+        "function",
+        "supportive",
+        "including",
+        "dialysis"
+      ],
+      "keyword_hash": "sha256:08a3d78ffa8af4268b67cf3eff0ae2f8b686b3ec598aa48ba76b8963240a7fe6"
+    }
+  ]
+}

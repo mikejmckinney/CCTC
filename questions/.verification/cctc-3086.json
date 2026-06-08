@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3086",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 211,
+    "keywords": [
+      "Adenoviruses",
+      "respiratory",
+      "GI",
+      "conjunctival",
+      "first",
+      "months",
+      "higher",
+      "immunosuppression"
+    ],
+    "keyword_hash": "sha256:fe6c72af0bda1a22e3d2880e9c6b533f3672c38ac68f015efe3c605a831b6567"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 211,
+      "keywords": [
+        "early",
+        "post-transplant",
+        "timing",
+        "higher",
+        "dosing"
+      ],
+      "keyword_hash": "sha256:b2a5cd48c462e845bbf5ba40b0be3fee8e560c771e46cdbcb2c84e267ef1ef99"
+    }
+  ]
+}

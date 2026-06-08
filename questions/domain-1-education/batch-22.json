@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1086",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When reviewing pretransplant immunization needs for an adult transplant candidate, in which situation is rabies vaccination among the recommended adult candidate immunizations?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Exposure or potential exposure due to vocation" },
+      { "id": "B", "text": "Routine administration to every candidate regardless of risk" },
+      { "id": "C", "text": "Only after transplantation when live vaccines are preferred" },
+      { "id": "D", "text": "Only for pediatric candidates younger than 9 years" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recommended pretransplant adult immunizations include rabies vaccination for exposure or potential exposures due to vocations only, rather than universal routine administration.",
+      "rationale_incorrect": {
+        "B": "Rabies vaccine is listed for vocation-related exposure risk, not for every candidate by default.",
+        "C": "Pretransplant immunization guidance emphasizes updating vaccines before transplant; live vaccines require careful post-transplant timing.",
+        "D": "The cited rabies recommendation is within adult candidate immunizations, not limited to young pediatric candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 180,
+      "section": "Ch. 5, Infectious Diseases → Immunizations → B. Recommended Pretransplant Immunizations → 1.a.i.",
+      "quote_hint": "Rabies (exposure or potential exposures due to vocations only)",
+      "keywords": ["Rabies", "exposure", "potential", "exposures", "vocations", "only", "Recommended", "Pretransplant"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Immunizations → B.1.a.i. (rabies for vocation-related exposure); PDF p. 180 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Rabies-vaccination indication angle distinct from general pretransplant vaccine-response teaching (cctc-1081) and live-vaccine interval (cctc-1077); anchor verified on Cupples p. 180.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1087",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "A coordinator is counseling an adolescent solid-organ transplant recipient about sexual health and immunizations. Which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Pediatric recipients should receive HPV and hepatitis B vaccine before engaging in sexual activity" },
+      { "id": "B", "text": "Post-transplant recipients never need HPV or hepatitis B vaccination" },
+      { "id": "C", "text": "Live-virus vaccines are preferred immediately after transplant for all adolescents" },
+      { "id": "D", "text": "Sexual-health counseling is deferred until 5 years after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual-health education for pediatric recipients includes that they should receive HPV and hepatitis B vaccine prior to engaging in sexual activity.",
+      "rationale_incorrect": {
+        "B": "HPV and hepatitis B vaccination remain important preventive measures for pediatric recipients.",
+        "C": "Live vaccines require careful timing after transplantation rather than being preferred immediately.",
+        "D": "Sexual-health and vaccination counseling is part of ongoing education rather than deferred for years."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → sexual health → ix.",
+      "quote_hint": "Pediatric recipients should receive the HPV and hepatitis B vaccine prior to engaging in sexual activity",
+      "keywords": ["Pediatric", "recipients", "HPV", "hepatitis", "vaccine", "prior", "sexual", "activity"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → sexual health → ix. (pediatric HPV and hepatitis B before sexual activity); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sixteenth pediatric recipient in bank; sexual-health vaccination angle distinct from pediatric HPV-only teaching (cctc-1036) and community-infection severity (cctc-1056); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1088",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating adenovirus infection-prevention teaching for solid-organ transplant recipients. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Adenoviruses may cause respiratory, gastrointestinal, conjunctival, or disseminated pathology in solid-organ transplant recipients." },
+      { "id": "II", "text": "Adenovirus infections are most common in the first 3 months after transplant and with higher immunosuppression dosing." },
+      { "id": "III", "text": "Adenovirus infection is limited exclusively to kidney transplant recipients." },
+      { "id": "IV", "text": "Adenovirus never causes gastrointestinal pathology in transplant recipients." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Adenoviruses may cause respiratory, GI, conjunctival, or disseminated disease in solid-organ recipients and are most common early post-transplant with higher immunosuppression. They are not kidney-specific and may cause GI pathology, so statements III and IV are false.",
+      "rationale_incorrect": {
+        "B": "Statement IV is false because GI pathology is among the described adenovirus manifestations.",
+        "C": "Statements I and II are true; statements III and IV are false.",
+        "D": "Statements III and IV are false."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 211,
+      "section": "Ch. 5, Infectious Diseases → CARV → 11.a. Adenoviruses → i.–iii.",
+      "quote_hint": "respiratory, GI, conjunctival, and disseminated pathology … Most common in the first 3 months … higher immunosuppression dosing",
+      "keywords": ["Adenoviruses", "respiratory", "GI", "conjunctival", "disseminated", "first", "months", "immunosuppression"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CARV → 11.a. Adenoviruses → i.–iii. (respiratory, GI, conjunctival, and disseminated pathology range; most common in the first 3 months with higher immunosuppression dosing); PDF p. 211 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Adenovirus teaching combo distinct from parvovirus combo (cctc-1083) and JC virus combo (cctc-1079); anchor verified on Cupples p. 211.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1089",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching a recipient about human herpesvirus 6 (HHV-6) after transplantation, which timing statement aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Onset typically occurs between 2 and 4 weeks posttransplantation" },
+      { "id": "B", "text": "HHV-6 occurs only before the transplant operation" },
+      { "id": "C", "text": "Onset is expected more than 1 year after every transplant" },
+      { "id": "D", "text": "HHV-6 reactivation never coincides with CMV coinfection" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "HHV-6 is usually reactivation of endogenous latent virus with onset typically between 2 and 4 weeks posttransplantation; CMV coinfection is common.",
+      "rationale_incorrect": {
+        "B": "HHV-6 disease is described as post-transplant reactivation rather than a preoperative-only process.",
+        "C": "Standard references describe onset in the early post-transplant weeks, not uniformly after 1 year.",
+        "D": "CMV coinfection with HHV-6 is described as common rather than absent."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 203,
+      "section": "Ch. 5, Infectious Diseases → G. Human herpesvirus 6 (HHV-6) → 1.–3.",
+      "quote_hint": "Usually reactivation … Onset typically occurs between 2 and 4 weeks posttransplantation … CMV coinfection is common",
+      "keywords": ["HHV-6", "reactivation", "Onset", "typically", "occurs", "between", "weeks", "posttransplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → G. HHV-6 → 1.–3. (reactivation, 2–4 week onset, CMV coinfection); PDF p. 203 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. HHV-6 education angle distinct from CMV organ-specific combo (cctc-1072) and EBV/PTLD screening (cctc-2071); anchor verified on Cupples p. 203.",
+    "last_updated": "2026-06-05"
+  }
+]

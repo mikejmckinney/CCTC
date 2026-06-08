@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1087",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Pediatric",
+      "recipients",
+      "HPV",
+      "hepatitis",
+      "vaccine",
+      "prior",
+      "sexual",
+      "activity"
+    ],
+    "keyword_hash": "sha256:e08c8640a6065146f8d92a934aca37aacd894296c12c102a99f34b975ddf3b9e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "pediatric",
+        "hepatitis",
+        "before",
+        "sexual",
+        "activity"
+      ],
+      "keyword_hash": "sha256:726fa92609c9e4b7ac635341d4669cdfa046d8e205a1fd70646e08e36f98124d"
+    }
+  ]
+}

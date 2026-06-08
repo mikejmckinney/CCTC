@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-3085",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Three weeks after solid-organ transplantation, a recipient develops symptoms consistent with human herpesvirus 6 (HHV-6) reactivation. Which timing description aligns with standard post-transplant infection references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Onset typically occurs between 2 and 4 weeks posttransplantation" },
+      { "id": "B", "text": "HHV-6 reactivation occurs only before the transplant operation" },
+      { "id": "C", "text": "HHV-6 disease is expected exclusively after 12 months" },
+      { "id": "D", "text": "HHV-6 never occurs with CMV coinfection" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "HHV-6 is usually reactivation of endogenous latent virus with onset typically between 2 and 4 weeks posttransplantation; CMV coinfection is common.",
+      "rationale_incorrect": {
+        "B": "HHV-6 is described as post-transplant reactivation rather than a preoperative-only event.",
+        "C": "Standard references place typical HHV-6 onset in the early post-transplant period rather than after 12 months.",
+        "D": "CMV coinfection with HHV-6 is described as common."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 203,
+      "section": "Ch. 5, Infectious Diseases → G. Human herpesvirus 6 (HHV-6) → 1.–3.",
+      "quote_hint": "Usually reactivation … Onset typically occurs between 2 and 4 weeks posttransplantation … CMV coinfection is common",
+      "keywords": ["HHV-6", "reactivation", "Onset", "typically", "occurs", "between", "weeks", "posttransplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → G. HHV-6 → 1.–3. (reactivation, 2–4 week onset, CMV coinfection); PDF p. 203 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant HHV-6 monitoring angle paired with education item (cctc-1089); distinct from CMV vanishing bile duct (cctc-2072); anchor verified on Cupples p. 203.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3086",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Six weeks after transplantation on higher maintenance immunosuppression, a recipient develops adenovirus infection. Which epidemiologic pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Adenovirus is most common in the first 3 months after transplant and with higher immunosuppression dosing" },
+      { "id": "B", "text": "Adenovirus occurs only more than 2 years after every transplant" },
+      { "id": "C", "text": "Adenovirus risk decreases when immunosuppression dosing is higher" },
+      { "id": "D", "text": "Adenovirus is limited to conjunctival infection without other organ involvement" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Adenovirus may cause respiratory, GI, conjunctival, or disseminated pathology and is most common in the first 3 months after transplant with higher immunosuppression dosing.",
+      "rationale_incorrect": {
+        "B": "References emphasize early post-transplant timing rather than exclusive late disease after 2 years.",
+        "C": "Higher immunosuppression dosing is associated with greater adenovirus risk rather than lower risk.",
+        "D": "Adenovirus may involve respiratory, GI, conjunctival, or disseminated pathology rather than conjunctiva alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 211,
+      "section": "Ch. 5, Infectious Diseases → CARV → 11.a. Adenoviruses → i.–iii.",
+      "quote_hint": "respiratory, GI, conjunctival, and disseminated pathology … Most common in the first 3 months … higher immunosuppression dosing",
+      "keywords": ["Adenoviruses", "respiratory", "GI", "conjunctival", "first", "months", "higher", "immunosuppression"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CARV → 11.a. Adenoviruses → i.–iii. (early post-transplant timing with higher IS dosing); PDF p. 211 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant adenovirus epidemiology angle paired with education combo (cctc-1088); anchor verified on Cupples p. 211.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3087",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030301"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric kidney transplant recipient is evaluated for possible acute rejection. Which presentation aligns with standard pediatric kidney references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hypertension, pain over the graft area, and hematuria" },
+      { "id": "B", "text": "Isolated slapped-cheek rash without laboratory changes" },
+      { "id": "C", "text": "Expected absence of any blood-pressure or urine changes during rejection" },
+      { "id": "D", "text": "Rejection limited to adult recipients with no pediatric manifestations" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Children with kidney rejection may present with decreased urine output, increased weight, hypertension, increased creatinine, pain over the graft area, and other signs such as proteinuria or hematuria.",
+      "rationale_incorrect": {
+        "B": "Slapped-cheek rash suggests infections such as parvovirus rather than typical rejection presentation.",
+        "C": "Pediatric rejection commonly includes hypertension, creatinine changes, and urinary abnormalities.",
+        "D": "Pediatric kidney recipients have described rejection presentations distinct from assuming rejection does not occur in children."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 904,
+      "section": "Ch. 17, Pediatric Kidney Transplantation → rejection → i.",
+      "quote_hint": "Children with rejection present with … Hypertension … Pain over the graft area … Proteinuria or hematuria",
+      "keywords": ["Children", "rejection", "present", "Hypertension", "Pain", "graft", "area", "hematuria"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → pediatric kidney rejection → i. (hypertension, graft pain, proteinuria/hematuria); PDF p. 904 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventeenth pediatric recipient in bank; pediatric rejection-presentation angle distinct from pediatric ATN monitoring (cctc-3068) and fever septic workup (cctc-3056); anchor verified on Cupples p. 904.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3088",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030102"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "An adult kidney transplant recipient has delayed graft function without primary nonfunction. Which early postoperative management approach aligns with standard complication references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Supportive therapies such as dialysis until graft function improves" },
+      { "id": "B", "text": "Immediate relisting for retransplantation in every case on postoperative day 1" },
+      { "id": "C", "text": "Permanent discontinuation of all immunosuppression until creatinine normalizes" },
+      { "id": "D", "text": "No supportive care is available while awaiting graft recovery" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Delayed graft function may require supportive therapies to maintain optimal patient status until graft function improves; dialysis is among organ-specific supportive options.",
+      "rationale_incorrect": {
+        "B": "Primary graft nonfunction may prompt relisting, but delayed graft function is managed supportively while function may recover.",
+        "C": "Immunosuppression is continued per protocol rather than stopped entirely during delayed graft function.",
+        "D": "Supportive therapies including dialysis are available during delayed graft function."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 106,
+      "section": "Ch. 3, Patient Education → postoperative complications → ii. Delayed graft function",
+      "quote_hint": "Delayed graft function … Supportive therapies available to maintain optimal patient status until graft function improves … Dialysis",
+      "keywords": ["Delayed", "graft", "function", "Supportive", "therapies", "maintain", "optimal", "Dialysis"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → postoperative complications → ii. Delayed graft function (supportive care including dialysis); PDF p. 106 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Delayed-graft-function supportive-care angle distinct from adult ATN complex_combo (cctc-3071) and primary nonfunction education (cctc-1015); anchor verified on Cupples p. 106.",
+    "last_updated": "2026-06-05"
+  }
+]

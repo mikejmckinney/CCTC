@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-1089",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 203,
+    "keywords": [
+      "HHV-6",
+      "reactivation",
+      "Onset",
+      "typically",
+      "occurs",
+      "between",
+      "weeks",
+      "posttransplantation"
+    ],
+    "keyword_hash": "sha256:41ee32dbfba8cb345f4235f42a6eb5d30ad6bbcef89a6833bf7a12f9c048fda1"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 203,
+      "keywords": [
+        "reactivation",
+        "onset",
+        "coinfection"
+      ],
+      "keyword_hash": "sha256:0b8865e93e05424a59108e88dfb810817d49c6e2fcf0930006c777781a77641f"
+    }
+  ]
+}

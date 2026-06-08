@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2085",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020201"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney transplant candidate has an elevated panel reactive antibody (PRA) screen but no identified donor yet. Which immunologic distinction should the coordinator communicate to the team?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "PRA reflects the percentage of HLA antibodies present, whereas donor-specific antibody (DSA) identifies specific antigens to avoid" },
+      { "id": "B", "text": "PRA and DSA measure identical information and are interchangeable terms" },
+      { "id": "C", "text": "DSA provides only a percentage of sensitization without identifying specific antigens" },
+      { "id": "D", "text": "PRA testing is performed only after transplantation with no pretransplant role" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "A positive crossmatch demonstrates donor-specific HLA antibody. PRA provides the percentage of HLA antibodies an individual has but does not indicate DSA presence; DSA identifies specific antigens to avoid.",
+      "rationale_incorrect": {
+        "B": "PRA quantifies overall sensitization while DSA targets donor-mismatched antigens.",
+        "C": "DSA identifies specific anti-HLA antibodies against donor mismatches rather than only a percentage.",
+        "D": "PRA and HLA antibody assessment are part of pretransplant immunologic evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 74,
+      "section": "Ch. 2, Immunology → crossmatch → 7.a.–c.",
+      "quote_hint": "positive crossmatch … donor-specific HLA antibody (DSA) … PRA provides us with the percentage of HLA antibodies … does not indicate the presence of DSA",
+      "keywords": ["positive", "crossmatch", "donor-specific", "HLA", "antibody", "DSA", "PRA", "percentage"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 2 → crossmatch → 7.a.–c. (DSA versus PRA distinction: PRA percentage versus donor-specific antigen identification); PDF p. 74 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. DSA-versus-PRA angle distinct from post-transplant DSA monitoring (cctc-2065) and heart PRA crossmatch threshold (cctc-2026); anchor verified on Cupples p. 74.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2086",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating the laboratory portion of a solid-organ transplant evaluation, which testing category is included in standard assessment references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Viral blood studies to determine previous exposures and current immunity" },
+      { "id": "B", "text": "Viral studies only after transplantation with no pretransplant role" },
+      { "id": "C", "text": "Laboratory assessment limited to a complete blood count only" },
+      { "id": "D", "text": "Infectious screening deferred until after waitlist registration only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant evaluation laboratory assessment includes viral blood studies to determine previous exposures as well as current immunity, alongside metabolic, hematologic, and disease-screening studies.",
+      "rationale_incorrect": {
+        "B": "Viral serologies are part of pretransplant evaluation to guide immunization and infection risk.",
+        "C": "Evaluation laboratories include comprehensive metabolic, coagulation, viral, and disease-screening studies beyond CBC alone.",
+        "D": "Infectious and viral studies are obtained during evaluation rather than deferred until after listing alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Evaluation → Laboratory assessment → viral blood studies",
+      "quote_hint": "Viral blood studies to determine previous exposures as well as current immunity",
+      "keywords": ["Viral", "blood", "studies", "determine", "previous", "exposures", "current", "immunity"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → Laboratory assessment (viral blood studies for exposures and immunity); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Evaluation viral-studies angle distinct from EBV screening (cctc-2071) and hypercoagulability screening (cctc-2059); anchor verified on Cupples p. 98.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2087",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020201"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A highly sensitized kidney candidate is approaching a potential transplant offer. When may a prospective crossmatch be performed according to standard immunology references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "At the time of transplantation based on center- and organ-specific hyperacute rejection risk" },
+      { "id": "B", "text": "Only during the initial outpatient evaluation with no role at transplant" },
+      { "id": "C", "text": "Only after graft implantation is complete" },
+      { "id": "D", "text": "Never for kidney candidates regardless of sensitization" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "A prospective crossmatch may be performed at the time of transplantation based on center- and organ-specific determination of risk of hyperacute rejection, alongside desensitization strategies when indicated.",
+      "rationale_incorrect": {
+        "B": "Prospective crossmatch timing at transplantation supplements rather than replaces broader pretransplant antibody assessment.",
+        "C": "Crossmatch is a pre-implantation immunologic test rather than a post-implantation step.",
+        "D": "Kidney programs perform prospective crossmatch when hyperacute rejection risk warrants it."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 27,
+      "section": "Ch. 1, Evaluation → HLA/sensitization → iii.",
+      "quote_hint": "A prospective crossmatch may be performed at the time of transplantation based on center- and organ-specific determination of risk of hyperacute rejection",
+      "keywords": ["prospective", "crossmatch", "performed", "time", "transplantation", "center", "organ-specific", "hyperacute"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → HLA/sensitization → iii. (prospective crossmatch at transplant based on center risk); PDF p. 27 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Prospective crossmatch timing angle distinct from heart PRA >10% crossmatch (cctc-2026) and DSA-versus-PRA distinction (cctc-2085); anchor verified on Cupples p. 27.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2088",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During transplant evaluation, when are biopsies obtained according to standard evaluation references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Based on the patient's history and physical examination to confirm disease or determine whether abnormalities are malignant" },
+      { "id": "B", "text": "On every candidate regardless of history or examination findings" },
+      { "id": "C", "text": "Only after transplantation to assess medication adherence" },
+      { "id": "D", "text": "Biopsies are never used during pretransplant evaluation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Biopsies are performed based on the patient's history and physical examination to confirm presence or etiology of disease and determine if abnormalities are malignant, which may be a contraindication to transplantation.",
+      "rationale_incorrect": {
+        "B": "Biopsies are obtained when history and examination indicate need rather than universally for every candidate.",
+        "C": "Evaluation biopsies address pretransplant disease assessment rather than post-transplant adherence.",
+        "D": "Biopsy is listed among evaluation procedures when clinically indicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Evaluation → Biopsies",
+      "quote_hint": "Biopsies—performed based on patient's history and physical examination to Confirm presence or etiology of disease. Determine if abnormalities are malignant",
+      "keywords": ["Biopsies", "performed", "based", "patient", "history", "physical", "examination", "malignant"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → Biopsies (history/physical-driven evaluation to confirm disease or malignancy); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Evaluation-biopsy indication angle distinct from liver cardiac stress testing (cctc-2028) and intestinal suitability (cctc-2047); anchor verified on Cupples p. 98.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-2086",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 98,
+    "keywords": [
+      "Viral",
+      "blood",
+      "studies",
+      "determine",
+      "previous",
+      "exposures",
+      "current",
+      "immunity"
+    ],
+    "keyword_hash": "sha256:3d8c27b6901d8ce7dc67faa6d56475870bf41b4f166fa3aa992fc71051ed693e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "keywords": [
+        "laboratory",
+        "assessment",
+        "viral",
+        "blood",
+        "studies",
+        "exposures",
+        "immunity"
+      ],
+      "keyword_hash": "sha256:70ec826da73ac658c873f18653f080a33ba296378d6096817c59d8681196dcf9"
+    }
+  ]
+}
