@@ -1,0 +1,54 @@
+{
+  "item_id": "cctc-3160",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 736,
+    "keywords": [
+      "mortality",
+      "graft",
+      "loss",
+      "Fever",
+      "Lymphadenopathy",
+      "Rash",
+      "Later",
+      "infection"
+    ],
+    "keyword_hash": "sha256:4d4804e4b9b0814b052c2bce2dddbb7848775695d04c4e6bbfc8a3085bff2295"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "keywords": [
+        "mortality",
+        "graft",
+        "fever",
+        "lymphadenopathy"
+      ],
+      "keyword_hash": "sha256:c9a7efb0d99dafef85614a141cc75dc7893ca9afddd5db29abfc3d0efc2c032d"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "keywords": [
+        "later",
+        "infection",
+        "months",
+        "lungs",
+        "common",
+        "primary"
+      ],
+      "keyword_hash": "sha256:d9c7894723951591160b4dc6d32f619cad55e68b0dc64d5e4834a6d3d67788ee"
+    }
+  ]
+}

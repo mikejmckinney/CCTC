@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1160",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "preferable",
+      "another",
+      "individual",
+      "change",
+      "diapers",
+      "patient"
+    ],
+    "keyword_hash": "sha256:9232c533a3190d2ae8b9dc70ebbcf9edd90e35180d467b1957d7df79900c9dc8"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "hygiene",
+        "prefer",
+        "another",
+        "individual",
+        "change",
+        "diapers",
+        "rather",
+        "patient"
+      ],
+      "keyword_hash": "sha256:9757af0fc71e62e447779694ab37005280e6ece0f35362a41fb03cd86caf081c"
+    }
+  ]
+}

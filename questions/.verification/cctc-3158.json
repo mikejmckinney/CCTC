@@ -1,0 +1,35 @@
+{
+  "item_id": "cctc-3158",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 736,
+    "keywords": [
+      "Fever",
+      "Lymphadenopathy",
+      "Rash",
+      "Candidemia",
+      "Symptoms"
+    ],
+    "keyword_hash": "sha256:9ec453be1125f5cf90d9f302eec12ceb8f0c138180ce68de61b5c446c16d9bf6"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "keywords": [
+        "fever",
+        "lymphadenopathy"
+      ],
+      "keyword_hash": "sha256:af53bd8f0072c6bd1ef79f15b5fec308a447cc1e97e8a2bf32c31a7185eb9700"
+    }
+  ]
+}

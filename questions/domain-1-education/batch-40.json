@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1158",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching recipient hand-hygiene practices after transplantation, which meal-related timing aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wash hands before preparing meals" },
+      { "id": "B", "text": "Hand-washing before food preparation is optional for immunosuppressed recipients" },
+      { "id": "C", "text": "Meal preparation requires gloves only and never hand-washing" },
+      { "id": "D", "text": "Hand-washing before meals applies only in the hospital, not at home" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands before preparing meals and before and after eating, along with washing after bathroom use and animal contact.",
+      "rationale_incorrect": {
+        "B": "Hand-washing before preparing meals is specifically recommended rather than optional.",
+        "C": "Hand-washing with soap and water is emphasized rather than relying on gloves alone without hand hygiene.",
+        "D": "Home infection-prevention teaching includes meal-related hand-washing rather than limiting it to inpatient care."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "Before preparing meals",
+      "keywords": ["Before", "preparing", "meals", "Wash", "hands", "eating"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands before preparing meals); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Meal-preparation hand-hygiene timing angle distinct from bathroom hand-washing (cctc-1154) and general best-practice item (cctc-1019); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1159",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When reinforcing home infection-prevention teaching, which hand-hygiene step aligns with standard references after gardening or handling soil?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wash hands after touching plants and soil" },
+      { "id": "B", "text": "Soil contact never requires hand-washing if gloves were worn briefly" },
+      { "id": "C", "text": "Gardening eliminates the need for any hand hygiene afterward" },
+      { "id": "D", "text": "Only hospital staff must wash hands after soil contact, not recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands after touching plants and soil, along with washing after animal contact and items that may have contacted feces.",
+      "rationale_incorrect": {
+        "B": "Hand-washing after plants and soil is specifically recommended regardless of brief glove use.",
+        "C": "Gardening increases exposure risk and still requires hand hygiene afterward.",
+        "D": "Recipients themselves should wash hands after soil contact rather than delegating hygiene to staff only."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After touching plants and soil",
+      "keywords": ["After", "touching", "plants", "soil", "Wash", "hands"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands after touching plants and soil); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Plants/soil hand-hygiene angle distinct from garden gloves/mask teaching (cctc-1139) and animal-contact hand-washing (cctc-1156); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1160",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric solid-organ transplant recipient lives with an infant sibling in diapers. Which infection-prevention teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "It is preferable that another individual change diapers rather than the pediatric recipient" },
+      { "id": "B", "text": "The immunosuppressed pediatric recipient must always be the primary diaper changer" },
+      { "id": "C", "text": "Diaper changing never poses infection risk to transplant recipients" },
+      { "id": "D", "text": "Diaper hygiene guidance applies only to adult recipients, not children" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hand-hygiene teaching notes that after changing diapers it is preferable that another individual change diapers rather than the patient, recognizing fecal exposure risk in immunosuppressed recipients.",
+      "rationale_incorrect": {
+        "B": "Another caregiver is preferred for diaper changes rather than requiring the recipient to perform them.",
+        "C": "Diaper contact is among exposures that warrant infection-prevention precautions.",
+        "D": "Diaper-related guidance applies to pediatric recipients as well as adults in the household."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "it is preferable that another individual change diapers rather than the patient",
+      "keywords": ["preferable", "another", "individual", "change", "diapers", "patient"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (prefer another individual change diapers rather than patient); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Twenty-ninth pediatric recipient in bank; diaper-delegation angle distinct from live-vaccine diaper avoidance (cctc-1138) and bathroom hand-washing (cctc-1154); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1161",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating recipient hand-hygiene teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should wash hands before preparing meals." },
+      { "id": "II", "text": "Recipients should wash hands after touching plants and soil." },
+      { "id": "III", "text": "Antibacterial gel may be used when hands are not visibly soiled and soap and water are unavailable." },
+      { "id": "IV", "text": "Hand-washing after animal contact is unnecessary for transplant recipients." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Meal-preparation hand-washing, post-soil hand-washing, and use of antibacterial gel when soap and water are unavailable are supported. Statement IV is false because hand-washing after animal contact is specifically recommended.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—antibacterial gel may supplement hand hygiene when soap and water are unavailable.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because animal-contact hand-washing remains recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "Before preparing meals … After touching plants and soil … Carry antibacterial gel … After contact with animals",
+      "keywords": ["Before", "preparing", "meals", "plants", "soil", "antibacterial", "gel", "animals"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (meal/soil hand-washing, antibacterial gel, animal contact); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Hand-hygiene combo distinct from hand-hygiene/confidentiality combo (cctc-1157) and visitor hand-hygiene combo (cctc-1118); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05"
+  }
+]

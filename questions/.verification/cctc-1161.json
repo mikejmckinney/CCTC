@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1161",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "Before",
+      "preparing",
+      "meals",
+      "plants",
+      "soil",
+      "antibacterial",
+      "gel",
+      "animals"
+    ],
+    "keyword_hash": "sha256:a2a8db4f6a7efd5bfffdb1aa42651e205dfd0b494dbde6f0509e4ea7e64d5226"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "hygiene",
+        "hand-washing",
+        "antibacterial",
+        "animal",
+        "contact"
+      ],
+      "keyword_hash": "sha256:f896bf9f2a58532eabf2d8dc12913366711617fc5a83dba3611b2294e89c003e"
+    }
+  ]
+}
