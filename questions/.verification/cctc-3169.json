@@ -17,18 +17,15 @@
     "pdf_page": 332,
     "keywords": [
       "OPOs",
-      "responsible",
       "reporting",
       "outcomes",
       "organ",
       "offers",
       "OPTN",
       "30",
-      "days",
-      "match",
-      "run"
+      "days"
     ],
-    "keyword_hash": "sha256:863a72b9c70bc595469b0cc3842b87c4ad2adead2fa44c2ad47e7c853ec0a455"
+    "keyword_hash": "sha256:b6f5881a718f680d0802c3c8b5f1e2ff147074faf50432c7add8e9d4070a0452"
   },
   "references": [
     {
@@ -50,18 +47,15 @@
     {
       "ref_index": 1,
       "source_id": "cupples",
-      "pdf_page": 363,
+      "pdf_page": 101,
       "keywords": [
-        "deceased-donor",
         "organ",
-        "offer",
-        "workflow",
-        "context",
-        "coordinator",
-        "documents",
-        "outcomes"
+        "allocation",
+        "listing",
+        "systems",
+        "context"
       ],
-      "keyword_hash": "sha256:528a657d82a028d04c83da2c132b65e168da4ac0a9a5ac25765fe044c6222630"
+      "keyword_hash": "sha256:2adacf137df23e1bd3b1cbd2ce0c0264fc4bf431969fdd1c6a64cddeaf7115d4"
     }
   ]
 }

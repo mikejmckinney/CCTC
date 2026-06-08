@@ -105,8 +105,7 @@ viewers do not resolve them reliably. The **Policy § is in the locator**; the
 When an item **already cites a specific Policy §** (in `references` or notes)
 and the indexed policies PDF **contains that fact on a verified page**:
 
-- **Add** a policies-PDF reference (`kind: regulation`) with Policy § + `PDF p. N`
-  + `#page=N`.
+- **Add** a policies-PDF reference (`kind: regulation`) with Policy §, `PDF p. N`, and URL fragment `#page=N`.
 - **Keep** existing useful references (textbook, readable HRSA pages).
 - **Do not** remove a verified HRSA URL solely because the PDF ref exists.
 
