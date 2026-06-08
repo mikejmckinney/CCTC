@@ -1,0 +1,54 @@
+{
+  "item_id": "cctc-1165",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 115,
+    "keywords": [
+      "wounds",
+      "mucous",
+      "membranes",
+      "secretions",
+      "nasal",
+      "Wash",
+      "hands",
+      "diarrhea"
+    ],
+    "keyword_hash": "sha256:623faf3d7f1eb2f6847c4db28d3f9eb98d8c21b88024b9263399078980de407f"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "keywords": [
+        "hygiene",
+        "wound",
+        "secretions",
+        "hand-washing"
+      ],
+      "keyword_hash": "sha256:553e261b2520672998f733b868fe399c41e17b7c53856b3a609c5c5d8ef38c53"
+    },
+    {
+      "ref_index": 1,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "animal",
+        "safety",
+        "avoid",
+        "contact",
+        "animals",
+        "diarrhea"
+      ],
+      "keyword_hash": "sha256:85c9c9fd414435785e996cf9eaf354d639280432ee7d8d10e8bf2a99fae66920"
+    }
+  ]
+}

@@ -73,7 +73,7 @@ Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/m
 
 ## Phase 3: Question-Bank Growth and Validation
 
-**Status**: In Progress (validation + reference index in place; 481 draft items across all blueprint tasks)
+**Status**: In Progress (validation + reference index in place; 493 draft items across all blueprint tasks)
 
 **Objective**: Make the bank safe to expand while keeping schema integrity and blueprint coverage visible.
 
@@ -123,6 +123,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] **Batch 03** (`batch-03.json` in each domain): +12 draft items (`cctc-1010`–`1013`, `2009`–`2012`, `3009`–`3012`); targeted depth on tasks `010500`, `010600`, `020100`, `020500`, `030100`, `030200`, `030300`; first **lung** organ tag; second **pediatric** item; second **`complex_combo`**; first **OPTN-primary** waitlist items (`020500`, Policy 3.4.E inactive status, `optn_policies.pdf` p. 44). Full `npm run validate` green (2026-06-06).
 - [x] **Batch 04** (`batch-04.json` in each domain): +12 draft items (`cctc-1014`–`1017`, `2013`–`2016`, `3013`–`3016`); living donor financial/complication education, primary nonfunction risk, **heart/lung** and **pancreas** indications, multidisciplinary consults, DonorNet offer presentation, kidney preop urine baseline, **intestine** long-term outcomes, community MD coordination, timed IS dosing, **SPK** rejection `complex_combo` (**kidney_pancreas**). First bank coverage of `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags. Full `npm run validate` green (2026-06-05).
 - [x] **Batch 05** (`batch-05.json` in each domain): +12 draft items (`cctc-1018`–`1021`, `2017`–`2020`, `3017`–`3020`); evaluation protocols & health-maintenance screening, hand-hygiene infection prevention, SRTR outcome disclosure, not-listed communication, selection-committee synthesis, **OPTN HLA/WHO** listing (`020502`), lung smoking cessation/cotinine, FAST stroke urgent contact, tacrolimus nephrotoxicity (Nursing Drug Handbook), **UNet** listing data, late-mortality `complex_combo`. Full `npm run validate` green (2026-06-05).
+- [x] **Batch 41** (`batch-41.json` in each domain): +12 draft items (`cctc-1162`–`1165`, `2161`–`2164`, `3161`–`3164`); wound/secretions hand-hygiene, recreational-water cleanliness, hand-hygiene/animal-safety `complex_combo`, older-age and lymphoma/leukemia skin-cancer risk, sunglasses/sun-visor precautions, skin-cancer risk/sun-prevention `complex_combo`, candidemia echocardiography and amphotericin renal monitoring, Aspergillus isolated-fever presentation, candidemia/Aspergillus management `complex_combo`. Full `npm run validate` green (2026-06-05).
 - [x] **Batch 40** (`batch-40.json` in each domain): +12 draft items (`cctc-1158`–`1161`, `2157`–`2160`, `3157`–`3160`); meal/soil hand-hygiene timing, pediatric diaper-delegation teaching, hand-hygiene `complex_combo`, cumulative sun/retransplantation skin-cancer risk, long-sleeve sun precautions, skin-cancer risk/prevention `complex_combo`, candidemia severity/presentation, Aspergillus operative-risk factors, candidemia/Aspergillus `complex_combo` (includes 1 pediatric item). Full `npm run validate` green (2026-06-05).
 - [x] **Batch 39** (`batch-39.json` in each domain): +12 draft items (`cctc-1154`–`1157`, `2153`–`2156`, `3153`–`3156`); recipient hand-hygiene timing, donor-family general-information sharing, hand-hygiene/confidentiality `complex_combo`, Fitzpatrick skin-type risk, undue-sunlight/SPF 50 UV-B prevention, skin-cancer prevention `complex_combo`, Candida prophylaxis and fluconazole–tacrolimus interaction, pediatric Candida rash, Candida/Aspergillus `complex_combo` (includes 1 pediatric item). Full `npm run validate` green (2026-06-05).
 - [x] **Batch 38** (`batch-38.json` in each domain): +12 draft items (`cctc-1150`–`1153`, `2149`–`2152`, `3149`–`3152`); infection-prophylaxis completion, donor anatomic disclosure and OPO donor-family letter, infection/confidentiality `complex_combo`, individualized ACS cancer screening, renal-guideline applicability, fungal epidemiology/Candida presentation, fungal-risk `complex_combo` (adult/both only). Full `npm run validate` green (2026-06-05).
@@ -174,7 +175,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] CI subset: `npm run validate:ci` (format + OPTN-indexed content; textbook content skipped with logged skips).
 - [x] Authoring loop: `npm run validate:references`.
 - [x] OPTN policies PDF index (`npm run reference:fetch-optn`, `reference:index -- optn-policies`).
-- [x] Verification stubs — [`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), [`schema/reference-verification-stub.schema.json`](../schema/reference-verification-stub.schema.json), `questions/.verification/` (481 items as of batch 40).
+- [x] Verification stubs — [`docs/reference/verification-stubs/README.md`](../docs/reference/verification-stubs/README.md), [`schema/reference-verification-stub.schema.json`](../schema/reference-verification-stub.schema.json), `questions/.verification/` (493 items as of batch 41).
 - [x] `npm run reference:export-stubs` — generate `questions/.verification/<item-id>.json` from local full validate + index.
 - [x] `npm run validate:stubs` — CI hard-fail: question JSON must match committed stubs (keywords, pages, Policy §).
 - [x] Wire `validate:stubs` into `.github/workflows/validate.yml`.
@@ -214,6 +215,6 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 ## Near-Term Sequencing
 
 1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTE/pull/1)).
-2. **Phase 3 bank growth** per `02-author-questions.md` — batch 41+ shards; per-task depth targets met — grow bank depth/variety, analysis/recall mix, and **`recipient_age: pediatric` within 5–7%** of bank (~500 reviewed target; 481 draft items as of batch 40).
+2. **Phase 3 bank growth** per `02-author-questions.md` — batch 42+ shards; per-task depth targets met — grow bank depth/variety, analysis/recall mix, and **`recipient_age: pediatric` within 5–7%** of bank (~500 reviewed target; 493 draft items as of batch 41).
 3. ~~**Phase 3 deferred:** verification stubs + `validate:stubs` in CI~~ (done — 73 stubs committed).
 4. **Phase 4 polish and static hosting** — GitHub Pages deploy, device/a11y pass, richer history trends after a small real bank exists.

@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-2161",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When counseling a transplant candidate about long-term skin-cancer risk, which host factor aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Older age at the time of transplant" },
+      { "id": "B", "text": "Younger age at transplant eliminates skin-cancer risk" },
+      { "id": "C", "text": "Age at transplant never influences skin-cancer risk" },
+      { "id": "D", "text": "Only recipients younger than 18 years are at increased skin-cancer risk" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin-cancer risk factors include older age at the time of transplant, cumulative sun exposure, skin type, immunosuppression intensity, and transplant type.",
+      "rationale_incorrect": {
+        "B": "Older age at transplant is listed as a risk factor rather than younger age eliminating risk.",
+        "C": "Age at transplant is among cited risk factors rather than having no influence.",
+        "D": "Age-related risk is described for transplant recipients broadly rather than only those younger than 18 years."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Risk factors → iii.",
+      "quote_hint": "Older age at time of transplant",
+      "keywords": ["Older", "age", "time", "transplant", "Risk", "factors", "skin"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → iii. (older age at time of transplant); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Older-age-at-transplant risk angle distinct from Fitzpatrick skin-type item (cctc-2153) and cumulative-sun-exposure item (cctc-2157); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2162",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During pretransplant evaluation teaching about skin malignancy risk, which history-related factor aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Pre- or posttransplant history of lymphoma or leukemia" },
+      { "id": "B", "text": "History of lymphoma or leukemia lowers skin-cancer risk after transplant" },
+      { "id": "C", "text": "Malignancy history never influences post-transplant skin-cancer risk" },
+      { "id": "D", "text": "Only pretransplant diabetes history is cited as a skin-cancer risk factor" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin-cancer risk factors include pre- or posttransplant history of lymphoma or leukemia, along with history of skin cancer, autoimmune conditions, and biologic or phototherapy exposure.",
+      "rationale_incorrect": {
+        "B": "Lymphoma or leukemia history is listed as a risk factor rather than lowering skin-cancer risk.",
+        "C": "Malignancy history is among cited risk factors rather than having no influence.",
+        "D": "Lymphoma or leukemia history is specifically cited among skin-cancer risk factors."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Risk factors → vii.",
+      "quote_hint": "Pre- or posttransplant history of lymphoma or leukemia",
+      "keywords": ["Pre-", "posttransplant", "history", "lymphoma", "leukemia", "Risk", "factors"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → vii. (pre/posttransplant lymphoma or leukemia history); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Lymphoma/leukemia history risk angle distinct from retransplantation item (cctc-2158) and cumulative-sun item (cctc-2157); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2163",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A heart transplant candidate asks what additional sun-protection measures align with standard malignancy-prevention references beyond sunscreen. Which counseling point is correct?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wear sunglasses and sun visors" },
+      { "id": "B", "text": "Sunglasses are discouraged because they block all vitamin D permanently" },
+      { "id": "C", "text": "Only sunscreen is recommended with no eye or head protection" },
+      { "id": "D", "text": "Sun visors increase skin-cancer risk and should be avoided" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sun precautions include wearing sunglasses and sun visors, along with protective clothing, broad-brimmed hats, avoiding tanning beds, and using sunscreen with minimum SPF 50.",
+      "rationale_incorrect": {
+        "B": "Sunglasses and sun visors are recommended sun precautions rather than being discouraged.",
+        "C": "Eye and head protection are cited in addition to sunscreen rather than sunscreen alone.",
+        "D": "Sun visors are recommended protective measures rather than increasing skin-cancer risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 4.d.",
+      "quote_hint": "Wearing sunglasses and sun visors",
+      "keywords": ["Wearing", "sunglasses", "sun", "visors", "Sun", "precautions"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.d. (sunglasses and sun visors as sun precautions); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sunglasses/sun-visor angle distinct from long-sleeve clothing item (cctc-2159) and SPF 50 UV-B sunscreen item (cctc-2155); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2164",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701", "020102"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating skin-cancer risk and sun-prevention teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Older age at the time of transplant is a cited skin-cancer risk factor." },
+      { "id": "II", "text": "Pre- or posttransplant history of lymphoma or leukemia is a cited risk factor." },
+      { "id": "III", "text": "Sunglasses and sun visors are recommended sun precautions." },
+      { "id": "IV", "text": "Fitzpatrick skin types IV through VI carry the highest cited skin-cancer risk." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Older age at transplant, lymphoma or leukemia history, and sunglasses or sun visors are supported. Statement IV is false because Fitzpatrick skin types I to III are cited as risk factors rather than types IV through VI alone.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—sunglasses and sun visors are recommended sun precautions.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because lighter Fitzpatrick types I to III are specifically listed."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 4.d. and skin cancer risk factors",
+      "quote_hint": "Wearing sunglasses and sun visors … Older age at time of transplant … lymphoma or leukemia",
+      "keywords": ["Wearing", "sunglasses", "sun", "visors", "Sun", "precautions", "Older", "age"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → iii. and vii. (older age at transplant; lymphoma/leukemia history); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.d. (sunglasses and sun visors); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Skin-cancer risk/sun-prevention combo distinct from skin-cancer risk/prevention combo (cctc-2160) and Fitzpatrick/SPF combo (cctc-2156); corroborating locators on p. 280 and p. 282 verified.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2163",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 282,
+    "keywords": [
+      "Wearing",
+      "sunglasses",
+      "sun",
+      "visors",
+      "Sun",
+      "precautions"
+    ],
+    "keyword_hash": "sha256:f4bcb4d18ef417c208a200cc2aefa5ced49f71c7d4a3bfde34f59d61cfefe61b"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "keywords": [
+        "sunglasses",
+        "visors",
+        "precautions"
+      ],
+      "keyword_hash": "sha256:db361cc159cc40e738b7b448a9db75f6f89d6f73c2c030a38f069b78f06c7ccd"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2162",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 280,
+    "keywords": [
+      "Pre-",
+      "posttransplant",
+      "history",
+      "lymphoma",
+      "leukemia",
+      "Risk",
+      "factors"
+    ],
+    "keyword_hash": "sha256:e0928647b49b5cb7670f7cddd22bcb87787572ff00c1087150107022bba84bb7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "posttransplant",
+        "lymphoma",
+        "leukemia",
+        "history"
+      ],
+      "keyword_hash": "sha256:f72206290eed422ef56abdfaa4fc33441e6dcf3a3305d1a3a49da34396e6ef2a"
+    }
+  ]
+}
