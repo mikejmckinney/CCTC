@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-3118",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 322,
+    "keywords": [
+      "Bisphosphonates",
+      "reverse",
+      "bone",
+      "loss",
+      "increase",
+      "bone",
+      "mass"
+    ],
+    "keyword_hash": "sha256:fe597e90b5d4f843eea7637e69adf9944d7da6ac821bbc3271434b7111611d2a"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "keywords": [
+        "bisphosphonates",
+        "reverse",
+        "increase"
+      ],
+      "keyword_hash": "sha256:6c9bd0a38692d5f60a658bb0a3e5d87afcf6093753d9d987ce3ba05023314ad5"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1121",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 110,
+    "keywords": [
+      "Wash",
+      "hands",
+      "frequently",
+      "visitors",
+      "Sanitizing",
+      "hand",
+      "gels",
+      "soap"
+    ],
+    "keyword_hash": "sha256:a53a7ed220ce8280b8665bf324d2fc3f1bf2d71624bef154d7846c0ec337b451"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "keywords": [
+        "hygiene",
+        "recipient",
+        "visitor",
+        "hand-washing",
+        "sanitizing"
+      ],
+      "keyword_hash": "sha256:370edeed322853bde38b072eb85ec3a0a9f8a8e2ae3e3cabf4be961c95ab1f12"
+    }
+  ]
+}

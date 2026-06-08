@@ -1,0 +1,38 @@
+{
+  "item_id": "cctc-3117",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 322,
+    "keywords": [
+      "Calcium",
+      "vitamin",
+      "supplements",
+      "osteopenia",
+      "osteoporosis",
+      "Prevent",
+      "treat"
+    ],
+    "keyword_hash": "sha256:1edd33ea22f9093b6b0fc3bd2dc26b6c05ab6ad6d13c7d00465b1baf1dced4fa"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "keywords": [
+        "calcium",
+        "vitamin",
+        "supplements"
+      ],
+      "keyword_hash": "sha256:f825b8a6afabd2615be4adf7b5010704c7fd4ec90432953e503667299d856901"
+    }
+  ]
+}

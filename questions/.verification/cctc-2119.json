@@ -1,0 +1,37 @@
+{
+  "item_id": "cctc-2119",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 198,
+    "keywords": [
+      "High",
+      "EBV",
+      "viral",
+      "load",
+      "Risk",
+      "factors",
+      "PTLD"
+    ],
+    "keyword_hash": "sha256:fa14e9efeb93c30f1e87735a6601b585dc5a10b5a27afa47efd1966c242d6c49"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "keywords": [
+        "viral",
+        "factor"
+      ],
+      "keyword_hash": "sha256:8789f93bf315bbf8b95951281e5d2554adb3de1479d1747b6fdbea5cf085c45d"
+    }
+  ]
+}

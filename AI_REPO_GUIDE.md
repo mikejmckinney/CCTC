@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **349 draft items** in `questions/domain-*/batch-01.json` through `batch-29.json` (IDs `cctc-1001`–`1117`, `2001`–`2116`, `3001`–`3116`).
+- **361 draft items** in `questions/domain-*/batch-01.json` through `batch-30.json` (IDs `cctc-1001`–`1121`, `2001`–`2120`, `3001`–`3120`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Bank authoring soft targets (see `questions/README.md`, `02-author-questions.md`): cognitive mix ~35/52/13%; `recipient_age: pediatric` **5–7%** of bank (`both` excluded; live CCTC exam ~5% pediatric).
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
@@ -194,10 +194,11 @@ Use these files as the current product ground truth:
 - Batch 27 (2026-06-05): gender-specific screening teaching, BCC/SCC epidemiology, baseline/post-transplant DEXA, skin-cancer behavior/distribution combos; pediatric soft target revised to 5–7% (adult/both batch).
 - Batch 28 (2026-06-05): tobacco/marijuana avoidance, diabetes glucose teaching, hepatitis B HCC prevention, visitor precautions, PTLD risk/presentation/treatment/prevention depth (adult/both batch).
 - Batch 29 (2026-06-05): tanning-bed avoidance, hyperlipidemia/hypertension long-term care, pet safety, food cross-contamination, PTLD CMV/mTOR depth, ACS cancer screening combos (adult/both batch).
+- Batch 30 (2026-06-05): exercise counseling, dietary egg/outbreak teaching, hand-hygiene combo, aquarium avoidance, EBV/IVIG PTLD depth, bisphosphonate/DEXA bone-health combo (adult/both batch; pediatric share within 5–7%).
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 30+)
+- Expand the real question bank under domain directories (batch 31+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land

@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1118",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 110,
+    "keywords": [
+      "Resumption",
+      "vigorous",
+      "activity",
+      "running",
+      "gym",
+      "workouts",
+      "transplant",
+      "team"
+    ],
+    "keyword_hash": "sha256:d997cd0465444bf7f4095fcf20e96521c39426b1fa78512a21f522b73ac724be"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "keywords": [
+        "discuss",
+        "vigorous",
+        "activity",
+        "before",
+        "resuming"
+      ],
+      "keyword_hash": "sha256:f8783fd96730efd21aeb2c3ca28cfed255c50edebc7d699b4bed20638b3c6cd4"
+    }
+  ]
+}

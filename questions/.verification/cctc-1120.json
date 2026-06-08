@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1120",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Monitor",
+      "local",
+      "reports",
+      "foodborne",
+      "illness",
+      "outbreaks"
+    ],
+    "keyword_hash": "sha256:8143dff1e90c887eaa991587b4d06a76d9d2456b35c0d19dd6e8a28c3bfc7707"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "dietary",
+        "precautions",
+        "monitor",
+        "local",
+        "foodborne",
+        "illness",
+        "outbreaks"
+      ],
+      "keyword_hash": "sha256:bffd91b7158c4678fba444da593e5008340b99b0e492c199b958013eccbb7ba7"
+    }
+  ]
+}

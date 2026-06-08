@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-2117",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Avoid",
+      "cleaning",
+      "aquariums",
+      "bird",
+      "cages",
+      "feeders",
+      "Animal",
+      "safety"
+    ],
+    "keyword_hash": "sha256:fb6f58f18534cf58474889aecb2492978ccee8f0171d4c5a72a70d9a920fbd08"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "animal",
+        "safety",
+        "avoid",
+        "cleaning",
+        "aquariums",
+        "cages",
+        "feeders"
+      ],
+      "keyword_hash": "sha256:fdfff83f685534ada54eb80df6e3d2ea756c34cbfbb22936056d7e5cda46d24f"
+    }
+  ]
+}
