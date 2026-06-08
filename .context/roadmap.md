@@ -189,7 +189,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 
 ## Phase 4: Review Feedback, Polish, and Release Readiness
 
-**Status**: In Progress (partial — flagging and disclaimer exist in code)
+**Status**: In Progress (flagging/disclaimer shipped; Phase 4 polish underway on `feat/phase4-polish-and-deploy`)
 
 **Objective**: Finish the learner experience and prepare the static app for real study use.
 
@@ -208,9 +208,12 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - A production static build is ready for GitHub Pages or equivalent hosting.
 
 ### Open items (known gaps vs `01-build-app.md`)
-- [ ] Device-level responsive and accessibility pass (focus, contrast, one-handed mobile use).
-- [ ] GitHub Pages or equivalent deploy config (`vite` `base`, hosting workflow).
-- [ ] Richer history trend view (current UI shows a short recent-score list only).
+- [x] **History trend view (2026-06-08):** bar chart + average/best/latest-delta summary for last 20 sessions (`src/lib/historyTrend.ts`).
+- [x] **GitHub Pages deploy (2026-06-08):** `deploy-pages.yml` + `VITE_BASE_PATH=/CCTE/` in `vite.config.ts`.
+- [x] **CSS cleanup (2026-06-08):** removed duplicate legacy `app.css` block that overwrote responsive rules.
+- [ ] Device-level responsive and accessibility pass (sticky session toolbar on mobile, `:focus-visible`, 44px tap targets — partial).
+- [ ] Enable GitHub Pages in repo settings and verify live deploy URL.
+- [ ] Optional: category-level history drill-down and flag-export documentation in learner UI.
 
 ---
 
@@ -219,4 +222,4 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTE/pull/1)).
 2. **Phase 3 bank growth** per `02-author-questions.md` — **~500 draft bank reached** (505 items as of batch 42); per-task depth targets met. Next: SME review (`draft` → `reviewed`), exam assembly from reviewed pool, and optional depth/variety shards only if gaps emerge (~500 **reviewed** target remains).
 3. ~~**Phase 3 deferred:** verification stubs + `validate:stubs` in CI~~ (done — 73 stubs committed).
-4. **Phase 4 polish and static hosting** — GitHub Pages deploy, device/a11y pass, richer history trends after a small real bank exists.
+4. **Phase 4 polish and static hosting** — in progress: history trends, Pages workflow, a11y/responsive pass.
