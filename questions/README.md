@@ -16,7 +16,7 @@ questions/
 - **Soft cap of 50 items per file.** When a file exceeds it, split it (e.g. `domain-3-postop/030100-030400.json`, `domain-3-postop/030500-030800.json`). This keeps diffs small and the app loads gracefully as the bank grows.
 - Anything under `_examples/` is for authors/reviewers and is excluded from the production bank path (the loader ignores paths beginning with `_`).
 - `questions/.verification/` holds per-item reference verification stubs (CI enforcement); excluded from exam sampling and bank loading.
-- **Bootstrap fallback:** when no non-`_` shards exist yet, the app may temporarily load `_examples` so both item formats can be exercised while the real bank is authored. Once domain shards land under `questions/domain-*`, only those files are used (currently **505 draft items** across `batch-01.json`–`batch-42.json` in each domain directory).
+- **Bootstrap fallback:** when no non-`_` shards exist yet, the app may temporarily load `_examples` so both item formats can be exercised while the real bank is authored. Once domain shards land under `questions/domain-*`, only those files are used (currently **505 reviewed items** across `batch-01.json`–`batch-42.json` in each domain directory).
 
 ## File format
 
@@ -44,15 +44,17 @@ Also tag `cognitive_level`, `organ`, and `recipient_age` so the sampler can mirr
 
 **Bank soft target:** `pediatric` items at **5–7%** of the full bank (population-based estimate of pediatric recipient share). The live CCTC exam pediatric mix is ~**5%**; the bank band allows a modest buffer above exam under-representation so practice sessions have enough pediatric-only items without over-weighting them on every session. At ~500 items that is about **25–35** pediatric-tagged questions. Run `npm run validate:coverage` after each batch to see current share vs target.
 
-## Current bank (draft)
+## Current bank (reviewed)
 
-| Domain | Shards | Item IDs | Count |
+| Domain | Shards | Item IDs | Reviewed count |
 |---|---|---|---|
-| `domain-1-education` | `batch-01`–`16` | `cctc-1001`–`1065` | 65 |
-| `domain-2-pretx` | `batch-01`–`16` | `cctc-2001`–`2064` | 64 |
-| `domain-3-postop` | `batch-01`–`16` | `cctc-3001`–`3064` | 64 |
+| `domain-1-education` | `batch-01`–`42` | `cctc-1001`–`1169` | 169 |
+| `domain-2-pretx` | `batch-01`–`42` | `cctc-2001`–`2168` | 169 |
+| `domain-3-postop` | `batch-01`–`42` | `cctc-3001`–`3168` | 167 |
 
-All items are `status: "draft"`. Run `npm run validate:coverage` for live gap tables after each batch.
+All production-bank items are `status: "reviewed"` (SME promotion 2026-06-08). `_examples/` remains `draft`. Run `npm run validate:coverage` for live gap tables.
+
+**Known coverage gap:** task `030800` has 4 reviewed items (target 5) after retagging `cctc-3019` to Domain 2 task `020500` (UNet waitlist registration content).
 
 ## Target size
 

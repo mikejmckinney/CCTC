@@ -28,15 +28,23 @@
         "D": "Carbamazepine is a CYP3A4 inducer and lowers tacrolimus levels rather than raising them."
       }
     },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "nursing-drug-handbook",
+      "pdf_page": 1112,
+      "section": "Tacrolimus (Prograf) — INTERACTIONS: calcium channel blockers and CYP3A4 inhibitors",
+      "quote_hint": "calcium channel blockers (e.g., diltiazem) … raise tacrolimus levels",
+      "keywords": ["diltiazem", "calcium", "channel", "blockers", "CYP3A4", "tacrolimus", "levels"]
+    },
     "references": [
       {
         "citation": "Saunders Nursing Drug Handbook 2024 (Wolters Kluwer; ABTC handbook lists 2020 ed.).",
-        "locator": "Tacrolimus (Prograf), pp. 1112–1115 — INTERACTIONS: calcium channel blockers (e.g., diltiazem) and strong CYP3A4 inhibitors raise levels.",
+        "locator": "Tacrolimus (Prograf) — INTERACTIONS: calcium channel blockers (e.g., diltiazem) and strong CYP3A4 inhibitors raise levels; PDF p. 1112 (repo file-page index; printed margin may differ).",
         "kind": "textbook"
       },
       {
         "citation": "Saunders Nursing Drug Handbook 2024 (Wolters Kluwer; ABTC handbook lists 2020 ed.).",
-        "locator": "dilTIAZem, pp. 336–339 — may increase calcineurin inhibitor concentration (see cycloSPORINE/tacrolimus interactions).",
+        "locator": "dilTIAZem — may increase calcineurin inhibitor concentration (see cycloSPORINE/tacrolimus interactions); PDF p. 336 (repo file-page index; printed margin may differ).",
         "kind": "textbook"
       },
       {
@@ -83,16 +91,24 @@
         "D": "Only ABO (I) is required from this set; identical HLA matching (III) and same-sex matching (IV) are not prerequisites for acceptance."
       }
     },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 46,
+      "section": "Ch. 3 — ABO compatibility, crossmatching, and DSA prerequisites",
+      "quote_hint": "ABO compatibility … crossmatch … donor-specific antibody",
+      "keywords": ["ABO", "compatibility", "crossmatch", "donor-specific", "antibody", "kidney"]
+    },
     "references": [
       {
         "citation": "OPTN/UNOS — Kidney allocation policies (PDF).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf",
-        "locator": "Policy 8.4–8.7: Kidney allocation; histocompatibility and crossmatch requirements before acceptance.",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=120",
+        "locator": "Policy 8.4–8.7: Kidney allocation; histocompatibility and crossmatch requirements before acceptance; PDF p. 120 (repo file-page index; printed margin may differ).",
         "kind": "public_authoritative"
       },
       {
         "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
-        "locator": "Ch. 3, pp. 46–58 — ABO compatibility, crossmatching, and DSA prerequisites.",
+        "locator": "Ch. 3 → ABO compatibility, crossmatching, and DSA prerequisites; PDF p. 46 (repo file-page index; printed margin may differ).",
         "kind": "textbook"
       }
     ],

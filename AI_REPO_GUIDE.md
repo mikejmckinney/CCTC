@@ -164,8 +164,8 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **505 draft items** in `questions/domain-*/batch-01.json` through `batch-42.json` (IDs `cctc-1001`–`1169`, `2001`–`2168`, `3001`–`3168`).
-- All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
+- **505 reviewed items** in `questions/domain-*/batch-01.json` through `batch-42.json` (IDs `cctc-1001`–`1169`, `2001`–`2168`, `3001`–`3168`).
+- All production-bank items `status: "reviewed"` (SME promotion 2026-06-08); `_examples/` stays `draft`. Validator enforces schema, integrity, and verifiable references per ADR-030.
 - Bank authoring soft targets (see `questions/README.md`, `02-author-questions.md`): cognitive mix ~35/52/13%; `recipient_age: pediatric` **5–7%** of bank (`both` excluded; live CCTC exam ~5% pediatric).
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
@@ -198,10 +198,13 @@ Use these files as the current product ground truth:
 - Batch 31 (2026-06-05): sexual/reproductive health, PTLD rituximab/R-CHOP/surgery depth, denosumab/calcitonin bone therapy, renal-dysfunction progression (adult/both batch).
 - Batch 32 (2026-06-05): IUD/libido/pregnancy-registry teaching, EBV incidence depth, pediatric PTLD age risk, antirejection prophylaxis, radiotherapy/interferon therapy, visitor hygiene combo.
 
+- Batch 39–42 (2026-06-05): final authoring push to **505 items**; hand-hygiene, skin-cancer prevention, fungal infection depth; SME bulk review completed 2026-06-08.
+- PR #3 triage (2026-06-08): `QuestionReview` parity with active session, optional chaining on `rationale_incorrect`, examples `primary_anchor` + locator standards, `cctc-3019` retagged to D2/`020500`, `.cursor/mcp.json` removed, ABTC handbook excluded from blocking markdownlint.
+
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 33+)
-- Grow reviewed-item coverage toward the target bank size
+- Close task `030800` gap (add one reviewed OPTN/UNET data item)
+- Optional bank growth beyond ~500 reviewed items for fresher repeat sessions
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land
 

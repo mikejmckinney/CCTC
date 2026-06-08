@@ -68,7 +68,7 @@ function incorrectRationalesForDisplay(item: SessionItemSnapshot): Array<{ displ
       return [];
     }
 
-    const rationale = item.question.explanation.rationale_incorrect[optionId];
+    const rationale = item.question.explanation.rationale_incorrect?.[optionId];
     if (!rationale) {
       return [];
     }
@@ -212,13 +212,19 @@ function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: s
                 .join(' ')}
             >
               <span className="option-letter">{displayLetterForIndex(optionIndex)}</span>
-              <span>{option.text}</span>
+              <span>
+                {option.text}
+                {option.selects && <small className="option-helper">Selects: {option.selects.join(', ')}</small>}
+              </span>
             </div>
           );
         })}
       </div>
       <div className="explanation-card">
-        <p>{item.question.explanation.rationale_correct}</p>
+        <p>
+          <strong>Correct answer ({displayLetterForOptionId(item.optionOrder, item.question.correct)}):</strong>{' '}
+          {item.question.explanation.rationale_correct}
+        </p>
         <ul className="plain-list">
           {incorrectRationalesForDisplay(item).map(({ displayLetter, rationale }) => (
             <li key={displayLetter}>

@@ -3,7 +3,7 @@
     "id": "cctc-3017",
     "schema_version": 1,
     "version": 1,
-    "status": "draft",
+    "status": "reviewed",
     "type": "one_best",
     "domain": 3,
     "task": "030700",
@@ -50,7 +50,7 @@
     "id": "cctc-3018",
     "schema_version": 1,
     "version": 1,
-    "status": "draft",
+    "status": "reviewed",
     "type": "one_best",
     "domain": 3,
     "task": "030300",
@@ -101,12 +101,12 @@
   {
     "id": "cctc-3019",
     "schema_version": 1,
-    "version": 1,
-    "status": "draft",
+    "version": 2,
+    "status": "reviewed",
     "type": "one_best",
-    "domain": 3,
-    "task": "030800",
-    "knowledge_codes": ["030802"],
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020502"],
     "cognitive_level": "recall",
     "organ": "general",
     "recipient_age": "adult",
@@ -142,14 +142,14 @@
         "kind": "textbook"
       }
     ],
-    "notes": "Source-first item. Distinct 030800 angle from cctc-3005 (SRTR outcomes registry); anchor verified on Cupples p. 101.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. Retagged to Domain 2 task 020502 (UNet waitlist registration); distinct from cctc-3005 (SRTR outcomes registry); anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-08"
   },
   {
     "id": "cctc-3020",
     "schema_version": 1,
     "version": 1,
-    "status": "draft",
+    "status": "reviewed",
     "type": "complex_combo",
     "domain": 3,
     "task": "030400",
