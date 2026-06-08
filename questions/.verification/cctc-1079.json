@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1079",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 208,
+    "keywords": [
+      "progressive",
+      "multifocal",
+      "leukoencephalopathy",
+      "fever",
+      "meningeal",
+      "years",
+      "posttransplant",
+      "renal"
+    ],
+    "keyword_hash": "sha256:4e9bd3eac8c9bbb1423cda4535ce7cd546baf843b8dac8e450bff9db4cbbd044"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "keywords": [
+        "cause",
+        "delayed",
+        "onset",
+        "noninflammatory",
+        "presentation",
+        "multi-organ",
+        "reports"
+      ],
+      "keyword_hash": "sha256:209e63963ad0c3ec8c2e6ee066e8c019b55cdcf5b69ebff0d63bc457a3d186f9"
+    }
+  ]
+}

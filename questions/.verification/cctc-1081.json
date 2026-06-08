@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-1081",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 180,
+    "keywords": [
+      "response",
+      "vaccines",
+      "diminished",
+      "organ",
+      "failure",
+      "suboptimal",
+      "immunosuppressed",
+      "immunizations"
+    ],
+    "keyword_hash": "sha256:97c591d3843640013b5741262b43ca879cbf1f2c6fc1f25b462848ee91e94fb0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 180,
+      "keywords": [
+        "diminished",
+        "vaccine",
+        "response",
+        "organ",
+        "failure",
+        "immunosuppression",
+        "update",
+        "before"
+      ],
+      "keyword_hash": "sha256:57263b2ffb8130392ff9990fb496a82c4d2e25de46878aeeff358201c20c66aa"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3077",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": ["030303"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient on sirolimus reports new lipid panel abnormalities. Which adverse effect aligns with standard medication references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Hyperlipidemia" },
+      { "id": "B", "text": "Permanent elimination of all cholesterol production" },
+      { "id": "C", "text": "Guaranteed improvement in lipid levels compared with all other immunosuppressants" },
+      { "id": "D", "text": "Lipid changes that never occur with proliferation signal inhibitors" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Common adverse effects of sirolimus and everolimus include hyperlipidemia, along with hypertension, hypercholesterolemia, and hypertriglyceridemia.",
+      "rationale_incorrect": {
+        "B": "Sirolimus is associated with elevated lipids rather than eliminating cholesterol production.",
+        "C": "Hyperlipidemia is a recognized side effect rather than guaranteed lipid improvement.",
+        "D": "Hyperlipidemia is among the most common proliferation signal inhibitor side effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 155,
+      "section": "Ch. 4, Pharmacology → Sirolimus → Adverse effects → g.ii.",
+      "quote_hint": "most common side effects … Hyperlipidemia … Hypercholesterolemia … Hypertriglyceridemia",
+      "keywords": ["common", "side", "effects", "Hyperlipidemia", "Hypercholesterolemia", "Hypertriglyceridemia", "sirolimus", "everolimus"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Sirolimus → Adverse effects → g.ii. (hyperlipidemia among common side effects); PDF p. 155 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Sirolimus hyperlipidemia angle distinct from wound-healing counseling (cctc-3073) and belatacept PTLD teaching (cctc-3072); anchor verified on Cupples p. 155.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3078",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A solid-organ transplant recipient develops progressive neurological deficits months after transplant without fever or nuchal rigidity. Which infectious complication should the coordinator include in the differential?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "JC virus–associated progressive multifocal leukoencephalopathy (PML)" },
+      { "id": "B", "text": "Hyperacute cellular rejection presenting as isolated meningismus" },
+      { "id": "C", "text": "Expected benign postoperative change requiring no evaluation" },
+      { "id": "D", "text": "Oral aversion as the primary cause of progressive neurologic decline" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "JC virus causes progressive multifocal leukoencephalopathy with progressive neurological deficits; it is a noninflammatory CNS infection not associated with fever or meningeal signs and may present months to years after transplant.",
+      "rationale_incorrect": {
+        "B": "PML is described as noninflammatory without fever or meningeal signs rather than hyperacute rejection with meningismus.",
+        "C": "Progressive neurological deficits warrant evaluation for opportunistic infections such as PML.",
+        "D": "Oral aversion is an intestinal feeding complication unrelated to progressive CNS demyelination."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "section": "Ch. 5, Infectious Diseases → J. Polyomaviruses → 3. JC virus → a.",
+      "quote_hint": "progressive neurological deficits … Noninflammatory CNS infection; not associated with fever or meningeal signs",
+      "keywords": ["progressive", "neurological", "deficits", "Noninflammatory", "CNS", "fever", "meningeal", "signs"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → J. Polyomaviruses → 3. JC virus → a. (PML with progressive neurologic deficits; no fever/meningeal signs); PDF p. 208 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. JC-virus/PML presentation angle distinct from BK nephropathy (cctc-3075) and intestine GVHD rash (cctc-3065); anchor verified on Cupples p. 208.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3079",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030101", "030102"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient is starting sirolimus maintenance therapy. Evaluate the following medication-safety statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Hyperlipidemia is among the common adverse effects of sirolimus and everolimus." },
+      { "id": "II", "text": "Sirolimus and everolimus may be associated with pneumonitis." },
+      { "id": "III", "text": "Sirolimus is routinely recommended without restriction for all liver transplant recipients." },
+      { "id": "IV", "text": "Routine sirolimus trough level monitoring is recommended." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Sirolimus and everolimus commonly cause hyperlipidemia and may cause pneumonitis; routine trough monitoring is recommended. Statement III is false because sirolimus has a black box warning against use in liver transplantation due to hepatic artery thrombosis risk.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—routine sirolimus trough monitoring is recommended.",
+        "C": "Statements I and II are also true; statement III is false for liver transplantation.",
+        "D": "Statement III is false—sirolimus is not routinely recommended for all liver recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 155,
+      "section": "Ch. 4, Pharmacology → Sirolimus → Adverse effects and monitoring → g.–h.",
+      "quote_hint": "Hyperlipidemia … associated with pneumonitis … black box warning against use in liver transplantation … Routine monitoring of sirolimus trough level is recommended",
+      "keywords": ["Hyperlipidemia", "pneumonitis", "black", "box", "warning", "liver", "trough", "monitoring"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Sirolimus → Adverse effects and monitoring → g.–h. (hyperlipidemia, pneumonitis, liver black box, trough monitoring); PDF p. 155 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Twenty-second complex_combo in bank; sirolimus safety combo distinct from BK risk-factor combo (cctc-3076) and adult ATN combo (cctc-3071); anchor verified on Cupples p. 155.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3080",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": ["030701"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "The family of a 4-year-old kidney transplant recipient calls reporting sudden anuria. How should the coordinator classify this finding?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "An urgent graft complication such as arterial thrombosis requiring immediate team contact" },
+      { "id": "B", "text": "A non-urgent finding that may wait until the next routine refill call" },
+      { "id": "C", "text": "Expected benign postoperative diuresis requiring no notification" },
+      { "id": "D", "text": "A reason to permanently stop immunosuppression without medical guidance" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In pediatric kidney recipients, arterial thrombosis presents with sudden anuria and is often irreversible, resulting in graft loss; sudden anuria warrants urgent transplant team evaluation.",
+      "rationale_incorrect": {
+        "B": "Sudden anuria after pediatric kidney transplant is an urgent graft concern, not a routine matter.",
+        "C": "Anuria reflects possible vascular thrombosis rather than expected benign diuresis.",
+        "D": "Urgent symptoms require team contact and evaluation rather than unilateral immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 901,
+      "section": "Ch. 17, Pediatric Transplantation → kidney early complications → Thrombus → b.ii.",
+      "quote_hint": "Arterial thrombosis presents with sudden anuria and is often irreversible resulting in graft loss",
+      "keywords": ["Arterial", "thrombosis", "presents", "sudden", "anuria", "irreversible", "graft", "loss"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → kidney early complications → Thrombus → b.ii. (arterial thrombosis with sudden anuria; graft loss risk); PDF p. 901 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fourteenth pediatric recipient in bank; paired with thrombosis-risk teaching (cctc-1080); urgent-contact angle distinct from pediatric fever workup (cctc-3056); anchor verified on Cupples p. 901.",
+    "last_updated": "2026-06-05"
+  }
+]

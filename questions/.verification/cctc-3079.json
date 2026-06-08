@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-3079",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 155,
+    "keywords": [
+      "Hyperlipidemia",
+      "pneumonitis",
+      "black",
+      "box",
+      "warning",
+      "liver",
+      "trough",
+      "monitoring"
+    ],
+    "keyword_hash": "sha256:2daadef1e821163f7ab16bd107eff350e7d4d0a6e4f587fec175d71ab6d871ea"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 155,
+      "keywords": [
+        "hyperlipidemia",
+        "pneumonitis",
+        "liver",
+        "black",
+        "trough",
+        "monitoring"
+      ],
+      "keyword_hash": "sha256:67c410833af15c1362f699394013b0ab06dd9685a1dc3296f629259b6e912ab7"
+    }
+  ]
+}
