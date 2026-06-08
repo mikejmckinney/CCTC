@@ -3,6 +3,7 @@ import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
 import { loadQuestionBank } from '../data/questionBank';
 import { buildDefaultSettings, countAnswered, createSession, isBlueprintApplicable } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
+import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
 import {
   bootstrapState,
@@ -247,6 +248,7 @@ function App() {
   const [settings, setSettings] = useState<SessionSettings>(() => buildDefaultSettings('cctc-from-2026-07'));
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const historyTrend = useMemo(() => buildHistoryTrend(history), [history]);
   const [selectedHistory, setSelectedHistory] = useState<HistoryEntry | null>(null);
   const [reviewIndex, setReviewIndex] = useState(0);
   const [flags, setFlags] = useState<ItemFlag[]>([]);
@@ -1052,7 +1054,7 @@ function App() {
                 )}
               </article>
 
-              <div className="action-row action-row--spread">
+              <div className="action-row action-row--spread session-toolbar">
                 <div className="action-row">
                   <button className="secondary-button" onClick={() => navigateSession(-1)} disabled={session.currentIndex === 0}>
                     Previous
@@ -1161,17 +1163,73 @@ function App() {
               <div className="section-heading">
                 <div>
                   <p className="eyebrow">Trend snapshot</p>
-                  <h2>Recent scores</h2>
+                  <h2>Score trend</h2>
                 </div>
               </div>
-              <div className="trend-stack">
-                {history.slice(0, 5).map((entry) => (
-                  <div key={entry.id} className="trend-row">
-                    <span>{new Date(entry.completedAt).toLocaleDateString()}</span>
-                    <strong>{entry.result.percent}%</strong>
+
+              {historyTrend.points.length === 0 ? (
+                <p className="status-card">Complete a session to see your unofficial practice score trend.</p>
+              ) : (
+                <>
+                  <div className="trend-summary" aria-label="Score trend summary">
+                    <div>
+                      <p className="eyebrow">Average</p>
+                      <strong>{historyTrend.averagePercent}%</strong>
+                    </div>
+                    <div>
+                      <p className="eyebrow">Best</p>
+                      <strong>{historyTrend.bestPercent}%</strong>
+                    </div>
+                    {historyTrend.recentDelta !== null && (
+                      <div>
+                        <p className="eyebrow">Latest change</p>
+                        <strong>{formatTrendDelta(historyTrend.recentDelta)}</strong>
+                      </div>
+                    )}
                   </div>
-                ))}
-              </div>
+
+                  <div
+                    className="trend-chart"
+                    role="img"
+                    aria-label={`Score trend across the last ${historyTrend.points.length} sessions`}
+                  >
+                    <div className="trend-chart__plot">
+                      {historyTrend.targetThreshold !== null && (
+                        <div className="trend-chart__target" style={{ bottom: `${historyTrend.targetThreshold}%` }}>
+                          <span className="trend-chart__target-label">Target {historyTrend.targetThreshold}%</span>
+                        </div>
+                      )}
+                      {historyTrend.points.map((point) => (
+                        <div key={point.id} className="trend-chart__bar-wrap">
+                          <div
+                            className={['trend-chart__bar', point.belowTarget ? 'is-below-target' : ''].filter(Boolean).join(' ')}
+                            style={{ height: `${point.percent}%` }}
+                            title={`${point.label}: ${point.percent}% (${point.mode})`}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="trend-chart__labels">
+                      {historyTrend.points.map((point) => (
+                        <span key={point.id} className="trend-chart__label">
+                          {point.label}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <ul className="plain-list">
+                    {[...historyTrend.points].reverse().slice(0, 5).map((point) => (
+                      <li key={point.id} className="trend-row">
+                        <span>
+                          {point.label} · {point.mode}
+                        </span>
+                        <strong>{point.percent}%</strong>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </section>
           </>
         )}

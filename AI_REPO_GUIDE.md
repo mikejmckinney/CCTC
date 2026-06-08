@@ -1,7 +1,7 @@
 # AI_REPO_GUIDE.md
 
 > Purpose: Canonical agent reference for the CCTE repository.
-> Last verified: 2026-06-01
+> Last verified: 2026-06-08
 
 This repository is the CCTE project: a static, client-side practice-exam app for the ABTC Certified Clinical Transplant Coordinator exam. The repo now contains an initial React + TypeScript + Vite app scaffold, local validation tooling, and CI workflows alongside the exam specification, blueprint data, schema, and example question content.
 
@@ -10,8 +10,8 @@ This repository is the CCTE project: a static, client-side practice-exam app for
 - Product: CCTE, an independent study aid for CCTC candidates.
 - Delivery model: static hosting, offline after first load, no backend, no runtime LLM calls.
 - Present in repo today: prompts, schema, blueprint JSON, question-bank conventions, a React/Vite frontend scaffold under `src/`, static assets under `public/`, a package manifest with local test/build/validate scripts, and validation workflows.
-- Current product maturity: the app shell, session assembly, persistence helpers, and tests exist, but the live bank is not populated yet. `src/data/questionBank.ts` falls back to `_examples` content when no non-underscore shards exist under `questions/`.
-- Still pending: a substantial reviewed bank under `questions/`, plus continued implementation against the full feature set described in `.github/prompts/01-build-app.md`.
+- Current product maturity: exam engine, persistence, flagging, and **506 reviewed items** on `main` (Phase 3 complete). Phase 4 in progress: history trend chart, GitHub Pages deploy workflow, CSS/a11y polish.
+- Hosting: `.github/workflows/deploy-pages.yml` builds with `VITE_BASE_PATH=/CCTE/` for https://mikejmckinney.github.io/CCTE/ (requires Pages enabled in repo settings).
 
 The implementation surface is still driven by the prompt set in `.github/prompts/`:
 
@@ -201,12 +201,18 @@ Use these files as the current product ground truth:
 - Batch 39–42 (2026-06-05): final authoring push to **505 items**; hand-hygiene, skin-cancer prevention, fungal infection depth; SME bulk review completed 2026-06-08.
 - PR #3 triage (2026-06-08): `QuestionReview` parity with active session, optional chaining on `rationale_incorrect`, examples `primary_anchor` + locator standards, `cctc-3019` retagged to D2/`020500`, `.cursor/mcp.json` removed, ABTC handbook excluded from blocking markdownlint.
 
+### Phase 4 (in progress)
+
+- History trend chart + summary (`src/lib/historyTrend.ts`, History view in `App.tsx`)
+- GitHub Pages deploy workflow (`deploy-pages.yml`, `VITE_BASE_PATH`)
+- CSS dedup + `:focus-visible` + mobile sticky session toolbar
+- Trend chart uses fixed plot area (0–100% scale); `historyTrend.test.ts` matches `HistoryEntry` schema
+- Remaining: enable Pages in repo settings, category-level history drill-down, flag-export UX copy
+
 ### Planned next
 
-- Task `030800` gap closed: `cctc-3169` (Policy 18.3 organ-offer outcome reporting, 30 days post match run)
-- Optional bank growth beyond ~500 reviewed items for fresher repeat sessions
-- Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
-- Keep validation and tests green as new bank shards land
+- Finish Phase 4 a11y/responsive pass and verify live Pages deploy
+- Optional bank growth beyond ~506 reviewed items for fresher repeat sessions
 
 ## Verified Commands
 

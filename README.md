@@ -59,23 +59,26 @@ Blueprint data is transcribed from the ABTC Candidate Handbook (rev. 3/12/2026),
 
 ## Status
 
-The repo now contains the first React/Vite app scaffold, local validation script, and CI validation workflow alongside the prompts, schema, and blueprint data. The question bank has **73 draft items** in eighteen shards under `questions/domain-*` (`batch-01` through `batch-06` per domain); the app loads these shards automatically. All items remain `status: "draft"` — no reviewed items yet — so exam mode still has no reviewed pool until SME promotion.
+Phase 1–2 (exam engine, persistence, validation) and Phase 3 (**506 reviewed items** across `questions/domain-*`) are on `main`. Phase 4 (polish + static hosting) is in progress.
 
-Next: continue batch authoring toward reviewed coverage, keep `npm run validate` green locally before merge, and continue hardening the app against the full `01-build-app.md` product spec.
+- **Local dev:** `npm install && npm run dev`
+- **Production build:** `npm run build` (relative assets) or `VITE_BASE_PATH=/CCTE/ npm run build:ci` for GitHub Pages
+- **Live demo (after Pages enabled):** https://mikejmckinney.github.io/CCTE/
+
+## Hosting
+
+The app is a static Vite build. Pushes to `main` run `.github/workflows/deploy-pages.yml`, which publishes `dist/` to GitHub Pages with `base: /CCTE/`. Enable **Settings → Pages → GitHub Actions** on the repo if the site is not live yet.
 
 ## Limitations
 
-- The current bank is small (73 draft items) and not representative of a full 150-item exam; exam mode excludes drafts by default.
-- Practice results are unofficial estimates and are not ABTC scaled scores or pass/fail decisions.
-- The app is an exam-prep tool, not medical advice, and should not be used for patient-care decisions.
-- Content coverage and reviewed-item balance will remain incomplete until the bank grows substantially.
+- Practice results are unofficial estimates — not ABTC scaled scores or official pass/fail decisions.
+- The app is an exam-prep tool, not medical advice.
+- Organ-tag soft targets in the bank still drift from blueprint shares (coverage warnings only).
 
 ## Future Improvements
 
-- Expand the authored and reviewed question bank across all blueprint domains.
-- Improve category-level reporting and history review once the live bank is large enough to make trends meaningful.
-- Continue aligning the UI and session behaviors with the full scope in `.github/prompts/01-build-app.md`.
-- Add more targeted validation and tests as new question shards and workflow paths land.
+- Finish Phase 4 device/a11y polish and category-level history drill-down.
+- Optional bank growth beyond ~500 reviewed items for fresher repeat sessions.
 
 ## FAQ
 
