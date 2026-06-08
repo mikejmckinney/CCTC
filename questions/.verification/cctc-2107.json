@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2107",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 322,
+    "keywords": [
+      "DEXA",
+      "scan",
+      "lumbar",
+      "spine",
+      "hip",
+      "Baseline",
+      "pretransplantation"
+    ],
+    "keyword_hash": "sha256:09a453b4ce40f3fca03c84e3f15bb7e1a07e0c6d738b80afc0dc89091bcb0712"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "keywords": [
+        "lumbar",
+        "spine",
+        "baseline",
+        "pretransplant"
+      ],
+      "keyword_hash": "sha256:0d8610223f28e23c8bfb21bc8841378efd6b70894b6b7d173b7a79998d23f0d8"
+    }
+  ]
+}

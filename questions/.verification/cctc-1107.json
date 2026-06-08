@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1107",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 118,
+    "keywords": [
+      "Prostate",
+      "health",
+      "Annual",
+      "prostate",
+      "screening",
+      "antigen",
+      "PSA"
+    ],
+    "keyword_hash": "sha256:0d9c94bb1a95fcdb9b8dca023dc391ac6d9d95793195fb0156bb962880c0c6e6"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "keywords": [
+        "prostate",
+        "health",
+        "annual",
+        "urology",
+        "consult",
+        "obstruction"
+      ],
+      "keyword_hash": "sha256:9159018c9ae3d146c23aa445151d206766fc37d7867262917d648c7be9a9c979"
+    }
+  ]
+}

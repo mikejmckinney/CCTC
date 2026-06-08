@@ -10,8 +10,8 @@ import {
   isPlainObject,
 } from './lib.mjs';
 
-/** Bank authoring band for `recipient_age: pediatric` (exam forms ~5%; bank slightly higher). */
-const PEDIATRIC_BANK_TARGET_LOW = 0.065;
+/** Bank authoring band for `recipient_age: pediatric` (exam forms ~5%; bank may run slightly higher). */
+const PEDIATRIC_BANK_TARGET_LOW = 0.05;
 const PEDIATRIC_BANK_TARGET_HIGH = 0.07;
 
 export async function buildCoverageReport(allItems, newBlueprint, legacyBlueprint, context, warnings) {

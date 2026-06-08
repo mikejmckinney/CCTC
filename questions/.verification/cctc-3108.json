@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-3108",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 322,
+    "keywords": [
+      "Annual",
+      "influenza",
+      "vaccination",
+      "Six",
+      "months",
+      "posttransplant",
+      "Calcium",
+      "vitamin"
+    ],
+    "keyword_hash": "sha256:14fbb0756b87bc800712131a868d31514bd5c680b53d47a376fff5944d7d80fa"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "keywords": [
+        "prevent",
+        "infection",
+        "annual",
+        "influenza",
+        "vaccine",
+        "preserve",
+        "health",
+        "intervals"
+      ],
+      "keyword_hash": "sha256:3239e4117fdc5e80148f853d5f2c3ece9420f702e88bd6a50cc446cbac4847cd"
+    }
+  ]
+}

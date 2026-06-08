@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2106",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 280,
+    "keywords": [
+      "Squamous",
+      "cell",
+      "carcinoma",
+      "basal",
+      "frequently",
+      "general",
+      "population"
+    ],
+    "keyword_hash": "sha256:9c1e55ba322e305ceb760491ae2ca7b1da06e85b3f08c04e3a6798ff864d8408"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "frequent",
+        "opposite",
+        "general",
+        "population"
+      ],
+      "keyword_hash": "sha256:b89c5918d9b0ea40e5655936b043b4972f72f49f6cf837e1f703d170083e59e0"
+    }
+  ]
+}

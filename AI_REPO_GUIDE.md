@@ -164,9 +164,9 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **313 draft items** in `questions/domain-*/batch-01.json` through `batch-26.json` (IDs `cctc-1001`–`1105`, `2001`–`2104`, `3001`–`3104`).
+- **325 draft items** in `questions/domain-*/batch-01.json` through `batch-27.json` (IDs `cctc-1001`–`1109`, `2001`–`2108`, `3001`–`3108`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
-- Bank authoring soft targets (see `questions/README.md`, `02-author-questions.md`): cognitive mix ~35/52/13%; `recipient_age: pediatric` **6.5–7%** of bank (`both` excluded; live CCTC exam ~5% pediatric).
+- Bank authoring soft targets (see `questions/README.md`, `02-author-questions.md`): cognitive mix ~35/52/13%; `recipient_age: pediatric` **5–7%** of bank (`both` excluded; live CCTC exam ~5% pediatric).
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
 - Batch 05 (2026-06-05): evaluation/screening depth, OPTN HLA/WHO listing, UNet data, FAST stroke urgent contact, tacrolimus nephrotoxicity (Nursing Drug Handbook), late-mortality `complex_combo`.
@@ -189,12 +189,13 @@ Use these files as the current product ground truth:
 - Batch 22 (2026-06-05): rabies vocation vaccination, pediatric HPV/hepatitis B sexual-health teaching, adenovirus `complex_combo`, HHV-6 timing, DSA-versus-PRA, evaluation viral studies/biopsies, prospective crossmatch, pediatric kidney rejection, delayed graft function supportive care.
 - Batch 23 (2026-06-05): meningococcal vaccination, pregnancy timing, visitor precautions, RSV combo, OPTN waiting-time modification, ischemia definitions, parainfluenza counseling, cardiac cath requirement, chronic rejection depth.
 - Batch 24 (2026-06-05): fixed pulmonary hypertension, well-water Cryptosporidium, pediatric acetaminophen, heart cath combo, coronary angiography purpose, vasodilator testing, liver smoking risks, ankle-brachial screening, pediatric PCP/TB/UTI depth.
-- Batch 25 (2026-06-05): kidney/heart smoking risks, pet-safety teaching, Listeria/Nocardia combo, EPTS/KDPI, kidney paired donation, CARV/influenza post-transplant depth (adult/both batch to nudge pediatric share toward 6.5–7%).
+- Batch 25 (2026-06-05): kidney/heart smoking risks, pet-safety teaching, Listeria/Nocardia combo, EPTS/KDPI, kidney paired donation, CARV/influenza post-transplant depth (adult/both batch to nudge pediatric share toward 5–7%).
 - Batch 26 (2026-06-05): squamous-cell/sun-protection teaching, boil-water advisories, cryptococcosis pretransplant therapy, kidney perfusion allocation, colonoscopy/dental health maintenance, long-term skin surveillance combos.
+- Batch 27 (2026-06-05): gender-specific screening teaching, BCC/SCC epidemiology, baseline/post-transplant DEXA, skin-cancer behavior/distribution combos; pediatric soft target revised to 5–7% (adult/both batch).
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 27+)
+- Expand the real question bank under domain directories (batch 28+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land

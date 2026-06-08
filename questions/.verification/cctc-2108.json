@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-2108",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 280,
+    "keywords": [
+      "Incidence",
+      "highest",
+      "heart",
+      "lung",
+      "transplant",
+      "recipients",
+      "kidney",
+      "liver"
+    ],
+    "keyword_hash": "sha256:8b0346f26a2a45a7036135c2e7f4a6500ea9808c8461880b9335635c44918970"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "keywords": [
+        "highest",
+        "incidence",
+        "heart",
+        "recipients"
+      ],
+      "keyword_hash": "sha256:467f06630f586705368ce27df7be4c11f94e90ed85d8309d9411c3afb85de6e7"
+    }
+  ]
+}
