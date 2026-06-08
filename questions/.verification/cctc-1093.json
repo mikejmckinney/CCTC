@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1093",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 210,
+    "keywords": [
+      "RSV",
+      "large",
+      "droplets",
+      "fomites",
+      "survive",
+      "surfaces",
+      "nonporous",
+      "contact"
+    ],
+    "keyword_hash": "sha256:62c7fb217f0dd16024fb7942d25716150746281688e7deabbe004dc8012534d4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 210,
+      "keywords": [
+        "droplet",
+        "fomite",
+        "transmission",
+        "surface",
+        "survival"
+      ],
+      "keyword_hash": "sha256:8fff3a4da1e84e207385eb707d1407c5c0e54ae512aedca3c9cf389e54eaba4d"
+    }
+  ]
+}

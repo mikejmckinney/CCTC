@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **265 draft items** in `questions/domain-*/batch-01.json` through `batch-22.json` (IDs `cctc-1001`–`1089`, `2001`–`2088`, `3001`–`3088`).
+- **277 draft items** in `questions/domain-*/batch-01.json` through `batch-23.json` (IDs `cctc-1001`–`1093`, `2001`–`2092`, `3001`–`3092`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
 - Batch 04 (2026-06-05): first `heart_lung`, `pancreas`, `intestine`, `kidney_pancreas` organ tags; SPK rejection `complex_combo`; living donor and preop evaluation depth.
@@ -186,10 +186,11 @@ Use these files as the current product ground truth:
 - Batch 20 (2026-06-05): federal organ-sales prohibition, JC virus/PML `complex_combo`, pediatric thrombosis risk/urgent anuria, pretransplant vaccine response, OPTN pancreas inactive waiting time, mTOR classification, sirolimus/everolimus black-box warnings, sirolimus adverse-effect `complex_combo`.
 - Batch 21 (2026-06-05): PTA criteria, parvovirus B19, hepatorenal failure, living-donor written consent, OPTN pancreas-islet inactive waiting time, donor risk assessment, heart CNI-to-sirolimus CAV benefit, donor-transmitted infection combo.
 - Batch 22 (2026-06-05): rabies vocation vaccination, pediatric HPV/hepatitis B sexual-health teaching, adenovirus `complex_combo`, HHV-6 timing, DSA-versus-PRA, evaluation viral studies/biopsies, prospective crossmatch, pediatric kidney rejection, delayed graft function supportive care.
+- Batch 23 (2026-06-05): meningococcal vaccination, pregnancy timing, visitor precautions, RSV combo, OPTN waiting-time modification, ischemia definitions, parainfluenza counseling, cardiac cath requirement, chronic rejection depth.
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 23+)
+- Expand the real question bank under domain directories (batch 24+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land

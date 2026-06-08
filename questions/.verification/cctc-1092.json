@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1092",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Avoid",
+      "individuals",
+      "known",
+      "infection",
+      "visitors",
+      "recent",
+      "infections",
+      "postpone"
+    ],
+    "keyword_hash": "sha256:abc8c164da694d73bc343e1493dfe48f8b3ae216e5712a3c4da4301ab517b1c4"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "postpone",
+        "visiting",
+        "visitors",
+        "recent",
+        "infections"
+      ],
+      "keyword_hash": "sha256:f21a65a26d43597106406837b5a30567f14b01dba8e7f75f21a34a4d188e1841"
+    }
+  ]
+}

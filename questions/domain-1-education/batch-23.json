@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1090",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When reviewing pretransplant immunizations for an adult transplant candidate, meningococcal vaccination is especially recommended for which groups?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Military personnel, travelers to high-risk areas, postsplenectomy patients, and college freshmen living on campus" },
+      { "id": "B", "text": "Only candidates who have already received a kidney transplant" },
+      { "id": "C", "text": "Every candidate regardless of risk factors or vocation" },
+      { "id": "D", "text": "Only pediatric candidates younger than 2 years" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recommended pretransplant immunizations include meningococcal vaccine especially for military personnel, travelers to high-risk areas, postsplenectomy patients, and college freshmen living on campus.",
+      "rationale_incorrect": {
+        "B": "Meningococcal vaccination is emphasized for specific high-risk adult groups rather than only prior kidney recipients.",
+        "C": "Meningococcal vaccine is highlighted for defined risk groups rather than universal administration to every candidate.",
+        "D": "The cited meningococcal groups are within adult candidate immunization guidance rather than limited to toddlers."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 180,
+      "section": "Ch. 5, Infectious Diseases → Immunizations → B. Recommended Pretransplant Immunizations → 1.a.h.",
+      "quote_hint": "Meningococcal, especially for … Military personnel … Travelers to high-risk areas … Postsplenectomy patients … College freshmen living on campus",
+      "keywords": ["Meningococcal", "especially", "Military", "personnel", "Travelers", "high-risk", "Postsplenectomy", "College"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Immunizations → B.1.a.h. (meningococcal for military, travelers, postsplenectomy, college freshmen); PDF p. 180 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Meningococcal high-risk groups angle distinct from rabies vocation vaccination (cctc-1086) and pneumococcal post-transplant timing (cctc-1048); anchor verified on Cupples p. 180.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1091",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A female transplant recipient asks when pregnancy may be considered after transplantation. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Postpone pregnancy until 1 year after transplant when immunosuppressant doses are likely to be lower" },
+      { "id": "B", "text": "Pregnancy should begin immediately after hospital discharge" },
+      { "id": "C", "text": "Pregnancy is permanently contraindicated after every solid-organ transplant" },
+      { "id": "D", "text": "Immunosuppression must be stopped completely before any pregnancy discussion" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pregnancy counseling includes discussing timing, medication risks, rejection risk, and physical effects; the recommendation is to postpone pregnancy until 1 year after transplant when immunosuppressant doses are likely to be lower.",
+      "rationale_incorrect": {
+        "B": "Early post-transplant recovery is not the recommended time to pursue pregnancy.",
+        "C": "Pregnancy may be considered with transplant-team and obstetric coordination rather than being universally prohibited.",
+        "D": "Pregnancy planning involves medication-risk discussion rather than abrupt cessation of all immunosuppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → sexual health / pregnancy → l.iii.",
+      "quote_hint": "Recommendation: Postpone pregnancy until 1 year after transplant when immunosuppressant doses are likely to be lower",
+      "keywords": ["Postpone", "pregnancy", "until", "year", "after", "transplant", "immunosuppressant", "doses"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → pregnancy counseling → l.iii. (postpone pregnancy until 1 year post-transplant); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant pregnancy-timing angle distinct from pediatric HPV/hepatitis B sexual-health teaching (cctc-1087); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1092",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching a post-transplant recipient about visitor precautions during respiratory infection season, which guidance aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Ask visitors who have had recent infections to postpone visiting" },
+      { "id": "B", "text": "Encourage unlimited visitation regardless of active infection symptoms" },
+      { "id": "C", "text": "Visitors with recent infections should visit without any precautions" },
+      { "id": "D", "text": "Recipients should discontinue immunosuppression when visitors are ill" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes avoiding individuals with known infection and asking visitors who have had recent infections to postpone visiting; if contact cannot be avoided, surgical masks may be used.",
+      "rationale_incorrect": {
+        "B": "Unrestricted visitation during active infection risk is contrary to standard precautions.",
+        "C": "Recent infection in visitors warrants postponing visits or using precautions rather than unprotected contact.",
+        "D": "Immunosuppression is continued as prescribed; visitor precautions address exposure risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → infection prevention → ii.",
+      "quote_hint": "Avoid individuals with known infection … Ask visitors who have had recent infections to postpone visiting",
+      "keywords": ["Avoid", "individuals", "known", "infection", "visitors", "recent", "infections", "postpone"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → infection prevention → ii. (postpone visiting when visitors have recent infections); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Visitor-infection precaution angle distinct from live-virus household precautions (cctc-1046) and hand-hygiene teaching (cctc-1019); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1093",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is updating respiratory syncytial virus (RSV) teaching for transplant families. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "RSV is transmitted primarily through large droplets and fomites." },
+      { "id": "II", "text": "RSV can survive on nonporous surfaces, skin, and gloves for hours." },
+      { "id": "III", "text": "RSV spreads only through airborne transmission across large distances without close contact." },
+      { "id": "IV", "text": "RSV cannot survive on environmental surfaces." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "RSV is transmitted primarily through large droplets and fomites, can survive on nonporous surfaces, skin, and gloves for hours, and requires close person-to-person contact or contact with contaminated surfaces. Statements III and IV are false.",
+      "rationale_incorrect": {
+        "B": "Statement IV is false because RSV can survive on surfaces for hours.",
+        "C": "Statements I and II are true; statements III and IV are false.",
+        "D": "Statements III and IV are false."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 210,
+      "section": "Ch. 5, Infectious Diseases → RSV → 6.a. Transmission → i.–iii.",
+      "quote_hint": "Primarily through large droplets and fomites … Can survive on surfaces (nonporous), skin, and gloves for hours … Requires close person-to-person contact or contact with contaminated surfaces",
+      "keywords": ["RSV", "large", "droplets", "fomites", "survive", "surfaces", "nonporous", "contact"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → RSV → 6.a. Transmission → i.–iii. (droplet/fomite transmission and surface survival); PDF p. 210 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. RSV transmission combo distinct from adenovirus combo (cctc-1088) and parvovirus combo (cctc-1083); anchor verified on Cupples p. 210.",
+    "last_updated": "2026-06-05"
+  }
+]

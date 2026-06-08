@@ -1,0 +1,40 @@
+{
+  "item_id": "cctc-1091",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "Postpone",
+      "pregnancy",
+      "until",
+      "year",
+      "after",
+      "transplant",
+      "immunosuppressant",
+      "doses"
+    ],
+    "keyword_hash": "sha256:208a70735ee824ec02e95a94dd92b010d922809f48ff42c4b68353b75de306aa"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "postpone",
+        "pregnancy",
+        "until",
+        "post-transplant"
+      ],
+      "keyword_hash": "sha256:141d1ce05d659df6eed1f966b98106302e634b8ed007bfb0868f18eb97d5877f"
+    }
+  ]
+}

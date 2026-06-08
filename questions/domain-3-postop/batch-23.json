@@ -1,0 +1,201 @@
+[
+  {
+    "id": "cctc-3089",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric kidney transplant recipient has slowly rising creatinine, hypertension, and proteinuria months after transplant. Which complication pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Chronic rejection with slow progressive creatinine increase" },
+      { "id": "B", "text": "Hyperacute rejection occurring only years after transplant" },
+      { "id": "C", "text": "Expected normal graft function without any laboratory changes" },
+      { "id": "D", "text": "Primary nonfunction presenting only as slapped-cheek rash" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Chronic rejection is characterized by slow progressive increase in creatinine and is frequently associated with hypertension and proteinuria; it may follow multiple episodes of acute rejection.",
+      "rationale_incorrect": {
+        "B": "Hyperacute rejection occurs at or immediately after implantation rather than as a late slow creatinine rise.",
+        "C": "Rising creatinine with hypertension and proteinuria warrants evaluation for chronic rejection rather than assuming normal function.",
+        "D": "Slapped-cheek rash suggests infections such as parvovirus rather than chronic rejection presentation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 904,
+      "section": "Ch. 17, Pediatric Kidney Transplantation → rejection → c. Chronic rejection → i.–ii.",
+      "quote_hint": "Chronic rejection … slow and progressive increase in creatinine … frequently associated with hypertension and proteinuria",
+      "keywords": ["Chronic", "rejection", "slow", "progressive", "increase", "creatinine", "hypertension", "proteinuria"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → pediatric kidney chronic rejection → c.i.–ii. (slow creatinine rise with hypertension/proteinuria); PDF p. 904 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Nineteenth pediatric recipient in bank; chronic-rejection pattern distinct from acute pediatric rejection presentation (cctc-3087); anchor verified on Cupples p. 904.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3090",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": ["030102"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "An adult kidney transplant recipient has delayed graft function after transplantation. Which pathophysiologic mechanism aligns with standard kidney transplant references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Ischemia-reperfusion injury is the principal cause of delayed graft function" },
+      { "id": "B", "text": "Delayed graft function is caused exclusively by patient nonadherence years later" },
+      { "id": "C", "text": "Cold ischemia time has no relationship to early graft injury" },
+      { "id": "D", "text": "Ischemia-reperfusion injury prevents all inflammatory responses in the graft" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Ischemia-reperfusion injury from organ preservation and revascularization is the principal cause of delayed graft function after kidney transplantation and is later associated with increased acute rejection and reduced long-term survival.",
+      "rationale_incorrect": {
+        "B": "Delayed graft function is an early post-transplant complication linked to ischemia-reperfusion rather than late nonadherence alone.",
+        "C": "Cold and warm ischemia times are central to ischemia-reperfusion injury after procurement and implantation.",
+        "D": "Ischemia-reperfusion injury produces inflammatory graft injury rather than preventing inflammation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 62,
+      "section": "Ch. 2, Transplantation Immunobiology → Ischemia-Reperfusion Injury",
+      "quote_hint": "Ischemia-reperfusion injury is the principal cause of delayed graft function after kidney transplantation",
+      "keywords": ["Ischemia-reperfusion", "injury", "principal", "cause", "delayed", "graft", "function", "kidney"]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 2 → Ischemia-Reperfusion Injury (principal cause of delayed graft function); PDF p. 62 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → postoperative complications → ii. Delayed graft function (supportive care until function improves); PDF p. 106 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ischemia-reperfusion DGF mechanism angle paired with supportive-care item (cctc-3088) and cold-ischemia definition (cctc-2090); anchor verified on Danovitch p. 62.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3091",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "pediatric",
+    "stem": "During winter respiratory-virus season, a pediatric lung transplant recipient's family asks how respiratory syncytial virus (RSV) spreads. Which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "RSV is transmitted primarily through large droplets and fomites and can survive on surfaces for hours" },
+      { "id": "B", "text": "RSV spreads only through blood transfusions" },
+      { "id": "C", "text": "RSV cannot survive on skin or gloves" },
+      { "id": "D", "text": "RSV requires no close contact or contaminated-surface exposure" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "RSV is transmitted primarily through large droplets and fomites, can survive on nonporous surfaces, skin, and gloves for hours, and requires close person-to-person contact or contact with contaminated surfaces.",
+      "rationale_incorrect": {
+        "B": "RSV is a respiratory virus spread by droplets and fomites rather than primarily by transfusion.",
+        "C": "RSV can survive on skin and gloves for hours according to standard references.",
+        "D": "Close contact or contaminated-surface exposure is required for RSV transmission."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 210,
+      "section": "Ch. 5, Infectious Diseases → RSV → 6.a. Transmission → i.–iii.",
+      "quote_hint": "Primarily through large droplets and fomites … Can survive on surfaces (nonporous), skin, and gloves for hours",
+      "keywords": ["RSV", "large", "droplets", "fomites", "survive", "surfaces", "skin", "gloves"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → RSV → 6.a. Transmission → i.–iii. (droplet/fomite spread and surface survival); PDF p. 210 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Post-transplant RSV transmission teaching paired with education combo (cctc-1093); twentieth pediatric recipient in bank; anchor verified on Cupples p. 210.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3092",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A coordinator is reviewing chronic kidney allograft dysfunction teaching materials. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Chronic rejection is characterized by a slow progressive increase in creatinine." },
+      { "id": "II", "text": "Chronic rejection is frequently associated with hypertension and proteinuria." },
+      { "id": "III", "text": "Chronic rejection occurs only during the first 24 hours after transplant." },
+      { "id": "IV", "text": "Chronic rejection may be associated with recipients who have had multiple episodes of acute rejection." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Chronic rejection features slow progressive creatinine rise, is frequently associated with hypertension and proteinuria, and may follow multiple acute rejection episodes. It is not limited to the first 24 hours after transplant, so statement III is false.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—multiple prior acute rejection episodes are associated with chronic rejection.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 904,
+      "section": "Ch. 17, Pediatric Kidney Transplantation → rejection → c. Chronic rejection → i.–iv.",
+      "quote_hint": "slow and progressive increase in creatinine … frequently associated with hypertension and proteinuria … recipients who have had multiple episodes of acute rejection",
+      "keywords": ["Chronic", "rejection", "slow", "progressive", "creatinine", "hypertension", "proteinuria", "multiple"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → chronic rejection → c.i.–iv. (slow creatinine rise, hypertension/proteinuria, prior acute rejection episodes); PDF p. 904 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Chronic-rejection analysis combo paired with pediatric presentation item (cctc-3089); anchor verified on Cupples p. 904.",
+    "last_updated": "2026-06-05"
+  }
+]
