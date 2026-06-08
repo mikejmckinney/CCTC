@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-1058",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 644,
+    "keywords": [
+      "transplant",
+      "programs",
+      "require",
+      "months",
+      "abstinence",
+      "liver",
+      "waiting",
+      "list"
+    ],
+    "keyword_hash": "sha256:f6ccc66659a28567ab893489d211689b1381997a2c14ec5c87f7ea7471fe52dd"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 644,
+      "keywords": [
+        "alcoholic",
+        "liver",
+        "disease",
+        "listing",
+        "programs",
+        "require",
+        "months",
+        "abstinence"
+      ],
+      "keyword_hash": "sha256:080115f8e073a5f195f170e1f3de3a325ecd081a980cf5cc4eb7320401f2cf0e"
+    }
+  ]
+}

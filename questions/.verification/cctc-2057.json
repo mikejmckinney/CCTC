@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2057",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 54,
+    "keywords": [
+      "Right",
+      "heart",
+      "catheterization",
+      "evaluate",
+      "pulmonary",
+      "pressures",
+      "repeated",
+      "tests"
+    ],
+    "keyword_hash": "sha256:c17fb827f2bd6cd65c5e37294af03f491fdf9f3e510317da187573948ec123d8"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 54,
+      "keywords": [
+        "repeat",
+        "right",
+        "heart",
+        "catheterization",
+        "pulmonary",
+        "pressures"
+      ],
+      "keyword_hash": "sha256:c0a4c1a59259af0f6381dd825d99ce687c34915c09d6c5d4acc80527d3a75881"
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-3057",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "During long-term follow-up of a liver transplant recipient on maintenance corticosteroids, which complication should the coordinator include in surveillance teaching?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Metabolic bone disease, with greatest risk when steroid doses are highest" },
+      { "id": "B", "text": "Metabolic bone disease never occurs after liver transplantation" },
+      { "id": "C", "text": "Bone disease risk ends immediately when steroids are first prescribed" },
+      { "id": "D", "text": "Only recipients under age 18 develop post-transplant bone disease" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Metabolic bone disease risk is greatest immediately after transplantation when steroid doses are highest, although some recipients remain at long-term risk even with lower or no steroid use.",
+      "rationale_incorrect": {
+        "B": "Metabolic bone disease is a recognized long-term complication after solid-organ transplantation.",
+        "C": "Risk is highest early when steroid doses are highest rather than ending when steroids are initiated.",
+        "D": "Bone disease risk applies to transplant recipients broadly, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 674,
+      "section": "Ch. 12, Long-Term Outcomes → E. Metabolic bone disease",
+      "quote_hint": "The greatest risk is immediately after transplantation when steroid doses are highest",
+      "keywords": ["Metabolic", "bone", "disease", "greatest", "risk", "transplantation", "steroid", "doses"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 12 → E. Metabolic bone disease (greatest risk when steroid doses highest; some long-term risk persists); PDF p. 674 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 030400 item; closes task gap; metabolic-bone angle distinct from skin cancer (cctc-3054), diabetes incidence (cctc-3028), and malignancy combo (cctc-3043); anchor verified on Cupples p. 674.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3058",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": ["030601"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When facilitating discharge medication teaching for a kidney recipient, which structured adherence strategy aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A day-and-hour medication box that may be pre-loaded by the pharmacist at discharge" },
+      { "id": "B", "text": "Storing all immunosuppressants in the bathroom medicine cabinet for convenience" },
+      { "id": "C", "text": "Taking critical-dose drugs at random times without regard to drug-level draws" },
+      { "id": "D", "text": "Avoiding any written medication roster because pictures are never helpful" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Structured medication management may include a medication box with day and hour subdivisions that can be pre-loaded by the pharmacist at discharge, along with a written roster and dosing reminders.",
+      "rationale_incorrect": {
+        "B": "Medications should not be stored in humid areas such as the bathroom; correct storage is part of discharge teaching.",
+        "C": "Critical-dose immunosuppressants must be taken at consistent times, especially around serum drug-level draws.",
+        "D": "A written medication roster with pictures, times, and doses supports accurate home dosing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "section": "Ch. 3, Patient Education → medication education → structured approach",
+      "quote_hint": "medication box with day and hour subdivisions. The box may be pre-loaded by the pharmacist at the time of discharge",
+      "keywords": ["medication", "box", "day", "hour", "subdivisions", "pharmacist", "discharge", "pre-loaded"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication education → structured approach (day/hour medication box pre-loaded by pharmacist at discharge); PDF p. 107 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 030600 item; closes task gap; medication-box angle distinct from PPI–MMF interaction (cctc-3056), missed-dose teaching (cctc-3014), and grapefruit (cctc-3031); anchor verified on Cupples p. 107.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3059",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030503"],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A heart recipient preparing to return to employment after transplant asks about work re-entry. Which coordination counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Counsel the patient to initially telework or work part-time and gradually increase as energy improves" },
+      { "id": "B", "text": "Require immediate return to full-time heavy labor without assessment" },
+      { "id": "C", "text": "Permanent unemployment is expected for all transplant recipients" },
+      { "id": "D", "text": "Return-to-work planning never considers job-specific restrictions" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Return-to-work counseling includes timing based on recovery and employment type, with initial telework or part-time work and gradual increase to full-time employment as energy improves, along with assessment of work activities for restrictions.",
+      "rationale_incorrect": {
+        "B": "Work re-entry is individualized and may begin with part-time or modified duties rather than immediate unrestricted heavy labor.",
+        "C": "Many recipients return to work with gradual progression rather than permanent unemployment.",
+        "D": "Work activities are assessed for suitability and potential restrictions such as weightlifting or toxic exposures."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → n. Return to work → ii.",
+      "quote_hint": "Counsel patient to initially telework or work part-time (e.g., half days) and gradually increase to full-time employment as energy level improves",
+      "keywords": ["telework", "part-time", "gradually", "increase", "full-time", "employment", "energy", "work"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → n. Return to work → ii. (initial telework/part-time with gradual return to full-time); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 030500 item; heart return-to-work angle distinct from day-after-discharge call (cctc-3055) and lymphocele monitoring (cctc-3052); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3060",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung recipient develops progressive airflow decline more than one year after transplant. Which chronic complication should the coordinator include in the differential?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Bronchiolitis obliterans syndrome (BOS)" },
+      { "id": "B", "text": "Primary graft nonfunction occurring only in the first 72 hours" },
+      { "id": "C", "text": "Hyperacute antibody-mediated rejection immediately at implantation only" },
+      { "id": "D", "text": "Urinary leak near the kidney allograft" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Chronic lung allograft dysfunction includes bronchiolitis obliterans syndrome (BOS), a form of chronic rejection that limits long-term survival after lung transplantation.",
+      "rationale_incorrect": {
+        "B": "Primary graft dysfunction occurs within the first 72 hours, not as progressive chronic airflow decline a year later.",
+        "C": "Hyperacute rejection occurs immediately after implantation rather than as late progressive airflow decline.",
+        "D": "Urinary leak is a kidney surgical complication, not a chronic lung allograft process."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 607,
+      "section": "Ch. 11, Lung Transplantation → Monitor for Postoperative Complications → A.3.a.",
+      "quote_hint": "Chronic: a. Bronchiolitis obliterans syndrome (BOS)",
+      "keywords": ["Chronic", "Bronchiolitis", "obliterans", "syndrome", "BOS", "rejection", "lung", "allograft"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 11 → Monitor for Postoperative Complications → A.3.a. (chronic rejection: bronchiolitis obliterans syndrome); PDF p. 607 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ninth 030200 item; lung BOS chronic-rejection angle distinct from surgical wound infection (cctc-3050) and cholangitis (cctc-3039); anchor verified on Cupples p. 607.",
+    "last_updated": "2026-06-05"
+  }
+]

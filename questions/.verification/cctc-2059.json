@@ -1,0 +1,39 @@
+{
+  "item_id": "cctc-2059",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 567,
+    "keywords": [
+      "Referrals",
+      "late",
+      "disease",
+      "process",
+      "too",
+      "sick",
+      "transplantation",
+      "timing"
+    ],
+    "keyword_hash": "sha256:35b5c5b16cfd377985bdf46dca2b4fcbc835a8dd906e4f29d90c647b115ac567"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 567,
+      "keywords": [
+        "referral",
+        "leave",
+        "patient"
+      ],
+      "keyword_hash": "sha256:6a4e970a20cf28329fcd915f440270e65281497fedc103601c3a90974a45544e"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3060",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 607,
+    "keywords": [
+      "Chronic",
+      "Bronchiolitis",
+      "obliterans",
+      "syndrome",
+      "BOS",
+      "rejection",
+      "lung",
+      "allograft"
+    ],
+    "keyword_hash": "sha256:510804baed5983652e406afb8426d64f3495647b27ba0a1695ac193d7741f329"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 607,
+      "keywords": [
+        "chronic",
+        "rejection",
+        "bronchiolitis",
+        "obliterans",
+        "syndrome"
+      ],
+      "keyword_hash": "sha256:ea8ff6b9043485153cf3b4a367556916b04b1e670d1d833fcebd44419f341f05"
+    }
+  ]
+}
