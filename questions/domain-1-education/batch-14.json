@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1054",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010103"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching a transplant candidate about transplantation risks, which outcome should the coordinator include as part of standard risk disclosure?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Rejection can occur at any time after implantation of the organ" },
+      { "id": "B", "text": "Rejection occurs only during the first 24 hours after surgery" },
+      { "id": "C", "text": "Rejection never occurs once immunosuppression is started" },
+      { "id": "D", "text": "Rejection is limited to pediatric recipients only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Risk teaching includes organ rejection, which can occur at any time after implantation of the organ(s) when the immune system recognizes the transplant as foreign.",
+      "rationale_incorrect": {
+        "B": "Rejection is not confined to the immediate perioperative period; it may occur at any time after implantation.",
+        "C": "Immunosuppression reduces rejection risk but does not eliminate the possibility of rejection at any time.",
+        "D": "Rejection risk applies to solid-organ recipients broadly, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Patient Education → 6. Risks associated with transplantation → b. Organ rejection → ii.",
+      "quote_hint": "Rejection can occur at any time after implantation of the organ(s)",
+      "keywords": ["Rejection", "occur", "any", "time", "implantation", "organ", "rejection"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → 6. Risks associated with transplantation → b. Organ rejection → ii. (rejection can occur at any time after implantation); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Seventh 010100 item; general/both-age rejection-risk angle distinct from waitlist mortality (cctc-1022) and smoking risks (cctc-1034); anchor verified on Cupples p. 98.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1055",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Before discharge, a recipient is started on insulin for post-transplant hyperglycemia. Which teaching element should the coordinator verify per standard discharge education references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Patient and caregiver can demonstrate correct insulin preparation and administration with site rotation" },
+      { "id": "B", "text": "Insulin may be stopped permanently once the patient leaves the hospital" },
+      { "id": "C", "text": "Glucometer use is optional and never requires return demonstration" },
+      { "id": "D", "text": "Hypoglycemia and hyperglycemia symptoms require no team contact parameters" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Discharge diabetic education includes insulin administration teaching with return demonstration of drawing up or dialing the correct dosage, preparing the injection site, and rotating sites.",
+      "rationale_incorrect": {
+        "B": "Insulin and glucose management continue after discharge under team guidance rather than being stopped at hospital discharge.",
+        "C": "Patients and caregivers should demonstrate glucometer use and insulin technique when insulin is prescribed.",
+        "D": "Teaching includes signs and symptoms of hypo- and hyperglycemia and parameters for contacting the team managing glucose control."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 112,
+      "section": "Ch. 3, Patient Education → B. Diabetic education → insulin administration",
+      "quote_hint": "return demonstration including drawing up or dialing up the correct dosage … rotation of sites",
+      "keywords": ["insulin", "demonstration", "dosage", "injection", "rotation", "sites", "glucometer"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → B. Diabetic education (glucometer demonstration; insulin administration return demonstration and site rotation); PDF p. 112 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eleventh 010500 item; discharge insulin-teaching angle distinct from medication complex_combo (cctc-1033) and osteopenia (cctc-1047); anchor verified on Cupples p. 112.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1056",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010103", "010104"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A coordinator is reviewing transplantation risk teaching with a candidate and family. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Death may occur on the waiting list, during transplant surgery, or after transplantation." },
+      { "id": "II", "text": "Rejection can occur at any time after organ implantation." },
+      { "id": "III", "text": "Lifetime immunosuppression is never required after solid-organ transplant." },
+      { "id": "IV", "text": "Primary nonfunction may require immediate relisting and retransplantation." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "III and IV only", "selects": ["III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Standard risk teaching includes death on the waitlist, during surgery, or after transplant; rejection at any time after implantation; need for lifetime immunosuppression; and primary nonfunction that may require immediate relisting.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—primary nonfunction may require immediate relisting.",
+        "C": "Statements I and II are also true; statement III is false because lifetime immunosuppression is required.",
+        "D": "Statement III is false; lifetime immunosuppression is a recognized transplant requirement."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Patient Education → 6. Risks associated with transplantation",
+      "quote_hint": "Death … On the waiting list … Organ rejection … any time … Need for lifetime immunosuppression … Primary nonfunction may require immediate relisting",
+      "keywords": ["Death", "waiting", "list", "rejection", "lifetime", "immunosuppression", "Primary", "nonfunction"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → 6. Risks associated with transplantation (death, rejection, lifetime immunosuppression, primary nonfunction); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Synthesized item. Thirteenth complex_combo in bank; distinct from infection-prevention (cctc-1024) and dietary (cctc-1052) combos; anchor verified on Cupples p. 98.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1057",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "When counseling the family of a recently transplanted child about community-acquired infections, which teaching point aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Community-acquired infections can be more severe in young children, especially soon after transplant during heavy immunosuppression" },
+      { "id": "B", "text": "Community infections are always mild in children regardless of immunosuppression timing" },
+      { "id": "C", "text": "Pediatric recipients have no risk of influenza or respiratory syncytial virus after transplant" },
+      { "id": "D", "text": "Immunosuppression eliminates the need to evaluate fever in pediatric recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Community-acquired infections can be more severe in young children, especially if they occur soon after transplantation and during highly immunosuppressed periods.",
+      "rationale_incorrect": {
+        "B": "Severity risk is heightened in young children during early highly immunosuppressed periods rather than being uniformly mild.",
+        "C": "Pediatric recipients remain at risk for common childhood illnesses including influenza and respiratory syncytial virus.",
+        "D": "Fever evaluation remains important; immunosuppression increases rather than eliminates infection concern."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 944,
+      "section": "Ch. 17, Pediatric Populations → H. Community-acquired infections → 1.",
+      "quote_hint": "Community-acquired infections can be more severe in young children, especially if they occur soon after transplantation",
+      "keywords": ["Community-acquired", "infections", "severe", "young", "children", "transplantation", "immunosuppressed"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → H. Community-acquired infections → 1. (more severe in young children soon after transplant during heavy immunosuppression); PDF p. 944 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Twelfth 010600 item; fifth pediatric recipient in bank; community-infection angle distinct from HPV (cctc-1036) and live-virus household (cctc-1046); anchor verified on Cupples p. 944.",
+    "last_updated": "2026-06-05"
+  }
+]

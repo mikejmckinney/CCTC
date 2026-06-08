@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3055",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 112,
+    "keywords": [
+      "call",
+      "patient",
+      "day",
+      "after",
+      "discharge",
+      "questions",
+      "review",
+      "medications"
+    ],
+    "keyword_hash": "sha256:4a002c33763476602ed057e07b01358400bc9d61798ed03dfe5301537d9e1632"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 112,
+      "keywords": [
+        "patient",
+        "after",
+        "discharge",
+        "answer",
+        "questions",
+        "review",
+        "medications"
+      ],
+      "keyword_hash": "sha256:170ca3b1340cb7439ad294d468f729e8bf72ab1281b3c03ea22b80106c52a8f2"
+    }
+  ]
+}

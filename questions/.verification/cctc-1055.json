@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1055",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 112,
+    "keywords": [
+      "insulin",
+      "demonstration",
+      "dosage",
+      "injection",
+      "rotation",
+      "sites",
+      "glucometer"
+    ],
+    "keyword_hash": "sha256:356188e3a60b189ff50f64873d83e8158795b3a2b44493e09a09f246e97eb6c8"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 112,
+      "keywords": [
+        "diabetic",
+        "education",
+        "glucometer",
+        "demonstration",
+        "insulin",
+        "administration",
+        "return",
+        "rotation"
+      ],
+      "keyword_hash": "sha256:fa4a8b6c2909d24529050eba1959bf91982377d240e9a87348da1730c4320840"
+    }
+  ]
+}

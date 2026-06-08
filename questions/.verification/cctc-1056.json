@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-1056",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 98,
+    "keywords": [
+      "Death",
+      "waiting",
+      "list",
+      "rejection",
+      "lifetime",
+      "immunosuppression",
+      "Primary",
+      "nonfunction"
+    ],
+    "keyword_hash": "sha256:3301e982baa3f3e37291159714372dc45d3fd7223edc62aaf151b118ac09692c"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "keywords": [
+        "risks",
+        "associated",
+        "transplantation",
+        "death",
+        "rejection",
+        "lifetime",
+        "immunosuppression",
+        "primary"
+      ],
+      "keyword_hash": "sha256:25ba2c3bf257725196a34c3458cd832eaef8ab89c3446dd157eb01669bee7dc0"
+    }
+  ]
+}

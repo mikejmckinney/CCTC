@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2053",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 102,
+    "keywords": [
+      "primary",
+      "care",
+      "provider",
+      "health",
+      "maintenance",
+      "acute",
+      "transplant",
+      "team"
+    ],
+    "keyword_hash": "sha256:d31b418ca0f25aee4b7603e9535c83673b76c4d0d61febdc76c5037fc45c8b6e"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "keywords": [
+        "primary",
+        "provider",
+        "health",
+        "maintenance",
+        "acute",
+        "needs"
+      ],
+      "keyword_hash": "sha256:0ba7d668ad3f28dc6eb794a1fe86979ff81f9f4356b66a7470ec1d4a459e3533"
+    }
+  ]
+}

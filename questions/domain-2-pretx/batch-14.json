@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2053",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": ["020203"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "While compiling waitlist education for a solid-organ candidate, which community provider relationship should the coordinator ensure is in place per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A primary care provider to assist with health maintenance and acute health needs in addition to the transplant team" },
+      { "id": "B", "text": "Only the transplant surgeon with no primary care involvement" },
+      { "id": "C", "text": "A cosmetic specialist as the sole ongoing medical contact" },
+      { "id": "D", "text": "No community providers because all care must remain hospital-based forever" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In addition to the transplant team, patients should have a primary care provider to attend to and assist with their health maintenance and acute health needs while awaiting and after transplantation.",
+      "rationale_incorrect": {
+        "B": "Transplant care is coordinated with a primary care provider rather than excluding community medical support.",
+        "C": "Health maintenance and acute needs are addressed through primary care, not cosmetic specialty alone.",
+        "D": "Long-term care includes community primary care alongside the transplant program."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → waitlist responsibilities → iv.",
+      "quote_hint": "patients should have a primary care provider to attend to and assist with their health maintenance and acute health needs",
+      "keywords": ["primary", "care", "provider", "health", "maintenance", "acute", "transplant", "team"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → waitlist patient responsibilities → iv. (primary care provider for health maintenance and acute needs); PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ninth 020200 item; PCP coordination angle distinct from skin/dentition screening (cctc-2051) and bronchoscopy (cctc-2043); anchor verified on Cupples p. 102.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2054",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": ["020501"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A waitlisted candidate misses organ-specific laboratory testing required to remain active on the list. What waitlist consequence aligns with standard coordinator references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Failure to complete required testing may change the candidate's priority on the waitlist" },
+      { "id": "B", "text": "Missing required testing automatically grants higher waitlist priority" },
+      { "id": "C", "text": "Required testing applies only after transplantation, not while waitlisted" },
+      { "id": "D", "text": "Waitlist priority is unaffected by completion of required studies" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidates must obtain required diagnostic studies while waiting to remain viable and active on the list; failure to complete required testing may result in a change in the candidate's priority on the waitlist.",
+      "rationale_incorrect": {
+        "B": "Missing required testing may lower or alter priority rather than automatically increasing it.",
+        "C": "Organ-specific labs such as those supporting LAS or MELD may be required while waitlisted to remain active.",
+        "D": "Waitlist priority can change when required testing is not completed."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → waitlist responsibilities → ii.",
+      "quote_hint": "Failure to complete required testing may result in a change in candidate's priority on the waitlist",
+      "keywords": ["Failure", "complete", "required", "testing", "change", "candidate", "priority", "waitlist"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → waitlist responsibilities → ii. (required studies to remain active; failure may change waitlist priority); PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ninth 020500 item; required-testing priority angle distinct from OPTN removal (cctc-2049) and inactive accrual (cctc-2037); anchor verified on Cupples p. 102.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2055",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": ["020401"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A candidate's waitlist status changes after updated testing. What communication responsibility aligns with standard coordinator references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Educate the candidate about the waitlist status change and rationale for additional tests or procedures" },
+      { "id": "B", "text": "Withhold all waitlist updates until the candidate discovers changes independently" },
+      { "id": "C", "text": "Communicate changes only to the insurance company, not the candidate" },
+      { "id": "D", "text": "Defer all waitlist communication until after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant coordinator waitlist responsibilities include educating candidates about any changes in their waitlist status and the rationale for additional tests or procedures.",
+      "rationale_incorrect": {
+        "B": "Candidates should be educated about waitlist status changes rather than left to discover them without explanation.",
+        "C": "Waitlist education is directed to the candidate as part of coordinator communication responsibilities.",
+        "D": "Waitlist communication occurs during the waiting period, not deferred until after transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → coordinator responsibilities → iv.",
+      "quote_hint": "Educate candidates about any changes in their waitlist status and rationale for additional tests or procedures",
+      "keywords": ["Educate", "candidates", "changes", "waitlist", "status", "rationale", "additional", "tests"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → transplant coordinator waitlist responsibilities → iv. (educate about waitlist status changes and rationale for additional testing); PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Eighth 020400 item; waitlist-status communication angle distinct from not-registered notification (cctc-2043) and conditional approval (cctc-2023); anchor verified on Cupples p. 102.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2056",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": ["020301"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "An adolescent solid-organ recipient is preparing to transfer from the pediatric to the adult transplant program. Which coordinator role aligns with standard transition references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Pediatric and adult transplant coordinators facilitate education and communication during the vulnerable transition period" },
+      { "id": "B", "text": "Transition requires no coordinator involvement once the patient turns 18" },
+      { "id": "C", "text": "Only the pediatric coordinator remains responsible indefinitely with no adult program contact" },
+      { "id": "D", "text": "Transition means the recipient stops all transplant follow-up permanently" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transition from pediatric to adult care is a vulnerable period, and pediatric and adult transplant coordinators play a critical role through individual patient education and communication between programs.",
+      "rationale_incorrect": {
+        "B": "Coordinators on both sides support the transition rather than ending involvement at a birthday alone.",
+        "C": "Adult program coordinators share responsibility during transition rather than pediatric coordinators retaining sole indefinite responsibility.",
+        "D": "Transition transfers ongoing transplant care to the adult program rather than ending follow-up."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 950,
+      "section": "Ch. 17, Pediatric Populations → H. Transition from pediatric to adult care → 2.",
+      "quote_hint": "Pediatric and adult transplant coordinators play a critical role in the transition process",
+      "keywords": ["Pediatric", "adult", "transplant", "coordinators", "critical", "role", "transition", "process"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → H. Transition from pediatric to adult care → 2.a. (coordinator education and communication role during transition); PDF p. 950 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Ninth 020300 item; sixth pediatric recipient in bank; transition-coordinator angle distinct from PAK (cctc-2050) and intestine SOC (cctc-2048); anchor verified on Cupples p. 950.",
+    "last_updated": "2026-06-05"
+  }
+]

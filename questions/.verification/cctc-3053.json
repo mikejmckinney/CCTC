@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-3053",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 944,
+    "keywords": [
+      "septic",
+      "workup",
+      "CBC",
+      "Blood",
+      "urine",
+      "cultures",
+      "CMV",
+      "EBV"
+    ],
+    "keyword_hash": "sha256:e9d44fe596bb8b8abf1a80129198dc18746d881d718e4dab616d4100d43ec364"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 944,
+      "keywords": [
+        "septic",
+        "workup",
+        "cultures",
+        "metabolic",
+        "panel",
+        "assessment",
+        "fever",
+        "source"
+      ],
+      "keyword_hash": "sha256:d5ec91f5a0c9a1a878a8cc6a9fc902be2e668492c85bd6804136518b1f438db8"
+    }
+  ]
+}
