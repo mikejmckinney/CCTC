@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1098",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": ["010101"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When counseling a kidney transplant candidate who continues to smoke, which long-term post-transplant risk should the coordinator emphasize per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Increased risk for cardiovascular events, renal fibrosis, rejection, and malignancy" },
+      { "id": "B", "text": "Complete protection from post-transplant infections" },
+      { "id": "C", "text": "Guaranteed improvement in graft function regardless of immunosuppression adherence" },
+      { "id": "D", "text": "Smoking affects only heart recipients and not kidney recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Kidney transplant recipients who smoke are at increased risk for cardiovascular events, renal fibrosis, rejection, and malignancy.",
+      "rationale_incorrect": {
+        "B": "Smoking increases complication risk rather than protecting against infection.",
+        "C": "Smoking is associated with graft-related and cardiovascular complications rather than guaranteed improvement.",
+        "D": "Kidney recipients who smoke have documented risks including renal fibrosis and rejection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Consultations → Pulmonary evaluation → 2.e.iii.",
+      "quote_hint": "Kidney transplant recipients who smoke are at increased risk for cardiovascular events, renal fibrosis, rejection, and malignancy",
+      "keywords": ["Kidney", "transplant", "recipients", "smoke", "cardiovascular", "events", "renal", "fibrosis"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Pulmonary evaluation → 2.e.iii. (kidney smoking risks: cardiovascular events, fibrosis, rejection, malignancy); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Kidney-smoking counseling angle distinct from liver smoking complications (cctc-2095) and smoking cessation before listing (cctc-2020); anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1099",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A post-transplant recipient who must clean a cat litter box asks about infection-prevention precautions. Which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Wear disposable gloves and a surgical mask if handling cat litter is unavoidable" },
+      { "id": "B", "text": "No precautions are needed because household pets are always sterile" },
+      { "id": "C", "text": "Recipients should handle all animal feces without gloves to build immunity" },
+      { "id": "D", "text": "Cat litter exposure is encouraged immediately after transplant to reduce stress" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Animal-safety teaching advises avoiding handling fecal matter especially cat litter where bacteria may become airborne; if unavoidable, the recipient should wear disposable gloves and a surgical mask.",
+      "rationale_incorrect": {
+        "B": "Pet-related exposures can transmit infection; precautions are recommended.",
+        "C": "Handling fecal matter without protection increases infection risk in immunosuppressed recipients.",
+        "D": "Cat litter handling is avoided when possible rather than encouraged early post-transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → infection prevention → v. Animal safety",
+      "quote_hint": "avoid handling fecal matter especially cat litter … recipient should wear gloves (disposable) and a surgical mask",
+      "keywords": ["cat", "litter", "fecal", "matter", "gloves", "disposable", "surgical", "mask"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → infection prevention → v. Animal safety (gloves and mask if cat litter handling unavoidable); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Cat-litter precaution angle distinct from visitor infection postponement (cctc-1092) and well-water Cryptosporidium teaching (cctc-1095); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1100",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When should a transplant recipient consider getting a new pet according to standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Postpone new pets until immunosuppression is more stable, about 6 to 12 months after transplant" },
+      { "id": "B", "text": "Acquire multiple new pets immediately after hospital discharge" },
+      { "id": "C", "text": "New pets are permanently contraindicated after every transplant" },
+      { "id": "D", "text": "Only after 10 years regardless of immunosuppression status" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipients are advised to postpone getting new pets until immunosuppression is more stable, typically 6 to 12 months after transplant.",
+      "rationale_incorrect": {
+        "B": "Early post-transplant period is not the recommended time to acquire new pets.",
+        "C": "New pets may be considered later when immunosuppression is more stable rather than being permanently prohibited.",
+        "D": "Guidance cites 6 to 12 months after transplant rather than a fixed 10-year delay."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → infection prevention → v. Animal safety",
+      "quote_hint": "Postpone getting new pets until immunosuppression is more stable (6 to 12 months after transplant)",
+      "keywords": ["Postpone", "getting", "new", "pets", "immunosuppression", "stable", "months", "after"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → infection prevention → v. Animal safety (postpone new pets 6–12 months post-transplant); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. New-pet timing angle paired with cat-litter precautions (cctc-1099); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1101",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating teaching on Listeria and Nocardia infections after transplantation. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Listeriosis may occur within the first two post-transplant months but can occur years later." },
+      { "id": "II", "text": "Listeria meningitis is associated with high mortality in solid-organ transplant recipients." },
+      { "id": "III", "text": "Nocardia most commonly affects the lung in transplant recipients." },
+      { "id": "IV", "text": "Nocardia never causes brain abscesses or meningitis." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Listeriosis typically occurs early but may occur years later, Listeria meningitis carries high mortality, and Nocardia most commonly involves the lung. Nocardia may also affect the brain, skin, and bone, so statement IV is false.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—lung is the most common Nocardia site.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because extrapulmonary brain involvement may occur."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 213,
+      "section": "Ch. 5, Infectious Diseases → Listeriosis / Nocardiosis → C.–D.",
+      "quote_hint": "Typically occurs within first two posttransplant months … high mortality rate … Most common site: lung … Extrapulmonary sites: brain",
+      "keywords": ["Listeriosis", "posttransplant", "months", "mortality", "Nocardia", "lung", "brain", "abscesses"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Listeriosis / Nocardiosis → C.–D. (timing, mortality, pulmonary and extrapulmonary Nocardia sites); PDF p. 213 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Listeria/Nocardia teaching combo distinct from TMP-SMX prophylaxis benefit (cctc-3068); anchor verified on Cupples p. 213.",
+    "last_updated": "2026-06-05"
+  }
+]

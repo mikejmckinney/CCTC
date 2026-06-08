@@ -10,6 +10,10 @@ import {
   isPlainObject,
 } from './lib.mjs';
 
+/** Bank authoring band for `recipient_age: pediatric` (exam forms ~5%; bank slightly higher). */
+const PEDIATRIC_BANK_TARGET_LOW = 0.065;
+const PEDIATRIC_BANK_TARGET_HIGH = 0.07;
+
 export async function buildCoverageReport(allItems, newBlueprint, legacyBlueprint, context, warnings) {
   const reviewedItems = allItems.filter(({ item }) => isPlainObject(item) && item.status === 'reviewed');
   const draftItems = allItems.filter(({ item }) => isPlainObject(item) && item.status === 'draft');
@@ -248,10 +252,34 @@ function summarizeAgeCoverage(bankItems, warnings) {
       counts[age] += 1;
     }
   }
+
+  const bankTotal = bankItems.length;
+  const pediatricShare = bankTotal > 0 ? counts.pediatric / bankTotal : 0;
+  const targetBand = `${formatPercent(PEDIATRIC_BANK_TARGET_LOW)}–${formatPercent(PEDIATRIC_BANK_TARGET_HIGH)}`;
+
   if (counts.pediatric === 0 && counts.both === 0) {
     warnings.push('[coverage:age] no pediatric or both-age items in the bank yet');
   }
-  return counts;
+
+  if (bankTotal >= MIN_SAMPLE_FOR_DISTRIBUTION_WARNINGS) {
+    if (pediatricShare < PEDIATRIC_BANK_TARGET_LOW) {
+      warnings.push(
+        `[coverage:age] pediatric share is ${formatPercent(pediatricShare)} vs bank target ${targetBand} (${counts.pediatric} pediatric of ${bankTotal}; both-age items do not count)`,
+      );
+    } else if (pediatricShare > PEDIATRIC_BANK_TARGET_HIGH) {
+      warnings.push(
+        `[coverage:age] pediatric share is ${formatPercent(pediatricShare)} vs bank target ${targetBand} (${counts.pediatric} pediatric of ${bankTotal}; both-age items do not count)`,
+      );
+    }
+  }
+
+  return {
+    ...counts,
+    bankTotal,
+    pediatricShare,
+    pediatricTargetLow: PEDIATRIC_BANK_TARGET_LOW,
+    pediatricTargetHigh: PEDIATRIC_BANK_TARGET_HIGH,
+  };
 }
 
 async function buildInfrastructureReport(context) {

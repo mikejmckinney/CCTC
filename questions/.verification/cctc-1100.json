@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-1100",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 116,
+    "keywords": [
+      "Postpone",
+      "getting",
+      "new",
+      "pets",
+      "immunosuppression",
+      "stable",
+      "months",
+      "after"
+    ],
+    "keyword_hash": "sha256:d963ad9cac39799fcc79ca08bcec67ea29b510be4ff1ee55c2842810d98a65ae"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "keywords": [
+        "animal",
+        "safety",
+        "postpone",
+        "months",
+        "post-transplant"
+      ],
+      "keyword_hash": "sha256:94e61fce37bf26f8758d737beb99b426a7a318e110e57140b3ba66a567ff818c"
+    }
+  ]
+}

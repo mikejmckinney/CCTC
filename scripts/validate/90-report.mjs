@@ -184,17 +184,24 @@ export function printCoverageDashboard(coverage, coverageWarnings = []) {
     ]),
   ));
 
-  console.log('Recipient age');
+  console.log('Recipient age (bank; pediatric target band excludes both)');
   console.log('');
+  const pediatricShareLabel =
+    coverage.ageSummary.bankTotal > 0
+      ? formatPercent(coverage.ageSummary.pediatricShare)
+      : 'n/a';
+  const pediatricTargetLabel = `${formatPercent(coverage.ageSummary.pediatricTargetLow)}–${formatPercent(coverage.ageSummary.pediatricTargetHigh)}`;
   console.log(renderTable(
     [
       { header: 'Age', minWidth: 10 },
       { header: 'Count', minWidth: 8 },
+      { header: 'Bank %', minWidth: 10 },
+      { header: 'Target', minWidth: 12 },
     ],
     [
-      ['adult', String(coverage.ageSummary.adult)],
-      ['pediatric', String(coverage.ageSummary.pediatric)],
-      ['both', String(coverage.ageSummary.both)],
+      ['adult', String(coverage.ageSummary.adult), '', ''],
+      ['pediatric', String(coverage.ageSummary.pediatric), pediatricShareLabel, pediatricTargetLabel],
+      ['both', String(coverage.ageSummary.both), '(excluded)', ''],
     ],
   ));
 

@@ -105,7 +105,8 @@ Tag every item to the **2026-07 blueprint** (the legacy blueprint is derived via
 - `task` (e.g. `010500`) — recommended; enables task-level coverage and the legacy crosswalk.
 - `knowledge_codes` (e.g. `["010504"]`) — optional; map to the specific outline knowledge/skill statements for fine-grained coverage auditing.
 - `cognitive_level` — `recall` / `application` / `analysis`. Aim for roughly **35% / 52% / 13%** across the bank. Do not write only recall items.
-- `organ` — about **50% `general`**; distribute the rest per the blueprint `organ_targets` (kidney heaviest, then liver, lung, heart, then small counts for pancreas/intestine/multi). Include some **pediatric** items (small share).
+- `organ` — about **50% `general`**; distribute the rest per the blueprint `organ_targets` (kidney heaviest, then liver, lung, heart, then small counts for pancreas/intestine/multi).
+- `recipient_age` — tag every item `adult`, `pediatric`, or `both`. Aim for **`pediatric` at 6.5–7% of the bank** (scales with bank size — e.g. ~33–35 of 500 items) so the practice bank reflects the share of pediatric solid-organ recipients in population estimates. The live **CCTC exam** pediatric mix is lower (~**5%** on a scored form); the bank target is intentionally slightly higher so the sampler has enough pediatric-only stems without over-weighting them on every practice session. Use `pediatric` when the vignette or teaching point is specific to children; use `both` when content applies equally to all ages (do **not** count `both` toward the pediatric share). After each batch, check `npm run validate:coverage` — pediatric share should stay in the 6.5–7% band.
 
 ## How to reach ~500 with good coverage
 

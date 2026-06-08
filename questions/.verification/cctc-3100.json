@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-3100",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 210,
+    "keywords": [
+      "Influenza",
+      "viruses",
+      "mild",
+      "self-limiting",
+      "serious",
+      "secondary",
+      "infections",
+      "Frequent"
+    ],
+    "keyword_hash": "sha256:eee2ef005e574306c8b2b8527f9d6c2c75edb1ceb3819f4dc769b286f0744ac0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 210,
+      "keywords": [
+        "influenza",
+        "infections",
+        "range",
+        "self-limiting",
+        "syndromes",
+        "serious",
+        "secondary"
+      ],
+      "keyword_hash": "sha256:6ddc7651e0519a01576e97ec26201a672dc66bb4f254f867d115702e6ea55eff"
+    }
+  ]
+}

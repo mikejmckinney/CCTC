@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3097",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A solid-organ transplant recipient develops listeriosis several weeks after transplantation. Which exposure route aligns with standard infection references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Ingestion of contaminated food" },
+      { "id": "B", "text": "Airborne transmission only across hospital ventilation systems" },
+      { "id": "C", "text": "Listeria occurs only from blood transfusion and never from food" },
+      { "id": "D", "text": "Listeria is transmitted exclusively through donor organ implantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Listeria monocytogenes listeriosis is transmitted by ingestion of contaminated food and may cause CNS infection with high mortality in solid-organ transplant recipients.",
+      "rationale_incorrect": {
+        "B": "Listeria transmission is described as foodborne ingestion rather than primarily airborne hospital spread.",
+        "C": "Contaminated food is the cited mode of transmission rather than transfusion alone.",
+        "D": "Foodborne acquisition is the described route rather than exclusive donor-organ transmission."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 213,
+      "section": "Ch. 5, Infectious Diseases → Listeriosis → C.5.",
+      "quote_hint": "Mode of transmission: ingestion of contaminated food",
+      "keywords": ["Mode", "transmission", "ingestion", "contaminated", "food", "Listeria", "monocytogenes"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Listeriosis → C.5. (foodborne transmission); PDF p. 213 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Listeria transmission angle paired with education combo (cctc-1101); distinct from unpasteurized-dairy teaching (cctc-1051); anchor verified on Cupples p. 213.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3098",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "When evaluating a transplant recipient with suspected Nocardia infection, which anatomic site is most commonly affected per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Lung with pneumonitis, pulmonary nodules, or pulmonary abscesses" },
+      { "id": "B", "text": "Isolated nail-bed infection without any pulmonary involvement" },
+      { "id": "C", "text": "Nocardia affects only the gastrointestinal tract in every case" },
+      { "id": "D", "text": "Nocardia is limited to urinary tract infections exclusively" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Nocardia asteroides is the most common species and the lung is the most common site, presenting as pneumonitis, pulmonary nodules, or pulmonary abscesses; extrapulmonary brain, skin, and bone involvement may also occur.",
+      "rationale_incorrect": {
+        "B": "Pulmonary involvement is the most common presentation rather than isolated nail-bed infection.",
+        "C": "Nocardia most commonly involves the lung rather than exclusively the GI tract.",
+        "D": "UTI is not described as the exclusive or most common Nocardia site."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 213,
+      "section": "Ch. 5, Infectious Diseases → Nocardiosis → D.1.–3.",
+      "quote_hint": "Most common species is Nocardia asteroides … Most common site: lung (pneumonitis, pulmonary nodules, pulmonary abscesses)",
+      "keywords": ["Nocardia", "asteroides", "Most", "common", "site", "lung", "pneumonitis", "pulmonary"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Nocardiosis → D.1.–3. (pulmonary presentation most common); PDF p. 213 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Nocardia pulmonary-presentation angle paired with listeria/nocardia combo (cctc-1101); anchor verified on Cupples p. 213.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3099",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "A lung transplant recipient develops community-acquired respiratory virus lower tract infection. Which clinical concern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Lower respiratory CARV infection may be associated with significant morbidity and mortality" },
+      { "id": "B", "text": "Community respiratory viruses never cause lower tract disease in transplant recipients" },
+      { "id": "C", "text": "CARV infections are benign and never require monitoring after transplant" },
+      { "id": "D", "text": "Only bacterial pathogens cause lower respiratory morbidity in solid-organ recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Community-acquired respiratory viruses are a frequent cause of disease in solid-organ transplant recipients, and lower respiratory tract infection with CARV can be associated with significant morbidity and mortality.",
+      "rationale_incorrect": {
+        "B": "CARV may involve the lower respiratory tract with serious outcomes in immunosuppressed recipients.",
+        "C": "CARV infections warrant monitoring because they may cause significant morbidity and mortality.",
+        "D": "Viral CARV lower respiratory infections are specifically highlighted as clinically significant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 209,
+      "section": "Ch. 5, Infectious Diseases → CARV → K.1.a.–b.",
+      "quote_hint": "Frequent cause of disease in SOT recipients … Lower respiratory tract infection with CARV can be associated with significant morbidity and mortality",
+      "keywords": ["Frequent", "cause", "disease", "SOT", "recipients", "Lower", "respiratory", "morbidity"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CARV → K.1.a.–b. (lower respiratory CARV morbidity/mortality); PDF p. 209 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. CARV lower-respiratory severity angle distinct from RSV transmission teaching (cctc-1093) and parainfluenza shedding (cctc-2091); anchor verified on Cupples p. 209.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3100",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is reviewing influenza and community respiratory virus teaching after transplantation. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Influenza virus infections may range from mild self-limiting illness to serious secondary bacterial infections." },
+      { "id": "II", "text": "Community-acquired respiratory viruses are a frequent cause of disease in solid-organ transplant recipients." },
+      { "id": "III", "text": "Influenza never causes secondary bacterial infections in transplant recipients." },
+      { "id": "IV", "text": "Community respiratory viruses cannot involve the lower respiratory tract." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Influenza may range from mild illness to serious secondary bacterial infections, and CARV are a frequent cause of disease in solid-organ recipients including lower tract involvement. Statements III and IV are false.",
+      "rationale_incorrect": {
+        "B": "Statement IV is false because lower respiratory CARV infection may be serious.",
+        "C": "Statements I and II are true; statements III and IV are false.",
+        "D": "Statements III and IV are false."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 210,
+      "section": "Ch. 5, Infectious Diseases → Influenza / CARV → 7.a. and K.1.",
+      "quote_hint": "Influenza viruses … range from mild, self-limiting syndromes to serious secondary infections … Frequent cause of disease in SOT recipients",
+      "keywords": ["Influenza", "viruses", "mild", "self-limiting", "serious", "secondary", "infections", "Frequent"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Influenza → 7.a. (influenza infections range from mild, self-limiting syndromes to serious secondary infections); PDF p. 210 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Influenza/CARV analysis combo distinct from inactivated influenza vaccination teaching (cctc-1048); anchor verified on Cupples p. 210.",
+    "last_updated": "2026-06-05"
+  }
+]

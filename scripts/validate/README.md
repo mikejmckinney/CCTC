@@ -65,7 +65,7 @@ npm run validate:stubs
 | `10-schema.mjs` | JSON Schema |
 | `20-integrity.mjs` | Options, task/domain, duplicate ids |
 | `30-references.mjs` | `verify-references.mjs` |
-| `40-coverage.mjs` | Blueprint gaps, task depth, infrastructure |
+| `40-coverage.mjs` | Blueprint gaps, task depth, age/cognitive mix, infrastructure |
 | `90-report.mjs` | Summary tables |
 
 ## CLI flags

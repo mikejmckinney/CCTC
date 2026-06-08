@@ -1,0 +1,44 @@
+{
+  "item_id": "cctc-1098",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 33,
+    "keywords": [
+      "Kidney",
+      "transplant",
+      "recipients",
+      "smoke",
+      "cardiovascular",
+      "events",
+      "renal",
+      "fibrosis"
+    ],
+    "keyword_hash": "sha256:3a4cfaa75862f15f990a11e2654cc95cba6a2a140222654aa190c5e656c342ec"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "keywords": [
+        "kidney",
+        "smoking",
+        "risks",
+        "cardiovascular",
+        "events",
+        "fibrosis",
+        "rejection",
+        "malignancy"
+      ],
+      "keyword_hash": "sha256:280fcfe6786f429cc42579dd3e6bb79aae0ed5b5efcb41e1eb26c2cd1d6f297b"
+    }
+  ]
+}

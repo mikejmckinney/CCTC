@@ -16,7 +16,7 @@ questions/
 - **Soft cap of 50 items per file.** When a file exceeds it, split it (e.g. `domain-3-postop/030100-030400.json`, `domain-3-postop/030500-030800.json`). This keeps diffs small and the app loads gracefully as the bank grows.
 - Anything under `_examples/` is for authors/reviewers and is excluded from the production bank path (the loader ignores paths beginning with `_`).
 - `questions/.verification/` holds per-item reference verification stubs (CI enforcement); excluded from exam sampling and bank loading.
-- **Bootstrap fallback:** when no non-`_` shards exist yet, the app may temporarily load `_examples` so both item formats can be exercised while the real bank is authored. Once domain shards land under `questions/domain-*`, only those files are used (currently **289 draft items** across `batch-01.json`–`batch-24.json` in each domain directory).
+- **Bootstrap fallback:** when no non-`_` shards exist yet, the app may temporarily load `_examples` so both item formats can be exercised while the real bank is authored. Once domain shards land under `questions/domain-*`, only those files are used (currently **301 draft items** across `batch-01.json`–`batch-25.json` in each domain directory).
 
 ## File format
 
@@ -32,7 +32,17 @@ Each file is a **JSON array of question objects**, each conforming to `schema/qu
 
 Tag every item to the **2026-07 blueprint**: `domain` (required), `task` (recommended), `knowledge_codes` (optional, for coverage auditing). The legacy (until 2026-06) blueprint derives its section via the crosswalk in `blueprints/cctc-thru-2026-06.json`, so you do **not** tag items twice. Use `legacy_section` only to override the crosswalk for an edge-case item.
 
-Also tag `cognitive_level` and `organ` so the sampler can mirror the real exam's mix.
+Also tag `cognitive_level`, `organ`, and `recipient_age` so the sampler can mirror the real exam's mix.
+
+### Recipient age (`recipient_age`)
+
+| Tag | When to use |
+|---|---|
+| `adult` | Default when the stem is adult-specific or age-neutral coordinator practice |
+| `pediatric` | Child/adolescent vignette or teaching point specific to pediatric transplant populations |
+| `both` | Content that applies equally across ages (does **not** count toward the pediatric bank target) |
+
+**Bank soft target:** `pediatric` items at **6.5–7%** of the full bank (population-based estimate of pediatric recipient share). The live CCTC exam pediatric mix is ~**5%**; the bank target is slightly higher so practice sessions have enough pediatric-only items without matching exam under-representation item-for-item. At ~500 items that is about **33–35** pediatric-tagged questions. Run `npm run validate:coverage` after each batch to see current share vs target.
 
 ## Current bank (draft)
 
