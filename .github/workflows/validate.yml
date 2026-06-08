@@ -63,8 +63,10 @@ jobs:
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
 
+      # Full `npm run build` requires local textbook indexes; CI uses validate:ci only.
+      # Stub enforcement runs in the `validate` job above (validate:stubs).
       - name: Build app for browser tests
-        run: npm run build
+        run: npm run build:ci
 
       - name: Run browser resume tests (Playwright runner)
         env:

@@ -76,8 +76,9 @@ Coverage output uses ASCII tables (Area / Current / Target / Gap). Use `validate
 
 ## Wire it into the build and CI
 
-- `npm run build` runs full `npm run validate` first.
-- `.github/workflows/validate.yml` runs `npm run validate:ci` then `npm run validate:stubs` after fetching/indexing OPTN policies PDF.
+- `npm run build` runs full `npm run validate` first (local gate).
+- `npm run build:ci` runs `validate:ci` then `tsc` + `vite build` — used by the e2e CI job (no textbook PDFs).
+- `.github/workflows/validate.yml`: **`validate` job** runs `validate:ci` then `validate:stubs` after fetching/indexing OPTN policies PDF; **`e2e` job** runs `build:ci` then Playwright.
 
 ## Output
 

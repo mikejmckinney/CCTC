@@ -185,6 +185,7 @@ These commands were verified against the current repo contents on 2026-06-01:
 ```bash
 npm test
 npm run build
+npm run build:ci                          # CI e2e build (validate:ci, no textbook PDFs)
 npm run validate
 npm run validate                              # full local gate (required before merge)
 npm run validate:ci                           # CI subset (format + OPTN live content)
@@ -203,7 +204,7 @@ Supporting file-grounded verification for those commands:
 - `package.json` defines `test`, `build`, `validate`, and `reference:*` scripts.
 - `scripts/reference.mjs` builds a gitignored page index under `docs/reference/.index/` for PDF lookup during authoring.
 - `scripts/validate.mjs` checks each item's `primary_anchor.keywords` against the index when present locally.
-- `.github/workflows/validate.yml` runs `npm ci`, `npm run validate:ci`, and `npm run validate:stubs` on push and pull request.
+- `.github/workflows/validate.yml` runs `validate:ci` + `validate:stubs` in the validate job and `build:ci` + Playwright in the e2e job on push and pull request.
 - `scripts/validate.mjs` is the validator invoked by both the local script and the workflow.
 - `src/data/questionBank.ts` confirms the current example fallback behavior when no primary shards exist.
 

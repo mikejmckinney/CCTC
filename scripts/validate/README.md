@@ -79,3 +79,5 @@ npm run validate:strict
 ```
 
 Use `npm run validate:ci` in CI — not `--allow-missing-index` (removed; use the explicit script instead).
+
+CI e2e uses `npm run build:ci` (`validate:ci` + compile + Vite build). Stub checks run in the parallel `validate` job via `validate:stubs`, not inside `build:ci`.
