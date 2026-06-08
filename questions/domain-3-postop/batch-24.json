@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3093",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "When monitoring a pediatric solid-organ transplant recipient for Pneumocystis jirovecii pneumonia (PCP), which timing statement aligns with standard pediatric infection references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "PCP typically occurs after the first month following transplantation" },
+      { "id": "B", "text": "PCP occurs only before the transplant operation" },
+      { "id": "C", "text": "PCP never occurs when any immunosuppression is used" },
+      { "id": "D", "text": "PCP is expected exclusively more than 2 years after every transplant" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pneumocystis jirovecii pneumonia typically occurs after the first month following transplantation, although trimethoprim-sulfamethoxazole prophylaxis has essentially eliminated this problem when used.",
+      "rationale_incorrect": {
+        "B": "PCP is a post-transplant fungal pneumonia rather than a preoperative process.",
+        "C": "Immunosuppression increases PCP risk; prophylaxis prevents disease rather than immunosuppression preventing all risk without prophylaxis.",
+        "D": "Standard references describe typical onset after the first post-transplant month rather than exclusively after 2 years."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "section": "Ch. 17, Pediatric Infections → fungal → 1. PCP → a.–b.",
+      "quote_hint": "Pneumocystis jirovecii … Typically occurs after the first month following transplantation",
+      "keywords": ["Pneumocystis", "jirovecii", "Typically", "occurs", "after", "first", "month", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → fungal infections → 1. PCP → b. (typically after first post-transplant month); PDF p. 943 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pediatric PCP timing angle distinct from TMP-SMX toxoplasma benefit (cctc-3068) and PCP discharge teaching (cctc-3042); anchor verified on Cupples p. 943.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3094",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "Which bacterial infection is described as the most common in pediatric renal transplant recipients per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Urinary tract infection, especially pyelonephritis" },
+      { "id": "B", "text": "Mediastinitis as the most common kidney transplant infection" },
+      { "id": "C", "text": "Ascending cholangitis without any urinary involvement" },
+      { "id": "D", "text": "Toxoplasmosis as the predominant early bacterial complication" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In pediatric renal transplant recipients, urinary tract infection—especially pyelonephritis with gram-negative organisms—is the most common bacterial infection.",
+      "rationale_incorrect": {
+        "B": "Mediastinitis is described among pediatric heart rather than kidney recipients.",
+        "C": "Ascending cholangitis is associated with pediatric liver transplantation rather than being the most common kidney infection.",
+        "D": "Toxoplasmosis is a parasitic infection rather than the most common bacterial complication in pediatric kidney recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "section": "Ch. 17, Pediatric Infections → bacterial → 3.a. Renal transplant recipients → i.",
+      "quote_hint": "Urinary tract infection, especially pyelonephritis, is the most common (gram-negative organisms)",
+      "keywords": ["Urinary", "tract", "infection", "especially", "pyelonephritis", "most", "common", "gram-negative"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → bacterial infections → 3.a.i. (pediatric kidney UTI/pyelonephritis most common); PDF p. 943 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pediatric kidney bacterial-infection epidemiology distinct from adult asymptomatic bacteriuria (cctc-3012) and pediatric rejection presentation (cctc-3087); anchor verified on Cupples p. 943.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3095",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric transplant recipient has a positive purified protein derivative (PPD) test before documented tuberculosis disease. Which post-transplant management step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Chest radiograph and isoniazid for at least 9 months post-transplant" },
+      { "id": "B", "text": "No further evaluation because PPD positivity is ignored after transplant" },
+      { "id": "C", "text": "Immediate isolated kidney transplantation without infectious assessment" },
+      { "id": "D", "text": "Permanent discontinuation of all immunosuppression for 9 months" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Patients with tuberculosis history or positive PPD should have a chest x-ray and receive isoniazid for at least 9 months post-transplant.",
+      "rationale_incorrect": {
+        "B": "Positive PPD or TB history triggers chest imaging and isoniazid prophylaxis rather than being ignored.",
+        "C": "Infectious screening and prophylaxis are part of post-transplant management rather than bypassed.",
+        "D": "Isoniazid prophylaxis is added while immunosuppression continues per protocol rather than stopping all immunosuppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "section": "Ch. 17, Pediatric Infections → Tuberculosis → 2.b.",
+      "quote_hint": "positive purified protein derivative (PPD) test should have a chest x-ray and receive isoniazid for at least 9 months post transplant",
+      "keywords": ["positive", "purified", "protein", "derivative", "PPD", "chest", "x-ray", "isoniazid"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → Tuberculosis → 2.b. (chest x-ray and isoniazid ≥9 months for PPD positivity); PDF p. 943 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pediatric TB/PPD prophylaxis angle distinct from community respiratory viruses (cctc-1056) and PCP timing (cctc-3093); anchor verified on Cupples p. 943.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3096",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": ["030202"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "A coordinator is updating pediatric post-transplant bacterial infection teaching by organ type. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "In pediatric kidney recipients, urinary tract infection—especially pyelonephritis—is the most common bacterial infection." },
+      { "id": "II", "text": "In pediatric heart recipients, mediastinitis may occur with Staphylococcus aureus or gram-negative organisms." },
+      { "id": "III", "text": "In pediatric liver recipients, ascending cholangitis is associated with biliary tract abnormalities." },
+      { "id": "IV", "text": "In pediatric lung recipients, bacterial pneumonia never involves Pseudomonas species." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Pediatric kidney recipients most commonly develop UTI/pyelonephritis, heart recipients may develop mediastinitis with S. aureus or gram-negative organisms, and liver recipients may develop ascending cholangitis associated with biliary abnormalities. Pediatric lung pneumonia may involve Pseudomonas, so statement IV is false.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—ascending cholangitis is associated with biliary tract abnormalities in pediatric liver recipients.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because Pseudomonas is among cited pediatric lung pneumonia pathogens."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "section": "Ch. 17, Pediatric Infections → bacterial → 3.a.–d.",
+      "quote_hint": "Urinary tract infection, especially pyelonephritis, is the most common … Mediastinitis (Staphylococcus aureus and gram-negative organisms) … Ascending cholangitis associated with biliary tract abnormalities … pneumonia: Staphylococcus aureus or Pseudomonas",
+      "keywords": ["Urinary", "tract", "infection", "pyelonephritis", "Mediastinitis", "Staphylococcus", "cholangitis", "Pseudomonas"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → bacterial infections → 3.a.–d. (organ-specific pediatric bacterial infection patterns); PDF p. 943 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pediatric organ-specific bacterial-infection combo paired with UTI recall item (cctc-3094); anchor verified on Cupples p. 943.",
+    "last_updated": "2026-06-05"
+  }
+]

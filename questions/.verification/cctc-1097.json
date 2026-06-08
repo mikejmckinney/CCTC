@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1097",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 35,
+    "keywords": [
+      "Right",
+      "heart",
+      "catheterization",
+      "pulmonary",
+      "hypertension",
+      "contraindication",
+      "Coronary",
+      "angiography"
+    ],
+    "keyword_hash": "sha256:f051b7ba8c2a880848dd46d0fc781b3b5d348596d3ad11241e07124d6e913640"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 35,
+      "keywords": [
+        "pulmonary",
+        "assessment",
+        "revascularization",
+        "option",
+        "listed-patient",
+        "monitoring"
+      ],
+      "keyword_hash": "sha256:6f8d08f878b5e6b2b584c84a70c2d9cc7d22992488f7cbd267dca2e26012308e"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1094",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "When counseling a heart transplant candidate about pulmonary hypertension findings, which hemodynamic pattern is described as a contraindication to heart transplantation in standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Severe, fixed pulmonary hypertension with pulmonary vascular resistance greater than 5 Wood units" },
+      { "id": "B", "text": "Mild reversible pulmonary hypertension that improves with vasodilator testing" },
+      { "id": "C", "text": "Isolated left ventricular dysfunction without any pulmonary pressure data" },
+      { "id": "D", "text": "Normal right heart pressures documented on every candidate regardless of symptoms" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Severe, fixed pulmonary hypertension—typically pulmonary vascular resistance greater than 5 Wood units or transpulmonary gradient greater than 20—is a contraindication to heart transplantation.",
+      "rationale_incorrect": {
+        "B": "Reversible pulmonary hypertension may be treated and reassessed rather than representing fixed contraindication.",
+        "C": "Pulmonary hemodynamics are specifically evaluated because severe fixed pulmonary hypertension may contraindicate isolated heart transplant.",
+        "D": "Right heart catheterization findings guide candidacy rather than assuming normal pressures in all candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 35,
+      "section": "Ch. 1, Evaluation → Heart transplantation → 4.a.i. Right heart catheterization",
+      "quote_hint": "Severe, fixed pulmonary hypertension (typically pulmonary vascular resistance >5 Wood units or transpulmonary gradient >20) is a contraindication to heart transplantation",
+      "keywords": ["Severe", "fixed", "pulmonary", "hypertension", "pulmonary", "vascular", "resistance", "Wood"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart transplantation → 4.a.i. (severe fixed pulmonary hypertension as heart transplant contraindication); PDF p. 35 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Fixed pulmonary-hypertension contraindication angle distinct from Eisenmenger heart-lung indication (cctc-1063) and waitlist RHC monitoring (cctc-2057); anchor verified on Cupples p. 35.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1095",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "A post-transplant recipient who drinks well water asks what infection-prevention step aligns with standard dietary and waterborne guidance.",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Well water may need testing for organisms such as Cryptosporidium that place immunosuppressed patients at risk" },
+      { "id": "B", "text": "Well water is always safer than municipal water and requires no precautions" },
+      { "id": "C", "text": "Immunosuppressed recipients should ignore local boil-water advisories" },
+      { "id": "D", "text": "Only municipal water supplies can harbor waterborne pathogens" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waterborne infection prevention includes testing drinking water from wells for organisms that may place immunosuppressed patients at risk, such as Cryptosporidium, and observing local boil-water advisories.",
+      "rationale_incorrect": {
+        "B": "Well water may require testing rather than being assumed universally safe.",
+        "C": "Recipients should observe boil-water advisories rather than ignoring them.",
+        "D": "Well water is specifically highlighted as a source that may need organism testing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → infection prevention → iv. Waterborne infections",
+      "quote_hint": "Drinking water from wells may need to be tested for organisms … (e.g., Cryptosporidium)",
+      "keywords": ["Drinking", "water", "wells", "tested", "organisms", "Cryptosporidium", "immunosuppressed", "risk"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → infection prevention → iv. Waterborne infections (well-water testing for Cryptosporidium risk); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Well-water Cryptosporidium angle distinct from unpasteurized-dairy teaching (cctc-1051) and hot-tub environmental guidance (cctc-1052); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1096",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": ["010604"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric solid-organ transplant recipient has fever after transplantation. Which antipyretic guidance aligns with standard pediatric infection references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Acetaminophen is recommended for temperature elevations" },
+      { "id": "B", "text": "Nonsteroidal anti-inflammatory drugs are preferred over acetaminophen in every pediatric recipient" },
+      { "id": "C", "text": "Antipyretics should be withheld until 1 year after transplant in all children" },
+      { "id": "D", "text": "Fever never requires evaluation in immunosuppressed pediatric recipients" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Acetaminophen is recommended for temperature elevations in pediatric transplant populations because nonsteroidal anti-inflammatory medications may impair compromised hepatic or renal function.",
+      "rationale_incorrect": {
+        "B": "NSAIDs may impair compromised hepatic or renal function; acetaminophen is recommended instead.",
+        "C": "Antipyretic use is not deferred for a full year when fever management is needed.",
+        "D": "Fever evaluation includes history, examination, and septic workup when no source is identified."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 944,
+      "section": "Ch. 17, Pediatric Infections → fever evaluation → D.",
+      "quote_hint": "Acetaminophen is recommended for temperature elevations as nonsteroidal anti-inflammatory medications may impair compromised hepatic/renal function",
+      "keywords": ["Acetaminophen", "recommended", "temperature", "elevations", "nonsteroidal", "anti-inflammatory", "hepatic", "renal"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → fever evaluation → D. (acetaminophen preferred over NSAIDs in pediatric recipients); PDF p. 944 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Twenty-first pediatric recipient in bank; acetaminophen fever-management angle distinct from pediatric septic workup (cctc-3056) and community-infection severity (cctc-1056); anchor verified on Cupples p. 944.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1097",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": ["010201"],
+    "cognitive_level": "analysis",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "A coordinator is preparing heart transplant evaluation teaching materials. Evaluate the following statements about cardiac catheterization:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Right heart catheterization assesses right heart function and pulmonary hypertension." },
+      { "id": "II", "text": "Severe fixed pulmonary hypertension may contraindicate heart transplantation." },
+      { "id": "III", "text": "Coronary angiography may identify lesions treatable without transplantation." },
+      { "id": "IV", "text": "Right heart pressures never require re-evaluation after a patient is listed." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Right heart catheterization evaluates pulmonary hemodynamics, severe fixed pulmonary hypertension may contraindicate heart transplant, and coronary angiography may identify revascularizable lesions that relieve symptoms without transplant. Listed patients should have right heart pressures re-evaluated at regular intervals, so statement IV is false.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—coronary angiography may identify treatable coronary disease.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because right heart pressures are re-evaluated after listing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 35,
+      "section": "Ch. 1, Evaluation → Heart transplantation → 4.a.i.–ii.",
+      "quote_hint": "Right heart catheterization … pulmonary hypertension … contraindication to heart transplantation … Coronary angiography … lesions amenable to intervention … right heart pressures should be re-evaluated at regular intervals",
+      "keywords": ["Right", "heart", "catheterization", "pulmonary", "hypertension", "contraindication", "Coronary", "angiography"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart transplantation → 4.a.i.–ii. (RHC pulmonary assessment, LHC revascularization option, listed-patient RHC monitoring); PDF p. 35 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Heart-catheterization teaching combo distinct from initial cath requirement (cctc-2092) and fixed-PHTN recall item (cctc-1094); anchor verified on Cupples p. 35.",
+    "last_updated": "2026-06-05"
+  }
+]

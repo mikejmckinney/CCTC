@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-1094",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 35,
+    "keywords": [
+      "Severe",
+      "fixed",
+      "pulmonary",
+      "hypertension",
+      "pulmonary",
+      "vascular",
+      "resistance",
+      "Wood"
+    ],
+    "keyword_hash": "sha256:79fee600c8c09099a3bb447d4d689435026e074bbdc8ba4c619cd0dd619f22e0"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 35,
+      "keywords": [
+        "severe",
+        "fixed",
+        "pulmonary",
+        "hypertension",
+        "heart",
+        "contraindication"
+      ],
+      "keyword_hash": "sha256:0e2e68099367895301efe27a36572a54bd12dbb7c59386fae61118fe1fdea547"
+    }
+  ]
+}

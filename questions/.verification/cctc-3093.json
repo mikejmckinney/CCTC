@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3093",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 943,
+    "keywords": [
+      "Pneumocystis",
+      "jirovecii",
+      "Typically",
+      "occurs",
+      "after",
+      "first",
+      "month",
+      "transplantation"
+    ],
+    "keyword_hash": "sha256:eb69e3e0397ef0f3e7baa6fcaf2f0aad0ff5767955962454ba7cef5e362af710"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "keywords": [
+        "typically",
+        "after",
+        "first",
+        "post-transplant",
+        "month"
+      ],
+      "keyword_hash": "sha256:4c34fa28571055f8d7081c5e9e7fff107195d190d00ed103e419e1deca415753"
+    }
+  ]
+}
