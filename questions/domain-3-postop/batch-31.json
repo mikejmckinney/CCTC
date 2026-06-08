@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-3121",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating post-transplant bone-health care, which medication aligns with standard references for treating osteopenia or osteoporosis?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Denosumab (Prolia)" },
+      { "id": "B", "text": "No pharmacologic therapy is ever used for post-transplant bone disease" },
+      { "id": "C", "text": "Denosumab is permanently contraindicated in all transplant recipients" },
+      { "id": "D", "text": "Only intravenous iron replaces bone-density therapy" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Treatment of osteopenia or osteoporosis may include denosumab (Prolia), bisphosphonates, calcitonin, hormone replacement in selected patients, calcium and vitamin D, and exercise.",
+      "rationale_incorrect": {
+        "B": "Multiple pharmacologic bone therapies are listed when indicated.",
+        "C": "Denosumab is a listed treatment option rather than being universally contraindicated.",
+        "D": "Denosumab is a bone-directed therapy rather than iron supplementation alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Prevent or treat osteopenia/osteoporosis",
+      "quote_hint": "Denosumab (Prolia)",
+      "keywords": ["Denosumab", "Prolia", "osteopenia", "osteoporosis", "Prevent", "treat"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 2.d. (denosumab [Prolia]); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Denosumab therapy angle distinct from bisphosphonate counseling (cctc-3118) and calcium/vitamin D recall (cctc-3117); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3122",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": ["030501"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A post-transplant recipient with osteoporosis asks about non-bisphosphonate medication options. Which therapy aligns with standard bone-health references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Calcitonin (Miacalcin nasal)" },
+      { "id": "B", "text": "Calcitonin is never used after transplantation" },
+      { "id": "C", "text": "Only live-virus vaccines treat osteoporosis" },
+      { "id": "D", "text": "Nasal calcitonin is contraindicated in every recipient regardless of indication" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bone-health treatment options include calcitonin (Miacalcin nasal), denosumab, bisphosphonates, hormone replacement in selected patients, and calcium and vitamin D supplementation.",
+      "rationale_incorrect": {
+        "B": "Calcitonin is listed among post-transplant bone therapies.",
+        "C": "Calcitonin is a bone-directed therapy rather than a vaccine.",
+        "D": "Calcitonin is an option when indicated rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Prevent or treat osteopenia/osteoporosis",
+      "quote_hint": "Calcitonin (Miacalcin nasal)",
+      "keywords": ["Calcitonin", "Miacalcin", "nasal", "osteopenia", "osteoporosis"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 2.c. (calcitonin [Miacalcin nasal]); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Calcitonin therapy angle distinct from denosumab recall (cctc-3121) and bisphosphonate application item (cctc-3118); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3123",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "During long-term follow-up of a liver transplant recipient on calcineurin inhibitors, the coordinator reviews renal dysfunction risk. Which outcome aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Renal dysfunction may progress to renal failure requiring kidney transplantation" },
+      { "id": "B", "text": "Immunosuppression prevents all renal dysfunction after nonrenal transplant" },
+      { "id": "C", "text": "Renal dysfunction never progresses beyond mild laboratory changes" },
+      { "id": "D", "text": "Kidney transplantation is never required for immunosuppression-related renal failure" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term immunosuppression teaching notes that renal dysfunction may develop over time from medications, pre-existing kidney disease, infection, or hypovolemia and may progress to renal failure requiring kidney transplantation.",
+      "rationale_incorrect": {
+        "B": "Calcineurin inhibitors and other factors contribute to renal dysfunction rather than preventing it.",
+        "C": "Renal dysfunction may progress to renal failure in some recipients.",
+        "D": "Kidney transplantation may be required when renal failure develops."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects of immunosuppression → iv. Renal dysfunction",
+      "quote_hint": "May progress to renal failure and need for kidney transplantation",
+      "keywords": ["Renal", "dysfunction", "progress", "renal", "failure", "kidney", "transplantation"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → iv. Renal dysfunction (may progress to renal failure requiring kidney transplant); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Renal-dysfunction progression angle distinct from long-term IS combo (cctc-1038) and tacrolimus nephrotoxicity item (cctc-1023); anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-3124",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": ["030401"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating post-transplant posttransplant lymphoproliferative disease (PTLD) treatment teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Reduction or withdrawal of immunosuppression is a treatment option for PTLD." },
+      { "id": "II", "text": "Rituximab may be used in PTLD management." },
+      { "id": "III", "text": "Radiotherapy is never used for PTLD." },
+      { "id": "IV", "text": "Surgery may be used for localized PTLD disease." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "PTLD management includes immunosuppression reduction, rituximab, and surgery for localized disease. Statement III is false because radiotherapy is listed among PTLD treatment options.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—surgery may be used for localized disease.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because radiotherapy is a listed treatment option."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Reduction or withdrawal of immunosuppression … Rituximab … Surgery for localized disease … Radiotherapy",
+      "keywords": ["Reduction", "withdrawal", "immunosuppression", "Rituximab", "Surgery", "localized", "Radiotherapy"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.a., 4.c., 4.f., and 4.h. (IS reduction, rituximab, surgery, radiotherapy); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. PTLD treatment-modality combo distinct from PTLD risk/prevention combo (cctc-3112) and rituximab single-item counseling (cctc-2122); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-3122",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 322,
+    "keywords": [
+      "Calcitonin",
+      "Miacalcin",
+      "nasal",
+      "osteopenia",
+      "osteoporosis"
+    ],
+    "keyword_hash": "sha256:4d90208c8da4193094050044ffb102e51128ddc2880355cd6088bee5302d73c7"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "keywords": [
+        "calcitonin",
+        "miacalcin",
+        "nasal"
+      ],
+      "keyword_hash": "sha256:3fc9d5420621d0929abc7b6f53e3cd387cb19831ee1028f487672f0ef9654bdc"
+    }
+  ]
+}

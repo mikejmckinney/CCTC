@@ -1,0 +1,43 @@
+{
+  "item_id": "cctc-1125",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 121,
+    "keywords": [
+      "discuss",
+      "potential",
+      "pregnancy",
+      "transplant",
+      "team",
+      "Males",
+      "father",
+      "Postpone"
+    ],
+    "keyword_hash": "sha256:ccdbf88087dad71adb02f9a85cea9f75fe4d2e85f34bda606f245788516005f5"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "keywords": [
+        "obstetric",
+        "discussion",
+        "males",
+        "father",
+        "child",
+        "postpone",
+        "until"
+      ],
+      "keyword_hash": "sha256:6fbeb091a0ae6c29bb61c7c3589d0de987bde1ad6489d2fe0676b4941c8574ef"
+    }
+  ]
+}

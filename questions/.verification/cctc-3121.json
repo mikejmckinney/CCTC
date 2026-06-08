@@ -1,0 +1,36 @@
+{
+  "item_id": "cctc-3121",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 322,
+    "keywords": [
+      "Denosumab",
+      "Prolia",
+      "osteopenia",
+      "osteoporosis",
+      "Prevent",
+      "treat"
+    ],
+    "keyword_hash": "sha256:ed99083effdcf709f60230e439ec2b688bbed52ce158ddb8f07f6b0a01989dcb"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "keywords": [
+        "denosumab",
+        "prolia"
+      ],
+      "keyword_hash": "sha256:228a58f1a25233362d7c219e083cd54b7d5e37954d4ec75e513d7fb0c013109f"
+    }
+  ]
+}

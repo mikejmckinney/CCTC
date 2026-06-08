@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cctc-1122",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When teaching sexual health after transplantation, which infection-prevention measure aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Encourage use of condoms to prevent sexually transmitted diseases" },
+      { "id": "B", "text": "Condoms are unnecessary because immunosuppression prevents sexually transmitted diseases" },
+      { "id": "C", "text": "Sexually transmitted disease prevention requires permanent abstinence for all recipients" },
+      { "id": "D", "text": "Only pediatric recipients need sexually transmitted disease prevention counseling" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching includes encouraging use of condoms to prevent sexually transmitted diseases along with contraception and pregnancy counseling.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressed recipients remain at infection risk and benefit from condom counseling.",
+        "C": "Condom use is recommended rather than universal permanent abstinence.",
+        "D": "Sexual health teaching applies to adult recipients as well as pediatric counseling on related topics."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health → iii.",
+      "quote_hint": "Encourage use of condoms to prevent sexually transmitted diseases",
+      "keywords": ["Encourage", "condoms", "prevent", "sexually", "transmitted", "diseases"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → iii. (condoms to prevent sexually transmitted diseases); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Condom/STD-prevention angle distinct from pregnancy-timing counseling (cctc-1091) and pediatric HPV teaching (cctc-1087); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1123",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A female transplant recipient asks about oral contraception after transplantation. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Discuss oral contraception with the provider because it may be contraindicated due to thromboembolic risk" },
+      { "id": "B", "text": "All oral contraceptives are safe without provider discussion in every recipient" },
+      { "id": "C", "text": "Oral contraception is the only recommended contraceptive method after transplant" },
+      { "id": "D", "text": "Thromboembolic risk is irrelevant to contraception counseling after transplantation" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching includes discussing oral contraception with the provider because it may be contraindicated due to risk of thromboembolic events.",
+      "rationale_incorrect": {
+        "B": "Oral contraception requires individualized provider discussion rather than universal safety.",
+        "C": "Multiple contraceptive and pregnancy-planning options are discussed rather than oral contraception alone.",
+        "D": "Thromboembolic risk is specifically cited as a reason for provider discussion."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health → iv.",
+      "quote_hint": "Discuss use of oral contraception with provider; may be contraindicated due to risk of thromboembolic events",
+      "keywords": ["Discuss", "oral", "contraception", "provider", "contraindicated", "thromboembolic", "events"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → iv. (oral contraception may be contraindicated due to thromboembolic risk); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Oral-contraception counseling angle distinct from condom teaching (cctc-1122) and pregnancy postponement (cctc-1091); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1124",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "When teaching recipients about appearance changes after transplantation, which effect aligns with standard long-term medication references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Weight gain and hair loss may occur with certain medications" },
+      { "id": "B", "text": "Immunosuppression prevents all cosmetic or body-image changes" },
+      { "id": "C", "text": "Hair loss never occurs after transplantation" },
+      { "id": "D", "text": "Weight gain is impossible on any immunosuppressive regimen" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Appearance teaching notes that transplantation may lead to body image changes associated with medications and surgical sequelae, including weight gain and hair loss with certain drugs.",
+      "rationale_incorrect": {
+        "B": "Medication and surgical sequelae can affect appearance and body image.",
+        "C": "Hair loss may occur with certain immunosuppressive medications.",
+        "D": "Weight gain may occur with certain medications rather than being impossible."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → m. Appearance",
+      "quote_hint": "Weight gain and hair loss may occur with certain medications",
+      "keywords": ["Weight", "gain", "hair", "loss", "certain", "medications", "Appearance", "body"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → m. Appearance → ii. (weight gain and hair loss with certain medications); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Body-image/appearance angle distinct from cyclosporine cosmetic effects (cctc-3045) and sexual-health counseling (cctc-1122); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-1125",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": ["010504"],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A coordinator is updating sexual and reproductive health teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      { "id": "I", "text": "Recipients should discuss potential pregnancy with the transplant team and obstetrician." },
+      { "id": "II", "text": "Males may father a child after transplantation." },
+      { "id": "III", "text": "Pregnancy should begin immediately at hospital discharge without team discussion." },
+      { "id": "IV", "text": "Pregnancy is generally postponed until 1 year after transplant when immunosuppressant doses are likely lower." }
+    ],
+    "options": [
+      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
+      { "id": "B", "text": "I, II, and IV only", "selects": ["I", "II", "IV"] },
+      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
+      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Pregnancy planning includes team and obstetric discussion, males may father children after transplant, and pregnancy is generally postponed until 1 year post-transplant. Statement III is false because immediate discharge pregnancy without discussion is not recommended.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—pregnancy is generally postponed until 1 year post-transplant.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because pregnancy requires coordinated planning rather than immediate discharge initiation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → l. Pregnancy after transplantation",
+      "quote_hint": "discuss potential pregnancy with transplant team and obstetrician … Males may father a child … Postpone pregnancy until 1 year after transplant",
+      "keywords": ["discuss", "potential", "pregnancy", "transplant", "team", "Males", "father", "Postpone"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → l. Pregnancy after transplantation → i.–iii. (team/obstetric discussion, males may father child, postpone until 1 year); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Reproductive-health combo distinct from pregnancy-timing recall (cctc-1091) and condom teaching (cctc-1122); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05"
+  }
+]

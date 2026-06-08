@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3123",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 120,
+    "keywords": [
+      "Renal",
+      "dysfunction",
+      "progress",
+      "renal",
+      "failure",
+      "kidney",
+      "transplantation"
+    ],
+    "keyword_hash": "sha256:dacf7dd145d3c78b8cd16363d9ef40c4f13b8db22f55a382ab594aeb72b2c78d"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "keywords": [
+        "renal",
+        "dysfunction",
+        "progress",
+        "failure",
+        "requiring",
+        "kidney"
+      ],
+      "keyword_hash": "sha256:db9542fbe4fc8873ac2f37e064468de6460cbb8a5b14d207238e8f5af6b2b9dc"
+    }
+  ]
+}
