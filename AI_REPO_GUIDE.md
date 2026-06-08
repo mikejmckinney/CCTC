@@ -164,7 +164,7 @@ Use these files as the current product ground truth:
 
 ### Question bank (current)
 
-- **301 draft items** in `questions/domain-*/batch-01.json` through `batch-25.json` (IDs `cctc-1001`–`1101`, `2001`–`2100`, `3001`–`3100`).
+- **313 draft items** in `questions/domain-*/batch-01.json` through `batch-26.json` (IDs `cctc-1001`–`1105`, `2001`–`2104`, `3001`–`3104`).
 - All items `status: "draft"`; validator enforces schema, integrity, and verifiable references per ADR-030.
 - Bank authoring soft targets (see `questions/README.md`, `02-author-questions.md`): cognitive mix ~35/52/13%; `recipient_age: pediatric` **6.5–7%** of bank (`both` excluded; live CCTC exam ~5% pediatric).
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
@@ -190,10 +190,11 @@ Use these files as the current product ground truth:
 - Batch 23 (2026-06-05): meningococcal vaccination, pregnancy timing, visitor precautions, RSV combo, OPTN waiting-time modification, ischemia definitions, parainfluenza counseling, cardiac cath requirement, chronic rejection depth.
 - Batch 24 (2026-06-05): fixed pulmonary hypertension, well-water Cryptosporidium, pediatric acetaminophen, heart cath combo, coronary angiography purpose, vasodilator testing, liver smoking risks, ankle-brachial screening, pediatric PCP/TB/UTI depth.
 - Batch 25 (2026-06-05): kidney/heart smoking risks, pet-safety teaching, Listeria/Nocardia combo, EPTS/KDPI, kidney paired donation, CARV/influenza post-transplant depth (adult/both batch to nudge pediatric share toward 6.5–7%).
+- Batch 26 (2026-06-05): squamous-cell/sun-protection teaching, boil-water advisories, cryptococcosis pretransplant therapy, kidney perfusion allocation, colonoscopy/dental health maintenance, long-term skin surveillance combos.
 
 ### Planned next
 
-- Expand the real question bank under domain directories (batch 26+)
+- Expand the real question bank under domain directories (batch 27+)
 - Grow reviewed-item coverage toward the target bank size
 - Continue implementing and refining the full feature set described in `.github/prompts/01-build-app.md`
 - Keep validation and tests green as new bank shards land

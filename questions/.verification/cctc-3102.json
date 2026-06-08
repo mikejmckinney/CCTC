@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-3102",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 118,
+    "keywords": [
+      "Routine",
+      "self-examination",
+      "report",
+      "any",
+      "changes",
+      "immediately",
+      "Skin",
+      "care"
+    ],
+    "keyword_hash": "sha256:538b75349ed7a0867f76bd03c46d25373f51759076224ca95c275a073f304a2b"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "keywords": [
+        "routine",
+        "self-exam",
+        "report",
+        "changes",
+        "immediately"
+      ],
+      "keyword_hash": "sha256:fc31e8267584e00ba36f5a63bcec9cb030509adc1b5cf9a41a92a3ec92426abb"
+    }
+  ]
+}

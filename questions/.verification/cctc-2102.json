@@ -1,0 +1,41 @@
+{
+  "item_id": "cctc-2102",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 49,
+    "keywords": [
+      "perfusion",
+      "devices",
+      "kidneys",
+      "remain",
+      "outside",
+      "body",
+      "longer",
+      "distances"
+    ],
+    "keyword_hash": "sha256:542aa47c13e2147e5ee4b7edd52f470624ed39b1cb4b449d7dec959740158651"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 49,
+      "keywords": [
+        "perfusion",
+        "devices",
+        "extended",
+        "geographic",
+        "allocation"
+      ],
+      "keyword_hash": "sha256:4cb86eb42067e0ee17d59a2cd69093bbad2674c6f035af4ee0238f8dcaa8b2ad"
+    }
+  ]
+}

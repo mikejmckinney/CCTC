@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cctc-2101",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020102"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Pretransplant evaluation identifies untreated cryptococcosis in a solid-organ transplant candidate. Which management step aligns with standard infection references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "A minimum of 4 months of antifungal therapy such as fluconazole before transplant" },
+      { "id": "B", "text": "No treatment because fungal disease never affects transplant candidacy" },
+      { "id": "C", "text": "Immediate transplant without any antifungal therapy" },
+      { "id": "D", "text": "Antifungal therapy limited to 48 hours only" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "If cryptococcosis, coccidioidomycosis, or histoplasmosis are identified pretransplant, a minimum of 4 months of antifungal therapy is recommended with agents such as fluconazole.",
+      "rationale_incorrect": {
+        "B": "Pretransplant endemic fungal disease requires treatment before transplantation.",
+        "C": "Untreated cryptococcosis is not managed by proceeding immediately to transplant without therapy.",
+        "D": "Standard references recommend at least 4 months of antifungal therapy rather than brief treatment alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "section": "Ch. 17, Pediatric Infections → fungal → 1. PCP → 2.",
+      "quote_hint": "cryptococcosis, coccidioidomycosis, or histoplasmosis are identified pretransplant, a minimum of 4 months of antifungal therapy is recommended with antifungal agents such as fluconazole",
+      "keywords": ["cryptococcosis", "coccidioidomycosis", "histoplasmosis", "pretransplant", "minimum", "months", "antifungal", "fluconazole"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → fungal infections → pretransplant cryptococcosis/coccidioidomycosis/histoplasmosis (≥4 months fluconazole); PDF p. 943 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pretransplant endemic-fungal therapy angle distinct from evaluation viral studies (cctc-2086) and PCP timing (cctc-3093); anchor verified on Cupples p. 943.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2102",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": ["020601"],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "When explaining how deceased-donor kidneys may travel farther for allocation, which technology aligns with standard kidney transplant references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Increased use of perfusion devices allowing kidneys to remain outside the body longer" },
+      { "id": "B", "text": "Elimination of all cold ischemia time requirements for every organ" },
+      { "id": "C", "text": "Mandated same-hospital implantation for all kidneys regardless of logistics" },
+      { "id": "D", "text": "Perfusion devices are used only for heart allocation, never kidneys" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "With increased use of perfusion devices, kidneys can remain outside the body for longer periods, making it possible to allocate kidneys across greater distances than some other solid organs.",
+      "rationale_incorrect": {
+        "B": "Perfusion extends preservation time but does not eliminate ischemia considerations entirely.",
+        "C": "Greater geographic allocation is enabled by extended preservation rather than requiring same-site implantation only.",
+        "D": "Perfusion devices are described in kidney allocation context rather than being heart-only technology."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 49,
+      "section": "Ch. 1, Kidney transplantation → allocation → c.d.",
+      "quote_hint": "increased use of perfusion devices, kidneys can remain outside of the body for longer periods of time … allocate kidneys across greater distances",
+      "keywords": ["perfusion", "devices", "kidneys", "remain", "outside", "body", "longer", "distances"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Kidney transplantation → allocation → c.d. (perfusion devices and extended geographic allocation); PDF p. 49 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Kidney-perfusion allocation angle distinct from EPTS/KDPI (cctc-2097/2098) and cold-ischemia definition (cctc-2090); anchor verified on Cupples p. 49.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2103",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": ["020701"],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A pretransplant candidate schedules a dental procedure. Which coordination step aligns with standard health-maintenance references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "Discuss the procedure with the transplant team at least a week before the appointment because dental prophylaxis may be required" },
+      { "id": "B", "text": "Never inform the dentist of immunosuppressed status" },
+      { "id": "C", "text": "Proceed with any dental surgery without transplant-team notification" },
+      { "id": "D", "text": "Dental care is permanently contraindicated after listing" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Dental care includes informing the dentist of immunosuppressed status; dental prophylaxis may be required depending on the procedure, and the transplant team should be consulted at least a week before the appointment.",
+      "rationale_incorrect": {
+        "B": "Recipients should inform the dentist of immunosuppressed status.",
+        "C": "Certain dental procedures require transplant-team coordination and possible prophylaxis.",
+        "D": "Regular dental visits are recommended rather than permanent contraindication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Dental care",
+      "quote_hint": "Inform dentist of immunosuppressed status … Dental prophylaxis may be required … Discuss with transplant team at least a week before appointment",
+      "keywords": ["Inform", "dentist", "immunosuppressed", "Dental", "prophylaxis", "Discuss", "transplant", "team"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Dental care (inform dentist; team consult ≥1 week before procedures); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Pretransplant dental-coordination angle distinct from dentition screening (cctc-2051) and post-transplant dental teaching; anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  },
+  {
+    "id": "cctc-2104",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": ["020101"],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "When coordinating pretransplant health-maintenance screening, at what age should the first colonoscopy screening examination be completed per standard references?",
+    "shuffle": true,
+    "options": [
+      { "id": "A", "text": "By age 50, or earlier when indicated by history" },
+      { "id": "B", "text": "Only after 10 years post-transplant regardless of age" },
+      { "id": "C", "text": "Colonoscopy is never recommended for transplant candidates" },
+      { "id": "D", "text": "Only before age 18 for every candidate" }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Colonoscopy screening includes completing the first screening examination by age 50 or as recommended for inflammatory bowel disease or family history of colon cancer.",
+      "rationale_incorrect": {
+        "B": "Colonoscopy screening is part of pretransplant health maintenance rather than deferred exclusively until 10 years post-transplant.",
+        "C": "Colonoscopy is listed among recommended health-maintenance screening studies.",
+        "D": "Age 50 is the standard first-screening reference rather than universal screening only before age 18."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Colonoscopy",
+      "quote_hint": "Complete first screening examination by age 50 or as recommended for history of inflammatory bowel disease or family history of colon cancer",
+      "keywords": ["Complete", "first", "screening", "examination", "age", "50", "colon", "cancer"]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Colonoscopy (first screening by age 50 or earlier when indicated); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Source-first item. Colonoscopy age-50 screening angle distinct from bone densitometry (cctc-2052) and skin/dentition screening (cctc-2051); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05"
+  }
+]

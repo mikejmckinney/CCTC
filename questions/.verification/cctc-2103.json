@@ -1,0 +1,42 @@
+{
+  "item_id": "cctc-2103",
+  "schema_version": 1,
+  "generated_at": "2026-06-08",
+  "index_sources": {
+    "cupples": {
+      "filename": "cupples-core-curriculum-2e.pdf",
+      "page_count": 1083
+    }
+  },
+  "primary_anchor": {
+    "source_id": "cupples",
+    "pdf_page": 118,
+    "keywords": [
+      "Inform",
+      "dentist",
+      "immunosuppressed",
+      "Dental",
+      "prophylaxis",
+      "Discuss",
+      "transplant",
+      "team"
+    ],
+    "keyword_hash": "sha256:4dcff727c92119bd080355154c58247f6ecf1a42bb184c4cd0e91caf228fd891"
+  },
+  "references": [
+    {
+      "ref_index": 0,
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "keywords": [
+        "dental",
+        "inform",
+        "dentist",
+        "consult",
+        "before",
+        "procedures"
+      ],
+      "keyword_hash": "sha256:2c9e0cae1216fbce1c084d5b15087dab988f1194ccb2ff7c87e167410e17f680"
+    }
+  ]
+}
