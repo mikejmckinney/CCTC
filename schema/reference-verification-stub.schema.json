@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/mikejmckinney/CCTE/schema/reference-verification-stub.schema.json",
-  "title": "CCTE Reference Verification Stub",
+  "$id": "https://github.com/mikejmckinney/CCTC/schema/reference-verification-stub.schema.json",
+  "title": "CCTC Reference Verification Stub",
   "description": "Committable expected anchor metadata for CI content verification without gitignored PDF indexes. Generated locally; validated in CI.",
   "type": "object",
   "required": ["item_id", "schema_version", "generated_at", "primary_anchor"],

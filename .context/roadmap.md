@@ -1,6 +1,6 @@
-# CCTE Roadmap
+# CCTC Roadmap
 
-> **Purpose**: Track the product phases for the CCTE static practice-exam app so agents can align implementation work to the actual learner-facing outcome.
+> **Purpose**: Track the product phases for the CCTC static practice-exam app so agents can align implementation work to the actual learner-facing outcome.
 >
 > **Canonical product specs**: This roadmap is a phase tracker, not a substitute for the numbered prompts. For full requirements, read in order: [`.github/prompts/00-onboarding.md`](../.github/prompts/00-onboarding.md) → [`01-build-app.md`](../.github/prompts/01-build-app.md) → [`02-author-questions.md`](../.github/prompts/02-author-questions.md) → [`03-validate.md`](../.github/prompts/03-validate.md).
 
@@ -15,7 +15,7 @@
 
 **Phase 3 — Question-bank growth and validation**
 
-Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/mikejmckinney/CCTE/pull/1)). The static app, exam engine, persistence, validation tooling, and browser resume e2e coverage are in place. The next product-critical work is authoring real question shards under `questions/domain-*` per `02-author-questions.md`.
+Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/mikejmckinney/CCTC/pull/1)). The static app, exam engine, persistence, validation tooling, and browser resume e2e coverage are in place. The next product-critical work is authoring real question shards under `questions/domain-*` per `02-author-questions.md`.
 
 ---
 
@@ -32,7 +32,7 @@ Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/m
 - Build path ready for offline-capable static hosting.
 
 ### Acceptance Criteria
-- `.context` files describe CCTE rather than `ai-repo-template`.
+- `.context` files describe CCTC rather than `ai-repo-template`.
 - The app runs locally as a static client-side project.
 - The shell exposes the core settings surface: blueprint, item count, timer, and mode.
 
@@ -166,7 +166,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] **Task `030800` gap fill (2026-06-08):** `cctc-3169` in `domain-3-postop/batch-42.json` — OPTN Policy 18.3 organ-offer outcome reporting within 30 days of match run (`030803`).
 
 **Reviewer / flag loop**
-- [ ] Triage exported flags (`ccte-flags.json` from the app) alongside new authoring.
+- [ ] Triage exported flags (`cctc-flags.json` from the app) alongside new authoring.
 - [ ] On fix: edit item in repo, bump `version`, set back to `draft`, re-review; stale app flags drop on version mismatch.
 
 ### Validation tooling (done vs deferred)
@@ -209,19 +209,20 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 
 ### Open items (known gaps vs `01-build-app.md`)
 - [x] **History trend view (2026-06-08):** bar chart + average/best/latest-delta summary for last 20 sessions (`src/lib/historyTrend.ts`).
-- [x] **GitHub Pages deploy (2026-06-08):** `deploy-pages.yml` + `VITE_BASE_PATH=/CCTE/` in `vite.config.ts`.
+- [x] **GitHub Pages deploy (2026-06-08):** `deploy-pages.yml` + `VITE_BASE_PATH=/CCTC/` in `vite.config.ts`.
 - [x] **CSS cleanup (2026-06-08):** removed duplicate legacy `app.css` block that overwrote responsive rules.
 - [x] **Trend chart scale fix (2026-06-08):** dedicated 160px plot area so bar heights and target line share 0–100% scale; labels below plot.
 - [x] **CI fix (2026-06-08):** `historyTrend.test.ts` uses valid `HistoryEntry` / `SessionSettings` fields (`questionCount`, `items`, `answers`, `flaggedForReview`).
 - [ ] Device-level responsive and accessibility pass (sticky session toolbar on mobile, `:focus-visible`, 44px tap targets — partial).
-- [ ] Enable GitHub Pages in repo settings and verify live deploy URL (workflow lands with PR #4).
+- [x] **Repo rebrand (2026-06-05):** GitHub repo renamed to `CCTC`; `VITE_BASE_PATH=/CCTC/`, UI copy, IndexedDB (`cctc-app`), and docs updated.
+- [ ] Verify live deploy at https://mikejmckinney.github.io/CCTC/ after merge (replaces `/CCTE/` URL).
 - [ ] Optional: category-level history drill-down and flag-export documentation in learner UI.
 
 ---
 
 ## Near-Term Sequencing
 
-1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTE/pull/1)).
+1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTC/pull/1)).
 2. **Phase 3 bank growth** per `02-author-questions.md` — **~500 draft bank reached** (505 items as of batch 42); per-task depth targets met. Next: SME review (`draft` → `reviewed`), exam assembly from reviewed pool, and optional depth/variety shards only if gaps emerge (~500 **reviewed** target remains).
 3. ~~**Phase 3 deferred:** verification stubs + `validate:stubs` in CI~~ (done — 73 stubs committed).
 4. **Phase 4 polish and static hosting** — in progress: history trends, Pages workflow, a11y/responsive pass.

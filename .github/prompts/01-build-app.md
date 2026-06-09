@@ -1,6 +1,6 @@
 # 01 — Build the web app
 
-Build the CCTE practice-exam web app per this spec. Read `00-onboarding.md` first.
+Build the CCTC practice-exam web app per this spec. Read `00-onboarding.md` first.
 
 ## Recommended stack (overridable with rationale)
 
@@ -86,7 +86,7 @@ The pilot user also acts as the subject-matter reviewer, so the app must capture
 
 ## Disclaimer
 
-Display once (e.g. first run + footer): CCTE is an independent study aid, **not affiliated with or endorsed by ABTC or PSI**, and does not reproduce real exam questions. Practice results are estimates and not official scores.
+Display once (e.g. first run + footer): CCTC is an independent study aid, **not affiliated with or endorsed by ABTC or PSI**, and does not reproduce real exam questions. Practice results are estimates and not official scores.
 
 ## Non-goals (v1)
 

@@ -1,10 +1,10 @@
 # Context Pack Index
 
-> **Purpose**: This is the entry point for AI agents to understand CCTE's product direction, constraints, and current state.
+> **Purpose**: This is the entry point for AI agents to understand CCTC's product direction, constraints, and current state.
 
 ## How to Use This Directory
 
-The `.context/` directory is CCTE's canonical planning and rules layer. It records
+The `.context/` directory is CCTC's canonical planning and rules layer. It records
 the product scope, repo constraints, and durable lessons for a static practice-exam
 web app rather than template-maintenance work.
 
@@ -57,11 +57,11 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 
 ## Project Summary
 
-**Project Name**: `CCTE`
+**Project Name**: `CCTC`
 
 **Description**: A client-side practice-exam web app for the ABTC Certified Clinical Transplant Coordinator (CCTC) exam. The repo is a derived implementation project, not the template itself.
 
-**Current Phase**: Phase 3 — question-bank growth and validation (see [roadmap.md](roadmap.md); Phases 1–2 complete on `main`).
+**Current Phase**: Phase 4 — polish and static hosting (see [roadmap.md](roadmap.md); Phases 1–3 complete on `main`).
 
 **Primary Stack**: Static web app scaffolding for a Vite-style React frontend, JSON content assets, and the inherited multi-agent governance/process files.
 

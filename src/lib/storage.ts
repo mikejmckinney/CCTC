@@ -3,7 +3,7 @@ import { buildQuestionVersionMap } from '../data/questionBank';
 import { pruneStaleFlags } from './sessionPersistence';
 import type { ActiveSession, AppMeta, HistoryEntry, ItemFlag, Question, SessionSettings } from '../types/exam';
 
-const DB_NAME = 'ccte-app';
+const DB_NAME = 'cctc-app';
 const DB_VERSION = 1;
 const KV_STORE = 'kv';
 const HISTORY_STORE = 'history';

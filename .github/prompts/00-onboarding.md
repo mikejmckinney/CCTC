@@ -1,6 +1,6 @@
 # 00 — Onboarding (read this first)
 
-You are an AI coding/authoring agent working in the **CCTE** repository. CCTE is a **practice-exam web app for the ABTC Certified Clinical Transplant Coordinator (CCTC®) exam**. This file orients you; the other prompts in `.github/prompts/` define the work.
+You are an AI coding/authoring agent working in the **CCTC** repository. The **CCTC Practice Exam** is a **practice-exam web app for the ABTC Certified Clinical Transplant Coordinator (CCTC®) exam**. This file orients you; the other prompts in `.github/prompts/` define the work.
 
 ## What you are building
 

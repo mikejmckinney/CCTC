@@ -1,10 +1,10 @@
 # FAQ
 
-Frequently asked questions about CCTE, the CCTC practice-exam project.
+Frequently asked questions about the CCTC practice-exam project.
 
-## What is CCTE right now?
+## What is this project right now?
 
-CCTE is now an early app repository rather than a spec-only repo. It contains the exam prompts, blueprint data, question schema, a React/Vite frontend scaffold, and validation tooling. The intended product scope is still defined by `.github/prompts/00-onboarding.md` through `.github/prompts/03-validate.md`.
+The repository is now an early app codebase rather than a spec-only repo. It contains the exam prompts, blueprint data, question schema, a React/Vite frontend scaffold, and validation tooling. The intended product scope is still defined by `.github/prompts/00-onboarding.md` through `.github/prompts/03-validate.md`.
 
 ## Is there a working web app in this repo yet?
 
@@ -45,7 +45,7 @@ No. The prompts explicitly require original wording for stems, options, and expl
 
 No. The planned product is static-hosted, client-side only, and offline-capable after first load. Persistence is intended to live in IndexedDB on the user's device.
 
-## Will CCTE calculate an official ABTC passing score?
+## Will the practice app calculate an official ABTC passing score?
 
 No. The prompts explicitly say the app should report raw performance and any pass indicator only as an unofficial practice estimate. It is not an official scoring engine and is not affiliated with ABTC or PSI.
 
@@ -55,4 +55,4 @@ The current spec also requires resume-after-close behavior, score history, bluep
 
 ## Why does this repo still contain so many workflow and ADR documents?
 
-The repository was bootstrapped from `ai-repo-template`, so it still carries the inherited multi-agent governance system. Those files remain active for repo process, but the product-facing docs should describe CCTE rather than the template.
+The repository was bootstrapped from `ai-repo-template`, so it still carries the inherited multi-agent governance system. Those files remain active for repo process, but the product-facing docs should describe the practice app rather than the template.

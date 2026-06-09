@@ -1,4 +1,4 @@
-# Deploy the static CCTE app to GitHub Pages on every push to main.
+# Deploy the static CCTC app to GitHub Pages on every push to main.
 name: Deploy GitHub Pages
 
 on:
@@ -32,7 +32,7 @@ jobs:
       - name: Build static app for GitHub Pages
         run: npm run build:ci
         env:
-          VITE_BASE_PATH: /CCTE/
+          VITE_BASE_PATH: /CCTC/
 
       - uses: actions/upload-pages-artifact@v3
         with:
