@@ -75,9 +75,9 @@ The app is a static Vite build. Pushes to `main` run `.github/workflows/deploy-p
 - The app is an exam-prep tool, not medical advice.
 - Organ-tag soft targets in the bank still drift from blueprint shares (coverage warnings only).
 
-## v2 (planned)
+## Future Improvements
 
-See [`.context/vision/v2-roadmap.md`](.context/vision/v2-roadmap.md):
+Planned **v2** features (see [`.context/vision/v2-roadmap.md`](.context/vision/v2-roadmap.md)):
 
 - Cross-device session sync
 - Deep-linked references (PDF page viewer ± context; optional public “Further review” links)
