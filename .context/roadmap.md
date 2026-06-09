@@ -13,9 +13,9 @@
 
 ## Current Phase
 
-**Phase 3 — Question-bank growth and validation**
+**Phase 4 — Review feedback, polish, and release readiness**
 
-Phase 1 and Phase 2 are complete on `main` (landed via [#1](https://github.com/mikejmckinney/CCTC/pull/1)). The static app, exam engine, persistence, validation tooling, and browser resume e2e coverage are in place. The next product-critical work is authoring real question shards under `questions/domain-*` per `02-author-questions.md`.
+Phases 1–3 are complete on `main`: exam engine, persistence, validation tooling, **506 reviewed items**, verification stubs in CI, history trends, and GitHub Pages at https://mikejmckinney.github.io/CCTC/ ([#1](https://github.com/mikejmckinney/CCTC/pull/1), [#3](https://github.com/mikejmckinney/CCTC/pull/3), [#4](https://github.com/mikejmckinney/CCTC/pull/4), [#5](https://github.com/mikejmckinney/CCTC/pull/5)). Remaining work is learner UX polish (responsive/a11y device pass, category history trends, flag-export guidance) and ongoing flag triage during pilot use.
 
 ---
 
@@ -189,7 +189,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 
 ## Phase 4: Review Feedback, Polish, and Release Readiness
 
-**Status**: In Progress (flagging/disclaimer shipped; Phase 4 polish underway on `feat/phase4-polish-and-deploy`)
+**Status**: In Progress (flagging/disclaimer shipped; history trends + Pages + rebrand on `main`; a11y device pass and category trends in flight)
 
 **Objective**: Finish the learner experience and prepare the static app for real study use.
 
@@ -215,7 +215,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] **CI fix (2026-06-08):** `historyTrend.test.ts` uses valid `HistoryEntry` / `SessionSettings` fields (`questionCount`, `items`, `answers`, `flaggedForReview`).
 - [ ] Device-level responsive and accessibility pass (sticky session toolbar on mobile, `:focus-visible`, 44px tap targets — partial).
 - [x] **Repo rebrand (2026-06-05):** GitHub repo renamed to `CCTC`; `VITE_BASE_PATH=/CCTC/`, UI copy, IndexedDB (`cctc-app`), and docs updated.
-- [ ] Verify live deploy at https://mikejmckinney.github.io/CCTC/ after merge (replaces `/CCTE/` URL).
+- [x] **Live deploy verified (2026-06-09):** https://mikejmckinney.github.io/CCTC/ (replaces `/CCTE/` URL).
 - [ ] Optional: category-level history drill-down and flag-export documentation in learner UI.
 
 ---
@@ -223,6 +223,6 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 ## Near-Term Sequencing
 
 1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTC/pull/1)).
-2. **Phase 3 bank growth** per `02-author-questions.md` — **~500 draft bank reached** (505 items as of batch 42); per-task depth targets met. Next: SME review (`draft` → `reviewed`), exam assembly from reviewed pool, and optional depth/variety shards only if gaps emerge (~500 **reviewed** target remains).
+2. ~~**Phase 3 bank growth**~~ — **506 reviewed items** on `main`; per-task targets met ([#3](https://github.com/mikejmckinney/CCTC/pull/3)). Optional organ-balance shards only if coverage warnings matter for sampling realism (see `npm run validate:coverage`).
 3. ~~**Phase 3 deferred:** verification stubs + `validate:stubs` in CI~~ (done — 73 stubs committed).
-4. **Phase 4 polish and static hosting** — in progress: history trends, Pages workflow, a11y/responsive pass.
+4. **Phase 4 polish** — in progress: manual device/a11y pass, per-category history trends, flag-export learner copy. Static hosting done.
