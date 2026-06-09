@@ -213,7 +213,7 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 - [x] **CSS cleanup (2026-06-08):** removed duplicate legacy `app.css` block that overwrote responsive rules.
 - [x] **Trend chart scale fix (2026-06-08):** dedicated 160px plot area so bar heights and target line share 0–100% scale; labels below plot.
 - [x] **CI fix (2026-06-08):** `historyTrend.test.ts` uses valid `HistoryEntry` / `SessionSettings` fields (`questionCount`, `items`, `answers`, `flaggedForReview`).
-- [x] **Responsive/a11y pass (2026-06-09):** skip link + `main` landmark, `:focus-visible`, 44px tap targets, sticky session toolbar on mobile, `prefers-reduced-motion`, history-review keyboard nav; manual device checklist in PR #7.
+- [x] **Responsive/a11y pass (2026-06-09):** skip link + `main` landmark, `:focus-visible`, 44px tap targets, sticky session toolbar on mobile, `prefers-reduced-motion`, history-review keyboard nav; manual device checklist in the Phase 4 polish PR.
 - [x] **Repo rebrand (2026-06-05):** GitHub repo renamed to `CCTC`; `VITE_BASE_PATH=/CCTC/`, UI copy, IndexedDB (`cctc-app`), and docs updated.
 - [x] **Live deploy verified (2026-06-09):** https://mikejmckinney.github.io/CCTC/ (replaces `/CCTE/` URL).
 - [x] **Category history drill-down (2026-06-09):** per-category trend chart in History (`src/lib/categoryHistoryTrend.ts`).
