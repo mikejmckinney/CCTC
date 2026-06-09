@@ -94,6 +94,10 @@ Display once (e.g. first run + footer): CCTC is an independent study aid, **not 
 - No backend or runtime model calls.
 - No simulation of the real exam's scaled scoring or official pass/fail.
 
+## Future (v2)
+
+Planned enhancements (cross-device sync, deep-linked PDF references with optional public “Further review” links, runtime-generated items, organ-balance bank shards) are documented in [`.context/vision/v2-roadmap.md`](../../.context/vision/v2-roadmap.md). Do not implement v2 features in v1 PRs unless explicitly scoped.
+
 ## Acceptance criteria
 
 - Static build runs offline after first load; responsive across device sizes.

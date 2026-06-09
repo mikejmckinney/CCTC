@@ -4,11 +4,20 @@ Frequently asked questions about the CCTC practice-exam project.
 
 ## What is this project right now?
 
-The repository is now an early app codebase rather than a spec-only repo. It contains the exam prompts, blueprint data, question schema, a React/Vite frontend scaffold, and validation tooling. The intended product scope is still defined by `.github/prompts/00-onboarding.md` through `.github/prompts/03-validate.md`.
+A **v1-complete** static practice-exam app for the CCTC exam: React + TypeScript + Vite, **506 reviewed items** in `questions/domain-*`, validation and verification-stub CI, and a live GitHub Pages demo. Product scope and guardrails remain defined by `.github/prompts/00-onboarding.md` through `.github/prompts/03-validate.md`. Future work is tracked in [`.context/vision/v2-roadmap.md`](../.context/vision/v2-roadmap.md).
 
 ## Is there a working web app in this repo yet?
 
-Yes, but only as an early scaffold. The repo now has `package.json`, `src/`, `public/`, tests, and a Vite-based app shell. It is not a mature exam product yet, and the current loader falls back to the worked examples until real question shards are added under `questions/`.
+**Yes.** The app on `main` is a working end-to-end practice exam, not a scaffold:
+
+- **Live demo:** https://mikejmckinney.github.io/CCTC/
+- **Study and Exam modes** with timed/untimed sessions, blueprint-weighted sampling, and save-after-each-question resume
+- **506 reviewed questions** loaded from `questions/domain-*` (not the `_examples` fallback)
+- **Score history** with overall and per-category breakdowns, trend charts, and per-category drill-down
+- **Item flagging** with JSON export for SME review
+- **Offline-capable** static build; session data stays in the browser (IndexedDB)
+
+Run locally with `npm install && npm run dev`, or use the hosted URL above.
 
 ## What stack is the project expected to use?
 
@@ -31,7 +40,7 @@ No. The intended design is one question bank tagged to the 2026-07 blueprint. Th
 
 They belong under `questions/`, sharded by domain rather than by arbitrary file size. `questions/README.md` describes the expected layout and recommends keeping files under a soft cap of 50 items each. Anything under `questions/_examples/` is illustrative only and should not be treated as live bank content.
 
-If no non-underscore shards exist yet, the current app falls back to those examples so the scaffold remains usable during early development.
+The app loads all non-underscore shards under `questions/` at build time. `_examples/` is illustrative only and is excluded from the live bank.
 
 ## What is the difference between draft and reviewed items?
 
@@ -52,6 +61,10 @@ No. The prompts explicitly say the app should report raw performance and any pas
 ## What does the app need to support besides taking an exam?
 
 The current spec also requires resume-after-close behavior, score history, blueprint-weighted sampling, support for both item formats, and an item-flagging workflow so the pilot user can report factual errors, ambiguity, outdated policy, or wording problems back into the authoring loop.
+
+## What is planned for v2?
+
+v1 is a static, device-local app (no accounts, no runtime question generation). Planned v2 features — cross-device progression, deep-linked references, dynamic item generation, and optional organ-balance bank growth — are documented in [`.context/vision/v2-roadmap.md`](../.context/vision/v2-roadmap.md).
 
 ## Why does this repo still contain so many workflow and ADR documents?
 

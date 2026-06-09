@@ -61,7 +61,7 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 
 **Description**: A client-side practice-exam web app for the ABTC Certified Clinical Transplant Coordinator (CCTC) exam. The repo is a derived implementation project, not the template itself.
 
-**Current Phase**: Phase 4 — polish and static hosting (see [roadmap.md](roadmap.md); Phases 1–3 complete on `main`).
+**Current Phase**: v1 complete on `main` (Phases 1–4); v2 planning in [vision/v2-roadmap.md](vision/v2-roadmap.md).
 
 **Primary Stack**: Static web app scaffolding for a Vite-style React frontend, JSON content assets, and the inherited multi-agent governance/process files.
 
@@ -79,6 +79,6 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 
 ## Next Steps
 
-- Phase 3 complete: **506 reviewed items** on `main` (see [roadmap.md](roadmap.md)).
-- Keep `npm run validate` green after each authoring batch; use `npm run validate:coverage` for gap dashboards.
-- **Phase 4 in progress:** history trend chart, GitHub Pages deploy workflow, a11y/responsive polish (see [roadmap.md](roadmap.md) § Phase 4).
+- **v1 pilot:** use the live app at https://mikejmckinney.github.io/CCTC/; triage exported `cctc-flags.json` during SME review.
+- **v2 planning:** [vision/v2-roadmap.md](vision/v2-roadmap.md) (sync, deep-linked references, runtime generation, organ-balance shards).
+- **Template feedback:** [sessions/2026-06-09_cctc-v1-template-feedback.md](sessions/2026-06-09_cctc-v1-template-feedback.md) for lessons to upstream to `ai-repo-template`.
