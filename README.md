@@ -59,7 +59,7 @@ Blueprint data is transcribed from the ABTC Candidate Handbook (rev. 3/12/2026),
 
 ## Status
 
-Phase 1–2 (exam engine, persistence, validation) and Phase 3 (**506 reviewed items** across `questions/domain-*`) are on `main`. Phase 4 (polish + static hosting) is in progress.
+Phases 1–4 are on `main`: exam engine, **506 reviewed items**, validation/stubs CI, history trends, category drill-down, and GitHub Pages at https://mikejmckinney.github.io/CCTC/.
 
 - **Local dev:** `npm install && npm run dev`
 - **Production build:** `npm run build` (relative assets) or `VITE_BASE_PATH=/CCTC/ npm run build:ci` for GitHub Pages
@@ -77,8 +77,12 @@ The app is a static Vite build. Pushes to `main` run `.github/workflows/deploy-p
 
 ## Future Improvements
 
-- Finish Phase 4 device/a11y polish and category-level history drill-down.
-- Optional bank growth beyond ~500 reviewed items for fresher repeat sessions.
+Planned **v2** features (see [`.context/vision/v2-roadmap.md`](.context/vision/v2-roadmap.md)):
+
+- Cross-device session sync
+- Deep-linked references (PDF page viewer ± context; optional public “Further review” links)
+- Runtime-generated questions to reduce memorization
+- Organ-balance content shards for blueprint organ mix
 
 ## FAQ
 

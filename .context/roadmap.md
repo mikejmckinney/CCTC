@@ -224,6 +224,19 @@ Use this when expanding the bank; do not duplicate the full authoring rules here
 ## Near-Term Sequencing
 
 1. ~~Land Phase 1–2 bootstrap and exam engine on `main`~~ (done — [#1](https://github.com/mikejmckinney/CCTC/pull/1)).
-2. ~~**Phase 3 bank growth**~~ — **506 reviewed items** on `main`; per-task targets met ([#3](https://github.com/mikejmckinney/CCTC/pull/3)). Optional **organ-balance shards** (extra question batches targeting under-represented `organ` tags such as liver or pancreas) only if `npm run validate:coverage` warnings matter for sampling realism.
+2. ~~**Phase 3 bank growth**~~ — **506 reviewed items** on `main`; per-task targets met ([#3](https://github.com/mikejmckinney/CCTC/pull/3)). Optional organ-balance content deferred to [v2-roadmap.md](vision/v2-roadmap.md) §4.
 3. ~~**Phase 3 deferred:** verification stubs + `validate:stubs` in CI~~ (done — 73 stubs committed).
 4. ~~**Phase 4 polish and static hosting**~~ — core UX on `main` ([#7](https://github.com/mikejmckinney/CCTC/pull/7)); ongoing pilot flag triage only.
+
+---
+
+## v2 (future — out of scope for v1)
+
+See **[`.context/vision/v2-roadmap.md`](vision/v2-roadmap.md)** for planned v2 features:
+
+1. **Cross-device progression** — start on phone, continue on laptop (sync + accounts).
+2. **Deep-linked references** — open exact PDF page/section from citations; optional **Further review** public web links (example: `cctc-2016` → Cupples PDF p. 46 ± context pages; supplement e.g. [Kidney Registry center guidelines](https://www.kidneyregistry.com/for-centers/member-center-guidelines/)).
+3. **Runtime-generated items** — dynamic Q&A to reduce memorization of the static bank (requires v2 architecture; not v1 runtime LLM calls).
+4. **Organ-balance shards** — optional content batches to tighten `organ` mix vs blueprint soft targets (`npm run validate:coverage`).
+
+Template feedback from v1 bootstrap: [`.context/sessions/2026-06-09_cctc-v1-template-feedback.md`](sessions/2026-06-09_cctc-v1-template-feedback.md).

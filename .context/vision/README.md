@@ -13,6 +13,7 @@ CCTC is a browser-based study tool, not a process-template repo. The important d
 
 ## Current Artifacts
 
+- [`v2-roadmap.md`](v2-roadmap.md) — future product features (sync, deep-linked references, runtime generation, organ-balance content).
 - No architecture diagrams are kept by default after the Mode B reset.
 - Add a focused diagram only when an app-specific design becomes complex enough that prose is no longer sufficient.
 

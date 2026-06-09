@@ -23,6 +23,8 @@ For work on the actual product, start outside this directory with the prompt set
 3. `.github/prompts/02-author-questions.md`
 4. `.github/prompts/03-validate.md`
 
+**v2 features** (future): `.context/vision/v2-roadmap.md`
+
 Then use these docs as supporting references:
 
 - `FAQ.md` for quick project answers.
