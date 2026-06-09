@@ -56,7 +56,7 @@ export async function resumeActiveSession(page) {
 export async function waitForPersistedSessionState(page) {
   await page.waitForFunction(
     async () => {
-      const open = indexedDB.open('ccte-app');
+      const open = indexedDB.open('cctc-app');
       const db = await new Promise((resolve, reject) => {
         open.onerror = () => reject(open.error);
         open.onsuccess = () => resolve(open.result);

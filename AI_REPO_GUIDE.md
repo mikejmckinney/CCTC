@@ -1,17 +1,17 @@
 # AI_REPO_GUIDE.md
 
-> Purpose: Canonical agent reference for the CCTE repository.
+> Purpose: Canonical agent reference for the CCTC repository.
 > Last verified: 2026-06-08
 
-This repository is the CCTE project: a static, client-side practice-exam app for the ABTC Certified Clinical Transplant Coordinator exam. The repo now contains an initial React + TypeScript + Vite app scaffold, local validation tooling, and CI workflows alongside the exam specification, blueprint data, schema, and example question content.
+This repository is the CCTC project: a static, client-side practice-exam app for the ABTC Certified Clinical Transplant Coordinator exam. The repo now contains an initial React + TypeScript + Vite app scaffold, local validation tooling, and CI workflows alongside the exam specification, blueprint data, schema, and example question content.
 
 ## Current State
 
-- Product: CCTE, an independent study aid for CCTC candidates.
+- Product: CCTC Practice Exam, an independent study aid for CCTC exam candidates.
 - Delivery model: static hosting, offline after first load, no backend, no runtime LLM calls.
 - Present in repo today: prompts, schema, blueprint JSON, question-bank conventions, a React/Vite frontend scaffold under `src/`, static assets under `public/`, a package manifest with local test/build/validate scripts, and validation workflows.
 - Current product maturity: exam engine, persistence, flagging, and **506 reviewed items** on `main` (Phase 3 complete). Phase 4 in progress: history trend chart, GitHub Pages deploy workflow, CSS/a11y polish.
-- Hosting: `.github/workflows/deploy-pages.yml` builds with `VITE_BASE_PATH=/CCTE/` for https://mikejmckinney.github.io/CCTE/ (requires Pages enabled in repo settings).
+- Hosting: `.github/workflows/deploy-pages.yml` builds with `VITE_BASE_PATH=/CCTC/` for https://mikejmckinney.github.io/CCTC/ (requires Pages enabled in repo settings).
 
 The implementation surface is still driven by the prompt set in `.github/prompts/`:
 
@@ -131,7 +131,7 @@ Use these files as the current product ground truth:
 
 | File | Purpose |
 |---|---|
-| `schema/question.schema.json` | JSON Schema for a CCTE question item |
+| `schema/question.schema.json` | JSON Schema for a CCTC question item |
 | `blueprints/cctc-from-2026-07.json` | Current blueprint, default exam settings, domain targets |
 | `blueprints/cctc-thru-2026-06.json` | Legacy blueprint, section targets, task-to-section crosswalk |
 | `questions/README.md` | Bank layout, sharding rules, status workflow, tagging model |
@@ -151,7 +151,7 @@ Use these files as the current product ground truth:
 
 ### Exists now
 
-- CCTE product definition and constraints
+- CCTC product definition and constraints
 - React + TypeScript + Vite app scaffold
 - Static app assets for install/offline hosting
 - Local validation command and GitHub validation workflow

@@ -12,7 +12,7 @@
 ## Ownership Table
 
 <!--
-NOTE: This table is the canonical ownership map for CCTE. Keep every
+NOTE: This table is the canonical ownership map for CCTC. Keep every
 template-governance role row (Analyst / Architect / PM / QA / DevOps /
 Docs / Judge / Critic); they remain load-bearing for the multi-agent
 workflow inherited from the template. Project-specific rows should track

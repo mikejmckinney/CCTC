@@ -10,7 +10,7 @@ Accepted
 
 ## Context
 
-CCTE practice items must be **independently checkable**: a learner or SME should
+CCTC practice items must be **independently checkable**: a learner or SME should
 open the cited source and find the passage that supports the keyed answer. Early
 authoring drifted in the opposite direction:
 

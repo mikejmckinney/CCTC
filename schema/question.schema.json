@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/mikejmckinney/CCTE/schema/question.schema.json",
-  "title": "CCTE Practice Exam Question",
+  "$id": "https://github.com/mikejmckinney/CCTC/schema/question.schema.json",
+  "title": "CCTC Practice Exam Question",
   "description": "One CCTC practice-exam item. Questions are tagged to the 2026-07 (new) blueprint's domain/task/knowledge codes; the legacy (until 2026-06) blueprint derives its sections via the crosswalk in blueprints/cctc-thru-2026-06.json, so a single question bank serves both exam versions.",
   "type": "object",
   "required": ["id", "status", "type", "domain", "stem", "correct", "explanation", "references", "primary_anchor"],

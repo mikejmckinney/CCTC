@@ -1,4 +1,4 @@
-# CCTE Vision Index
+# CCTC Vision Index
 
 > **Purpose**: Point agents to the product-design surfaces that matter for a static, client-side exam-prep app.
 
@@ -9,7 +9,7 @@
 
 ## Current Direction
 
-CCTE is a browser-based study tool, not a process-template repo. The important design questions are learner flow, exam-session behavior, offline persistence, and how static question content moves through validation into the app.
+CCTC is a browser-based study tool, not a process-template repo. The important design questions are learner flow, exam-session behavior, offline persistence, and how static question content moves through validation into the app.
 
 ## Current Artifacts
 

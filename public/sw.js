@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ccte-shell-v1';
+const CACHE_NAME = 'cctc-shell-v1';
 const APP_SHELL = ['./index.html', './manifest.webmanifest'];
 
 self.addEventListener('install', (event) => {

@@ -1,20 +1,20 @@
 # Documentation
 
-This directory holds the human-readable documentation for CCTE. The repo now includes an initial app scaffold and validation tooling, but most material here is still governance, process, and reference context inherited from the bootstrap template plus the CCTE-specific top-level docs.
+This directory holds the human-readable documentation for CCTC. The repo now includes an initial app scaffold and validation tooling, but most material here is still governance, process, and reference context inherited from the bootstrap template plus the CCTC-specific top-level docs.
 
 When documentation and implementation ever disagree, follow the repo truth order: `.context/**` first, then `docs/**`, then the codebase.
 
 ## What This Directory Covers
 
 - `README.md`: this index for the docs tree.
-- `FAQ.md`: project-specific answers about CCTE scope, blueprints, question authoring, and draft versus reviewed items.
+- `FAQ.md`: project-specific answers about CCTC scope, blueprints, question authoring, and draft versus reviewed items.
 - `compliance_schemas.md`: reference for plan, parent, and subagent compliance blocks used by the multi-agent workflow.
 - `guides/`: reusable workflow and process guides inherited from the template.
 - `decisions/`: ADRs for the governance framework currently shipped with this repo.
 - `postmortems/`: lessons learned from the template workflow that still inform how agents operate here.
 - `research/` and `reference/`: supporting material when project-specific research or external specs are added.
 
-## CCTE-Specific Reading Path
+## CCTC-Specific Reading Path
 
 For work on the actual product, start outside this directory with the prompt set in `.github/prompts/`:
 
@@ -51,7 +51,7 @@ docs/
 - Human-facing reference material and project explanation.
 - ADRs and postmortems that explain why the workflow is shaped the way it is.
 - Supporting guides that help contributors and agents use the repo safely.
-- CCTE product docs and runbooks as the app, validation pipeline, and hosting flow grow beyond the initial scaffold.
+- CCTC product docs and runbooks as the app, validation pipeline, and hosting flow grow beyond the initial scaffold.
 
 ## What Does Not Belong Here
 
@@ -62,6 +62,6 @@ docs/
 ## Notes On Current Scope
 
 - The repo already contains the exam schema, blueprint JSON, question-bank conventions, an initial frontend scaffold, and a local/CI validation path.
-- Many docs under `guides/`, `decisions/`, and `postmortems/` still describe the inherited multi-agent workflow rather than the CCTE product domain.
+- Many docs under `guides/`, `decisions/`, and `postmortems/` still describe the inherited multi-agent workflow rather than the CCTC product domain.
 - The current bank is still effectively example-backed until non-underscore question shards are added under `questions/`.
-- As product code lands, update this directory with CCTE-specific runbooks and deployment notes instead of duplicating prompt content.
+- As product code lands, update this directory with CCTC-specific runbooks and deployment notes instead of duplicating prompt content.

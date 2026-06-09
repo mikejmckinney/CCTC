@@ -1,8 +1,8 @@
-# CCTE — CCTC Practice Exam
+# CCTC Practice Exam
 
 A client-side practice-exam web app for the ABTC **Certified Clinical Transplant Coordinator (CCTC®)** exam. Built from `ai-repo-template`; the app is intended to be implemented by an AI agent reading the prompts in `.github/prompts/`.
 
-> **Independent study aid.** CCTE is **not affiliated with or endorsed by ABTC or PSI** and does not reproduce real exam questions. All items are original, written to the published content outline. Practice scores are estimates, not official results.
+> **Independent study aid.** This practice app is **not affiliated with or endorsed by ABTC or PSI** and does not reproduce real exam questions. All items are original, written to the published content outline. Practice scores are estimates, not official results.
 
 ## What it does
 
@@ -62,12 +62,12 @@ Blueprint data is transcribed from the ABTC Candidate Handbook (rev. 3/12/2026),
 Phase 1–2 (exam engine, persistence, validation) and Phase 3 (**506 reviewed items** across `questions/domain-*`) are on `main`. Phase 4 (polish + static hosting) is in progress.
 
 - **Local dev:** `npm install && npm run dev`
-- **Production build:** `npm run build` (relative assets) or `VITE_BASE_PATH=/CCTE/ npm run build:ci` for GitHub Pages
-- **Live demo (after Pages enabled):** https://mikejmckinney.github.io/CCTE/
+- **Production build:** `npm run build` (relative assets) or `VITE_BASE_PATH=/CCTC/ npm run build:ci` for GitHub Pages
+- **Live demo (after Pages enabled):** https://mikejmckinney.github.io/CCTC/
 
 ## Hosting
 
-The app is a static Vite build. Pushes to `main` run `.github/workflows/deploy-pages.yml`, which publishes `dist/` to GitHub Pages with `base: /CCTE/`. Enable **Settings → Pages → GitHub Actions** on the repo if the site is not live yet.
+The app is a static Vite build. Pushes to `main` run `.github/workflows/deploy-pages.yml`, which publishes `dist/` to GitHub Pages with `base: /CCTC/`. Enable **Settings → Pages → GitHub Actions** on the repo if the site is not live yet.
 
 ## Limitations
 

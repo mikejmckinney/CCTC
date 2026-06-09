@@ -674,7 +674,7 @@ function App() {
   }
 
   async function exportFlags(): Promise<void> {
-    downloadJson('ccte-flags.json', {
+    downloadJson('cctc-flags.json', {
       exportedAt: new Date().toISOString(),
       flags
     });
@@ -711,7 +711,7 @@ function App() {
           <div className="modal-card">
             <h2>Independent study aid</h2>
             <p>
-              CCTE is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam items, and must not be used for
+              This practice app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam items, and must not be used for
               patient-care decisions. Practice results are unofficial estimates only.
             </p>
             <button className="primary-button" onClick={() => void acknowledgeDisclaimer()}>
@@ -779,8 +779,8 @@ function App() {
 
       <header className="hero-panel">
         <div>
-          <p className="eyebrow">CCTE practice exam</p>
-          <h1>CCTE Practice Exam</h1>
+          <p className="eyebrow">CCTC practice exam</p>
+          <h1>CCTC Practice Exam</h1>
           <p className="hero-copy">
             Client-side only, static-hostable, and offline-capable after first load. Sessions freeze question order, answer order,
             timer state, and bookmarks exactly.
@@ -1394,7 +1394,7 @@ function App() {
 
       <footer className="footer-bar">
         <p>
-          CCTE is an independent study aid, not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam questions, and is
+          This practice app is an independent study aid, not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam questions, and is
           not a source of patient-care decisions.
         </p>
       </footer>
