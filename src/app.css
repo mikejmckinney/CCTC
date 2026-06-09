@@ -47,11 +47,29 @@ a {
   color: var(--brand);
 }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.75rem;
+  z-index: 30;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: var(--brand);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 0.75rem;
+}
+
 #root {
   min-height: 100vh;
 }
 
 .shell {
+  position: relative;
   width: min(1240px, calc(100% - 2rem));
   margin: 0 auto;
   padding: 1.25rem 0 2rem;
@@ -245,6 +263,39 @@ button:focus:not(:focus-visible),
 .flag-row,
 .code-block {
   padding: 1rem;
+}
+
+.summary-card--interactive {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.summary-card--interactive:hover {
+  border-color: rgba(18, 59, 58, 0.28);
+}
+
+.text-link-button {
+  border: 0;
+  background: transparent;
+  color: var(--brand);
+  padding: 0;
+  text-align: left;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.section-heading--compact {
+  margin-top: 0.5rem;
 }
 
 .notice-block {
@@ -546,6 +597,17 @@ button:focus:not(:focus-visible),
 
   .panel--span-2 {
     grid-column: span 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

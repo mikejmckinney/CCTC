@@ -3,6 +3,7 @@ import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
 import { loadQuestionBank } from '../data/questionBank';
 import { buildDefaultSettings, countAnswered, createSession, isBlueprintApplicable } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
+import { buildCategoryHistoryTrend, listHistoryCategories } from '../lib/categoryHistoryTrend';
 import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
 import {
@@ -249,6 +250,12 @@ function App() {
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const historyTrend = useMemo(() => buildHistoryTrend(history), [history]);
+  const historyCategories = useMemo(() => listHistoryCategories(history), [history]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+  const categoryTrend = useMemo(
+    () => (selectedCategoryId ? buildCategoryHistoryTrend(history, selectedCategoryId) : null),
+    [history, selectedCategoryId]
+  );
   const [selectedHistory, setSelectedHistory] = useState<HistoryEntry | null>(null);
   const [reviewIndex, setReviewIndex] = useState(0);
   const [flags, setFlags] = useState<ItemFlag[]>([]);
@@ -383,6 +390,44 @@ function App() {
   const availableQuestionCount = getAvailableQuestionCount(bank.questions, settings.blueprintId, settings.includeDrafts);
   const answeredCount = session ? countAnswered(session) : 0;
   const selectedHistoryItem = selectedHistory?.items[reviewIndex] ?? null;
+
+  useEffect(() => {
+    if (selectedCategoryId && !historyCategories.some((category) => category.categoryId === selectedCategoryId)) {
+      setSelectedCategoryId(null);
+    }
+  }, [historyCategories, selectedCategoryId]);
+
+  function openCategoryTrend(categoryId: string): void {
+    setSelectedCategoryId(categoryId);
+    setView('history');
+  }
+
+  useEffect(() => {
+    if (!selectedHistory || view !== 'history-detail') {
+      return undefined;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) {
+        return;
+      }
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        setReviewIndex((current) => Math.max(current - 1, 0));
+        return;
+      }
+
+      if (event.key === 'ArrowRight' || event.key === 'Enter') {
+        event.preventDefault();
+        setReviewIndex((current) => Math.min(current + 1, selectedHistory.items.length - 1));
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedHistory, view]);
 
   useEffect(() => {
     if (!session || view !== 'session') {
@@ -706,6 +751,9 @@ function App() {
 
   return (
     <div className="shell">
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       {!meta.disclaimerSeen && (
         <section className="modal-backdrop" aria-label="Study aid disclaimer">
           <div className="modal-card">
@@ -777,7 +825,7 @@ function App() {
         </section>
       )}
 
-      <header className="hero-panel">
+      <header className="hero-panel" role="banner">
         <div>
           <p className="eyebrow">CCTC practice exam</p>
           <h1>CCTC Practice Exam</h1>
@@ -804,7 +852,7 @@ function App() {
         </nav>
       </header>
 
-      <main className="main-grid">
+      <main id="main-content" className="main-grid">
         {view === 'home' && (
           <>
             <section className="panel stack-gap">
@@ -1230,6 +1278,94 @@ function App() {
                   </ul>
                 </>
               )}
+
+              {historyCategories.length > 0 && (
+                <>
+                  <div className="section-heading section-heading--compact">
+                    <div>
+                      <p className="eyebrow">Per-category drill-down</p>
+                      <h2>Category trend</h2>
+                    </div>
+                  </div>
+                  <p className="field-hint">Select a content category to plot your unofficial score in that area across completed sessions.</p>
+                  <div className="category-pills" role="group" aria-label="Content categories">
+                    {historyCategories.map((category) => (
+                      <button
+                        key={category.categoryId}
+                        type="button"
+                        className={['pill', selectedCategoryId === category.categoryId ? 'active' : ''].filter(Boolean).join(' ')}
+                        aria-pressed={selectedCategoryId === category.categoryId}
+                        onClick={() => setSelectedCategoryId(category.categoryId)}
+                      >
+                        {category.categoryLabel}
+                      </button>
+                    ))}
+                  </div>
+
+                  {categoryTrend ? (
+                    <>
+                      <div className="trend-summary" aria-label={`${categoryTrend.categoryLabel} trend summary`}>
+                        <div>
+                          <p className="eyebrow">Category</p>
+                          <strong>{categoryTrend.categoryLabel}</strong>
+                        </div>
+                        <div>
+                          <p className="eyebrow">Average</p>
+                          <strong>{categoryTrend.averagePercent}%</strong>
+                        </div>
+                        <div>
+                          <p className="eyebrow">Best</p>
+                          <strong>{categoryTrend.bestPercent}%</strong>
+                        </div>
+                        {categoryTrend.recentDelta !== null && (
+                          <div>
+                            <p className="eyebrow">Latest change</p>
+                            <strong>{formatTrendDelta(categoryTrend.recentDelta)}</strong>
+                          </div>
+                        )}
+                      </div>
+
+                      <div
+                        className="trend-chart"
+                        role="img"
+                        aria-label={`${categoryTrend.categoryLabel} score trend across the last ${categoryTrend.points.length} sessions`}
+                      >
+                        <div className="trend-chart__plot">
+                          {categoryTrend.points.map((point) => (
+                            <div key={point.sessionId} className="trend-chart__bar-wrap">
+                              <div
+                                className={['trend-chart__bar', point.belowTarget ? 'is-below-target' : ''].filter(Boolean).join(' ')}
+                                style={{ height: `${point.percent}%` }}
+                                title={`${point.label}: ${point.correct}/${point.total} (${point.percent}%) · ${point.mode}`}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                        <div className="trend-chart__labels">
+                          {categoryTrend.points.map((point) => (
+                            <span key={point.sessionId} className="trend-chart__label">
+                              {point.label}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <ul className="plain-list">
+                        {[...categoryTrend.points].reverse().slice(0, 5).map((point) => (
+                          <li key={point.sessionId} className="trend-row">
+                            <span>
+                              {point.label} · {point.correct}/{point.total} · {point.mode}
+                            </span>
+                            <strong>{point.percent}%</strong>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    selectedCategoryId && <p className="status-card">No scored items in this category yet.</p>
+                  )}
+                </>
+              )}
             </section>
           </>
         )}
@@ -1248,6 +1384,7 @@ function App() {
                   Back to history
                 </button>
               </div>
+              <p className="field-hint">Keyboard: use Left/Right arrow keys to move between items. Click a category card to open its trend chart.</p>
 
               <div className="notice-block">
                 <p>
@@ -1258,12 +1395,18 @@ function App() {
 
               <div className="breakdown-grid">
                 {selectedHistory.result.breakdown.map((entry) => (
-                  <div key={entry.categoryId} className="summary-card">
+                  <button
+                    key={entry.categoryId}
+                    type="button"
+                    className="summary-card summary-card--interactive"
+                    onClick={() => openCategoryTrend(entry.categoryId)}
+                  >
                     <h3>{entry.categoryLabel}</h3>
                     <p>
                       {entry.correct} / {entry.total} correct
                     </p>
-                  </div>
+                    <span className="field-hint">View category trend</span>
+                  </button>
                 ))}
               </div>
 
@@ -1299,7 +1442,9 @@ function App() {
               <ul className="plain-list">
                 {selectedHistory.result.breakdown.map((entry) => (
                   <li key={entry.categoryId}>
-                    {entry.categoryLabel}: {entry.correct}/{entry.total}
+                    <button type="button" className="text-link-button" onClick={() => openCategoryTrend(entry.categoryId)}>
+                      {entry.categoryLabel}: {entry.correct}/{entry.total}
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -1317,13 +1462,18 @@ function App() {
                 </div>
                 <div className="action-row">
                   <button className="secondary-button" onClick={() => void exportFlags()} disabled={flags.length === 0}>
-                    Export JSON
+                    Export flags
                   </button>
                   <button className="ghost-button" onClick={() => void resetFlags()} disabled={flags.length === 0}>
                     Clear all
                   </button>
                 </div>
               </div>
+
+              <p className="field-hint">
+                Use <strong>Export flags</strong> to download <code>cctc-flags.json</code>, then email that file to your SME reviewer.
+                Flags stay on this device only — the app never edits question files in the repository.
+              </p>
 
               {flags.length === 0 ? (
                 <p className="status-card">No open flags yet.</p>
