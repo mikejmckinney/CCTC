@@ -27,7 +27,7 @@ EXISTING_ISSUE="$(gh issue list --repo "$REPO" --label optn-drift --state open -
 
 upsert_drift_issue() {
   local body_file="${RUNNER_TEMP}/issue-body-final.md"
-  node scripts/ci/print-drift-issue-body.mjs "$DRIFT_JSON" "$WORKFLOW_URL" "$PR_URL" > "$body_file"
+  node scripts/ci/print-drift-issue-body.mjs "$DRIFT_JSON" "$WORKFLOW_URL" "$PR_URL" >"$body_file"
 
   if [[ -n "$EXISTING_ISSUE" ]]; then
     gh issue comment "$EXISTING_ISSUE" --repo "$REPO" --body-file "$body_file"
@@ -86,12 +86,13 @@ if [[ "$AUTO_FIX_COUNT" -gt 0 ]]; then
     if git diff --staged --quiet; then
       echo "No question-bank changes to commit after apply."
     else
-      git commit -m "$(cat <<EOF
+      git commit -m "$(
+        cat <<EOF
 fix: re-anchor OPTN policy pages after HRSA bundle drift
 
 Automated remediation from scheduled validate workflow.
 EOF
-)"
+      )"
     fi
 
     if [[ "$REUSE_PR" -eq 1 ]]; then
@@ -107,7 +108,8 @@ EOF
       PR_URL="$(gh pr create \
         --title "fix: re-anchor OPTN policy pages after bundle drift" \
         --label optn-drift-remediation \
-        --body "$(cat <<EOF
+        --body "$(
+          cat <<EOF
 ## Summary
 
 Automated remediation for OPTN \`optn_policies.pdf\` page drift detected by the daily validate workflow on \`main\`.
@@ -123,7 +125,7 @@ Automated remediation for OPTN \`optn_policies.pdf\` page drift detected by the 
 
 Workflow run: ${WORKFLOW_URL}
 EOF
-)")"
+        )")"
 
       echo "Opened remediation PR: ${PR_URL}"
     fi
