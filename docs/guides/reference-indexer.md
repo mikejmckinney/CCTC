@@ -218,6 +218,33 @@ When daily or PR validation fails on OPTN references:
 
 Validator note: OPTN locators with `Policy X.Y` are checked for the subsection on the cited page (not merely the parent `Policy X` heading). Table-only pages under Policy 18.x are recognized via instrument markers (`TCR`, `TRF`, `Table 18-2`, etc.) in `scripts/lib/verify-references.mjs`.
 
+### Automated drift response (scheduled CI)
+
+When the **daily scheduled** `validate` job on `main` fails due to OPTN page drift, a follow-up job (`optn-drift-remediate` in `.github/workflows/validate.yml`) runs:
+
+1. **Analyze** — `npm run reference:audit-optn` compares indexed OPTN pages to item anchors and suggests high-confidence page re-anchors.
+2. **Issue** — Opens or updates a GitHub issue labeled `optn-drift` with a table (`Item | Topic | Old → New page`) and any manual-review items.
+3. **Remediate** — When auto-fixable drift exists, applies page updates, exports verification stubs (`reference:export-stubs -- --force`), opens a PR on `fix/optn-drift-YYYYMMDD`, and waits for CI checks.
+4. **Human merge** — You review the PR and merge; automation does not merge to `main` unless the repository variable `OPTN_DRIFT_AUTOMERGE` is set to `true` (default: disabled).
+
+Repository variable (Settings → Secrets and variables → Actions → Variables):
+
+| Variable | Values | Default behavior |
+|---|---|---|
+| `OPTN_DRIFT_AUTOMERGE` | `true` / unset / anything else | Unset or not `true` → PR stays open for review. `true` → squash-merge after CI passes on the remediation PR. |
+
+**Branch collision handling:** if an open PR already has the `optn-drift-remediation` label, the workflow pushes additional fixes to that branch instead of creating `fix/optn-drift-YYYYMMDD` again. New incidents use a date-stamped branch; if that branch name already exists without an open PR, a numeric suffix is appended (`-2`, `-3`, …).
+
+Local preview:
+
+```bash
+npm run reference:fetch-optn && npm run reference:index -- optn-policies
+npm run reference:audit-optn
+npm run reference:audit-optn -- --apply   # after reviewing suggestions
+```
+
+**Scope limits:** automation handles mechanical OPTN `pdf_page` / `#page=N` / locator page shifts. Textbook anchor drift, keyword/content mismatches, or conflicting page suggestions within one item are listed under **Manual review required** on the issue only.
+
 ## Maintainer checklist (new workspace)
 
 1. Clone the repo.

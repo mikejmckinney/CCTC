@@ -38,7 +38,7 @@ const POLICY_SUBSECTION_PAGE_MARKERS = {
   '18.3': /Outcomes of Organ Offers|refusal code|PTR/i,
 };
 
-function isPolicySectionPresent(pageText, policiesOnPage, policyNumber) {
+export function isPolicySectionPresent(pageText, policiesOnPage, policyNumber) {
   if (!policyNumber) {
     return true;
   }
