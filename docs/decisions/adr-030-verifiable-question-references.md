@@ -124,7 +124,8 @@ Policy text (policy-primary items).
 
 HRSA publishes new OPTN policy bundles periodically. Page numbers shift.
 Maintainers must re-fetch, re-index, and re-verify anchors when the bundle
-changes.
+changes. CI re-fetches on every run; a daily scheduled `validate` job on
+`main` (see `.github/workflows/validate.yml`) catches drift between PRs.
 
 ## Options Considered
 

@@ -3,6 +3,10 @@ name: Validate Question Bank
 on:
   push:
   pull_request:
+  schedule:
+    # Daily live OPTN bundle check on main (catches HRSA page drift between PRs).
+    - cron: '0 12 * * *'
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -11,6 +15,7 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    if: github.event_name != 'schedule' || github.ref == 'refs/heads/main'
     permissions:
       contents: read
 
@@ -44,6 +49,7 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
     permissions:
       contents: read
 

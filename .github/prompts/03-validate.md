@@ -7,6 +7,7 @@ Build a validation step that runs locally and in CI so the question bank cannot 
 | Gate | Command | What it proves |
 |---|---|---|
 | **CI** | `npm run validate:ci` + `npm run validate:stubs` | Schema, integrity, reference **format**, OPTN PDF **content** (live index), committed stub match for all anchors |
+| **CI schedule** | `.github/workflows/validate.yml` daily on `main` | Same OPTN live check between PRs when HRSA republishes the policies PDF |
 | **Local (required before merge)** | `npm run validate` | Full textbook anchor **content** via local `docs/reference/.index/` (regenerate stubs when anchors change) |
 
 Textbook PDFs and page indexes are gitignored (copyright + size). CI enforces textbook anchor metadata via committed stubs in `questions/.verification/` — see [verification stubs](../docs/reference/verification-stubs/README.md).

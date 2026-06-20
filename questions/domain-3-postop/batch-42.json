@@ -7,17 +7,31 @@
     "type": "one_best",
     "domain": 3,
     "task": "030200",
-    "knowledge_codes": ["030202"],
+    "knowledge_codes": [
+      "030202"
+    ],
     "cognitive_level": "application",
     "organ": "lung",
     "recipient_age": "adult",
     "stem": "A lung transplant recipient months post-transplant reports shortness of breath without biopsy-proven rejection. Which Aspergillus symptom aligns with standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Dyspnea or hypoxia" },
-      { "id": "B", "text": "Dyspnea always indicates hyperacute rejection and never fungal infection" },
-      { "id": "C", "text": "Aspergillus never causes respiratory symptoms in transplant recipients" },
-      { "id": "D", "text": "Hypoxia excludes Aspergillus from the differential" }
+      {
+        "id": "A",
+        "text": "Dyspnea or hypoxia"
+      },
+      {
+        "id": "B",
+        "text": "Dyspnea always indicates hyperacute rejection and never fungal infection"
+      },
+      {
+        "id": "C",
+        "text": "Aspergillus never causes respiratory symptoms in transplant recipients"
+      },
+      {
+        "id": "D",
+        "text": "Hypoxia excludes Aspergillus from the differential"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -34,7 +48,14 @@
       "pdf_page": 737,
       "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → v.",
       "quote_hint": "Dyspnea/hypoxia",
-      "keywords": ["Dyspnea", "hypoxia", "Symptoms", "Aspergillus", "fever", "rejection"]
+      "keywords": [
+        "Dyspnea",
+        "hypoxia",
+        "Symptoms",
+        "Aspergillus",
+        "fever",
+        "rejection"
+      ]
     },
     "references": [
       {
@@ -54,17 +75,31 @@
     "type": "one_best",
     "domain": 3,
     "task": "030200",
-    "knowledge_codes": ["030202"],
+    "knowledge_codes": [
+      "030202"
+    ],
     "cognitive_level": "recall",
     "organ": "lung",
     "recipient_age": "adult",
     "stem": "When teaching about Aspergillus pulmonary infection after transplantation, which imaging finding aligns with standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Nodular pneumonias with indistinct margins on chest imaging" },
-      { "id": "B", "text": "Normal chest imaging always excludes Aspergillus infection" },
-      { "id": "C", "text": "Aspergillus produces only lobar consolidation with sharp margins exclusively" },
-      { "id": "D", "text": "Chest imaging is never used in Aspergillus evaluation" }
+      {
+        "id": "A",
+        "text": "Nodular pneumonias with indistinct margins on chest imaging"
+      },
+      {
+        "id": "B",
+        "text": "Normal chest imaging always excludes Aspergillus infection"
+      },
+      {
+        "id": "C",
+        "text": "Aspergillus produces only lobar consolidation with sharp margins exclusively"
+      },
+      {
+        "id": "D",
+        "text": "Chest imaging is never used in Aspergillus evaluation"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -81,7 +116,15 @@
       "pdf_page": 737,
       "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → vi.",
       "quote_hint": "CXR and CT scan to observe for nodular pneumonias with indistinct margins",
-      "keywords": ["CXR", "CT", "scan", "nodular", "pneumonias", "indistinct", "margins"]
+      "keywords": [
+        "CXR",
+        "CT",
+        "scan",
+        "nodular",
+        "pneumonias",
+        "indistinct",
+        "margins"
+      ]
     },
     "references": [
       {
@@ -101,17 +144,31 @@
     "type": "one_best",
     "domain": 3,
     "task": "030200",
-    "knowledge_codes": ["030202"],
+    "knowledge_codes": [
+      "030202"
+    ],
     "cognitive_level": "application",
     "organ": "general",
     "recipient_age": "adult",
     "stem": "A transplant recipient with invasive Aspergillus infection cannot tolerate liposomal amphotericin B. Which treatment option aligns with standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Caspofungin or voriconazole as additional or alternative therapy" },
-      { "id": "B", "text": "No alternative antifungal agents exist for Aspergillus after transplantation" },
-      { "id": "C", "text": "Oral nystatin alone is sufficient for invasive Aspergillus disease" },
-      { "id": "D", "text": "Antifungal therapy should be stopped permanently without substitution" }
+      {
+        "id": "A",
+        "text": "Caspofungin or voriconazole as additional or alternative therapy"
+      },
+      {
+        "id": "B",
+        "text": "No alternative antifungal agents exist for Aspergillus after transplantation"
+      },
+      {
+        "id": "C",
+        "text": "Oral nystatin alone is sufficient for invasive Aspergillus disease"
+      },
+      {
+        "id": "D",
+        "text": "Antifungal therapy should be stopped permanently without substitution"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -128,7 +185,14 @@
       "pdf_page": 737,
       "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → vii.",
       "quote_hint": "Additional or alternative therapies with caspofungin or voriconazole",
-      "keywords": ["Additional", "alternative", "therapies", "caspofungin", "voriconazole", "amphotericin"]
+      "keywords": [
+        "Additional",
+        "alternative",
+        "therapies",
+        "caspofungin",
+        "voriconazole",
+        "amphotericin"
+      ]
     },
     "references": [
       {
@@ -148,23 +212,69 @@
     "type": "complex_combo",
     "domain": 3,
     "task": "030200",
-    "knowledge_codes": ["030202"],
+    "knowledge_codes": [
+      "030202"
+    ],
     "cognitive_level": "analysis",
     "organ": "general",
     "recipient_age": "adult",
     "stem": "A coordinator is updating Aspergillus evaluation and treatment teaching. Evaluate the following statements:",
     "shuffle": false,
     "elements": [
-      { "id": "I", "text": "Aspergillus may present with dyspnea or hypoxia." },
-      { "id": "II", "text": "Chest imaging may show nodular pneumonias with indistinct margins." },
-      { "id": "III", "text": "Voriconazole may be used as additional or alternative therapy." },
-      { "id": "IV", "text": "Metastatic Aspergillus disease never involves the central nervous system." }
+      {
+        "id": "I",
+        "text": "Aspergillus may present with dyspnea or hypoxia."
+      },
+      {
+        "id": "II",
+        "text": "Chest imaging may show nodular pneumonias with indistinct margins."
+      },
+      {
+        "id": "III",
+        "text": "Voriconazole may be used as additional or alternative therapy."
+      },
+      {
+        "id": "IV",
+        "text": "Metastatic Aspergillus disease never involves the central nervous system."
+      }
     ],
     "options": [
-      { "id": "A", "text": "I and II only", "selects": ["I", "II"] },
-      { "id": "B", "text": "I, II, and III only", "selects": ["I", "II", "III"] },
-      { "id": "C", "text": "II, III, and IV only", "selects": ["II", "III", "IV"] },
-      { "id": "D", "text": "I, II, III, and IV", "selects": ["I", "II", "III", "IV"] }
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
     ],
     "correct": "B",
     "explanation": {
@@ -181,7 +291,16 @@
       "pdf_page": 737,
       "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus",
       "quote_hint": "Dyspnea/hypoxia … nodular pneumonias with indistinct margins … caspofungin or voriconazole … Metastatic disease seen in central nervous system (CNS), liver, and/or kidneys",
-      "keywords": ["Dyspnea", "hypoxia", "nodular", "pneumonias", "voriconazole", "Metastatic", "central", "nervous"]
+      "keywords": [
+        "Dyspnea",
+        "hypoxia",
+        "nodular",
+        "pneumonias",
+        "voriconazole",
+        "Metastatic",
+        "central",
+        "nervous"
+      ]
     },
     "references": [
       {
@@ -201,17 +320,31 @@
     "type": "one_best",
     "domain": 3,
     "task": "030800",
-    "knowledge_codes": ["030803"],
+    "knowledge_codes": [
+      "030803"
+    ],
     "cognitive_level": "recall",
     "organ": "general",
     "recipient_age": "adult",
     "stem": "After a deceased-donor allocation match run, the allocating OPO must report organ offer outcomes to the OPTN. According to OPTN policy, within what timeframe must the OPO submit this report?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Within 30 days of the match run date" },
-      { "id": "B", "text": "Within 90 days after waitlist registration only" },
-      { "id": "C", "text": "By recipient hospital discharge or 42 days after transplant, whichever is first" },
-      { "id": "D", "text": "Within 1 day of every routine medication refill request" }
+      {
+        "id": "A",
+        "text": "Within 30 days of the match run date"
+      },
+      {
+        "id": "B",
+        "text": "Within 90 days after waitlist registration only"
+      },
+      {
+        "id": "C",
+        "text": "By recipient hospital discharge or 42 days after transplant, whichever is first"
+      },
+      {
+        "id": "D",
+        "text": "Within 1 day of every routine medication refill request"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -225,16 +358,25 @@
     "primary_anchor": {
       "type": "pdf",
       "source_id": "optn-policies",
-      "pdf_page": 332,
+      "pdf_page": 334,
       "section": "Policy 18.3 → Recording and Reporting the Outcomes of Organ Offers",
       "quote_hint": "OPOs are responsible for reporting the outcomes of organ offers to the OPTN within 30 days of the match run date",
-      "keywords": ["OPOs", "reporting", "outcomes", "organ", "offers", "OPTN", "30", "days"]
+      "keywords": [
+        "OPOs",
+        "reporting",
+        "outcomes",
+        "organ",
+        "offers",
+        "OPTN",
+        "30",
+        "days"
+      ]
     },
     "references": [
       {
         "citation": "OPTN/UNOS — Policies (HRSA).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=332",
-        "locator": "Policy 18.3 → Recording and Reporting the Outcomes of Organ Offers (OPO reporting within 30 days of match run date); PDF p. 332 (repo file-page index; printed margin may differ).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=334",
+        "locator": "Policy 18.3 → Recording and Reporting the Outcomes of Organ Offers (OPO reporting within 30 days of match run date); PDF p. 334 (repo file-page index; printed margin may differ).",
         "kind": "regulation"
       },
       {
@@ -243,7 +385,7 @@
         "kind": "textbook"
       }
     ],
-    "notes": "Source-first item. Fifth 030800 item; organ-offer outcome reporting distinct from TRR (cctc-3027), TCR (cctc-3036), TRF (cctc-3040), and SRTR aggregation (cctc-3005); anchor verified on optn-policies p. 332.",
-    "last_updated": "2026-06-08"
+    "notes": "Source-first item. Fifth 030800 item; organ-offer outcome reporting distinct from TRR (cctc-3027), TCR (cctc-3036), TRF (cctc-3040), and SRTR aggregation (cctc-3005); anchor verified on optn-policies p. 334.",
+    "last_updated": "2026-06-20"
   }
 ]
