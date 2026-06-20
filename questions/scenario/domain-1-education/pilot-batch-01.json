@@ -1,0 +1,781 @@
+[
+  {
+    "id": "cctc-6001",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010502"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the afternoon clinic line. A 52-year-old kidney recipient discharged six weeks ago calls from work. He feels well, takes medications on schedule, and reports no fever, pain, or urinary changes. He only wants to confirm whether his follow-up visit is next Tuesday at 10 a.m. as discussed at discharge. The on-call surgeon asks you to document how this contact should be triaged. How should this contact be categorized?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "An urgent matter requiring immediate after-hours contact"
+      },
+      {
+        "id": "B",
+        "text": "A non-urgent matter such as appointment verification"
+      },
+      {
+        "id": "C",
+        "text": "An emergency that requires activating local EMS before notifying the team"
+      },
+      {
+        "id": "D",
+        "text": "A matter that should wait until the next unscheduled clinic visit"
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Verification of appointment date and time is explicitly listed as a non-urgent reason to contact the transplant team. Coordinators teach recipients to distinguish routine questions from urgent clinical changes.",
+      "rationale_incorrect": {
+        "A": "Urgent matters include infection symptoms, rejection signs, wound drainage, chest pain, shortness of breath, bleeding, and stroke symptoms—not routine scheduling questions.",
+        "C": "Routine appointment confirmation does not constitute a local EMS emergency.",
+        "D": "Non-urgent matters are still appropriate to address through normal team communication channels rather than deferred indefinitely."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education — §h. Communication with the transplant team → ii. Non-urgent matters",
+      "quote_hint": "Non-urgent matters may include verification of appointment date and time",
+      "keywords": [
+        "non-urgent",
+        "appointment",
+        "verification",
+        "urgent",
+        "infection"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → ii. Non-urgent matters / iii. Urgent matters; PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Transplantation Nursing Secrets (Cupples & Ohler, eds., 2003).",
+        "locator": "Ch. 25, Patient Education — table “Topics for Candidate Education Programs During the Waiting Period”, item 12 “When to call the coordinator after transplantation”; PDF p. 319.",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1001. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 111.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1001"
+  },
+  {
+    "id": "cctc-6002",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": [
+      "010401"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are counseling a 45-year-old woman listed for liver transplantation at your center. She completed psychosocial evaluation and asks why her workup includes hepatology-specific imaging and pulmonary studies that her friend undergoing kidney evaluation did not receive. She wonders whether one standard test battery could apply to every organ. Her friend received a different protocol at another program. Which explanation BEST aligns with standard evaluation education?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Transplant programs define organ-specific protocols to validate end-organ disease and overall health for safe transplantation"
+      },
+      {
+        "id": "B",
+        "text": "Every candidate receives identical testing regardless of organ or comorbidities"
+      },
+      {
+        "id": "C",
+        "text": "Diagnostic testing is optional once psychosocial evaluation is complete"
+      },
+      {
+        "id": "D",
+        "text": "Only blood type testing is required before listing"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Evaluation education explains that transplant programs define organ-specific diagnostic protocols to confirm end-organ disease and determine whether the patient can safely undergo transplantation.",
+      "rationale_incorrect": {
+        "B": "References describe individualized, organ-specific evaluation protocols rather than one identical test panel for all candidates.",
+        "C": "Diagnostic testing is a required component of evaluation, not replaced by psychosocial assessment alone.",
+        "D": "Listing requires comprehensive evaluation beyond blood type alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → evaluation process → c. Diagnostic testing → i.",
+      "quote_hint": "Transplant programs define organ-specific protocols for diagnostic studies",
+      "keywords": [
+        "organ-specific",
+        "protocols",
+        "diagnostic",
+        "studies",
+        "transplant",
+        "programs"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → evaluation process → c. Diagnostic testing → i. (organ-specific protocols); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1018. Source-first item. Distinct 010400 angle from cctc-1008 (ILDA); anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1018"
+  },
+  {
+    "id": "cctc-6003",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010201"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the pretransplant coordinator for a 58-year-old man with decompensated cirrhosis listed for liver transplant. He smokes half a pack daily despite counseling and wants to know why smoking matters beyond cardiovascular disease risk. He has no prior graft but asks whether tobacco affects liver transplant outcomes specifically. Pulmonary evaluation noted mild obstructive disease. Which liver-related complication should education include?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Increased incidence of hepatic artery thrombosis"
+      },
+      {
+        "id": "B",
+        "text": "Elimination of all cardiovascular mortality risk after transplant"
+      },
+      {
+        "id": "C",
+        "text": "Guaranteed protection against biliary complications"
+      },
+      {
+        "id": "D",
+        "text": "No association between smoking and liver graft vascular complications"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cigarette smoking in liver transplant recipients has been implicated in cardiovascular mortality and an increased incidence of hepatic artery thrombosis.",
+      "rationale_incorrect": {
+        "B": "Smoking increases cardiovascular mortality risk rather than eliminating it.",
+        "C": "Smoking does not protect against biliary or vascular complications.",
+        "D": "Smoking is specifically associated with hepatic artery thrombosis among liver recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Evaluation → J. Consultations → 2.d.e.ii.",
+      "quote_hint": "Cigarette smoking has been implicated … increased incidence of hepatic artery thrombosis",
+      "keywords": [
+        "Cigarette",
+        "smoking",
+        "liver",
+        "transplant",
+        "cardiovascular",
+        "hepatic",
+        "artery"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → J. Consultations → 2. Pulmonary evaluation → d. Effects of smoking in specific transplant populations → e.ii. (liver cardiovascular mortality and hepatic artery thrombosis); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1037. Source-first item. Sixth 010200 item; liver smoking-risk angle paired with cctc-1034 heart item; anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1037"
+  },
+  {
+    "id": "cctc-6004",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are teaching the parents of a 6-year-old who received a deceased-donor kidney transplant two weeks ago. The child was discharged on high-dose induction therapy and the family is planning a return to daycare. Grandparents ask whether common childhood illnesses will behave the same as before transplant. The child currently has no fever or respiratory symptoms. Which teaching point aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Community-acquired infections can be more severe in young children, especially soon after transplant during heavy immunosuppression"
+      },
+      {
+        "id": "B",
+        "text": "Community infections are always mild in children regardless of immunosuppression timing"
+      },
+      {
+        "id": "C",
+        "text": "Pediatric recipients have no risk of influenza or respiratory syncytial virus after transplant"
+      },
+      {
+        "id": "D",
+        "text": "Immunosuppression eliminates the need to evaluate fever in pediatric recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Community-acquired infections can be more severe in young children, especially if they occur soon after transplantation and during highly immunosuppressed periods.",
+      "rationale_incorrect": {
+        "B": "Severity risk is heightened in young children during early highly immunosuppressed periods rather than being uniformly mild.",
+        "C": "Pediatric recipients remain at risk for common childhood illnesses including influenza and respiratory syncytial virus.",
+        "D": "Fever evaluation remains important; immunosuppression increases rather than eliminates infection concern."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 944,
+      "section": "Ch. 17, Pediatric Populations → H. Community-acquired infections → 1.",
+      "quote_hint": "Community-acquired infections can be more severe in young children, especially if they occur soon after transplantation",
+      "keywords": [
+        "Community-acquired",
+        "infections",
+        "severe",
+        "young",
+        "children",
+        "transplantation",
+        "immunosuppressed"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → H. Community-acquired infections → 1. (more severe in young children soon after transplant during heavy immunosuppression); PDF p. 944 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1057. Source-first item. Twelfth 010600 item; fifth pediatric recipient in bank; community-infection angle distinct from HPV (cctc-1036) and live-virus household (cctc-1046); anchor verified on Cupples p. 944.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1057"
+  },
+  {
+    "id": "cctc-6005",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": [
+      "010701"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are facilitating living kidney donor evaluation for a 34-year-old sister donating to her brother. During the independent donor advocate session, she asks whether she can receive travel reimbursement from the recipient's employer. The surgeon wants confirmation that federal legal boundaries were reviewed before consent. Which legal counseling point must the coordinator include per standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "It is a federal crime to offer to donate any human organ for anything of value"
+      },
+      {
+        "id": "B",
+        "text": "Financial compensation for organ donation is legally encouraged"
+      },
+      {
+        "id": "C",
+        "text": "Only state law, not federal law, governs organ sales"
+      },
+      {
+        "id": "D",
+        "text": "Vacation packages may be exchanged for organ donation without restriction"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor education must confirm that the donor understands it is a federal crime to offer to donate any human organ for anything of value, including cash, property, and vacations.",
+      "rationale_incorrect": {
+        "B": "Federal law prohibits organ sales and inducements rather than encouraging compensation.",
+        "C": "Federal law specifically prohibits offering organs for valuable consideration.",
+        "D": "Vacations and other items of value are explicitly named as prohibited inducements."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "section": "Ch. 7, Care of Living Donors → F. Elements Included in Education and Informed Consent → 1.d.",
+      "quote_hint": "federal crime to offer to donate any human organ for anything of value including … cash, property, and vacations",
+      "keywords": [
+        "federal",
+        "crime",
+        "donate",
+        "human",
+        "organ",
+        "value",
+        "cash",
+        "property"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → F. Elements Included in Education and Informed Consent → 1.d. (federal crime to offer organ for anything of value); PDF p. 340 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1078. Source-first item. Federal organ-sales prohibition angle distinct from donor decline right (cctc-1074) and separate live donor team (cctc-1045); anchor verified on Cupples p. 340.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1078"
+  },
+  {
+    "id": "cctc-6006",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are reviewing home infection precautions with a 41-year-old heart recipient three weeks post-transplant. She lives alone with an indoor cat and no one else can manage litter duties indefinitely. She feels well and asks what protection is needed if she must clean the litter box herself. She already uses hand hygiene after gardening. Which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wear disposable gloves and a surgical mask if handling cat litter is unavoidable"
+      },
+      {
+        "id": "B",
+        "text": "No precautions are needed because household pets are always sterile"
+      },
+      {
+        "id": "C",
+        "text": "Recipients should handle all animal feces without gloves to build immunity"
+      },
+      {
+        "id": "D",
+        "text": "Cat litter exposure is encouraged immediately after transplant to reduce stress"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Animal-safety teaching advises avoiding handling fecal matter especially cat litter where bacteria may become airborne; if unavoidable, the recipient should wear disposable gloves and a surgical mask.",
+      "rationale_incorrect": {
+        "B": "Pet-related exposures can transmit infection; precautions are recommended.",
+        "C": "Handling fecal matter without protection increases infection risk in immunosuppressed recipients.",
+        "D": "Cat litter handling is avoided when possible rather than encouraged early post-transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → infection prevention → v. Animal safety",
+      "quote_hint": "avoid handling fecal matter especially cat litter … recipient should wear gloves (disposable) and a surgical mask",
+      "keywords": [
+        "cat",
+        "litter",
+        "fecal",
+        "matter",
+        "gloves",
+        "disposable",
+        "surgical",
+        "mask"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → infection prevention → v. Animal safety (gloves and mask if cat litter handling unavoidable); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1099. Source-first item. Cat-litter precaution angle distinct from visitor infection postponement (cctc-1092) and well-water Cryptosporidium teaching (cctc-1095); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1099"
+  },
+  {
+    "id": "cctc-6007",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are conducting a post-transplant education class for adult recipients and caregivers. A kidney recipient notes a local news report about a regional foodborne illness outbreak linked to deli meat. She asks how immunosuppressed patients should respond to community alerts beyond routine kitchen hygiene. She is six months post-transplant and otherwise well. Which community-surveillance step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Monitor local reports of foodborne illness outbreaks"
+      },
+      {
+        "id": "B",
+        "text": "Ignore local outbreak reports because immunosuppression prevents foodborne illness"
+      },
+      {
+        "id": "C",
+        "text": "Foodborne outbreak monitoring applies only before transplantation"
+      },
+      {
+        "id": "D",
+        "text": "Recipients should seek out foods linked to active outbreaks"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Dietary infection-prevention teaching includes monitoring local reports of foodborne illness outbreaks along with safe food-handling practices.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressed recipients remain at increased foodborne infection risk and should monitor outbreak reports.",
+        "C": "Outbreak monitoring continues as part of post-transplant dietary teaching.",
+        "D": "Recipients should avoid foods linked to outbreaks rather than seeking them out."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iii. Dietary precautions",
+      "quote_hint": "Monitor local reports of foodborne illness outbreaks",
+      "keywords": [
+        "Monitor",
+        "local",
+        "reports",
+        "foodborne",
+        "illness",
+        "outbreaks"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iii. Dietary precautions (monitor local foodborne illness outbreaks); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1120. Source-first item. Foodborne-outbreak surveillance angle distinct from boil-water advisories (cctc-1104) and cross-contamination teaching (cctc-2113); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1120"
+  },
+  {
+    "id": "cctc-6008",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are counseling a 63-year-old lung recipient who frequently babysits twin grandchildren. The grandchildren received a live-virus rotavirus vaccine last week per their pediatrician. The recipient helps with diaper changes and wants to know whether routine grandparent duties are safe. He has no current illness and takes standard maintenance immunosuppression. Which teaching point aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Avoid changing diapers of children who were recently vaccinated with live-virus vaccines"
+      },
+      {
+        "id": "B",
+        "text": "Live-vaccine shedding never occurs after pediatric vaccination"
+      },
+      {
+        "id": "C",
+        "text": "Diaper changes are unrestricted regardless of recent vaccinations"
+      },
+      {
+        "id": "D",
+        "text": "Only hospital staff may change diapers for vaccinated children"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes avoiding changing diapers of children who were recently vaccinated, because shedding after live-virus vaccines may continue for days, weeks, or months.",
+      "rationale_incorrect": {
+        "B": "Shedding after live-virus vaccination may persist for a variable period depending on vaccine and host factors.",
+        "C": "Recent live-vaccine exposure warrants precautions including avoiding diaper changes when possible.",
+        "D": "Household caregivers are taught these precautions rather than deferring all diaper care to hospital staff."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vi. Others",
+      "quote_hint": "Avoid changing diapers of children who were recently vaccinated",
+      "keywords": [
+        "Avoid",
+        "changing",
+        "diapers",
+        "children",
+        "recently",
+        "vaccinated"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vi. Others (avoid diaper changes for recently live-vaccinated children); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1142. Source-first item. Live-vaccine diaper-precaution angle distinct from household live-vaccine contact combo (cctc-1048) and garden/dirt gloves teaching (cctc-1140); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1142"
+  },
+  {
+    "id": "cctc-6009",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010603",
+      "010605"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are revising the transplant program's first-month post-discharge phone script before it is distributed to caregivers. Nursing leadership wants concise examples that separate urgent from non-urgent reasons to call. Several new coordinators will use the script during evening triage. The draft must reflect standard communication teaching without listing every possible symptom. Evaluate the following statements about when to contact the transplant team:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Medication refill requests are examples of non-urgent matters."
+      },
+      {
+        "id": "II",
+        "text": "Signs and symptoms of rejection are urgent matters."
+      },
+      {
+        "id": "III",
+        "text": "General concerns about diet, activity, and exercise are urgent matters."
+      },
+      {
+        "id": "IV",
+        "text": "Shortness of breath is an urgent matter."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II and III only",
+        "selects": [
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Medication refills and similar routine needs are non-urgent, while rejection symptoms, infection concerns, chest pain, and shortness of breath require urgent outreach. General diet and activity questions are explicitly non-urgent.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—shortness of breath is listed as urgent.",
+        "C": "Statement III is false; diet and exercise questions are non-urgent.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication with the transplant team → ii–iii (non-urgent vs urgent matters)",
+      "quote_hint": "Non-urgent matters may include Medication refills … Urgent matters may include Signs and symptoms of rejection … Shortness of breath",
+      "keywords": [
+        "Non-urgent",
+        "Urgent",
+        "rejection",
+        "Shortness",
+        "breath",
+        "Medication",
+        "refills"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → ii. Non-urgent matters and iii. Urgent matters; PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1011. Synthesized item. Statements I–IV from Cupples Ch. 3 §h ii–iii; primary anchor on p. 111.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1011"
+  },
+  {
+    "id": "cctc-6010",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are preparing an infection-prevention inservice for coordinators after two late-presenting opportunistic infections in the first post-transplant year. Pharmacy asks for teaching points distinguishing Listeria and Nocardia epidemiology and organ involvement. Attendees will apply the material when counseling recipients about food safety and respiratory symptoms. Slides must reflect standard references on timing, mortality, and sites of disease. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Listeriosis may occur within the first two post-transplant months but can occur years later."
+      },
+      {
+        "id": "II",
+        "text": "Listeria meningitis is associated with high mortality in solid-organ transplant recipients."
+      },
+      {
+        "id": "III",
+        "text": "Nocardia most commonly affects the lung in transplant recipients."
+      },
+      {
+        "id": "IV",
+        "text": "Nocardia never causes brain abscesses or meningitis."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Listeriosis typically occurs early but may occur years later, Listeria meningitis carries high mortality, and Nocardia most commonly involves the lung. Nocardia may also affect the brain, skin, and bone, so statement IV is false.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—lung is the most common Nocardia site.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because extrapulmonary brain involvement may occur."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 213,
+      "section": "Ch. 5, Infectious Diseases → Listeriosis / Nocardiosis → C.–D.",
+      "quote_hint": "Typically occurs within first two posttransplant months … high mortality rate … Most common site: lung … Extrapulmonary sites: brain",
+      "keywords": [
+        "Listeriosis",
+        "posttransplant",
+        "months",
+        "mortality",
+        "Nocardia",
+        "lung",
+        "brain",
+        "abscesses"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Listeriosis / Nocardiosis → C.–D. (timing, mortality, pulmonary and extrapulmonary Nocardia sites); PDF p. 213 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-1101. Source-first item. Listeria/Nocardia teaching combo distinct from TMP-SMX prophylaxis benefit (cctc-3068); anchor verified on Cupples p. 213.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1101"
+  }
+]

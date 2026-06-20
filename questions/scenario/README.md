@@ -43,6 +43,18 @@ npm run reference:export-stubs -- --force
 
 See [`docs/guides/reference-indexer.md`](../../docs/guides/reference-indexer.md) and [ADR-031](../../docs/decisions/adr-031-scenario-companion-bank.md).
 
+## Pilot wave (Phase B)
+
+First **30** companions (`cctc-6001`–`cctc-6030`) in `questions/scenario/domain-*/pilot-batch-01.json`:
+
+| Companion id | `companion_of` | Domain |
+|---|---|---|
+| cctc-6001–6010 | cctc-1001, 1018, 1037, 1057, 1078, 1099, 1120, 1142, 1011, 1101 | 1 |
+| cctc-6011–6020 | cctc-2001, 2023, 2045, 2067, 2089, 2111, 2133, 2136, 2148, 2160 | 2 |
+| cctc-6021–6030 | cctc-3001, 3023, 3040, 3058, 3080, 3101, 3123, 3146, 3004, 3108 | 3 |
+
+Regenerate from parents: `node scripts/scenario/build-pilot-companions.mjs` (stems live in that script).
+
 ## App usage
 
 Learners choose **Scenario companions** on the start screen. Study, exam, and timed modes behave the same as the standard bank; blueprint task weighting applies to the scenario pool.

@@ -1,0 +1,790 @@
+[
+  {
+    "id": "cctc-6021",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": [
+      "030101"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are reviewing clinic labs for a 44-year-old kidney recipient at eight weeks post-transplant. He denies fever, graft tenderness, dysuria, or weight change and appears comfortable today. Serial creatinine has risen from 1.4 to 1.9 mg/dL over ten days while tacrolimus troughs remain in range. The nurse asks you to prioritize the most likely explanation before additional workup. Which presentation is MOST consistent with this pattern?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Acute rejection presenting as asymptomatic renal dysfunction"
+      },
+      {
+        "id": "B",
+        "text": "Expected immediate postoperative diuresis"
+      },
+      {
+        "id": "C",
+        "text": "Normal trough variability requiring no clinical follow-up"
+      },
+      {
+        "id": "D",
+        "text": "Rejection that always presents with fever and graft tenderness"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Acute rejection episodes most commonly present as an asymptomatic rise in serum creatinine or failure of creatinine to fall. Classic fever, malaise, and graft tenderness are seen less frequently with modern immunosuppression.",
+      "rationale_incorrect": {
+        "B": "Postoperative diuresis is an early operative phenomenon, not a pattern at two months with rising creatinine.",
+        "C": "A rising creatinine warrants clinical evaluation; it is not assumed to be benign trough variability.",
+        "D": "Fever and graft tenderness are classic but now less common presentations; asymptomatic creatinine rise is the typical pattern."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 288,
+      "section": "Ch. 10 → Clinical Manifestations of Acute Rejection (opening paragraph)",
+      "quote_hint": "most commonly present as asymptomatic rise in serum creatinine",
+      "keywords": [
+        "asymptomatic",
+        "creatinine",
+        "rejection",
+        "acute",
+        "graft"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 10 → Clinical Manifestations of Acute Rejection; PDF p. 288 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → iii. Urgent matters (signs and symptoms of rejection); PDF p. 111.",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3001. Source-first item. Anchor verified against docs/reference/danovitch-handbook-kidney-transplantation.pdf p. 288.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3001"
+  },
+  {
+    "id": "cctc-6022",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": [
+      "030303"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A 36-year-old kidney recipient on cyclosporine returns for routine follow-up complaining of progressively enlarged gums interfering with eating. Dental clearance is complete and graft function is stable. He asks whether switching to tacrolimus is reasonable solely for this cosmetic mucosal problem. Which adverse effect pairing is consistent with standard CNI references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Cyclosporine is associated with gingival hypertrophy; switching to tacrolimus may be considered for this cosmetic side effect"
+      },
+      {
+        "id": "B",
+        "text": "Cyclosporine never causes gingival changes; only tacrolimus does"
+      },
+      {
+        "id": "C",
+        "text": "Gingival hypertrophy requires immediate graft nephrectomy"
+      },
+      {
+        "id": "D",
+        "text": "CNIs have no cosmetic or mucosal side effects"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "References note cyclosporine-associated gingival hypertrophy as a common reason to switch to tacrolimus, alongside other CNI cosmetic effects such as hirsutism.",
+      "rationale_incorrect": {
+        "B": "Gingival hypertrophy is described with cyclosporine, not exclusively with tacrolimus.",
+        "C": "Gingival overgrowth is managed medically and may prompt CNI switching, not nephrectomy.",
+        "D": "CNIs have recognized cosmetic and mucosal adverse effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 173,
+      "section": "Ch. 6 → Switching Calcineurin Inhibitors (gingival hypertrophy with cyclosporine)",
+      "quote_hint": "cyclosporine to tacrolimus for gingival hypertrophy",
+      "keywords": [
+        "cyclosporine",
+        "tacrolimus",
+        "gingival",
+        "hypertrophy",
+        "switching",
+        "cosmetic"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 6 → Switching Calcineurin Inhibitors (cyclosporine gingival hypertrophy); PDF p. 173 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3023. Source-first item. Distinct 030300 angle from cctc-3010/3018; anchor verified on Danovitch p. 173.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3023"
+  },
+  {
+    "id": "cctc-6023",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030800",
+    "knowledge_codes": [
+      "030803"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Your transplant quality coordinator is auditing timely OPTN follow-up submissions before a UNOS site survey. A heart recipient passed the six-month transplant anniversary last month and the annual date will occur next quarter. The data manager asks when organ-specific transplant recipient follow-up forms must be submitted. After a solid-organ transplant, when must a transplant hospital submit organ-specific transplant recipient follow-up (TRF) data to meet OPTN timely data requirements?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Within 90 days after the six-month and annual transplant anniversaries"
+      },
+      {
+        "id": "B",
+        "text": "Only on the day of initial waitlist registration"
+      },
+      {
+        "id": "C",
+        "text": "Within 1 day of every routine medication refill request"
+      },
+      {
+        "id": "D",
+        "text": "Never; TRF forms are optional for transplant hospitals"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Policy 18 requires transplant hospitals to submit organ-specific transplant recipient follow-up (TRF) within 90 days after the six-month and annual anniversary of the transplant date until death, graft failure, or planned graft removal.",
+      "rationale_incorrect": {
+        "B": "Waitlist registration triggers TCR submission, not TRF; TRF follows transplant anniversaries.",
+        "C": "Medication refill requests are not the TRF submission trigger.",
+        "D": "TRF is a required timely data instrument for followed recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 332,
+      "section": "Policy 18.1 → Data Submission Requirements → TRF",
+      "quote_hint": "90 days after the six-month and annual anniversary of the transplant date",
+      "keywords": [
+        "90",
+        "days",
+        "six-month",
+        "annual",
+        "anniversary",
+        "transplant",
+        "TRF",
+        "Follow-up"
+      ]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=332",
+        "locator": "Policy 18.1 → Data Submission Requirements (organ-specific transplant recipient follow-up [TRF] within 90 days after six-month and annual anniversaries); PDF p. 332 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3040. Source-first item. Fifth 030800 item; TRF timing distinct from TRR (cctc-3027), TCR (cctc-3036), UNet fields (cctc-3019), and SRTR aggregation (cctc-3005); anchor verified on optn-policies p. 332.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3040"
+  },
+  {
+    "id": "cctc-6024",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": [
+      "030601"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are co-leading discharge medication teaching for a kidney recipient going home tomorrow on tacrolimus, mycophenolate, and prednisone. The social worker notes limited health literacy and no live-in caregiver for the first week. Pharmacy is available to support structured home management tools. Which structured adherence strategy aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "A day-and-hour medication box that may be pre-loaded by the pharmacist at discharge"
+      },
+      {
+        "id": "B",
+        "text": "Storing all immunosuppressants in the bathroom medicine cabinet for convenience"
+      },
+      {
+        "id": "C",
+        "text": "Taking critical-dose drugs at random times without regard to drug-level draws"
+      },
+      {
+        "id": "D",
+        "text": "Avoiding any written medication roster because pictures are never helpful"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Structured medication management may include a medication box with day and hour subdivisions that can be pre-loaded by the pharmacist at discharge, along with a written roster and dosing reminders.",
+      "rationale_incorrect": {
+        "B": "Medications should not be stored in humid areas such as the bathroom; correct storage is part of discharge teaching.",
+        "C": "Critical-dose immunosuppressants must be taken at consistent times, especially around serum drug-level draws.",
+        "D": "A written medication roster with pictures, times, and doses supports accurate home dosing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "section": "Ch. 3, Patient Education → medication education → structured approach",
+      "quote_hint": "medication box with day and hour subdivisions. The box may be pre-loaded by the pharmacist at the time of discharge",
+      "keywords": [
+        "medication",
+        "box",
+        "day",
+        "hour",
+        "subdivisions",
+        "pharmacist",
+        "discharge",
+        "pre-loaded"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication education → structured approach (day/hour medication box pre-loaded by pharmacist at discharge); PDF p. 107 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3058. Source-first item. Seventh 030600 item; closes task gap; medication-box angle distinct from PPI–MMF interaction (cctc-3056), missed-dose teaching (cctc-3014), and grapefruit (cctc-3031); anchor verified on Cupples p. 107.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3058"
+  },
+  {
+    "id": "cctc-6025",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": [
+      "030701"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "You receive a worried call at midday from the mother of a 4-year-old kidney transplant recipient at home. She reports the child has produced no urine since waking four hours ago despite normal intake yesterday. The child is alert but the mother recalls prior teaching about vascular complications. How should the coordinator classify this finding?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "An urgent graft complication such as arterial thrombosis requiring immediate team contact"
+      },
+      {
+        "id": "B",
+        "text": "A non-urgent finding that may wait until the next routine refill call"
+      },
+      {
+        "id": "C",
+        "text": "Expected benign postoperative diuresis requiring no notification"
+      },
+      {
+        "id": "D",
+        "text": "A reason to permanently stop immunosuppression without medical guidance"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In pediatric kidney recipients, arterial thrombosis presents with sudden anuria and is often irreversible, resulting in graft loss; sudden anuria warrants urgent transplant team evaluation.",
+      "rationale_incorrect": {
+        "B": "Sudden anuria after pediatric kidney transplant is an urgent graft concern, not a routine matter.",
+        "C": "Anuria reflects possible vascular thrombosis rather than expected benign diuresis.",
+        "D": "Urgent symptoms require team contact and evaluation rather than unilateral immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 901,
+      "section": "Ch. 17, Pediatric Transplantation → kidney early complications → Thrombus → b.ii.",
+      "quote_hint": "Arterial thrombosis presents with sudden anuria and is often irreversible resulting in graft loss",
+      "keywords": [
+        "Arterial",
+        "thrombosis",
+        "presents",
+        "sudden",
+        "anuria",
+        "irreversible",
+        "graft",
+        "loss"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → kidney early complications → Thrombus → b.ii. (arterial thrombosis with sudden anuria; graft loss risk); PDF p. 901 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3080. Source-first item. Fourteenth pediatric recipient in bank; paired with thrombosis-risk teaching (cctc-1080); urgent-contact angle distinct from pediatric fever workup (cctc-3056); anchor verified on Cupples p. 901.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3080"
+  },
+  {
+    "id": "cctc-6026",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A 12-year post-transplant kidney recipient attends annual survivor clinic and asks where skin cancers most often develop in transplant populations. He works outdoors and has had several actinic keratoses treated on the scalp and arms. He wants focused counseling consistent with standard teaching. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Sun-exposed areas of skin are the predominant location"
+      },
+      {
+        "id": "B",
+        "text": "Squamous cell carcinoma occurs only on soles of the feet never exposed to light"
+      },
+      {
+        "id": "C",
+        "text": "Only mucosal surfaces inside the mouth are ever affected"
+      },
+      {
+        "id": "D",
+        "text": "Skin cancer in transplant recipients is limited to covered abdominal skin only"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sun-exposed areas of skin are the predominant location of squamous cell carcinomas in transplant recipients, supporting sun-protection counseling.",
+      "rationale_incorrect": {
+        "B": "Sun-exposed rather than strictly non-exposed sites are described as predominant.",
+        "C": "Cutaneous sun-exposed sites are emphasized rather than oral mucosa alone.",
+        "D": "Sun-exposed areas are cited as predominant rather than covered abdominal skin exclusively."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Skin care → Risk of skin cancer",
+      "quote_hint": "Sun exposed areas of skin are the predominant location of squamous cell carcinomas",
+      "keywords": [
+        "Sun",
+        "exposed",
+        "areas",
+        "skin",
+        "predominant",
+        "location",
+        "squamous",
+        "cell"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Skin care (sun-exposed areas predominant for squamous cell carcinoma); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3101. Source-first item. Sun-exposed-site counseling angle paired with education combo (cctc-1105); distinct from skin-cancer incidence item (cctc-3054); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3101"
+  },
+  {
+    "id": "cctc-6027",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are reviewing long-term complications with a 55-year-old liver transplant recipient seven years post-transplant on tacrolimus-based maintenance immunosuppression. Serial creatinine has slowly worsened and nephrology documented chronic kidney disease stage 3b. The patient asks whether medication-related kidney injury can ever require another transplant. Which outcome aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Renal dysfunction may progress to renal failure requiring kidney transplantation"
+      },
+      {
+        "id": "B",
+        "text": "Immunosuppression prevents all renal dysfunction after nonrenal transplant"
+      },
+      {
+        "id": "C",
+        "text": "Renal dysfunction never progresses beyond mild laboratory changes"
+      },
+      {
+        "id": "D",
+        "text": "Kidney transplantation is never required for immunosuppression-related renal failure"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term immunosuppression teaching notes that renal dysfunction may develop over time from medications, pre-existing kidney disease, infection, or hypovolemia and may progress to renal failure requiring kidney transplantation.",
+      "rationale_incorrect": {
+        "B": "Calcineurin inhibitors and other factors contribute to renal dysfunction rather than preventing it.",
+        "C": "Renal dysfunction may progress to renal failure in some recipients.",
+        "D": "Kidney transplantation may be required when renal failure develops."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects of immunosuppression → iv. Renal dysfunction",
+      "quote_hint": "May progress to renal failure and need for kidney transplantation",
+      "keywords": [
+        "Renal",
+        "dysfunction",
+        "progress",
+        "renal",
+        "failure",
+        "kidney",
+        "transplantation"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → iv. Renal dysfunction (may progress to renal failure requiring kidney transplant); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3123. Source-first item. Renal-dysfunction progression angle distinct from long-term IS combo (cctc-1038) and tacrolimus nephrotoxicity item (cctc-1023); anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3123"
+  },
+  {
+    "id": "cctc-6028",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are coordinating care for a 49-year-old bilateral lung transplant recipient hospitalized with bacterial pneumonia on the transplant unit. Chest radiograph shows a new infiltrate and he remains on supplemental oxygen but is hemodynamically stable. Nursing asks which positioning and activity interventions align with standard pneumonia management for transplant recipients. Which nursing intervention aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Reposition the patient every 2 hours and encourage activity if ambulatory"
+      },
+      {
+        "id": "B",
+        "text": "Keep the patient in one position continuously to conserve energy"
+      },
+      {
+        "id": "C",
+        "text": "Discourage coughing and deep breathing to prevent fatigue"
+      },
+      {
+        "id": "D",
+        "text": "Oxygen saturation monitoring is unnecessary during bacterial pneumonia"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bacterial pneumonia management includes auscultation for respiratory changes, inhalation or percussive therapy, encouraging deep breathing and coughing, monitoring supplemental oxygen, and repositioning every 2 hours with activity when ambulatory.",
+      "rationale_incorrect": {
+        "B": "Repositioning every 2 hours is recommended rather than maintaining one position continuously.",
+        "C": "Deep breathing and coughing are encouraged rather than discouraged.",
+        "D": "Oxygen saturation and supplemental oxygen are monitored during respiratory infection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.v.",
+      "quote_hint": "Reposition the patient every 2 hours; encourage activity if ambulatory",
+      "keywords": [
+        "Reposition",
+        "patient",
+        "every",
+        "hours",
+        "encourage",
+        "activity",
+        "ambulatory"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.v. Bacterial pneumonia (reposition every 2 hours, encourage ambulatory activity); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3146. Source-first item. Bacterial-pneumonia repositioning angle distinct from chest-x-ray diagnostic item (cctc-3138) and respiratory sign combo (cctc-3132); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3146"
+  },
+  {
+    "id": "cctc-6029",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030201",
+      "030203"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are called to evaluate a 50-year-old kidney recipient six weeks post-transplant with rising creatinine and decreased urine output over 24 hours. He reports low-grade fever and mild graft-site discomfort but is hemodynamically stable. Tacrolimus trough is elevated compared with the prior visit. The team must review common differential diagnoses before biopsy. Evaluate the following statements about differential diagnosis and presentation:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Fever with graft tenderness may reflect acute rejection or pyelonephritis."
+      },
+      {
+        "id": "II",
+        "text": "Calcineurin inhibitor toxicity commonly presents with graft tenderness."
+      },
+      {
+        "id": "III",
+        "text": "Acute rejection often presents as an asymptomatic rise in serum creatinine."
+      },
+      {
+        "id": "IV",
+        "text": "Oliguria makes calcineurin inhibitor toxicity a less likely sole explanation."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, III, and IV only",
+        "selects": [
+          "I",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II and III only",
+        "selects": [
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "A tender graft with fever and rising creatinine may reflect rejection or pyelonephritis. Rejection commonly presents with asymptomatic creatinine rise, while CNI toxicity does not produce graft tenderness. Oliguria shifts the differential away from isolated drug toxicity toward anatomical or severe rejection causes.",
+      "rationale_incorrect": {
+        "A": "Statement II is incorrect—CNI toxicity does not produce graft tenderness.",
+        "C": "Statement II is incorrect even though III is correct.",
+        "D": "Statement II is incorrect; not all four statements are true."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 288,
+      "section": "Ch. 10 → Clinical Manifestations of Acute Rejection (CNI toxicity, oliguria, asymptomatic creatinine)",
+      "quote_hint": "CNI toxicity and CMV or BK virus infection do not produce graft tenderness",
+      "keywords": [
+        "rejection",
+        "tenderness",
+        "creatinine",
+        "CNI",
+        "toxicity",
+        "oliguria"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 10 → Clinical Manifestations of Acute Rejection (statements III–IV and negation of II); PDF p. 288.",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 9 → SURGICAL COMPLICATIONS OF KIDNEY TRANSPLANTATION opening paragraph (statement I: fever and graft tenderness); PDF p. 266.",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3004. Synthesized item. Statements I–IV from Danovitch Ch. 9 p. 266 and Ch. 10 p. 288; primary anchor on p. 288.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3004"
+  },
+  {
+    "id": "cctc-6030",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": [
+      "030501"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Your program is revising the five-year survivor clinic checklist used by coordinators before annual visits. Leadership wants a concise review of infection prevention and bone-health monitoring supported by standard long-term care references. Coordinators will use the list when counseling stable adult recipients. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Annual influenza vaccination is recommended unless otherwise contraindicated."
+      },
+      {
+        "id": "II",
+        "text": "DEXA reassessment at six months post-transplant is part of bone-health monitoring."
+      },
+      {
+        "id": "III",
+        "text": "Calcium and vitamin D supplements may be used to prevent or treat osteopenia or osteoporosis."
+      },
+      {
+        "id": "IV",
+        "text": "Bone mineral density never needs reassessment after the pretransplant baseline."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Annual influenza vaccination, six-month DEXA reassessment, and calcium/vitamin D supplementation are recommended components of long-term care. Statement IV is false because DEXA is repeated at six months and every 12 or 24 months thereafter.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—calcium and vitamin D are listed for osteopenia/osteoporosis prevention or treatment.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because ongoing DEXA monitoring is recommended after baseline."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Prevent infection / Preserve bone health",
+      "quote_hint": "Annual influenza vaccination … Six months posttransplant … Calcium and vitamin D supplements",
+      "keywords": [
+        "Annual",
+        "influenza",
+        "vaccination",
+        "Six",
+        "months",
+        "posttransplant",
+        "Calcium",
+        "vitamin"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevent infection (annual influenza vaccine) and Preserve bone health (DEXA intervals, calcium/vitamin D); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-3108. Source-first item. Post-transplant infection-and-bone-health combo distinct from dental-care combo (cctc-3104) and skin-cancer combo (cctc-1105); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3108"
+  }
+]
