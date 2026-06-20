@@ -78,3 +78,41 @@ jobs:
         env:
           CI: true
         run: npm run test:e2e:playwright
+
+  optn-drift-remediate:
+    name: OPTN drift issue and remediation PR
+    needs: validate
+    if: failure() && github.event_name == 'schedule' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install poppler utilities
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Fetch and index OPTN policies PDF
+        run: npm run reference:fetch-optn && npm run reference:index -- optn-policies
+
+      - name: Open issue and remediation PR for OPTN drift
+        env:
+          GH_TOKEN: ${{ github.token }}
+          # Repository variable (Settings → Secrets and variables → Actions → Variables).
+          # Only the literal string "true" enables squash-merge after CI passes.
+          OPTN_DRIFT_AUTOMERGE: ${{ vars.OPTN_DRIFT_AUTOMERGE }}
+        run: bash scripts/ci/optn-drift-remediate.sh

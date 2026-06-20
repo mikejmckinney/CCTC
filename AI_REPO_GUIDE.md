@@ -234,6 +234,7 @@ npm run validate:references                   # reference phase only
 npm run validate:references -- --item cctc-2004
 npm run validate:strict
 npm run reference:fetch-optn
+npm run reference:audit-optn                  # OPTN page drift analysis (CI uses on schedule failure)
 npm run reference:index
 npm run reference:export-stubs                # regenerate stubs after anchor changes (--force)
 ```
@@ -244,7 +245,7 @@ Supporting file-grounded verification for those commands:
 - `docs/guides/reference-indexer.md` — single architecture/operator guide for the PDF index pipeline.
 - `scripts/reference.mjs` builds a gitignored page index under `docs/reference/.index/` for PDF lookup during authoring.
 - `scripts/validate.mjs` checks each item's `primary_anchor.keywords` against the index when present locally.
-- `.github/workflows/validate.yml` runs `validate:ci` + `validate:stubs` in the validate job and `build:ci` + Playwright in the e2e job on push and pull request.
+- `.github/workflows/validate.yml` runs `validate:ci` + `validate:stubs` in the validate job and `build:ci` + Playwright in the e2e job on push and pull request; on **scheduled failure** on `main`, `optn-drift-remediate` opens/updates an `optn-drift` issue and may open a remediation PR. Optional repo variable `OPTN_DRIFT_AUTOMERGE=true` squash-merges the remediation PR after CI passes (default: off).
 - `scripts/validate.mjs` is the validator invoked by both the local script and the workflow.
 - `src/data/questionBank.ts` confirms the current example fallback behavior when no primary shards exist.
 
