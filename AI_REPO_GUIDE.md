@@ -30,6 +30,7 @@ Read these in order when starting product work:
 2. `.github/prompts/01-build-app.md`
 3. `.github/prompts/02-author-questions.md`
 4. `.github/prompts/03-validate.md`
+5. `docs/guides/reference-indexer.md` when authoring or verifying `primary_anchor` / references
 
 Use these files as the current product ground truth:
 
@@ -240,6 +241,7 @@ npm run reference:export-stubs                # regenerate stubs after anchor ch
 Supporting file-grounded verification for those commands:
 
 - `package.json` defines `test`, `build`, `validate`, and `reference:*` scripts.
+- `docs/guides/reference-indexer.md` — single architecture/operator guide for the PDF index pipeline.
 - `scripts/reference.mjs` builds a gitignored page index under `docs/reference/.index/` for PDF lookup during authoring.
 - `scripts/validate.mjs` checks each item's `primary_anchor.keywords` against the index when present locally.
 - `.github/workflows/validate.yml` runs `validate:ci` + `validate:stubs` in the validate job and `build:ci` + Playwright in the e2e job on push and pull request.
@@ -250,4 +252,4 @@ Supporting file-grounded verification for those commands:
 
 - Treat README as the human-facing summary and this guide as the agent-facing source of current repo reality.
 - If you add build, run, validate, or deployment commands later, update this file in the same change.
-- Describe the project as an early static React/TypeScript app scaffold with real validation tooling, not as a finished exam product.
+- Describe the project as a v1-complete static practice-exam app with 506 reviewed items, not as a scaffold.

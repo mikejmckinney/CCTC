@@ -153,6 +153,7 @@ changes.
 
 ## References
 
+- [`docs/guides/reference-indexer.md`](../guides/reference-indexer.md) — indexer architecture, commands, validation tiers, maintainer checklist
 - [`.github/prompts/02-author-questions.md`](../../.github/prompts/02-author-questions.md) — operational authoring rules
 - [`scripts/reference/sources.json`](../../scripts/reference/sources.json) — source manifest
 - [`scripts/validate.mjs`](../../scripts/validate.mjs) — locator and anchor enforcement
