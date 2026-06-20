@@ -1,16 +1,16 @@
 {
   "item_id": "cctc-2071",
   "schema_version": 1,
-  "generated_at": "2026-06-08",
+  "generated_at": "2026-06-20",
   "index_sources": {
     "optn-policies": {
       "filename": "optn-policies.pdf",
-      "page_count": 372
+      "page_count": 374
     }
   },
   "primary_anchor": {
     "source_id": "optn-policies",
-    "pdf_page": 46,
+    "pdf_page": 47,
     "keywords": [
       "Lung",
       "Unlimited",
@@ -27,7 +27,7 @@
     {
       "ref_index": 0,
       "source_id": "optn-policies",
-      "pdf_page": 46,
+      "pdf_page": 47,
       "policy": "3.6",
       "keywords": [
         "table",

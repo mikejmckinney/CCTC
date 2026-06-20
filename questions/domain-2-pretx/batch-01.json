@@ -7,17 +7,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020300",
-    "knowledge_codes": ["020304"],
+    "knowledge_codes": [
+      "020304"
+    ],
     "cognitive_level": "recall",
     "organ": "kidney",
     "recipient_age": "adult",
     "stem": "During kidney transplant candidate evaluation, which finding is listed as a major contraindication to transplantation?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Untreated current infection" },
-      { "id": "B", "text": "Early referral when glomerular filtration rate is below 30 mL/min" },
-      { "id": "C", "text": "Completion of a smoking cessation program" },
-      { "id": "D", "text": "Well-controlled hypertension on current therapy" }
+      {
+        "id": "A",
+        "text": "Untreated current infection"
+      },
+      {
+        "id": "B",
+        "text": "Early referral when glomerular filtration rate is below 30 mL/min"
+      },
+      {
+        "id": "C",
+        "text": "Completion of a smoking cessation program"
+      },
+      {
+        "id": "D",
+        "text": "Well-controlled hypertension on current therapy"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -34,7 +48,13 @@
       "pdf_page": 227,
       "section": "Ch. 8, Evaluation of Adult Kidney Transplant Candidates — Table 8.1 (Major Contraindications) → Untreated current infection",
       "quote_hint": "Untreated current infection",
-      "keywords": ["contraindication", "untreated", "infection", "transplantation", "major"]
+      "keywords": [
+        "contraindication",
+        "untreated",
+        "infection",
+        "transplantation",
+        "major"
+      ]
     },
     "references": [
       {
@@ -54,17 +74,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020100",
-    "knowledge_codes": ["020101"],
+    "knowledge_codes": [
+      "020101"
+    ],
     "cognitive_level": "recall",
     "organ": "liver",
     "recipient_age": "adult",
     "stem": "Which cardiac test is included in the standard pre-transplant evaluation workup for adult liver transplant candidates?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Echocardiogram and/or cardiac stress testing" },
-      { "id": "B", "text": "Routine coronary bypass surgery before listing" },
-      { "id": "C", "text": "Cardiac catheterization for every candidate regardless of symptoms" },
-      { "id": "D", "text": "No cardiac assessment unless the candidate has chest pain" }
+      {
+        "id": "A",
+        "text": "Echocardiogram and/or cardiac stress testing"
+      },
+      {
+        "id": "B",
+        "text": "Routine coronary bypass surgery before listing"
+      },
+      {
+        "id": "C",
+        "text": "Cardiac catheterization for every candidate regardless of symptoms"
+      },
+      {
+        "id": "D",
+        "text": "No cardiac assessment unless the candidate has chest pain"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -81,7 +115,13 @@
       "pdf_page": 646,
       "section": "Ch. 12, Liver Transplantation — pretransplant evaluation → §2. Other tests → d.",
       "quote_hint": "Echocardiogram (ECHO) and/or cardiac stress testing",
-      "keywords": ["echocardiogram", "cardiac", "stress", "liver", "evaluation"]
+      "keywords": [
+        "echocardiogram",
+        "cardiac",
+        "stress",
+        "liver",
+        "evaluation"
+      ]
     },
     "references": [
       {
@@ -101,17 +141,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020300",
-    "knowledge_codes": ["020303"],
+    "knowledge_codes": [
+      "020303"
+    ],
     "cognitive_level": "application",
     "organ": "general",
     "recipient_age": "adult",
     "stem": "A candidate is approved for the waiting list with conditions pending further requirements. Which condition aligns with a common program selection practice described in transplant nursing education materials?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Completion of a smoking, drug, and/or alcohol cessation program" },
-      { "id": "B", "text": "Immediate transplantation before psychosocial evaluation" },
-      { "id": "C", "text": "Permanent exclusion from any future transplant consideration" },
-      { "id": "D", "text": "Mandatory identification of a living donor before any listing" }
+      {
+        "id": "A",
+        "text": "Completion of a smoking, drug, and/or alcohol cessation program"
+      },
+      {
+        "id": "B",
+        "text": "Immediate transplantation before psychosocial evaluation"
+      },
+      {
+        "id": "C",
+        "text": "Permanent exclusion from any future transplant consideration"
+      },
+      {
+        "id": "D",
+        "text": "Mandatory identification of a living donor before any listing"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -128,7 +182,13 @@
       "pdf_page": 101,
       "section": "Ch. 3, Patient Education — §7. Selection criteria and evaluation outcome → c.ii (approved with conditions)",
       "quote_hint": "Completion of smoking, drug and/or alcohol cessation program",
-      "keywords": ["smoking", "cessation", "alcohol", "conditions", "candidate"]
+      "keywords": [
+        "smoking",
+        "cessation",
+        "alcohol",
+        "conditions",
+        "candidate"
+      ]
     },
     "references": [
       {
@@ -148,17 +208,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020600",
-    "knowledge_codes": ["020602"],
+    "knowledge_codes": [
+      "020602"
+    ],
     "cognitive_level": "recall",
     "organ": "kidney",
     "recipient_age": "adult",
     "stem": "When a transplant program declines a deceased-donor kidney offer presented through DonorNet, what documentation must be provided to UNOS?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "A reason or refusal code" },
-      { "id": "B", "text": "No documentation when the surgeon verbally declines" },
-      { "id": "C", "text": "Documentation only for accepted offers" },
-      { "id": "D", "text": "A refusal code only when the candidate is permanently inactive" }
+      {
+        "id": "A",
+        "text": "A reason or refusal code"
+      },
+      {
+        "id": "B",
+        "text": "No documentation when the surgeon verbally declines"
+      },
+      {
+        "id": "C",
+        "text": "Documentation only for accepted offers"
+      },
+      {
+        "id": "D",
+        "text": "A refusal code only when the candidate is permanently inactive"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -175,7 +249,14 @@
       "pdf_page": 113,
       "section": "Ch. 5, Allocation of Deceased Donor Kidneys — DonorNet offer paragraph (before Table 5.1)",
       "quote_hint": "whenever an offer is declined, a reason or refusal code must be provided",
-      "keywords": ["DonorNet", "declined", "refusal", "code", "UNOS", "offer"]
+      "keywords": [
+        "DonorNet",
+        "declined",
+        "refusal",
+        "code",
+        "UNOS",
+        "offer"
+      ]
     },
     "references": [
       {
@@ -191,13 +272,13 @@
       },
       {
         "citation": "OPTN/UNOS — Policies (HRSA).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=332",
-        "locator": "Policy 18.3 → Recording and Reporting the Outcomes of Organ Offers (PTR refusal codes for declined organ offers); PDF p. 332 (repo file-page index; printed margin may differ).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=334",
+        "locator": "Policy 18.3 → Recording and Reporting the Outcomes of Organ Offers (PTR refusal codes for declined organ offers); PDF p. 334 (repo file-page index; printed margin may differ).",
         "kind": "regulation"
       }
     ],
-    "notes": "Source-first item. Primary fact from Danovitch PDF p. 113. OPTN Policy 18.3 corroboration: HRSA public-comment page (readable summary) plus indexed policies PDF p. 332 (canonical Policy 18.3 text).",
-    "last_updated": "2026-06-06"
+    "notes": "Source-first item. Primary fact from Danovitch PDF p. 113. OPTN Policy 18.3 corroboration: HRSA public-comment page (readable summary) plus indexed policies PDF p. 334 (canonical Policy 18.3 text).",
+    "last_updated": "2026-06-20"
   },
   {
     "id": "cctc-2005",
@@ -207,17 +288,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020500",
-    "knowledge_codes": ["020501"],
+    "knowledge_codes": [
+      "020501"
+    ],
     "cognitive_level": "application",
     "organ": "kidney",
     "recipient_age": "adult",
     "stem": "A kidney candidate is listed on the UNOS waiting list but marked inactive. Which reason BEST explains inactive status according to standard waitlist management references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Evaluation is incomplete or new issues have developed that may temporarily contraindicate transplantation" },
-      { "id": "B", "text": "The candidate has completed transplantation and is awaiting discharge" },
-      { "id": "C", "text": "Inactive status permanently removes all accumulated waiting time" },
-      { "id": "D", "text": "Inactive listing means the candidate is ineligible for any future activation" }
+      {
+        "id": "A",
+        "text": "Evaluation is incomplete or new issues have developed that may temporarily contraindicate transplantation"
+      },
+      {
+        "id": "B",
+        "text": "The candidate has completed transplantation and is awaiting discharge"
+      },
+      {
+        "id": "C",
+        "text": "Inactive status permanently removes all accumulated waiting time"
+      },
+      {
+        "id": "D",
+        "text": "Inactive listing means the candidate is ineligible for any future activation"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -234,7 +329,14 @@
       "pdf_page": 253,
       "section": "Ch. 8 → Part II: Management of the Waiting List — inactive status paragraph",
       "quote_hint": "placed on the list in an inactive status, typically because their evaluation is incomplete",
-      "keywords": ["inactive", "waiting", "list", "evaluation", "incomplete", "contraindication"]
+      "keywords": [
+        "inactive",
+        "waiting",
+        "list",
+        "evaluation",
+        "incomplete",
+        "contraindication"
+      ]
     },
     "references": [
       {

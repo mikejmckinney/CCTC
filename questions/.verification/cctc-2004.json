@@ -1,7 +1,7 @@
 {
   "item_id": "cctc-2004",
   "schema_version": 1,
-  "generated_at": "2026-06-08",
+  "generated_at": "2026-06-20",
   "index_sources": {
     "danovitch": {
       "filename": "danovitch-handbook-kidney-transplantation.pdf",
@@ -9,7 +9,7 @@
     },
     "optn-policies": {
       "filename": "optn-policies.pdf",
-      "page_count": 372
+      "page_count": 374
     }
   },
   "primary_anchor": {
@@ -45,7 +45,7 @@
     {
       "ref_index": 2,
       "source_id": "optn-policies",
-      "pdf_page": 332,
+      "pdf_page": 334,
       "policy": "18.3",
       "keywords": [
         "recording",

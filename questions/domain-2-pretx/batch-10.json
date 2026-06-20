@@ -7,17 +7,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020500",
-    "knowledge_codes": ["020501"],
+    "knowledge_codes": [
+      "020501"
+    ],
     "cognitive_level": "recall",
     "organ": "kidney",
     "recipient_age": "adult",
     "stem": "A kidney waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Waiting time accrues without limit while the candidate remains inactive" },
-      { "id": "B", "text": "No waiting time accrues for any kidney candidate while inactive" },
-      { "id": "C", "text": "Waiting time accrues only for the first 30 cumulative inactive days" },
-      { "id": "D", "text": "Waiting time resets to zero whenever inactive status is assigned" }
+      {
+        "id": "A",
+        "text": "Waiting time accrues without limit while the candidate remains inactive"
+      },
+      {
+        "id": "B",
+        "text": "No waiting time accrues for any kidney candidate while inactive"
+      },
+      {
+        "id": "C",
+        "text": "Waiting time accrues only for the first 30 cumulative inactive days"
+      },
+      {
+        "id": "D",
+        "text": "Waiting time resets to zero whenever inactive status is assigned"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -31,21 +45,29 @@
     "primary_anchor": {
       "type": "pdf",
       "source_id": "optn-policies",
-      "pdf_page": 46,
+      "pdf_page": 47,
       "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Kidney",
       "quote_hint": "Kidney … Unlimited time … Candidates accrue waiting time while inactive",
-      "keywords": ["Kidney", "Unlimited", "time", "inactive", "waiting", "accrue", "candidates"]
+      "keywords": [
+        "Kidney",
+        "Unlimited",
+        "time",
+        "inactive",
+        "waiting",
+        "accrue",
+        "candidates"
+      ]
     },
     "references": [
       {
         "citation": "OPTN/UNOS — Policies (HRSA).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
-        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (kidney candidates accrue unlimited waiting time while inactive); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=47",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (kidney candidates accrue unlimited waiting time while inactive); PDF p. 47 (repo file-page index; printed margin may differ).",
         "kind": "regulation"
       }
     ],
-    "notes": "Source-first item. Sixth 020500 item; kidney inactive waiting-time accrual distinct from no-offers (cctc-2012) and inactive-reason (cctc-2005); anchor verified on optn-policies p. 46.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. Sixth 020500 item; kidney inactive waiting-time accrual distinct from no-offers (cctc-2012) and inactive-reason (cctc-2005); anchor verified on optn-policies p. 47.",
+    "last_updated": "2026-06-20"
   },
   {
     "id": "cctc-2038",
@@ -55,17 +77,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020300",
-    "knowledge_codes": ["020301"],
+    "knowledge_codes": [
+      "020301"
+    ],
     "cognitive_level": "application",
     "organ": "kidney_pancreas",
     "recipient_age": "adult",
     "stem": "A candidate with type 1 diabetes and progressive renal insufficiency completes multidisciplinary evaluation. For which transplant option is simultaneous pancreas-kidney transplantation MOST appropriate?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Diabetes with renal insufficiency meeting SPK selection criteria" },
-      { "id": "B", "text": "Isolated end-stage renal disease without diabetes" },
-      { "id": "C", "text": "Stable type 2 diabetes with normal renal function only" },
-      { "id": "D", "text": "Primary biliary cirrhosis without diabetes" }
+      {
+        "id": "A",
+        "text": "Diabetes with renal insufficiency meeting SPK selection criteria"
+      },
+      {
+        "id": "B",
+        "text": "Isolated end-stage renal disease without diabetes"
+      },
+      {
+        "id": "C",
+        "text": "Stable type 2 diabetes with normal renal function only"
+      },
+      {
+        "id": "D",
+        "text": "Primary biliary cirrhosis without diabetes"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -82,7 +118,15 @@
       "pdf_page": 825,
       "section": "Ch. 15, Pancreas Transplantation → B. Simultaneous pancreas-kidney (SPK) → 1.",
       "quote_hint": "Diagnosis of diabetes or pancreatic exocrine insufficiency with renal insufficiency",
-      "keywords": ["Simultaneous", "pancreas-kidney", "diabetes", "renal", "insufficiency", "SPK", "transplantation"]
+      "keywords": [
+        "Simultaneous",
+        "pancreas-kidney",
+        "diabetes",
+        "renal",
+        "insufficiency",
+        "SPK",
+        "transplantation"
+      ]
     },
     "references": [
       {
@@ -102,17 +146,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020600",
-    "knowledge_codes": ["020601"],
+    "knowledge_codes": [
+      "020601"
+    ],
     "cognitive_level": "application",
     "organ": "general",
     "recipient_age": "adult",
     "stem": "When presenting deceased-donor organ offer information to a transplant physician team, which donor detail must be disclosed to the recipient if it is critical to informed consent?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Possible donor-transmitted disease risks" },
-      { "id": "B", "text": "The donor family's vacation plans" },
-      { "id": "C", "text": "Unrelated donor employment history with no clinical relevance" },
-      { "id": "D", "text": "The procurement coordinator's personal contact list" }
+      {
+        "id": "A",
+        "text": "Possible donor-transmitted disease risks"
+      },
+      {
+        "id": "B",
+        "text": "The donor family's vacation plans"
+      },
+      {
+        "id": "C",
+        "text": "Unrelated donor employment history with no clinical relevance"
+      },
+      {
+        "id": "D",
+        "text": "The procurement coordinator's personal contact list"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -129,7 +187,15 @@
       "pdf_page": 122,
       "section": "Ch. 3, Patient Education → p. Donor–recipient confidentiality → i.",
       "quote_hint": "Possible donor-transmitted disease risks",
-      "keywords": ["donor-transmitted", "disease", "risks", "recipient", "informed", "consent", "donor"]
+      "keywords": [
+        "donor-transmitted",
+        "disease",
+        "risks",
+        "recipient",
+        "informed",
+        "consent",
+        "donor"
+      ]
     },
     "references": [
       {
@@ -149,17 +215,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020700",
-    "knowledge_codes": ["020703"],
+    "knowledge_codes": [
+      "020703"
+    ],
     "cognitive_level": "application",
     "organ": "liver",
     "recipient_age": "adult",
     "stem": "A liver waitlist candidate with known hepatocellular carcinoma (HCC) has overdue surveillance testing. What re-evaluation interval is required to maintain UNOS MELD exception eligibility?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Imaging and alpha-fetoprotein testing every 3 months" },
-      { "id": "B", "text": "No surveillance after initial listing" },
-      { "id": "C", "text": "Annual testing only after five years on the waitlist" },
-      { "id": "D", "text": "Daily liver biopsy while waitlisted" }
+      {
+        "id": "A",
+        "text": "Imaging and alpha-fetoprotein testing every 3 months"
+      },
+      {
+        "id": "B",
+        "text": "No surveillance after initial listing"
+      },
+      {
+        "id": "C",
+        "text": "Annual testing only after five years on the waitlist"
+      },
+      {
+        "id": "D",
+        "text": "Daily liver biopsy while waitlisted"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -176,7 +256,16 @@
       "pdf_page": 54,
       "section": "Ch. 1, Waitlist Management → 6.a.i.",
       "quote_hint": "Patients with known HCC: every 3 months. Imaging studies AFP",
-      "keywords": ["HCC", "every", "months", "Imaging", "AFP", "UNOS", "MELD", "exception"]
+      "keywords": [
+        "HCC",
+        "every",
+        "months",
+        "Imaging",
+        "AFP",
+        "UNOS",
+        "MELD",
+        "exception"
+      ]
     },
     "references": [
       {

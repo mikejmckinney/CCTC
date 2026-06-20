@@ -1,5 +1,7 @@
 # Reference PDFs (local only)
 
+> **Architecture and commands**: [`docs/guides/reference-indexer.md`](../guides/reference-indexer.md) — single guide for how the indexer works, validation tiers, and new-workspace setup.
+
 Textbook and policy PDFs live here for **local authoring and SME verification**. They are gitignored (`docs/reference/*.pdf`) and must not be committed.
 
 ## Standard filenames

@@ -1,6 +1,6 @@
 # Documentation
 
-This directory holds the human-readable documentation for CCTC. The repo now includes an initial app scaffold and validation tooling, but most material here is still governance, process, and reference context inherited from the bootstrap template plus the CCTC-specific top-level docs.
+This directory holds the human-readable documentation for CCTC. The repo ships a v1-complete practice-exam app, a 506-item reviewed question bank, validation tooling, and governance docs inherited from the bootstrap template.
 
 When documentation and implementation ever disagree, follow the repo truth order: `.context/**` first, then `docs/**`, then the codebase.
 
@@ -9,7 +9,7 @@ When documentation and implementation ever disagree, follow the repo truth order
 - `README.md`: this index for the docs tree.
 - `FAQ.md`: project-specific answers about CCTC scope, blueprints, question authoring, and draft versus reviewed items.
 - `compliance_schemas.md`: reference for plan, parent, and subagent compliance blocks used by the multi-agent workflow.
-- `guides/`: reusable workflow and process guides inherited from the template.
+- `guides/`: workflow guides (template multi-agent docs plus CCTC product runbooks such as the reference indexer).
 - `decisions/`: ADRs for the governance framework currently shipped with this repo.
 - `postmortems/`: lessons learned from the template workflow that still inform how agents operate here.
 - `research/` and `reference/`: supporting material when project-specific research or external specs are added.
@@ -28,6 +28,7 @@ For work on the actual product, start outside this directory with the prompt set
 Then use these docs as supporting references:
 
 - `FAQ.md` for quick project answers.
+- `guides/reference-indexer.md` for PDF index architecture, authoring commands, and validation tiers.
 - `compliance_schemas.md` if you are returning plan or subagent evidence blocks.
 - `guides/multi-agent-coordination.md` if the task spans multiple owned paths.
 - `decisions/README.md` if you need the ADR index.
@@ -53,7 +54,7 @@ docs/
 - Human-facing reference material and project explanation.
 - ADRs and postmortems that explain why the workflow is shaped the way it is.
 - Supporting guides that help contributors and agents use the repo safely.
-- CCTC product docs and runbooks as the app, validation pipeline, and hosting flow grow beyond the initial scaffold.
+- CCTC product docs and runbooks (reference indexer, sandbox verification, deployment notes).
 
 ## What Does Not Belong Here
 
@@ -63,7 +64,6 @@ docs/
 
 ## Notes On Current Scope
 
-- The repo already contains the exam schema, blueprint JSON, question-bank conventions, an initial frontend scaffold, and a local/CI validation path.
+- The repo contains the exam schema, blueprint JSON, **506 reviewed question shards**, a React/Vite practice app, GitHub Pages hosting, and local/CI validation (including reference stubs).
 - Many docs under `guides/`, `decisions/`, and `postmortems/` still describe the inherited multi-agent workflow rather than the CCTC product domain.
-- The current bank is still effectively example-backed until non-underscore question shards are added under `questions/`.
-- As product code lands, update this directory with CCTC-specific runbooks and deployment notes instead of duplicating prompt content.
+- Product-specific runbooks live under `guides/` (e.g. `reference-indexer.md`, `sandbox-verification.md`); prompt files under `.github/prompts/` remain the build/authoring contract.

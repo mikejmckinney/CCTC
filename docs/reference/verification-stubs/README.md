@@ -1,5 +1,7 @@
 # Reference verification stubs
 
+> **Full indexer architecture**: [`docs/guides/reference-indexer.md`](../../guides/reference-indexer.md).
+
 Committed verification stubs let CI **hard-fail reference content** without gitignored
 textbook PDFs or full page-text indexes. They are a hash-sized, committable substitute
 for `docs/reference/.index/` when the full index cannot live in the repo.

@@ -1,11 +1,11 @@
 {
   "item_id": "cctc-2044",
   "schema_version": 1,
-  "generated_at": "2026-06-08",
+  "generated_at": "2026-06-20",
   "index_sources": {
     "optn-policies": {
       "filename": "optn-policies.pdf",
-      "page_count": 372
+      "page_count": 374
     }
   },
   "primary_anchor": {

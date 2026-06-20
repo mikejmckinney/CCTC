@@ -3,6 +3,8 @@
 How to write CCTC practice items. Read `00-onboarding.md` first. Every item must conform to `schema/question.schema.json` and be written with `status: "draft"`.
 
 > **Why these rules exist**: [`docs/decisions/adr-030-verifiable-question-references.md`](../../docs/decisions/adr-030-verifiable-question-references.md) (source-first workflow, locator standards, OPTN policies PDF indexing, additive corroboration gates).
+>
+> **Indexer architecture and operator reference**: [`docs/guides/reference-indexer.md`](../../docs/guides/reference-indexer.md).
 
 ## Source-first workflow (required)
 
