@@ -202,6 +202,22 @@ Validation checks that enough `keywords` appear in the indexed page text (`keywo
 
 See also [`scripts/validate/README.md`](../../scripts/validate/README.md) and [`docs/reference/verification-stubs/README.md`](../reference/verification-stubs/README.md).
 
+### Live OPTN bundle drift (CI)
+
+HRSA republishes `optn_policies.pdf` periodically; **page numbers shift** even when policy text is unchanged. CI always **re-fetches and re-indexes** the live PDF before `validate:ci`, so OPTN-primary anchors are checked against the current bundle on every push/PR.
+
+A **daily scheduled run** on `main` (`.github/workflows/validate.yml`, noon UTC) runs the same `validate` job when no one is pushing code — early warning if HRSA updates the bundle between PRs. The job does **not** run Playwright e2e (cost/noise); use push/PR for full workflow.
+
+When daily or PR validation fails on OPTN references:
+
+1. `npm run reference:fetch-optn && npm run reference:index -- optn-policies`
+2. `npm run validate:ci` — read failing item IDs
+3. `npm run reference:page -- optn-policies <pdf_page>` — confirm correct page
+4. Update item `pdf_page`, `#page=N` URLs, locators; `npm run reference:export-stubs -- --force`
+5. Commit question JSON + stubs
+
+Validator note: OPTN locators with `Policy X.Y` are checked for the subsection on the cited page (not merely the parent `Policy X` heading). Table-only pages under Policy 18.x are recognized via instrument markers (`TCR`, `TRF`, `Table 18-2`, etc.) in `scripts/lib/verify-references.mjs`.
+
 ## Maintainer checklist (new workspace)
 
 1. Clone the repo.

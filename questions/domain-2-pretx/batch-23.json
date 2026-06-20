@@ -7,17 +7,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020500",
-    "knowledge_codes": ["020501"],
+    "knowledge_codes": [
+      "020501"
+    ],
     "cognitive_level": "recall",
     "organ": "general",
     "recipient_age": "adult",
     "stem": "A transplant program is preparing an OPTN waiting-time modification application under Policy 3.7.A. Which required element must be included in the submission?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "The name and signature of the candidate's physician or surgeon" },
-      { "id": "B", "text": "Only the candidate's personal social media history" },
-      { "id": "C", "text": "A guarantee of organ offer within 30 days" },
-      { "id": "D", "text": "Proof that the candidate has never been listed before" }
+      {
+        "id": "A",
+        "text": "The name and signature of the candidate's physician or surgeon"
+      },
+      {
+        "id": "B",
+        "text": "Only the candidate's personal social media history"
+      },
+      {
+        "id": "C",
+        "text": "A guarantee of organ offer within 30 days"
+      },
+      {
+        "id": "D",
+        "text": "Proof that the candidate has never been listed before"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -31,21 +45,30 @@
     "primary_anchor": {
       "type": "pdf",
       "source_id": "optn-policies",
-      "pdf_page": 49,
+      "pdf_page": 50,
       "section": "Policy 3.7.A → Applications for Modifications of Waiting Time → items 1.–5.",
       "quote_hint": "The name and signature of the candidate's physician or surgeon",
-      "keywords": ["waiting", "time", "modification", "application", "physician", "surgeon", "signature", "documentation"]
+      "keywords": [
+        "waiting",
+        "time",
+        "modification",
+        "application",
+        "physician",
+        "surgeon",
+        "signature",
+        "documentation"
+      ]
     },
     "references": [
       {
         "citation": "OPTN/UNOS — Policies (HRSA).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=49",
-        "locator": "Policy 3.7.A → Applications for Modifications of Waiting Time (physician/surgeon name and signature among required elements); PDF p. 49 (repo file-page index; printed margin may differ).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=50",
+        "locator": "Policy 3.7.A → Applications for Modifications of Waiting Time (physician/surgeon name and signature among required elements); PDF p. 50 (repo file-page index; printed margin may differ).",
         "kind": "regulation"
       }
     ],
-    "notes": "Source-first item. First OPTN Policy 3.7 waiting-time modification item; distinct from inactive waiting-time Table 3-3 items (cctc-2037–2081); anchor verified on optn-policies p. 49.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. First OPTN Policy 3.7 waiting-time modification item; distinct from inactive waiting-time Table 3-3 items (cctc-2037–2081); anchor verified on optn-policies p. 50.",
+    "last_updated": "2026-06-20"
   },
   {
     "id": "cctc-2090",
@@ -55,17 +78,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020700",
-    "knowledge_codes": ["020701"],
+    "knowledge_codes": [
+      "020701"
+    ],
     "cognitive_level": "recall",
     "organ": "kidney",
     "recipient_age": "adult",
     "stem": "When coordinating preoperative education about organ procurement and implantation, which definition of cold ischemia time aligns with standard transplant immunology references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "The duration the organ is outside the body while preserved on ice" },
-      { "id": "B", "text": "The time required to complete surgical revascularization in the recipient" },
-      { "id": "C", "text": "The interval between two routine clinic visits after discharge" },
-      { "id": "D", "text": "The total lifetime of the donor organ before procurement" }
+      {
+        "id": "A",
+        "text": "The duration the organ is outside the body while preserved on ice"
+      },
+      {
+        "id": "B",
+        "text": "The time required to complete surgical revascularization in the recipient"
+      },
+      {
+        "id": "C",
+        "text": "The interval between two routine clinic visits after discharge"
+      },
+      {
+        "id": "D",
+        "text": "The total lifetime of the donor organ before procurement"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -82,7 +119,16 @@
       "pdf_page": 62,
       "section": "Ch. 2, Transplantation Immunobiology → Ischemia-Reperfusion Injury",
       "quote_hint": "time duration during which the organ is outside the human body is referred to as the cold ischemia time, whereas the time required to complete the surgical revascularization … is the warm ischemia time",
-      "keywords": ["cold", "ischemia", "time", "organ", "outside", "human", "body", "revascularization"]
+      "keywords": [
+        "cold",
+        "ischemia",
+        "time",
+        "organ",
+        "outside",
+        "human",
+        "body",
+        "revascularization"
+      ]
     },
     "references": [
       {
@@ -102,17 +148,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020100",
-    "knowledge_codes": ["020102"],
+    "knowledge_codes": [
+      "020102"
+    ],
     "cognitive_level": "application",
     "organ": "lung",
     "recipient_age": "pediatric",
     "stem": "During evaluation counseling for a pediatric lung transplant candidate, the team discusses parainfluenza virus (PIV) risk. Which statement aligns with standard infection references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Viral shedding may be prolonged beyond 4 weeks in transplant recipients on long-term steroid therapy" },
-      { "id": "B", "text": "PIV shedding always resolves within 24 hours in every immunosuppressed child" },
-      { "id": "C", "text": "PIV infections are never more severe in children" },
-      { "id": "D", "text": "PIV is relevant only to kidney transplantation" }
+      {
+        "id": "A",
+        "text": "Viral shedding may be prolonged beyond 4 weeks in transplant recipients on long-term steroid therapy"
+      },
+      {
+        "id": "B",
+        "text": "PIV shedding always resolves within 24 hours in every immunosuppressed child"
+      },
+      {
+        "id": "C",
+        "text": "PIV infections are never more severe in children"
+      },
+      {
+        "id": "D",
+        "text": "PIV is relevant only to kidney transplantation"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -129,7 +189,16 @@
       "pdf_page": 210,
       "section": "Ch. 5, Infectious Diseases → Parainfluenza viruses → 8.b.–c.",
       "quote_hint": "shedding may be prolonged (>4 weeks) … Higher incidences in lung transplant recipients and more severe PIV infections in children",
-      "keywords": ["shedding", "prolonged", "weeks", "lung", "transplant", "recipients", "severe", "children"]
+      "keywords": [
+        "shedding",
+        "prolonged",
+        "weeks",
+        "lung",
+        "transplant",
+        "recipients",
+        "severe",
+        "children"
+      ]
     },
     "references": [
       {
@@ -149,17 +218,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020100",
-    "knowledge_codes": ["020101"],
+    "knowledge_codes": [
+      "020101"
+    ],
     "cognitive_level": "application",
     "organ": "heart",
     "recipient_age": "adult",
     "stem": "A patient is newly referred for cardiac transplantation evaluation. Which catheterization requirement aligns with standard heart evaluation references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Both right and left heart catheterization" },
-      { "id": "B", "text": "No cardiac catheterization because echocardiography replaces all invasive testing" },
-      { "id": "C", "text": "Left heart catheterization only, with right heart studies permanently omitted" },
-      { "id": "D", "text": "Catheterization only after transplantation, never during evaluation" }
+      {
+        "id": "A",
+        "text": "Both right and left heart catheterization"
+      },
+      {
+        "id": "B",
+        "text": "No cardiac catheterization because echocardiography replaces all invasive testing"
+      },
+      {
+        "id": "C",
+        "text": "Left heart catheterization only, with right heart studies permanently omitted"
+      },
+      {
+        "id": "D",
+        "text": "Catheterization only after transplantation, never during evaluation"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -176,7 +259,16 @@
       "pdf_page": 34,
       "section": "Ch. 1, Evaluation → Heart transplantation → 4.a. Cardiac catheterization",
       "quote_hint": "Patients referred for cardiac transplantation will require both a right and left heart catheterization",
-      "keywords": ["Patients", "referred", "cardiac", "transplantation", "require", "both", "right", "left"]
+      "keywords": [
+        "Patients",
+        "referred",
+        "cardiac",
+        "transplantation",
+        "require",
+        "both",
+        "right",
+        "left"
+      ]
     },
     "references": [
       {

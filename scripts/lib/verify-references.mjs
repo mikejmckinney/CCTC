@@ -32,6 +32,33 @@ const CITATION_SOURCE_PATTERNS = [
   { source_id: 'optn-policies', pattern: /optn\/unos — policies|optn policies \(effective/i },
 ];
 
+const POLICY_SUBSECTION_PAGE_MARKERS = {
+  '18.1': /\bTCR\b|Transplant Candidate Registration|Follow-up \(TRF\)|Registration \(TRR\)/i,
+  '18.2': /Table 18-2|Timely Data Collection/i,
+  '18.3': /Outcomes of Organ Offers|refusal code|PTR/i,
+};
+
+function isPolicySectionPresent(pageText, policiesOnPage, policyNumber) {
+  if (!policyNumber) {
+    return true;
+  }
+
+  if (policiesOnPage.includes(policyNumber)) {
+    return true;
+  }
+  if (pageText.includes(`Policy ${policyNumber}`) || pageText.includes(policyNumber)) {
+    return true;
+  }
+
+  const marker = POLICY_SUBSECTION_PAGE_MARKERS[policyNumber];
+  if (marker?.test(pageText)) {
+    return true;
+  }
+
+  const major = policyNumber.split('.')[0];
+  return policiesOnPage.includes(major) && pageText.includes(policyNumber);
+}
+
 export async function createReferenceVerificationContext({ allowMissingIndex = false, referenceWarnings = [] } = {}) {
   const manifest = await loadManifest();
   const indexAvailability = new Map();
@@ -309,14 +336,11 @@ async function verifyIndexedPdfPassage({
 
   if (policyNumber) {
     const policiesOnPage = detectPoliciesOnPage(pageText);
-    const policyPresent =
-      policiesOnPage.includes(policyNumber) ||
-      policiesOnPage.some((entry) => entry.startsWith(`${policyNumber}.`) || policyNumber.startsWith(`${entry}.`));
-    if (!policyPresent) {
+    if (!isPolicySectionPresent(pageText, policiesOnPage, policyNumber)) {
       errors.push(
         formatItemError(
           location,
-          `${label} cites Policy ${policyNumber} on PDF p. ${pdfPage}, but that policy heading was not found on the indexed page (found: ${policiesOnPage.join(', ') || 'none'})`,
+          `${label} cites Policy ${policyNumber} on PDF p. ${pdfPage}, but that policy section was not found on the indexed page (found headings: ${policiesOnPage.join(', ') || 'none'})`,
         ),
       );
     }
