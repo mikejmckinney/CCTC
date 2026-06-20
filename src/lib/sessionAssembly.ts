@@ -272,6 +272,7 @@ export function buildDefaultSettings(blueprintId: BlueprintId): SessionSettings 
   const blueprint = getBlueprint(blueprintId);
   return {
     blueprintId,
+    questionSet: 'standard',
     questionCount: blueprint.default_exam_items,
     timed: true,
     timeMinutes: blueprint.default_time_minutes,

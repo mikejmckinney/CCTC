@@ -12,15 +12,23 @@ import { validateIntegrityForItems } from './validate/20-integrity.mjs';
 import { validateReferencesForItems } from './validate/30-references.mjs';
 import { createReferenceVerificationContext } from './lib/verify-references.mjs';
 import { buildCoverageReport } from './validate/40-coverage.mjs';
+import { buildScenarioCompanionSummary, validateScenarioCompanions } from './validate/25-scenario-companions.mjs';
 import { printValidationReport } from './validate/90-report.mjs';
 import { filterItems, parseCliFlags, resolveValidationMode } from './validate/lib.mjs';
 
 async function main() {
   const flags = parseCliFlags();
   const mode = resolveValidationMode(flags);
-  const { schema, newBlueprint, legacyBlueprint, bankFiles, excludedEntries } = await loadValidationInputs();
-  const { allItems: loadedItems, parsingErrors, fileLevelErrors } = await loadQuestionItems(bankFiles);
-  const allItems = filterItems(loadedItems, flags.itemFilter);
+  const { schema, newBlueprint, legacyBlueprint, bankFiles, scenarioBankFiles, excludedEntries } =
+    await loadValidationInputs();
+  const { allItems: loadedStandardItems, parsingErrors, fileLevelErrors } = await loadQuestionItems(bankFiles);
+  const { allItems: loadedScenarioItems, parsingErrors: scenarioParsingErrors, fileLevelErrors: scenarioFileErrors } =
+    await loadQuestionItems(scenarioBankFiles);
+  const standardItems = filterItems(loadedStandardItems, flags.itemFilter);
+  const scenarioItems = filterItems(loadedScenarioItems, flags.itemFilter);
+  const allItems = [...standardItems, ...scenarioItems];
+  parsingErrors.push(...scenarioParsingErrors);
+  fileLevelErrors.push(...scenarioFileErrors);
 
   const schemaErrors = [];
   const integrityErrors = [];
@@ -33,6 +41,7 @@ async function main() {
   if (mode !== 'references-only' && !flags.coverageOnly) {
     validateSchemaForItems(allItems, schema, schemaErrors);
     validateIntegrityForItems(allItems, taskToDomain, legacySectionIds, integrityErrors);
+    validateScenarioCompanions(scenarioItems, standardItems, integrityErrors, coverageWarnings);
   }
 
   const requireFullIndex = mode === 'full' || mode === 'references-only';
@@ -50,18 +59,23 @@ async function main() {
     context = await createReferenceVerificationContext({ allowMissingIndex: true, referenceWarnings });
   }
 
+  const scenarioCompanionSummary =
+    mode === 'references-only' ? null : buildScenarioCompanionSummary(scenarioItems, standardItems);
+
   const coverage =
     mode === 'references-only'
       ? null
-      : await buildCoverageReport(allItems, newBlueprint, legacyBlueprint, context, coverageWarnings);
+      : await buildCoverageReport(standardItems, newBlueprint, legacyBlueprint, context, coverageWarnings);
 
   printValidationReport({
     mode: flags.coverageOnly ? 'full' : mode,
     coverageOnly: flags.coverageOnly,
     schema,
     bankFiles,
+    scenarioBankFiles,
     excludedEntries,
     allItems,
+    scenarioCompanionSummary,
     parsingErrors,
     fileLevelErrors,
     schemaErrors,

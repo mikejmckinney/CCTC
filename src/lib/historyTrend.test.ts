@@ -8,6 +8,7 @@ function makeEntry(id: string, completedAt: string, percent: number): HistoryEnt
     completedAt,
     settings: {
       blueprintId: 'cctc-from-2026-07',
+      questionSet: 'standard',
       questionCount: 10,
       timed: false,
       timeMinutes: 180,

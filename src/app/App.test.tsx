@@ -29,7 +29,9 @@ describe('App', () => {
     await waitFor(() => expect(screen.getByRole('heading', { name: /build a practice session/i })).toBeInTheDocument());
 
     expect(screen.getByRole('heading', { name: 'CCTC Practice Exam' })).toBeInTheDocument();
-    expect(screen.getByText(/Loaded bank:/i)).toBeInTheDocument();
+    expect(
+      screen.getByText((_, element) => Boolean(element?.closest('.badge')?.textContent?.includes('506 item')))
+    ).toBeInTheDocument();
     expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /start session/i })).toBeInTheDocument();
   });

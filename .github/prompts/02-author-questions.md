@@ -99,6 +99,20 @@ Produce both, roughly matching the exam's feel:
 
 See `questions/_examples/examples.json` for one worked item of each type, including how `explanation.rationale_incorrect` covers every wrong option and how `references` cite ABTC suggested sources with locators.
 
+## Scenario companion bank (paired vignettes)
+
+The app offers a second **Scenario companions** question set (ADR-031). Companions live under `questions/scenario/` and pair 1:1 with standard items via `companion_of`.
+
+| Rule | Detail |
+|---|---|
+| IDs | `cctc-6001`–`cctc-6506` only |
+| Pairing | Match parent `domain`, `task`, `knowledge_codes`, and `type` |
+| Stem | **4–6 sentence** clinical vignette (second- or third-person), then one clear prompt |
+| Wording | New scenario prose — do not paste or closely paraphrase the standard item stem |
+| References | Same `primary_anchor` / indexer workflow as standard items |
+
+Author in parallel across domains so test sessions are not domain-heavy while the pool grows. See `questions/scenario/README.md`.
+
 ## Tagging and blueprint mapping
 
 Tag every item to the **2026-07 blueprint** (the legacy blueprint is derived via crosswalk — do not double-tag):

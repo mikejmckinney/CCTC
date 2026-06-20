@@ -1,5 +1,6 @@
 export type ExamMode = 'study' | 'exam';
 export type BlueprintId = 'cctc-from-2026-07' | 'cctc-thru-2026-06';
+export type QuestionSet = 'standard' | 'scenario';
 export type QuestionStatus = 'draft' | 'reviewed';
 export type QuestionType = 'one_best' | 'complex_combo';
 export type CognitiveLevel = 'recall' | 'application' | 'analysis';
@@ -54,6 +55,7 @@ export interface Question {
   organ?: OrganTarget;
   recipient_age?: 'adult' | 'pediatric' | 'both';
   legacy_section?: string;
+  companion_of?: string;
   stem: string;
   shuffle?: boolean;
   elements?: QuestionElement[];
@@ -117,6 +119,7 @@ export type Blueprint = CurrentBlueprint | LegacyBlueprint;
 
 export interface SessionSettings {
   blueprintId: BlueprintId;
+  questionSet: QuestionSet;
   questionCount: number;
   timed: boolean;
   timeMinutes: number;

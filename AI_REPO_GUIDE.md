@@ -168,6 +168,7 @@ Use these files as the current product ground truth:
 ### Question bank (current)
 
 - **506 reviewed items** in `questions/domain-*/batch-01.json` through `batch-42.json` (IDs `cctc-1001`–`1169`, `2001`–`2168`, `3001`–`3169`).
+- **Scenario companions** (in progress): paired vignette bank under `questions/scenario/` (IDs `cctc-6001`–`cctc-6506`, field `companion_of` → standard id). See [ADR-031](docs/decisions/adr-031-scenario-companion-bank.md) and `questions/scenario/README.md`.
 - All production-bank items `status: "reviewed"` (SME promotion 2026-06-08); `_examples/` stays `draft`. Validator enforces schema, integrity, and verifiable references per ADR-030.
 - Bank authoring soft targets (see `questions/README.md`, `02-author-questions.md`): cognitive mix ~35/52/13%; `recipient_age: pediatric` **5–7%** of bank (`both` excluded; live CCTC exam ~5% pediatric).
 - Batch 03 (2026-06-06): depth on high-weight tasks, first lung item, second pediatric item, second `complex_combo`, OPTN-primary inactive waitlist items (Policy 3.4.E).
