@@ -7,17 +7,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020500",
-    "knowledge_codes": ["020501"],
+    "knowledge_codes": [
+      "020501"
+    ],
     "cognitive_level": "recall",
     "organ": "pancreas",
     "recipient_age": "adult",
     "stem": "A pancreas islet waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Unlimited waiting time accrues while the candidate remains inactive" },
-      { "id": "B", "text": "No waiting time accrues while the candidate remains inactive" },
-      { "id": "C", "text": "Waiting time accrues only for the first 30 cumulative inactive days" },
-      { "id": "D", "text": "Waiting time accrues only when listed for whole-organ pancreas transplantation" }
+      {
+        "id": "A",
+        "text": "Unlimited waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "B",
+        "text": "No waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "C",
+        "text": "Waiting time accrues only for the first 30 cumulative inactive days"
+      },
+      {
+        "id": "D",
+        "text": "Waiting time accrues only when listed for whole-organ pancreas transplantation"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -31,21 +45,30 @@
     "primary_anchor": {
       "type": "pdf",
       "source_id": "optn-policies",
-      "pdf_page": 46,
+      "pdf_page": 47,
       "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Pancreas islet",
       "quote_hint": "Pancreas islet … Unlimited time … Candidates accrue waiting time while inactive",
-      "keywords": ["Pancreas", "islet", "Unlimited", "time", "inactive", "waiting", "accrue", "candidates"]
+      "keywords": [
+        "Pancreas",
+        "islet",
+        "Unlimited",
+        "time",
+        "inactive",
+        "waiting",
+        "accrue",
+        "candidates"
+      ]
     },
     "references": [
       {
         "citation": "OPTN/UNOS — Policies (HRSA).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
-        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (pancreas islet candidates accrue unlimited waiting time while inactive); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=47",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (pancreas islet candidates accrue unlimited waiting time while inactive); PDF p. 47 (repo file-page index; printed margin may differ).",
         "kind": "regulation"
       }
     ],
-    "notes": "Source-first item. Final OPTN Policy 3.6.A inactive-waiting-time organ entry; paired with pancreas unlimited (cctc-2077); anchor verified on optn-policies p. 46.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. Final OPTN Policy 3.6.A inactive-waiting-time organ entry; paired with pancreas unlimited (cctc-2077); anchor verified on optn-policies p. 47.",
+    "last_updated": "2026-06-20"
   },
   {
     "id": "cctc-2082",
@@ -55,17 +78,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020600",
-    "knowledge_codes": ["020601"],
+    "knowledge_codes": [
+      "020601"
+    ],
     "cognitive_level": "recall",
     "organ": "general",
     "recipient_age": "adult",
     "stem": "When assessing deceased-donor infection risk before organ acceptance, which physical examination finding aligns with standard donor risk-assessment references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Track marks suggesting recent drug use" },
-      { "id": "B", "text": "Normal healing scars that automatically prohibit all donation" },
-      { "id": "C", "text": "Absence of any donor chart or history review" },
-      { "id": "D", "text": "Only recipient preference without donor examination" }
+      {
+        "id": "A",
+        "text": "Track marks suggesting recent drug use"
+      },
+      {
+        "id": "B",
+        "text": "Normal healing scars that automatically prohibit all donation"
+      },
+      {
+        "id": "C",
+        "text": "Absence of any donor chart or history review"
+      },
+      {
+        "id": "D",
+        "text": "Only recipient preference without donor examination"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -82,7 +119,16 @@
       "pdf_page": 181,
       "section": "Ch. 5, Infectious Diseases → Donor-Transmitted Infections → C. Physical Examination → 3.",
       "quote_hint": "Evidence of recent drug use such as track marks",
-      "keywords": ["Evidence", "recent", "drug", "use", "track", "marks", "Physical", "Examination"]
+      "keywords": [
+        "Evidence",
+        "recent",
+        "drug",
+        "use",
+        "track",
+        "marks",
+        "Physical",
+        "Examination"
+      ]
     },
     "references": [
       {
@@ -102,17 +148,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020100",
-    "knowledge_codes": ["020101"],
+    "knowledge_codes": [
+      "020101"
+    ],
     "cognitive_level": "application",
     "organ": "pancreas",
     "recipient_age": "adult",
     "stem": "During pancreas transplant evaluation, a candidate with long-standing diabetes has documented pancreatic exocrine insufficiency. How should the coordinator classify this finding?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "An indication category listed for pancreas transplant alone or pancreas after kidney transplantation" },
-      { "id": "B", "text": "A finding that permanently excludes any pancreas transplantation" },
-      { "id": "C", "text": "An indication relevant only to isolated kidney transplantation" },
-      { "id": "D", "text": "A contraindication that prohibits all immunosuppression after transplant" }
+      {
+        "id": "A",
+        "text": "An indication category listed for pancreas transplant alone or pancreas after kidney transplantation"
+      },
+      {
+        "id": "B",
+        "text": "A finding that permanently excludes any pancreas transplantation"
+      },
+      {
+        "id": "C",
+        "text": "An indication relevant only to isolated kidney transplantation"
+      },
+      {
+        "id": "D",
+        "text": "A contraindication that prohibits all immunosuppression after transplant"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -129,7 +189,16 @@
       "pdf_page": 825,
       "section": "Ch. 15, Pancreas Transplantation → Indications → A.2.",
       "quote_hint": "Pancreatic exocrine insufficiency",
-      "keywords": ["Pancreatic", "exocrine", "insufficiency", "Pancreas", "transplant", "alone", "indications", "diabetes"]
+      "keywords": [
+        "Pancreatic",
+        "exocrine",
+        "insufficiency",
+        "Pancreas",
+        "transplant",
+        "alone",
+        "indications",
+        "diabetes"
+      ]
     },
     "references": [
       {
@@ -149,17 +218,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020200",
-    "knowledge_codes": ["020203"],
+    "knowledge_codes": [
+      "020203"
+    ],
     "cognitive_level": "application",
     "organ": "general",
     "recipient_age": "both",
     "stem": "When coordinating deceased-donor organ acceptance, which psychosocial history element is included in donor infection risk assessment per standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Alcohol or drug abuse and incarceration history" },
-      { "id": "B", "text": "Only the recipient's preferred hospital room color" },
-      { "id": "C", "text": "Only post-transplant cosmetic medication preferences" },
-      { "id": "D", "text": "Psychosocial history is never reviewed during donor assessment" }
+      {
+        "id": "A",
+        "text": "Alcohol or drug abuse and incarceration history"
+      },
+      {
+        "id": "B",
+        "text": "Only the recipient's preferred hospital room color"
+      },
+      {
+        "id": "C",
+        "text": "Only post-transplant cosmetic medication preferences"
+      },
+      {
+        "id": "D",
+        "text": "Psychosocial history is never reviewed during donor assessment"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -176,7 +259,16 @@
       "pdf_page": 181,
       "section": "Ch. 5, Infectious Diseases → Donor-Transmitted Infections → B. Donor Risk Assessment → 2.d.",
       "quote_hint": "Psychosocial history … Alcohol/drug abuse … Incarceration",
-      "keywords": ["Psychosocial", "history", "Alcohol", "drug", "abuse", "Incarceration", "donor", "risk"]
+      "keywords": [
+        "Psychosocial",
+        "history",
+        "Alcohol",
+        "drug",
+        "abuse",
+        "Incarceration",
+        "donor",
+        "risk"
+      ]
     },
     "references": [
       {

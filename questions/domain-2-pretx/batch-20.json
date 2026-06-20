@@ -7,17 +7,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020500",
-    "knowledge_codes": ["020501"],
+    "knowledge_codes": [
+      "020501"
+    ],
     "cognitive_level": "recall",
     "organ": "pancreas",
     "recipient_age": "adult",
     "stem": "A pancreas waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Unlimited waiting time accrues while the candidate remains inactive" },
-      { "id": "B", "text": "No waiting time accrues while the candidate remains inactive" },
-      { "id": "C", "text": "Waiting time accrues only for the first 30 cumulative inactive days" },
-      { "id": "D", "text": "Waiting time accrues only when the candidate is listed for SPK transplantation" }
+      {
+        "id": "A",
+        "text": "Unlimited waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "B",
+        "text": "No waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "C",
+        "text": "Waiting time accrues only for the first 30 cumulative inactive days"
+      },
+      {
+        "id": "D",
+        "text": "Waiting time accrues only when the candidate is listed for SPK transplantation"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -31,21 +45,30 @@
     "primary_anchor": {
       "type": "pdf",
       "source_id": "optn-policies",
-      "pdf_page": 46,
+      "pdf_page": 47,
       "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Pancreas",
       "quote_hint": "Pancreas … Unlimited time … Candidates accrue waiting time while inactive",
-      "keywords": ["Pancreas", "Unlimited", "time", "inactive", "waiting", "accrue", "candidates", "Table"]
+      "keywords": [
+        "Pancreas",
+        "Unlimited",
+        "time",
+        "inactive",
+        "waiting",
+        "accrue",
+        "candidates",
+        "Table"
+      ]
     },
     "references": [
       {
         "citation": "OPTN/UNOS — Policies (HRSA).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
-        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (pancreas candidates accrue unlimited waiting time while inactive); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=47",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (pancreas candidates accrue unlimited waiting time while inactive); PDF p. 47 (repo file-page index; printed margin may differ).",
         "kind": "regulation"
       }
     ],
-    "notes": "Source-first item. Completes OPTN inactive-waiting-time coverage for pancreas; paired with intestine 30-day rule (cctc-2074) and liver no-accrual (cctc-2073); anchor verified on optn-policies p. 46.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. Completes OPTN inactive-waiting-time coverage for pancreas; paired with intestine 30-day rule (cctc-2074) and liver no-accrual (cctc-2073); anchor verified on optn-policies p. 47.",
+    "last_updated": "2026-06-20"
   },
   {
     "id": "cctc-2078",
@@ -55,17 +78,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020100",
-    "knowledge_codes": ["020101"],
+    "knowledge_codes": [
+      "020101"
+    ],
     "cognitive_level": "recall",
     "organ": "kidney",
     "recipient_age": "adult",
     "stem": "When reviewing maintenance immunosuppression options during kidney transplant evaluation, how are sirolimus and everolimus classified in standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Mammalian target of rapamycin (mTOR) proliferation signal inhibitors" },
-      { "id": "B", "text": "Calcineurin inhibitors identical to tacrolimus" },
-      { "id": "C", "text": "Monoclonal antibody induction agents only" },
-      { "id": "D", "text": "Agents that require no maintenance immunosuppression pairing" }
+      {
+        "id": "A",
+        "text": "Mammalian target of rapamycin (mTOR) proliferation signal inhibitors"
+      },
+      {
+        "id": "B",
+        "text": "Calcineurin inhibitors identical to tacrolimus"
+      },
+      {
+        "id": "C",
+        "text": "Monoclonal antibody induction agents only"
+      },
+      {
+        "id": "D",
+        "text": "Agents that require no maintenance immunosuppression pairing"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -82,7 +119,16 @@
       "pdf_page": 152,
       "section": "Ch. 4, Pharmacology → E. Proliferation Signal Inhibitors → 1.a.–b.",
       "quote_hint": "mammalian target of rapamycin (mTOR) inhibitors … Sirolimus (Rapamune), the first mTOR inhibitor",
-      "keywords": ["mammalian", "target", "rapamycin", "mTOR", "inhibitors", "Sirolimus", "proliferation", "signal"]
+      "keywords": [
+        "mammalian",
+        "target",
+        "rapamycin",
+        "mTOR",
+        "inhibitors",
+        "Sirolimus",
+        "proliferation",
+        "signal"
+      ]
     },
     "references": [
       {
@@ -102,17 +148,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020300",
-    "knowledge_codes": ["020301"],
+    "knowledge_codes": [
+      "020301"
+    ],
     "cognitive_level": "recall",
     "organ": "liver",
     "recipient_age": "adult",
     "stem": "When discussing maintenance immunosuppression options with a liver transplant candidate, which sirolimus counseling point aligns with standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Sirolimus has a black box warning against use in liver transplantation due to hepatic artery thrombosis risk" },
-      { "id": "B", "text": "Sirolimus is the preferred first-line agent for all liver transplant recipients" },
-      { "id": "C", "text": "Sirolimus has no identified risks specific to liver transplantation" },
-      { "id": "D", "text": "Sirolimus eliminates the need for any post-transplant laboratory monitoring" }
+      {
+        "id": "A",
+        "text": "Sirolimus has a black box warning against use in liver transplantation due to hepatic artery thrombosis risk"
+      },
+      {
+        "id": "B",
+        "text": "Sirolimus is the preferred first-line agent for all liver transplant recipients"
+      },
+      {
+        "id": "C",
+        "text": "Sirolimus has no identified risks specific to liver transplantation"
+      },
+      {
+        "id": "D",
+        "text": "Sirolimus eliminates the need for any post-transplant laboratory monitoring"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -129,7 +189,16 @@
       "pdf_page": 155,
       "section": "Ch. 4, Pharmacology → Sirolimus → Black box warning → h.i.",
       "quote_hint": "black box warning against use in liver transplantation due to association with an increased rate of hepatic artery thrombosis",
-      "keywords": ["black", "box", "warning", "liver", "transplantation", "hepatic", "artery", "thrombosis"]
+      "keywords": [
+        "black",
+        "box",
+        "warning",
+        "liver",
+        "transplantation",
+        "hepatic",
+        "artery",
+        "thrombosis"
+      ]
     },
     "references": [
       {
@@ -149,17 +218,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020700",
-    "knowledge_codes": ["020703"],
+    "knowledge_codes": [
+      "020703"
+    ],
     "cognitive_level": "recall",
     "organ": "heart",
     "recipient_age": "adult",
     "stem": "When reviewing everolimus as a maintenance option for a heart transplant candidate, which safety counseling point aligns with standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Everolimus has a black box warning against use in heart transplantation due to increased mortality risk in trials" },
-      { "id": "B", "text": "Everolimus is universally recommended as first-line therapy for every heart recipient" },
-      { "id": "C", "text": "Everolimus has no organ-specific warnings in heart transplantation" },
-      { "id": "D", "text": "Everolimus replaces the need for any rejection monitoring after heart transplant" }
+      {
+        "id": "A",
+        "text": "Everolimus has a black box warning against use in heart transplantation due to increased mortality risk in trials"
+      },
+      {
+        "id": "B",
+        "text": "Everolimus is universally recommended as first-line therapy for every heart recipient"
+      },
+      {
+        "id": "C",
+        "text": "Everolimus has no organ-specific warnings in heart transplantation"
+      },
+      {
+        "id": "D",
+        "text": "Everolimus replaces the need for any rejection monitoring after heart transplant"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -176,7 +259,16 @@
       "pdf_page": 153,
       "section": "Ch. 4, Pharmacology → E. Proliferation Signal Inhibitors → 1.c.ii.",
       "quote_hint": "Everolimus has a black box warning against use in heart transplantation due to a numerically increased risk of mortality",
-      "keywords": ["Everolimus", "black", "box", "warning", "heart", "transplantation", "increased", "mortality"]
+      "keywords": [
+        "Everolimus",
+        "black",
+        "box",
+        "warning",
+        "heart",
+        "transplantation",
+        "increased",
+        "mortality"
+      ]
     },
     "references": [
       {

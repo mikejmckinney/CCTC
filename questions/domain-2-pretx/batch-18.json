@@ -7,17 +7,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020100",
-    "knowledge_codes": ["020101"],
+    "knowledge_codes": [
+      "020101"
+    ],
     "cognitive_level": "application",
     "organ": "liver",
     "recipient_age": "adult",
     "stem": "While coordinating hepatopulmonary syndrome (HPS) evaluation for a liver transplant candidate, which diagnostic study aligns with standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Standing and supine arterial blood gas analyses on room air and with 100% oxygen" },
-      { "id": "B", "text": "Isolated serum amylase measurement without pulmonary testing" },
-      { "id": "C", "text": "Routine bone marrow biopsy before any pulmonary assessment" },
-      { "id": "D", "text": "HPS evaluation requires no arterial blood gas testing" }
+      {
+        "id": "A",
+        "text": "Standing and supine arterial blood gas analyses on room air and with 100% oxygen"
+      },
+      {
+        "id": "B",
+        "text": "Isolated serum amylase measurement without pulmonary testing"
+      },
+      {
+        "id": "C",
+        "text": "Routine bone marrow biopsy before any pulmonary assessment"
+      },
+      {
+        "id": "D",
+        "text": "HPS evaluation requires no arterial blood gas testing"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -34,7 +48,16 @@
       "pdf_page": 44,
       "section": "Ch. 1, Evaluation → Liver transplantation → Additional evaluation → 4.b.ii.",
       "quote_hint": "evaluation for HPS includes … Standing and supine arterial blood gas analyses are performed on room air and with 100% oxygen",
-      "keywords": ["evaluation", "HPS", "Standing", "supine", "arterial", "blood", "gas", "oxygen"]
+      "keywords": [
+        "evaluation",
+        "HPS",
+        "Standing",
+        "supine",
+        "arterial",
+        "blood",
+        "gas",
+        "oxygen"
+      ]
     },
     "references": [
       {
@@ -54,17 +77,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020100",
-    "knowledge_codes": ["020101"],
+    "knowledge_codes": [
+      "020101"
+    ],
     "cognitive_level": "recall",
     "organ": "kidney",
     "recipient_age": "adult",
     "stem": "When reviewing immunosuppression options for a kidney transplant candidate, which requirement applies to belatacept use per standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "The recipient must be seropositive for Epstein-Barr virus IgG to decrease PTLD risk" },
-      { "id": "B", "text": "Belatacept may be used only in Epstein-Barr virus–seronegative recipients" },
-      { "id": "C", "text": "Belatacept requires daily therapeutic drug level monitoring like calcineurin inhibitors" },
-      { "id": "D", "text": "Belatacept eliminates the need for any maintenance immunosuppression" }
+      {
+        "id": "A",
+        "text": "The recipient must be seropositive for Epstein-Barr virus IgG to decrease PTLD risk"
+      },
+      {
+        "id": "B",
+        "text": "Belatacept may be used only in Epstein-Barr virus–seronegative recipients"
+      },
+      {
+        "id": "C",
+        "text": "Belatacept requires daily therapeutic drug level monitoring like calcineurin inhibitors"
+      },
+      {
+        "id": "D",
+        "text": "Belatacept eliminates the need for any maintenance immunosuppression"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -81,7 +118,16 @@
       "pdf_page": 157,
       "section": "Ch. 4, Pharmacology → Belatacept → 3.c.",
       "quote_hint": "transplant recipient must be seropositive for Epstein-Barr virus IgG to decrease the risk of developing PTLD",
-      "keywords": ["recipient", "seropositive", "Epstein-Barr", "virus", "IgG", "decrease", "risk", "PTLD"]
+      "keywords": [
+        "recipient",
+        "seropositive",
+        "Epstein-Barr",
+        "virus",
+        "IgG",
+        "decrease",
+        "risk",
+        "PTLD"
+      ]
     },
     "references": [
       {
@@ -101,17 +147,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020500",
-    "knowledge_codes": ["020501"],
+    "knowledge_codes": [
+      "020501"
+    ],
     "cognitive_level": "recall",
     "organ": "lung",
     "recipient_age": "adult",
     "stem": "A lung waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Unlimited waiting time accrues while the candidate remains inactive" },
-      { "id": "B", "text": "No waiting time accrues while the candidate remains inactive" },
-      { "id": "C", "text": "Waiting time accrues only for the first 30 cumulative inactive days" },
-      { "id": "D", "text": "Waiting time accrues only when the candidate is younger than 18 years" }
+      {
+        "id": "A",
+        "text": "Unlimited waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "B",
+        "text": "No waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "C",
+        "text": "Waiting time accrues only for the first 30 cumulative inactive days"
+      },
+      {
+        "id": "D",
+        "text": "Waiting time accrues only when the candidate is younger than 18 years"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -125,21 +185,30 @@
     "primary_anchor": {
       "type": "pdf",
       "source_id": "optn-policies",
-      "pdf_page": 46,
+      "pdf_page": 47,
       "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Lung",
       "quote_hint": "Lung … Unlimited time … Candidates accrue waiting time while inactive",
-      "keywords": ["Lung", "Unlimited", "time", "inactive", "waiting", "accrue", "candidates", "Table"]
+      "keywords": [
+        "Lung",
+        "Unlimited",
+        "time",
+        "inactive",
+        "waiting",
+        "accrue",
+        "candidates",
+        "Table"
+      ]
     },
     "references": [
       {
         "citation": "OPTN/UNOS — Policies (HRSA).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
-        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (lung candidates accrue unlimited waiting time while inactive); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=47",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (lung candidates accrue unlimited waiting time while inactive); PDF p. 47 (repo file-page index; printed margin may differ).",
         "kind": "regulation"
       }
     ],
-    "notes": "Source-first item. Lung inactive waiting-time angle paired with heart no-accrual (cctc-2045) and kidney unlimited accrual (cctc-2037); anchor verified on optn-policies p. 46.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. Lung inactive waiting-time angle paired with heart no-accrual (cctc-2045) and kidney unlimited accrual (cctc-2037); anchor verified on optn-policies p. 47.",
+    "last_updated": "2026-06-20"
   },
   {
     "id": "cctc-2072",
@@ -149,17 +218,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020400",
-    "knowledge_codes": ["020401"],
+    "knowledge_codes": [
+      "020401"
+    ],
     "cognitive_level": "application",
     "organ": "liver",
     "recipient_age": "adult",
     "stem": "When communicating the transplant team's recommendation to a liver candidate with hepatopulmonary syndrome, which counseling point aligns with standard evaluation references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Hepatopulmonary syndrome is reversible with transplantation and is not a contraindication to liver transplant" },
-      { "id": "B", "text": "Hepatopulmonary syndrome permanently prohibits listing for any transplantation" },
-      { "id": "C", "text": "Hepatorenal syndrome alone mandates isolated kidney transplantation instead of liver transplant" },
-      { "id": "D", "text": "Pulmonary complications of liver failure never improve after transplantation" }
+      {
+        "id": "A",
+        "text": "Hepatopulmonary syndrome is reversible with transplantation and is not a contraindication to liver transplant"
+      },
+      {
+        "id": "B",
+        "text": "Hepatopulmonary syndrome permanently prohibits listing for any transplantation"
+      },
+      {
+        "id": "C",
+        "text": "Hepatorenal syndrome alone mandates isolated kidney transplantation instead of liver transplant"
+      },
+      {
+        "id": "D",
+        "text": "Pulmonary complications of liver failure never improve after transplantation"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -176,7 +259,16 @@
       "pdf_page": 44,
       "section": "Ch. 1, Evaluation → Liver transplantation → Additional evaluation → 4.a.",
       "quote_hint": "Both hepatopulmonary syndrome (HPS) and hepatorenal syndrome (HRS) are reversible with transplantation and are not contraindications to liver transplantation",
-      "keywords": ["hepatopulmonary", "syndrome", "HPS", "hepatorenal", "HRS", "reversible", "transplantation", "contraindications"]
+      "keywords": [
+        "hepatopulmonary",
+        "syndrome",
+        "HPS",
+        "hepatorenal",
+        "HRS",
+        "reversible",
+        "transplantation",
+        "contraindications"
+      ]
     },
     "references": [
       {

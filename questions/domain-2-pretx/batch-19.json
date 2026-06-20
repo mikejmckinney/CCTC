@@ -7,17 +7,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020500",
-    "knowledge_codes": ["020501"],
+    "knowledge_codes": [
+      "020501"
+    ],
     "cognitive_level": "recall",
     "organ": "liver",
     "recipient_age": "adult",
     "stem": "A liver waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "No waiting time accrues while the candidate remains inactive" },
-      { "id": "B", "text": "Unlimited waiting time accrues, as for kidney candidates" },
-      { "id": "C", "text": "Waiting time accrues only for the first 30 cumulative inactive days" },
-      { "id": "D", "text": "Waiting time doubles each month the candidate remains inactive" }
+      {
+        "id": "A",
+        "text": "No waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "B",
+        "text": "Unlimited waiting time accrues, as for kidney candidates"
+      },
+      {
+        "id": "C",
+        "text": "Waiting time accrues only for the first 30 cumulative inactive days"
+      },
+      {
+        "id": "D",
+        "text": "Waiting time doubles each month the candidate remains inactive"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -31,21 +45,30 @@
     "primary_anchor": {
       "type": "pdf",
       "source_id": "optn-policies",
-      "pdf_page": 46,
+      "pdf_page": 47,
       "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Liver",
       "quote_hint": "Liver … No time … Candidates accrue waiting time while inactive",
-      "keywords": ["Liver", "No", "time", "inactive", "waiting", "accrue", "candidates", "Table"]
+      "keywords": [
+        "Liver",
+        "No",
+        "time",
+        "inactive",
+        "waiting",
+        "accrue",
+        "candidates",
+        "Table"
+      ]
     },
     "references": [
       {
         "citation": "OPTN/UNOS — Policies (HRSA).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
-        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (liver candidates accrue no waiting time while inactive); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=47",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (liver candidates accrue no waiting time while inactive); PDF p. 47 (repo file-page index; printed margin may differ).",
         "kind": "regulation"
       }
     ],
-    "notes": "Source-first item. Liver inactive waiting-time angle completes heart/liver no-accrual pair with lung/kidney unlimited items; anchor verified on optn-policies p. 46.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. Liver inactive waiting-time angle completes heart/liver no-accrual pair with lung/kidney unlimited items; anchor verified on optn-policies p. 47.",
+    "last_updated": "2026-06-20"
   },
   {
     "id": "cctc-2074",
@@ -55,17 +78,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020500",
-    "knowledge_codes": ["020501"],
+    "knowledge_codes": [
+      "020501"
+    ],
     "cognitive_level": "recall",
     "organ": "intestine",
     "recipient_age": "both",
     "stem": "An intestine waitlist candidate is placed on inactive status while temporarily unsuitable for transplant. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Up to 30 cumulative days of waiting time while inactive" },
-      { "id": "B", "text": "No waiting time accrues while the candidate remains inactive" },
-      { "id": "C", "text": "Unlimited waiting time accrues, as for kidney candidates" },
-      { "id": "D", "text": "Waiting time accrues only when the candidate is younger than 18 years" }
+      {
+        "id": "A",
+        "text": "Up to 30 cumulative days of waiting time while inactive"
+      },
+      {
+        "id": "B",
+        "text": "No waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "C",
+        "text": "Unlimited waiting time accrues, as for kidney candidates"
+      },
+      {
+        "id": "D",
+        "text": "Waiting time accrues only when the candidate is younger than 18 years"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -79,21 +116,30 @@
     "primary_anchor": {
       "type": "pdf",
       "source_id": "optn-policies",
-      "pdf_page": 46,
+      "pdf_page": 47,
       "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Intestine",
       "quote_hint": "Intestine … Up to 30 cumulative days … Candidates accrue waiting time while inactive",
-      "keywords": ["Intestine", "cumulative", "days", "inactive", "waiting", "accrue", "candidates", "Table"]
+      "keywords": [
+        "Intestine",
+        "cumulative",
+        "days",
+        "inactive",
+        "waiting",
+        "accrue",
+        "candidates",
+        "Table"
+      ]
     },
     "references": [
       {
         "citation": "OPTN/UNOS — Policies (HRSA).",
-        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=46",
-        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (intestine candidates accrue up to 30 cumulative inactive days); PDF p. 46 (repo file-page index; printed margin may differ).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=47",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (intestine candidates accrue up to 30 cumulative inactive days); PDF p. 47 (repo file-page index; printed margin may differ).",
         "kind": "regulation"
       }
     ],
-    "notes": "Source-first item. First intestine OPTN waitlist item; intestine inactive 30-day rule distinct from lung unlimited (cctc-2071) and liver no-accrual (cctc-2073); anchor verified on optn-policies p. 46.",
-    "last_updated": "2026-06-05"
+    "notes": "Source-first item. First intestine OPTN waitlist item; intestine inactive 30-day rule distinct from lung unlimited (cctc-2071) and liver no-accrual (cctc-2073); anchor verified on optn-policies p. 47.",
+    "last_updated": "2026-06-20"
   },
   {
     "id": "cctc-2075",
@@ -103,17 +149,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020100",
-    "knowledge_codes": ["020101"],
+    "knowledge_codes": [
+      "020101"
+    ],
     "cognitive_level": "application",
     "organ": "kidney",
     "recipient_age": "adult",
     "stem": "When coordinating post-transplant monitoring for a kidney recipient, which BK virus management principle aligns with standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Routine screening for BK virus replication to guide immunosuppression reduction" },
-      { "id": "B", "text": "BK virus screening is unnecessary because effective antiviral therapy exists" },
-      { "id": "C", "text": "BK replication requires immediate graft nephrectomy in every case" },
-      { "id": "D", "text": "Immunosuppression should be intensified whenever BK replication is detected" }
+      {
+        "id": "A",
+        "text": "Routine screening for BK virus replication to guide immunosuppression reduction"
+      },
+      {
+        "id": "B",
+        "text": "BK virus screening is unnecessary because effective antiviral therapy exists"
+      },
+      {
+        "id": "C",
+        "text": "BK replication requires immediate graft nephrectomy in every case"
+      },
+      {
+        "id": "D",
+        "text": "Immunosuppression should be intensified whenever BK replication is detected"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -130,7 +190,16 @@
       "pdf_page": 208,
       "section": "Ch. 5, Infectious Diseases → J. Polyomaviruses → 2. BK virus → e.",
       "quote_hint": "No effective antiviral therapies … screening for BK virus replication be performed routinely in order to guide reduction of immunosuppression",
-      "keywords": ["effective", "antiviral", "therapies", "screening", "BK", "virus", "replication", "immunosuppression"]
+      "keywords": [
+        "effective",
+        "antiviral",
+        "therapies",
+        "screening",
+        "BK",
+        "virus",
+        "replication",
+        "immunosuppression"
+      ]
     },
     "references": [
       {
@@ -150,17 +219,31 @@
     "type": "one_best",
     "domain": 2,
     "task": "020600",
-    "knowledge_codes": ["020601"],
+    "knowledge_codes": [
+      "020601"
+    ],
     "cognitive_level": "recall",
     "organ": "general",
     "recipient_age": "adult",
     "stem": "When presenting deceased-donor information to a candidate, which initial donor risk-assessment step aligns with standard references?",
     "shuffle": true,
     "options": [
-      { "id": "A", "text": "Donor chart review" },
-      { "id": "B", "text": "Immediate graft implantation without any donor data review" },
-      { "id": "C", "text": "Relying solely on recipient preference without donor assessment" },
-      { "id": "D", "text": "Deferring all infection-risk review until one year after transplant" }
+      {
+        "id": "A",
+        "text": "Donor chart review"
+      },
+      {
+        "id": "B",
+        "text": "Immediate graft implantation without any donor data review"
+      },
+      {
+        "id": "C",
+        "text": "Relying solely on recipient preference without donor assessment"
+      },
+      {
+        "id": "D",
+        "text": "Deferring all infection-risk review until one year after transplant"
+      }
     ],
     "correct": "A",
     "explanation": {
@@ -177,7 +260,16 @@
       "pdf_page": 181,
       "section": "Ch. 5, Infectious Diseases → Donor-Transmitted Infections → B. Donor Risk Assessment → 1.",
       "quote_hint": "Donor chart review",
-      "keywords": ["Donor", "chart", "review", "Risk", "Assessment", "Transmitted", "Infections", "procurement"]
+      "keywords": [
+        "Donor",
+        "chart",
+        "review",
+        "Risk",
+        "Assessment",
+        "Transmitted",
+        "Infections",
+        "procurement"
+      ]
     },
     "references": [
       {

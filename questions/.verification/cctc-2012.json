@@ -1,7 +1,7 @@
 {
   "item_id": "cctc-2012",
   "schema_version": 1,
-  "generated_at": "2026-06-08",
+  "generated_at": "2026-06-20",
   "index_sources": {
     "danovitch": {
       "filename": "danovitch-handbook-kidney-transplantation.pdf",
@@ -9,12 +9,12 @@
     },
     "optn-policies": {
       "filename": "optn-policies.pdf",
-      "page_count": 372
+      "page_count": 374
     }
   },
   "primary_anchor": {
     "source_id": "optn-policies",
-    "pdf_page": 44,
+    "pdf_page": 45,
     "keywords": [
       "inactive",
       "temporarily",
@@ -28,7 +28,7 @@
     {
       "ref_index": 0,
       "source_id": "optn-policies",
-      "pdf_page": 44,
+      "pdf_page": 45,
       "policy": "3.4",
       "keywords": [
         "inactive",
