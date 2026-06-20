@@ -1,0 +1,48 @@
+# Scenario companion question bank
+
+Parallel question bank of **clinical vignette companions** paired 1:1 with the standard bank (`questions/domain-*`).
+
+## Target
+
+- **506** reviewed companions (one per standard item)
+- IDs **`cctc-6001`–`cctc-6506`**
+- Required field **`companion_of`**: stable id of the standard item (e.g. `cctc-2041`)
+
+## Layout
+
+```text
+questions/scenario/
+  domain-1-education/
+  domain-2-pretx/
+  domain-3-postop/
+```
+
+Mirror the standard bank domain folders. Do not mix standard and scenario items in the same file.
+
+## Authoring rules
+
+| Rule | Detail |
+|---|---|
+| Pairing | Same `domain`, `task`, `knowledge_codes`, and `type` as `companion_of` |
+| Voice | Second person (“You are managing…”) or third person (“A 25-year-old…”) |
+| Vignette | **4–6 sentences** in `stem`: role/setting, patient snapshot, status, trigger event, constraints |
+| Prompt | One clear decision question after the vignette |
+| Type | Mirror parent (`one_best` or `complex_combo` with matching `elements` / `selects`) |
+| Wording | Original prose only — do not copy copyrighted source text |
+| References | Same verifier pipeline as standard bank (`primary_anchor`, `references`, stubs) |
+| Status | Agents write `draft`; maintainer promotes to `reviewed` |
+
+## Authoring workflow (use the indexer)
+
+```bash
+npm run reference:search -- <source_id> "<keywords>"
+npm run reference:page -- <source_id> <pdf_page>
+npm run validate
+npm run reference:export-stubs -- --force
+```
+
+See [`docs/guides/reference-indexer.md`](../../docs/guides/reference-indexer.md) and [ADR-031](../../docs/decisions/adr-031-scenario-companion-bank.md).
+
+## App usage
+
+Learners choose **Scenario companions** on the start screen. Study, exam, and timed modes behave the same as the standard bank; blueprint task weighting applies to the scenario pool.

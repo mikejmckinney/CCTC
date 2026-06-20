@@ -182,7 +182,12 @@
       "type": "string",
       "description": "Internal note for the reviewer (never shown to the user), e.g. 'Verify current MELD 3.0 components against OPTN policy before promoting to reviewed.'"
     },
-    "last_updated": { "type": "string", "format": "date" }
+    "last_updated": { "type": "string", "format": "date" },
+    "companion_of": {
+      "type": "string",
+      "pattern": "^cctc-[0-9]{4,}$",
+      "description": "Scenario companion bank only (questions/scenario/): id of the paired standard-bank item (cctc-6001–cctc-6506 companions → standard cctc-####)."
+    }
   },
   "allOf": [
     {

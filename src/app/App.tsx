@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
-import { loadQuestionBank } from '../data/questionBank';
+import { loadQuestionBanks } from '../data/questionBank';
 import { buildDefaultSettings, countAnswered, createSession, isBlueprintApplicable } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { buildCategoryHistoryTrend, listHistoryCategories } from '../lib/categoryHistoryTrend';
@@ -29,7 +29,8 @@ import type {
   ItemFlag,
   Question,
   SessionItemSnapshot,
-  SessionSettings
+  SessionSettings,
+  QuestionSet
 } from '../types/exam';
 
 type View = 'home' | 'session' | 'history' | 'history-detail' | 'flags';
@@ -240,13 +241,26 @@ function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: s
   );
 }
 
+function normalizeSettings(settings: SessionSettings): SessionSettings {
+  const defaults = buildDefaultSettings(settings.blueprintId);
+  return {
+    ...defaults,
+    ...settings,
+    questionSet: settings.questionSet ?? 'standard'
+  };
+}
+
 function App() {
-  const bank = useMemo(() => loadQuestionBank(), []);
+  const banks = useMemo(() => loadQuestionBanks(), []);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState<View>('home');
   const [meta, setMeta] = useState<AppMeta>({ disclaimerSeen: false });
   const [settings, setSettings] = useState<SessionSettings>(() => buildDefaultSettings('cctc-from-2026-07'));
+  const bank = useMemo(
+    () => (settings.questionSet === 'scenario' ? banks.scenario : banks.standard),
+    [banks, settings.questionSet]
+  );
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const historyTrend = useMemo(() => buildHistoryTrend(history), [history]);
@@ -266,16 +280,21 @@ function App() {
   const lastPersistFingerprint = useRef('');
   const activeSessionRef = useRef<ActiveSession | null>(null);
 
+  const allQuestions = useMemo(
+    () => [...banks.standard.questions, ...banks.scenario.questions],
+    [banks]
+  );
+
   useEffect(() => {
     let cancelled = false;
 
-    bootstrapState(bank.questions)
+    bootstrapState(allQuestions)
       .then((state) => {
         if (cancelled) {
           return;
         }
         setMeta(state.meta);
-        setSettings(state.settings ?? buildDefaultSettings('cctc-from-2026-07'));
+        setSettings(normalizeSettings(state.settings ?? buildDefaultSettings('cctc-from-2026-07')));
         setActiveSession(state.activeSession);
         setHistory(state.history);
         setFlags(state.flags);
@@ -294,7 +313,7 @@ function App() {
     return () => {
       cancelled = true;
     };
-  }, [bank.questions]);
+  }, [allQuestions]);
 
   useEffect(() => {
     if (!ready) {
@@ -503,6 +522,17 @@ function App() {
       ...settings,
       mode: nextMode,
       includeDrafts,
+      questionCount: clampQuestionCount(settings.questionCount, max)
+    });
+  }
+
+  function handleQuestionSetChange(nextQuestionSet: QuestionSet): void {
+    const nextBank = nextQuestionSet === 'scenario' ? banks.scenario : banks.standard;
+    const includeDrafts = settings.mode === 'study' ? settings.includeDrafts : false;
+    const max = getAvailableQuestionCount(nextBank.questions, settings.blueprintId, includeDrafts);
+    persistSettings({
+      ...settings,
+      questionSet: nextQuestionSet,
       questionCount: clampQuestionCount(settings.questionCount, max)
     });
   }
@@ -861,7 +891,9 @@ function App() {
                   <p className="eyebrow">Session setup</p>
                   <h2>Build a practice session</h2>
                 </div>
-                <span className="badge badge--soft">Loaded bank: {bank.questions.length} item(s)</span>
+                <span className="badge badge--soft">
+                  {settings.questionSet === 'scenario' ? 'Scenario' : 'Standard'} bank: {bank.questions.length} item(s)
+                </span>
               </div>
 
               {bank.notes.length > 0 && (
@@ -879,6 +911,17 @@ function App() {
                     <option value="cctc-from-2026-07">2026-07 (default)</option>
                     <option value="cctc-thru-2026-06">Until 2026-06</option>
                   </select>
+                </label>
+
+                <label>
+                  Question set
+                  <select value={settings.questionSet} onChange={(event) => handleQuestionSetChange(event.target.value as QuestionSet)}>
+                    <option value="standard">Standard bank</option>
+                    <option value="scenario">Scenario companions</option>
+                  </select>
+                  <span className="field-hint">
+                    Scenario companions are clinical vignettes paired 1:1 with the standard bank (506 target).
+                  </span>
                 </label>
 
                 <label>
@@ -957,6 +1000,7 @@ function App() {
               <div className="summary-card">
                 <h3>Selected setup</h3>
                 <p><strong>Blueprint:</strong> {getBlueprintLabel(settings.blueprintId)}</p>
+                <p><strong>Question set:</strong> {settings.questionSet === 'scenario' ? 'Scenario companions' : 'Standard bank'}</p>
                 <p><strong>Mode:</strong> {settings.mode === 'exam' ? 'Exam mode' : 'Study mode'}</p>
                 <p><strong>Timer:</strong> {settings.timed ? `${settings.timeMinutes} minutes` : 'Untimed'}</p>
                 <p><strong>Draft handling:</strong> {settings.includeDrafts ? 'Drafts included and labeled' : 'Reviewed items only'}</p>

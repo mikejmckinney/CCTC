@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { resolveLoadedBank } from './questionBank';
+import { loadQuestionBanks, resolveLoadedBank } from './questionBank';
 import type { Question } from '../types/exam';
 
 const exampleQuestion: Question = {
@@ -27,5 +27,14 @@ describe('resolveLoadedBank', () => {
 
     expect(bank.questions).toEqual([exampleQuestion]);
     expect(bank.notes).toEqual([]);
+  });
+
+  it('loads standard and scenario banks separately', () => {
+    const banks = loadQuestionBanks();
+
+    expect(banks.standard.questions.length).toBeGreaterThan(0);
+    expect(banks.scenario.questions).toEqual([]);
+    expect(banks.scenario.notes.length).toBeGreaterThan(0);
+    expect(banks.standard.questions.every((question) => !question.companion_of)).toBe(true);
   });
 });

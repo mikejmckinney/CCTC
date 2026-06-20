@@ -7,11 +7,20 @@ export async function loadValidationInputs() {
   const newBlueprint = await readJson('blueprints/cctc-from-2026-07.json');
   const legacyBlueprint = await readJson('blueprints/cctc-thru-2026-06.json');
 
-  const bankFiles = [];
+  const standardBankFiles = [];
+  const scenarioBankFiles = [];
   const excludedEntries = [];
-  await collectQuestionFiles(path.join(ROOT_DIR, 'questions'), bankFiles, excludedEntries);
+  await collectQuestionFiles(path.join(ROOT_DIR, 'questions'), standardBankFiles, excludedEntries, { skipScenario: true });
+  await collectScenarioQuestionFiles(path.join(ROOT_DIR, 'questions/scenario'), scenarioBankFiles, excludedEntries);
 
-  return { schema, newBlueprint, legacyBlueprint, bankFiles, excludedEntries };
+  return {
+    schema,
+    newBlueprint,
+    legacyBlueprint,
+    bankFiles: standardBankFiles,
+    scenarioBankFiles,
+    excludedEntries,
+  };
 }
 
 export async function loadQuestionItems(bankFiles) {
@@ -69,7 +78,43 @@ export function buildLegacySectionIds(legacyBlueprint) {
   );
 }
 
-async function collectQuestionFiles(currentDir, bankFiles, excludedEntries) {
+async function collectQuestionFiles(currentDir, bankFiles, excludedEntries, { skipScenario = false } = {}) {
+  let entries = [];
+  try {
+    entries = await fs.readdir(currentDir, { withFileTypes: true });
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return;
+    }
+    throw error;
+  }
+
+  for (const entry of entries) {
+    const absolutePath = path.join(currentDir, entry.name);
+    const relativePath = path.relative(ROOT_DIR, absolutePath).replaceAll(path.sep, '/');
+
+    if (entry.name.startsWith('_') || entry.name === '.verification') {
+      excludedEntries.push(relativePath + (entry.isDirectory() ? '/' : ''));
+      continue;
+    }
+
+    if (skipScenario && entry.isDirectory() && entry.name === 'scenario') {
+      excludedEntries.push(`${relativePath}/`);
+      continue;
+    }
+
+    if (entry.isDirectory()) {
+      await collectQuestionFiles(absolutePath, bankFiles, excludedEntries, { skipScenario });
+      continue;
+    }
+
+    if (entry.isFile() && entry.name.endsWith('.json')) {
+      bankFiles.push(relativePath);
+    }
+  }
+}
+
+async function collectScenarioQuestionFiles(currentDir, bankFiles, excludedEntries) {
   let entries = [];
   try {
     entries = await fs.readdir(currentDir, { withFileTypes: true });
@@ -90,7 +135,7 @@ async function collectQuestionFiles(currentDir, bankFiles, excludedEntries) {
     }
 
     if (entry.isDirectory()) {
-      await collectQuestionFiles(absolutePath, bankFiles, excludedEntries);
+      await collectScenarioQuestionFiles(absolutePath, bankFiles, excludedEntries);
       continue;
     }
 

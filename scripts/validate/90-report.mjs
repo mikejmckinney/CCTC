@@ -7,8 +7,10 @@ export function printValidationReport({
   mode = 'full',
   schema,
   bankFiles,
+  scenarioBankFiles = [],
   excludedEntries,
   allItems,
+  scenarioCompanionSummary = null,
   parsingErrors,
   fileLevelErrors,
   schemaErrors,
@@ -55,8 +57,13 @@ export function printValidationReport({
   if (!coverageOnly) {
     console.log('Inputs');
     console.log(`- Schema: ${schema.title ?? 'question schema'}`);
-    console.log(`- Bank files loaded: ${bankFiles.length}`);
+    console.log(`- Bank files loaded: ${bankFiles.length} standard | ${scenarioBankFiles.length} scenario`);
     console.log(`- Items evaluated: ${allItems.length}`);
+    if (scenarioCompanionSummary) {
+      console.log(
+        `- Scenario companions: ${scenarioCompanionSummary.companionReviewed} reviewed / ${scenarioCompanionSummary.companionTotal} total (target ${scenarioCompanionSummary.target})`,
+      );
+    }
     if (coverage) {
       console.log(`- Reviewed: ${coverage.reviewedCount} | Draft: ${coverage.draftCount}`);
     }
@@ -81,6 +88,27 @@ export function printValidationReport({
 
   if (coverage) {
     printCoverageDashboard(coverage, coverageWarnings);
+  }
+
+  if (scenarioCompanionSummary) {
+    console.log('Scenario companion bank');
+    console.log('');
+    console.log(
+      renderTable(
+        [
+          { header: 'Metric', minWidth: 24 },
+          { header: 'Value', minWidth: 12 },
+        ],
+        [
+          ['Standard reviewed (parents)', String(scenarioCompanionSummary.standardReviewed)],
+          ['Companions reviewed', String(scenarioCompanionSummary.companionReviewed)],
+          ['Companions draft', String(scenarioCompanionSummary.companionDraft)],
+          ['Companions total', String(scenarioCompanionSummary.companionTotal)],
+          ['Target companions', String(scenarioCompanionSummary.target)],
+          ['Reviewed gap', String(scenarioCompanionSummary.companionGap)],
+        ],
+      ),
+    );
   }
 
   if (!coverageOnly) {

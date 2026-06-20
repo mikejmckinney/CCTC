@@ -15,6 +15,7 @@ function makeEntry(
     completedAt,
     settings: {
       blueprintId: 'cctc-from-2026-07',
+      questionSet: 'standard',
       questionCount: total,
       timed: false,
       timeMinutes: 180,

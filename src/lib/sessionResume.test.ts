@@ -4,6 +4,7 @@ import type { ActiveSession, Question, SessionSettings } from '../types/exam';
 
 const settings: SessionSettings = {
   blueprintId: 'cctc-from-2026-07',
+  questionSet: 'standard',
   questionCount: 2,
   timed: true,
   timeMinutes: 90,
