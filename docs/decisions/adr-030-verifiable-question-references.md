@@ -131,6 +131,8 @@ changes.
 | Option | Why not (or when used) |
 |---|---|
 | **URLs only, no local PDF index** | Cannot keyword-validate anchors; HRSA bot protection blocks reliable automated fetch in CI; page-accurate locators need a local copy. |
+| **Full PDF → markdown conversion** | Loses reliable PDF page numbers for `PDF p. N` locators; large copyrighted exports are harder to keep local-only; page-accurate validation still needs a page map. **Used partial extraction instead** — per-page text in a gitignored JSON index (see [`docs/guides/reference-indexer.md`](../guides/reference-indexer.md)). |
+| **SQLite (or embedded DB with FTS)** | Page validation maps to per-page extracted text; corpus is small (~5k pages) so linear substring search is fast enough for interactive authoring; avoids DB schema, driver, and migration overhead; rebuild is delete-and-regenerate; CI uses committed verification stubs, not live search. **Deferred** — reconsider if cross-source search, fuzzy matching, or scale makes search a bottleneck ([`docs/guides/reference-indexer.md`](../guides/reference-indexer.md) § "Why JSON page files, not SQLite?"). |
 | **Replace all OPTN URLs with policies PDF** | Loses readable HRSA pages that already quote the policy; PDF is harder for some learners. **Rejected** — use additive corroboration. |
 | **Policy-PDF ref on every OPTN mention** | Recreates generic-reference noise. **Rejected** — gate on specific Policy § + verified page. |
 | **Document only in `02-author-questions.md`** | Operational rules yes, but **reasoning and gates** get lost across sessions. **ADR captures why**; prompt captures how. |

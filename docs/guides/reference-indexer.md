@@ -71,6 +71,37 @@ Each `docs/reference/.index/<source_id>.json` contains:
 
 Chapter and policy hints are **search aids**, not substitutes for human verification of the passage.
 
+## Why JSON page files, not SQLite?
+
+The original authoring decision (see [ADR-030 § Options Considered](../decisions/adr-030-verifiable-question-references.md)) compared **URLs-only** and **full PDF→markdown** conversion. **SQLite was not evaluated at implementation time**; this section records the rationale retroactively so the tradeoff is explicit.
+
+### What we optimized for
+
+| Goal | JSON page index | SQLite + FTS (hypothetical) |
+|---|---|---|
+| Page-accurate `primary_anchor.pdf_page` | Natural fit — one record per PDF page | Needs schema + import; same extracted text |
+| Rebuild after PDF update | Delete `docs/reference/.index/`, rerun `reference:index` | Reimport or rebuild FTS tables |
+| Tooling surface | Node + poppler only | + sqlite driver, schema, migrations |
+| CI without PDFs | Committed verification stubs (`questions/.verification/`) | Would still need stubs or a committed DB snapshot |
+| Authoring usage | Occasional `search` / `page` during item writing | Same interactive pattern |
+
+### Lookup performance
+
+**`reference:page`** — direct page dump: effectively O(1) once the JSON is loaded; no meaningful SQLite advantage.
+
+**`reference:search`** — current implementation linearly scans every page in one source with simple substring matching (`searchIndex` in `reference-index.mjs`). At ~5k pages total across all PDFs, interactive search is typically sub-second. **SQLite FTS would likely be faster and richer** (fuzzy match, prefix search, cross-source queries) if the corpus grew large or search became a bottleneck.
+
+The dominant cost is **index build** (`pdftotext` on every page), not search — any design must cache extracted page text.
+
+### When to reconsider SQLite (or similar)
+
+- Cross-source search (“search all textbooks at once”) becomes a routine need.
+- Substring-only search misses too many authoring hits (stemming, typos, synonyms).
+- Corpus scale or query volume makes linear scan noticeably slow.
+- v2 runtime reference lookup needs a queryable store beyond known `pdf_page` values.
+
+Until then, JSON page files stay the simpler correct tool for **verify-this-page** authoring, not a performance-optimized search engine.
+
 ## What is committed vs rebuilt
 
 | Artifact | In git? | New clone / workspace |
