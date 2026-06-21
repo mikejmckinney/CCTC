@@ -1,0 +1,3509 @@
+[
+  {
+    "id": "cctc-6231",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": [
+      "020303"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator updating waitlist education materials. A 39-year-old solid-organ transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. Which condition aligns with a common program selection practice described in transplant nursing education materials?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Completion of a smoking, drug, and/or alcohol cessation program"
+      },
+      {
+        "id": "B",
+        "text": "Immediate transplantation before psychosocial evaluation"
+      },
+      {
+        "id": "C",
+        "text": "Permanent exclusion from any future transplant consideration"
+      },
+      {
+        "id": "D",
+        "text": "Mandatory identification of a living donor before any listing"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidates may be approved with conditions such as completion of smoking, drug, and/or alcohol cessation programs before final listing decisions are implemented.",
+      "rationale_incorrect": {
+        "B": "Psychosocial evaluation is part of interdisciplinary selection; transplantation does not proceed before required evaluations.",
+        "C": "Conditional approval is not the same as permanent exclusion from transplantation.",
+        "D": "Living donor availability is not a universal condition for deceased-donor waitlist activation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education — §7. Selection criteria and evaluation outcome → c.ii (approved with conditions)",
+      "quote_hint": "Completion of smoking, drug and/or alcohol cessation program",
+      "keywords": [
+        "smoking",
+        "cessation",
+        "alcohol",
+        "conditions",
+        "candidate"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §7. Selection criteria and evaluation outcome → c.ii (approved as a candidate with conditions, including smoking/drug/alcohol cessation); PDF p. 101 (§7 begins PDF p. 100).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2003. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 101.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2003"
+  },
+  {
+    "id": "cctc-6232",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": [
+      "020201"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating the pretransplant evaluation schedule. A 52-year-old kidney transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. According to common center practice described in pre-transplant references, how often should panel reactive antibody (PRA) testing typically be obtained?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Monthly or more frequently"
+      },
+      {
+        "id": "B",
+        "text": "Once every five years regardless of clinical change"
+      },
+      {
+        "id": "C",
+        "text": "Only at the time of transplant surgery"
+      },
+      {
+        "id": "D",
+        "text": "Never after initial listing"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "For sensitized kidney candidates, references describe monthly or more frequent PRA testing as part of waitlist management and risk monitoring.",
+      "rationale_incorrect": {
+        "B": "Sensitized candidates require much more frequent antibody monitoring than every five years.",
+        "C": "PRA monitoring occurs during the waiting period, not only intraoperatively.",
+        "D": "Ongoing PRA surveillance continues after listing for sensitized candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 55,
+      "section": "Ch. 1, Kidney waitlist management → §7.c.ii",
+      "quote_hint": "Monthly (or more frequent) PRAs for candidates who are sensitized",
+      "keywords": [
+        "Monthly",
+        "PRAs",
+        "sensitized",
+        "candidates",
+        "kidney"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → kidney waitlist management → §7.c.ii (monthly or more frequent PRAs for sensitized candidates); PDF p. 55 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2006. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 55.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2006"
+  },
+  {
+    "id": "cctc-6233",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator counseling a newly activated candidate and family. A 55-year-old lung transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. Which additional pre-transplant evaluation step is indicated according to standard pulmonary assessment references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Pulmonary function testing"
+      },
+      {
+        "id": "B",
+        "text": "Immediate listing without pulmonary studies"
+      },
+      {
+        "id": "C",
+        "text": "Waiving chest radiography for all candidates with COPD"
+      },
+      {
+        "id": "D",
+        "text": "Deferring oxygen saturation assessment until after transplant"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "All referred candidates should have chest radiography and pulse oximetry; patients with smoking history or COPD should additionally undergo pulmonary function testing, with abnormal findings referred for pulmonology evaluation.",
+      "rationale_incorrect": {
+        "B": "COPD and smoking history warrant pulmonary function testing before listing decisions.",
+        "C": "Chest radiography is required for all referred candidates regardless of COPD history.",
+        "D": "Oxygen saturation is evaluated during initial pulmonary screening, not deferred until after transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Pretransplant Evaluation → §2. Pulmonary evaluation → b.",
+      "quote_hint": "patients with a smoking history or a history of chronic obstructive lung disease should undergo pulmonary function testing",
+      "keywords": [
+        "smoking",
+        "chronic",
+        "obstructive",
+        "pulmonary",
+        "function",
+        "testing"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → §2. Pulmonary evaluation → a–b (chest radiograph, pulse oximetry, PFT for smoking/COPD); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2009. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 33.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2009"
+  },
+  {
+    "id": "cctc-6234",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": [
+      "020501"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old kidney transplant patient is the focus of today's interaction. Evaluation is underway and several consultants have already weighed in. The team must document counseling that matches OPTN policy and standard references. What should the coordinator tell the patient about organ offers during this period?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "No organ offers will be made while inactive status remains in effect"
+      },
+      {
+        "id": "B",
+        "text": "Organ offers will continue at full allocation priority"
+      },
+      {
+        "id": "C",
+        "text": "Only local offers within the transplant hospital will continue"
+      },
+      {
+        "id": "D",
+        "text": "The candidate must re-register as a new waitlist entry before any future offers"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "When a program classifies a temporarily unsuitable candidate as inactive under Policy 3.4.E, the candidate does not receive organ offers until returned to active status.",
+      "rationale_incorrect": {
+        "B": "Inactive status specifically suspends offers; allocation priority does not continue during inactivity.",
+        "C": "Policy 3.4.E applies to all offers, not only out-of-center offers.",
+        "D": "Inactive status is a modification of the existing registration, not mandatory re-registration as a new candidate."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 45,
+      "section": "Policy 3.4.E → Inactive Status",
+      "quote_hint": "the candidate will not receive any organ offers",
+      "keywords": [
+        "inactive",
+        "temporarily",
+        "unsuitable",
+        "organ",
+        "offers"
+      ]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=45",
+        "locator": "Policy 3.4.E → Inactive Status; PDF p. 45 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      },
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 8 → waiting list mortality discussion (inactive status and waitlist deaths); PDF p. 253 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2012. Source-first item. OPTN-primary on Policy 3.4.E p. 44; Danovitch p. 253 additive context on inactive waitlist mortality.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2012"
+  },
+  {
+    "id": "cctc-6235",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": [
+      "020601"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old kidney transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. Where is relevant donor information made available for the transplant team's acceptance decision?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "DonorNet"
+      },
+      {
+        "id": "B",
+        "text": "The candidate's personal health record portal only"
+      },
+      {
+        "id": "C",
+        "text": "A paper fax sent exclusively to the dialysis unit without transplant center access"
+      },
+      {
+        "id": "D",
+        "text": "The SRTR public outcomes website at the moment of offer"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Relevant information about a potential deceased donor is made available to transplant programs through DonorNet for physician decision-making, while refusal documentation is required when offers are declined.",
+      "rationale_incorrect": {
+        "B": "Offer-time donor data flows through the UNOS allocation and DonorNet systems, not solely the candidate portal.",
+        "C": "Transplant programs receive donor offer information centrally via DonorNet.",
+        "D": "SRTR provides program outcomes data but is not the real-time organ-offer presentation system."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 113,
+      "section": "Ch. 5, Allocation of Deceased Donor Kidneys → DonorNet offer paragraph",
+      "quote_hint": "Relevant information about a potential donor is made available to transplant programs on a Web-based program called DonorNet",
+      "keywords": [
+        "DonorNet",
+        "donor",
+        "information",
+        "transplant",
+        "programs",
+        "offer"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 5 → DonorNet paragraph (donor information available to programs for acceptance decisions); PDF p. 113 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2015. Source-first item. Distinct 020600 angle from cctc-2004 (refusal codes); anchor verified on Danovitch p. 113.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2015"
+  },
+  {
+    "id": "cctc-6236",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": [
+      "020301"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator updating waitlist education materials. A 39-year-old solid-organ transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. Before the selection committee meeting, which coordinator responsibility is described in standard interdisciplinary evaluation references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Synthesize information from interdisciplinary team members and physical assessments for presentation at the selection committee meeting"
+      },
+      {
+        "id": "B",
+        "text": "Unilaterally approve or deny transplantation without team input"
+      },
+      {
+        "id": "C",
+        "text": "Perform the transplant operation when the surgeon is unavailable"
+      },
+      {
+        "id": "D",
+        "text": "Set OPTN allocation policy for the region"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The transplant coordinator synthesizes interdisciplinary evaluation information and physical assessment findings for presentation at the selection committee meeting.",
+      "rationale_incorrect": {
+        "B": "Selection decisions are interdisciplinary; coordinators synthesize information rather than unilaterally approving transplantation.",
+        "C": "Coordinators do not perform transplant surgery.",
+        "D": "OPTN allocation policy is set at the national policy level, not by individual coordinators."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 96,
+      "section": "Ch. 3, Patient Education → interdisciplinary team → iii. Transplant coordinator",
+      "quote_hint": "Synthesizes information from interdisciplinary team members and physical assessments for presentation at selection committee meeting",
+      "keywords": [
+        "Synthesizes",
+        "information",
+        "interdisciplinary",
+        "selection",
+        "committee",
+        "coordinator"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → interdisciplinary team roles → iii. Transplant coordinator (selection committee presentation); PDF p. 96 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2018. Source-first item. Distinct 020300 angle from cctc-2001/2003; anchor verified on Cupples p. 96.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2018"
+  },
+  {
+    "id": "cctc-6237",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating the pretransplant evaluation schedule. A 52-year-old lung transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. According to lung allocation references, how often is each waitlist candidate's Lung Allocation Score (LAS) updated?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Every 6 months"
+      },
+      {
+        "id": "B",
+        "text": "Once at initial listing only"
+      },
+      {
+        "id": "C",
+        "text": "Every 5 years regardless of clinical change"
+      },
+      {
+        "id": "D",
+        "text": "Only at the time of organ implantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Under the LAS system, each candidate's LAS is updated every 6 months as part of waitlist maintenance.",
+      "rationale_incorrect": {
+        "B": "LAS is recalculated periodically during the waiting period, not only at listing.",
+        "C": "Six-month updates are required, not five-year intervals.",
+        "D": "LAS updates occur during the waiting period before transplant surgery."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "section": "Ch. 1, Lung transplantation → LAS implementation → item 5",
+      "quote_hint": "Each candidate's LAS is updated every 6 months",
+      "keywords": [
+        "LAS",
+        "updated",
+        "every",
+        "months",
+        "candidate",
+        "lung"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → lung LAS (updated every 6 months); PDF p. 39 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2021. Source-first item. Third lung item; anchor verified on Cupples p. 39.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2021"
+  },
+  {
+    "id": "cctc-6238",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": [
+      "020703"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old solid-organ transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. What is the coordinator's appropriate action?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Arrange required studies and educate the candidate that failure to complete testing may change waitlist priority"
+      },
+      {
+        "id": "B",
+        "text": "Remove the candidate permanently from the waitlist without discussion"
+      },
+      {
+        "id": "C",
+        "text": "Defer all waitlist testing until after transplantation"
+      },
+      {
+        "id": "D",
+        "text": "Assume overdue studies have no effect on allocation status"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant coordinators arrange waitlist studies and educate candidates that failure to complete required organ-specific testing, such as LAS or MELD updates, may change priority on the waitlist.",
+      "rationale_incorrect": {
+        "B": "Overdue testing triggers coordination and education; permanent delisting without process is not the described standard response.",
+        "C": "Required waitlist studies must be completed while waiting to remain viable candidates.",
+        "D": "Failure to complete required testing may change candidate priority on the waitlist."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → §b. Waitlist management → c.i.–iv.",
+      "quote_hint": "Failure to complete required testing may result in a change in candidate's priority on the waitlist",
+      "keywords": [
+        "Failure",
+        "required",
+        "testing",
+        "priority",
+        "waitlist",
+        "LAS",
+        "MELD"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §b. Waitlist management → c.ii. and coordinator responsibilities c.iii.–iv.; PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2025. Source-first item. Third 020700 item; waitlist maintenance angle distinct from cctc-2008/2016; anchor verified on Cupples p. 102.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2025"
+  },
+  {
+    "id": "cctc-6239",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": [
+      "020301"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator updating waitlist education materials. A 39-year-old liver transplant patient is the focus of today's interaction. Evaluation is underway and several consultants have already weighed in. The team must document counseling that matches OPTN policy and standard references. Which pretransplant cardiac testing is MOST appropriate per standard evaluation references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Cardiac stress testing to evaluate myocardial perfusion"
+      },
+      {
+        "id": "B",
+        "text": "No cardiac testing because extracardiac transplant candidates never need cardiac evaluation"
+      },
+      {
+        "id": "C",
+        "text": "Immediate transplant without any cardiovascular assessment"
+      },
+      {
+        "id": "D",
+        "text": "Lung allocation score calculation only"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Patients with diabetes or smoking history require cardiac stress testing to evaluate myocardial perfusion as part of pretransplant consultation to identify perioperative cardiovascular risk.",
+      "rationale_incorrect": {
+        "B": "All transplant candidates receive cardiac evaluation; higher-risk histories warrant stress testing.",
+        "C": "Pretransplant evaluation identifies cardiovascular risks that may affect outcomes before proceeding.",
+        "D": "LAS applies to lung allocation, not liver candidate cardiac stress testing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Consultations → J.1.c. cardiac stress testing",
+      "quote_hint": "diabetes, or smoking will require a cardiac stress test to evaluate myocardial perfusion",
+      "keywords": [
+        "cardiac",
+        "stress",
+        "test",
+        "myocardial",
+        "perfusion",
+        "diabetes",
+        "smoking"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → J. Consultations → 1. Cardiac evaluation → c. (stress testing for diabetes/smoking history); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2028. Source-first item. Third liver-tagged D2 item; anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2028"
+  },
+  {
+    "id": "cctc-6240",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": [
+      "020201"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating the pretransplant evaluation schedule. A 52-year-old solid-organ transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. While compiling a multidisciplinary evaluation plan for a waitlisted candidate, which support resources should the coordinator identify per standard waitlist management references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Social worker, registered dietician, and financial coordinator"
+      },
+      {
+        "id": "B",
+        "text": "Only the transplant surgeon without ancillary services"
+      },
+      {
+        "id": "C",
+        "text": "Exclusive reliance on the patient's employer for all psychosocial needs"
+      },
+      {
+        "id": "D",
+        "text": "No caregiver or financial support resources because they are optional"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant coordinator waitlist responsibilities include identifying patient and caregiver support resources such as social worker, registered dietician, financial coordinator, and support groups.",
+      "rationale_incorrect": {
+        "B": "Multidisciplinary evaluation and waitlist management include ancillary support services beyond surgery alone.",
+        "C": "Employers do not replace structured transplant program support resources.",
+        "D": "Support resources are explicitly identified as coordinator responsibilities during the waiting period."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → §b. Waitlist management → c.v.",
+      "quote_hint": "Social worker Registered dietician Financial coordinator",
+      "keywords": [
+        "Social",
+        "worker",
+        "dietician",
+        "Financial",
+        "coordinator",
+        "support",
+        "resources"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §b. Waitlist management → c.v. (support resources including social worker, dietician, financial coordinator); PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2031. Source-first item. Fifth 020200 item; anchor verified on Cupples p. 102.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2031"
+  },
+  {
+    "id": "cctc-6241",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": [
+      "020202"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator counseling a newly activated candidate and family. A 55-year-old solid-organ transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. During multidisciplinary transplant evaluation, which specialist consultation may be required based on transplant team recommendations beyond the core evaluation protocol?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Infectious disease specialist"
+      },
+      {
+        "id": "B",
+        "text": "Cosmetic dermatology specialist for elective procedures only"
+      },
+      {
+        "id": "C",
+        "text": "Sports medicine specialist for performance enhancement"
+      },
+      {
+        "id": "D",
+        "text": "Veterinary medicine specialist"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Additional medical consultations may be required based on transplant team recommendations, including infectious disease specialist, cardiologist, psychologist, and anesthesiologist as indicated.",
+      "rationale_incorrect": {
+        "B": "Elective cosmetic dermatology is not among the standard additional consultations cited for transplant evaluation.",
+        "C": "Sports medicine for performance enhancement is not a standard transplant evaluation consultation.",
+        "D": "Veterinary medicine is not part of human transplant evaluation consultations."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → b.viii.",
+      "quote_hint": "Other medical consultations may be required … Infectious disease specialist Cardiologist",
+      "keywords": [
+        "consultations",
+        "Infectious",
+        "disease",
+        "specialist",
+        "Cardiologist",
+        "Psychologist",
+        "transplant"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → b. Evaluation process → viii. (additional consultations including infectious disease specialist, cardiologist, psychologist); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2034. Source-first item. Sixth 020200 item; multidisciplinary consult angle distinct from support resources (cctc-2031); anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2034"
+  },
+  {
+    "id": "cctc-6242",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": [
+      "020501"
+    ],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old kidney transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. A, how does waiting time accrue during inactivity?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Waiting time accrues without limit while the candidate remains inactive"
+      },
+      {
+        "id": "B",
+        "text": "No waiting time accrues for any kidney candidate while inactive"
+      },
+      {
+        "id": "C",
+        "text": "Waiting time accrues only for the first 30 cumulative inactive days"
+      },
+      {
+        "id": "D",
+        "text": "Waiting time resets to zero whenever inactive status is assigned"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Table 3-3 specifies that kidney candidates accrue unlimited waiting time while inactive, although inactive candidates do not receive organ offers.",
+      "rationale_incorrect": {
+        "B": "Heart candidates do not accrue waiting time while inactive, but kidney candidates accrue unlimited time.",
+        "C": "A 30-day cumulative limit applies to intestine candidates, not kidney candidates.",
+        "D": "Kidney waiting time continues to accrue during inactive periods rather than resetting to zero."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 47,
+      "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Kidney",
+      "quote_hint": "Kidney … Unlimited time … Candidates accrue waiting time while inactive",
+      "keywords": [
+        "Kidney",
+        "Unlimited",
+        "time",
+        "inactive",
+        "waiting",
+        "accrue",
+        "candidates"
+      ]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=47",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (kidney candidates accrue unlimited waiting time while inactive); PDF p. 47 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2037. Source-first item. Sixth 020500 item; kidney inactive waiting-time accrual distinct from no-offers (cctc-2012) and inactive-reason (cctc-2005); anchor verified on optn-policies p. 47.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2037"
+  },
+  {
+    "id": "cctc-6243",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": [
+      "020703"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old liver transplant patient is the focus of today's interaction. Evaluation is underway and several consultants have already weighed in. The team must document counseling that matches OPTN policy and standard references. What re-evaluation interval is required to maintain UNOS MELD exception eligibility?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Imaging and alpha-fetoprotein testing every 3 months"
+      },
+      {
+        "id": "B",
+        "text": "No surveillance after initial listing"
+      },
+      {
+        "id": "C",
+        "text": "Annual testing only after five years on the waitlist"
+      },
+      {
+        "id": "D",
+        "text": "Daily liver biopsy while waitlisted"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Patients with known HCC require imaging studies and alpha-fetoprotein testing every 3 months; this testing is required by UNOS to continue receiving MELD exception points.",
+      "rationale_incorrect": {
+        "B": "HCC candidates require ongoing surveillance, not one-time testing only at listing.",
+        "C": "HCC surveillance is required every 3 months, not annually after five years.",
+        "D": "Routine daily biopsy is not the UNOS HCC surveillance standard described for waitlisted candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 54,
+      "section": "Ch. 1, Waitlist Management → 6.a.i.",
+      "quote_hint": "Patients with known HCC: every 3 months. Imaging studies AFP",
+      "keywords": [
+        "HCC",
+        "every",
+        "months",
+        "Imaging",
+        "AFP",
+        "UNOS",
+        "MELD",
+        "exception"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → 6. Liver transplant candidates → a.i. (HCC imaging and AFP every 3 months for MELD exception); PDF p. 54 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2040. Source-first item. Fifth 020700 item; liver HCC surveillance angle distinct from LAS testing (cctc-2021) and pulmonary baseline (cctc-2032); anchor verified on Cupples p. 54.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2040"
+  },
+  {
+    "id": "cctc-6244",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": [
+      "020203"
+    ],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator updating waitlist education materials. A 39-year-old lung transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. When coordinating pulmonary evaluation testing for a lung transplant candidate, which invasive study may be included in the transplant evaluation protocol?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Bronchoscopy"
+      },
+      {
+        "id": "B",
+        "text": "Elective cosmetic dermatology biopsy"
+      },
+      {
+        "id": "C",
+        "text": "Routine appendectomy without clinical indication"
+      },
+      {
+        "id": "D",
+        "text": "Veterinary pulmonary assessment"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant evaluation pulmonary testing may include pulmonary function tests, bronchoscopy, and arterial blood gas among organ-specific diagnostic protocols.",
+      "rationale_incorrect": {
+        "B": "Cosmetic dermatology biopsy is not a standard pulmonary transplant evaluation study.",
+        "C": "Appendectomy without indication is not part of standard pulmonary evaluation protocols.",
+        "D": "Human transplant evaluation does not include veterinary assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → b.c.iv. → Pulmonary testing",
+      "quote_hint": "Pulmonary function tests Bronchoscopy Arterial blood gas",
+      "keywords": [
+        "Pulmonary",
+        "Bronchoscopy",
+        "function",
+        "tests",
+        "Arterial",
+        "blood",
+        "gas"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → b.c.iv. Diagnostic testing examples → Pulmonary testing (bronchoscopy listed); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2043. Source-first item. Seventh 020200 item; lung bronchoscopy coordination distinct from infectious disease consult (cctc-2034) and support resources (cctc-2031); anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2043"
+  },
+  {
+    "id": "cctc-6245",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": [
+      "020602"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. What is the candidate's responsibility per standard waitlist management references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Notify the transplant team of changes in health insurance and contact information"
+      },
+      {
+        "id": "B",
+        "text": "Update insurance and address only with the organ procurement organization, not the transplant program"
+      },
+      {
+        "id": "C",
+        "text": "Withhold all changes until after transplantation occurs"
+      },
+      {
+        "id": "D",
+        "text": "Automatic delisting occurs without any requirement to notify the team"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waitlist management includes patient responsibility to notify the transplant team of changes in health status, health insurance, and contact information such as address and phone numbers.",
+      "rationale_incorrect": {
+        "B": "The transplant team must be notified directly about insurance and contact changes affecting waitlist management.",
+        "C": "Insurance and contact changes should be reported promptly while waitlisted, not deferred until after transplant.",
+        "D": "Candidates are expected to notify the team; changes do not automatically delist without program review."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education → §9. Waitlist management → b.i.",
+      "quote_hint": "Notify the transplant team of any changes in their Health insurance Contact information (address, phone numbers)",
+      "keywords": [
+        "Notify",
+        "transplant",
+        "team",
+        "Health",
+        "insurance",
+        "Contact",
+        "information"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §9. Waitlist management → b.i. (notify team of health insurance and contact information changes); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2047. Source-first item. Seventh 020600 item; waitlist insurance/contact reporting distinct from health-status admissions (cctc-2042) and donor disclosure (cctc-2039); anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2047"
+  },
+  {
+    "id": "cctc-6246",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": [
+      "020301"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney_pancreas",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old simultaneous pancreas-kidney transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. Which evaluation outcome description is MOST appropriate?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Pancreas after kidney (PAK) transplantation for diabetes with an existing kidney graft"
+      },
+      {
+        "id": "B",
+        "text": "Simultaneous pancreas-kidney (SPK) transplantation before any kidney graft"
+      },
+      {
+        "id": "C",
+        "text": "Isolated liver transplantation for diabetes management"
+      },
+      {
+        "id": "D",
+        "text": "Pancreas transplant is never performed after a kidney graft"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pancreas transplant alone or pancreas after kidney (PAK) transplantation is indicated for candidates with diabetes who already have a kidney transplant, distinct from simultaneous pancreas-kidney transplantation.",
+      "rationale_incorrect": {
+        "B": "SPK is performed when diabetes and renal insufficiency are present together before kidney transplant, not after an existing functioning kidney graft.",
+        "C": "Diabetes management with an existing kidney graft is addressed through pancreas transplantation, not isolated liver transplant.",
+        "D": "PAK transplantation is a recognized option after kidney transplant for appropriate candidates."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → Indications → A.",
+      "quote_hint": "Pancreas transplant alone (PTA) or pancreas after kidney (PAK) transplant",
+      "keywords": [
+        "Pancreas",
+        "after",
+        "kidney",
+        "PAK",
+        "transplant",
+        "diabetes",
+        "alone"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → Indications → A. Pancreas transplant alone or pancreas after kidney (PAK); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2050. Source-first item. Eighth 020300 item; third kidney_pancreas organ tag; PAK angle distinct from SPK suitability (cctc-2038); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2050"
+  },
+  {
+    "id": "cctc-6247",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": [
+      "020203"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator updating waitlist education materials. A 63-year-old solid-organ transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. While compiling waitlist education for a solid-organ candidate, which community provider relationship should the coordinator ensure is in place per standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "A primary care provider to assist with health maintenance and acute health needs in addition to the transplant team"
+      },
+      {
+        "id": "B",
+        "text": "Only the transplant surgeon with no primary care involvement"
+      },
+      {
+        "id": "C",
+        "text": "A cosmetic specialist as the sole ongoing medical contact"
+      },
+      {
+        "id": "D",
+        "text": "No community providers because all care must remain hospital-based forever"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In addition to the transplant team, patients should have a primary care provider to attend to and assist with their health maintenance and acute health needs while awaiting and after transplantation.",
+      "rationale_incorrect": {
+        "B": "Transplant care is coordinated with a primary care provider rather than excluding community medical support.",
+        "C": "Health maintenance and acute needs are addressed through primary care, not cosmetic specialty alone.",
+        "D": "Long-term care includes community primary care alongside the transplant program."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 102,
+      "section": "Ch. 3, Patient Education → waitlist responsibilities → iv.",
+      "quote_hint": "patients should have a primary care provider to attend to and assist with their health maintenance and acute health needs",
+      "keywords": [
+        "primary",
+        "care",
+        "provider",
+        "health",
+        "maintenance",
+        "acute",
+        "transplant",
+        "team"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → waitlist patient responsibilities → iv. (primary care provider for health maintenance and acute needs); PDF p. 102 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2053. Source-first item. Ninth 020200 item; PCP coordination angle distinct from skin/dentition screening (cctc-2051) and bronchoscopy (cctc-2043); anchor verified on Cupples p. 102.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2053"
+  },
+  {
+    "id": "cctc-6248",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": [
+      "020301"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator coordinating the pretransplant evaluation schedule. A 6-year-old solid-organ transplant patient is the focus of today's interaction. Evaluation is underway and several consultants have already weighed in. The team must document counseling that matches OPTN policy and standard references. Which coordinator role aligns with standard transition references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Pediatric and adult transplant coordinators facilitate education and communication during the vulnerable transition period"
+      },
+      {
+        "id": "B",
+        "text": "Transition requires no coordinator involvement once the patient turns 18"
+      },
+      {
+        "id": "C",
+        "text": "Only the pediatric coordinator remains responsible indefinitely with no adult program contact"
+      },
+      {
+        "id": "D",
+        "text": "Transition means the recipient stops all transplant follow-up permanently"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transition from pediatric to adult care is a vulnerable period, and pediatric and adult transplant coordinators play a critical role through individual patient education and communication between programs.",
+      "rationale_incorrect": {
+        "B": "Coordinators on both sides support the transition rather than ending involvement at a birthday alone.",
+        "C": "Adult program coordinators share responsibility during transition rather than pediatric coordinators retaining sole indefinite responsibility.",
+        "D": "Transition transfers ongoing transplant care to the adult program rather than ending follow-up."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 950,
+      "section": "Ch. 17, Pediatric Populations → H. Transition from pediatric to adult care → 2.",
+      "quote_hint": "Pediatric and adult transplant coordinators play a critical role in the transition process",
+      "keywords": [
+        "Pediatric",
+        "adult",
+        "transplant",
+        "coordinators",
+        "critical",
+        "role",
+        "transition",
+        "process"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → H. Transition from pediatric to adult care → 2.a. (coordinator education and communication role during transition); PDF p. 950 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2056. Source-first item. Ninth 020300 item; sixth pediatric recipient in bank; transition-coordinator angle distinct from PAK (cctc-2050) and intestine SOC (cctc-2048); anchor verified on Cupples p. 950.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2056"
+  },
+  {
+    "id": "cctc-6249",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": [
+      "020301"
+    ],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator counseling a newly activated candidate and family. A 55-year-old lung transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. Which referral-timing consideration aligns with standard lung evaluation references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Late referral when the patient is too sick may preclude transplantation"
+      },
+      {
+        "id": "B",
+        "text": "Referral timing has no effect on transplant candidacy"
+      },
+      {
+        "id": "C",
+        "text": "Only patients already on mechanical ventilation at referral are acceptable candidates"
+      },
+      {
+        "id": "D",
+        "text": "Early referral is contraindicated for all lung disease"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Timing of referral is a key aspect of lung transplantation; referrals late in the disease process may result in the patient being too sick for transplantation.",
+      "rationale_incorrect": {
+        "B": "Referral timing directly affects whether the patient remains a suitable transplant candidate.",
+        "C": "Late referral leading to excessive illness is the concern described, not a requirement for pre-referral ventilation.",
+        "D": "Appropriately timed early referral is encouraged rather than contraindicated for all patients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 567,
+      "section": "Ch. 11, Lung Transplantation → Patient Referral → 3.a.",
+      "quote_hint": "Referrals that are late in the disease process may result in the patient being too sick for transplantation",
+      "keywords": [
+        "Referrals",
+        "late",
+        "disease",
+        "process",
+        "too",
+        "sick",
+        "transplantation",
+        "timing"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 11 → Patient Referral → 3.a. (late referral may leave patient too sick for transplant); PDF p. 567 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2059. Source-first item. Eleventh 020300 item; lung referral-timing angle distinct from pulmonary rehab requirement (cctc-2034) and LAS reporting (cctc-2044); anchor verified on Cupples p. 567.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2059"
+  },
+  {
+    "id": "cctc-6250",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020101"
+    ],
+    "cognitive_level": "recall",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old heart-lung transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. Which evaluation scope aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Evaluation includes procedures outlined for both heart and lung transplantation"
+      },
+      {
+        "id": "B",
+        "text": "Only isolated kidney evaluation is required"
+      },
+      {
+        "id": "C",
+        "text": "No cardiac or pulmonary testing is performed before heart-lung transplant"
+      },
+      {
+        "id": "D",
+        "text": "Only dental assessment is required without cardiopulmonary studies"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The heart-lung transplant evaluation process includes procedures outlined in the sections on heart transplantation and lung transplantation.",
+      "rationale_incorrect": {
+        "B": "Heart-lung evaluation requires cardiopulmonary assessment rather than isolated kidney studies alone.",
+        "C": "Standard references describe comprehensive heart and lung evaluation procedures.",
+        "D": "Cardiopulmonary diagnostic evaluation is required beyond dental assessment alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "section": "Ch. 1, Evaluation → Heart/lung transplantation → 4.",
+      "quote_hint": "The evaluation process includes those procedures outlined in the sections above on heart and lung transplantation",
+      "keywords": [
+        "evaluation",
+        "process",
+        "procedures",
+        "outlined",
+        "heart",
+        "lung",
+        "transplantation",
+        "sections"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart/lung transplantation → 4. (evaluation includes heart and lung transplant procedures); PDF p. 39 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2062. Source-first item. Fourth heart_lung organ tag in D2; evaluation-scope angle distinct from Eisenmenger indication (cctc-2013) and RHC monitoring (cctc-2057); anchor verified on Cupples p. 39.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2062"
+  },
+  {
+    "id": "cctc-6251",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020101"
+    ],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old kidney transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. When coordinating immunologic monitoring for a kidney transplant recipient, which post-transplant test is supported by evolving antibody-detection technology in standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Donor-specific antibody (DSA) testing after transplant"
+      },
+      {
+        "id": "B",
+        "text": "Panel-reactive antibody (PRA) testing only after transplant with no pretransplant role"
+      },
+      {
+        "id": "C",
+        "text": "ABO typing repeated monthly solely to detect acute cellular rejection"
+      },
+      {
+        "id": "D",
+        "text": "Crossmatch testing only before procurement with no post-transplant monitoring"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Improved HLA antibody, PRA, and donor-specific antibody detection technologies support pretransplant sensitization assessment and post-transplant DSA monitoring as protocols evolve.",
+      "rationale_incorrect": {
+        "B": "PRA and HLA testing are emphasized prior to transplant to identify highly sensitized patients; DSA testing is specifically noted after transplant.",
+        "C": "ABO typing is part of compatibility assessment, not the evolving post-transplant antibody surveillance described.",
+        "D": "Post-transplant DSA testing is explicitly described alongside pretransplant PRA/HLA testing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 134,
+      "section": "Ch. 4, Pharmacology → Immunosuppressive Antibody Therapy → B.",
+      "quote_hint": "donor-specific antibody (DSA) testing after transplant",
+      "keywords": [
+        "donor-specific",
+        "antibody",
+        "DSA",
+        "testing",
+        "after",
+        "transplant",
+        "HLA",
+        "PRA"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Immunosuppressive Antibody Therapy → B. (DSA testing after transplant alongside pretransplant PRA/HLA testing); PDF p. 134 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2065. Source-first item. Post-transplant DSA angle distinct from hypercoagulability screening (cctc-2059) and intestine-failure definition (cctc-2064); anchor verified on Cupples p. 134.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2065"
+  },
+  {
+    "id": "cctc-6252",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020101"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator counseling a newly activated candidate and family. A 55-year-old liver transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. While coordinating hepatopulmonary syndrome (HPS) evaluation for a liver transplant candidate, which diagnostic study aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Standing and supine arterial blood gas analyses on room air and with 100% oxygen"
+      },
+      {
+        "id": "B",
+        "text": "Isolated serum amylase measurement without pulmonary testing"
+      },
+      {
+        "id": "C",
+        "text": "Routine bone marrow biopsy before any pulmonary assessment"
+      },
+      {
+        "id": "D",
+        "text": "HPS evaluation requires no arterial blood gas testing"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "HPS evaluation includes standing and supine arterial blood gas analyses performed on room air and with 100% oxygen, along with studies such as macroaggregated albumin scan and bubble echocardiography when indicated.",
+      "rationale_incorrect": {
+        "B": "HPS evaluation focuses on pulmonary gas exchange and shunt assessment rather than isolated amylase testing.",
+        "C": "Bone marrow biopsy is not part of standard HPS evaluation protocols.",
+        "D": "Arterial blood gas analyses are specifically listed in HPS evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 44,
+      "section": "Ch. 1, Evaluation → Liver transplantation → Additional evaluation → 4.b.ii.",
+      "quote_hint": "evaluation for HPS includes … Standing and supine arterial blood gas analyses are performed on room air and with 100% oxygen",
+      "keywords": [
+        "evaluation",
+        "HPS",
+        "Standing",
+        "supine",
+        "arterial",
+        "blood",
+        "gas",
+        "oxygen"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Liver transplantation → Additional evaluation → 4.b.ii. (HPS evaluation with arterial blood gas analyses); PDF p. 44 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2069. Source-first item. HPS diagnostic-evaluation angle distinct from liver MELD waitlist removal (cctc-2044) and cardiac stress testing (cctc-2028); anchor verified on Cupples p. 44.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2069"
+  },
+  {
+    "id": "cctc-6253",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020400",
+    "knowledge_codes": [
+      "020401"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old liver transplant patient is the focus of today's interaction. Evaluation is underway and several consultants have already weighed in. The team must document counseling that matches OPTN policy and standard references. When communicating the transplant team's recommendation to a liver candidate with hepatopulmonary syndrome, which counseling point aligns with standard evaluation references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Hepatopulmonary syndrome is reversible with transplantation and is not a contraindication to liver transplant"
+      },
+      {
+        "id": "B",
+        "text": "Hepatopulmonary syndrome permanently prohibits listing for any transplantation"
+      },
+      {
+        "id": "C",
+        "text": "Hepatorenal syndrome alone mandates isolated kidney transplantation instead of liver transplant"
+      },
+      {
+        "id": "D",
+        "text": "Pulmonary complications of liver failure never improve after transplantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Both hepatopulmonary syndrome and hepatorenal syndrome are reversible with transplantation and are not contraindications to liver transplantation.",
+      "rationale_incorrect": {
+        "B": "HPS is an indication for evaluation and transplant rather than a permanent contraindication.",
+        "C": "Hepatorenal syndrome in the setting of liver failure is addressed through liver transplantation.",
+        "D": "HPS and HRS are described as reversible with transplantation rather than permanently unimproved."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 44,
+      "section": "Ch. 1, Evaluation → Liver transplantation → Additional evaluation → 4.a.",
+      "quote_hint": "Both hepatopulmonary syndrome (HPS) and hepatorenal syndrome (HRS) are reversible with transplantation and are not contraindications to liver transplantation",
+      "keywords": [
+        "hepatopulmonary",
+        "syndrome",
+        "HPS",
+        "hepatorenal",
+        "HRS",
+        "reversible",
+        "transplantation",
+        "contraindications"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Liver transplantation → Additional evaluation → 4.a. (HPS and HRS reversible; not contraindications); PDF p. 44 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2072. Source-first item. Liver team-communication angle distinct from alcohol abstinence contract (cctc-2058) and approved-candidate communication (cctc-1032); anchor verified on Cupples p. 44.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2072"
+  },
+  {
+    "id": "cctc-6254",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020101"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old kidney transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. When coordinating post-transplant monitoring for a kidney recipient, which BK virus management principle aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Routine screening for BK virus replication to guide immunosuppression reduction"
+      },
+      {
+        "id": "B",
+        "text": "BK virus screening is unnecessary because effective antiviral therapy exists"
+      },
+      {
+        "id": "C",
+        "text": "BK replication requires immediate graft nephrectomy in every case"
+      },
+      {
+        "id": "D",
+        "text": "Immunosuppression should be intensified whenever BK replication is detected"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "No effective antiviral therapies exist for BK virus, so routine screening for BK virus replication is imperative to guide reduction of immunosuppression.",
+      "rationale_incorrect": {
+        "B": "Lack of effective antiviral therapy makes routine BK screening essential rather than unnecessary.",
+        "C": "Management emphasizes screening and immunosuppression reduction rather than mandatory nephrectomy in every case.",
+        "D": "Detected BK replication typically prompts immunosuppression reduction, not intensification."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "section": "Ch. 5, Infectious Diseases → J. Polyomaviruses → 2. BK virus → e.",
+      "quote_hint": "No effective antiviral therapies … screening for BK virus replication be performed routinely in order to guide reduction of immunosuppression",
+      "keywords": [
+        "effective",
+        "antiviral",
+        "therapies",
+        "screening",
+        "BK",
+        "virus",
+        "replication",
+        "immunosuppression"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → J. Polyomaviruses → 2. BK virus → e. (routine BK replication screening to guide immunosuppression reduction); PDF p. 208 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2075. Source-first item. BK screening/management angle distinct from DSA monitoring (cctc-2065) and belatacept EBV requirement (cctc-2070); anchor verified on Cupples p. 208.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2075"
+  },
+  {
+    "id": "cctc-6255",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020101"
+    ],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator updating waitlist education materials. A 39-year-old kidney transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. When reviewing maintenance immunosuppression options during kidney transplant evaluation, how are sirolimus and everolimus classified in standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Mammalian target of rapamycin (mTOR) proliferation signal inhibitors"
+      },
+      {
+        "id": "B",
+        "text": "Calcineurin inhibitors identical to tacrolimus"
+      },
+      {
+        "id": "C",
+        "text": "Monoclonal antibody induction agents only"
+      },
+      {
+        "id": "D",
+        "text": "Agents that require no maintenance immunosuppression pairing"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sirolimus and everolimus are proliferation signal inhibitors, also known as mammalian target of rapamycin (mTOR) inhibitors, used as part of maintenance immunosuppression to prevent cellular rejection.",
+      "rationale_incorrect": {
+        "B": "mTOR inhibitors are distinct from calcineurin inhibitors such as tacrolimus and cyclosporine.",
+        "C": "Sirolimus and everolimus are maintenance agents rather than induction-only monoclonal antibodies.",
+        "D": "Proliferation signal inhibitors are used in conjunction with other maintenance immunosuppressive agents."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 152,
+      "section": "Ch. 4, Pharmacology → E. Proliferation Signal Inhibitors → 1.a.–b.",
+      "quote_hint": "mammalian target of rapamycin (mTOR) inhibitors … Sirolimus (Rapamune), the first mTOR inhibitor",
+      "keywords": [
+        "mammalian",
+        "target",
+        "rapamycin",
+        "mTOR",
+        "inhibitors",
+        "Sirolimus",
+        "proliferation",
+        "signal"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → E. Proliferation Signal Inhibitors → 1.a.–b. (mTOR inhibitors; sirolimus as first mTOR inhibitor); PDF p. 152 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2078. Source-first item. First mTOR-classification item in bank; distinct from belatacept eligibility (cctc-2070) and BK screening (cctc-2075); anchor verified on Cupples p. 152.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2078"
+  },
+  {
+    "id": "cctc-6256",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": [
+      "020501"
+    ],
+    "cognitive_level": "recall",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating the pretransplant evaluation schedule. A 52-year-old pancreas transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. A, how does waiting time accrue during inactivity?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Unlimited waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "B",
+        "text": "No waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "C",
+        "text": "Waiting time accrues only for the first 30 cumulative inactive days"
+      },
+      {
+        "id": "D",
+        "text": "Waiting time accrues only when listed for whole-organ pancreas transplantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Table 3-3 specifies that pancreas islet candidates accrue unlimited waiting time while inactive, similar to pancreas, kidney, and lung candidates.",
+      "rationale_incorrect": {
+        "B": "No inactive accrual applies to heart and liver candidates, not pancreas islet candidates.",
+        "C": "A 30-day cumulative inactive accrual limit applies to intestine candidates, not pancreas islet candidates.",
+        "D": "Pancreas islet inactive waiting-time rules apply to islet-listed candidates regardless of whole-organ listing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 47,
+      "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Pancreas islet",
+      "quote_hint": "Pancreas islet … Unlimited time … Candidates accrue waiting time while inactive",
+      "keywords": [
+        "Pancreas",
+        "islet",
+        "Unlimited",
+        "time",
+        "inactive",
+        "waiting",
+        "accrue",
+        "candidates"
+      ]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=47",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (pancreas islet candidates accrue unlimited waiting time while inactive); PDF p. 47 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2081. Source-first item. Final OPTN Policy 3.6.A inactive-waiting-time organ entry; paired with pancreas unlimited (cctc-2077); anchor verified on optn-policies p. 47.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2081"
+  },
+  {
+    "id": "cctc-6257",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": [
+      "020203"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator counseling a newly activated candidate and family. A 41-year-old solid-organ transplant patient is the focus of today's interaction. Evaluation is underway and several consultants have already weighed in. The team must document counseling that matches OPTN policy and standard references. When coordinating deceased-donor organ acceptance, which psychosocial history element is included in donor infection risk assessment per standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Alcohol or drug abuse and incarceration history"
+      },
+      {
+        "id": "B",
+        "text": "Only the recipient's preferred hospital room color"
+      },
+      {
+        "id": "C",
+        "text": "Only post-transplant cosmetic medication preferences"
+      },
+      {
+        "id": "D",
+        "text": "Psychosocial history is never reviewed during donor assessment"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Donor risk assessment includes discussion of psychosocial history such as alcohol or drug abuse, incarceration, high-risk sexual behavior, tattoos, and body piercing.",
+      "rationale_incorrect": {
+        "B": "Donor risk assessment focuses on infection and behavioral exposures rather than recipient room preferences.",
+        "C": "Donor psychosocial history guides transmitted-infection risk rather than cosmetic medication choices.",
+        "D": "Psychosocial history is explicitly included in donor risk assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 181,
+      "section": "Ch. 5, Infectious Diseases → Donor-Transmitted Infections → B. Donor Risk Assessment → 2.d.",
+      "quote_hint": "Psychosocial history … Alcohol/drug abuse … Incarceration",
+      "keywords": [
+        "Psychosocial",
+        "history",
+        "Alcohol",
+        "drug",
+        "abuse",
+        "Incarceration",
+        "donor",
+        "risk"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Donor-Transmitted Infections → B. Donor Risk Assessment → 2.d. (psychosocial history including alcohol/drug abuse and incarceration); PDF p. 181 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2084. Source-first item. Donor psychosocial-risk angle distinct from multidisciplinary consult framing (cctc-2034) and donor chart review (cctc-2076); anchor verified on Cupples p. 181.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2084"
+  },
+  {
+    "id": "cctc-6258",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020200",
+    "knowledge_codes": [
+      "020201"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old kidney transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. When may a prospective crossmatch be performed according to standard immunology references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "At the time of transplantation based on center- and organ-specific hyperacute rejection risk"
+      },
+      {
+        "id": "B",
+        "text": "Only during the initial outpatient evaluation with no role at transplant"
+      },
+      {
+        "id": "C",
+        "text": "Only after graft implantation is complete"
+      },
+      {
+        "id": "D",
+        "text": "Never for kidney candidates regardless of sensitization"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "A prospective crossmatch may be performed at the time of transplantation based on center- and organ-specific determination of risk of hyperacute rejection, alongside desensitization strategies when indicated.",
+      "rationale_incorrect": {
+        "B": "Prospective crossmatch timing at transplantation supplements rather than replaces broader pretransplant antibody assessment.",
+        "C": "Crossmatch is a pre-implantation immunologic test rather than a post-implantation step.",
+        "D": "Kidney programs perform prospective crossmatch when hyperacute rejection risk warrants it."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 27,
+      "section": "Ch. 1, Evaluation → HLA/sensitization → iii.",
+      "quote_hint": "A prospective crossmatch may be performed at the time of transplantation based on center- and organ-specific determination of risk of hyperacute rejection",
+      "keywords": [
+        "prospective",
+        "crossmatch",
+        "performed",
+        "time",
+        "transplantation",
+        "center",
+        "organ-specific",
+        "hyperacute"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → HLA/sensitization → iii. (prospective crossmatch at transplant based on center risk); PDF p. 27 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2087. Source-first item. Prospective crossmatch timing angle distinct from heart PRA >10% crossmatch (cctc-2026) and DSA-versus-PRA distinction (cctc-2085); anchor verified on Cupples p. 27.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2087"
+  },
+  {
+    "id": "cctc-6259",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator coordinating the pretransplant evaluation schedule. A 6-year-old lung transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. Which statement aligns with standard infection references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Viral shedding may be prolonged beyond 4 weeks in transplant recipients on long-term steroid therapy"
+      },
+      {
+        "id": "B",
+        "text": "PIV shedding always resolves within 24 hours in every immunosuppressed child"
+      },
+      {
+        "id": "C",
+        "text": "PIV infections are never more severe in children"
+      },
+      {
+        "id": "D",
+        "text": "PIV is relevant only to kidney transplantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In healthy individuals PIV shedding lasts about 1 week, but in transplant recipients—particularly those on long-term steroid therapy—shedding may be prolonged beyond 4 weeks; higher incidences occur in lung transplant recipients and more severe PIV infections occur in children.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressed transplant recipients may shed PIV for prolonged periods rather than uniformly clearing within 24 hours.",
+        "C": "More severe PIV infections in children have been noted in transplant populations.",
+        "D": "PIV is described among community respiratory viruses affecting solid-organ recipients, with particular lung-transplant relevance."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 210,
+      "section": "Ch. 5, Infectious Diseases → Parainfluenza viruses → 8.b.–c.",
+      "quote_hint": "shedding may be prolonged (>4 weeks) … Higher incidences in lung transplant recipients and more severe PIV infections in children",
+      "keywords": [
+        "shedding",
+        "prolonged",
+        "weeks",
+        "lung",
+        "transplant",
+        "recipients",
+        "severe",
+        "children"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Parainfluenza viruses → 8.b.–c. (prolonged shedding on steroids; lung and pediatric severity); PDF p. 210 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2091. Source-first item. Eighteenth pediatric recipient in bank; parainfluenza evaluation-counseling angle distinct from lung bronchiolitis CMV (cctc-3073) and pulmonary rehabilitation (cctc-2034); anchor verified on Cupples p. 210.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2091"
+  },
+  {
+    "id": "cctc-6260",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator counseling a newly activated candidate and family. A 55-year-old heart transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. Which next step aligns with standard evaluation references when assessing reversibility?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Vasodilator testing with agents such as oxygen, nitric oxide, or milrinone during catheterization"
+      },
+      {
+        "id": "B",
+        "text": "Immediate listing without any hemodynamic reassessment"
+      },
+      {
+        "id": "C",
+        "text": "Permanent exclusion from all transplant evaluation without further testing"
+      },
+      {
+        "id": "D",
+        "text": "Discontinuation of all diuretics before any pulmonary assessment"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Patients with pulmonary hypertension may receive additional therapy—including vasodilators such as oxygen, nitric oxide, nitroglycerin, milrinone, nesiritide, or prostaglandin during catheterization—to determine whether hypertension can be reversed before transplant candidacy is finalized.",
+      "rationale_incorrect": {
+        "B": "Pulmonary hemodynamics are reassessed and treated when indicated rather than ignoring elevated pressures.",
+        "C": "Reversible pulmonary hypertension may be treated and re-evaluated rather than automatic permanent exclusion.",
+        "D": "Evaluation uses vasodilator testing during catheterization rather than skipping pulmonary assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 35,
+      "section": "Ch. 1, Evaluation → Heart transplantation → 4.a.i. vasodilator testing",
+      "quote_hint": "vasodilators, such as oxygen, nitric oxide, nitroglycerin, milrinone (Primacor), nesiritide (Natrecor), or prostaglandin (Flolan) during the catheterization procedure",
+      "keywords": [
+        "vasodilators",
+        "oxygen",
+        "nitric",
+        "oxide",
+        "milrinone",
+        "catheterization",
+        "pulmonary",
+        "hypertension"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart transplantation → 4.a.i. (vasodilator testing during RHC for reversible pulmonary hypertension); PDF p. 35 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2094. Source-first item. Pulmonary-vasodilator testing angle distinct from fixed-PHTN contraindication teaching (cctc-1094) and waitlist RHC monitoring (cctc-2057); anchor verified on Cupples p. 35.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2094"
+  },
+  {
+    "id": "cctc-6261",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": [
+      "020501"
+    ],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old kidney transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. Which factors are used to calculate a kidney candidate's Estimated Post-Transplant Survival (EPTS) score per standard waitlist references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Time on dialysis, diabetes status, prior solid-organ transplant, and candidate age"
+      },
+      {
+        "id": "B",
+        "text": "Donor creatinine and donor hypertension history only"
+      },
+      {
+        "id": "C",
+        "text": "Panel reactive antibody percentage exclusively"
+      },
+      {
+        "id": "D",
+        "text": "Recipient blood type without any clinical variables"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The EPTS score is based on the candidate's time on dialysis, whether the candidate has diabetes, whether the candidate received any prior solid-organ transplant, and the candidate's age.",
+      "rationale_incorrect": {
+        "B": "Donor creatinine and hypertension contribute to KDPI rather than EPTS.",
+        "C": "PRA reflects sensitization but is not the EPTS calculation basis.",
+        "D": "EPTS incorporates clinical survival predictors rather than blood type alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 49,
+      "section": "Ch. 1, Kidney transplantation → EPTS → b.ii.",
+      "quote_hint": "EPTS score is based on all of the following: Candidate's time on dialysis … diagnosis of diabetes … prior SOT … candidate's age",
+      "keywords": [
+        "EPTS",
+        "score",
+        "based",
+        "dialysis",
+        "diabetes",
+        "prior",
+        "SOT",
+        "age"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Kidney transplantation → EPTS → b.ii. (dialysis time, diabetes, prior SOT, age); PDF p. 49 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2097. Source-first item. First EPTS item in bank; distinct from inactive waiting-time rules (cctc-2037) and KDPI mention in batch-01; anchor verified on Cupples p. 49.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2097"
+  },
+  {
+    "id": "cctc-6262",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": [
+      "020301"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old kidney transplant patient is the focus of today's interaction. Evaluation is underway and several consultants have already weighed in. The team must document counseling that matches OPTN policy and standard references. Which transplant option should the coordinator discuss per standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Kidney paired donation through the OPTN KPD program"
+      },
+      {
+        "id": "B",
+        "text": "Permanent exclusion from all transplantation because the donor is incompatible"
+      },
+      {
+        "id": "C",
+        "text": "Immediate deceased-donor-only listing with no living-donor alternatives"
+      },
+      {
+        "id": "D",
+        "text": "Kidney paired donation is available only outside the United States"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Kidney paired donation is a potential option for candidates with a willing, medically suitable living donor who is incompatible with the intended recipient; in the United States the KPD program is part of the OPTN.",
+      "rationale_incorrect": {
+        "B": "Incompatible living donation may be addressed through paired exchange rather than permanent exclusion.",
+        "C": "KPD is a living-donor pathway when direct donation is incompatible.",
+        "D": "The United States KPD Pilot Program is part of the OPTN rather than being unavailable domestically."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 49,
+      "section": "Ch. 1, Kidney transplantation → Kidney Paired Donation → 7.a.–b.",
+      "quote_hint": "Kidney paired donation (KPD) is a potential transplant option for those candidates who have a living donor … incompatible with the intended recipient … KPD Pilot Program is part of the OPTN",
+      "keywords": [
+        "Kidney",
+        "paired",
+        "donation",
+        "KPD",
+        "living",
+        "donor",
+        "incompatible",
+        "OPTN"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Kidney Paired Donation → 7.a.–b. (KPD for incompatible living donor; OPTN program); PDF p. 49 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2100. Source-first item. First kidney-paired-donation item in bank; distinct from living-donor evaluation (cctc-1017) and desensitization pathways (cctc-2066); anchor verified on Cupples p. 49.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2100"
+  },
+  {
+    "id": "cctc-6263",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": [
+      "020701"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator updating waitlist education materials. A 39-year-old solid-organ transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. Which coordination step aligns with standard health-maintenance references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Discuss the procedure with the transplant team at least a week before the appointment because dental prophylaxis may be required"
+      },
+      {
+        "id": "B",
+        "text": "Never inform the dentist of immunosuppressed status"
+      },
+      {
+        "id": "C",
+        "text": "Proceed with any dental surgery without transplant-team notification"
+      },
+      {
+        "id": "D",
+        "text": "Dental care is permanently contraindicated after listing"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Dental care includes informing the dentist of immunosuppressed status; dental prophylaxis may be required depending on the procedure, and the transplant team should be consulted at least a week before the appointment.",
+      "rationale_incorrect": {
+        "B": "Recipients should inform the dentist of immunosuppressed status.",
+        "C": "Certain dental procedures require transplant-team coordination and possible prophylaxis.",
+        "D": "Regular dental visits are recommended rather than permanent contraindication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Dental care",
+      "quote_hint": "Inform dentist of immunosuppressed status … Dental prophylaxis may be required … Discuss with transplant team at least a week before appointment",
+      "keywords": [
+        "Inform",
+        "dentist",
+        "immunosuppressed",
+        "Dental",
+        "prophylaxis",
+        "Discuss",
+        "transplant",
+        "team"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Dental care (inform dentist; team consult ≥1 week before procedures); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2103. Source-first item. Pretransplant dental-coordination angle distinct from dentition screening (cctc-2051) and post-transplant dental teaching; anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2103"
+  },
+  {
+    "id": "cctc-6264",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": [
+      "020701"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating the pretransplant evaluation schedule. A 52-year-old solid-organ transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. Which statement aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Squamous cell carcinoma is seen more frequently than basal cell carcinoma in transplant recipients, whereas basal cell is more common in the general population"
+      },
+      {
+        "id": "B",
+        "text": "Basal cell carcinoma is always more common than squamous cell in both populations"
+      },
+      {
+        "id": "C",
+        "text": "Neither basal nor squamous cell carcinoma occurs in transplant recipients"
+      },
+      {
+        "id": "D",
+        "text": "Melanoma is the only skin cancer that increases after transplantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "In solid-organ transplant recipients, squamous cell carcinoma is seen more frequently than basal cell carcinoma, whereas in the general population basal cell carcinomas are more common than squamous cell carcinomas.",
+      "rationale_incorrect": {
+        "B": "The relative frequency of basal versus squamous cell carcinoma differs between transplant recipients and the general population.",
+        "C": "Basal and squamous cell carcinomas account for most skin cancers in recipients.",
+        "D": "Nonmelanoma basal and squamous cell carcinomas are the predominant transplant skin cancers discussed."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Basal cell and squamous cell carcinoma",
+      "quote_hint": "Squamous cell carcinoma (SCC) seen more frequently than basal cell carcinoma (BCC) … In the general population, the opposite is true",
+      "keywords": [
+        "Squamous",
+        "cell",
+        "carcinoma",
+        "basal",
+        "frequently",
+        "general",
+        "population"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → SCC more frequent than BCC in SOT vs opposite in general population; PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2106. Source-first item. SCC-versus-BCC frequency comparison distinct from 95% epidemiology recall (cctc-2105); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2106"
+  },
+  {
+    "id": "cctc-6265",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator counseling a newly activated candidate and family. A 55-year-old solid-organ transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. When counseling a solid-organ transplant candidate about posttransplant lymphoproliferative disease (PTLD) risk, which factor is described as the most important?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Transplantation of an Epstein-Barr virus–seropositive donor organ into an Epstein-Barr virus–seronegative recipient"
+      },
+      {
+        "id": "B",
+        "text": "Recipient blood type O only"
+      },
+      {
+        "id": "C",
+        "text": "A history of seasonal allergies without Epstein-Barr virus mismatch"
+      },
+      {
+        "id": "D",
+        "text": "Donor age younger than 18 years in every case regardless of viral serostatus"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The most important risk factor for PTLD is transplantation of an Epstein-Barr virus–seropositive donor organ into an Epstein-Barr virus–seronegative recipient.",
+      "rationale_incorrect": {
+        "B": "ABO blood type is not described as the primary PTLD risk factor.",
+        "C": "Epstein-Barr virus donor-recipient mismatch is the key risk described.",
+        "D": "Young donor age alone is not identified as the most important PTLD risk factor."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 3. Risk factors for PTLD",
+      "quote_hint": "Most important risk factor is the transplantation of an EBV-seropositive donor organ into an EBV-seronegative recipient",
+      "keywords": [
+        "Most",
+        "important",
+        "risk",
+        "factor",
+        "EBV-seropositive",
+        "donor",
+        "EBV-seronegative",
+        "recipient"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 3.a. (most important PTLD risk: EBV D+/R−); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2109. Source-first item. Primary PTLD risk-factor angle distinct from EBV screening purpose (cctc-1073) and belatacept EBV requirement (cctc-2074); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2109"
+  },
+  {
+    "id": "cctc-6266",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator updating waitlist education materials. A 63-year-old solid-organ transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. During pretransplant infection-prevention teaching, which food-preparation precaution aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Prevent cross-contamination between raw and cooked foods when preparing food"
+      },
+      {
+        "id": "B",
+        "text": "Use the same unwashed cutting board for raw poultry and ready-to-eat foods without separation"
+      },
+      {
+        "id": "C",
+        "text": "Cross-contamination precautions apply only to pediatric recipients"
+      },
+      {
+        "id": "D",
+        "text": "Immunosuppression eliminates the need for safe food-handling practices"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Dietary infection-prevention teaching includes preventing cross-contamination between raw and cooked foods during food preparation.",
+      "rationale_incorrect": {
+        "B": "Separating raw and cooked foods prevents cross-contamination rather than using shared unwashed surfaces.",
+        "C": "Food-safety precautions apply to immunosuppressed transplant recipients broadly.",
+        "D": "Immunosuppressed recipients remain at increased infection risk and require food-safety teaching."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iii. Dietary precautions",
+      "quote_hint": "Prevent cross-contamination between raw and cooked foods when preparing food",
+      "keywords": [
+        "Prevent",
+        "cross-contamination",
+        "raw",
+        "cooked",
+        "foods",
+        "preparing",
+        "food"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iii. Dietary precautions (prevent cross-contamination between raw and cooked foods); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2113. Source-first item. Cross-contamination angle distinct from dietary infection-prevention combo (cctc-1052) and unpasteurized-dairy teaching (cctc-1051); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2113"
+  },
+  {
+    "id": "cctc-6267",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating the pretransplant evaluation schedule. A 52-year-old solid-organ transplant patient is the focus of today's interaction. Evaluation is underway and several consultants have already weighed in. The team must document counseling that matches OPTN policy and standard references. When explaining posttransplant lymphoproliferative disease (PTLD) treatment options during evaluation, which immunosuppression strategy aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Switching to or adding an mTOR inhibitor such as sirolimus or everolimus for antineoplastic properties"
+      },
+      {
+        "id": "B",
+        "text": "Permanent intensification of calcineurin inhibitor therapy without evaluation"
+      },
+      {
+        "id": "C",
+        "text": "mTOR inhibitors are contraindicated in every PTLD case"
+      },
+      {
+        "id": "D",
+        "text": "PTLD is managed only with routine daily skin biopsy"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD treatment options include reduction or withdrawal of immunosuppression and switching to or adding an mTOR inhibitor because of the antineoplastic properties of sirolimus and everolimus.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression is reduced or modified rather than intensified as initial PTLD management.",
+        "C": "mTOR inhibitors are treatment options rather than being universally contraindicated.",
+        "D": "Immunosuppression modification and targeted therapies are primary approaches rather than skin biopsy alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Switching to or adding an mTOR inhibitor due the antineoplastic properties of mTOR inhibitors (sirolimus [Rapamune], everolimus [Zortress])",
+      "keywords": [
+        "Switching",
+        "adding",
+        "mTOR",
+        "inhibitor",
+        "antineoplastic",
+        "sirolimus",
+        "everolimus"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.b. (mTOR inhibitor antineoplastic therapy); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2116. Source-first item. mTOR-inhibitor PTLD treatment angle distinct from IS-reduction recall (cctc-2112) and sirolimus adverse-effect teaching (cctc-3077); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2116"
+  },
+  {
+    "id": "cctc-6268",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator counseling a newly activated candidate and family. A 55-year-old solid-organ transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. When counseling a transplant candidate about posttransplant lymphoproliferative disease (PTLD) risk, which Epstein-Barr virus factor aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "High Epstein-Barr virus viral load"
+      },
+      {
+        "id": "B",
+        "text": "Undetectable Epstein-Barr virus viral load eliminates all PTLD risk"
+      },
+      {
+        "id": "C",
+        "text": "Epstein-Barr virus viral load is unrelated to PTLD"
+      },
+      {
+        "id": "D",
+        "text": "Only donor age determines Epstein-Barr virus–related PTLD risk"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Risk factors for PTLD include high Epstein-Barr virus viral load, primary Epstein-Barr virus infection, cytomegalovirus mismatch, and potent immunosuppression.",
+      "rationale_incorrect": {
+        "B": "Multiple factors beyond viral load contribute to PTLD risk.",
+        "C": "High Epstein-Barr virus viral load is specifically listed as a PTLD risk factor.",
+        "D": "Viral load and mismatch patterns are key factors rather than donor age alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 3. Risk factors for PTLD",
+      "quote_hint": "High EBV viral load",
+      "keywords": [
+        "High",
+        "EBV",
+        "viral",
+        "load",
+        "Risk",
+        "factors",
+        "PTLD"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 3.b. (high EBV viral load as PTLD risk factor); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2119. Source-first item. High-EBV-viral-load risk angle distinct from EBV D+/R− mismatch (cctc-2109) and CMV mismatch (cctc-2115); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2119"
+  },
+  {
+    "id": "cctc-6269",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. During pretransplant teaching about posttransplant lymphoproliferative disease (PTLD) management, which therapy aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Rituximab"
+      },
+      {
+        "id": "B",
+        "text": "Immediate intensification of all immunosuppression without evaluation"
+      },
+      {
+        "id": "C",
+        "text": "Rituximab is contraindicated in every PTLD case"
+      },
+      {
+        "id": "D",
+        "text": "PTLD is treated only with routine daily skin biopsy"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Treatment options for PTLD include reduction or withdrawal of immunosuppression, mTOR inhibitors, rituximab, IVIG, antiviral therapy, surgery for localized disease, and cytotoxic chemotherapy such as R-CHOP.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression is reduced or modified rather than intensified as initial PTLD management.",
+        "C": "Rituximab is a listed treatment option rather than being universally contraindicated.",
+        "D": "Targeted therapies such as rituximab are used rather than biopsy alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Rituximab (Rituxan)",
+      "keywords": [
+        "Rituximab",
+        "Rituxan",
+        "Treatment",
+        "options",
+        "PTLD",
+        "immunosuppression"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.c. (rituximab as treatment option); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2122. Source-first item. Rituximab PTLD-treatment angle distinct from heart desensitization rituximab risks (cctc-2066) and mTOR therapy (cctc-2116); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2122"
+  },
+  {
+    "id": "cctc-6270",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old solid-organ transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. When reviewing Epstein-Barr virus (EBV) epidemiology during evaluation, which incidence pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Reactivation infections occur in approximately 30% to 40% of EBV-seropositive recipients"
+      },
+      {
+        "id": "B",
+        "text": "Reactivation never occurs in EBV-seropositive transplant recipients"
+      },
+      {
+        "id": "C",
+        "text": "Reactivation occurs in fewer than 5% of all seropositive recipients"
+      },
+      {
+        "id": "D",
+        "text": "EBV reactivation applies only to kidney recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Reactivation Epstein-Barr virus infections occur in approximately 30% to 40% of EBV-seropositive recipients, whereas primary infection occurs in most seronegative recipients.",
+      "rationale_incorrect": {
+        "B": "Reactivation is common in seropositive recipients rather than absent.",
+        "C": "The referenced reactivation rate is substantially higher than 5%.",
+        "D": "EBV reactivation is described across solid-organ transplant recipients rather than kidney recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 2. Incidence",
+      "quote_hint": "Reactivation infections occur in approximately 30% to 40% of EBV-seropositive recipients",
+      "keywords": [
+        "Reactivation",
+        "infections",
+        "approximately",
+        "30%",
+        "40%",
+        "EBV-seropositive",
+        "recipients"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 2.b. (reactivation in 30–40% of EBV-seropositive recipients); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2125. Source-first item. EBV-reactivation incidence angle distinct from primary-infection incidence (cctc-2110) and replication rates with antilymphocyte therapy; anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2125"
+  },
+  {
+    "id": "cctc-6271",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator updating waitlist education materials. An 11-year-old solid-organ transplant patient is the focus of today's interaction. Evaluation is underway and several consultants have already weighed in. The team must document counseling that matches OPTN policy and standard references. When counseling about posttransplant lymphoproliferative disease (PTLD) risk in pediatric and older recipients, which age-related factor aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Young infants and children and older age recipients are at increased PTLD risk"
+      },
+      {
+        "id": "B",
+        "text": "Age has no relationship to PTLD risk"
+      },
+      {
+        "id": "C",
+        "text": "Only recipients aged 30 to 40 years are at PTLD risk"
+      },
+      {
+        "id": "D",
+        "text": "Pediatric recipients have zero PTLD risk compared with adults"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Posttransplant lymphoproliferative disease risk factors include age at both extremes: young infants and young children and older age recipients.",
+      "rationale_incorrect": {
+        "B": "Age is listed among PTLD risk factors.",
+        "C": "Young pediatric and older recipients are specifically identified rather than only middle-aged adults.",
+        "D": "Pediatric recipients, especially young infants and children, have increased PTLD risk rather than zero risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 198,
+      "section": "Ch. 5, Infectious Diseases → Epstein-Barr virus → 3. Risk factors for PTLD",
+      "quote_hint": "Age: young (infants and young children) and older age recipients",
+      "keywords": [
+        "Age",
+        "young",
+        "infants",
+        "young",
+        "children",
+        "older",
+        "age",
+        "recipients"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Epstein-Barr virus → 3.h. (young infants/children and older age as PTLD risk factors); PDF p. 198 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2128. Source-first item. Twenty-sixth pediatric recipient in bank; PTLD age-risk angle distinct from pediatric acetaminophen fever guidance (cctc-1096) and pediatric bacterial-infection combo (cctc-1097); anchor verified on Cupples p. 198.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2128"
+  },
+  {
+    "id": "cctc-6272",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": [
+      "020701"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating the pretransplant evaluation schedule. A 52-year-old solid-organ transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. During pretransplant evaluation of bone-health planning, which treatment option aligns with standard references for osteopenia or osteoporosis?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Hormone replacement therapy in carefully selected patients"
+      },
+      {
+        "id": "B",
+        "text": "Hormone replacement therapy is universally required for all transplant candidates"
+      },
+      {
+        "id": "C",
+        "text": "No pharmacologic or hormonal options exist for bone loss"
+      },
+      {
+        "id": "D",
+        "text": "Hormone therapy is permanently contraindicated in every candidate"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bone-health treatment options include hormone replacement therapy in carefully selected patients, along with calcium and vitamin D, bisphosphonates, calcitonin, denosumab, and exercise.",
+      "rationale_incorrect": {
+        "B": "Hormone replacement is an option in carefully selected patients rather than a universal requirement.",
+        "C": "Multiple pharmacologic bone therapies are listed when indicated.",
+        "D": "Hormone replacement may be considered in selected patients rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Prevent or treat osteopenia/osteoporosis → e.",
+      "quote_hint": "Hormone replacement therapy in carefully selected patients",
+      "keywords": [
+        "Hormone",
+        "replacement",
+        "therapy",
+        "carefully",
+        "selected",
+        "patients"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 2.e. (hormone replacement therapy in carefully selected patients); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2131. Source-first item. HRT bone-therapy angle distinct from baseline DEXA screening (cctc-2107) and denosumab post-transplant item (cctc-3121); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2131"
+  },
+  {
+    "id": "cctc-6273",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old lung transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. When teaching about posttransplant lymphoproliferative disease (PTLD) during evaluation, which pulmonary presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Lung lesion or visceral mass"
+      },
+      {
+        "id": "B",
+        "text": "PTLD never produces pulmonary or visceral masses"
+      },
+      {
+        "id": "C",
+        "text": "Pulmonary PTLD is limited to isolated graft tenderness without lesions"
+      },
+      {
+        "id": "D",
+        "text": "Visceral masses occur only in kidney recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include lung lesion or visceral mass along with systemic and gastrointestinal symptoms.",
+      "rationale_incorrect": {
+        "B": "Lung lesions and visceral masses are specifically listed presentations.",
+        "C": "Pulmonary lesions may occur rather than being limited to graft tenderness alone.",
+        "D": "Lung and visceral involvement is described across solid-organ transplant recipients rather than kidney recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → k.",
+      "quote_hint": "Lung lesion or visceral mass",
+      "keywords": [
+        "Lung",
+        "lesion",
+        "visceral",
+        "mass",
+        "PTLD",
+        "presentation"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.k. (lung lesion or visceral mass); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2135. Source-first item. Pulmonary-mass presentation angle distinct from tonsillitis item (cctc-2134) and asymptomatic PTLD recall (cctc-2129); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2135"
+  },
+  {
+    "id": "cctc-6274",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator counseling a newly activated candidate and family. A 55-year-old intestinal transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. Which PTLD presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Diarrhea may be part of PTLD clinical presentation"
+      },
+      {
+        "id": "B",
+        "text": "Diarrhea excludes PTLD because PTLD is always asymptomatic"
+      },
+      {
+        "id": "C",
+        "text": "GI symptoms never occur with PTLD"
+      },
+      {
+        "id": "D",
+        "text": "Diarrhea indicates only medication side effects and never PTLD"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include diarrhea and weight loss along with abdominal pain, GI tract involvement, and other systemic symptoms.",
+      "rationale_incorrect": {
+        "B": "PTLD may be asymptomatic but can also present with diarrhea and other GI symptoms.",
+        "C": "GI symptoms including diarrhea and intestinal perforation may occur with PTLD.",
+        "D": "Chronic diarrhea warrants evaluation for PTLD as well as other causes."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → f.",
+      "quote_hint": "Diarrhea",
+      "keywords": [
+        "Diarrhea",
+        "Clinical",
+        "presentation",
+        "PTLD",
+        "Weight"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.f. (diarrhea among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2139. Source-first item. Diarrhea presentation angle distinct from GI-perforation item (cctc-2130) and weight-loss combo element (cctc-2136); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2139"
+  },
+  {
+    "id": "cctc-6275",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. When teaching about posttransplant lymphoproliferative disease (PTLD) recognition, which lymphatic finding aligns with standard presentation references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Lymphadenopathy"
+      },
+      {
+        "id": "B",
+        "text": "Lymphadenopathy never occurs with PTLD"
+      },
+      {
+        "id": "C",
+        "text": "PTLD presents only with graft tenderness and never with lymph node enlargement"
+      },
+      {
+        "id": "D",
+        "text": "Lymphadenopathy excludes PTLD from the differential"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include lymphadenopathy along with fever, night sweats, and mononucleosis-like symptoms.",
+      "rationale_incorrect": {
+        "B": "Lymphadenopathy is specifically listed among PTLD presentations.",
+        "C": "PTLD may present with systemic and nodal findings rather than isolated graft tenderness alone.",
+        "D": "Lymphadenopathy is among cited presentations rather than excluding PTLD."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → h.",
+      "quote_hint": "Lymphadenopathy",
+      "keywords": [
+        "Lymphadenopathy",
+        "Clinical",
+        "presentation",
+        "PTLD"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.h. (lymphadenopathy among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2142. Source-first item. Lymphadenopathy presentation angle distinct from symptom-cluster item (cctc-2111) and night-sweats recall (cctc-2137); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2142"
+  },
+  {
+    "id": "cctc-6276",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old solid-organ transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. When teaching about posttransplant lymphoproliferative disease (PTLD) recognition, which systemic symptom aligns with standard presentation references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Weight loss"
+      },
+      {
+        "id": "B",
+        "text": "Weight loss never occurs with PTLD"
+      },
+      {
+        "id": "C",
+        "text": "PTLD always causes rapid weight gain rather than loss"
+      },
+      {
+        "id": "D",
+        "text": "Weight change is unrelated to PTLD presentation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include weight loss along with fever, night sweats, lymphadenopathy, and gastrointestinal symptoms.",
+      "rationale_incorrect": {
+        "B": "Weight loss is specifically listed among PTLD presentations.",
+        "C": "Weight loss rather than gain is among cited systemic presentations.",
+        "D": "Weight loss is a described PTLD symptom requiring clinical evaluation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → e.",
+      "quote_hint": "Weight loss",
+      "keywords": [
+        "Weight",
+        "loss",
+        "Clinical",
+        "presentation",
+        "PTLD"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.e. (weight loss among clinical presentations); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2145. Source-first item. Weight-loss presentation angle distinct from diarrhea/weight-loss application item (cctc-2139) and PTLD recognition combo (cctc-2136); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2145"
+  },
+  {
+    "id": "cctc-6277",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on call for organ offer management. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. Which PTLD presentation aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Symptoms that resemble infectious mononucleosis"
+      },
+      {
+        "id": "B",
+        "text": "Mononucleosis-like symptoms exclude PTLD from the differential"
+      },
+      {
+        "id": "C",
+        "text": "PTLD never mimics infectious mononucleosis"
+      },
+      {
+        "id": "D",
+        "text": "Only pediatric recipients may have mononucleosis-like PTLD symptoms"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD clinical presentation may include symptoms that resemble infectious mononucleosis, along with fever, lymphadenopathy, and other systemic findings.",
+      "rationale_incorrect": {
+        "B": "Mononucleosis-like symptoms are listed PTLD presentations rather than excluding it.",
+        "C": "Infectious mononucleosis-like symptoms are specifically described in PTLD presentation.",
+        "D": "Mononucleosis-like PTLD symptoms may occur in adult and pediatric transplant recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation → a.",
+      "quote_hint": "Symptoms that resemble infectious mononucleosis",
+      "keywords": [
+        "Symptoms",
+        "resemble",
+        "infectious",
+        "mononucleosis",
+        "Clinical",
+        "presentation"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3.a. (symptoms resembling infectious mononucleosis); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2147. Source-first item. Mononucleosis-like presentation angle distinct from EBV-sequelae spectrum item (cctc-2132) and symptom-cluster one-best (cctc-2111); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2147"
+  },
+  {
+    "id": "cctc-6278",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 48-year-old solid-organ transplant patient is the focus of today's interaction. The candidate completed initial screening last week. The candidate is anxious and requests a clear, reference-based explanation. When counseling transplant candidates about long-term malignancy surveillance, which screening-guideline statement aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Posttransplant cancer-screening guidelines developed for renal transplant recipients are applicable to most transplant recipients"
+      },
+      {
+        "id": "B",
+        "text": "Cancer screening applies only to kidney recipients and never to other organ recipients"
+      },
+      {
+        "id": "C",
+        "text": "No cancer screening is recommended after transplantation"
+      },
+      {
+        "id": "D",
+        "text": "Screening guidelines are identical for every recipient regardless of organ type or risk"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Posttransplant cancer-screening guidelines developed for renal transplant recipients are applicable to most transplant recipients, with individualized adjustments when indicated.",
+      "rationale_incorrect": {
+        "B": "Renal-derived screening guidelines are described as applicable to most transplant recipients rather than kidney recipients alone.",
+        "C": "Routine cancer screening is recommended after transplantation.",
+        "D": "Screening may be individualized based on history and course rather than being identical for every recipient."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 5.b.",
+      "quote_hint": "Posttransplant cancer–screening guidelines have been developed for renal transplant recipients and are applicable to most transplant recipients",
+      "keywords": [
+        "Posttransplant",
+        "cancer-screening",
+        "guidelines",
+        "renal",
+        "transplant",
+        "recipients",
+        "applicable"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 5.b. (renal-derived screening guidelines applicable to most recipients); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2150. Source-first item. Cross-organ screening-guideline applicability angle distinct from individualized screening intensity (cctc-2149) and ACS minimum-standard item (cctc-2151); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2150"
+  },
+  {
+    "id": "cctc-6279",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": [
+      "020701"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator updating waitlist education materials. A 39-year-old solid-organ transplant patient is the focus of today's interaction. Listing decisions are approaching and teaching must be accurate. Selection conference is tomorrow and the chart needs accurate education notes. When counseling a transplant candidate about long-term skin-cancer risk, which patient characteristic aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Fitzpatrick skin types I to III"
+      },
+      {
+        "id": "B",
+        "text": "Fitzpatrick skin types V to VI only"
+      },
+      {
+        "id": "C",
+        "text": "Skin type never influences post-transplant skin-cancer risk"
+      },
+      {
+        "id": "D",
+        "text": "Only recipients younger than 18 years are at increased skin-cancer risk"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin-cancer risk factors in transplant recipients include skin type (Fitzpatrick I to III), cumulative sun exposure, older age at transplant, immunosuppression intensity, and transplant type.",
+      "rationale_incorrect": {
+        "B": "Lighter Fitzpatrick skin types I to III are specifically listed rather than types V to VI alone.",
+        "C": "Skin type is among cited risk factors rather than having no influence.",
+        "D": "Risk factors apply across adult recipients rather than being limited to recipients younger than 18 years."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Risk factors → i.",
+      "quote_hint": "Skin type (Fitzpatrick I to III)",
+      "keywords": [
+        "Skin",
+        "type",
+        "Fitzpatrick",
+        "III",
+        "Risk",
+        "factors"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → i. (Fitzpatrick skin types I–III); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2153. Source-first item. Fitzpatrick skin-type risk angle distinct from heart/lung incidence counseling (cctc-2108) and 95% BCC/SCC epidemiology (cctc-2105); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2153"
+  },
+  {
+    "id": "cctc-6280",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator supporting the multidisciplinary selection meeting. A 45-year-old solid-organ transplant patient is the focus of today's interaction. The workup is nearly complete pending coordinator counseling. Your program auditor flagged this topic for standardized teaching language. Which counseling point is correct?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Use sunscreen that provides ultraviolet-B protection with minimum SPF 50"
+      },
+      {
+        "id": "B",
+        "text": "Any sunscreen with SPF 15 is sufficient regardless of transplant status"
+      },
+      {
+        "id": "C",
+        "text": "Sunscreen is never recommended for transplant candidates or recipients"
+      },
+      {
+        "id": "D",
+        "text": "Only tanning-bed lotions provide adequate post-transplant sun protection"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sun precautions include using sunscreen lotion that provides protection against ultraviolet-B rays with a minimum sun protection factor of 50, along with protective clothing and avoiding tanning beds.",
+      "rationale_incorrect": {
+        "B": "Minimum SPF 50 ultraviolet-B protection is specified rather than SPF 15 alone.",
+        "C": "Sunscreen is recommended as part of cancer-prevention teaching.",
+        "D": "Tanning beds should be avoided rather than using tanning-bed lotions for protection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 4.e.",
+      "quote_hint": "sunscreen lotion that provides protection against ultraviolet-B rays (minimum sun protection factor [SPF] = 50)",
+      "keywords": [
+        "sunscreen",
+        "lotion",
+        "ultraviolet-B",
+        "minimum",
+        "sun",
+        "protection",
+        "factor",
+        "SPF"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.e. (sunscreen with UV-B protection, minimum SPF 50); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 3) paired with cctc-2155. Source-first item. Ch. 6 minimum SPF 50/UV-B angle distinct from Ch. 3 health-maintenance SPF greater than 50 teaching (cctc-1103, p. 118) and undue-sunlight item (cctc-2154); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2155"
+  }
+]
