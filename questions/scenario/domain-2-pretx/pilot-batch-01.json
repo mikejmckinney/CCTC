@@ -1,0 +1,825 @@
+[
+  {
+    "id": "cctc-6011",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": [
+      "020304"
+    ],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are chairing multidisciplinary selection conference for a 48-year-old man with end-stage kidney disease from diabetic nephropathy. He was hospitalized last week for cellulitis of the left leg that is still receiving IV antibiotics. Cardiology cleared him, but infectious diseases notes cultures remain positive today. The surgeon asks whether listing can proceed. Which finding is listed as a major contraindication to transplantation?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Untreated current infection"
+      },
+      {
+        "id": "B",
+        "text": "Early referral when glomerular filtration rate is below 30 mL/min"
+      },
+      {
+        "id": "C",
+        "text": "Completion of a smoking cessation program"
+      },
+      {
+        "id": "D",
+        "text": "Well-controlled hypertension on current therapy"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Major contraindications to kidney transplantation include untreated current infection. Active infection must be addressed before proceeding with transplantation.",
+      "rationale_incorrect": {
+        "B": "Early referral when approaching advanced chronic kidney disease is encouraged, not contraindicated.",
+        "C": "Completion of smoking cessation is a condition that may be required for approval, not a contraindication.",
+        "D": "Controlled comorbidities are evaluated individually; untreated infection is explicitly listed as a major contraindication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 227,
+      "section": "Ch. 8, Evaluation of Adult Kidney Transplant Candidates — Table 8.1 (Major Contraindications) → Untreated current infection",
+      "quote_hint": "Untreated current infection",
+      "keywords": [
+        "contraindication",
+        "untreated",
+        "infection",
+        "transplantation",
+        "major"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 8 → Table 8.1 Major Contraindications to Kidney Transplantation → “Untreated current infection”; PDF p. 227 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2001. Source-first item. Anchor verified against docs/reference/danovitch-handbook-kidney-transplantation.pdf p. 227.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2001"
+  },
+  {
+    "id": "cctc-6012",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020600",
+    "knowledge_codes": [
+      "020603"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the on-call kidney coordinator at 2 a.m. when DonorNet generates an offer for your listed candidate. The donor is labeled Public Health Service increased-risk due to injection-drug history. The candidate is medically ready and has been waiting 18 months. Your attending asks what must occur before acceptance and OR booking. What must occur before transplantation proceeds?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "The patient is notified at the time of the organ offer and must consent to proceed"
+      },
+      {
+        "id": "B",
+        "text": "The center may proceed without notifying the candidate because PHS status is confidential"
+      },
+      {
+        "id": "C",
+        "text": "The candidate is automatically removed from the waitlist if PHS risk is identified"
+      },
+      {
+        "id": "D",
+        "text": "PHS increased-risk designation eliminates the need for any organ-offer discussion"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "When a donor is identified as a PHS increased-risk donor, the patient is notified at the time of the organ offer and must consent before proceeding; refusal does not affect waitlist status.",
+      "rationale_incorrect": {
+        "B": "PHS increased-risk status requires candidate notification and consent at offer time.",
+        "C": "Candidates may refuse PHS-risk organs without losing waitlist standing.",
+        "D": "PHS designation requires explicit offer-time disclosure and consent, not silent proceeding."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 101,
+      "section": "Ch. 3, Patient Education → §8. Organ allocation → g.",
+      "quote_hint": "the patient is notified at the time of the organ offer and must consent to proceed",
+      "keywords": [
+        "PHS",
+        "increased",
+        "risk",
+        "donor",
+        "notified",
+        "consent",
+        "offer"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §8. Organ allocation → g. (PHS increased-risk donor notification and consent); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2023. Source-first item. Distinct 020600 angle from cctc-2004/2015; anchor verified on Cupples p. 101.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2023"
+  },
+  {
+    "id": "cctc-6013",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": [
+      "020501"
+    ],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "You are updating a heart candidate who developed an active nontuberculous mycobacterial infection requiring prolonged therapy. The cardiologist placed him on inactive status yesterday while treatment continues. His family worries that waiting time will continue accruing during inactivity as it would for kidney candidates. You need to explain OPTN allocation rules accurately. According to OPTN Policy 3.6.A, how does waiting time accrue during inactivity?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "No waiting time accrues while the candidate remains inactive"
+      },
+      {
+        "id": "B",
+        "text": "Unlimited waiting time accrues, as for kidney candidates"
+      },
+      {
+        "id": "C",
+        "text": "Waiting time accrues only for the first 30 cumulative inactive days"
+      },
+      {
+        "id": "D",
+        "text": "Waiting time doubles each week the candidate remains inactive"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Table 3-3 specifies that heart candidates accrue no waiting time while inactive, unlike kidney candidates who accrue unlimited inactive waiting time.",
+      "rationale_incorrect": {
+        "B": "Unlimited inactive accrual applies to kidney candidates, not heart candidates.",
+        "C": "A 30-day cumulative inactive accrual limit applies to intestine candidates, not heart candidates.",
+        "D": "Heart inactive waiting time does not double weekly; it does not accrue at all."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 47,
+      "section": "Policy 3.6.A → Table 3-3 Waiting Time for Inactive Candidates → Heart",
+      "quote_hint": "Heart … No time … Candidates accrue waiting time while inactive",
+      "keywords": [
+        "Heart",
+        "No",
+        "time",
+        "inactive",
+        "waiting",
+        "accrue",
+        "candidates"
+      ]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=47",
+        "locator": "Policy 3.6.A → Table 3-3: Waiting Time for Inactive Candidates (heart candidates accrue no waiting time while inactive); PDF p. 47 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2045. Source-first item. Seventh 020500 item; heart inactive waiting-time angle paired with kidney unlimited accrual (cctc-2037); anchor verified on optn-policies p. 47.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2045"
+  },
+  {
+    "id": "cctc-6014",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020300",
+    "knowledge_codes": [
+      "020301"
+    ],
+    "cognitive_level": "recall",
+    "organ": "kidney_pancreas",
+    "recipient_age": "adult",
+    "stem": "You are educating a 39-year-old woman with type 1 diabetes and stage 4 CKD referred for combined organ transplant evaluation. She understands she needs a kidney but asks why pancreas transplantation might be offered simultaneously rather than kidney alone. Her nephrologist documented progressive renal insufficiency and brittle glycemic control. Which indication aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Diabetes or pancreatic exocrine insufficiency with renal insufficiency"
+      },
+      {
+        "id": "B",
+        "text": "Isolated type 2 diabetes without any renal disease"
+      },
+      {
+        "id": "C",
+        "text": "Renal insufficiency without any metabolic or pancreatic disorder"
+      },
+      {
+        "id": "D",
+        "text": "SPK is indicated only when the candidate no longer requires insulin"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Simultaneous pancreas-kidney transplantation is indicated for diagnosis of diabetes or pancreatic exocrine insufficiency with renal insufficiency.",
+      "rationale_incorrect": {
+        "B": "Type 2 diabetes accounts for a small minority of pancreas transplants; SPK pairs pancreatic and renal failure indications.",
+        "C": "SPK addresses combined pancreatic/metabolic and renal insufficiency rather than isolated renal disease alone.",
+        "D": "Insulin-treated diabetes with metabolic complications is typical of pancreas transplant populations rather than an exclusion."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → Indications → B. Simultaneous pancreas-kidney → 1.",
+      "quote_hint": "Diagnosis of diabetes or pancreatic exocrine insufficiency with renal insufficiency",
+      "keywords": [
+        "Diagnosis",
+        "diabetes",
+        "pancreatic",
+        "exocrine",
+        "insufficiency",
+        "renal",
+        "insufficiency",
+        "SPK"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → Indications → B. Simultaneous pancreas-kidney → 1. (diabetes or exocrine insufficiency with renal insufficiency); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2067. Source-first item. SPK-indication angle distinct from SPK suitability (cctc-2038), PAK evaluation (cctc-2050), and SPK rejection combo (cctc-3016); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2067"
+  },
+  {
+    "id": "cctc-6015",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020500",
+    "knowledge_codes": [
+      "020501"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are assembling documentation for an OPTN waiting-time modification application under Policy 3.7.A. A lung candidate's original listing date was delayed because of a data-entry error discovered after activation. The program director requests the compliance checklist before UNOS submission. Which required element must be included in the submission?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "The name and signature of the candidate's physician or surgeon"
+      },
+      {
+        "id": "B",
+        "text": "Only the candidate's personal social media history"
+      },
+      {
+        "id": "C",
+        "text": "A guarantee of organ offer within 30 days"
+      },
+      {
+        "id": "D",
+        "text": "Proof that the candidate has never been listed before"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waiting-time modification applications must include the requested listing date with documentation, evidence the candidate qualified under organ-specific OPTN policies, a corrective action plan if due to error, and the physician or surgeon name and signature.",
+      "rationale_incorrect": {
+        "B": "Applications require clinical and listing documentation rather than social media history.",
+        "C": "OPTN modification applications do not guarantee organ offers within a fixed interval.",
+        "D": "Prior listing history is addressed through documentation of requested listing date and qualification, not a blanket never-listed requirement."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 50,
+      "section": "Policy 3.7.A → Applications for Modifications of Waiting Time → items 1.–5.",
+      "quote_hint": "The name and signature of the candidate's physician or surgeon",
+      "keywords": [
+        "waiting",
+        "time",
+        "modification",
+        "application",
+        "physician",
+        "surgeon",
+        "signature",
+        "documentation"
+      ]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=50",
+        "locator": "Policy 3.7.A → Applications for Modifications of Waiting Time (physician/surgeon name and signature among required elements); PDF p. 50 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2089. Source-first item. First OPTN Policy 3.7 waiting-time modification item; distinct from inactive waiting-time Table 3-3 items (cctc-2037–2081); anchor verified on optn-policies p. 50.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2089"
+  },
+  {
+    "id": "cctc-6016",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are teaching pretransplant infection and malignancy risks to a newly listed kidney candidate. He reports two weeks of low-grade fevers, drenching night sweats, and cervical lymphadenopathy after finishing lymphocyte-depleting therapy during a prior hospitalization elsewhere. He has not yet received a transplant. Which clinical presentation should the coordinator associate with posttransplant lymphoproliferative disease (PTLD)?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Fever, night sweats, lymphadenopathy, or symptoms resembling infectious mononucleosis"
+      },
+      {
+        "id": "B",
+        "text": "Isolated acute graft tenderness without any systemic symptoms in every case"
+      },
+      {
+        "id": "C",
+        "text": "PTLD always presents with obvious skin rash and never with fever"
+      },
+      {
+        "id": "D",
+        "text": "PTLD cannot involve the gastrointestinal tract or lungs"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD may present with symptoms resembling infectious mononucleosis, fever, night sweats, lymphadenopathy, weight loss, diarrhea, abdominal pain, or pulmonary lesions.",
+      "rationale_incorrect": {
+        "B": "PTLD may be asymptomatic or present with systemic symptoms rather than isolated graft tenderness alone.",
+        "C": "Fever and mononucleosis-like symptoms are described presentations.",
+        "D": "PTLD may involve the gastrointestinal tract, lung, kidney, or other sites."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation",
+      "quote_hint": "Symptoms that resemble infectious mononucleosis … Fever … Night sweats … Lymphadenopathy",
+      "keywords": [
+        "Symptoms",
+        "infectious",
+        "mononucleosis",
+        "Fever",
+        "Night",
+        "sweats",
+        "Lymphadenopathy",
+        "PTLD"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3. Clinical presentation (mono-like symptoms, fever, lymphadenopathy); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2111. Source-first item. PTLD presentation counseling angle distinct from PTLD risk factors (cctc-2109) and belatacept adverse-effect teaching (cctc-3072); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2111"
+  },
+  {
+    "id": "cctc-6017",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "During evaluation education, a liver candidate's spouse asks whether PTLD would necessarily stay confined to the transplanted liver if it occurred later. The candidate is EBV-seronegative and will receive lymphocyte-depleting induction. You are clarifying typical organ-involvement patterns from standard references. Which organ-involvement pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "The disease may involve single or multiple organs"
+      },
+      {
+        "id": "B",
+        "text": "PTLD is limited to the transplanted allograft only"
+      },
+      {
+        "id": "C",
+        "text": "Multiorgan involvement never occurs in PTLD"
+      },
+      {
+        "id": "D",
+        "text": "PTLD involves skin only and never visceral sites"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD may involve single or multiple organs and is often extranodal, with involvement of sites such as the gastrointestinal tract, lung, or kidney.",
+      "rationale_incorrect": {
+        "B": "PTLD may involve organs beyond the allograft, including extranodal sites.",
+        "C": "Single or multiple organ involvement is specifically described.",
+        "D": "Visceral and extranodal involvement such as GI tract, lung, or kidney may occur."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 1. Epidemiology → d.",
+      "quote_hint": "May involve single or multiple organs",
+      "keywords": [
+        "May",
+        "involve",
+        "single",
+        "multiple",
+        "organs",
+        "PTLD"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 1.d. (may involve single or multiple organs); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2133. Source-first item. Single/multiple-organ involvement angle distinct from extranodal epidemiology in malignancy combo (cctc-3112) and GI-perforation presentation (cctc-2130); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2133"
+  },
+  {
+    "id": "cctc-6018",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "Your transplant program is refreshing evaluation-team education after a delayed PTLD diagnosis in a recent recipient. The quality council wants a short competency check covering organ involvement and variable presentations coordinators should recognize. Material must align with standard PTLD epidemiology and clinical presentation teaching. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "PTLD may involve single or multiple organs."
+      },
+      {
+        "id": "II",
+        "text": "Tonsillitis may be part of PTLD clinical presentation."
+      },
+      {
+        "id": "III",
+        "text": "Weight loss is never associated with PTLD."
+      },
+      {
+        "id": "IV",
+        "text": "Lung lesion or visceral mass may occur with PTLD."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Single or multiple organ involvement, tonsillitis, and lung or visceral masses are cited PTLD features. Statement III is false because weight loss is listed among clinical presentations.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—lung lesion or visceral mass may occur.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because weight loss is among listed PTLD symptoms."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 1. Epidemiology and 3. Clinical presentation",
+      "quote_hint": "May involve single or multiple organs … Tonsillitis … Weight loss … Lung lesion or visceral mass",
+      "keywords": [
+        "single",
+        "multiple",
+        "organs",
+        "Tonsillitis",
+        "Weight",
+        "loss",
+        "Lung",
+        "lesion"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 1.d. and 3.e., i., k. (organ involvement, tonsillitis, weight loss, lung/visceral mass); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2136. Source-first item. PTLD recognition combo distinct from presentation one-best (cctc-2111) and treatment-principle item (cctc-2112); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2136"
+  },
+  {
+    "id": "cctc-6019",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020100",
+    "knowledge_codes": [
+      "020102"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "A multidisciplinary education workgroup is revising PTLD symptom recognition for coordinators who field after-hours calls. Attendees requested scenarios emphasizing that presentation can be subtle or systemic rather than graft-localized. The module will be used before annual competency sign-off. Evaluate the following statements about clinical presentation:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "PTLD may be asymptomatic."
+      },
+      {
+        "id": "II",
+        "text": "Fever may be part of PTLD presentation."
+      },
+      {
+        "id": "III",
+        "text": "Weight loss may occur with PTLD."
+      },
+      {
+        "id": "IV",
+        "text": "PTLD always presents with obvious graft tenderness and high fever in every case."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "PTLD may be asymptomatic, and fever and weight loss are cited presentations. Statement IV is false because presentation is variable and may be asymptomatic or systemic without isolated graft tenderness in every case.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—weight loss is among listed presentations.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because PTLD presentation is variable and may be asymptomatic."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 3. Clinical presentation",
+      "quote_hint": "PTLD may be asymptomatic … Fever … Weight loss",
+      "keywords": [
+        "PTLD",
+        "asymptomatic",
+        "Fever",
+        "Weight",
+        "loss",
+        "Clinical",
+        "presentation"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 3. Clinical presentation (asymptomatic disease, fever, weight loss); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2148. Source-first item. PTLD presentation combo distinct from recognition combo (cctc-2136) and risk-factor combo (cctc-2144); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2148"
+  },
+  {
+    "id": "cctc-6020",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 2,
+    "task": "020700",
+    "knowledge_codes": [
+      "020701",
+      "020102"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating long-term survivor education slides on skin cancer after a kidney recipient developed squamous cell carcinoma on the forearms. Dermatology highlighted cumulative ultraviolet exposure and prior retransplantation in the chart review. Coordinators must reinforce prevention strategies tied to standard references. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Cumulative exposure to sun is a cited skin-cancer risk factor."
+      },
+      {
+        "id": "II",
+        "text": "Retransplantation is a cited skin-cancer risk factor."
+      },
+      {
+        "id": "III",
+        "text": "Long-sleeve shirts and pants are recommended sun precautions."
+      },
+      {
+        "id": "IV",
+        "text": "Sun precautions are unnecessary for kidney transplant recipients."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Cumulative sun exposure, retransplantation, and long-sleeve protective clothing are supported. Statement IV is false because sun precautions apply to transplant recipients broadly rather than being unnecessary for kidney recipients alone.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—long-sleeve shirts and pants are recommended protective clothing.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because sun precautions are part of cancer prevention for all organ recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → 4.c. and skin cancer risk factors",
+      "quote_hint": "Long-sleeve shirts and pants … Cumulative exposure to sun … Retransplantation",
+      "keywords": [
+        "Long-sleeve",
+        "shirts",
+        "pants",
+        "protective",
+        "clothing",
+        "Sun",
+        "precautions"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → Risk factors → ii. and vi. (cumulative sun exposure; retransplantation); PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.c.ii. (long-sleeve shirts and pants as protective clothing); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (pilot wave) paired with cctc-2160. Source-first item. Skin-cancer risk/prevention combo distinct from skin-cancer prevention combo (cctc-2156) and Fitzpatrick/SPF combo themes; corroborating locators on p. 280 and p. 282 verified.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-2160"
+  }
+]
