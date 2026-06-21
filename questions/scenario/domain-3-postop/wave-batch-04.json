@@ -1,0 +1,4598 @@
+[
+  {
+    "id": "cctc-6449",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030800",
+    "knowledge_codes": [
+      "030801"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator rounding on the transplant unit. A 48-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. According to standard references on OPTN data flow, clinical data submitted by transplant centers are aggregated into which national registry?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Scientific Registry of Transplant Recipients (SRTR)"
+      },
+      {
+        "id": "B",
+        "text": "Centers for Medicare & Medicaid Services Physician Fee Schedule"
+      },
+      {
+        "id": "C",
+        "text": "FDA MedWatch adverse event database only"
+      },
+      {
+        "id": "D",
+        "text": "National Marrow Donor Program registry"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The SRTR contains current and past information about the full continuum of transplant activity. Data are collected by the OPTN from hospitals and OPOs and used for policy development, program analysis, and outcome reporting.",
+      "rationale_incorrect": {
+        "B": "CMS fee schedules govern reimbursement, not the national transplant outcomes registry described in OPTN/SRTR references.",
+        "C": "FDA MedWatch is a drug and device adverse-event system, not the primary national transplant outcomes registry.",
+        "D": "The National Marrow Donor Program registry supports hematopoietic cell transplantation, not the solid-organ SRTR database."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 113,
+      "section": "Ch. 5 → Scientific Registry of Transplant Recipients subsection",
+      "quote_hint": "Data in the registry are collected by the OPTN from hospitals and OPOs",
+      "keywords": [
+        "SRTR",
+        "OPTN",
+        "collected",
+        "hospitals",
+        "recipients",
+        "registry"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 5 → Scientific Registry of Transplant Recipients (SRTR) subsection; PDF p. 113 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Scientific Registry of Transplant Recipients (SRTR).",
+        "url": "https://www.srtr.org/about-the-registry/",
+        "locator": "About the SRTR page — describes the national transplant statistics registry (corroborates registry name in the answer).",
+        "kind": "public_authoritative"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3005. Source-first item. Primary fact from Danovitch PDF p. 113. SRTR URL corroborates the named registry; SME should confirm page text matches current SRTR/OPTN data-flow description.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3005"
+  },
+  {
+    "id": "cctc-6450",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": [
+      "030601"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating follow-up labs before the surgeon clinic. A 39-year-old solid-organ transplant patient is the focus of today's interaction. It has been several weeks since transplant. Vital signs are stable, but the clinical picture still warrants coordinator input. Which instruction aligns with standard medication education?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "They should understand what to do if they miss a dose or cannot take medication due to nausea or vomiting"
+      },
+      {
+        "id": "B",
+        "text": "They should permanently stop all immunosuppression after one missed dose"
+      },
+      {
+        "id": "C",
+        "text": "They should double the next dose without contacting the team"
+      },
+      {
+        "id": "D",
+        "text": "They should wait one week before reporting missed doses"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Discharge medication education includes teaching recipients what to do if they miss a dose or cannot take medication because of nausea, vomiting, or prolonged diarrhea.",
+      "rationale_incorrect": {
+        "B": "Recipients should not independently discontinue immunosuppression after vomiting; they need team guidance.",
+        "C": "Dose adjustments require coordinated medical direction, not automatic doubling.",
+        "D": "Missed doses during illness require timely team contact, not delayed reporting."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "section": "Ch. 3, Patient Education → medication education (missed dose / nausea / vomiting)",
+      "quote_hint": "what to do if they miss a dose of medication, or they are unable to take medication due to nausea/vomiting",
+      "keywords": [
+        "miss",
+        "dose",
+        "nausea",
+        "vomiting",
+        "medication",
+        "unable"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication education (missed dose / nausea / vomiting instructions); PDF p. 107 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3008. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 107.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3008"
+  },
+  {
+    "id": "cctc-6451",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": [
+      "030101"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 52-year-old kidney transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. According to post-transplant infection references, which outcome association should the coordinator emphasize when explaining why the team monitors this finding?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Frequent asymptomatic bacteriuria episodes are associated with pyelonephritis and development of acute rejection"
+      },
+      {
+        "id": "B",
+        "text": "Asymptomatic bacteriuria permanently prevents any future acute rejection"
+      },
+      {
+        "id": "C",
+        "text": "Bacteriuria in month one has no relationship to graft outcomes"
+      },
+      {
+        "id": "D",
+        "text": "Asymptomatic bacteriuria mandates immediate graft nephrectomy in all recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Early asymptomatic bacteriuria is common after kidney transplant, and frequent episodes are associated with pyelonephritis and development of acute rejection, supporting active monitoring and treatment decisions.",
+      "rationale_incorrect": {
+        "B": "Bacteriuria does not prevent rejection; it is associated with increased rejection risk when frequent.",
+        "C": "References link frequent bacteriuria to pyelonephritis and rejection, not a neutral finding.",
+        "D": "Nephrectomy is not the standard response to asymptomatic bacteriuria."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 352,
+      "section": "Ch. 12 → Urinary Tract Infection → asymptomatic bacteriuria paragraph",
+      "quote_hint": "frequent episodes are associated with development of pyelonephritis and development of acute rejection",
+      "keywords": [
+        "asymptomatic",
+        "bacteriuria",
+        "pyelonephritis",
+        "acute",
+        "rejection",
+        "kidney"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 12 → Urinary Tract Infection (asymptomatic bacteriuria association with pyelonephritis and rejection); PDF p. 352 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3011. Source-first item. Distinct 030100 angle from cctc-3001 (asymptomatic creatinine rise); anchor verified on Danovitch p. 352.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3011"
+  },
+  {
+    "id": "cctc-6452",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": [
+      "030602"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator rounding on the transplant unit. A 48-year-old kidney transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. During discharge medication teaching for a kidney recipient starting tacrolimus, which instruction is MOST important to emphasize about dosing schedule?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Take critical-dose immunosuppressants at the same time every day for therapeutic drug monitoring"
+      },
+      {
+        "id": "B",
+        "text": "Take tacrolimus at different random times each day to improve absorption"
+      },
+      {
+        "id": "C",
+        "text": "Skip trough-level blood draws on the day doses are taken on schedule"
+      },
+      {
+        "id": "D",
+        "text": "Double the dose automatically after any single late dose without team contact"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Discharge teaching stresses taking medications at the same time every day; critical-dose drugs such as tacrolimus must be taken at specific intervals to allow therapeutic drug monitoring, especially on blood-draw days.",
+      "rationale_incorrect": {
+        "B": "Inconsistent dosing times undermine trough monitoring and are not appropriate teaching.",
+        "C": "Recipients must understand dosing timing relative to scheduled trough levels.",
+        "D": "Dose adjustments require transplant team guidance rather than automatic doubling."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 107,
+      "section": "Ch. 3, Patient Education → medication education → Right time",
+      "quote_hint": "Taking medications at the same time every day is very important",
+      "keywords": [
+        "same",
+        "time",
+        "every",
+        "day",
+        "tacrolimus",
+        "cyclosporine",
+        "therapeutic",
+        "drug"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication education → Right time (critical-dose drugs and trough timing); PDF p. 107 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3015. Source-first item. Distinct 030600 angle from cctc-3008 (missed dose/vomiting); anchor verified on Cupples p. 107.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3015"
+  },
+  {
+    "id": "cctc-6453",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": [
+      "030701"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 52-year-old liver transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. According to urgent-contact education, how should the coordinator classify this symptom?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "An urgent matter because rectal bleeding is a potential source requiring prompt team contact"
+      },
+      {
+        "id": "B",
+        "text": "A non-urgent matter to address at the next routine refill call"
+      },
+      {
+        "id": "C",
+        "text": "An expected finding that never requires transplant team notification"
+      },
+      {
+        "id": "D",
+        "text": "A reason to permanently stop all immunosuppression without team guidance"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bleeding from potential sources including rectal, oral, wound, or ostomy sites is listed as an urgent reason to contact the transplant team.",
+      "rationale_incorrect": {
+        "B": "Rectal bleeding is categorized among urgent matters, not routine non-urgent contacts.",
+        "C": "Bleeding after transplant requires prompt evaluation rather than assumed normalcy.",
+        "D": "Bleeding prompts team contact and coordinated evaluation, not independent immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication → iii. Urgent matters → Bleeding",
+      "quote_hint": "Bleeding: potential sources: … Rectal",
+      "keywords": [
+        "Bleeding",
+        "Rectal",
+        "urgent",
+        "transplant",
+        "team",
+        "sources"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication → iii. Urgent matters (bleeding sources including rectal); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3021. Source-first item. Third 030700 item; anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3021"
+  },
+  {
+    "id": "cctc-6454",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": [
+      "030102"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator rounding on the transplant unit. A 48-year-old liver transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. According to standard post-transplant monitoring references, what is the MOST appropriate next diagnostic step?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Liver biopsy when LFT elevation suggests a possible rejection episode"
+      },
+      {
+        "id": "B",
+        "text": "Permanent cessation of all immunosuppression without team evaluation"
+      },
+      {
+        "id": "C",
+        "text": "Ignore LFT changes because they never relate to graft status"
+      },
+      {
+        "id": "D",
+        "text": "Routine biopsy on day 7 for every recipient regardless of laboratory values"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Most centers biopsy when rising liver function tests suggest a possible rejection episode, although some centers may routinely biopsy on a set postoperative day.",
+      "rationale_incorrect": {
+        "B": "Rising LFTs prompt diagnostic evaluation and coordinated treatment decisions, not unilateral immunosuppression cessation.",
+        "C": "LFT trends are monitored because they may indicate rejection or other graft problems.",
+        "D": "Routine day-7 biopsy is practiced at some centers, but the question describes LFT-driven biopsy indication, not universal protocol regardless of labs."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 669,
+      "section": "Ch. 12, Liver Transplantation → Liver Biopsy → A.",
+      "quote_hint": "biopsy when there is a rise in LFTs suggesting a possible rejection episode",
+      "keywords": [
+        "biopsy",
+        "LFTs",
+        "rejection",
+        "liver",
+        "rise",
+        "transplant",
+        "monitoring"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 12 → Liver Biopsy → A. (biopsy when LFT rise suggests rejection); PDF p. 669 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3025. Source-first item. Third 030100 item; liver LFT monitoring angle distinct from cctc-3001/3011; anchor verified on Cupples p. 669.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3025"
+  },
+  {
+    "id": "cctc-6455",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating follow-up labs before the surgeon clinic. A 39-year-old solid-organ transplant patient is the focus of today's interaction. It has been several weeks since transplant. Vital signs are stable, but the clinical picture still warrants coordinator input. What counseling is MOST accurate?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Diabetes may develop in up to about half of recipients within the first three months"
+      },
+      {
+        "id": "B",
+        "text": "Diabetes never occurs after transplantation because immunosuppression prevents it"
+      },
+      {
+        "id": "C",
+        "text": "Diabetes appears only after ten years and never in the first year"
+      },
+      {
+        "id": "D",
+        "text": "Post-transplant diabetes requires no monitoring because it cannot affect long-term outcomes"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Diabetes after transplantation may occur in up to 50% of solid organ transplant recipients within the first three months and worsens long-term outcomes, requiring monitoring and management.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression, including corticosteroids and CNIs, contributes to post-transplant diabetes rather than preventing it.",
+        "C": "Post-transplant diabetes is common in the early post-transplant period, not exclusively after a decade.",
+        "D": "Post-transplant diabetes decreases quality of life and worsens long-term outcomes, so monitoring is required."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 161,
+      "section": "Ch. 4, Immunosuppression → C. Medications to manage DM → 2.",
+      "quote_hint": "DM after transplantation occurs in up to 50% of solid organ transplant recipients within the first 3 months",
+      "keywords": [
+        "DM",
+        "transplantation",
+        "occurs",
+        "solid",
+        "organ",
+        "recipients",
+        "months"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → C. Medications to manage DM → 2. (DM after transplantation occurs in up to 50% of solid organ transplant recipients within the first 3 months); PDF p. 161 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3028. Source-first item. Fourth 030400 item; anchor verified on Cupples p. 161.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3028"
+  },
+  {
+    "id": "cctc-6456",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030600",
+    "knowledge_codes": [
+      "030604"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 52-year-old kidney transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. What counseling is MOST accurate?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Grapefruit may increase serum levels of certain immunosuppression medications and should be avoided unless the team approves"
+      },
+      {
+        "id": "B",
+        "text": "Grapefruit has no interactions with any transplant medications"
+      },
+      {
+        "id": "C",
+        "text": "Grapefruit should replace all oral immunosuppression doses"
+      },
+      {
+        "id": "D",
+        "text": "Grapefruit is required daily to maintain therapeutic drug levels"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Medication education includes food–drug interactions such as grapefruit, which can increase serum levels of certain immunosuppression medications.",
+      "rationale_incorrect": {
+        "B": "Grapefruit is specifically cited as interacting with immunosuppression drug levels.",
+        "C": "Grapefruit is a dietary interaction concern, not a substitute for prescribed immunosuppression.",
+        "D": "Grapefruit increases drug levels and requires caution, not mandatory daily consumption."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 108,
+      "section": "Ch. 3, Patient Education → medication management → drug–food interactions",
+      "quote_hint": "grapefruit, which increase serum levels of certain immunosuppression medications",
+      "keywords": [
+        "grapefruit",
+        "increase",
+        "serum",
+        "levels",
+        "immunosuppression",
+        "medications",
+        "interactions"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication management → Right way (grapefruit and immunosuppression interactions); PDF p. 108 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3031. Source-first item. Fourth 030600 item; distinct from missed-dose teaching (cctc-3008) and CMV prophylaxis (cctc-3022); anchor verified on Cupples p. 108.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3031"
+  },
+  {
+    "id": "cctc-6457",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": [
+      "030102"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading discharge planning for a recipient going home tomorrow. A 55-year-old kidney transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. Which abnormality pattern is MOST consistent with a urinary leak complication?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Fever, pain, oliguria, elevated creatinine, and possible wound drainage together"
+      },
+      {
+        "id": "B",
+        "text": "Stable creatinine with increased urine output and no pain"
+      },
+      {
+        "id": "C",
+        "text": "Isolated mild postoperative fatigue without laboratory changes"
+      },
+      {
+        "id": "D",
+        "text": "Normal graft function with only routine incision healing"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Urinary leak at the ureterovesical anastomosis may present with unexplained fever, abdominal pain, decreased urinary output, elevated creatinine, and wound drainage.",
+      "rationale_incorrect": {
+        "B": "Urinary leak typically decreases output and elevates creatinine rather than increasing output with stable creatinine.",
+        "C": "Isolated fatigue without laboratory or output changes does not match urinary leak presentation.",
+        "D": "Normal graft function without symptoms contradicts the fever, pain, oliguria, and creatinine rise described."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 903,
+      "section": "Ch. 17, Kidney Transplantation → h. Urinary leak → ii.",
+      "quote_hint": "Unexplained fever … Decreased urinary output … Elevated creatinine … Wound drainage",
+      "keywords": [
+        "fever",
+        "Decreased",
+        "urinary",
+        "output",
+        "Elevated",
+        "creatinine",
+        "Wound",
+        "drainage"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → h. Urinary leak → ii. Clinical signs (fever, pain, decreased output, elevated creatinine, wound drainage); PDF p. 903 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3034. Source-first item. Fifth 030100 item; kidney urinary-leak lab pattern distinct from liver LFT monitoring (cctc-3025); anchor verified on Cupples p. 903.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3034"
+  },
+  {
+    "id": "cctc-6458",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": [
+      "030701"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. According to urgent-contact education, how should the coordinator classify this symptom?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "An urgent matter because oral bleeding is a potential source requiring prompt team contact"
+      },
+      {
+        "id": "B",
+        "text": "A non-urgent matter to address at the next routine refill call"
+      },
+      {
+        "id": "C",
+        "text": "An expected finding that never requires transplant team notification"
+      },
+      {
+        "id": "D",
+        "text": "A reason to permanently stop all immunosuppression without team guidance"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bleeding from oral sources such as emesis is listed among urgent matters requiring prompt transplant team contact, alongside wound, rectal, and ostomy bleeding sources.",
+      "rationale_incorrect": {
+        "B": "Bleeding symptoms are urgent, not deferred to routine refill calls.",
+        "C": "Post-transplant teaching requires reporting bleeding from oral and other listed sources.",
+        "D": "Urgent bleeding prompts team evaluation rather than unilateral immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → h. Communication → iii. Urgent matters → Bleeding",
+      "quote_hint": "Bleeding: potential sources: Oral (e.g., emesis)",
+      "keywords": [
+        "Bleeding",
+        "Oral",
+        "emesis",
+        "urgent",
+        "matters",
+        "wound",
+        "Rectal"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → h. Communication with the transplant team → iii. Urgent matters → Bleeding (oral/emesis source listed); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3037. Source-first item. Sixth 030700 item; oral-bleeding urgent angle distinct from chest pain, rectal bleeding, stroke, infection, and shortness of breath items; anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3037"
+  },
+  {
+    "id": "cctc-6459",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": [
+      "030501"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 52-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. During long-term post-transplant care coordination, which monitoring responsibility should the coordinator emphasize at routine follow-up visits?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Obtain laboratory tests and studies to monitor immunosuppression levels and organ function"
+      },
+      {
+        "id": "B",
+        "text": "Discontinue all laboratory monitoring after the first clinic visit"
+      },
+      {
+        "id": "C",
+        "text": "Monitor only the recipient's vacation plans without clinical data"
+      },
+      {
+        "id": "D",
+        "text": "Rely exclusively on patient self-report without any objective studies"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Health maintenance after transplantation includes obtaining all laboratory tests and other studies to monitor levels of immunosuppression and organ function.",
+      "rationale_incorrect": {
+        "B": "Long-term follow-up requires ongoing laboratory and clinical monitoring rather than discontinuation after one visit.",
+        "C": "Clinical monitoring of immunosuppression and organ function is required beyond nonclinical topics.",
+        "D": "Objective laboratory and study data supplement patient self-report in post-transplant coordination."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → i.",
+      "quote_hint": "Obtain all labs tests and other studies to monitor levels of immunosuppression and organ function",
+      "keywords": [
+        "Obtain",
+        "labs",
+        "studies",
+        "monitor",
+        "immunosuppression",
+        "organ",
+        "function"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance after transplantation → i. (monitor immunosuppression levels and organ function); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3041. Source-first item. Fifth 030500 item; general lab-monitoring coordination distinct from clinic intervals (cctc-3014/3024) and community MD communication (cctc-3015); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3041"
+  },
+  {
+    "id": "cctc-6460",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030700",
+    "knowledge_codes": [
+      "030701"
+    ],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator rounding on the transplant unit. A 48-year-old intestinal transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. According to urgent-contact education, how should the coordinator classify this symptom?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "An urgent matter because ostomy bleeding is a listed potential bleeding source requiring prompt team contact"
+      },
+      {
+        "id": "B",
+        "text": "A non-urgent matter to address at the next routine refill call"
+      },
+      {
+        "id": "C",
+        "text": "An expected finding that never requires transplant team notification"
+      },
+      {
+        "id": "D",
+        "text": "A reason to permanently stop all immunosuppression without team guidance"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bleeding from ostomy sites is listed among urgent matters requiring prompt transplant team contact, alongside oral, rectal, and wound bleeding sources.",
+      "rationale_incorrect": {
+        "B": "Ostomy bleeding is explicitly urgent, not deferred to routine refill calls.",
+        "C": "Post-transplant teaching requires reporting bleeding from ostomy and other listed sources.",
+        "D": "Urgent bleeding prompts team evaluation rather than unilateral immunosuppression cessation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → h. Communication → iii. Urgent matters → Bleeding",
+      "quote_hint": "Bleeding: potential sources: … Ostomy",
+      "keywords": [
+        "Bleeding",
+        "Ostomy",
+        "urgent",
+        "matters",
+        "Wound",
+        "Rectal",
+        "Oral"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → h. Communication with the transplant team → iii. Urgent matters → Bleeding (ostomy source listed); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3045. Source-first item. Seventh 030700 item; intestine ostomy-bleeding angle distinct from oral (cctc-3040), rectal (cctc-3022), and other urgent-contact items; anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3045"
+  },
+  {
+    "id": "cctc-6461",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": [
+      "030301"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating follow-up labs before the surgeon clinic. A 39-year-old solid-organ transplant patient is the focus of today's interaction. It has been several weeks since transplant. Vital signs are stable, but the clinical picture still warrants coordinator input. Which adverse effect profile is MOST consistent with this medication?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Bone marrow suppression with leukopenia or pancytopenia"
+      },
+      {
+        "id": "B",
+        "text": "Permanent cure of hypertension without hematologic effects"
+      },
+      {
+        "id": "C",
+        "text": "Guaranteed protection against all infections without cytopenias"
+      },
+      {
+        "id": "D",
+        "text": "No hematologic side effects because azathioprine is not immunosuppressive"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Azathioprine adverse effects include bone marrow suppression resulting in leukopenia, pancytopenia, thrombocytopenia, and/or macrocytic anemia.",
+      "rationale_incorrect": {
+        "B": "Azathioprine is immunosuppressive and may cause cytopenias rather than curing hypertension.",
+        "C": "Immunosuppression increases infection risk; azathioprine may cause leukopenia rather than preventing cytopenias.",
+        "D": "Azathioprine is an antiproliferative immunosuppressant with recognized bone marrow suppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 150,
+      "section": "Ch. 4, Immunosuppression → e. Azathioprine—Adverse effects → i.",
+      "quote_hint": "Bone marrow suppression, resulting in leukopenia, pancytopenia, thrombocytopenia",
+      "keywords": [
+        "Azathioprine",
+        "Bone",
+        "marrow",
+        "suppression",
+        "leukopenia",
+        "pancytopenia",
+        "thrombocytopenia"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → e. Azathioprine—Adverse effects → i. (bone marrow suppression with leukopenia/pancytopenia); PDF p. 150 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3048. Source-first item. Seventh 030300 item; azathioprine hematologic toxicity distinct from CNI (cctc-3018/3023), MMF (cctc-3009), and cyclosporine cosmetic effects (cctc-3044); anchor verified on Cupples p. 150.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3048"
+  },
+  {
+    "id": "cctc-6462",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": [
+      "030301"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 52-year-old solid-organ transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. Which adverse effect teaching is MOST accurate?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Tremor is among the common tacrolimus side effects"
+      },
+      {
+        "id": "B",
+        "text": "Tacrolimus never causes neurologic or tremor symptoms"
+      },
+      {
+        "id": "C",
+        "text": "Tremor always indicates the graft has failed"
+      },
+      {
+        "id": "D",
+        "text": "Tremor requires permanent discontinuation of all transplant medications without team review"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Common tacrolimus adverse effects include hypertension, nephrotoxicity, hyperglycemia, tremor, diarrhea, and cosmetic effects such as alopecia.",
+      "rationale_incorrect": {
+        "B": "Tremor is listed among common tacrolimus neurologic side effects.",
+        "C": "Tremor may reflect medication adverse effects and warrants team evaluation rather than automatically indicating graft failure.",
+        "D": "Medication side effects are managed with team review and dose adjustment rather than unilateral permanent discontinuation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 145,
+      "section": "Ch. 4, Immunosuppression → f. Tacrolimus—Adverse effects → ii.",
+      "quote_hint": "The most common side effects of tacrolimus are … Tremor",
+      "keywords": [
+        "Tacrolimus",
+        "common",
+        "side",
+        "effects",
+        "Tremor",
+        "Nephrotoxicity",
+        "Hypertension"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → f. Tacrolimus—Adverse effects → ii. (tremor among common side effects); PDF p. 145 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3051. Source-first item. Eighth 030300 item; tacrolimus tremor angle distinct from nephrotoxicity (cctc-3018), cyclosporine cosmetic effects (cctc-3044), and azathioprine cytopenias (cctc-3048); anchor verified on Cupples p. 145.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3051"
+  },
+  {
+    "id": "cctc-6463",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading discharge planning for a recipient going home tomorrow. A 55-year-old solid-organ transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. During long-term follow-up of a solid-organ recipient, which malignancy risk counseling point aligns with standard complication references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Skin cancer is the most common post-transplant malignancy, with risk markedly higher than the general population"
+      },
+      {
+        "id": "B",
+        "text": "Immunosuppression eliminates malignancy risk after the first post-transplant year"
+      },
+      {
+        "id": "C",
+        "text": "Post-transplant malignancy never affects long-term survival"
+      },
+      {
+        "id": "D",
+        "text": "Only pediatric recipients develop post-transplant skin cancer"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Post-transplant malignancy is the second most common cause of late mortality; skin cancer is the most common post-transplant malignancy with risk up to 20-fold higher than the general population.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression increases malignancy risk rather than eliminating it after one year.",
+        "C": "Post-transplant malignancy is a major late mortality cause requiring ongoing surveillance and prevention teaching.",
+        "D": "Skin cancer risk after transplant applies to solid-organ recipients broadly, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 674,
+      "section": "Ch. 12, Long-Term Outcomes → F. Posttransplant malignancy → 2.",
+      "quote_hint": "Skin cancer is the most common cause of posttransplant malignancy with risk up to 20fold higher than general population",
+      "keywords": [
+        "Skin",
+        "cancer",
+        "most",
+        "common",
+        "posttransplant",
+        "malignancy",
+        "risk",
+        "population"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 12 → F. Posttransplant malignancy → 2. (skin cancer most common post-transplant malignancy; markedly elevated risk); PDF p. 674 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3054. Source-first item. Sixth 030400 item; skin-cancer long-term complication angle distinct from post-transplant diabetes incidence (cctc-3028) and malignancy-prevention combo (cctc-3043); anchor verified on Cupples p. 674.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3054"
+  },
+  {
+    "id": "cctc-6464",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 61-year-old liver transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. During long-term follow-up of a liver transplant recipient on maintenance corticosteroids, which complication should the coordinator include in surveillance teaching?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Metabolic bone disease, with greatest risk when steroid doses are highest"
+      },
+      {
+        "id": "B",
+        "text": "Metabolic bone disease never occurs after liver transplantation"
+      },
+      {
+        "id": "C",
+        "text": "Bone disease risk ends immediately when steroids are first prescribed"
+      },
+      {
+        "id": "D",
+        "text": "Only recipients under age 18 develop post-transplant bone disease"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Metabolic bone disease risk is greatest immediately after transplantation when steroid doses are highest, although some recipients remain at long-term risk even with lower or no steroid use.",
+      "rationale_incorrect": {
+        "B": "Metabolic bone disease is a recognized long-term complication after solid-organ transplantation.",
+        "C": "Risk is highest early when steroid doses are highest rather than ending when steroids are initiated.",
+        "D": "Bone disease risk applies to transplant recipients broadly, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 674,
+      "section": "Ch. 12, Long-Term Outcomes → E. Metabolic bone disease",
+      "quote_hint": "The greatest risk is immediately after transplantation when steroid doses are highest",
+      "keywords": [
+        "Metabolic",
+        "bone",
+        "disease",
+        "greatest",
+        "risk",
+        "transplantation",
+        "steroid",
+        "doses"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 12 → E. Metabolic bone disease (greatest risk when steroid doses highest; some long-term risk persists); PDF p. 674 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3057. Source-first item. Seventh 030400 item; closes task gap; metabolic-bone angle distinct from skin cancer (cctc-3054), diabetes incidence (cctc-3028), and malignancy combo (cctc-3043); anchor verified on Cupples p. 674.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3057"
+  },
+  {
+    "id": "cctc-6465",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 52-year-old pancreas transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. Which complication should the coordinator prioritize in the differential?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Dehydration with risk of pancreas graft thrombosis from inadequate perfusion"
+      },
+      {
+        "id": "B",
+        "text": "Expected benign finding that never threatens graft perfusion"
+      },
+      {
+        "id": "C",
+        "text": "Isolated cosmetic issue unrelated to intravascular volume"
+      },
+      {
+        "id": "D",
+        "text": "Mandated indication for immediate graft pancreatectomy in every case"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The pancreas graft is a low blood-flow organ with higher thrombosis potential; dehydration signs such as poor skin turgor and decreased urine output require prompt reporting because adequate intravascular volume is needed for graft perfusion.",
+      "rationale_incorrect": {
+        "B": "Dehydration can compromise pancreas graft perfusion and is not a benign expected finding.",
+        "C": "Poor skin turgor and oliguria reflect volume depletion with graft risk rather than cosmetic concerns.",
+        "D": "Volume resuscitation and team evaluation are required; immediate graft removal is not mandated for every dehydration episode."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 838,
+      "section": "Ch. 15, Pancreas Transplantation → postoperative monitoring → graft thrombosis risk",
+      "quote_hint": "low blood flow organ … higher potential for graft thrombosis … maintaining an appropriate intravascular volume",
+      "keywords": [
+        "pancreas",
+        "graft",
+        "thrombosis",
+        "blood",
+        "flow",
+        "intravascular",
+        "volume",
+        "dehydration"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → postoperative monitoring (low-flow pancreas graft thrombosis risk; dehydration signs require prompt reporting); PDF p. 838 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3061. Source-first item. Tenth 030200 item; third pancreas organ tag in D3; graft-thrombosis/dehydration angle distinct from lung BOS (cctc-3060) and wound infection (cctc-3050); anchor verified on Cupples p. 838.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3061"
+  },
+  {
+    "id": "cctc-6466",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator rounding on the transplant unit. A 45-year-old intestinal transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. Which complication should the coordinator include in the differential?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Graft-versus-host disease presenting most commonly as a skin rash"
+      },
+      {
+        "id": "B",
+        "text": "Expected benign finding that never involves skin after intestine transplant"
+      },
+      {
+        "id": "C",
+        "text": "Hyperacute rejection that occurs only years after transplant"
+      },
+      {
+        "id": "D",
+        "text": "Oral aversion, which never presents with cutaneous findings"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Graft-versus-host disease after intestinal transplantation presents most commonly as a skin rash but may also involve the liver and gastrointestinal tract and can occur from days to years post-transplant.",
+      "rationale_incorrect": {
+        "B": "Skin rash is the most common presentation of GVHD in intestine recipients.",
+        "C": "Hyperacute rejection occurs immediately after implantation rather than weeks to years later.",
+        "D": "Oral aversion is a feeding complication distinct from the cutaneous GVHD presentation described."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 729,
+      "section": "Ch. 13, Intestine Transplantation → 8. Graft-versus-host disease → d.–e.",
+      "quote_hint": "Presents most commonly as a skin rash … liver and gastrointestinal tract … days to years posttransplant",
+      "keywords": [
+        "Presents",
+        "commonly",
+        "skin",
+        "rash",
+        "liver",
+        "gastrointestinal",
+        "tract",
+        "posttransplant"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → 8. Graft-versus-host disease → d.–e. (skin rash most common; may involve liver/GI; variable timing); PDF p. 729 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3065. Source-first item. Intestine GVHD presentation angle distinct from pancreas graft thrombosis (cctc-3061) and lung BOS (cctc-3060); anchor verified on Cupples p. 729.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3065"
+  },
+  {
+    "id": "cctc-6467",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading discharge planning for a recipient going home tomorrow. A 55-year-old liver transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. Which CMV-related allograft complication should the coordinator recognize?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Vanishing bile duct syndrome"
+      },
+      {
+        "id": "B",
+        "text": "Bronchiolitis obliterans syndrome"
+      },
+      {
+        "id": "C",
+        "text": "Coronary artery vasculopathy"
+      },
+      {
+        "id": "D",
+        "text": "Glomerulopathy without biliary involvement"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Organ-specific CMV effects on allografts include vanishing bile duct syndrome in liver transplants, which may present with cholestatic injury patterns.",
+      "rationale_incorrect": {
+        "B": "Bronchiolitis obliterans is the listed CMV organ-specific effect for lung rather than liver allografts.",
+        "C": "Coronary artery vasculopathy is the listed CMV organ-specific effect for heart allografts.",
+        "D": "Glomerulopathy is the listed CMV organ-specific kidney effect rather than the primary liver biliary complication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "section": "Ch. 5, Infectious Diseases → CMV → 8. Organ-specific effects on allograft → a.",
+      "quote_hint": "Liver: vanishing bile duct syndrome",
+      "keywords": [
+        "Liver",
+        "vanishing",
+        "bile",
+        "duct",
+        "syndrome",
+        "CMV",
+        "allograft",
+        "organ-specific"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CMV → 8. Organ-specific effects on allograft → a. (liver: vanishing bile duct syndrome); PDF p. 202 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3069. Source-first item. Liver CMV vanishing-bile-duct angle distinct from cholangitis/ERCP management (cctc-3039) and metabolic bone disease (cctc-3058); anchor verified on Cupples p. 202.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3069"
+  },
+  {
+    "id": "cctc-6468",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": [
+      "030303"
+    ],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating follow-up labs before the surgeon clinic. A 39-year-old kidney transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. Which counseling point aligns with standard medication references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Sirolimus may impair wound healing, so initiation may be delayed in some clinical situations"
+      },
+      {
+        "id": "B",
+        "text": "Sirolimus accelerates wound healing and should always start immediately after surgery"
+      },
+      {
+        "id": "C",
+        "text": "Sirolimus has no effect on wound healing or graft recovery"
+      },
+      {
+        "id": "D",
+        "text": "Sirolimus is the preferred agent during active wound dehiscence"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sirolimus has been associated with impaired wound healing and delay in renal allograft recovery; delaying initiation may be warranted in these clinical situations.",
+      "rationale_incorrect": {
+        "B": "Sirolimus may impair rather than accelerate wound healing.",
+        "C": "Wound-healing impairment is a recognized sirolimus concern requiring clinical judgment.",
+        "D": "Active wound problems may warrant delaying sirolimus rather than preferential use."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 154,
+      "section": "Ch. 4, Pharmacology → Sirolimus → dosing notes → v.",
+      "quote_hint": "associated with impaired wound healing and delay in renal allograft recovery … delaying the initiation of sirolimus may be warranted",
+      "keywords": [
+        "impaired",
+        "wound",
+        "healing",
+        "delay",
+        "renal",
+        "allograft",
+        "recovery",
+        "sirolimus"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Sirolimus → dosing notes → v. (impaired wound healing; delay initiation when warranted); PDF p. 154 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3073. Source-first item. First sirolimus item in bank; distinct from belatacept counseling (cctc-3072) and cyclosporine cosmetic effects (cctc-3044); anchor verified on Cupples p. 154.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3073"
+  },
+  {
+    "id": "cctc-6469",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030300",
+    "knowledge_codes": [
+      "030303"
+    ],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 61-year-old kidney transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. Which adverse effect aligns with standard medication references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Hyperlipidemia"
+      },
+      {
+        "id": "B",
+        "text": "Permanent elimination of all cholesterol production"
+      },
+      {
+        "id": "C",
+        "text": "Guaranteed improvement in lipid levels compared with all other immunosuppressants"
+      },
+      {
+        "id": "D",
+        "text": "Lipid changes that never occur with proliferation signal inhibitors"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Common adverse effects of sirolimus and everolimus include hyperlipidemia, along with hypertension, hypercholesterolemia, and hypertriglyceridemia.",
+      "rationale_incorrect": {
+        "B": "Sirolimus is associated with elevated lipids rather than eliminating cholesterol production.",
+        "C": "Hyperlipidemia is a recognized side effect rather than guaranteed lipid improvement.",
+        "D": "Hyperlipidemia is among the most common proliferation signal inhibitor side effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 155,
+      "section": "Ch. 4, Pharmacology → Sirolimus → Adverse effects → g.ii.",
+      "quote_hint": "most common side effects … Hyperlipidemia … Hypercholesterolemia … Hypertriglyceridemia",
+      "keywords": [
+        "common",
+        "side",
+        "effects",
+        "Hyperlipidemia",
+        "Hypercholesterolemia",
+        "Hypertriglyceridemia",
+        "sirolimus",
+        "everolimus"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Sirolimus → Adverse effects → g.ii. (hyperlipidemia among common side effects); PDF p. 155 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3077. Source-first item. Sirolimus hyperlipidemia angle distinct from wound-healing counseling (cctc-3073) and belatacept PTLD teaching (cctc-3072); anchor verified on Cupples p. 155.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3077"
+  },
+  {
+    "id": "cctc-6470",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 9-year-old solid-organ transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. Which infectious complication should the coordinator include in the differential?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Parvovirus B19 with possible pure red blood cell aplasia"
+      },
+      {
+        "id": "B",
+        "text": "Expected benign postoperative healing without infection evaluation"
+      },
+      {
+        "id": "C",
+        "text": "Oral aversion as the sole explanation for anemia"
+      },
+      {
+        "id": "D",
+        "text": "Hyperacute rejection presenting as slapped-cheek rash"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Parvovirus B19 is typically acquired during the school-age period and may cause a slapped-cheek rash with pure red blood cell aplasia and low hematocrit.",
+      "rationale_incorrect": {
+        "B": "Slapped-cheek rash with severe anemia warrants evaluation for infections such as parvovirus.",
+        "C": "Oral aversion is a feeding complication unrelated to parvovirus hematologic presentation.",
+        "D": "Hyperacute rejection does not present as slapped-cheek rash with aplastic anemia."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "section": "Ch. 5, Infectious Diseases → 4. Parvovirus B19 → a.",
+      "quote_hint": "school-age period … slapped cheek rash … pure red blood cell aplasia with low hematocrit",
+      "keywords": [
+        "school-age",
+        "slapped",
+        "cheek",
+        "rash",
+        "pure",
+        "red",
+        "blood",
+        "cell"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → 4. Parvovirus B19 → a. (school-age acquisition, slapped-cheek rash, red blood cell aplasia); PDF p. 208 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3082. Source-first item. Fifteenth pediatric recipient in bank; parvovirus presentation angle paired with teaching combo (cctc-1083); anchor verified on Cupples p. 208.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3082"
+  },
+  {
+    "id": "cctc-6471",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 52-year-old solid-organ transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. Which epidemiologic pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Adenovirus is most common in the first 3 months after transplant and with higher immunosuppression dosing"
+      },
+      {
+        "id": "B",
+        "text": "Adenovirus occurs only more than 2 years after every transplant"
+      },
+      {
+        "id": "C",
+        "text": "Adenovirus risk decreases when immunosuppression dosing is higher"
+      },
+      {
+        "id": "D",
+        "text": "Adenovirus is limited to conjunctival infection without other organ involvement"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Adenovirus may cause respiratory, GI, conjunctival, or disseminated pathology and is most common in the first 3 months after transplant with higher immunosuppression dosing.",
+      "rationale_incorrect": {
+        "B": "References emphasize early post-transplant timing rather than exclusive late disease after 2 years.",
+        "C": "Higher immunosuppression dosing is associated with greater adenovirus risk rather than lower risk.",
+        "D": "Adenovirus may involve respiratory, GI, conjunctival, or disseminated pathology rather than conjunctiva alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 211,
+      "section": "Ch. 5, Infectious Diseases → CARV → 11.a. Adenoviruses → i.–iii.",
+      "quote_hint": "respiratory, GI, conjunctival, and disseminated pathology … Most common in the first 3 months … higher immunosuppression dosing",
+      "keywords": [
+        "Adenoviruses",
+        "respiratory",
+        "GI",
+        "conjunctival",
+        "first",
+        "months",
+        "higher",
+        "immunosuppression"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CARV → 11.a. Adenoviruses → i.–iii. (early post-transplant timing with higher IS dosing); PDF p. 211 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3086. Source-first item. Post-transplant adenovirus epidemiology angle paired with education combo (cctc-1088); anchor verified on Cupples p. 211.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3086"
+  },
+  {
+    "id": "cctc-6472",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator leading discharge planning for a recipient going home tomorrow. A 14-year-old kidney transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. Which complication pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Chronic rejection with slow progressive creatinine increase"
+      },
+      {
+        "id": "B",
+        "text": "Hyperacute rejection occurring only years after transplant"
+      },
+      {
+        "id": "C",
+        "text": "Expected normal graft function without any laboratory changes"
+      },
+      {
+        "id": "D",
+        "text": "Primary nonfunction presenting only as slapped-cheek rash"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Chronic rejection is characterized by slow progressive increase in creatinine and is frequently associated with hypertension and proteinuria; it may follow multiple episodes of acute rejection.",
+      "rationale_incorrect": {
+        "B": "Hyperacute rejection occurs at or immediately after implantation rather than as a late slow creatinine rise.",
+        "C": "Rising creatinine with hypertension and proteinuria warrants evaluation for chronic rejection rather than assuming normal function.",
+        "D": "Slapped-cheek rash suggests infections such as parvovirus rather than chronic rejection presentation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 904,
+      "section": "Ch. 17, Pediatric Kidney Transplantation → rejection → c. Chronic rejection → i.–ii.",
+      "quote_hint": "Chronic rejection … slow and progressive increase in creatinine … frequently associated with hypertension and proteinuria",
+      "keywords": [
+        "Chronic",
+        "rejection",
+        "slow",
+        "progressive",
+        "increase",
+        "creatinine",
+        "hypertension",
+        "proteinuria"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → pediatric kidney chronic rejection → c.i.–ii. (slow creatinine rise with hypertension/proteinuria); PDF p. 904 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3089. Source-first item. Nineteenth pediatric recipient in bank; chronic-rejection pattern distinct from acute pediatric rejection presentation (cctc-3087); anchor verified on Cupples p. 904.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3089"
+  },
+  {
+    "id": "cctc-6473",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator coordinating follow-up labs before the surgeon clinic. An 11-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. When monitoring a pediatric solid-organ transplant recipient for Pneumocystis jirovecii pneumonia (PCP), which timing statement aligns with standard pediatric infection references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "PCP typically occurs after the first month following transplantation"
+      },
+      {
+        "id": "B",
+        "text": "PCP occurs only before the transplant operation"
+      },
+      {
+        "id": "C",
+        "text": "PCP never occurs when any immunosuppression is used"
+      },
+      {
+        "id": "D",
+        "text": "PCP is expected exclusively more than 2 years after every transplant"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pneumocystis jirovecii pneumonia typically occurs after the first month following transplantation, although trimethoprim-sulfamethoxazole prophylaxis has essentially eliminated this problem when used.",
+      "rationale_incorrect": {
+        "B": "PCP is a post-transplant fungal pneumonia rather than a preoperative process.",
+        "C": "Immunosuppression increases PCP risk; prophylaxis prevents disease rather than immunosuppression preventing all risk without prophylaxis.",
+        "D": "Standard references describe typical onset after the first post-transplant month rather than exclusively after 2 years."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "section": "Ch. 17, Pediatric Infections → fungal → 1. PCP → a.–b.",
+      "quote_hint": "Pneumocystis jirovecii … Typically occurs after the first month following transplantation",
+      "keywords": [
+        "Pneumocystis",
+        "jirovecii",
+        "Typically",
+        "occurs",
+        "after",
+        "first",
+        "month",
+        "transplantation"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → fungal infections → 1. PCP → b. (typically after first post-transplant month); PDF p. 943 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3093. Source-first item. Pediatric PCP timing angle distinct from TMP-SMX toxoplasma benefit (cctc-3068) and PCP discharge teaching (cctc-3042); anchor verified on Cupples p. 943.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3093"
+  },
+  {
+    "id": "cctc-6474",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. Which exposure route aligns with standard infection references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Ingestion of contaminated food"
+      },
+      {
+        "id": "B",
+        "text": "Airborne transmission only across hospital ventilation systems"
+      },
+      {
+        "id": "C",
+        "text": "Listeria occurs only from blood transfusion and never from food"
+      },
+      {
+        "id": "D",
+        "text": "Listeria is transmitted exclusively through donor organ implantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Listeria monocytogenes listeriosis is transmitted by ingestion of contaminated food and may cause CNS infection with high mortality in solid-organ transplant recipients.",
+      "rationale_incorrect": {
+        "B": "Listeria transmission is described as foodborne ingestion rather than primarily airborne hospital spread.",
+        "C": "Contaminated food is the cited mode of transmission rather than transfusion alone.",
+        "D": "Foodborne acquisition is the described route rather than exclusive donor-organ transmission."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 213,
+      "section": "Ch. 5, Infectious Diseases → Listeriosis → C.5.",
+      "quote_hint": "Mode of transmission: ingestion of contaminated food",
+      "keywords": [
+        "Mode",
+        "transmission",
+        "ingestion",
+        "contaminated",
+        "food",
+        "Listeria",
+        "monocytogenes"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Listeriosis → C.5. (foodborne transmission); PDF p. 213 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3097. Source-first item. Listeria transmission angle paired with education combo (cctc-1101); distinct from unpasteurized-dairy teaching (cctc-1051); anchor verified on Cupples p. 213.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3097"
+  },
+  {
+    "id": "cctc-6475",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 50-year-old solid-organ transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. Which self-care practice for skin cancer surveillance aligns with standard post-transplant health-maintenance references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Routine self-examination with immediate reporting of any changes"
+      },
+      {
+        "id": "B",
+        "text": "Avoid all skin examination because changes are never significant"
+      },
+      {
+        "id": "C",
+        "text": "Self-examination only once every 10 years regardless of findings"
+      },
+      {
+        "id": "D",
+        "text": "Report skin changes only if they occur before transplant"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Skin care teaching includes routine self-examination with immediate reporting of any changes, along with annual examination by a health care provider.",
+      "rationale_incorrect": {
+        "B": "Routine self-examination is recommended because skin cancer risk is elevated after transplant.",
+        "C": "Self-examination is ongoing rather than once per decade.",
+        "D": "Post-transplant skin surveillance continues after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Skin care",
+      "quote_hint": "Routine self-examination; report any changes immediately",
+      "keywords": [
+        "Routine",
+        "self-examination",
+        "report",
+        "any",
+        "changes",
+        "immediately",
+        "Skin",
+        "care"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Skin care (routine self-exam and report changes immediately); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3102. Source-first item. Skin self-examination surveillance angle distinct from annual provider exam emphasis (cctc-3103); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3102"
+  },
+  {
+    "id": "cctc-6476",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": [
+      "030501"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 58-year-old solid-organ transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. When teaching long-term skin surveillance, which anatomic distribution aligns with standard references for basal and squamous cell carcinoma in transplant recipients?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Seventy-five percent occur on the head, neck, or dorsal surface of the hands"
+      },
+      {
+        "id": "B",
+        "text": "All lesions occur exclusively on the soles of the feet"
+      },
+      {
+        "id": "C",
+        "text": "Lesions occur only on sun-protected mucosa with no head or neck involvement"
+      },
+      {
+        "id": "D",
+        "text": "Skin cancers never involve the hands or neck in transplant recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Seventy-five percent of squamous and basal cell carcinomas in solid-organ transplant recipients occur on the head, neck, or dorsal surface of the hands.",
+      "rationale_incorrect": {
+        "B": "Head, neck, and dorsal hand surfaces are the predominant sites rather than soles alone.",
+        "C": "Head and neck are among the most common involved sites.",
+        "D": "The dorsal surface of the hands is a common site for these carcinomas."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 280,
+      "section": "Ch. 6, Noninfectious Diseases → skin cancer → Basal cell and squamous cell carcinoma",
+      "quote_hint": "75% of squamous and basal cell carcinomas occur on the head, neck, or dorsal surface of the hands",
+      "keywords": [
+        "75%",
+        "squamous",
+        "basal",
+        "cell",
+        "carcinomas",
+        "head",
+        "neck",
+        "hands"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → skin cancer → 75% of BCC/SCC on head, neck, or dorsal hands; PDF p. 280 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3106. Source-first item. Anatomic distribution angle distinct from sun-exposed site teaching (cctc-3101) and 95% epidemiology (cctc-2105); anchor verified on Cupples p. 280.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3106"
+  },
+  {
+    "id": "cctc-6477",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator rounding on the transplant unit. A 48-year-old lung transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. When monitoring a lung transplant recipient for malignancy risk, which epidemiologic pattern for posttransplant lymphoproliferative disease (PTLD) aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "PTLD is more common in nonrenal allograft recipients such as lung and heart-lung recipients"
+      },
+      {
+        "id": "B",
+        "text": "PTLD occurs only in kidney transplant recipients"
+      },
+      {
+        "id": "C",
+        "text": "PTLD incidence is identical across all organ types with no variation"
+      },
+      {
+        "id": "D",
+        "text": "PTLD never involves extranodal sites such as the gastrointestinal tract"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTLD is more common in nonrenal allograft recipients, likely because more intense antirejection therapy may be required; lung and heart-lung transplant types are among higher-risk groups.",
+      "rationale_incorrect": {
+        "B": "PTLD occurs across organ types and is particularly noted in nonrenal recipients.",
+        "C": "Incidence varies by allograft type rather than being uniform.",
+        "D": "PTLD is often extranodal and may involve the gastrointestinal tract, lung, or kidney."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 1. Overview / 2. Risk factors",
+      "quote_hint": "More common in nonrenal allograft recipients … Type of transplant (lung; heart-lung)",
+      "keywords": [
+        "More",
+        "common",
+        "nonrenal",
+        "allograft",
+        "recipients",
+        "lung",
+        "heart-lung",
+        "PTLD"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 1.e. and 2.e. (higher incidence in nonrenal and lung/heart-lung recipients); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3110. Source-first item. Nonrenal PTLD epidemiology angle distinct from heart/lung skin-cancer incidence (cctc-2108) and belatacept PTLD teaching (cctc-3072); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3110"
+  },
+  {
+    "id": "cctc-6478",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": [
+      "030501"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading discharge planning for a recipient going home tomorrow. A 55-year-old solid-organ transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. When coordinating long-term post-transplant care for a recipient with new hypertension on cyclosporine, which management principle aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Treat hypertension aggressively and monitor blood pressure response to therapy"
+      },
+      {
+        "id": "B",
+        "text": "Ignore blood pressure because immunosuppression prevents hypertension"
+      },
+      {
+        "id": "C",
+        "text": "Hypertension requires no monitoring after the first post-transplant week"
+      },
+      {
+        "id": "D",
+        "text": "All antihypertensive agents are permanently contraindicated after transplant"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term post-transplant care includes treating hypertension aggressively, assessing risk factors, and monitoring blood pressure response and antihypertensive side effects.",
+      "rationale_incorrect": {
+        "B": "Hypertension may develop as an immunosuppressant side effect and requires treatment.",
+        "C": "Blood pressure monitoring continues long term rather than ending after one week.",
+        "D": "Antihypertensive therapy is used when indicated rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 321,
+      "section": "Ch. 6, Noninfectious Diseases → Long-term care → F. Treat hypertension aggressively",
+      "quote_hint": "Treat hypertension aggressively … Monitor response to antihypertensive therapy",
+      "keywords": [
+        "Treat",
+        "hypertension",
+        "aggressively",
+        "Monitor",
+        "response",
+        "antihypertensive",
+        "therapy"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Long-term care → F. (treat hypertension aggressively; monitor BP response); PDF p. 321 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3114. Source-first item. Aggressive hypertension management angle distinct from hypertension as IS side-effect teaching (cctc-1038) and glucose-control coordination (cctc-3111); anchor verified on Cupples p. 321.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3114"
+  },
+  {
+    "id": "cctc-6479",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": [
+      "030501"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating follow-up labs before the surgeon clinic. A 39-year-old solid-organ transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. Which therapy aligns with standard bone-health references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Bisphosphonates to reverse bone loss and increase bone mass"
+      },
+      {
+        "id": "B",
+        "text": "No bone medications because immunosuppression strengthens bone"
+      },
+      {
+        "id": "C",
+        "text": "Routine daily bone marrow biopsy instead of medication"
+      },
+      {
+        "id": "D",
+        "text": "Bisphosphonates are permanently contraindicated after every transplant"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Treatment of osteopenia or osteoporosis may include bisphosphonates to reverse bone loss and increase bone mass, along with calcium, vitamin D, and exercise.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression contributes to bone loss rather than preventing it.",
+        "C": "Bisphosphonates are pharmacologic therapy rather than routine daily biopsy.",
+        "D": "Bisphosphonates are treatment options when indicated rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Prevent or treat osteopenia/osteoporosis",
+      "quote_hint": "Bisphosphonates to reverse bone loss and increase bone mass",
+      "keywords": [
+        "Bisphosphonates",
+        "reverse",
+        "bone",
+        "loss",
+        "increase",
+        "bone",
+        "mass"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 2.b. (bisphosphonates to reverse bone loss and increase bone mass); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3118. Source-first item. Bisphosphonate therapy angle distinct from calcium/vitamin D recall (cctc-3117) and baseline DEXA screening (cctc-2107); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3118"
+  },
+  {
+    "id": "cctc-6480",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030500",
+    "knowledge_codes": [
+      "030501"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 61-year-old solid-organ transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. Which therapy aligns with standard bone-health references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Calcitonin (Miacalcin nasal)"
+      },
+      {
+        "id": "B",
+        "text": "Calcitonin is never used after transplantation"
+      },
+      {
+        "id": "C",
+        "text": "Only live-virus vaccines treat osteoporosis"
+      },
+      {
+        "id": "D",
+        "text": "Nasal calcitonin is contraindicated in every recipient regardless of indication"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Bone-health treatment options include calcitonin (Miacalcin nasal), denosumab, bisphosphonates, hormone replacement in selected patients, and calcium and vitamin D supplementation.",
+      "rationale_incorrect": {
+        "B": "Calcitonin is listed among post-transplant bone therapies.",
+        "C": "Calcitonin is a bone-directed therapy rather than a vaccine.",
+        "D": "Calcitonin is an option when indicated rather than being universally contraindicated."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 322,
+      "section": "Ch. 6, Noninfectious Diseases → Preserve bone health → Prevent or treat osteopenia/osteoporosis",
+      "quote_hint": "Calcitonin (Miacalcin nasal)",
+      "keywords": [
+        "Calcitonin",
+        "Miacalcin",
+        "nasal",
+        "osteopenia",
+        "osteoporosis"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Preserve bone health → 2.c. (calcitonin [Miacalcin nasal]); PDF p. 322 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3122. Source-first item. Calcitonin therapy angle distinct from denosumab recall (cctc-3121) and bisphosphonate application item (cctc-3118); anchor verified on Cupples p. 322.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3122"
+  },
+  {
+    "id": "cctc-6481",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. Which therapy aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Interferon-α"
+      },
+      {
+        "id": "B",
+        "text": "Interferon-α is the only first-line therapy before any immunosuppression change"
+      },
+      {
+        "id": "C",
+        "text": "Interferon-α is contraindicated in every PTLD case"
+      },
+      {
+        "id": "D",
+        "text": "PTLD never requires systemic therapy beyond observation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Advanced PTLD treatment options include interferon-α, radiotherapy, rituximab-based chemotherapy such as R-CHOP, and reduction of immunosuppression.",
+      "rationale_incorrect": {
+        "B": "Reduction or modification of immunosuppression is a primary approach; interferon-α is among additional listed therapies.",
+        "C": "Interferon-α is a listed treatment option rather than being universally contraindicated.",
+        "D": "PTLD requires active treatment rather than observation alone in many cases."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Interferon-α",
+      "keywords": [
+        "Interferon",
+        "Treatment",
+        "options",
+        "PTLD",
+        "Radiotherapy",
+        "R-CHOP"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4. Treatment options (includes interferon-α among listed modalities); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3127. Source-first item. Interferon-α therapy angle distinct from radiotherapy recall (cctc-3126) and R-CHOP chemotherapy (cctc-2123); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3127"
+  },
+  {
+    "id": "cctc-6482",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 6-year-old solid-organ transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. Which bacterial-infection teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Flu-like symptoms such as malaise, lethargy, decreased appetite, irritability, or change in behavior may indicate bacterial infection in pediatrics"
+      },
+      {
+        "id": "B",
+        "text": "Behavior change never indicates infection in pediatric recipients"
+      },
+      {
+        "id": "C",
+        "text": "Pediatric infection is suspected only when fever exceeds 104°F (40°C)"
+      },
+      {
+        "id": "D",
+        "text": "Decreased appetite alone always indicates rejection rather than infection"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Signs and symptoms of bacterial infection include flu-like symptoms such as malaise, lethargy, decreased appetite, irritability, or change in behavior in pediatrics, along with fever and localized findings.",
+      "rationale_incorrect": {
+        "B": "Irritability and behavior change are specifically cited pediatric infection symptoms.",
+        "C": "Fever is usually ≥101°F (38.5°C), and non-febrile behavioral changes may still warrant evaluation.",
+        "D": "Nonspecific symptoms may indicate infection and require clinical assessment rather than assuming rejection alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Signs and symptoms → ii.",
+      "quote_hint": "malaise, lethargy, decreased appetite, irritability, or change in behavior (pediatrics)",
+      "keywords": [
+        "malaise",
+        "lethargy",
+        "decreased",
+        "appetite",
+        "irritability",
+        "behavior",
+        "pediatrics"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → f.ii. (pediatric malaise, irritability, behavior change); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3131. Source-first item. Pediatric nonspecific bacterial-infection signs angle distinct from organ-specific pediatric bacterial combo (cctc-3096) and fever threshold teaching; anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3131"
+  },
+  {
+    "id": "cctc-6483",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator rounding on the transplant unit. A 48-year-old kidney transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. Which finding aligns with standard bacterial-infection teaching?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Changes in drainage or output such as purulence, cloudy urine, or altered stool odor may indicate bacterial infection"
+      },
+      {
+        "id": "B",
+        "text": "Cloudy urine never indicates infection in transplant recipients"
+      },
+      {
+        "id": "C",
+        "text": "Drainage changes are expected and never require evaluation"
+      },
+      {
+        "id": "D",
+        "text": "Only fever above 104°F indicates possible bacterial infection"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Signs of bacterial infection include changes in drainage or output such as purulence, cloudy urine, and changes in stool consistency, amount, or odor.",
+      "rationale_incorrect": {
+        "B": "Cloudy urine is specifically listed among output changes that may indicate infection.",
+        "C": "Drainage and output changes warrant clinical evaluation rather than being dismissed as always expected.",
+        "D": "Fever is usually ≥101°F (38.5°C), and output changes may occur with or before high fever."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Signs and symptoms → vii.",
+      "quote_hint": "Changes in drainage or output: purulence, cloudy urine, stool consistency, amount, and odor",
+      "keywords": [
+        "Changes",
+        "drainage",
+        "output",
+        "purulence",
+        "cloudy",
+        "urine",
+        "odor"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → f.vii. (changes in drainage/output including cloudy urine); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3135. Source-first item. Drainage/output-change angle distinct from fever/wound combo (cctc-3132) and CVL vancomycin therapy (cctc-3133); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3135"
+  },
+  {
+    "id": "cctc-6484",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading discharge planning for a recipient going home tomorrow. A 55-year-old solid-organ transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. Which finding aligns with standard bacterial-infection teaching?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Catheter or tube insertion sites that are erythematous, swollen, and tender"
+      },
+      {
+        "id": "B",
+        "text": "Catheter-site erythema never indicates infection in transplant recipients"
+      },
+      {
+        "id": "C",
+        "text": "Line-site tenderness is expected and requires no evaluation"
+      },
+      {
+        "id": "D",
+        "text": "Only wound dehiscence, never catheter sites, may show infection signs"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Signs of bacterial infection include catheter or tube insertion sites that are erythematous, swollen, and tender, along with fever and other localized or systemic findings.",
+      "rationale_incorrect": {
+        "B": "Catheter-site erythema, swelling, and tenderness are specifically listed infection signs.",
+        "C": "Catheter-site tenderness with erythema warrants evaluation rather than being dismissed as always expected.",
+        "D": "Both catheter sites and wound abnormalities may indicate bacterial infection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Signs and symptoms → iii.",
+      "quote_hint": "Catheter or tube insertion sites that are erythematous, swollen, and tender",
+      "keywords": [
+        "Catheter",
+        "tube",
+        "insertion",
+        "erythematous",
+        "swollen",
+        "tender"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → f.iii. (erythematous, swollen, tender catheter sites); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3139. Source-first item. Catheter-site infection-sign angle distinct from CVL vancomycin therapy (cctc-3133) and wound drainage changes (cctc-3135); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3139"
+  },
+  {
+    "id": "cctc-6485",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating follow-up labs before the surgeon clinic. A 39-year-old solid-organ transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. After bacterial infection cultures return with organism identification, which treatment principle aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Adjust antibiotic treatment based on the sensitivities of the identified bacteria"
+      },
+      {
+        "id": "B",
+        "text": "Continue empiric broad-spectrum therapy indefinitely without review"
+      },
+      {
+        "id": "C",
+        "text": "Discontinue all antibiotics once any culture is positive"
+      },
+      {
+        "id": "D",
+        "text": "Sensitivity results are never used to guide transplant infection therapy"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "After empiric broad-spectrum antibiotics are started, antibiotic treatment is adjusted based on the sensitivities of the identified bacteria.",
+      "rationale_incorrect": {
+        "B": "Therapy is tailored to culture and sensitivity results rather than continuing empiric therapy indefinitely without adjustment.",
+        "C": "Targeted therapy follows identification and sensitivities rather than stopping all antibiotics solely because a culture is positive.",
+        "D": "Sensitivity-guided adjustment is specifically described in bacterial-infection management."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.ii.",
+      "quote_hint": "Antibiotic treatment is adjusted based on the sensitivities of the identified bacteria",
+      "keywords": [
+        "Antibiotic",
+        "treatment",
+        "adjusted",
+        "sensitivities",
+        "identified",
+        "bacteria"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.ii. (adjust antibiotics based on sensitivities); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3143. Source-first item. Sensitivity-guided antibiotic adjustment angle distinct from empiric vancomycin therapy (cctc-3133) and management combo (cctc-3136); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3143"
+  },
+  {
+    "id": "cctc-6486",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading discharge planning for a recipient going home tomorrow. A 55-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. When teaching transplant recipients about post-transplant infections, which epidemiologic comparison aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Fungal infections are less common than bacterial infections"
+      },
+      {
+        "id": "B",
+        "text": "Fungal infections are always more common than bacterial infections"
+      },
+      {
+        "id": "C",
+        "text": "Fungal and bacterial infections occur with identical frequency"
+      },
+      {
+        "id": "D",
+        "text": "Fungal infections never occur after transplantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Fungal infections are less common than bacterial infections after transplantation, although they remain an important early postoperative concern with specific risk factors.",
+      "rationale_incorrect": {
+        "B": "Bacterial infections are more common than fungal infections.",
+        "C": "Fungal infections are specifically described as less common than bacterial infections rather than equally frequent.",
+        "D": "Fungal infections do occur, particularly in the early postoperative period."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → 5.a.",
+      "quote_hint": "Less common than bacterial infections",
+      "keywords": [
+        "Less",
+        "common",
+        "bacterial",
+        "infections",
+        "Fungal"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → 5.a. (less common than bacterial infections); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3149. Source-first item. Fungal-versus-bacterial epidemiology angle distinct from bacterial-sign teaching (cctc-3132) and Candida presentation item (cctc-3151); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3149"
+  },
+  {
+    "id": "cctc-6487",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator coordinating follow-up labs before the surgeon clinic. A 39-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. When coordinating post-transplant Candida prophylaxis, which timing pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Oral or topical nystatin or clotrimazole prophylaxis during the first 3 months post-transplant"
+      },
+      {
+        "id": "B",
+        "text": "Antifungal prophylaxis is never used in the first year after transplant"
+      },
+      {
+        "id": "C",
+        "text": "Candida prophylaxis is required only after 5 years post-transplant"
+      },
+      {
+        "id": "D",
+        "text": "Prophylaxis is limited exclusively to the pretransplant period"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candida prophylaxis with oral or topical nystatin or clotrimazole may be used during the first 3 months post-transplant, when receiving higher steroid doses, or when immunosuppression is increased during rejection.",
+      "rationale_incorrect": {
+        "B": "Prophylaxis is specifically used in the early post-transplant period rather than being omitted in the first year.",
+        "C": "Early post-transplant prophylaxis is described rather than deferring prophylaxis until 5 years.",
+        "D": "Prophylaxis is a post-transplant measure rather than being limited to pretransplant only."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candida → iv. Treatment → Prophylaxis",
+      "quote_hint": "Prophylaxis with oral/topical nystatin or clotrimazole: During the first 3 months posttransplant",
+      "keywords": [
+        "Prophylaxis",
+        "oral",
+        "topical",
+        "nystatin",
+        "clotrimazole",
+        "first",
+        "months",
+        "posttransplant"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candida → iv. Treatment → Prophylaxis (nystatin/clotrimazole first 3 months post-transplant); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3153. Source-first item. Candida prophylaxis timing angle distinct from Candida oropharyngeal presentation (cctc-3151) and fungal epidemiology items (cctc-3149/3150); anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3153"
+  },
+  {
+    "id": "cctc-6488",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. When teaching transplant recipients about candidemia, which clinical significance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "A significant infection associated with high mortality and graft loss"
+      },
+      {
+        "id": "B",
+        "text": "A benign colonization that never affects graft function"
+      },
+      {
+        "id": "C",
+        "text": "An infection limited exclusively to the pretransplant period"
+      },
+      {
+        "id": "D",
+        "text": "A condition that never causes mortality in transplant recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidemia is described as a significant infection associated with high mortality and graft loss, warranting prompt evaluation and treatment.",
+      "rationale_incorrect": {
+        "B": "Candidemia is a significant invasive infection rather than benign colonization without graft impact.",
+        "C": "Candidemia is a post-transplant complication rather than being limited to pretransplant.",
+        "D": "High mortality is specifically cited rather than candidemia being harmless."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia → i.",
+      "quote_hint": "Significant infection associated with high mortality and graft loss",
+      "keywords": [
+        "Significant",
+        "infection",
+        "associated",
+        "high",
+        "mortality",
+        "graft",
+        "loss"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → i. (high mortality and graft loss); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3157. Source-first item. Candidemia severity epidemiology angle distinct from Candida prophylaxis timing (cctc-3153) and fluconazole interaction (cctc-3154); anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3157"
+  },
+  {
+    "id": "cctc-6489",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 52-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. Which diagnostic step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Echocardiography to rule out cardiac vegetations"
+      },
+      {
+        "id": "B",
+        "text": "No cardiac evaluation is needed when a central line is present"
+      },
+      {
+        "id": "C",
+        "text": "Skin examination alone confirms or excludes candidemia"
+      },
+      {
+        "id": "D",
+        "text": "Echocardiography is required only before transplantation, never afterward"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidemia diagnosis includes blood culture and sensitivities, CT scan to rule out abscess formation, and echocardiography to rule out cardiac vegetations in patients with central venous lines.",
+      "rationale_incorrect": {
+        "B": "Echocardiography is specifically recommended to evaluate for cardiac vegetations when central venous lines are present.",
+        "C": "Blood cultures and imaging evaluation are required rather than skin examination alone.",
+        "D": "Post-transplant candidemia evaluation may include echocardiography rather than being limited to pretransplant assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia → iii.",
+      "quote_hint": "ECHO to rule out cardiac vegetations in patients with CVLs",
+      "keywords": [
+        "ECHO",
+        "rule",
+        "cardiac",
+        "vegetations",
+        "patients",
+        "CVLs",
+        "Diagnosis"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → iii. Diagnosis (echocardiography for cardiac vegetations with CVL); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3161. Source-first item. Candidemia echocardiography angle distinct from candidemia presentation (cctc-3158) and severity epidemiology (cctc-3157); anchor verified on Cupples p. 736.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3161"
+  },
+  {
+    "id": "cctc-6490",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator rounding on the transplant unit. A 48-year-old lung transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. Which Aspergillus symptom aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Dyspnea or hypoxia"
+      },
+      {
+        "id": "B",
+        "text": "Dyspnea always indicates hyperacute rejection and never fungal infection"
+      },
+      {
+        "id": "C",
+        "text": "Aspergillus never causes respiratory symptoms in transplant recipients"
+      },
+      {
+        "id": "D",
+        "text": "Hypoxia excludes Aspergillus from the differential"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Aspergillus symptoms may include dyspnea or hypoxia, along with isolated fever without rejection, sinusitis, gastrointestinal findings, or central nervous system symptoms.",
+      "rationale_incorrect": {
+        "B": "Dyspnea or hypoxia is specifically listed among Aspergillus presentations rather than indicating rejection alone.",
+        "C": "Respiratory symptoms including dyspnea or hypoxia may occur with Aspergillus infection.",
+        "D": "Hypoxia is among cited presentations rather than excluding Aspergillus."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → v.",
+      "quote_hint": "Dyspnea/hypoxia",
+      "keywords": [
+        "Dyspnea",
+        "hypoxia",
+        "Symptoms",
+        "Aspergillus",
+        "fever",
+        "rejection"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → v. Symptoms (dyspnea/hypoxia); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3165. Source-first item. Dyspnea/hypoxia Aspergillus presentation angle distinct from isolated-fever item (cctc-3163) and operative-risk factors (cctc-3159); anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3165"
+  },
+  {
+    "id": "cctc-6491",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing results in post-transplant clinic. A 52-year-old lung transplant patient is the focus of today's interaction. This is a routine long-term follow-up visit. The recipient is otherwise cooperative and wants guidance consistent with transplant references. When teaching about Aspergillus pulmonary infection after transplantation, which imaging finding aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Nodular pneumonias with indistinct margins on chest imaging"
+      },
+      {
+        "id": "B",
+        "text": "Normal chest imaging always excludes Aspergillus infection"
+      },
+      {
+        "id": "C",
+        "text": "Aspergillus produces only lobar consolidation with sharp margins exclusively"
+      },
+      {
+        "id": "D",
+        "text": "Chest imaging is never used in Aspergillus evaluation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Aspergillus diagnosis includes chest radiograph and CT scan to observe for nodular pneumonias with indistinct margins, along with sinus or brain CT and tissue biopsies when indicated.",
+      "rationale_incorrect": {
+        "B": "Imaging may show nodular pneumonias with indistinct margins rather than normal studies always excluding infection.",
+        "C": "Nodular pneumonias with indistinct margins are specifically described rather than only sharp-margined lobar consolidation.",
+        "D": "Chest imaging is part of cited diagnostic evaluation rather than being omitted."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → vi.",
+      "quote_hint": "CXR and CT scan to observe for nodular pneumonias with indistinct margins",
+      "keywords": [
+        "CXR",
+        "CT",
+        "scan",
+        "nodular",
+        "pneumonias",
+        "indistinct",
+        "margins"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → vi. Diagnosis (nodular pneumonias with indistinct margins on CXR/CT); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3166. Source-first item. Aspergillus pulmonary imaging angle distinct from isolated-fever presentation (cctc-3163) and management combo distractors (cctc-3164); anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3166"
+  },
+  {
+    "id": "cctc-6492",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator taking an after-hours call from a recipient. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The patient was discharged within the past week. You are asked to prioritize the next step using standard post-transplant teaching. Which treatment option aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Caspofungin or voriconazole as additional or alternative therapy"
+      },
+      {
+        "id": "B",
+        "text": "No alternative antifungal agents exist for Aspergillus after transplantation"
+      },
+      {
+        "id": "C",
+        "text": "Oral nystatin alone is sufficient for invasive Aspergillus disease"
+      },
+      {
+        "id": "D",
+        "text": "Antifungal therapy should be stopped permanently without substitution"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Aspergillus treatment includes intravenous liposomal amphotericin B with additional or alternative therapies such as caspofungin or voriconazole, with prolonged treatment up to 6 months.",
+      "rationale_incorrect": {
+        "B": "Caspofungin and voriconazole are cited alternative or additional therapies.",
+        "C": "Invasive Aspergillus requires systemic therapy rather than topical nystatin alone.",
+        "D": "Alternative systemic antifungal agents are available rather than stopping therapy without substitution."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus → vii.",
+      "quote_hint": "Additional or alternative therapies with caspofungin or voriconazole",
+      "keywords": [
+        "Additional",
+        "alternative",
+        "therapies",
+        "caspofungin",
+        "voriconazole",
+        "amphotericin"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → vii. Treatment (caspofungin or voriconazole as alternative/additional therapy); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3167. Source-first item. Aspergillus alternative-antifungal therapy angle distinct from amphotericin renal monitoring for candidemia (cctc-3162) and pulmonary imaging recall (cctc-3166); anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3167"
+  },
+  {
+    "id": "cctc-6493",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 3,
+    "task": "030800",
+    "knowledge_codes": [
+      "030803"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading discharge planning for a recipient going home tomorrow. A 55-year-old solid-organ transplant patient is the focus of today's interaction. The patient is in the first post-transplant month. Nursing escalated the question before the attending signs orders. According to OPTN policy, within what timeframe must the OPO submit this report?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Within 30 days of the match run date"
+      },
+      {
+        "id": "B",
+        "text": "Within 90 days after waitlist registration only"
+      },
+      {
+        "id": "C",
+        "text": "By recipient hospital discharge or 42 days after transplant, whichever is first"
+      },
+      {
+        "id": "D",
+        "text": "Within 1 day of every routine medication refill request"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "OPTN Policy 18.3 requires OPOs to report the outcomes of organ offers to the OPTN within 30 days of the match run date. Allocating OPOs and transplant hospitals that received offers share responsibility for accurate outcome reporting.",
+      "rationale_incorrect": {
+        "B": "Ninety days after waitlist registration applies to Transplant Candidate Registration (TCR), not organ-offer outcome reporting.",
+        "C": "Discharge or 42 days after transplant is the timely collection window for transplant recipient registration (TRR), not organ-offer outcomes.",
+        "D": "Medication refill requests are not the trigger for organ-offer outcome reporting."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "optn-policies",
+      "pdf_page": 334,
+      "section": "Policy 18.3 → Recording and Reporting the Outcomes of Organ Offers",
+      "quote_hint": "OPOs are responsible for reporting the outcomes of organ offers to the OPTN within 30 days of the match run date",
+      "keywords": [
+        "OPOs",
+        "reporting",
+        "outcomes",
+        "organ",
+        "offers",
+        "OPTN",
+        "30",
+        "days"
+      ]
+    },
+    "references": [
+      {
+        "citation": "OPTN/UNOS — Policies (HRSA).",
+        "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/optn_policies.pdf#page=334",
+        "locator": "Policy 18.3 → Recording and Reporting the Outcomes of Organ Offers (OPO reporting within 30 days of match run date); PDF p. 334 (repo file-page index; printed margin may differ).",
+        "kind": "regulation"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §8. Organ allocation (UNOS/OPTN allocation and listing systems context); PDF p. 101 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3169. Source-first item. Fifth 030800 item; organ-offer outcome reporting distinct from TRR (cctc-3027), TCR (cctc-3036), TRF (cctc-3040), and SRTR aggregation (cctc-3005); anchor verified on optn-policies p. 334.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3169"
+  },
+  {
+    "id": "cctc-6494",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are teaching staff about late post-transplant mortality and long-term complication surveillance. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Cardiovascular disease is among the leading causes of death in the late post-transplantation period."
+      },
+      {
+        "id": "II",
+        "text": "Cancer is among the leading causes of death in the late post-transplantation period."
+      },
+      {
+        "id": "III",
+        "text": "Infection plays no role in late post-transplant mortality."
+      },
+      {
+        "id": "IV",
+        "text": "Immunosuppression contributes to the pathogenesis of late cardiovascular, cancer, and infectious complications."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II and III only",
+        "selects": [
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Late post-transplant mortality is driven substantially by cardiovascular disease, cancer, and infection, with immunosuppression contributing to each. Statement III is false because infection remains a leading late cause of death.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—immunosuppression contributes to late CVD, cancer, and infection.",
+        "C": "Statement III is false; infection is a leading late mortality cause.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 302,
+      "section": "Ch. 11, Post-transplant Long-term Management → late mortality paragraph (CVD, cancer, infection)",
+      "quote_hint": "CVD, cancer, and infection are the leading causes of death in the late post-transplantation period, and immunosuppression plays a major role",
+      "keywords": [
+        "CVD",
+        "cancer",
+        "infection",
+        "leading",
+        "causes",
+        "death",
+        "immunosuppression"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 11 → late post-transplant mortality (statements I, II, IV; negation of III); PDF p. 302 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3020. Synthesized item. Fourth complex_combo in bank; anchor verified on Danovitch p. 302.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3020"
+  },
+  {
+    "id": "cctc-6495",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": [
+      "030101",
+      "030102"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "A pediatric kidney transplant recipient has prolonged acute tubular necrosis (ATN) with oliguria. Statements will be checked against textbook and policy anchors. Evaluate the following monitoring and management statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "During prolonged ATN, serial renal biopsies may be performed to assess kidney function and monitor for rejection."
+      },
+      {
+        "id": "II",
+        "text": "ATN may last for variable periods from hours up to several weeks."
+      },
+      {
+        "id": "III",
+        "text": "Management includes avoiding nephrotoxic drugs and conservative fluid replacement to prevent hypervolemia."
+      },
+      {
+        "id": "IV",
+        "text": "Hyperkalemia never occurs during pediatric ATN because potassium is automatically excreted."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Pediatric ATN may persist for hours to weeks; prolonged ATN warrants serial biopsies to assess function and exclude rejection; management includes avoiding nephrotoxic drugs and conservative fluids. Hyperkalemia develops rapidly in anuric patients, so statement IV is false.",
+      "rationale_incorrect": {
+        "A": "Statement III is also correct—management includes avoiding nephrotoxic drugs and preventing hypervolemia.",
+        "C": "Statement IV is false; close potassium monitoring is emphasized during pediatric ATN.",
+        "D": "Statement IV is false; anuric patients quickly become hyperkalemic."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 901,
+      "section": "Ch. 17, Pediatric Transplantation → kidney early complications → ATN → ii.–vii.",
+      "quote_hint": "May last for variable periods … oliguria … hyperkalemic … serial renal biopsies … avoiding nephrotoxic drugs … conservative fluid replacement",
+      "keywords": [
+        "variable",
+        "periods",
+        "serial",
+        "renal",
+        "biopsies",
+        "nephrotoxic",
+        "drugs",
+        "hyperkalemic"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → kidney early complications → ATN → ii.–vii. (duration, biopsies, nephrotoxic avoidance, hyperkalemia); PDF p. 901 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3067. Synthesized item. Seventeenth complex_combo in bank; pediatric ATN monitoring angle distinct from pediatric fever workup (cctc-3056) and ureteral obstruction (cctc-3047); anchor verified on Cupples p. 901.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3067"
+  },
+  {
+    "id": "cctc-6496",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030100",
+    "knowledge_codes": [
+      "030101",
+      "030102"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "A kidney recipient is starting sirolimus maintenance therapy. Statements will be checked against textbook and policy anchors. Evaluate the following medication-safety statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Hyperlipidemia is among the common adverse effects of sirolimus and everolimus."
+      },
+      {
+        "id": "II",
+        "text": "Sirolimus and everolimus may be associated with pneumonitis."
+      },
+      {
+        "id": "III",
+        "text": "Sirolimus is routinely recommended without restriction for all liver transplant recipients."
+      },
+      {
+        "id": "IV",
+        "text": "Routine sirolimus trough level monitoring is recommended."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "III and IV only",
+        "selects": [
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Sirolimus and everolimus commonly cause hyperlipidemia and may cause pneumonitis; routine trough monitoring is recommended. Statement III is false because sirolimus has a black box warning against use in liver transplantation due to hepatic artery thrombosis risk.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—routine sirolimus trough monitoring is recommended.",
+        "C": "Statements I and II are also true; statement III is false for liver transplantation.",
+        "D": "Statement III is false—sirolimus is not routinely recommended for all liver recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 155,
+      "section": "Ch. 4, Pharmacology → Sirolimus → Adverse effects and monitoring → g.–h.",
+      "quote_hint": "Hyperlipidemia … associated with pneumonitis … black box warning against use in liver transplantation … Routine monitoring of sirolimus trough level is recommended",
+      "keywords": [
+        "Hyperlipidemia",
+        "pneumonitis",
+        "black",
+        "box",
+        "warning",
+        "liver",
+        "trough",
+        "monitoring"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Sirolimus → Adverse effects and monitoring → g.–h. (hyperlipidemia, pneumonitis, liver black box, trough monitoring); PDF p. 155 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3079. Synthesized item. Twenty-second complex_combo in bank; sirolimus safety combo distinct from BK risk-factor combo (cctc-3076) and adult ATN combo (cctc-3071); anchor verified on Cupples p. 155.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3079"
+  },
+  {
+    "id": "cctc-6497",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are updating pediatric post-transplant bacterial infection teaching by organ type. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "In pediatric kidney recipients, urinary tract infection—especially pyelonephritis—is the most common bacterial infection."
+      },
+      {
+        "id": "II",
+        "text": "In pediatric heart recipients, mediastinitis may occur with Staphylococcus aureus or gram-negative organisms."
+      },
+      {
+        "id": "III",
+        "text": "In pediatric liver recipients, ascending cholangitis is associated with biliary tract abnormalities."
+      },
+      {
+        "id": "IV",
+        "text": "In pediatric lung recipients, bacterial pneumonia never involves Pseudomonas species."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Pediatric kidney recipients most commonly develop UTI/pyelonephritis, heart recipients may develop mediastinitis with S. aureus or gram-negative organisms, and liver recipients may develop ascending cholangitis associated with biliary abnormalities. Pediatric lung pneumonia may involve Pseudomonas, so statement IV is false.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—ascending cholangitis is associated with biliary tract abnormalities in pediatric liver recipients.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because Pseudomonas is among cited pediatric lung pneumonia pathogens."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 943,
+      "section": "Ch. 17, Pediatric Infections → bacterial → 3.a.–d.",
+      "quote_hint": "Urinary tract infection, especially pyelonephritis, is the most common … Mediastinitis (Staphylococcus aureus and gram-negative organisms) … Ascending cholangitis associated with biliary tract abnormalities … pneumonia: Staphylococcus aureus or Pseudomonas",
+      "keywords": [
+        "Urinary",
+        "tract",
+        "infection",
+        "pyelonephritis",
+        "Mediastinitis",
+        "Staphylococcus",
+        "cholangitis",
+        "Pseudomonas"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → bacterial infections → 3.a.–d. (organ-specific pediatric bacterial infection patterns); PDF p. 943 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3096. Source-first item. Pediatric organ-specific bacterial-infection combo paired with UTI recall item (cctc-3094); anchor verified on Cupples p. 943.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3096"
+  },
+  {
+    "id": "cctc-6498",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating post-transplant posttransplant lymphoproliferative disease (PTLD) teaching. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Epstein-Barr virus donor-seropositive to recipient-seronegative mismatch is a key PTLD risk factor."
+      },
+      {
+        "id": "II",
+        "text": "PTLD may present with fever or lymphadenopathy."
+      },
+      {
+        "id": "III",
+        "text": "PTLD is never treated by modifying immunosuppression."
+      },
+      {
+        "id": "IV",
+        "text": "Antiviral drugs such as ganciclovir may be used in PTLD prevention."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Epstein-Barr virus mismatch, fever or lymphadenopathy, and antiviral prevention strategies are supported by standard references. Statement III is false because reduction or withdrawal of immunosuppression is a primary PTLD treatment option.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—ganciclovir-class antivirals are cited for PTLD prevention.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because immunosuppression reduction is a treatment option."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD",
+      "quote_hint": "recipient EBV seronegative; donor EBV seropositive … Fever … Lymphadenopathy … Reduction or withdrawal of immunosuppression … ganciclovir",
+      "keywords": [
+        "EBV",
+        "seronegative",
+        "seropositive",
+        "Fever",
+        "Lymphadenopathy",
+        "immunosuppression",
+        "ganciclovir"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 2.b.–4.a. and 5.a. (EBV mismatch risk, fever/lymphadenopathy presentation, IS reduction treatment, ganciclovir prevention); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3112. Source-first item. PTLD risk/presentation/prevention combo distinct from belatacept PTLD counseling (cctc-3072) and infection/bone-health combo (cctc-3108); anchors verified on Cupples pp. 281–282.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3112"
+  },
+  {
+    "id": "cctc-6499",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030400",
+    "knowledge_codes": [
+      "030401"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating post-transplant posttransplant lymphoproliferative disease (PTLD) treatment teaching. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Reduction or withdrawal of immunosuppression is a treatment option for PTLD."
+      },
+      {
+        "id": "II",
+        "text": "Rituximab may be used in PTLD management."
+      },
+      {
+        "id": "III",
+        "text": "Radiotherapy is never used for PTLD."
+      },
+      {
+        "id": "IV",
+        "text": "Surgery may be used for localized PTLD disease."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "PTLD management includes immunosuppression reduction, rituximab, and surgery for localized disease. Statement III is false because radiotherapy is listed among PTLD treatment options.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—surgery may be used for localized disease.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because radiotherapy is a listed treatment option."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 281,
+      "section": "Ch. 6, Noninfectious Diseases → PTLD → 4. Treatment options",
+      "quote_hint": "Reduction or withdrawal of immunosuppression … Rituximab … Surgery for localized disease … Radiotherapy",
+      "keywords": [
+        "Reduction",
+        "withdrawal",
+        "immunosuppression",
+        "Rituximab",
+        "Surgery",
+        "localized",
+        "Radiotherapy"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → PTLD → 4.a., 4.c., 4.f., and 4.h. (IS reduction, rituximab, surgery, radiotherapy); PDF p. 281 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3124. Source-first item. PTLD treatment-modality combo distinct from PTLD risk/prevention combo (cctc-3112) and rituximab single-item counseling (cctc-2122); anchor verified on Cupples p. 281.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3124"
+  },
+  {
+    "id": "cctc-6500",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating bacterial-infection management protocols. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Broad-spectrum antibiotics should be administered after cultures are obtained based on the apparent or suspected etiology of fever."
+      },
+      {
+        "id": "II",
+        "text": "If a central venous line is present, vancomycin may be started until the organism is identified."
+      },
+      {
+        "id": "III",
+        "text": "Immunosuppression may be decreased with caution during severe bacterial infection while monitoring for rejection."
+      },
+      {
+        "id": "IV",
+        "text": "Tacrolimus levels never need monitoring during bacterial infection treatment."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Culture-directed empiric antibiotics, CVL vancomycin, and cautious immunosuppression reduction with rejection monitoring are supported. Statement IV is false because tacrolimus levels should be closely monitored and reported when not therapeutic.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—immunosuppression may be decreased cautiously with rejection monitoring.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because tacrolimus levels require close monitoring during infection treatment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 734,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → Treatment → h.",
+      "quote_hint": "Broad-spectrum antibiotics administered after cultures … vancomycin … Immunosuppression may be decreased … Closely monitor tacrolimus levels",
+      "keywords": [
+        "Broad-spectrum",
+        "antibiotics",
+        "cultures",
+        "vancomycin",
+        "Immunosuppression",
+        "decreased",
+        "tacrolimus",
+        "levels"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → h.i.–iii. (empiric antibiotics after cultures, CVL vancomycin, cautious IS reduction, tacrolimus monitoring); PDF p. 734 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3136. Source-first item. Bacterial-infection management combo distinct from sign-recognition combo (cctc-3132) and VRE linezolid recall (cctc-3134); anchor verified on Cupples p. 734.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3136"
+  },
+  {
+    "id": "cctc-6501",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating central venous line (CVL) infection protocols. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Appropriate antimicrobial medications should be given based on culture and sensitivities."
+      },
+      {
+        "id": "II",
+        "text": "Blood cultures should be drawn daily until negative."
+      },
+      {
+        "id": "III",
+        "text": "Removal of the CVL may be necessary."
+      },
+      {
+        "id": "IV",
+        "text": "CVL infections never require line removal or exchange under any circumstances."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Sensitivity-guided antimicrobials, daily cultures until negative, and possible CVL removal are supported. Statement IV is false because CVL removal or exchange over a guide wire may be necessary.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—CVL removal may be necessary in some cases.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because line removal or exchange may be required."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → bacterial infection → CVL infections",
+      "quote_hint": "appropriate antimicrobial medications as determined through culture and sensitivities … Blood cultures are drawn daily until negative … Removal of the CVL may be necessary",
+      "keywords": [
+        "antimicrobial",
+        "culture",
+        "sensitivities",
+        "Blood",
+        "cultures",
+        "daily",
+        "Removal",
+        "CVL"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → bacterial infection → CVL infections → vi. (sensitivity-guided therapy, daily cultures, possible line removal/exchange); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3148. Source-first item. CVL-infection management combo distinct from bacterial-treatment combo (cctc-3144) and diagnostic combo (cctc-3140); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3148"
+  },
+  {
+    "id": "cctc-6502",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating post-transplant fungal-infection teaching. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Fungal infections are less common than bacterial infections."
+      },
+      {
+        "id": "II",
+        "text": "Indwelling venous catheters are a risk factor for fungal infection."
+      },
+      {
+        "id": "III",
+        "text": "Surgical complications such as intestinal leaks are risk factors for fungal infection."
+      },
+      {
+        "id": "IV",
+        "text": "Fungal infections never occur in the early postoperative period."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Fungal infections are less common than bacterial infections, and indwelling venous catheters and surgical complications such as intestinal leaks are cited risk factors. Statement IV is false because fungal infections usually occur in the early postoperative period.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—intestinal leaks are listed among surgical risk factors.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because early postoperative timing is specifically described."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 735,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → 5.",
+      "quote_hint": "Less common than bacterial infections … Usually occur in the early postoperative period … Surgical complications (particularly intestinal leaks) … Indwelling venous catheters",
+      "keywords": [
+        "Less",
+        "common",
+        "bacterial",
+        "early",
+        "postoperative",
+        "intestinal",
+        "leaks",
+        "catheters"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → 5.a.–c. (epidemiology, early timing, intestinal leaks and indwelling catheters as risk factors); PDF p. 735 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3152. Source-first item. Fungal-infection risk combo distinct from bacterial-treatment combo (cctc-3144) and CVL-infection combo (cctc-3148); anchor verified on Cupples p. 735.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3152"
+  },
+  {
+    "id": "cctc-6503",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating post-transplant fungal-infection teaching. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Candida prophylaxis with nystatin or clotrimazole may be used during the first 3 months post-transplant."
+      },
+      {
+        "id": "II",
+        "text": "Fluconazole increases tacrolimus levels and requires dose monitoring."
+      },
+      {
+        "id": "III",
+        "text": "Lungs are the most common primary site of Aspergillus infection."
+      },
+      {
+        "id": "IV",
+        "text": "Aspergillus infections typically occur only in the first week after transplant."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Early Candida prophylaxis, fluconazole–tacrolimus interaction monitoring, and pulmonary primacy of Aspergillus infection are supported. Statement IV is false because Aspergillus is described as a later infection occurring 6 months or more post-transplant.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—lungs are the most common primary Aspergillus site.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because Aspergillus timing is later rather than limited to the first week."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candida and Aspergillus",
+      "quote_hint": "Prophylaxis with oral/topical nystatin or clotrimazole … Fluconazole increases tacrolimus levels",
+      "keywords": [
+        "Prophylaxis",
+        "nystatin",
+        "clotrimazole",
+        "Fluconazole",
+        "tacrolimus",
+        "levels",
+        "monitored",
+        "dose"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candida → iv. Treatment (nystatin/clotrimazole prophylaxis; fluconazole–tacrolimus interaction); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → i.–ii. (lungs most common primary site; later infection ≥6 months post-transplant); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3156. Source-first item. Candida/Aspergillus combo distinct from early fungal-risk combo (cctc-3152) and bacterial-treatment combo (cctc-3144); corroborating locators on p. 736 and p. 737 verified.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3156"
+  },
+  {
+    "id": "cctc-6504",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating candidemia and Aspergillus teaching. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Candidemia is associated with high mortality and graft loss."
+      },
+      {
+        "id": "II",
+        "text": "Candidemia may present with fever, lymphadenopathy, and rash."
+      },
+      {
+        "id": "III",
+        "text": "Aspergillus infection may occur 6 months or more post-transplant."
+      },
+      {
+        "id": "IV",
+        "text": "Lungs are never a site of Aspergillus infection."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Candidemia severity, candidemia symptoms, and later Aspergillus timing are supported. Statement IV is false because lungs are the most common primary site of Aspergillus infection.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—Aspergillus may occur 6 months or more post-transplant.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because pulmonary involvement is specifically described."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia and Aspergillus",
+      "quote_hint": "high mortality and graft loss … Fever … Lymphadenopathy … Rash … Later infection, occurring 6 months or more posttransplant",
+      "keywords": [
+        "mortality",
+        "graft",
+        "loss",
+        "Fever",
+        "Lymphadenopathy",
+        "Rash",
+        "Later",
+        "infection"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → i.–ii. (mortality/graft loss; fever, lymphadenopathy, rash); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → i.–ii. (later infection ≥6 months; lungs most common primary site); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3160. Source-first item. Candidemia/Aspergillus combo distinct from Candida/Aspergillus combo (cctc-3156) and early fungal-risk combo (cctc-3152); corroborating locators on p. 736 and p. 737 verified.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3160"
+  },
+  {
+    "id": "cctc-6505",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating candidemia and Aspergillus management teaching. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Echocardiography may be used to rule out cardiac vegetations in candidemia patients with central venous lines."
+      },
+      {
+        "id": "II",
+        "text": "Liposomal amphotericin B requires close renal monitoring when used with tacrolimus."
+      },
+      {
+        "id": "III",
+        "text": "Aspergillus may present with isolated fever without symptoms of rejection."
+      },
+      {
+        "id": "IV",
+        "text": "Aspergillus is diagnosed by blood culture alone without imaging or biopsy."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Candidemia echocardiography with central lines, amphotericin–tacrolimus renal monitoring, and isolated Aspergillus fever are supported. Statement IV is false because diagnosis includes chest imaging, sinus or brain CT, and tissue biopsies rather than blood culture alone.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—isolated fever without rejection may occur with Aspergillus.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because imaging and tissue biopsy are cited diagnostic approaches."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 736,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Candidemia and Aspergillus",
+      "quote_hint": "ECHO to rule out cardiac vegetations … Monitor renal function closely … Isolated fever without symptoms of rejection … CXR and CT scan … Tissue biopsies",
+      "keywords": [
+        "ECHO",
+        "cardiac",
+        "vegetations",
+        "renal",
+        "function",
+        "nephrotoxicity",
+        "tacrolimus",
+        "fever"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Candidemia → iii.–iv. (echocardiography; liposomal amphotericin renal monitoring with tacrolimus); PDF p. 736 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → v.–vi. (isolated fever; CXR/CT and tissue biopsy diagnosis); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3164. Source-first item. Candidemia/Aspergillus management combo distinct from candidemia/Aspergillus epidemiology combo (cctc-3160) and early fungal-risk combo (cctc-3152); corroborating locators on p. 736 and p. 737 verified.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3164"
+  },
+  {
+    "id": "cctc-6506",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 3,
+    "task": "030200",
+    "knowledge_codes": [
+      "030202"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating Aspergillus evaluation and treatment teaching. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Aspergillus may present with dyspnea or hypoxia."
+      },
+      {
+        "id": "II",
+        "text": "Chest imaging may show nodular pneumonias with indistinct margins."
+      },
+      {
+        "id": "III",
+        "text": "Voriconazole may be used as additional or alternative therapy."
+      },
+      {
+        "id": "IV",
+        "text": "Metastatic Aspergillus disease never involves the central nervous system."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Dyspnea or hypoxia, nodular pneumonias on imaging, and voriconazole as alternative therapy are supported. Statement IV is false because metastatic disease may involve the central nervous system, liver, and/or kidneys.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—voriconazole may be used as alternative therapy.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because central nervous system involvement may occur with metastatic disease."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 737,
+      "section": "Ch. 13, Post-Transplant Complications → fungal infections → Aspergillus",
+      "quote_hint": "Dyspnea/hypoxia … nodular pneumonias with indistinct margins … caspofungin or voriconazole … Metastatic disease seen in central nervous system (CNS), liver, and/or kidneys",
+      "keywords": [
+        "Dyspnea",
+        "hypoxia",
+        "nodular",
+        "pneumonias",
+        "voriconazole",
+        "Metastatic",
+        "central",
+        "nervous"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → fungal infections → Aspergillus → v.–vii. (dyspnea/hypoxia; nodular pneumonias; voriconazole therapy); PDF p. 737 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-3168. Source-first item. Aspergillus evaluation/treatment combo distinct from candidemia/Aspergillus management combo (cctc-3164) and early fungal-risk combo (cctc-3152); anchor verified on Cupples p. 737.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-3168"
+  }
+]

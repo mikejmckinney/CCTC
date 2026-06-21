@@ -61,7 +61,7 @@ Regenerate from parents: `node scripts/scenario/build-pilot-companions.mjs` (ste
 
 Regenerate: `node scripts/scenario/build-wave-02.mjs` (parent selection in `scripts/scenario/lib/wave-selection.mjs`; stems via `scripts/scenario/lib/scenario-stem.mjs`).
 
-Status: **`draft`** until maintainer spot-check (pilot `cctc-6001`–`6030` remain **`reviewed`**).
+Status: **`reviewed`**.
 
 ## Wave 3 (Phase C — second content wave)
 
@@ -69,7 +69,15 @@ Status: **`draft`** until maintainer spot-check (pilot `cctc-6001`–`6030` rema
 
 Regenerate: `node scripts/scenario/build-wave-03.mjs`.
 
-Status: **`draft`** until maintainer spot-check.
+Status: **`reviewed`** (promoted after maintainer approval).
+
+## Wave 4 (Phase C — final content wave)
+
+**176** companions (`cctc-6331`–`cctc-6506`) in `questions/scenario/domain-*/wave-batch-04.json` — **59 / 59 / 58 per domain**, completing **506** 1:1 pairings with the standard bank.
+
+Regenerate: `node scripts/scenario/build-wave-04.mjs`.
+
+Status: **`reviewed`**.
 
 ## App usage
 

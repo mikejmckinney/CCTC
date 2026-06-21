@@ -1,0 +1,4833 @@
+[
+  {
+    "id": "cctc-6331",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "recall",
+    "organ": "liver",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 50-year-old liver transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When teaching malignancy-prevention measures, which vaccination guidance aligns with standard references for nonimmune recipients?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Hepatitis B vaccination may help prevent hepatitis B virus–related hepatocellular carcinoma"
+      },
+      {
+        "id": "B",
+        "text": "Hepatitis B vaccination is contraindicated in all transplant recipients"
+      },
+      {
+        "id": "C",
+        "text": "Vaccination has no role in preventing transplant-related malignancy"
+      },
+      {
+        "id": "D",
+        "text": "Only live-virus vaccines are recommended for cancer prevention after transplant"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cancer-prevention teaching includes hepatitis B vaccination in nonimmune recipients, which may help prevent hepatitis B virus–related hepatocellular carcinoma.",
+      "rationale_incorrect": {
+        "B": "Hepatitis B vaccination is recommended for nonimmune recipients rather than being universally contraindicated.",
+        "C": "Vaccination is one component of malignancy-prevention teaching.",
+        "D": "Live-virus vaccines require special timing considerations; hepatitis B vaccination is an inactivated preventive measure cited for HCC risk reduction."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer",
+      "quote_hint": "Hepatitis B vaccination in nonimmune recipients (may help to prevent hepatitis B virus–related hepatocellular carcinoma)",
+      "keywords": [
+        "Hepatitis",
+        "vaccination",
+        "nonimmune",
+        "recipients",
+        "hepatocellular",
+        "carcinoma"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 3. (hepatitis B vaccination in nonimmune recipients for HBV-related HCC); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1112. Source-first item. Hepatitis B HCC-prevention angle distinct from pediatric HPV/hepatitis B teaching (cctc-1087) and skin-cancer prevention (cctc-1102); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1112"
+  },
+  {
+    "id": "cctc-6332",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 41-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When teaching malignancy-prevention measures after transplantation, which sun-exposure guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Avoid tanning beds"
+      },
+      {
+        "id": "B",
+        "text": "Use tanning beds daily to improve vitamin D without risk"
+      },
+      {
+        "id": "C",
+        "text": "Tanning beds are safer than outdoor sun for transplant recipients"
+      },
+      {
+        "id": "D",
+        "text": "Tanning beds are recommended instead of sunscreen"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cancer-prevention teaching includes sun precautions such as avoiding undue sunlight exposure and avoiding tanning beds, along with protective clothing and sunscreen.",
+      "rationale_incorrect": {
+        "B": "Tanning beds are avoided rather than used daily for vitamin D.",
+        "C": "Tanning beds are not described as safer than outdoor sun exposure.",
+        "D": "Sunscreen and sun avoidance are recommended rather than tanning beds."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 282,
+      "section": "Ch. 6, Noninfectious Diseases → Prevention of cancer → Sun precautions",
+      "quote_hint": "Avoiding tanning beds",
+      "keywords": [
+        "Avoiding",
+        "tanning",
+        "beds",
+        "Sun",
+        "precautions",
+        "sunscreen"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 6 → Prevention of cancer → 4.b. (avoid tanning beds); PDF p. 282 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1114. Source-first item. Tanning-bed avoidance angle distinct from SPF greater than 50 teaching (cctc-1103) and hepatitis B HCC prevention (cctc-1112); anchor verified on Cupples p. 282.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1114"
+  },
+  {
+    "id": "cctc-6333",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which long-term management approach aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Medications, dietary changes, and exercise as indicated"
+      },
+      {
+        "id": "B",
+        "text": "No treatment because immunosuppression prevents hyperlipidemia"
+      },
+      {
+        "id": "C",
+        "text": "Complete dietary fat elimination with no exercise or medications"
+      },
+      {
+        "id": "D",
+        "text": "Defer all lipid management until twenty years post-transplant"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hyperlipidemia may develop as a side effect of immunosuppressive medications and may be managed with medications, dietary changes, and exercise.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressants can cause hyperlipidemia rather than preventing it.",
+        "C": "Management includes medications and exercise in addition to dietary modification.",
+        "D": "Lipid management begins when hyperlipidemia develops rather than being deferred for decades."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects of immunosuppression → iii. Hyperlipidemia",
+      "quote_hint": "May be managed with medications … dietary changes, and exercise",
+      "keywords": [
+        "Hyperlipidemia",
+        "managed",
+        "medications",
+        "dietary",
+        "changes",
+        "exercise"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → iii. Hyperlipidemia (medications, diet, exercise); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1115. Source-first item. Hyperlipidemia lifestyle-management angle distinct from sirolimus hyperlipidemia adverse effect (cctc-3077) and long-term IS combo (cctc-1038); anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1115"
+  },
+  {
+    "id": "cctc-6334",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 58-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When teaching animal-safety precautions after transplantation, which pet-care guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Keep pets immunized and in good health"
+      },
+      {
+        "id": "B",
+        "text": "Household pets require no vaccinations after transplant"
+      },
+      {
+        "id": "C",
+        "text": "Only stray animals need immunizations"
+      },
+      {
+        "id": "D",
+        "text": "Pet health is unrelated to transplant infection risk"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Animal-safety teaching includes keeping pets immunized and in good health, along with precautions for litter, fecal matter, and new pets.",
+      "rationale_incorrect": {
+        "B": "Pet immunization and health maintenance are recommended for household pets.",
+        "C": "Household pets should be immunized and healthy, not only stray animals.",
+        "D": "Pet-related exposures can transmit infection to immunosuppressed recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → v. Animal safety",
+      "quote_hint": "Keep pets immunized and in good health",
+      "keywords": [
+        "Keep",
+        "pets",
+        "immunized",
+        "good",
+        "health",
+        "Animal",
+        "safety"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (keep pets immunized and in good health); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1116. Source-first item. Pet-immunization angle distinct from cat-litter precautions (cctc-1099) and new-pet timing (cctc-1100); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1116"
+  },
+  {
+    "id": "cctc-6335",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 63-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. Which counseling point aligns with standard lifestyle references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Discuss resumption of more vigorous activity with the transplant team before starting"
+      },
+      {
+        "id": "B",
+        "text": "Resume marathon training immediately on hospital discharge without team input"
+      },
+      {
+        "id": "C",
+        "text": "All physical activity is permanently prohibited after every transplant"
+      },
+      {
+        "id": "D",
+        "text": "Vigorous exercise requires no transplant-team discussion if the recipient feels well"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Physical activity is encouraged, including walking and activities of daily living, but resumption of more vigorous activity such as running or gym workouts should be discussed first with the transplant team.",
+      "rationale_incorrect": {
+        "B": "Vigorous activity should be discussed with the transplant team rather than started immediately at discharge.",
+        "C": "Walking and activities of daily living are encouraged rather than permanent activity prohibition.",
+        "D": "Team discussion is recommended before vigorous exercise even when the recipient feels well."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "section": "Ch. 3, Patient Education → g. Lifestyle changes → i. Potential activity restrictions",
+      "quote_hint": "Resumption of more vigorous activity such as running or gym workouts should be discussed first with the transplant team",
+      "keywords": [
+        "Resumption",
+        "vigorous",
+        "activity",
+        "running",
+        "gym",
+        "workouts",
+        "transplant",
+        "team"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Lifestyle changes → i. (discuss vigorous activity with transplant team before resuming); PDF p. 110 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1118. Source-first item. Vigorous-activity counseling angle distinct from early lifting restrictions (cctc-1056) and lifestyle-restriction combo (cctc-1058); anchor verified on Cupples p. 110.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1118"
+  },
+  {
+    "id": "cctc-6336",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 41-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. When teaching dietary infection-prevention measures, which egg-related precaution aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Do not consume raw eggs or eggs that are not thoroughly cooked, including eggs in batter and cookie dough"
+      },
+      {
+        "id": "B",
+        "text": "Raw eggs in cookie dough are safe for immunosuppressed recipients"
+      },
+      {
+        "id": "C",
+        "text": "Only unpasteurized milk poses egg-related infection risk"
+      },
+      {
+        "id": "D",
+        "text": "Thorough cooking is required only for meat and never for eggs"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Dietary teaching includes not consuming raw eggs or eggs that are not thoroughly cooked, including eggs in batter, cookie dough, and certain salad dressings.",
+      "rationale_incorrect": {
+        "B": "Raw or undercooked eggs in batter and cookie dough are not safe for immunosuppressed recipients.",
+        "C": "Egg handling is a separate dietary precaution from unpasteurized dairy.",
+        "D": "Egg precautions are explicitly included along with meat and seafood guidance."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iii. Dietary precautions",
+      "quote_hint": "Do not consume raw eggs or eggs that are not thoroughly cooked, including eggs in batter, cookie dough",
+      "keywords": [
+        "consume",
+        "raw",
+        "eggs",
+        "thoroughly",
+        "cooked",
+        "batter",
+        "cookie",
+        "dough"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iii. Dietary precautions (avoid raw/undercooked eggs including batter and cookie dough); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1119. Source-first item. Raw-egg dietary angle distinct from dietary infection-prevention combo (cctc-1052) and cross-contamination teaching (cctc-2113); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1119"
+  },
+  {
+    "id": "cctc-6337",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When teaching sexual health after transplantation, which infection-prevention measure aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Encourage use of condoms to prevent sexually transmitted diseases"
+      },
+      {
+        "id": "B",
+        "text": "Condoms are unnecessary because immunosuppression prevents sexually transmitted diseases"
+      },
+      {
+        "id": "C",
+        "text": "Sexually transmitted disease prevention requires permanent abstinence for all recipients"
+      },
+      {
+        "id": "D",
+        "text": "Only pediatric recipients need sexually transmitted disease prevention counseling"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching includes encouraging use of condoms to prevent sexually transmitted diseases along with contraception and pregnancy counseling.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressed recipients remain at infection risk and benefit from condom counseling.",
+        "C": "Condom use is recommended rather than universal permanent abstinence.",
+        "D": "Sexual health teaching applies to adult recipients as well as pediatric counseling on related topics."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health → iii.",
+      "quote_hint": "Encourage use of condoms to prevent sexually transmitted diseases",
+      "keywords": [
+        "Encourage",
+        "condoms",
+        "prevent",
+        "sexually",
+        "transmitted",
+        "diseases"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → iii. (condoms to prevent sexually transmitted diseases); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1122. Source-first item. Condom/STD-prevention angle distinct from pregnancy-timing counseling (cctc-1091) and pediatric HPV teaching (cctc-1087); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1122"
+  },
+  {
+    "id": "cctc-6338",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 39-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Discuss oral contraception with the provider because it may be contraindicated due to thromboembolic risk"
+      },
+      {
+        "id": "B",
+        "text": "All oral contraceptives are safe without provider discussion in every recipient"
+      },
+      {
+        "id": "C",
+        "text": "Oral contraception is the only recommended contraceptive method after transplant"
+      },
+      {
+        "id": "D",
+        "text": "Thromboembolic risk is irrelevant to contraception counseling after transplantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching includes discussing oral contraception with the provider because it may be contraindicated due to risk of thromboembolic events.",
+      "rationale_incorrect": {
+        "B": "Oral contraception requires individualized provider discussion rather than universal safety.",
+        "C": "Multiple contraceptive and pregnancy-planning options are discussed rather than oral contraception alone.",
+        "D": "Thromboembolic risk is specifically cited as a reason for provider discussion."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health → iv.",
+      "quote_hint": "Discuss use of oral contraception with provider; may be contraindicated due to risk of thromboembolic events",
+      "keywords": [
+        "Discuss",
+        "oral",
+        "contraception",
+        "provider",
+        "contraindicated",
+        "thromboembolic",
+        "events"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → iv. (oral contraception may be contraindicated due to thromboembolic risk); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1123. Source-first item. Oral-contraception counseling angle distinct from condom teaching (cctc-1122) and pregnancy postponement (cctc-1091); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1123"
+  },
+  {
+    "id": "cctc-6339",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 41-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When teaching recipients about appearance changes after transplantation, which effect aligns with standard long-term medication references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Weight gain and hair loss may occur with certain medications"
+      },
+      {
+        "id": "B",
+        "text": "Immunosuppression prevents all cosmetic or body-image changes"
+      },
+      {
+        "id": "C",
+        "text": "Hair loss never occurs after transplantation"
+      },
+      {
+        "id": "D",
+        "text": "Weight gain is impossible on any immunosuppressive regimen"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Appearance teaching notes that transplantation may lead to body image changes associated with medications and surgical sequelae, including weight gain and hair loss with certain drugs.",
+      "rationale_incorrect": {
+        "B": "Medication and surgical sequelae can affect appearance and body image.",
+        "C": "Hair loss may occur with certain immunosuppressive medications.",
+        "D": "Weight gain may occur with certain medications rather than being impossible."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → m. Appearance",
+      "quote_hint": "Weight gain and hair loss may occur with certain medications",
+      "keywords": [
+        "Weight",
+        "gain",
+        "hair",
+        "loss",
+        "certain",
+        "medications",
+        "Appearance",
+        "body"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → m. Appearance → ii. (weight gain and hair loss with certain medications); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1124. Source-first item. Body-image/appearance angle distinct from cyclosporine cosmetic effects (cctc-3045) and sexual-health counseling (cctc-1122); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1124"
+  },
+  {
+    "id": "cctc-6340",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 52-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Counsel about increased infection risk with intrauterine devices"
+      },
+      {
+        "id": "B",
+        "text": "Intrauterine devices have no infection risk in immunosuppressed recipients"
+      },
+      {
+        "id": "C",
+        "text": "Intrauterine devices are the only recommended contraceptive method after transplant"
+      },
+      {
+        "id": "D",
+        "text": "Infection risk counseling applies only to male recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching includes counseling recipients about increased risk of infection with intrauterine devices along with other contraception and pregnancy planning topics.",
+      "rationale_incorrect": {
+        "B": "Increased infection risk with intrauterine devices is specifically cited for counseling.",
+        "C": "Multiple contraceptive options are discussed rather than intrauterine devices alone.",
+        "D": "Intrauterine device counseling applies to female recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health → vi.",
+      "quote_hint": "Counsel recipients about increased risk of infection with intrauterine devices",
+      "keywords": [
+        "Counsel",
+        "recipients",
+        "increased",
+        "risk",
+        "infection",
+        "intrauterine",
+        "devices"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → vi. (increased infection risk with IUDs); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1126. Source-first item. IUD infection-risk angle distinct from oral-contraception counseling (cctc-1123) and condom teaching (cctc-1122); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1126"
+  },
+  {
+    "id": "cctc-6341",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. When teaching sexual health after transplantation, which counseling point about libido aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Sexual dysfunction or changes in libido may be related to medications; encourage open communication with providers"
+      },
+      {
+        "id": "B",
+        "text": "Libido changes never occur after transplantation"
+      },
+      {
+        "id": "C",
+        "text": "Sexual concerns should never be discussed with the transplant team"
+      },
+      {
+        "id": "D",
+        "text": "All libido changes require permanent discontinuation of immunosuppression"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual health teaching notes that sexual dysfunction or changes in libido may be related to medications and encourages patients to openly communicate concerns to healthcare providers.",
+      "rationale_incorrect": {
+        "B": "Medication-related sexual dysfunction and libido changes may occur.",
+        "C": "Open communication with healthcare providers is encouraged.",
+        "D": "Concerns are addressed through counseling and medication review rather than automatic cessation of all immunosuppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health → vii.",
+      "quote_hint": "Sexual dysfunction or changes in libido may be related to medications … openly communicate their concerns to healthcare providers",
+      "keywords": [
+        "Sexual",
+        "dysfunction",
+        "changes",
+        "libido",
+        "medications",
+        "communicate",
+        "healthcare",
+        "providers"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → vii. (libido changes may relate to medications; encourage provider communication); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1127. Source-first item. Libido/sexual-dysfunction teaching angle distinct from appearance changes (cctc-1124) and pregnancy counseling (cctc-1091); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1127"
+  },
+  {
+    "id": "cctc-6342",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 39-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. After a transplant recipient becomes pregnant or a male recipient fathers a child, which referral aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "National Transplant Pregnancy Registry"
+      },
+      {
+        "id": "B",
+        "text": "No registry referral is ever recommended for transplant pregnancy outcomes"
+      },
+      {
+        "id": "C",
+        "text": "Referral only to a local blood bank registry"
+      },
+      {
+        "id": "D",
+        "text": "Pregnancy registry referral applies only before transplantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Pregnant recipients and males who have fathered a child after transplantation should be referred to the National Transplant Pregnancy Registry.",
+      "rationale_incorrect": {
+        "B": "Registry referral is recommended for pregnancy and fatherhood after transplant.",
+        "C": "The National Transplant Pregnancy Registry is the cited referral resource.",
+        "D": "Referral occurs after pregnancy or fathering a child rather than only pretransplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → l. Pregnancy after transplantation → iv.",
+      "quote_hint": "Refer pregnant recipients and males who have fathered a child to the National Transplant Pregnancy Registry",
+      "keywords": [
+        "Refer",
+        "pregnant",
+        "recipients",
+        "fathered",
+        "child",
+        "National",
+        "Transplant",
+        "Pregnancy"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → l. Pregnancy after transplantation → iv. (National Transplant Pregnancy Registry referral); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1128. Source-first item. Pregnancy-registry referral angle distinct from pregnancy-timing counseling (cctc-1091) and reproductive-health combo (cctc-1125); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1128"
+  },
+  {
+    "id": "cctc-6343",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010603"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 45-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When reinforcing long-term dietary teaching after transplantation, which general diet pattern aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "A healthy diet low in fat, sugar, and salt and high in fiber"
+      },
+      {
+        "id": "B",
+        "text": "A diet unrestricted in fat, sugar, and salt for all recipients indefinitely"
+      },
+      {
+        "id": "C",
+        "text": "Complete elimination of all carbohydrates after discharge"
+      },
+      {
+        "id": "D",
+        "text": "No dietary guidance is needed once immunosuppression is stable"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Diet teaching encourages a healthy diet low in fat, sugar, and salt and high in fiber, while recognizing that early restrictions may be individualized during recovery.",
+      "rationale_incorrect": {
+        "B": "Long-term guidance emphasizes limiting fat, sugar, and salt rather than unrestricted intake for all recipients.",
+        "C": "Fiber and balanced nutrition are encouraged rather than eliminating all carbohydrates.",
+        "D": "Diet recommendations continue to be reinforced as recovery progresses."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → d. Diet → ii.",
+      "quote_hint": "Encourage a healthy diet low in fat, sugar and salt and high in fiber",
+      "keywords": [
+        "Encourage",
+        "healthy",
+        "diet",
+        "fat",
+        "sugar",
+        "salt",
+        "fiber"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → d. Diet → ii. (healthy diet low in fat, sugar, and salt; high in fiber); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1130. Source-first item. General healthy-diet angle distinct from hand-hygiene teaching (cctc-1019, p. 115) and raw-egg precautions (cctc-1119); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1130"
+  },
+  {
+    "id": "cctc-6344",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 52-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Assess work activities for suitability and discuss potential restrictions such as weightlifting and exposure to toxic agents"
+      },
+      {
+        "id": "B",
+        "text": "Return-to-work planning never considers occupational exposures"
+      },
+      {
+        "id": "C",
+        "text": "All recipients must resume prior heavy labor without assessment"
+      },
+      {
+        "id": "D",
+        "text": "Toxic occupational exposures are encouraged to build stamina"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Return-to-work counseling includes assessing work activities for suitability and discussing potential restrictions such as weightlifting and exposure to toxic agents along with required precautions.",
+      "rationale_incorrect": {
+        "B": "Work activities and exposures are specifically assessed rather than ignored.",
+        "C": "Return timing and restrictions depend on recovery and job demands rather than automatic resumption of heavy labor.",
+        "D": "Toxic exposures may require restrictions rather than being encouraged."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → n. Return to work → iii.",
+      "quote_hint": "Assess patient's work activities to determine suitability; discuss potential restrictions (e.g., weightlifting; exposure to toxic agents)",
+      "keywords": [
+        "Assess",
+        "work",
+        "activities",
+        "restrictions",
+        "weightlifting",
+        "exposure",
+        "toxic",
+        "agents"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → n. Return to work → iii. (assess work activities; weightlifting and toxic-agent restrictions); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1131. Source-first item. Work-restriction angle distinct from telework/part-time counseling (cctc-3059) and return-to-work combo (cctc-1133); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1131"
+  },
+  {
+    "id": "cctc-6345",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When a transplant recipient cannot safely return to previous employment, which referral aligns with standard return-to-work references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Refer to Social Worker or Vocational Rehabilitation"
+      },
+      {
+        "id": "B",
+        "text": "Discharge planning ends with no vocational resources"
+      },
+      {
+        "id": "C",
+        "text": "Refer only to an unrelated subspecialty surgeon"
+      },
+      {
+        "id": "D",
+        "text": "Permanent unemployment is the only supported outcome"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "When patients should not return to previous employment, references direct referral to Social Worker or Vocational Rehabilitation for vocational support.",
+      "rationale_incorrect": {
+        "B": "Vocational resources are available through social work and vocational rehabilitation referral.",
+        "C": "Vocational rehabilitation and social work—not unrelated surgical referral—is the cited pathway.",
+        "D": "Alternative employment planning is supported rather than assuming permanent unemployment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → n. Return to work → iv.",
+      "quote_hint": "Refer patients to Social Worker or Vocational Rehabilitation if patients should not return to their previous employment",
+      "keywords": [
+        "Refer",
+        "patients",
+        "Social",
+        "Worker",
+        "Vocational",
+        "Rehabilitation",
+        "previous",
+        "employment"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → n. Return to work → iv. (Social Worker or Vocational Rehabilitation referral); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1132. Source-first item. Vocational-referral angle distinct from work-restriction assessment (cctc-1131) and heart return-to-work telework item (cctc-3059); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1132"
+  },
+  {
+    "id": "cctc-6346",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 41-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. Which travel counseling point aligns with standard post-transplant references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Patients are typically instructed to avoid traveling away from home during the first few months post-transplant"
+      },
+      {
+        "id": "B",
+        "text": "Long-distance travel is encouraged before the first outpatient follow-up visit"
+      },
+      {
+        "id": "C",
+        "text": "Travel timing is unrestricted immediately after hospital discharge"
+      },
+      {
+        "id": "D",
+        "text": "Immunosuppression may be stopped during travel to reduce infection risk"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Travel teaching instructs patients to avoid traveling away from home during the first few months post-transplant, with destination planning based on current health and infection risk.",
+      "rationale_incorrect": {
+        "B": "Early travel away from home is discouraged during the first few months rather than encouraged before stable follow-up.",
+        "C": "Travel is restricted during early recovery rather than being unrestricted at discharge.",
+        "D": "Immunosuppression must continue as prescribed; travel does not justify stopping therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel → i.",
+      "quote_hint": "avoid traveling away from home during the first few months posttransplant",
+      "keywords": [
+        "avoid",
+        "traveling",
+        "away",
+        "home",
+        "first",
+        "few",
+        "months",
+        "posttransplant"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → i. (avoid travel away from home first few months post-transplant); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1134. Source-first item. Early post-transplant travel-away-from-home angle distinct from extensive-travel-at-discharge teaching (cctc-1023, p. 111); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1134"
+  },
+  {
+    "id": "cctc-6347",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. When teaching medication planning for post-transplant travel, which instruction aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Pack a 2- to 3-day supply of medications in carry-on luggage"
+      },
+      {
+        "id": "B",
+        "text": "Place all immunosuppression only in checked baggage with no carry-on supply"
+      },
+      {
+        "id": "C",
+        "text": "Travel requires discontinuing immunosuppression for the duration of the trip"
+      },
+      {
+        "id": "D",
+        "text": "Medications should be transferred to unlabeled containers before flying"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Travel medication teaching includes packing a 2- to 3-day supply in carry-on luggage and bringing more medication than needed in original containers in case of unexpected delays.",
+      "rationale_incorrect": {
+        "B": "A carry-on supply is specifically recommended rather than relying only on checked baggage.",
+        "C": "Immunosuppression must continue during travel as prescribed.",
+        "D": "Medications should be stored in original containers rather than unlabeled containers."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel → iv. Medications",
+      "quote_hint": "Pack 2- to 3-day supply in carry-on luggage",
+      "keywords": [
+        "Pack",
+        "3-day",
+        "supply",
+        "carry-on",
+        "luggage",
+        "medications"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → iv. Medications (2–3-day carry-on supply; extra meds in original containers); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1135. Source-first item. Travel medication-carry-on angle distinct from timed IS dosing (cctc-3019) and discharge medication combo (cctc-1033); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1135"
+  },
+  {
+    "id": "cctc-6348",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 52-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. Which coordination step aligns with standard travel references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Assist the patient in locating a health care provider at the destination should medical care be required"
+      },
+      {
+        "id": "B",
+        "text": "Destination medical planning is unnecessary because transplant teams manage care worldwide remotely"
+      },
+      {
+        "id": "C",
+        "text": "Recipients should travel without medication summaries to reduce luggage weight"
+      },
+      {
+        "id": "D",
+        "text": "Only emergency departments at home institutions may treat transplant travelers"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Travel planning includes assisting the patient in locating a health care provider at the destination if medical care is required, along with carrying a health history summary and adequate medications.",
+      "rationale_incorrect": {
+        "B": "Destination medical planning is recommended rather than assuming remote management alone is sufficient.",
+        "C": "Travel teaching includes bringing a summary of health history and current medications.",
+        "D": "Recipients may need local care at the destination rather than limiting treatment to the home institution only."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel → iii.",
+      "quote_hint": "Assist patient in locating health care provider at destination should medical care be required",
+      "keywords": [
+        "Assist",
+        "patient",
+        "locating",
+        "health",
+        "care",
+        "provider",
+        "destination"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → iii. (locate health care provider at destination); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1136. Source-first item. Destination-provider planning angle distinct from early travel restriction (cctc-1134) and carry-on medication teaching (cctc-1135); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1136"
+  },
+  {
+    "id": "cctc-6349",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010605"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 63-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When coordinating post-transplant psychological care, which monitoring priority aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Monitor the patient for signs of depression and anxiety"
+      },
+      {
+        "id": "B",
+        "text": "Psychological health requires no follow-up after hospital discharge"
+      },
+      {
+        "id": "C",
+        "text": "Depression screening applies only to living donors, not recipients"
+      },
+      {
+        "id": "D",
+        "text": "Anxiety is expected and should never be discussed with the team"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Psychological care teaching notes that psychological health after transplant is as important as physical health and includes monitoring for signs of depression and anxiety.",
+      "rationale_incorrect": {
+        "B": "Ongoing psychological monitoring is part of post-transplant care rather than being deferred indefinitely.",
+        "C": "Recipient psychological health is specifically addressed in post-transplant teaching.",
+        "D": "Open monitoring and support for depression and anxiety are encouraged rather than avoiding discussion."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → f. Psychological care → ii.",
+      "quote_hint": "Monitor patient for signs of depression and anxiety",
+      "keywords": [
+        "Monitor",
+        "patient",
+        "signs",
+        "depression",
+        "anxiety"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → f. Psychological care → ii. (monitor for depression and anxiety); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1138. Source-first item. Recipient psychological-monitoring angle distinct from living-donor depression/anxiety teaching (cctc-1023, p. 341) and appearance/body-image counseling (cctc-1124); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1138"
+  },
+  {
+    "id": "cctc-6350",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 41-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. When teaching health maintenance after transplantation, which household vaccination counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Caregivers, family members, and co-workers should receive annual influenza vaccinations unless otherwise contraindicated"
+      },
+      {
+        "id": "B",
+        "text": "Only transplant recipients need influenza vaccination; household contacts are exempt"
+      },
+      {
+        "id": "C",
+        "text": "Household members should receive live influenza vaccine to protect the recipient"
+      },
+      {
+        "id": "D",
+        "text": "Influenza vaccination is discouraged for all household contacts"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Health maintenance teaching includes annual inactivated influenza vaccine for recipients and notes that caregivers, family members, and co-workers should also receive annual influenza vaccinations unless contraindicated.",
+      "rationale_incorrect": {
+        "B": "Household and caregiver influenza vaccination is specifically recommended to reduce exposure risk.",
+        "C": "Recipients should receive inactivated influenza vaccine rather than live formulations.",
+        "D": "Household influenza vaccination is encouraged rather than discouraged."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "caregivers, family members, and co-workers receive annual influenza vaccinations unless otherwise contraindicated",
+      "keywords": [
+        "caregivers",
+        "family",
+        "members",
+        "co-workers",
+        "annual",
+        "influenza",
+        "vaccinations"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance → ii. (caregiver/family/co-worker annual influenza vaccination); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1139. Source-first item. Household influenza-vaccination angle distinct from inactivated-recipient vaccine combo (cctc-1048) and meningococcal high-risk groups (cctc-1090); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1139"
+  },
+  {
+    "id": "cctc-6351",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. Which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wear gloves and a mask for garden activity or working in dirt"
+      },
+      {
+        "id": "B",
+        "text": "Gardening is permanently contraindicated for all transplant recipients"
+      },
+      {
+        "id": "C",
+        "text": "Bare-hand contact with soil is preferred to maintain immunity"
+      },
+      {
+        "id": "D",
+        "text": "Masks are required only in hospital settings, never at home outdoors"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching for other exposures includes wearing gloves and a mask for garden activity or working in dirt, along with cleaning and covering recent cuts or wounds.",
+      "rationale_incorrect": {
+        "B": "Gardening may continue with precautions rather than being universally prohibited.",
+        "C": "Gloves and mask are recommended for soil exposure rather than bare-hand contact.",
+        "D": "Mask use is cited for garden and dirt exposure at home as well as other infection-prevention settings."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vi. Others",
+      "quote_hint": "Wear gloves and mask for garden activity or working in dirt",
+      "keywords": [
+        "Wear",
+        "gloves",
+        "mask",
+        "garden",
+        "activity",
+        "working",
+        "dirt"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vi. Others (gloves and mask for garden/dirt activity); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1140. Source-first item. Garden/dirt exposure angle distinct from cat-litter/animal-safety combo (cctc-1116) and hand-hygiene teaching (cctc-1019); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1140"
+  },
+  {
+    "id": "cctc-6352",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 63-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. When teaching routine infection-prevention measures at home, which wound-care step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Clean and cover recent cuts or wounds"
+      },
+      {
+        "id": "B",
+        "text": "Leave all cuts uncovered to promote air drying"
+      },
+      {
+        "id": "C",
+        "text": "Ignore minor skin breaks because immunosuppression prevents infection"
+      },
+      {
+        "id": "D",
+        "text": "Apply only topical steroids to all wounds without cleaning"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching for other exposures includes cleaning and covering recent cuts or wounds, along with completing prescribed infection prophylaxis or treatment.",
+      "rationale_incorrect": {
+        "B": "Cleaning and covering recent wounds is recommended rather than leaving cuts uncovered.",
+        "C": "Immunosuppressed recipients remain at infection risk and require wound care.",
+        "D": "Wound cleaning and covering are standard rather than applying steroids without cleaning."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vi. Others",
+      "quote_hint": "Clean and cover recent cuts or wounds",
+      "keywords": [
+        "Clean",
+        "cover",
+        "recent",
+        "cuts",
+        "wounds"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vi. Others (clean and cover recent cuts or wounds); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1143. Source-first item. Wound-cleaning precaution angle distinct from garden gloves/mask teaching (cctc-1140) and surgical wound infection management (cctc-3051); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1143"
+  },
+  {
+    "id": "cctc-6353",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 55-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. Which counseling factor aligns with standard travel references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Risk of infection, including risk of endemic infections in the area"
+      },
+      {
+        "id": "B",
+        "text": "Endemic infection risk should be ignored when selecting travel destinations"
+      },
+      {
+        "id": "C",
+        "text": "Only flight duration matters; local disease patterns are irrelevant"
+      },
+      {
+        "id": "D",
+        "text": "Recipients should select destinations based solely on leisure activities"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Travel destination selection considers current health and physical limitations and risk of infection, including endemic infections in the area.",
+      "rationale_incorrect": {
+        "B": "Endemic infection risk is specifically included in destination planning.",
+        "C": "Local infection and endemic disease patterns are part of destination selection rather than being irrelevant.",
+        "D": "Health and infection risk are weighed along with other travel factors rather than ignoring medical considerations."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel → ii.",
+      "quote_hint": "Risk of infection, including risk of endemic infections in area",
+      "keywords": [
+        "Risk",
+        "infection",
+        "endemic",
+        "infections",
+        "area",
+        "travel"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → ii. (destination selection includes endemic infection risk); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1144. Source-first item. Endemic-infection destination-risk angle distinct from early travel-away-from-home restriction (cctc-1134) and destination-provider planning (cctc-1136); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1144"
+  },
+  {
+    "id": "cctc-6354",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 58-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When updating post-transplant vaccination teaching, which inactivated vaccine aligns with standard health-maintenance references for recipients not immunized before transplantation?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Hepatitis A and B vaccines if not immunized pretransplant"
+      },
+      {
+        "id": "B",
+        "text": "Live varicella vaccine for all recipients immediately after transplant"
+      },
+      {
+        "id": "C",
+        "text": "No hepatitis vaccination is ever recommended after transplantation"
+      },
+      {
+        "id": "D",
+        "text": "Only live herpes zoster vaccine is recommended post-transplant"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Health maintenance after transplantation includes obtaining recommended inactivated vaccinations such as hepatitis A and B if the recipient was not immunized pretransplant, along with annual inactivated influenza and pneumococcal vaccine.",
+      "rationale_incorrect": {
+        "B": "Live varicella vaccine is contraindicated after transplantation.",
+        "C": "Hepatitis A and B vaccination is recommended when pretransplant immunization was incomplete.",
+        "D": "Live herpes zoster vaccine is contraindicated after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "Hepatitis A and B if not immunized pretransplant",
+      "keywords": [
+        "Hepatitis",
+        "immunized",
+        "pretransplant",
+        "vaccinations",
+        "Health"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance → ii. (hepatitis A and B if not immunized pretransplant); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1146. Source-first item. Hepatitis A/B post-transplant vaccination angle distinct from household influenza teaching (cctc-1139) and vaccination combo (cctc-1048); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1146"
+  },
+  {
+    "id": "cctc-6355",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Transplant recipients may require vaccine boosters earlier due to immunosuppression"
+      },
+      {
+        "id": "B",
+        "text": "Immunosuppression eliminates the need for any post-transplant vaccinations"
+      },
+      {
+        "id": "C",
+        "text": "Vaccine boosters should always be deferred until ten years after transplant"
+      },
+      {
+        "id": "D",
+        "text": "Immunosuppression makes live-virus vaccines the preferred post-transplant option"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Health maintenance teaching notes that transplant recipients may require vaccine boosters earlier because immunosuppression can reduce vaccine response, while live-virus vaccines remain contraindicated.",
+      "rationale_incorrect": {
+        "B": "Inactivated vaccinations remain important after transplantation rather than being eliminated.",
+        "C": "Earlier boosters may be needed rather than deferring all vaccination for a decade.",
+        "D": "Immunosuppressed patients should not receive live-virus vaccines after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "Transplant recipients may require boosters earlier, due to immunosuppression",
+      "keywords": [
+        "Transplant",
+        "recipients",
+        "require",
+        "boosters",
+        "earlier",
+        "immunosuppression"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance → ii. (earlier boosters due to immunosuppression); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1147. Source-first item. Earlier-booster counseling angle distinct from pneumococcal timing in health-maintenance combo (cctc-1141) and hepatitis A/B recall (cctc-1146); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1147"
+  },
+  {
+    "id": "cctc-6356",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010605"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 63-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. Which psychological-care teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Differences between perceived expectation and actual outcome may affect psychological health"
+      },
+      {
+        "id": "B",
+        "text": "Psychological distress never occurs after successful transplantation"
+      },
+      {
+        "id": "C",
+        "text": "Expectation mismatch is unrelated to post-transplant mental health"
+      },
+      {
+        "id": "D",
+        "text": "Psychological concerns should never be discussed with the transplant team"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Psychological care teaching recognizes that differences in perceived expectation versus actual outcome may contribute to the patient's psychological health, along with monitoring for depression and anxiety.",
+      "rationale_incorrect": {
+        "B": "Psychological distress including depression and anxiety may occur and warrants monitoring.",
+        "C": "Expectation-versus-outcome differences are specifically cited as a psychological health factor.",
+        "D": "Open monitoring and support for psychological concerns are part of post-transplant care."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → f. Psychological care → iii.",
+      "quote_hint": "Differences in perceived expectation versus actual outcome may contribute to patient's psychological health",
+      "keywords": [
+        "Differences",
+        "perceived",
+        "expectation",
+        "actual",
+        "outcome",
+        "psychological",
+        "health"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → f. Psychological care → iii. (perceived expectation versus actual outcome); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1148. Source-first item. Expectation-outcome psychological angle distinct from depression/anxiety monitoring recall (cctc-1138) and living-donor psychosocial risks (cctc-1023); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1148"
+  },
+  {
+    "id": "cctc-6357",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 45-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When teaching home infection-prevention measures after transplantation, which medication-related step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Complete medication for infection prophylaxis or treatment as directed"
+      },
+      {
+        "id": "B",
+        "text": "Stop all infection prophylaxis once the recipient feels well"
+      },
+      {
+        "id": "C",
+        "text": "Infection prophylaxis is optional and never needs to be completed"
+      },
+      {
+        "id": "D",
+        "text": "Prophylaxis should be shared with household members instead of the recipient"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes completing medication for infection prophylaxis or treatment as directed, along with wound care and other household precautions.",
+      "rationale_incorrect": {
+        "B": "Prophylaxis and treatment courses should be completed as directed rather than stopped when the recipient feels well.",
+        "C": "Completing prescribed prophylaxis or treatment is specifically recommended.",
+        "D": "The recipient completes their own prescribed prophylaxis rather than transferring it to household members."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vi. Others",
+      "quote_hint": "Complete medication for infection prophylaxis or treatment as directed",
+      "keywords": [
+        "Complete",
+        "medication",
+        "infection",
+        "prophylaxis",
+        "treatment",
+        "directed"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vi. Others (complete infection prophylaxis/treatment as directed); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1150. Source-first item. Prophylaxis-completion teaching angle distinct from wound-cleaning precaution (cctc-1143) and CMV prophylaxis discharge teaching (cctc-3026); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1150"
+  },
+  {
+    "id": "cctc-6358",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 58-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which example aligns with standard donor–recipient confidentiality references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Organ characteristics or an anatomic abnormality that could affect organ function"
+      },
+      {
+        "id": "B",
+        "text": "The donor family's unrelated vacation itinerary"
+      },
+      {
+        "id": "C",
+        "text": "The procurement coordinator's personal schedule"
+      },
+      {
+        "id": "D",
+        "text": "Unrelated donor employment history with no clinical relevance"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipients may be informed of specific donor information critical to informed consent, including possible donor-transmitted disease risks and organ characteristics or anatomic abnormality that could affect organ function.",
+      "rationale_incorrect": {
+        "B": "Donor family vacation plans are not clinically relevant donor disclosure examples.",
+        "C": "Staff personal schedules are not part of donor information shared for consent.",
+        "D": "Unrelated employment history without clinical relevance is not required donor disclosure."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → p. Donor–recipient confidentiality → i.",
+      "quote_hint": "Organ characteristics or anatomic abnormality that could affect organ function",
+      "keywords": [
+        "Organ",
+        "characteristics",
+        "anatomic",
+        "abnormality",
+        "affect",
+        "organ",
+        "function"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → p. Donor–recipient confidentiality → i. (organ characteristics/anatomic abnormality affecting function); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1151. Source-first item. Recipient-facing anatomic-abnormality disclosure angle distinct from donor-transmitted-disease offer item (cctc-2039) and PHS consent teaching (cctc-2023); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1151"
+  },
+  {
+    "id": "cctc-6359",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 50-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When teaching about donor–recipient confidentiality after transplantation, which communication point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Donor families will receive a letter from the OPO within 30 days of the donation"
+      },
+      {
+        "id": "B",
+        "text": "Donor families never receive any communication from the OPO after donation"
+      },
+      {
+        "id": "C",
+        "text": "Recipient identifying information is always shared with donor families without restriction"
+      },
+      {
+        "id": "D",
+        "text": "OPO communication with donor families occurs only after ten years"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The OPO may provide general recipient status information to the donor family as part of organ allocation, and donor families will receive a letter from the OPO within 30 days of donation.",
+      "rationale_incorrect": {
+        "B": "Donor families receive OPO communication including a letter within 30 days rather than no contact.",
+        "C": "Only general information such as age decade, health status, and gender may be provided without recipient permission.",
+        "D": "Communication occurs within 30 days rather than being deferred for a decade."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → p. Donor–recipient confidentiality → ii.",
+      "quote_hint": "Donor families will receive a letter from the OPO within 30 days of the donation",
+      "keywords": [
+        "Donor",
+        "families",
+        "receive",
+        "letter",
+        "OPO",
+        "within",
+        "30",
+        "days"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → p. Donor–recipient confidentiality → ii. (OPO letter to donor family within 30 days); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1152. Source-first item. OPO donor-family letter timing angle distinct from anatomic-abnormality disclosure (cctc-1151) and deceased-donor disease-risk item (cctc-2039); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1152"
+  },
+  {
+    "id": "cctc-6360",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 41-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When teaching recipient hand-hygiene practices after transplantation, which timing aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wash hands after using the bathroom"
+      },
+      {
+        "id": "B",
+        "text": "Hand-washing is needed only before the first meal of the day"
+      },
+      {
+        "id": "C",
+        "text": "Soap and water are never needed after bathroom use if gel is available"
+      },
+      {
+        "id": "D",
+        "text": "Bathroom hand-washing applies only to pediatric recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands after using the bathroom, along with washing before preparing or eating meals and after contact with secretions or animals.",
+      "rationale_incorrect": {
+        "B": "Hand-washing is needed at multiple times throughout the day, not only before the first meal.",
+        "C": "Soap and water remain important when hands are soiled; gel supplements but does not replace appropriate washing.",
+        "D": "Post-transplant hand-hygiene guidance applies to all recipients, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After using the bathroom",
+      "keywords": [
+        "After",
+        "using",
+        "bathroom",
+        "Wash",
+        "hands",
+        "soap",
+        "water"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands after using the bathroom); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1154. Source-first item. Bathroom hand-hygiene timing angle distinct from general best-practice hand-washing (cctc-1019) and visitor hand-hygiene combo (cctc-1118); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1154"
+  },
+  {
+    "id": "cctc-6361",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 45-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which example aligns with standard donor–recipient confidentiality references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Recipient age described in decades, general status of health, and gender"
+      },
+      {
+        "id": "B",
+        "text": "Recipient full name, address, and telephone number"
+      },
+      {
+        "id": "C",
+        "text": "Recipient employment history and income details"
+      },
+      {
+        "id": "D",
+        "text": "Recipient social security number and insurance policy numbers"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The OPO may provide general recipient status information to the donor family without recipient permission, including age described in decades, general status of health, and gender.",
+      "rationale_incorrect": {
+        "B": "Identifying information such as full name and contact details is not among the general information that may be shared without permission.",
+        "C": "Employment and income details are not listed as permissible general information for donor families.",
+        "D": "Social security and insurance identifiers are not described as general information shareable without recipient permission."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → p. Donor–recipient confidentiality → ii.",
+      "quote_hint": "Age described in decades … General status of health … Gender",
+      "keywords": [
+        "Age",
+        "decades",
+        "General",
+        "status",
+        "health",
+        "Gender",
+        "permission"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → p. Donor–recipient confidentiality → ii. (general recipient information shareable without permission: age decade, health status, gender); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1155. Source-first item. Donor-family general-information angle distinct from anatomic-abnormality disclosure (cctc-1151) and OPO letter timing (cctc-1152); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1155"
+  },
+  {
+    "id": "cctc-6362",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 58-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When reinforcing home infection-prevention teaching for a recipient with household pets, which hand-hygiene step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wash hands after contact with animals"
+      },
+      {
+        "id": "B",
+        "text": "Hand-washing after animal contact is unnecessary if pets are indoor only"
+      },
+      {
+        "id": "C",
+        "text": "Only veterinary staff need hand hygiene after animal contact"
+      },
+      {
+        "id": "D",
+        "text": "Animal contact requires stopping all immunosuppression temporarily"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands after contact with animals, along with other high-risk contacts such as soil, plants, and secretions.",
+      "rationale_incorrect": {
+        "B": "Hand-washing after animal contact is specifically recommended regardless of whether pets remain indoors.",
+        "C": "Recipients themselves should practice hand hygiene after animal contact rather than delegating it to veterinary staff alone.",
+        "D": "Immunosuppression continues as prescribed; infection prevention emphasizes hygiene rather than stopping therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After contact with animals",
+      "keywords": [
+        "After",
+        "contact",
+        "animals",
+        "Wash",
+        "hands",
+        "plants",
+        "soil"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands after contact with animals); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1156. Source-first item. Post-animal-contact hand hygiene angle distinct from cat-litter precautions (cctc-1100) and postpone-new-pets teaching (cctc-1101); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1156"
+  },
+  {
+    "id": "cctc-6363",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 63-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When teaching recipient hand-hygiene practices after transplantation, which meal-related timing aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wash hands before preparing meals"
+      },
+      {
+        "id": "B",
+        "text": "Hand-washing before food preparation is optional for immunosuppressed recipients"
+      },
+      {
+        "id": "C",
+        "text": "Meal preparation requires gloves only and never hand-washing"
+      },
+      {
+        "id": "D",
+        "text": "Hand-washing before meals applies only in the hospital, not at home"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands before preparing meals and before and after eating, along with washing after bathroom use and animal contact.",
+      "rationale_incorrect": {
+        "B": "Hand-washing before preparing meals is specifically recommended rather than optional.",
+        "C": "Hand-washing with soap and water is emphasized rather than relying on gloves alone without hand hygiene.",
+        "D": "Home infection-prevention teaching includes meal-related hand-washing rather than limiting it to inpatient care."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "Before preparing meals",
+      "keywords": [
+        "Before",
+        "preparing",
+        "meals",
+        "Wash",
+        "hands",
+        "eating"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands before preparing meals); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1158. Source-first item. Meal-preparation hand-hygiene timing angle distinct from bathroom hand-washing (cctc-1154) and general best-practice item (cctc-1019); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1158"
+  },
+  {
+    "id": "cctc-6364",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 41-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. When reinforcing home infection-prevention teaching, which hand-hygiene step aligns with standard references after gardening or handling soil?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wash hands after touching plants and soil"
+      },
+      {
+        "id": "B",
+        "text": "Soil contact never requires hand-washing if gloves were worn briefly"
+      },
+      {
+        "id": "C",
+        "text": "Gardening eliminates the need for any hand hygiene afterward"
+      },
+      {
+        "id": "D",
+        "text": "Only hospital staff must wash hands after soil contact, not recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands after touching plants and soil, along with washing after animal contact and items that may have contacted feces.",
+      "rationale_incorrect": {
+        "B": "Hand-washing after plants and soil is specifically recommended regardless of brief glove use.",
+        "C": "Gardening increases exposure risk and still requires hand hygiene afterward.",
+        "D": "Recipients themselves should wash hands after soil contact rather than delegating hygiene to staff only."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After touching plants and soil",
+      "keywords": [
+        "After",
+        "touching",
+        "plants",
+        "soil",
+        "Wash",
+        "hands"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands after touching plants and soil); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1159. Source-first item. Plants/soil hand-hygiene angle distinct from garden gloves/mask teaching (cctc-1139) and animal-contact hand-washing (cctc-1156); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1159"
+  },
+  {
+    "id": "cctc-6365",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 4-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. Which infection-prevention teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "It is preferable that another individual change diapers rather than the pediatric recipient"
+      },
+      {
+        "id": "B",
+        "text": "The immunosuppressed pediatric recipient must always be the primary diaper changer"
+      },
+      {
+        "id": "C",
+        "text": "Diaper changing never poses infection risk to transplant recipients"
+      },
+      {
+        "id": "D",
+        "text": "Diaper hygiene guidance applies only to adult recipients, not children"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hand-hygiene teaching notes that after changing diapers it is preferable that another individual change diapers rather than the patient, recognizing fecal exposure risk in immunosuppressed recipients.",
+      "rationale_incorrect": {
+        "B": "Another caregiver is preferred for diaper changes rather than requiring the recipient to perform them.",
+        "C": "Diaper contact is among exposures that warrant infection-prevention precautions.",
+        "D": "Diaper-related guidance applies to pediatric recipients as well as adults in the household."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "it is preferable that another individual change diapers rather than the patient",
+      "keywords": [
+        "preferable",
+        "another",
+        "individual",
+        "change",
+        "diapers",
+        "patient"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (prefer another individual change diapers rather than patient); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1160. Source-first item. Twenty-ninth pediatric recipient in bank; diaper-delegation angle distinct from live-vaccine diaper avoidance (cctc-1138) and bathroom hand-washing (cctc-1154); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1160"
+  },
+  {
+    "id": "cctc-6366",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 50-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When teaching wound-care infection prevention after transplantation, which hand-hygiene step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wash hands before and after touching wounds or mucous membranes"
+      },
+      {
+        "id": "B",
+        "text": "Hand-washing is needed only after wound care, not before"
+      },
+      {
+        "id": "C",
+        "text": "Gloves alone replace all hand-washing around wounds"
+      },
+      {
+        "id": "D",
+        "text": "Wound-contact hand hygiene applies only in the hospital"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands before and after touching wounds or mucous membranes, along with washing after secretions, bathroom use, and animal contact.",
+      "rationale_incorrect": {
+        "B": "Hand-washing is recommended both before and after wound or mucous membrane contact.",
+        "C": "Hand-washing with soap and water remains emphasized in addition to appropriate glove use.",
+        "D": "Home wound-care teaching includes hand hygiene rather than limiting it to inpatient settings."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "Before and after touching wounds or mucous membranes",
+      "keywords": [
+        "Before",
+        "after",
+        "touching",
+        "wounds",
+        "mucous",
+        "membranes",
+        "Wash",
+        "hands"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash before and after wounds or mucous membranes); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1162. Source-first item. Wound/mucous-membrane hand-hygiene angle distinct from meal-preparation timing (cctc-1158) and clean/cover cuts teaching (cctc-1136); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1162"
+  },
+  {
+    "id": "cctc-6367",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 63-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. When reinforcing infection-prevention teaching for a recipient with seasonal rhinitis, which hand-hygiene step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wash hands after contact with excretions or secretions, including nasal secretions"
+      },
+      {
+        "id": "B",
+        "text": "Nasal secretions never require hand-washing in transplant recipients"
+      },
+      {
+        "id": "C",
+        "text": "Only laboratory staff must wash hands after secretions contact"
+      },
+      {
+        "id": "D",
+        "text": "Secretions contact requires stopping immunosuppression temporarily"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hand-hygiene teaching includes washing after contact with any excretions or secretions, including nasal secretions, along with other high-risk exposures such as wounds and animals.",
+      "rationale_incorrect": {
+        "B": "Nasal secretions are specifically listed among exposures requiring hand-washing.",
+        "C": "Recipients themselves should practice hand hygiene after secretions contact.",
+        "D": "Immunosuppression continues as prescribed; infection prevention emphasizes hygiene rather than stopping therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After contact with any excretions or secretions, including nasal secretions",
+      "keywords": [
+        "After",
+        "contact",
+        "excretions",
+        "secretions",
+        "including",
+        "nasal",
+        "Wash",
+        "hands"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash after secretions including nasal secretions); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1163. Source-first item. Nasal-secretions hand-hygiene angle distinct from wound-contact timing (cctc-1162) and bathroom hand-washing (cctc-1154); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1163"
+  },
+  {
+    "id": "cctc-6368",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 41-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. Which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Assess cleanliness of pools, lakes, rivers, and the ocean prior to entering"
+      },
+      {
+        "id": "B",
+        "text": "Any natural or recreational water is always safe without assessment"
+      },
+      {
+        "id": "C",
+        "text": "Swimming is permanently contraindicated after every transplant"
+      },
+      {
+        "id": "D",
+        "text": "Only ocean water requires assessment; pools and lakes never do"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waterborne infection-prevention teaching includes assessing cleanliness of pools, lakes, rivers, and the ocean prior to entering, along with avoiding swallowing untreated water and observing boil-water advisories.",
+      "rationale_incorrect": {
+        "B": "Cleanliness assessment is recommended rather than assuming all recreational water is safe.",
+        "C": "Guidance emphasizes precautions and assessment rather than permanent prohibition of all swimming.",
+        "D": "Pools, lakes, rivers, and the ocean are all included in cleanliness assessment teaching."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → iv. Waterborne infections",
+      "quote_hint": "Assess cleanliness of pools, lakes, rivers, and the ocean prior to entering",
+      "keywords": [
+        "Assess",
+        "cleanliness",
+        "pools",
+        "lakes",
+        "rivers",
+        "ocean",
+        "entering"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → iv. Waterborne infections (assess pool/lake/river/ocean cleanliness before entering); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1164. Source-first item. Recreational-water cleanliness angle distinct from boil-water advisory (cctc-1104) and avoid-swallowing-lake-water teaching (cctc-1104); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1164"
+  },
+  {
+    "id": "cctc-6369",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 58-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When teaching mealtime infection prevention after transplantation, which hand-hygiene step aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wash hands before and after eating"
+      },
+      {
+        "id": "B",
+        "text": "Hand-washing is needed only after meals, not before"
+      },
+      {
+        "id": "C",
+        "text": "Eating never requires hand-washing at home"
+      },
+      {
+        "id": "D",
+        "text": "Mealtime hand hygiene applies only to pediatric recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recipient hand-hygiene teaching includes washing hands before and after eating, along with washing before preparing meals and after bathroom use or secretions contact.",
+      "rationale_incorrect": {
+        "B": "Hand-washing is recommended both before and after eating rather than only afterward.",
+        "C": "Home mealtime hand hygiene is specifically recommended rather than omitted.",
+        "D": "Mealtime hand-washing guidance applies to all recipients, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "Before and after eating",
+      "keywords": [
+        "Before",
+        "after",
+        "eating",
+        "Wash",
+        "hands",
+        "meals"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash hands before and after eating); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1166. Source-first item. Mealtime hand-hygiene angle distinct from meal-preparation timing (cctc-1158) and general best-practice hand-washing (cctc-1019); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1166"
+  },
+  {
+    "id": "cctc-6370",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 50-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. When reinforcing home infection-prevention teaching, which hand-hygiene step aligns with standard references after handling potentially contaminated household items?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Wash hands after touching any items that may have come in contact with feces"
+      },
+      {
+        "id": "B",
+        "text": "Fecal-contact items never require hand-washing if gloves were briefly used"
+      },
+      {
+        "id": "C",
+        "text": "Only hospital staff must wash hands after fecal exposure"
+      },
+      {
+        "id": "D",
+        "text": "Household fecal-contact items pose no infection risk to recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hand-hygiene teaching includes washing after touching any items that may have come in contact with feces, whether human or animal, along with washing after animals, soil, and secretions.",
+      "rationale_incorrect": {
+        "B": "Hand-washing after fecal-contact items is specifically recommended rather than being optional after brief glove use.",
+        "C": "Recipients themselves should wash hands after such exposures.",
+        "D": "Fecal-contact items are among exposures that warrant hand hygiene."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "After touching any items that may have come in contact with feces (human or animal)",
+      "keywords": [
+        "After",
+        "touching",
+        "items",
+        "contact",
+        "feces",
+        "human",
+        "animal",
+        "Wash"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wash after items contacting feces); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1167. Source-first item. Fecal-contact-item hand-hygiene angle distinct from animal-contact timing (cctc-1156) and cat-litter precautions (cctc-1100); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1167"
+  },
+  {
+    "id": "cctc-6371",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 63-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. Which teaching point aligns with standard animal-safety references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Follow strict hand hygiene guidelines after contact"
+      },
+      {
+        "id": "B",
+        "text": "Hand hygiene after pet contact is unnecessary for immunosuppressed recipients"
+      },
+      {
+        "id": "C",
+        "text": "Pet contact requires permanent removal of all household animals"
+      },
+      {
+        "id": "D",
+        "text": "Only veterinary staff need hand hygiene after animal contact"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Animal-safety teaching includes following strict hand hygiene guidelines after contact with pets, along with keeping pets immunized, avoiding animals with diarrhea, and postponing new pets until immunosuppression is more stable.",
+      "rationale_incorrect": {
+        "B": "Hand hygiene after pet contact is specifically recommended rather than omitted.",
+        "C": "Routine pet ownership may continue with precautions rather than requiring permanent removal of all animals.",
+        "D": "Recipients themselves should follow hand hygiene after contact rather than delegating it to veterinary staff alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → v. Animal safety",
+      "quote_hint": "Follow strict hand hygiene guidelines after contact",
+      "keywords": [
+        "Follow",
+        "strict",
+        "hand",
+        "hygiene",
+        "guidelines",
+        "after",
+        "contact"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (strict hand hygiene after pet contact); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1168. Source-first item. Post-contact hand-hygiene after pets angle distinct from animal-contact hand-washing on p. 115 (cctc-1156) and keep-pets-immunized teaching (cctc-1102); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1168"
+  },
+  {
+    "id": "cctc-6372",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504",
+      "010505"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are updating discharge medication teaching for kidney recipients. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Grapefruit may increase serum levels of certain immunosuppression medications."
+      },
+      {
+        "id": "II",
+        "text": "Recipients should notify the transplant team before starting any new medication prescribed by another provider."
+      },
+      {
+        "id": "III",
+        "text": "Nonsteroidal anti-inflammatory drugs may be used freely without renal risk after transplant."
+      },
+      {
+        "id": "IV",
+        "text": "A written medication roster with times and doses supports accurate home dosing."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "III and IV only",
+        "selects": [
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Medication teaching includes grapefruit interactions, notifying the transplant team before new prescriptions, avoiding nonsteroidal medications because of renal toxicity risk, and using a written roster with dosing times.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—a written medication roster supports adherence.",
+        "C": "Statement III is false; recipients should avoid nonsteroidal medications unless approved because of renal toxicity risk.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 108,
+      "section": "Ch. 3, Patient Education → medication management (Right way / Other)",
+      "quote_hint": "grapefruit … increase serum levels … notify the transplant team … avoid non-steroidal medications",
+      "keywords": [
+        "grapefruit",
+        "serum",
+        "levels",
+        "notify",
+        "transplant",
+        "team",
+        "non-steroidal"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → medication management → Right way (grapefruit interactions, food/drug interactions) and Other (notify team, avoid NSAIDs, written roster); PDF p. 108 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1033. Synthesized item. Sixth complex_combo in bank; anchor verified on Cupples p. 108.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1033"
+  },
+  {
+    "id": "cctc-6373",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504",
+      "010505"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are revising long-term immunosuppression side-effect teaching. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Hyperlipidemia may develop as a side effect of immunosuppressive medications."
+      },
+      {
+        "id": "II",
+        "text": "Hypertension may develop as a side effect of certain immunosuppressants."
+      },
+      {
+        "id": "III",
+        "text": "Immunosuppression never contributes to renal dysfunction over time."
+      },
+      {
+        "id": "IV",
+        "text": "Renal dysfunction may progress to renal failure requiring kidney transplantation."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "III and IV only",
+        "selects": [
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Long-term immunosuppression teaching includes hyperlipidemia and hypertension as medication side effects and notes that renal dysfunction may progress to renal failure requiring kidney transplantation. Immunosuppression can contribute to renal dysfunction.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—renal dysfunction may progress to need for kidney transplantation.",
+        "C": "Statement III is false; medications and other factors may contribute to renal dysfunction over time.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects of immunosuppression",
+      "quote_hint": "Hyperlipidemia … Hypertension … Renal dysfunction … May progress to renal failure",
+      "keywords": [
+        "Hyperlipidemia",
+        "Hypertension",
+        "Renal",
+        "dysfunction",
+        "immunosuppressants",
+        "renal",
+        "failure"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → ii.–iv. (hypertension, hyperlipidemia, renal dysfunction); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1040. Synthesized item. Seventh complex_combo in bank; anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1040"
+  },
+  {
+    "id": "cctc-6374",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": [
+      "010103",
+      "010104"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are reviewing transplantation risk teaching with a candidate and family. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Death may occur on the waiting list, during transplant surgery, or after transplantation."
+      },
+      {
+        "id": "II",
+        "text": "Rejection can occur at any time after organ implantation."
+      },
+      {
+        "id": "III",
+        "text": "Lifetime immunosuppression is never required after solid-organ transplant."
+      },
+      {
+        "id": "IV",
+        "text": "Primary nonfunction may require immediate relisting and retransplantation."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "III and IV only",
+        "selects": [
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Standard risk teaching includes death on the waitlist, during surgery, or after transplant; rejection at any time after implantation; need for lifetime immunosuppression; and primary nonfunction that may require immediate relisting.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—primary nonfunction may require immediate relisting.",
+        "C": "Statements I and II are also true; statement III is false because lifetime immunosuppression is required.",
+        "D": "Statement III is false; lifetime immunosuppression is a recognized transplant requirement."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Patient Education → 6. Risks associated with transplantation",
+      "quote_hint": "Death … On the waiting list … Organ rejection … any time … Need for lifetime immunosuppression … Primary nonfunction may require immediate relisting",
+      "keywords": [
+        "Death",
+        "waiting",
+        "list",
+        "rejection",
+        "lifetime",
+        "immunosuppression",
+        "Primary",
+        "nonfunction"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → 6. Risks associated with transplantation (death, rejection, lifetime immunosuppression, primary nonfunction); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1056. Synthesized item. Thirteenth complex_combo in bank; distinct from infection-prevention (cctc-1024) and dietary (cctc-1052) combos; anchor verified on Cupples p. 98.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1056"
+  },
+  {
+    "id": "cctc-6375",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating early post-transplant infection-prevention and lifestyle teaching. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Soaking in a tub, swimming, and using a hot tub may be restricted early after transplant."
+      },
+      {
+        "id": "II",
+        "text": "Contact sports may be restricted during early recovery."
+      },
+      {
+        "id": "III",
+        "text": "Driving may resume immediately on discharge without transplant team reassessment."
+      },
+      {
+        "id": "IV",
+        "text": "Walking and activities of daily living are encouraged when appropriate."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "III and IV only",
+        "selects": [
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Early lifestyle teaching includes restrictions on tub soaking, swimming, hot tubs, and contact sports, while encouraging walking and activities of daily living; driving is prohibited until the patient is reassessed by the transplant team.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—walking and activities of daily living are encouraged.",
+        "C": "Statements I and II are also true; statement III is false because driving requires team reassessment.",
+        "D": "Statement III is false; driving is not permitted immediately without reassessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "section": "Ch. 3, Patient Education → g. Lifestyle changes",
+      "quote_hint": "Soaking in a tub or swimming and using a hot tub … Contact sports … Driving will be prohibited until … reassessed … walking and activities of daily living",
+      "keywords": [
+        "Soaking",
+        "tub",
+        "swimming",
+        "hot",
+        "Contact",
+        "sports",
+        "Driving",
+        "prohibited"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Lifestyle changes (tub/swimming/hot tub limits, contact sports, driving prohibition, encouraged walking/ADLs); PDF p. 110 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1060. Synthesized item. Fourteenth complex_combo in bank; distinct from dietary combo (cctc-1052) and hot-tub single item (cctc-1053); anchor verified on Cupples p. 110.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1060"
+  },
+  {
+    "id": "cctc-6376",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating cytomegalovirus (CMV) long-term complication teaching. Statements will be checked against textbook and policy anchors. Evaluate the following statements about organ-specific CMV effects on allografts:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "CMV may contribute to vanishing bile duct syndrome in liver allografts."
+      },
+      {
+        "id": "II",
+        "text": "CMV may contribute to coronary artery vasculopathy in heart allografts."
+      },
+      {
+        "id": "III",
+        "text": "CMV may contribute to bronchiolitis obliterans in lung allografts."
+      },
+      {
+        "id": "IV",
+        "text": "CMV may contribute to glomerulopathy in kidney allografts."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "III and IV only",
+        "selects": [
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "D",
+    "explanation": {
+      "rationale_correct": "Standard references list organ-specific CMV effects on allografts as vanishing bile duct syndrome in liver, coronary artery vasculopathy in heart, bronchiolitis obliterans in lung, and glomerulopathy in kidney.",
+      "rationale_incorrect": {
+        "A": "Statements III and IV are also correct—lung bronchiolitis obliterans and kidney glomerulopathy are listed organ-specific CMV effects.",
+        "B": "Statement IV is also correct—kidney glomerulopathy is a listed CMV organ-specific effect.",
+        "C": "Statements I and II are also correct—liver and heart organ-specific CMV effects are listed."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "section": "Ch. 5, Infectious Diseases → CMV → 8. Organ-specific effects on allograft",
+      "quote_hint": "Liver: vanishing bile duct syndrome … Heart: coronary artery vasculopathy … Lung: bronchiolitis obliterans … Kidney: glomerulopathy",
+      "keywords": [
+        "Liver",
+        "vanishing",
+        "bile",
+        "duct",
+        "Heart",
+        "coronary",
+        "Lung",
+        "glomerulopathy"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CMV → 8. Organ-specific effects on allograft (liver, heart, lung, kidney); PDF p. 202 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1071. Synthesized item. Eighteenth complex_combo in bank; CMV organ-specific angle distinct from CMV prevention strategies (cctc-1069) and toxoplasmosis combo (cctc-1064); anchor verified on Cupples p. 202.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1071"
+  },
+  {
+    "id": "cctc-6377",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "kidney",
+    "recipient_age": "both",
+    "stem": "You are updating BK virus teaching for kidney transplant recipients. Statements will be checked against textbook and policy anchors. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "BK virus reactivation after kidney transplantation is common, with prevalence around 45% to 50%."
+      },
+      {
+        "id": "II",
+        "text": "Every episode of BK reactivation inevitably progresses to graft loss."
+      },
+      {
+        "id": "III",
+        "text": "BK reactivation may cause tubulointerstitial nephritis."
+      },
+      {
+        "id": "IV",
+        "text": "BK virus transmission in the general population occurs primarily through the respiratory route."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, III, and IV only",
+        "selects": [
+          "I",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "BK reactivation is common in kidney recipients but progresses to nephropathy only occasionally; it may cause tubulointerstitial nephritis, and population transmission is primarily respiratory. Statement II is false because not all reactivation leads to graft loss.",
+      "rationale_incorrect": {
+        "A": "Statement II is false; statement III is also correct.",
+        "C": "Statement I is also true; statement II is false.",
+        "D": "Statement II is false—not all BK reactivation progresses to graft loss."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 207,
+      "section": "Ch. 5, Infectious Diseases → J. Polyomaviruses → 2. BK virus → b.–c.i.",
+      "quote_hint": "reactivation in kidney transplant recipients is common (prevalence: 45% to 50%) … progresses to nephropathy only occasionally … Tubulointerstitial nephritis … Transmission: respiratory route",
+      "keywords": [
+        "reactivation",
+        "kidney",
+        "transplant",
+        "recipients",
+        "common",
+        "Tubulointerstitial",
+        "nephritis",
+        "respiratory"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → J. Polyomaviruses → 2. BK virus → b.–c.i. (reactivation prevalence, occasional nephropathy, tubulointerstitial nephritis, respiratory transmission); PDF p. 207 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1075. Synthesized item. Nineteenth complex_combo in bank; first BK-virus teaching item; distinct from CMV organ-specific combo (cctc-1071); anchor verified on Cupples p. 207.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1075"
+  },
+  {
+    "id": "cctc-6378",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating adenovirus infection-prevention teaching for solid-organ transplant recipients. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Adenoviruses may cause respiratory, gastrointestinal, conjunctival, or disseminated pathology in solid-organ transplant recipients."
+      },
+      {
+        "id": "II",
+        "text": "Adenovirus infections are most common in the first 3 months after transplant and with higher immunosuppression dosing."
+      },
+      {
+        "id": "III",
+        "text": "Adenovirus infection is limited exclusively to kidney transplant recipients."
+      },
+      {
+        "id": "IV",
+        "text": "Adenovirus never causes gastrointestinal pathology in transplant recipients."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Adenoviruses may cause respiratory, GI, conjunctival, or disseminated disease in solid-organ recipients and are most common early post-transplant with higher immunosuppression. They are not kidney-specific and may cause GI pathology, so statements III and IV are false.",
+      "rationale_incorrect": {
+        "B": "Statement IV is false because GI pathology is among the described adenovirus manifestations.",
+        "C": "Statements I and II are true; statements III and IV are false.",
+        "D": "Statements III and IV are false."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 211,
+      "section": "Ch. 5, Infectious Diseases → CARV → 11.a. Adenoviruses → i.–iii.",
+      "quote_hint": "respiratory, GI, conjunctival, and disseminated pathology … Most common in the first 3 months … higher immunosuppression dosing",
+      "keywords": [
+        "Adenoviruses",
+        "respiratory",
+        "GI",
+        "conjunctival",
+        "disseminated",
+        "first",
+        "months",
+        "immunosuppression"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CARV → 11.a. Adenoviruses → i.–iii. (respiratory, GI, conjunctival, and disseminated pathology range; most common in the first 3 months with higher immunosuppression dosing); PDF p. 211 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1088. Source-first item. Adenovirus teaching combo distinct from parvovirus combo (cctc-1083) and JC virus combo (cctc-1079); anchor verified on Cupples p. 211.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1088"
+  },
+  {
+    "id": "cctc-6379",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating respiratory syncytial virus (RSV) teaching for transplant families. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "RSV is transmitted primarily through large droplets and fomites."
+      },
+      {
+        "id": "II",
+        "text": "RSV can survive on nonporous surfaces, skin, and gloves for hours."
+      },
+      {
+        "id": "III",
+        "text": "RSV spreads only through airborne transmission across large distances without close contact."
+      },
+      {
+        "id": "IV",
+        "text": "RSV cannot survive on environmental surfaces."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "RSV is transmitted primarily through large droplets and fomites, can survive on nonporous surfaces, skin, and gloves for hours, and requires close person-to-person contact or contact with contaminated surfaces. Statements III and IV are false.",
+      "rationale_incorrect": {
+        "B": "Statement IV is false because RSV can survive on surfaces for hours.",
+        "C": "Statements I and II are true; statements III and IV are false.",
+        "D": "Statements III and IV are false."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 210,
+      "section": "Ch. 5, Infectious Diseases → RSV → 6.a. Transmission → i.–iii.",
+      "quote_hint": "Primarily through large droplets and fomites … Can survive on surfaces (nonporous), skin, and gloves for hours … Requires close person-to-person contact or contact with contaminated surfaces",
+      "keywords": [
+        "RSV",
+        "large",
+        "droplets",
+        "fomites",
+        "survive",
+        "surfaces",
+        "nonporous",
+        "contact"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → RSV → 6.a. Transmission → i.–iii. (droplet/fomite transmission and surface survival); PDF p. 210 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1093. Source-first item. RSV transmission combo distinct from adenovirus combo (cctc-1088) and parvovirus combo (cctc-1083); anchor verified on Cupples p. 210.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1093"
+  },
+  {
+    "id": "cctc-6380",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating gender-specific health-maintenance teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Monthly breast self-examination is recommended for breast health maintenance."
+      },
+      {
+        "id": "II",
+        "text": "Annual prostate-specific antigen screening is part of prostate health maintenance."
+      },
+      {
+        "id": "III",
+        "text": "Testicular health maintenance requires no self-examination because immunosuppression prevents cancer."
+      },
+      {
+        "id": "IV",
+        "text": "Papanicolaou testing includes regular assessment by a gynecologist."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Monthly breast self-examination, annual PSA screening, and regular gynecologic Papanicolaou assessment are recommended. Statement III is false because testicular health teaching includes monthly self-examination.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—Papanicolaou testing includes regular gynecologic assessment.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because monthly testicular self-examination is recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance",
+      "quote_hint": "Monthly self-examination … Annual prostate screening antigen … Testicular health … Papanicolaou test: Regular assessment by gynecologist",
+      "keywords": [
+        "Breast",
+        "health",
+        "Prostate",
+        "Testicular",
+        "Papanicolaou",
+        "Monthly",
+        "self-examination"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Breast, prostate, testicular, and Papanicolaou screening teaching; PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1109. Source-first item. Gender-specific health-maintenance combo distinct from skin-cancer combo (cctc-1105) and evaluation screening list (cctc-1020); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1109"
+  },
+  {
+    "id": "cctc-6381",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating visitor infection-prevention teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Visitors who have had recent infections should be asked to postpone visiting."
+      },
+      {
+        "id": "II",
+        "text": "If contact with an ill person cannot be avoided, the recipient and ill person should wear surgical masks."
+      },
+      {
+        "id": "III",
+        "text": "Recipients should actively seek close contact with individuals who have known infection."
+      },
+      {
+        "id": "IV",
+        "text": "Surgical masks are never appropriate for transplant recipients around ill contacts."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Teaching includes asking visitors with recent infections to postpone visits and using surgical masks when contact cannot be avoided. Recipients should avoid individuals with known infection rather than seeking contact, and masks are appropriate when exposure is unavoidable.",
+      "rationale_incorrect": {
+        "B": "Statement III is false—recipients should avoid individuals with known infection.",
+        "C": "Statement I is also true; statements III and IV are false.",
+        "D": "Statements III and IV are false."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → ii. Airborne infections",
+      "quote_hint": "Avoid individuals with known infection … Ask visitors who have had recent infections to postpone visiting … should wear surgical masks",
+      "keywords": [
+        "Avoid",
+        "individuals",
+        "known",
+        "infection",
+        "visitors",
+        "postpone",
+        "surgical",
+        "masks"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → ii. Airborne infections (avoid ill contacts, postpone visits, surgical masks); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1113. Source-first item. Visitor-precaution combo distinct from dietary infection-prevention combo (cctc-1052) and airborne/crowded-area combo (cctc-1024); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1113"
+  },
+  {
+    "id": "cctc-6382",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating sexual and reproductive health teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Recipients should discuss potential pregnancy with the transplant team and obstetrician."
+      },
+      {
+        "id": "II",
+        "text": "Males may father a child after transplantation."
+      },
+      {
+        "id": "III",
+        "text": "Pregnancy should begin immediately at hospital discharge without team discussion."
+      },
+      {
+        "id": "IV",
+        "text": "Pregnancy is generally postponed until 1 year after transplant when immunosuppressant doses are likely lower."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Pregnancy planning includes team and obstetric discussion, males may father children after transplant, and pregnancy is generally postponed until 1 year post-transplant. Statement III is false because immediate discharge pregnancy without discussion is not recommended.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—pregnancy is generally postponed until 1 year post-transplant.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because pregnancy requires coordinated planning rather than immediate discharge initiation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → l. Pregnancy after transplantation",
+      "quote_hint": "discuss potential pregnancy with transplant team and obstetrician … Males may father a child … Postpone pregnancy until 1 year after transplant",
+      "keywords": [
+        "discuss",
+        "potential",
+        "pregnancy",
+        "transplant",
+        "team",
+        "Males",
+        "father",
+        "Postpone"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → l. Pregnancy after transplantation → i.–iii. (team/obstetric discussion, males may father child, postpone until 1 year); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1125. Source-first item. Reproductive-health combo distinct from pregnancy-timing recall (cctc-1091) and condom teaching (cctc-1122); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1125"
+  },
+  {
+    "id": "cctc-6383",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating contraception and sexual-health teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Emergency contraception may be considered in certain circumstances."
+      },
+      {
+        "id": "II",
+        "text": "Recipients should be counseled about increased infection risk with intrauterine devices."
+      },
+      {
+        "id": "III",
+        "text": "Sexual dysfunction or libido changes should never be discussed with healthcare providers."
+      },
+      {
+        "id": "IV",
+        "text": "Oral contraception should be discussed with the provider because of thromboembolic risk."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Emergency contraception, intrauterine device infection risk, and provider discussion of oral contraception are supported. Statement III is false because open communication about sexual dysfunction and libido is encouraged.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—oral contraception requires provider discussion due to thromboembolic risk.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because provider communication about sexual concerns is encouraged."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → k. Sexual health",
+      "quote_hint": "Emergency contraception … increased risk of infection with intrauterine devices … openly communicate … oral contraception … thromboembolic events",
+      "keywords": [
+        "Emergency",
+        "contraception",
+        "intrauterine",
+        "devices",
+        "Sexual",
+        "dysfunction",
+        "oral",
+        "contraception"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → k. Sexual health → iv.–vii. (emergency contraception, IUD risk, libido communication, oral contraception thromboembolic risk); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1129. Source-first item. Contraception/sexual-health combo distinct from reproductive-health combo (cctc-1125) and condom recall (cctc-1122); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1129"
+  },
+  {
+    "id": "cctc-6384",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604",
+      "010605"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating post-transplant health-maintenance teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "The patient should be monitored for signs of depression and anxiety."
+      },
+      {
+        "id": "II",
+        "text": "Caregivers, family members, and co-workers should receive annual influenza vaccinations unless otherwise contraindicated."
+      },
+      {
+        "id": "III",
+        "text": "Immunosuppressed patients should routinely receive live-virus vaccines after transplantation."
+      },
+      {
+        "id": "IV",
+        "text": "Pneumococcal vaccine should be given ≥8 weeks after transplant."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Psychological monitoring, household influenza vaccination, and pneumococcal vaccination timing are supported. Statement III is false because immunosuppressed patients should not receive live-virus vaccines.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—pneumococcal vaccine is recommended ≥8 weeks after transplant.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because live-virus vaccines are contraindicated after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → f. Psychological care and g. Health maintenance",
+      "quote_hint": "Monitor patient for signs of depression and anxiety … caregivers, family members, and co-workers receive annual influenza vaccinations … Pneumococcal vaccine ≥8 weeks after transplant … should not receive live-virus vaccines",
+      "keywords": [
+        "depression",
+        "anxiety",
+        "caregivers",
+        "influenza",
+        "Pneumococcal",
+        "live-virus",
+        "vaccines"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → f. Psychological care → ii. and g. Health maintenance → ii. (depression/anxiety monitoring, household influenza, pneumococcal timing, live-vaccine contraindication); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1141. Source-first item. Health-maintenance/psychological combo distinct from vaccination combo (cctc-1048) and return-to-work combo (cctc-1133); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1141"
+  },
+  {
+    "id": "cctc-6385",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating post-transplant travel-preparation teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Patients should consider travel insurance and purchase of a medic alert tag."
+      },
+      {
+        "id": "II",
+        "text": "Patients should bring a basic first-aid kit that includes a thermometer."
+      },
+      {
+        "id": "III",
+        "text": "Destination selection should ignore endemic infection risk."
+      },
+      {
+        "id": "IV",
+        "text": "Patients should bring a summary of health history including surgical procedure and current medications."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Travel insurance and medic alert tags, a first-aid kit with thermometer, and a health-history summary are supported. Statement III is false because endemic infection risk is a destination-selection consideration.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—a health history and medication summary should be carried when traveling.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because infection and endemic disease risk should be considered when choosing destinations."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 122,
+      "section": "Ch. 3, Patient Education → o. Travel",
+      "quote_hint": "travel insurance and purchase of a medic alert tag … first-aid kit that includes a thermometer … Risk of infection, including risk of endemic infections … Summary of health history including surgical procedure and current medications",
+      "keywords": [
+        "travel",
+        "insurance",
+        "medic",
+        "alert",
+        "first-aid",
+        "thermometer",
+        "endemic",
+        "health"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → o. Travel → ii., v., vi. (endemic risk, first-aid kit, medic alert/travel insurance, health summary); PDF p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1145. Source-first item. Travel-preparation combo distinct from travel-restriction/carry-on combo (cctc-1137) and endemic-risk one-best (cctc-1144); anchor verified on Cupples p. 122.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1145"
+  },
+  {
+    "id": "cctc-6386",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604",
+      "010503"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating hand-hygiene and donor-confidentiality teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Recipients should wash hands after using the bathroom."
+      },
+      {
+        "id": "II",
+        "text": "Recipients should wash hands after contact with animals."
+      },
+      {
+        "id": "III",
+        "text": "The OPO may share recipient age described in decades with the donor family without recipient permission."
+      },
+      {
+        "id": "IV",
+        "text": "Recipient identifying information may always be shared freely with donor families without restriction."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Bathroom and animal-contact hand hygiene and sharing general recipient age information without permission are supported. Statement IV is false because only limited general information may be shared without recipient permission.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—the OPO may share general age-decade information without recipient permission.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because unrestricted sharing of identifying information is not permitted."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention and p. Donor–recipient confidentiality",
+      "quote_hint": "After using the bathroom … After contact with animals … Age described in decades … without recipient permission",
+      "keywords": [
+        "bathroom",
+        "animals",
+        "Wash",
+        "hands",
+        "Age",
+        "decades",
+        "permission"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene and p. Donor–recipient confidentiality → ii. (bathroom/animal hand hygiene; general age-decade sharing); PDF p. 115 and p. 122 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1157. Source-first item. Hand-hygiene/confidentiality combo distinct from infection/confidentiality combo (cctc-1153) and travel-preparation combo (cctc-1145); corroborating locators on p. 115 and p. 122 verified.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1157"
+  },
+  {
+    "id": "cctc-6387",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating recipient hand-hygiene teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Recipients should wash hands before preparing meals."
+      },
+      {
+        "id": "II",
+        "text": "Recipients should wash hands after touching plants and soil."
+      },
+      {
+        "id": "III",
+        "text": "Antibacterial gel may be used when hands are not visibly soiled and soap and water are unavailable."
+      },
+      {
+        "id": "IV",
+        "text": "Hand-washing after animal contact is unnecessary for transplant recipients."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Meal-preparation hand-washing, post-soil hand-washing, and use of antibacterial gel when soap and water are unavailable are supported. Statement IV is false because hand-washing after animal contact is specifically recommended.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—antibacterial gel may supplement hand hygiene when soap and water are unavailable.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because animal-contact hand-washing remains recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene",
+      "quote_hint": "Before preparing meals … After touching plants and soil … Carry antibacterial gel … After contact with animals",
+      "keywords": [
+        "Before",
+        "preparing",
+        "meals",
+        "plants",
+        "soil",
+        "antibacterial",
+        "gel",
+        "animals"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (meal/soil hand-washing, antibacterial gel, animal contact); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1161. Source-first item. Hand-hygiene combo distinct from hand-hygiene/confidentiality combo (cctc-1157) and visitor hand-hygiene combo (cctc-1118); anchor verified on Cupples p. 115.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1161"
+  },
+  {
+    "id": "cctc-6388",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating hand-hygiene and animal-safety teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Recipients should wash hands before and after touching wounds or mucous membranes."
+      },
+      {
+        "id": "II",
+        "text": "Recipients should wash hands after contact with secretions, including nasal secretions."
+      },
+      {
+        "id": "III",
+        "text": "Recipients should avoid contact with pets or other animals with diarrhea."
+      },
+      {
+        "id": "IV",
+        "text": "Hand-washing after wound care is unnecessary if gloves were worn briefly."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Wound and secretion hand-washing and avoiding animals with diarrhea are supported. Statement IV is false because hand-washing before and after wound contact is specifically recommended regardless of brief glove use.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—contact with animals with diarrhea should be avoided.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because wound-contact hand-washing remains recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene and v. Animal safety",
+      "quote_hint": "Before and after touching wounds or mucous membranes … secretions, including nasal secretions … Avoid contact with pets or other animals with diarrhea",
+      "keywords": [
+        "wounds",
+        "mucous",
+        "membranes",
+        "secretions",
+        "nasal",
+        "Wash",
+        "hands",
+        "diarrhea"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (wound/secretions hand-washing); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (avoid contact with animals with diarrhea); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1165. Source-first item. Hand-hygiene/animal-safety combo distinct from hand-hygiene combo (cctc-1161) and animal-safety combo (cctc-1101); corroborating locators on p. 115 and p. 116 verified.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1165"
+  },
+  {
+    "id": "cctc-6389",
+    "schema_version": 1,
+    "version": 2,
+    "status": "reviewed",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating mealtime and household infection-prevention teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Recipients should wash hands before and after eating."
+      },
+      {
+        "id": "II",
+        "text": "Recipients should wash hands after touching items that may have contacted feces."
+      },
+      {
+        "id": "III",
+        "text": "Recipients should follow strict hand hygiene guidelines after pet contact."
+      },
+      {
+        "id": "IV",
+        "text": "Hand-washing before meals is unnecessary if food will be cooked."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Mealtime hand-washing, hand hygiene after fecal-contact items, and strict hand hygiene after pet contact are supported. Statement IV is false because hand-washing before and after eating is specifically recommended regardless of cooking.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—strict hand hygiene after pet contact is recommended.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because mealtime hand-washing remains recommended."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 115,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → i. Hand hygiene and v. Animal safety",
+      "quote_hint": "Before and after eating … items that may have come in contact with feces … Follow strict hand hygiene guidelines after contact",
+      "keywords": [
+        "Before",
+        "after",
+        "eating",
+        "feces",
+        "contact",
+        "hand",
+        "hygiene",
+        "guidelines"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (mealtime and fecal-contact item hand-washing); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (strict hand hygiene after pet contact); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 4) paired with cctc-1169. Source-first item. Mealtime/household hygiene combo distinct from hand-hygiene/animal-safety combo (cctc-1165) and hand-hygiene combo (cctc-1161); corroborating locators on p. 115 and p. 116 verified.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1169"
+  }
+]
