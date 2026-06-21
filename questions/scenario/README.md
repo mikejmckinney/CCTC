@@ -55,6 +55,14 @@ First **30** companions (`cctc-6001`–`cctc-6030`) in `questions/scenario/domai
 
 Regenerate from parents: `node scripts/scenario/build-pilot-companions.mjs` (stems live in that script).
 
+## Wave 2 (Phase C — first content wave)
+
+**150** companions (`cctc-6031`–`cctc-6180`) in `questions/scenario/domain-*/wave-batch-02.json` — **50 per domain**, stratified parents (excluding pilot `companion_of` targets), ~15% `complex_combo`.
+
+Regenerate: `node scripts/scenario/build-wave-02.mjs` (parent selection in `scripts/scenario/lib/wave-selection.mjs`; stems via `scripts/scenario/lib/scenario-stem.mjs`).
+
+Status: **`draft`** until maintainer spot-check (pilot `cctc-6001`–`6030` remain **`reviewed`**).
+
 ## App usage
 
 Learners choose **Scenario companions** on the start screen. Study, exam, and timed modes behave the same as the standard bank; blueprint task weighting applies to the scenario pool.

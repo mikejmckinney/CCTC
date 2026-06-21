@@ -1,0 +1,3819 @@
+[
+  {
+    "id": "cctc-6031",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. Which teaching point BEST reflects the risk described in transplant pharmacology references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Skipped doses mainly change cosmetic side effects without affecting graft outcomes."
+      },
+      {
+        "id": "B",
+        "text": "Inadequate immunosuppression places the patient at risk for rejection."
+      },
+      {
+        "id": "C",
+        "text": "Maintenance immunosuppression is required only during the first week after transplant."
+      },
+      {
+        "id": "D",
+        "text": "Recipients may stop immunosuppression whenever they feel fatigued without notifying the team."
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Transplant pharmacology references identify inadequate immunosuppression as a direct risk factor for rejection. Coordinators reinforce consistent maintenance dosing and team contact before changes.",
+      "rationale_incorrect": {
+        "A": "Immunosuppression risks include rejection and infection, not only cosmetic effects.",
+        "C": "Maintenance therapy begins at transplant and continues long term for most recipients.",
+        "D": "Recipients should not independently stop immunosuppression; dose changes require coordinated medical management."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 130,
+      "section": "Ch. 4, Transplant Pharmacology — Introduction, A. Overview, item 3 (Risks associated to immunosuppression), subitem a.",
+      "quote_hint": "Inadequate immunosuppression places the patient at risk for rejection",
+      "keywords": [
+        "inadequate",
+        "immunosuppression",
+        "rejection",
+        "nonadherent",
+        "associated"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 4 → Introduction → A. Overview → item 3 “Risks associated to immunosuppression” → subitem a.; PDF p. 130 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks associated with transplantation → b. Organ rejection → iii. Need for lifetime immunosuppression; PDF p. 98.",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1002. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 130. Book wording uses “associated to” (not “with”).",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1002"
+  },
+  {
+    "id": "cctc-6032",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010201"
+    ],
+    "cognitive_level": "recall",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 55-year-old heart transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. Which patient population meets standard indications for heart transplantation according to organ-specific selection references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Patients with end-stage heart failure and advanced NYHA Class III to IV symptoms when no other medical or surgical options remain"
+      },
+      {
+        "id": "B",
+        "text": "Patients with mild, stable angina controlled on a single antianginal medication"
+      },
+      {
+        "id": "C",
+        "text": "Asymptomatic patients with incidentally discovered mild valvular regurgitation"
+      },
+      {
+        "id": "D",
+        "text": "Patients who decline all medical therapy but have preserved ejection fraction and no heart failure symptoms"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Cardiac transplantation is indicated for patients with end-stage heart failure and advanced congestive heart failure (NYHA Class III to IV) when no other medical or surgical options can improve quality of life and survival.",
+      "rationale_incorrect": {
+        "B": "Stable mild angina without advanced heart failure does not meet end-stage heart failure indications for transplant.",
+        "C": "Incidental mild valvular disease without advanced heart failure is not the standard transplant indication population.",
+        "D": "Transplant is reserved for advanced heart failure when other options are exhausted, not for asymptomatic patients declining therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 34,
+      "section": "Ch. 1, Organ-Specific Evaluation → A. Heart transplantation → item 1",
+      "quote_hint": "end-stage heart failure and advanced congestive heart failure (New York Heart Association Class III to IV)",
+      "keywords": [
+        "transplantation",
+        "indicated",
+        "failure",
+        "NYHA",
+        "Class"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Organ-Specific Evaluation → A. Heart transplantation → item 1; PDF p. 34 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1004. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 34.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1004"
+  },
+  {
+    "id": "cctc-6033",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": [
+      "010103"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 52-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. Which teaching point is explicitly included in standard risk counseling?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Rejection can occur at any time after implantation of the organ"
+      },
+      {
+        "id": "B",
+        "text": "Rejection occurs only during the first 48 hours after surgery"
+      },
+      {
+        "id": "C",
+        "text": "Rejection is prevented permanently by induction therapy alone"
+      },
+      {
+        "id": "D",
+        "text": "Rejection is limited to cosmetic changes without graft injury"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant risk education includes that the immune system may recognize the graft as foreign and that rejection can occur at any time after implantation, supporting the need for lifelong immunosuppression monitoring.",
+      "rationale_incorrect": {
+        "B": "Rejection is not confined to the immediate perioperative window; it can occur long after transplant.",
+        "C": "Induction therapy does not eliminate ongoing rejection risk without maintenance immunosuppression.",
+        "D": "Rejection threatens graft function and survival, not only cosmetic effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Patient Education → §6. Risks associated with transplantation → b. Organ rejection → ii.",
+      "quote_hint": "Rejection can occur at any time after implantation of the organ",
+      "keywords": [
+        "rejection",
+        "implantation",
+        "organ",
+        "transplantation",
+        "risks"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks associated with transplantation → b. Organ rejection (items i–iii); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1006. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 98.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1006"
+  },
+  {
+    "id": "cctc-6034",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": [
+      "010401"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 39-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. living donor transplantation programs?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Ensure informed consent standards and ethical principles are applied to living donor practice"
+      },
+      {
+        "id": "B",
+        "text": "Select the recipient who will receive the donated organ"
+      },
+      {
+        "id": "C",
+        "text": "Determine OPTN allocation priority for the donor's intended recipient"
+      },
+      {
+        "id": "D",
+        "text": "Authorize immunosuppression dosing for the recipient after transplant"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The ILDA exists so living donor programs have an independent advocate to ensure informed consent standards are met and ethical principles guide donation decisions.",
+      "rationale_incorrect": {
+        "B": "Organ matching and acceptance remain physician and allocation-policy decisions, not the ILDA's primary role.",
+        "C": "Waitlist priority is determined by OPTN allocation policy, not the ILDA.",
+        "D": "Post-transplant immunosuppression management is a medical team responsibility, not the ILDA role."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 334,
+      "section": "Ch. 7, Living Donation → C. Regulatory oversight → ACOT recommendation → ILDA",
+      "quote_hint": "independent donor advocate (ILDA) to ensure that informed consent standards are adhered to",
+      "keywords": [
+        "ILDA",
+        "independent",
+        "donor",
+        "advocate",
+        "informed",
+        "consent"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → C. Regulatory oversight → ACOT ILDA recommendation; PDF p. 334 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1008. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 334.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1008"
+  },
+  {
+    "id": "cctc-6035",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010603"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. According to standard post-discharge communication teaching, how should this contact be classified?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "A non-urgent matter"
+      },
+      {
+        "id": "B",
+        "text": "An urgent matter requiring immediate evaluation for rejection"
+      },
+      {
+        "id": "C",
+        "text": "An urgent matter because all post-discharge calls must be triaged within 15 minutes"
+      },
+      {
+        "id": "D",
+        "text": "A matter that should be redirected to the emergency department without transplant team contact"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Verification of appointment date and time is explicitly listed among non-urgent reasons to contact the transplant team, distinct from urgent concerns such as infection, rejection symptoms, chest pain, or shortness of breath.",
+      "rationale_incorrect": {
+        "B": "Rejection-related symptoms are urgent matters; confirming a scheduled clinic time is not.",
+        "C": "References distinguish urgent from non-urgent contacts; not every call requires immediate rejection evaluation.",
+        "D": "Routine appointment verification should be handled through transplant team communication channels, not automatic ED referral."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication with the transplant team → ii. Non-urgent matters",
+      "quote_hint": "Verification of appointment date and time",
+      "keywords": [
+        "Non-urgent",
+        "appointment",
+        "date",
+        "time",
+        "transplant",
+        "team"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → ii. Non-urgent matters (appointment verification); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1010. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 111.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1010"
+  },
+  {
+    "id": "cctc-6036",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010601"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 39-year-old liver transplant patient is the focus of today's interaction. The patient is preparing for upcoming surgery or early recovery. You must answer using program education materials rather than anecdote. During post-transplant education for a liver recipient, which metabolic complication should the coordinator include as a condition that may be newly identified during the transplant phase?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Hyperglycemia or post-transplant diabetes"
+      },
+      {
+        "id": "B",
+        "text": "Primary graft nonfunction diagnosed only at five years post-transplant"
+      },
+      {
+        "id": "C",
+        "text": "Permanent cure of pre-transplant type 1 diabetes without monitoring"
+      },
+      {
+        "id": "D",
+        "text": "Iron overload requiring immediate splenectomy in every recipient"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Post-transplant education includes that patients may be diagnosed with hyperglycemia or post-transplant diabetes during the transplant phase, warranting glucose monitoring and teaching.",
+      "rationale_incorrect": {
+        "B": "Primary nonfunction is an early graft event, not a metabolic diagnosis introduced at five years.",
+        "C": "Diabetes may persist or newly develop; immunosuppression does not guarantee permanent cure without monitoring.",
+        "D": "Splenectomy for iron overload is not a universal transplant-phase metabolic teaching point."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication with the transplant team → v.",
+      "quote_hint": "Patients may be diagnosed with hyperglycemia or post-transplant diabetes during the transplant phase",
+      "keywords": [
+        "hyperglycemia",
+        "post-transplant",
+        "diabetes",
+        "transplant",
+        "phase"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → v. (hyperglycemia/post-transplant diabetes during transplant phase); PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1013. Source-first item. Anchor verified against docs/reference/cupples-core-curriculum-2e.pdf p. 111.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1013"
+  },
+  {
+    "id": "cctc-6037",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": [
+      "010102"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old kidney transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which outcome is explicitly included in standard transplantation risk teaching?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Primary nonfunction may require immediate relisting and retransplantation"
+      },
+      {
+        "id": "B",
+        "text": "Primary nonfunction is impossible after a technically successful implant"
+      },
+      {
+        "id": "C",
+        "text": "Primary nonfunction resolves spontaneously without any relisting consideration"
+      },
+      {
+        "id": "D",
+        "text": "Primary nonfunction affects only cosmetic wound healing without graft consequences"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Organ failure risk education includes that primary nonfunction may require immediate relisting and retransplantation, distinguishing it from delayed graft function that may require supportive care.",
+      "rationale_incorrect": {
+        "B": "Primary nonfunction is a recognized early graft failure risk discussed in pre-transplant counseling.",
+        "C": "Primary nonfunction may necessitate relisting and retransplantation rather than assumed spontaneous recovery.",
+        "D": "Primary nonfunction threatens graft function and may require retransplantation, not only cosmetic effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Patient Education → §6. Risks associated with transplantation → c. Organ failure → i.",
+      "quote_hint": "Primary nonfunction may require immediate relisting and retransplantation",
+      "keywords": [
+        "Primary",
+        "nonfunction",
+        "relisting",
+        "retransplantation",
+        "organ",
+        "failure"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks associated with transplantation → c. Organ failure (primary nonfunction vs delayed graft function); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1015. Source-first item. Distinct 010100 angle from cctc-1006 (rejection timing); anchor verified on Cupples p. 98.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1015"
+  },
+  {
+    "id": "cctc-6038",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010201"
+    ],
+    "cognitive_level": "recall",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old heart-lung transplant patient is the focus of today's interaction. The patient is preparing for upcoming surgery or early recovery. You must answer using program education materials rather than anecdote. According to standard organ-specific indications references, simultaneous heart/lung transplantation is indicated for which candidate profile?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Concurrent end-stage heart and lung disease, or severe fixed pulmonary hypertension"
+      },
+      {
+        "id": "B",
+        "text": "Isolated end-stage renal disease without cardiopulmonary disease"
+      },
+      {
+        "id": "C",
+        "text": "Stable coronary artery disease amenable to percutaneous intervention only"
+      },
+      {
+        "id": "D",
+        "text": "Acute urinary tract infection without structural heart disease"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Simultaneous heart/lung transplantation is indicated for concurrent end-stage heart and lung disease or severe fixed pulmonary hypertension, including selected congenital cardiac conditions with pulmonary hypertension.",
+      "rationale_incorrect": {
+        "B": "Isolated ESRD is an indication for kidney transplantation, not simultaneous heart/lung transplant.",
+        "C": "Revascularizable coronary disease is managed medically or surgically without necessarily requiring heart/lung transplant.",
+        "D": "Untreated infection is a contraindication; it is not an indication for heart/lung transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "section": "Ch. 1, Organ-specific indications → C. Simultaneous heart/lung transplantation → item 1",
+      "quote_hint": "indicated for either patients with concurrent end-stage heart and lung disease or those with severe, fixed pulmonary hypertension",
+      "keywords": [
+        "heart",
+        "lung",
+        "concurrent",
+        "end-stage",
+        "pulmonary",
+        "hypertension",
+        "simultaneous"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → C. Simultaneous heart/lung transplantation (indications); PDF p. 39 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1017. Source-first item. First heart_lung organ tag in bank; anchor verified on Cupples p. 39.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1017"
+  },
+  {
+    "id": "cctc-6039",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": [
+      "010403"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. Which health-maintenance tests may be required during transplant evaluation to remain current with national prevention guidelines?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Mammogram, Papanicolaou test, bone densitometry, and colonoscopy as age- and gender-appropriate"
+      },
+      {
+        "id": "B",
+        "text": "Elective cosmetic surgery assessment for all candidates"
+      },
+      {
+        "id": "C",
+        "text": "Routine dental extraction for every candidate regardless of dentition"
+      },
+      {
+        "id": "D",
+        "text": "Annual lung allocation score recertification for kidney candidates"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Evaluation references include age- and gender-specific health maintenance testing such as mammography, Papanicolaou testing, bone densitometry, and colonoscopy per national prevention guidelines.",
+      "rationale_incorrect": {
+        "B": "Cosmetic surgery assessment is not listed among required health-maintenance screening tests.",
+        "C": "Dentition is assessed, but routine extraction for every candidate is not a universal evaluation requirement.",
+        "D": "LAS applies to lung allocation, not kidney candidate health-maintenance screening."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 97,
+      "section": "Ch. 3, Patient Education → evaluation process → c. Diagnostic testing → iii.",
+      "quote_hint": "Mammogram Papanicolaou test Bone densitometry Colonoscopy",
+      "keywords": [
+        "Mammogram",
+        "Papanicolaou",
+        "Bone",
+        "densitometry",
+        "Colonoscopy",
+        "health",
+        "maintenance"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → c. Diagnostic testing → iii. (age- and gender-specific health maintenance); PDF p. 97 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1020. Source-first item. Second 010400 item; anchor verified on Cupples p. 97.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1020"
+  },
+  {
+    "id": "cctc-6040",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": [
+      "010101"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 9-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When counseling a pediatric transplant candidate's family about transplantation risks before listing, which outcome is explicitly included in standard risk teaching?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Death may occur while on the transplant waiting list"
+      },
+      {
+        "id": "B",
+        "text": "Waitlist mortality never occurs for pediatric candidates"
+      },
+      {
+        "id": "C",
+        "text": "Death risk is limited to the first 24 hours after implantation only"
+      },
+      {
+        "id": "D",
+        "text": "Listing eliminates all mortality risk before transplant surgery"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant risk education includes death as a risk on the waiting list, during surgery, and following transplantation.",
+      "rationale_incorrect": {
+        "B": "Waitlist mortality is explicitly listed among transplantation risks.",
+        "C": "Death risk is not confined to the first day after implantation; waitlist and later periods are also discussed.",
+        "D": "Listing does not eliminate pretransplant mortality risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 98,
+      "section": "Ch. 3, Patient Education → §6. Risks associated with transplantation → a. Death → i.",
+      "quote_hint": "Death … On the waiting list",
+      "keywords": [
+        "Death",
+        "waiting",
+        "list",
+        "transplantation",
+        "risks"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks associated with transplantation → a. Death (waitlist, surgery, post-transplant); PDF p. 98 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1022. Source-first item. Third pediatric-tagged item; distinct 010100 angle from cctc-1006/1015; anchor verified on Cupples p. 98.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1022"
+  },
+  {
+    "id": "cctc-6041",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010601"
+    ],
+    "cognitive_level": "application",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old lung transplant patient is the focus of today's interaction. The patient is preparing for upcoming surgery or early recovery. You must answer using program education materials rather than anecdote. What teaching aligns with standard early post-discharge guidance?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Extensive travel should be avoided immediately after discharge because close monitoring and unplanned visits may be needed"
+      },
+      {
+        "id": "B",
+        "text": "Long-distance travel is encouraged before the first clinic follow-up"
+      },
+      {
+        "id": "C",
+        "text": "Travel restrictions apply only to international flights longer than 12 hours"
+      },
+      {
+        "id": "D",
+        "text": "Recipients may discontinue immunosuppression during travel to reduce infection risk"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Early discharge education advises against extensive travel immediately after discharge due to the need for close monitoring, potential unplanned tests or clinic visits, and possible readmission.",
+      "rationale_incorrect": {
+        "B": "Early post-discharge guidance discourages extensive travel before stable follow-up.",
+        "C": "Travel guidance is not limited to a specific flight duration threshold.",
+        "D": "Immunosuppression must continue as prescribed; travel does not justify stopping therapy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 111,
+      "section": "Ch. 3, Patient Education → §h. Communication → iv. Travel",
+      "quote_hint": "Patients should not travel extensively immediately after discharge",
+      "keywords": [
+        "travel",
+        "extensively",
+        "discharge",
+        "monitoring",
+        "follow-up",
+        "readmission"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §h. Communication with the transplant team → iv. Travel; PDF p. 111 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1025. Source-first item. Third lung organ tag; anchor verified on Cupples p. 111.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1025"
+  },
+  {
+    "id": "cctc-6042",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010202"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old kidney transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. What teaching is MOST accurate?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Untreated current infection is a major contraindication to kidney transplantation"
+      },
+      {
+        "id": "B",
+        "text": "Active infection has no bearing on transplant candidacy if the candidate is on the waitlist"
+      },
+      {
+        "id": "C",
+        "text": "Only pediatric candidates are excluded for untreated infection"
+      },
+      {
+        "id": "D",
+        "text": "Untreated infection is an indication for immediate transplantation without treatment"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Major contraindications to kidney transplantation include untreated current infection, which must be resolved or appropriately managed before transplantation can proceed safely.",
+      "rationale_incorrect": {
+        "B": "Untreated infection is explicitly listed among major contraindications, not an irrelevant factor.",
+        "C": "The contraindication applies to kidney transplant candidacy generally, not a pediatric-only restriction.",
+        "D": "Active untreated infection is a barrier to transplant, not an indication to proceed without treatment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "danovitch",
+      "pdf_page": 227,
+      "section": "Ch. 8, Evaluation of Adult Kidney Transplant Candidates → Table 8.1",
+      "quote_hint": "Untreated current infection",
+      "keywords": [
+        "Untreated",
+        "current",
+        "infection",
+        "contraindications",
+        "kidney",
+        "transplantation"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Handbook of Kidney Transplantation, 6th ed. (Danovitch, 2017).",
+        "locator": "Ch. 8 → Table 8.1 Major Contraindications to Kidney Transplantation; PDF p. 227 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1027. Source-first item. Contraindication-focused 010200 angle distinct from indication items cctc-1004/1005/1016; anchor verified on Danovitch p. 227.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1027"
+  },
+  {
+    "id": "cctc-6043",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": [
+      "010703"
+    ],
+    "cognitive_level": "recall",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old kidney transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. During living kidney donor informed consent, what must the donor commit to regarding post-donation follow-up?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Postoperative follow-up testing coordinated by the live donor program"
+      },
+      {
+        "id": "B",
+        "text": "No follow-up visits after hospital discharge"
+      },
+      {
+        "id": "C",
+        "text": "Follow-up only if the recipient develops rejection"
+      },
+      {
+        "id": "D",
+        "text": "Lifetime immunosuppression monitoring at the recipient's transplant center only"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Living donor education and consent require the donor to commit to postoperative follow-up testing coordinated by the live donor program, with OPTN living-donor follow-up reporting responsibilities.",
+      "rationale_incorrect": {
+        "B": "Donors must commit to structured postoperative follow-up, not discharge without monitoring.",
+        "C": "Donor follow-up is required regardless of recipient outcomes.",
+        "D": "Donor follow-up is coordinated by the live donor program; it is not the same as recipient immunosuppression monitoring."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "section": "Ch. 7, Living Donation → F. Informed Consent → 6.",
+      "quote_hint": "donor must commit to postoperative follow-up testing coordinated by the live donor program",
+      "keywords": [
+        "donor",
+        "commit",
+        "postoperative",
+        "follow-up",
+        "testing",
+        "live",
+        "donor"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → F. Elements Included in Education and Informed Consent → 6. (postoperative follow-up testing commitment); PDF p. 340 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1030. Source-first item. Fifth 010700 item; distinct from discharge fever call (cctc-1026); anchor verified on Cupples p. 340.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1030"
+  },
+  {
+    "id": "cctc-6044",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": [
+      "010101"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When teaching transplant candidates about immunosuppressive medication risks, which side effect should be included in standard education?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Hyperglycemia"
+      },
+      {
+        "id": "B",
+        "text": "Permanent elimination of all infection risk"
+      },
+      {
+        "id": "C",
+        "text": "Guaranteed weight loss without dietary change"
+      },
+      {
+        "id": "D",
+        "text": "Complete immunity to future malignancy"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant risk education includes common immunosuppressive and antimicrobial medication side effects such as hyperglycemia, hypertension, kidney dysfunction, and digestive problems.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression increases infection risk rather than eliminating it.",
+        "C": "Weight gain, not guaranteed weight loss, is among described medication side effects.",
+        "D": "Immunosuppression is associated with infection and malignancy risks, not cancer immunity."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 100,
+      "section": "Ch. 3, Patient Education → §6. Risks → g. Medication side effects → ii.",
+      "quote_hint": "Hyperglycemia … Hypertension … Kidney dysfunction",
+      "keywords": [
+        "Hyperglycemia",
+        "Hypertension",
+        "Kidney",
+        "dysfunction",
+        "side",
+        "effects",
+        "immunosuppressive"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → §6. Risks → g. Medication side effects → ii. (common side effects taught to patients); PDF p. 100 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1032. Source-first item. Fourth 010100 item; medication-risk angle distinct from waitlist death risk (cctc-1022); anchor verified on Cupples p. 100.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1032"
+  },
+  {
+    "id": "cctc-6045",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010400",
+    "knowledge_codes": [
+      "010401"
+    ],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old lung transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. During lung transplant evaluation education, what participation requirement should the coordinator explain for most candidates before listing?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "A pulmonary rehabilitation program several times per week"
+      },
+      {
+        "id": "B",
+        "text": "No structured exercise because activity is permanently contraindicated"
+      },
+      {
+        "id": "C",
+        "text": "Immediate living donor identification before any other testing"
+      },
+      {
+        "id": "D",
+        "text": "Annual re-listing as a new candidate entry every 12 months"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Candidates for lung transplantation are usually required to participate in a pulmonary rehabilitation program several times a week as part of evaluation and preparation.",
+      "rationale_incorrect": {
+        "B": "Pulmonary rehabilitation is typically required, not permanent activity restriction without structured rehab.",
+        "C": "Lung transplantation uses deceased donors; living donor identification is not the standard listing prerequisite described here.",
+        "D": "Waitlist maintenance involves status updates, not mandatory annual re-registration as a new candidate."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 54,
+      "section": "Ch. 1, Waitlist Management → 5.a.",
+      "quote_hint": "required to participate in a pulmonary rehabilitation program several times a week",
+      "keywords": [
+        "pulmonary",
+        "rehabilitation",
+        "several",
+        "times",
+        "week",
+        "lung",
+        "transplantation"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Waitlist Management → 5. Lung transplant candidates → a. (pulmonary rehabilitation requirement); PDF p. 54 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1035. Source-first item. Fifth 010400 item; lung evaluation-process angle distinct from LAS updates (cctc-2021); anchor verified on Cupples p. 54.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1035"
+  },
+  {
+    "id": "cctc-6046",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": [
+      "010101"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 39-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. Which post-transplant disorder risk should the coordinator include in standard education?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Immunosuppressant-induced hyperlipidemia"
+      },
+      {
+        "id": "B",
+        "text": "Complete immunity to all post-transplant infections"
+      },
+      {
+        "id": "C",
+        "text": "Elimination of all cardiovascular risk after transplantation"
+      },
+      {
+        "id": "D",
+        "text": "Permanent inability to absorb any dietary fat"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Nutritional evaluation includes educating patients about risks for post-transplant disorders such as immunosuppressant-induced hyperlipidemia and diabetes mellitus, supporting a heart-healthy diet.",
+      "rationale_incorrect": {
+        "B": "Immunosuppression increases infection susceptibility rather than conferring complete immunity.",
+        "C": "Transplantation and immunosuppression do not eliminate cardiovascular risk; diet teaching addresses ongoing lipid and metabolic risks.",
+        "D": "Nutritional teaching addresses metabolic risks such as hyperlipidemia, not permanent fat malabsorption for all recipients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 32,
+      "section": "Ch. 1, Evaluation → H. Nutritional evaluation → 2.",
+      "quote_hint": "educating the patient about risks for posttransplant disorders such as immunosuppressant-induced hyperlipidemia",
+      "keywords": [
+        "posttransplant",
+        "disorders",
+        "immunosuppressant-induced",
+        "hyperlipidemia",
+        "diabetes",
+        "heart",
+        "healthy"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → H. Nutritional evaluation → 2. (post-transplant hyperlipidemia and diabetes risks; heart-healthy diet); PDF p. 32 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1038. Source-first item. Fifth 010100 item; nutritional-risk angle distinct from rejection/waitlist death/primary nonfunction; anchor verified on Cupples p. 32.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1038"
+  },
+  {
+    "id": "cctc-6047",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": [
+      "010701"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 52-year-old solid-organ transplant patient is the focus of today's interaction. The patient is preparing for upcoming surgery or early recovery. You must answer using program education materials rather than anecdote. Per OPTN and CMS requirements, who may perform the living donor psychosocial evaluation?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "A psychiatrist, psychologist, masters-prepared social worker, or licensed clinical social worker"
+      },
+      {
+        "id": "B",
+        "text": "Only the transplant surgeon without any behavioral health specialist"
+      },
+      {
+        "id": "C",
+        "text": "Any hospital volunteer without clinical licensure"
+      },
+      {
+        "id": "D",
+        "text": "The recipient's primary care physician exclusively"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The living donor psychosocial evaluation must be performed by a psychiatrist, psychologist, masters-prepared social worker, or licensed clinical social worker per OPTN and CMS requirements.",
+      "rationale_incorrect": {
+        "B": "Psychosocial evaluation requires qualified behavioral health professionals, not the surgeon alone.",
+        "C": "Volunteers without clinical licensure cannot perform the required psychosocial evaluation.",
+        "D": "The recipient's primary care physician is not the designated evaluator for living donor psychosocial assessment."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 346,
+      "section": "Ch. 7, Care of Living Donors → A. The Psychosocial Evaluation → 1.",
+      "quote_hint": "psychosocial evaluation must be performed by a psychiatrist, psychologist, masters-prepared social worker, or licensed clinical social worker",
+      "keywords": [
+        "psychosocial",
+        "evaluation",
+        "psychiatrist",
+        "psychologist",
+        "social",
+        "worker",
+        "OPTN"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → A. The Psychosocial Evaluation → 1. (OPTN and CMS requirements; psychosocial evaluation by psychiatrist, psychologist, or licensed clinical social worker); PDF p. 346 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1041. Source-first item. Sixth 010700 item; psychosocial-evaluator qualification angle distinct from follow-up/discharge teaching items; anchor verified on Cupples p. 346.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1041"
+  },
+  {
+    "id": "cctc-6048",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010300",
+    "knowledge_codes": [
+      "010301"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 39-year-old liver transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which teaching point aligns with standard living donor education?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Liver donation carries a higher risk than kidney donation but may still be performed at experienced centers"
+      },
+      {
+        "id": "B",
+        "text": "Liver donation has no measurable surgical risk compared with kidney donation"
+      },
+      {
+        "id": "C",
+        "text": "Kidney donation always carries higher perioperative risk than liver donation"
+      },
+      {
+        "id": "D",
+        "text": "Living liver donation is prohibited at all U.S. transplant centers"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Medical outcomes show that although liver donation portends a higher risk than kidney donation, it is still believed to be safe enough to perform at experienced centers.",
+      "rationale_incorrect": {
+        "B": "Liver donation is associated with higher risk than kidney donation rather than identical risk.",
+        "C": "References describe liver donation as higher risk than kidney donation, not the reverse.",
+        "D": "Living liver donation is performed at experienced centers when appropriate."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "section": "Ch. 7, Care of Living Donors → Introduction → 5.",
+      "quote_hint": "liver donation portends a higher risk than kidney donation",
+      "keywords": [
+        "liver",
+        "donation",
+        "higher",
+        "risk",
+        "kidney",
+        "donation",
+        "experienced"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → Introduction → 5. (liver donation higher risk than kidney donation); PDF p. 331 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1043. Source-first item. Sixth 010300 item; comparative liver-donor risk angle distinct from bile leak (cctc-1031) and psychosocial risks (cctc-1023); anchor verified on Cupples p. 331.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1043"
+  },
+  {
+    "id": "cctc-6049",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": [
+      "010701"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. The patient is preparing for upcoming surgery or early recovery. You must answer using program education materials rather than anecdote. When describing how living donors are protected during the donation process, what organizational feature should the coordinator explain?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "A separate live donor team advocates on the donor's behalf"
+      },
+      {
+        "id": "B",
+        "text": "The recipient's surgeon exclusively represents both recipient and donor without a separate team"
+      },
+      {
+        "id": "C",
+        "text": "Donors have no structured program contact after the operative decision is made"
+      },
+      {
+        "id": "D",
+        "text": "Living donor advocacy is optional and prohibited by OPTN policy"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The hospital created a separate live donor team to advocate on the live organ donor's behalf, distinct from the recipient transplant team.",
+      "rationale_incorrect": {
+        "B": "A separate live donor team exists specifically to advocate for the donor rather than sole representation by the recipient surgeon.",
+        "C": "Living donor programs include structured advocacy and follow-up rather than no program contact.",
+        "D": "Separate live donor team advocacy is part of standard living donation practice, not prohibited."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 331,
+      "section": "Ch. 7, Care of Living Donors → Introduction → 1.a.",
+      "quote_hint": "created a separate live donor team to advocate on the live organ donor's behalf",
+      "keywords": [
+        "separate",
+        "live",
+        "donor",
+        "team",
+        "advocate",
+        "organ",
+        "donor"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → Introduction → 1.a. (separate live donor team advocates for donor); PDF p. 331 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1045. Source-first item. Seventh 010700 item; live donor team advocacy distinct from follow-up commitment (cctc-1030) and psychosocial evaluator (cctc-1041); anchor verified on Cupples p. 331.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1045"
+  },
+  {
+    "id": "cctc-6050",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010505"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Exercise, and calcium and vitamin D supplements as indicated"
+      },
+      {
+        "id": "B",
+        "text": "Complete bed rest to prevent all bone stress"
+      },
+      {
+        "id": "C",
+        "text": "Stop all immunosuppression to reverse bone loss without medical guidance"
+      },
+      {
+        "id": "D",
+        "text": "Bone health requires no monitoring after the first postoperative week"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Long-term immunosuppression teaching for osteopenia or osteoporosis includes exercise to slow bone loss and may require medication, calcium, and vitamin D supplements.",
+      "rationale_incorrect": {
+        "B": "Exercise is recommended to slow bone loss rather than complete immobilization.",
+        "C": "Bone health is managed with exercise and supplements under team guidance, not unilateral immunosuppression cessation.",
+        "D": "Bone health monitoring and counseling continue beyond the first postoperative week."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 120,
+      "section": "Ch. 3, Patient Education → j. Long-term effects → v.",
+      "quote_hint": "Exercise recommended to slow bone loss … calcium and vitamin D supplements",
+      "keywords": [
+        "Osteopenia",
+        "osteoporosis",
+        "Exercise",
+        "bone",
+        "loss",
+        "calcium",
+        "vitamin"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → j. Long-term effects of immunosuppression → v. Osteopenia or osteoporosis (exercise, calcium, vitamin D); PDF p. 120 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1047. Source-first item. Eighth 010500 item; osteopenia counseling distinct from medication combo (cctc-1033) and travel restriction (cctc-1025); anchor verified on Cupples p. 120.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1047"
+  },
+  {
+    "id": "cctc-6051",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010201"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. Which teaching point aligns with standard contraindication references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Severe obesity may be a contraindication to transplantation"
+      },
+      {
+        "id": "B",
+        "text": "Obesity has no effect on transplant candidacy at any level"
+      },
+      {
+        "id": "C",
+        "text": "Only underweight candidates are evaluated for contraindications"
+      },
+      {
+        "id": "D",
+        "text": "Obesity automatically guarantees waitlist priority"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Nutritional evaluation identifies obesity as a comorbidity that, if severe, may be a contraindication to transplantation.",
+      "rationale_incorrect": {
+        "B": "Obesity is specifically addressed as a comorbidity that can affect candidacy.",
+        "C": "Both overweight and underweight candidates undergo nutritional assessment for transplant suitability.",
+        "D": "Obesity is a comorbidity reviewed for candidacy rather than an automatic priority boost."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 32,
+      "section": "Ch. 1, Evaluation → H. Nutritional evaluation → 1.a.i.",
+      "quote_hint": "Obesity is considered a comorbidity and, if severe, may be a contraindication to transplantation",
+      "keywords": [
+        "Obesity",
+        "comorbidity",
+        "severe",
+        "contraindication",
+        "transplantation",
+        "nutritional"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → H. Nutritional evaluation → 1.a.i. (severe obesity may be a contraindication); PDF p. 32 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1050. Source-first item. Seventh 010200 item; obesity-contraindication angle distinct from smoking risks (cctc-1034/1037); anchor verified on Cupples p. 32.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1050"
+  },
+  {
+    "id": "cctc-6052",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 39-year-old solid-organ transplant patient is the focus of today's interaction. The patient is preparing for upcoming surgery or early recovery. You must answer using program education materials rather than anecdote. What teaching aligns with standard post-transplant infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Follow transplant program guidance on hot tubs, tap water, and related environmental exposures"
+      },
+      {
+        "id": "B",
+        "text": "Hot tubs are universally safe without any program-specific restrictions"
+      },
+      {
+        "id": "C",
+        "text": "Environmental water exposures never affect immunosuppressed recipients"
+      },
+      {
+        "id": "D",
+        "text": "Hot tub use requires stopping all immunosuppression permanently"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Transplant programs may provide additional infection-prevention guidelines regarding tap water, water filters, mold exposure, and use of hot tubs.",
+      "rationale_incorrect": {
+        "B": "Hot tub and water exposures are addressed in program-specific infection-prevention guidance rather than declared universally safe.",
+        "C": "Environmental exposures including hot tubs may pose infection risk to immunosuppressed recipients.",
+        "D": "Infection-prevention teaching addresses environmental exposures; it does not require stopping immunosuppression."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → vii.",
+      "quote_hint": "additional infection prevention guidelines regarding … tap water … use of hot tubs",
+      "keywords": [
+        "infection",
+        "prevention",
+        "guidelines",
+        "tap",
+        "water",
+        "hot",
+        "tubs"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → vii. (program guidelines on tap water, water filters, mold, hot tubs); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1053. Source-first item. Tenth 010500 item; environmental exposure angle distinct from travel restriction (cctc-1025) and osteopenia (cctc-1047); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1053"
+  },
+  {
+    "id": "cctc-6053",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which teaching element should the coordinator verify per standard discharge education references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Patient and caregiver can demonstrate correct insulin preparation and administration with site rotation"
+      },
+      {
+        "id": "B",
+        "text": "Insulin may be stopped permanently once the patient leaves the hospital"
+      },
+      {
+        "id": "C",
+        "text": "Glucometer use is optional and never requires return demonstration"
+      },
+      {
+        "id": "D",
+        "text": "Hypoglycemia and hyperglycemia symptoms require no team contact parameters"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Discharge diabetic education includes insulin administration teaching with return demonstration of drawing up or dialing the correct dosage, preparing the injection site, and rotating sites.",
+      "rationale_incorrect": {
+        "B": "Insulin and glucose management continue after discharge under team guidance rather than being stopped at hospital discharge.",
+        "C": "Patients and caregivers should demonstrate glucometer use and insulin technique when insulin is prescribed.",
+        "D": "Teaching includes signs and symptoms of hypo- and hyperglycemia and parameters for contacting the team managing glucose control."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 112,
+      "section": "Ch. 3, Patient Education → B. Diabetic education → insulin administration",
+      "quote_hint": "return demonstration including drawing up or dialing up the correct dosage … rotation of sites",
+      "keywords": [
+        "insulin",
+        "demonstration",
+        "dosage",
+        "injection",
+        "rotation",
+        "sites",
+        "glucometer"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → B. Diabetic education (glucometer demonstration; insulin administration return demonstration and site rotation); PDF p. 112 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1055. Source-first item. Eleventh 010500 item; discharge insulin-teaching angle distinct from medication complex_combo (cctc-1033) and osteopenia (cctc-1047); anchor verified on Cupples p. 112.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1055"
+  },
+  {
+    "id": "cctc-6054",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 55-year-old heart transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which activity guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Lifting items greater than about 5 to 10 pounds may be restricted during early recovery"
+      },
+      {
+        "id": "B",
+        "text": "No lifting restrictions apply at any time after transplant"
+      },
+      {
+        "id": "C",
+        "text": "Only recipients over age 80 have lifting restrictions"
+      },
+      {
+        "id": "D",
+        "text": "Lifting restrictions apply only before transplant, never afterward"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Early post-transplant lifestyle teaching may include activity restrictions such as lifting any item greater than 5 to 10 pounds, along with restrictions on tub soaking, swimming, hot tubs, contact sports, and driving until team reassessment.",
+      "rationale_incorrect": {
+        "B": "Early recovery commonly includes lifting restrictions rather than unrestricted activity immediately.",
+        "C": "Lifting restrictions are described for early post-transplant recovery broadly, not a single age threshold.",
+        "D": "Post-transplant activity restrictions apply during early recovery after surgery."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 110,
+      "section": "Ch. 3, Patient Education → g. Lifestyle changes → i. Potential activity restrictions",
+      "quote_hint": "Lifting any item > 5 to 10 pounds",
+      "keywords": [
+        "Lifting",
+        "item",
+        "pounds",
+        "activity",
+        "restrictions",
+        "posttransplant",
+        "lifestyle"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Lifestyle changes → i. Potential activity restrictions (lifting >5–10 lb and related limits); PDF p. 110 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1059. Source-first item. Twelfth 010500 item; heart activity-restriction angle distinct from insulin teaching (cctc-1055) and travel restriction (cctc-1025); anchor verified on Cupples p. 110.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1059"
+  },
+  {
+    "id": "cctc-6055",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010201"
+    ],
+    "cognitive_level": "application",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old pancreas transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Pancreas transplantation may be considered for type 1 diabetes with poor metabolic control such as hypoglycemic unawareness"
+      },
+      {
+        "id": "B",
+        "text": "Pancreas transplantation is indicated only for type 2 diabetes without any renal disease"
+      },
+      {
+        "id": "C",
+        "text": "Hypoglycemic unawareness permanently excludes pancreas transplantation"
+      },
+      {
+        "id": "D",
+        "text": "Pancreas transplant is never offered to patients already using insulin"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Most pancreas transplant candidates have type 1 diabetes with poor metabolic control, especially hypoglycemic unawareness, after many years of insulin therapy.",
+      "rationale_incorrect": {
+        "B": "Type 2 diabetes accounts for a small minority of pancreas transplants; type 1 diabetes with metabolic complications is the typical indication discussed.",
+        "C": "Hypoglycemic unawareness is a metabolic complication that may support candidacy rather than exclude transplantation.",
+        "D": "Insulin-treated type 1 diabetes with metabolic complications is the typical population considered for pancreas transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → Indications → A.1.a.",
+      "quote_hint": "type 1 diabetes manifested by poor metabolic control, especially hypoglycemic unawareness",
+      "keywords": [
+        "type",
+        "diabetes",
+        "hypoglycemic",
+        "unawareness",
+        "pancreas",
+        "transplantation",
+        "metabolic",
+        "control"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → Indications → A.1.a. (type 1 diabetes with poor metabolic control including hypoglycemic unawareness); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1062. Source-first item. Ninth 010200 item; pancreas-indication angle distinct from liver alcohol abstinence (cctc-1058) and SPK suitability (cctc-2038); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1062"
+  },
+  {
+    "id": "cctc-6056",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010201"
+    ],
+    "cognitive_level": "recall",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old heart-lung transplant patient is the focus of today's interaction. The patient is preparing for upcoming surgery or early recovery. You must answer using program education materials rather than anecdote. Which indication aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Simultaneous heart-lung transplantation for Eisenmenger syndrome"
+      },
+      {
+        "id": "B",
+        "text": "Isolated kidney transplantation for Eisenmenger syndrome"
+      },
+      {
+        "id": "C",
+        "text": "Intestine transplantation as the primary treatment for Eisenmenger syndrome"
+      },
+      {
+        "id": "D",
+        "text": "Heart-lung transplantation is never performed for congenital cardiac disease"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Simultaneous heart/lung transplantation is most commonly performed in adults with congenital cardiac anomalies who developed pulmonary hypertension from longstanding cyanosis or shunting (Eisenmenger syndrome).",
+      "rationale_incorrect": {
+        "B": "Eisenmenger syndrome with fixed pulmonary hypertension is addressed through heart-lung rather than isolated kidney transplantation.",
+        "C": "Intestinal transplantation is not the primary option for Eisenmenger syndrome.",
+        "D": "Congenital cardiac anomalies with Eisenmenger syndrome are a recognized heart-lung transplant indication."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 39,
+      "section": "Ch. 1, Evaluation → Heart/lung transplantation → 2.",
+      "quote_hint": "congenital cardiac anomalies who have developed pulmonary hypertension … (Eisenmenger syndrome)",
+      "keywords": [
+        "Eisenmenger",
+        "syndrome",
+        "heart",
+        "lung",
+        "transplantation",
+        "pulmonary",
+        "hypertension",
+        "cyanosis"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart/lung transplantation → 2. (Eisenmenger syndrome as common heart-lung indication); PDF p. 39 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1065. Source-first item. Third heart_lung organ tag in D1; Eisenmenger indication distinct from heart-lung evaluation (cctc-2013); anchor verified on Cupples p. 39.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1065"
+  },
+  {
+    "id": "cctc-6057",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "intestine",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 50-year-old intestinal transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. When educating an intestinal transplant recipient about graft-versus-host disease (GVHD), which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "GVHD incidence is highest in intestine transplant recipients compared with other solid-organ transplants"
+      },
+      {
+        "id": "B",
+        "text": "GVHD occurs only after bone marrow transplantation and never after solid-organ transplant"
+      },
+      {
+        "id": "C",
+        "text": "Intestinal transplant recipients have the lowest GVHD risk among solid-organ recipients"
+      },
+      {
+        "id": "D",
+        "text": "GVHD always resolves without morbidity after intestine transplantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Although GVHD is rare in solid-organ transplantation, incidence is highest in intestine recipients—approximately five to ten times higher than other solid organs—because of abundant lymphoid tissue in the graft.",
+      "rationale_incorrect": {
+        "B": "GVHD is common after bone marrow transplantation but can also occur, rarely, after solid-organ transplantation.",
+        "C": "Intestine recipients have the highest, not lowest, GVHD incidence among solid-organ transplants.",
+        "D": "GVHD after intestine transplant leads to significant morbidity and mortality in affected patients."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 729,
+      "section": "Ch. 13, Intestine Transplantation → 8. Graft-versus-host disease → b.–c.",
+      "quote_hint": "Incidence is highest in intestine transplant recipients … 5 to 10 times higher … significant morbidity and mortality",
+      "keywords": [
+        "Incidence",
+        "highest",
+        "intestine",
+        "transplant",
+        "recipients",
+        "solid",
+        "organ",
+        "morbidity"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 13 → 8. Graft-versus-host disease → b.–c. (highest incidence in intestine recipients; morbidity/mortality); PDF p. 729 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1067. Source-first item. GVHD-incidence angle distinct from pediatric oral aversion (cctc-1063) and heart-lung toxoplasmosis combo (cctc-1064); anchor verified on Cupples p. 729.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1067"
+  },
+  {
+    "id": "cctc-6058",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010201"
+    ],
+    "cognitive_level": "application",
+    "organ": "liver",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old liver transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. Which counseling point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Liver transplantation is the only available treatment option for HPS"
+      },
+      {
+        "id": "B",
+        "text": "HPS permanently excludes liver transplantation in every candidate"
+      },
+      {
+        "id": "C",
+        "text": "HPS resolves spontaneously without transplantation in most candidates"
+      },
+      {
+        "id": "D",
+        "text": "Isolated kidney transplantation is the primary treatment for HPS"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Hepatopulmonary syndrome is associated with increased mortality, and liver transplant is the only available treatment option.",
+      "rationale_incorrect": {
+        "B": "HPS and hepatorenal syndrome are reversible with transplantation and are not contraindications to liver transplantation.",
+        "C": "HPS is a complication of chronic liver failure that requires transplant rather than expected spontaneous resolution.",
+        "D": "HPS is a pulmonary complication of liver failure addressed through liver rather than isolated kidney transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 44,
+      "section": "Ch. 1, Evaluation → Liver transplantation → Additional evaluation → 4.b.i.",
+      "quote_hint": "HPS is associated with increased mortality and liver transplant is the only available treatment option",
+      "keywords": [
+        "HPS",
+        "associated",
+        "increased",
+        "mortality",
+        "liver",
+        "transplant",
+        "only",
+        "treatment"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Liver transplantation → Additional evaluation → 4.b.i. (HPS mortality; liver transplant as only treatment); PDF p. 44 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1070. Source-first item. First hepatopulmonary-syndrome item in bank; distinct from liver alcohol abstinence (cctc-1058) and smoking contraindication (cctc-1034); anchor verified on Cupples p. 44.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1070"
+  },
+  {
+    "id": "cctc-6059",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": [
+      "010101"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 63-year-old solid-organ transplant patient is the focus of today's interaction. The patient is preparing for upcoming surgery or early recovery. You must answer using program education materials rather than anecdote. When explaining pretransplant infectious-disease screening to a solid-organ candidate, why is Epstein-Barr virus (EBV) status assessed?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "EBV is associated with posttransplant lymphoproliferative disease that can affect graft and patient survival"
+      },
+      {
+        "id": "B",
+        "text": "EBV screening determines ABO compatibility before transplantation"
+      },
+      {
+        "id": "C",
+        "text": "EBV status has no relationship to post-transplant malignancy risk"
+      },
+      {
+        "id": "D",
+        "text": "EBV screening replaces the need for any cytomegalovirus prophylaxis planning"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "EBV is associated with immunosuppression-related lymphoproliferative disease; posttransplant lymphoproliferative disease can affect both graft and patient survival, and EBV status is established by IgG antibody testing.",
+      "rationale_incorrect": {
+        "B": "EBV serology guides PTLD risk and prophylaxis planning rather than ABO compatibility.",
+        "C": "EBV is classified as a carcinogen associated with lymphoproliferative disease after transplantation.",
+        "D": "EBV and CMV screening serve different prophylaxis roles rather than replacing one another."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 29,
+      "section": "Ch. 1, Evaluation → Infectious disease screening → v. Epstein-Barr virus",
+      "quote_hint": "immunosuppression-related lymphoproliferative disease … Posttransplant lymphoproliferative disease can affect both graft and patient survival",
+      "keywords": [
+        "lymphoproliferative",
+        "disease",
+        "Posttransplant",
+        "graft",
+        "patient",
+        "survival",
+        "EBV",
+        "antibodies"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Infectious disease screening → v. Epstein-Barr virus (PTLD risk; graft and patient survival impact; IgG testing); PDF p. 29 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1073. Source-first item. EBV/PTLD screening angle distinct from CMV prevention combo (cctc-1069) and transplantation-risk combo (cctc-1054); anchor verified on Cupples p. 29.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1073"
+  },
+  {
+    "id": "cctc-6060",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "recall",
+    "organ": "lung",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator leading a pre-discharge teaching session. A 52-year-old lung transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When educating a lung transplant recipient about cytomegalovirus (CMV) long-term allograft effects, which complication should the coordinator include?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Bronchiolitis obliterans"
+      },
+      {
+        "id": "B",
+        "text": "Vanishing bile duct syndrome"
+      },
+      {
+        "id": "C",
+        "text": "Coronary artery vasculopathy"
+      },
+      {
+        "id": "D",
+        "text": "Oral aversion"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Organ-specific CMV effects on allografts include bronchiolitis obliterans in lung transplant recipients.",
+      "rationale_incorrect": {
+        "B": "Vanishing bile duct syndrome is the listed CMV organ-specific effect for liver allografts.",
+        "C": "Coronary artery vasculopathy is the listed CMV organ-specific effect for heart allografts.",
+        "D": "Oral aversion is an intestinal transplant feeding complication unrelated to CMV lung effects."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 202,
+      "section": "Ch. 5, Infectious Diseases → CMV → 8. Organ-specific effects on allograft → c.",
+      "quote_hint": "Lung: bronchiolitis obliterans",
+      "keywords": [
+        "Lung",
+        "bronchiolitis",
+        "obliterans",
+        "CMV",
+        "organ-specific",
+        "effects",
+        "allograft"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → CMV → 8. Organ-specific effects on allograft → c. (lung: bronchiolitis obliterans); PDF p. 202 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1076. Source-first item. Lung CMV bronchiolitis teaching angle distinct from lung BOS chronic rejection (cctc-3060) and CMV organ-specific combo (cctc-1071); anchor verified on Cupples p. 202.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1076"
+  },
+  {
+    "id": "cctc-6061",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 4-year-old kidney transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When educating the family of a 3-year-old kidney transplant recipient about early vascular complications, which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Children younger than 5 years are at highest risk for vascular thrombosis from low-flow states"
+      },
+      {
+        "id": "B",
+        "text": "Pediatric recipients older than 12 years have the highest thrombosis risk"
+      },
+      {
+        "id": "C",
+        "text": "Arterial thrombosis in children typically presents with polyuria rather than anuria"
+      },
+      {
+        "id": "D",
+        "text": "Vascular thrombosis never causes graft loss in pediatric kidney recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Children younger than 5 years are at highest risk for vascular thrombosis secondary to low flow states; arterial thrombosis may present with sudden anuria and is often irreversible, resulting in graft loss.",
+      "rationale_incorrect": {
+        "B": "Younger children, not adolescents, are described as highest risk for vascular thrombosis.",
+        "C": "Arterial thrombosis presents with sudden anuria rather than polyuria.",
+        "D": "Arterial thrombosis is often irreversible and may result in graft loss."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 901,
+      "section": "Ch. 17, Pediatric Transplantation → kidney early complications → Thrombus → b.",
+      "quote_hint": "Children younger than 5 years are at highest risk for vascular thrombosis … Arterial thrombosis presents with sudden anuria … graft loss",
+      "keywords": [
+        "Children",
+        "younger",
+        "years",
+        "highest",
+        "risk",
+        "vascular",
+        "thrombosis",
+        "anuria"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 17 → kidney early complications → Thrombus → b. (children <5 years highest thrombosis risk; sudden anuria; graft loss); PDF p. 901 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1080. Source-first item. Thirteenth pediatric recipient in bank; vascular-thrombosis angle distinct from pediatric ATN (cctc-1066) and fever workup (cctc-3056); anchor verified on Cupples p. 901.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1080"
+  },
+  {
+    "id": "cctc-6062",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010201"
+    ],
+    "cognitive_level": "recall",
+    "organ": "pancreas",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old pancreas transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When counseling a candidate about pancreas transplant alone (PTA) eligibility, which metabolic criterion aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "On insulin with C-peptide ≤ 2 ng/mL, or on insulin with C-peptide ≥ 2 ng/mL and BMI ≤ 28 kg/m²"
+      },
+      {
+        "id": "B",
+        "text": "No insulin use and elevated C-peptide as the sole requirement"
+      },
+      {
+        "id": "C",
+        "text": "BMI greater than 35 kg/m² as a required inclusion criterion for every PTA candidate"
+      },
+      {
+        "id": "D",
+        "text": "PTA is indicated only when the candidate no longer has diabetes"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "PTA candidates must meet insulin and C-peptide criteria such as on insulin with C-peptide ≤ 2 ng/mL, or on insulin with C-peptide ≥ 2 ng/mL and BMI at or below the maximum allowable BMI (currently ≤ 28 kg/m²).",
+      "rationale_incorrect": {
+        "B": "PTA candidates are insulin-treated with specified C-peptide and BMI thresholds rather than insulin-free status.",
+        "C": "A maximum allowable BMI threshold applies rather than requiring obesity.",
+        "D": "PTA is for candidates with diabetes meeting metabolic criteria, not for resolved diabetes."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 825,
+      "section": "Ch. 15, Pancreas Transplantation → Indications → A.1.b.",
+      "quote_hint": "On insulin and C-peptide ≤ 2 ng/mL OR On insulin and C-peptide ≥2 ng/mL AND … BMI … ≤28 kg/m2",
+      "keywords": [
+        "insulin",
+        "C-peptide",
+        "ng/mL",
+        "BMI",
+        "28",
+        "kg",
+        "candidates",
+        "criteria"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 15 → Indications → A.1.b. (PTA insulin/C-peptide and BMI criteria); PDF p. 825 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1082. Source-first item. PTA metabolic-criteria angle distinct from hypoglycemic-unawareness counseling (cctc-1062) and SPK indication (cctc-2067); anchor verified on Cupples p. 825.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1082"
+  },
+  {
+    "id": "cctc-6063",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010700",
+    "knowledge_codes": [
+      "010701"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. The patient is preparing for upcoming surgery or early recovery. You must answer using program education materials rather than anecdote. During living donor informed consent, which confirmation must the donor provide in writing per standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "That he or she is willing to donate"
+      },
+      {
+        "id": "B",
+        "text": "That the recipient surgeon has unlimited authority to override donor withdrawal"
+      },
+      {
+        "id": "C",
+        "text": "That the donor will never need any post-donation follow-up"
+      },
+      {
+        "id": "D",
+        "text": "That financial compensation for donation is expected"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "The donor must confirm in writing that he or she is willing to donate, is free from inducement and coercion, may decline at any time, and understands federal prohibitions on organ sales.",
+      "rationale_incorrect": {
+        "B": "Donors retain the right to decline donation; surgeons do not override that autonomy.",
+        "C": "Donors commit to postoperative follow-up coordinated by the live donor program.",
+        "D": "Federal law prohibits offering organs for anything of value rather than expecting compensation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 340,
+      "section": "Ch. 7, Care of Living Donors → F. Elements Included in Education and Informed Consent → 1.a.",
+      "quote_hint": "The donor must confirm (typically in writing) that he or she a. Is willing to donate",
+      "keywords": [
+        "donor",
+        "confirm",
+        "writing",
+        "willing",
+        "donate",
+        "coercion",
+        "inducement",
+        "decline"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 7 → F. Elements Included in Education and Informed Consent → 1.a. (donor must confirm typically in writing that he or she is willing to donate); PDF p. 340 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1085. Source-first item. Written willingness-to-donate angle distinct from decline right (cctc-1074) and federal organ-sales prohibition (cctc-1078); anchor verified on Cupples p. 340.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1085"
+  },
+  {
+    "id": "cctc-6064",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "pediatric",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 9-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which teaching point aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Pediatric recipients should receive HPV and hepatitis B vaccine before engaging in sexual activity"
+      },
+      {
+        "id": "B",
+        "text": "Post-transplant recipients never need HPV or hepatitis B vaccination"
+      },
+      {
+        "id": "C",
+        "text": "Live-virus vaccines are preferred immediately after transplant for all adolescents"
+      },
+      {
+        "id": "D",
+        "text": "Sexual-health counseling is deferred until 5 years after transplantation"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Sexual-health education for pediatric recipients includes that they should receive HPV and hepatitis B vaccine prior to engaging in sexual activity.",
+      "rationale_incorrect": {
+        "B": "HPV and hepatitis B vaccination remain important preventive measures for pediatric recipients.",
+        "C": "Live vaccines require careful timing after transplantation rather than being preferred immediately.",
+        "D": "Sexual-health and vaccination counseling is part of ongoing education rather than deferred for years."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → sexual health → ix.",
+      "quote_hint": "Pediatric recipients should receive the HPV and hepatitis B vaccine prior to engaging in sexual activity",
+      "keywords": [
+        "Pediatric",
+        "recipients",
+        "HPV",
+        "hepatitis",
+        "vaccine",
+        "prior",
+        "sexual",
+        "activity"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → sexual health → ix. (pediatric HPV and hepatitis B before sexual activity); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1087. Source-first item. Sixteenth pediatric recipient in bank; sexual-health vaccination angle distinct from pediatric HPV-only teaching (cctc-1036) and community-infection severity (cctc-1056); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1087"
+  },
+  {
+    "id": "cctc-6065",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 48-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When reviewing pretransplant immunizations for an adult transplant candidate, meningococcal vaccination is especially recommended for which groups?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Military personnel, travelers to high-risk areas, postsplenectomy patients, and college freshmen living on campus"
+      },
+      {
+        "id": "B",
+        "text": "Only candidates who have already received a kidney transplant"
+      },
+      {
+        "id": "C",
+        "text": "Every candidate regardless of risk factors or vocation"
+      },
+      {
+        "id": "D",
+        "text": "Only pediatric candidates younger than 2 years"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Recommended pretransplant immunizations include meningococcal vaccine especially for military personnel, travelers to high-risk areas, postsplenectomy patients, and college freshmen living on campus.",
+      "rationale_incorrect": {
+        "B": "Meningococcal vaccination is emphasized for specific high-risk adult groups rather than only prior kidney recipients.",
+        "C": "Meningococcal vaccine is highlighted for defined risk groups rather than universal administration to every candidate.",
+        "D": "The cited meningococcal groups are within adult candidate immunization guidance rather than limited to toddlers."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 180,
+      "section": "Ch. 5, Infectious Diseases → Immunizations → B. Recommended Pretransplant Immunizations → 1.a.h.",
+      "quote_hint": "Meningococcal, especially for … Military personnel … Travelers to high-risk areas … Postsplenectomy patients … College freshmen living on campus",
+      "keywords": [
+        "Meningococcal",
+        "especially",
+        "Military",
+        "personnel",
+        "Travelers",
+        "high-risk",
+        "Postsplenectomy",
+        "College"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → Immunizations → B.1.a.h. (meningococcal for military, travelers, postsplenectomy, college freshmen); PDF p. 180 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1090. Source-first item. Meningococcal high-risk groups angle distinct from rabies vocation vaccination (cctc-1086) and pneumococcal post-transplant timing (cctc-1048); anchor verified on Cupples p. 180.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1090"
+  },
+  {
+    "id": "cctc-6066",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 50-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When teaching a post-transplant recipient about visitor precautions during respiratory infection season, which guidance aligns with standard infection-prevention references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Ask visitors who have had recent infections to postpone visiting"
+      },
+      {
+        "id": "B",
+        "text": "Encourage unlimited visitation regardless of active infection symptoms"
+      },
+      {
+        "id": "C",
+        "text": "Visitors with recent infections should visit without any precautions"
+      },
+      {
+        "id": "D",
+        "text": "Recipients should discontinue immunosuppression when visitors are ill"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes avoiding individuals with known infection and asking visitors who have had recent infections to postpone visiting; if contact cannot be avoided, surgical masks may be used.",
+      "rationale_incorrect": {
+        "B": "Unrestricted visitation during active infection risk is contrary to standard precautions.",
+        "C": "Recent infection in visitors warrants postponing visits or using precautions rather than unprotected contact.",
+        "D": "Immunosuppression is continued as prescribed; visitor precautions address exposure risk."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → infection prevention → ii.",
+      "quote_hint": "Avoid individuals with known infection … Ask visitors who have had recent infections to postpone visiting",
+      "keywords": [
+        "Avoid",
+        "individuals",
+        "known",
+        "infection",
+        "visitors",
+        "recent",
+        "infections",
+        "postpone"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → infection prevention → ii. (postpone visiting when visitors have recent infections); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1092. Source-first item. Visitor-infection precaution angle distinct from live-virus household precautions (cctc-1046) and hand-hygiene teaching (cctc-1019); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1092"
+  },
+  {
+    "id": "cctc-6067",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 45-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. A post-transplant recipient who drinks well water asks what infection-prevention step aligns with standard dietary and waterborne guidance.",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Well water may need testing for organisms such as Cryptosporidium that place immunosuppressed patients at risk"
+      },
+      {
+        "id": "B",
+        "text": "Well water is always safer than municipal water and requires no precautions"
+      },
+      {
+        "id": "C",
+        "text": "Immunosuppressed recipients should ignore local boil-water advisories"
+      },
+      {
+        "id": "D",
+        "text": "Only municipal water supplies can harbor waterborne pathogens"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waterborne infection prevention includes testing drinking water from wells for organisms that may place immunosuppressed patients at risk, such as Cryptosporidium, and observing local boil-water advisories.",
+      "rationale_incorrect": {
+        "B": "Well water may require testing rather than being assumed universally safe.",
+        "C": "Recipients should observe boil-water advisories rather than ignoring them.",
+        "D": "Well water is specifically highlighted as a source that may need organism testing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → infection prevention → iv. Waterborne infections",
+      "quote_hint": "Drinking water from wells may need to be tested for organisms … (e.g., Cryptosporidium)",
+      "keywords": [
+        "Drinking",
+        "water",
+        "wells",
+        "tested",
+        "organisms",
+        "Cryptosporidium",
+        "immunosuppressed",
+        "risk"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → infection prevention → iv. Waterborne infections (well-water testing for Cryptosporidium risk); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1095. Source-first item. Well-water Cryptosporidium angle distinct from unpasteurized-dairy teaching (cctc-1051) and hot-tub environmental guidance (cctc-1052); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1095"
+  },
+  {
+    "id": "cctc-6068",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010100",
+    "knowledge_codes": [
+      "010101"
+    ],
+    "cognitive_level": "application",
+    "organ": "kidney",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator facilitating a group class for recipients and caregivers. A 39-year-old kidney transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When counseling a kidney transplant candidate who continues to smoke, which long-term post-transplant risk should the coordinator emphasize per standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Increased risk for cardiovascular events, renal fibrosis, rejection, and malignancy"
+      },
+      {
+        "id": "B",
+        "text": "Complete protection from post-transplant infections"
+      },
+      {
+        "id": "C",
+        "text": "Guaranteed improvement in graft function regardless of immunosuppression adherence"
+      },
+      {
+        "id": "D",
+        "text": "Smoking affects only heart recipients and not kidney recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Kidney transplant recipients who smoke are at increased risk for cardiovascular events, renal fibrosis, rejection, and malignancy.",
+      "rationale_incorrect": {
+        "B": "Smoking increases complication risk rather than protecting against infection.",
+        "C": "Smoking is associated with graft-related and cardiovascular complications rather than guaranteed improvement.",
+        "D": "Kidney recipients who smoke have documented risks including renal fibrosis and rejection."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 33,
+      "section": "Ch. 1, Consultations → Pulmonary evaluation → 2.e.iii.",
+      "quote_hint": "Kidney transplant recipients who smoke are at increased risk for cardiovascular events, renal fibrosis, rejection, and malignancy",
+      "keywords": [
+        "Kidney",
+        "transplant",
+        "recipients",
+        "smoke",
+        "cardiovascular",
+        "events",
+        "renal",
+        "fibrosis"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Pulmonary evaluation → 2.e.iii. (kidney smoking risks: cardiovascular events, fibrosis, rejection, malignancy); PDF p. 33 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1098. Source-first item. Kidney-smoking counseling angle distinct from liver smoking complications (cctc-2095) and smoking cessation before listing (cctc-2020); anchor verified on Cupples p. 33.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1098"
+  },
+  {
+    "id": "cctc-6069",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 50-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When teaching long-term malignancy risk after transplantation, which skin-cancer pattern aligns with standard health-maintenance references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Squamous cell carcinoma risk increases over time after transplantation"
+      },
+      {
+        "id": "B",
+        "text": "Skin cancer risk disappears completely after the first post-transplant year"
+      },
+      {
+        "id": "C",
+        "text": "Only basal cell carcinoma increases with immunosuppression duration"
+      },
+      {
+        "id": "D",
+        "text": "Transplant recipients have no elevated skin cancer risk compared with the general population"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Squamous cell carcinoma increases over time after transplantation, and skin cancer is the most common malignancy in transplant recipients.",
+      "rationale_incorrect": {
+        "B": "Skin cancer risk persists and may increase with duration of immunosuppression rather than resolving after one year.",
+        "C": "Squamous cell carcinoma is specifically described as increasing over time after transplant.",
+        "D": "Transplant recipients have markedly elevated skin cancer risk compared with the general population."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Skin care → Risk of skin cancer",
+      "quote_hint": "Squamous cell carcinoma increases over time after transplantation … Skin cancer is the most common malignancy in transplant recipients",
+      "keywords": [
+        "Squamous",
+        "cell",
+        "carcinoma",
+        "increases",
+        "over",
+        "time",
+        "after",
+        "transplantation"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Skin care (squamous cell carcinoma increases over time post-transplant); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1102. Source-first item. Squamous-cell long-term risk angle distinct from skin-cancer incidence item (cctc-3054) and malignancy-prevention combo (cctc-3043); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1102"
+  },
+  {
+    "id": "cctc-6070",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 41-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. During waterborne-infection teaching, which precaution aligns with standard references when municipal water quality is affected?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Observe local boil-water advisories"
+      },
+      {
+        "id": "B",
+        "text": "Ignore boil-water advisories because immunosuppression prevents waterborne illness"
+      },
+      {
+        "id": "C",
+        "text": "Drink untreated lake water when advisories are active"
+      },
+      {
+        "id": "D",
+        "text": "Boil-water advisories apply only to pediatric recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Waterborne infection prevention includes observing local boil-water advisories and avoiding swallowing water from lakes, rivers, or the ocean.",
+      "rationale_incorrect": {
+        "B": "Immunosuppressed recipients should follow boil-water advisories rather than ignoring them.",
+        "C": "Untreated surface water should be avoided, especially during advisories.",
+        "D": "Boil-water guidance applies to immunosuppressed transplant recipients broadly, not pediatric recipients alone."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → infection prevention → iv. Waterborne infections",
+      "quote_hint": "Observe local boil water advisories",
+      "keywords": [
+        "Observe",
+        "local",
+        "boil",
+        "water",
+        "advisories",
+        "Waterborne",
+        "infections"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → infection prevention → iv. Waterborne infections (observe boil-water advisories); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1104. Source-first item. Boil-water advisory angle paired with well-water Cryptosporidium teaching (cctc-1095); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1104"
+  },
+  {
+    "id": "cctc-6071",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010504"
+    ],
+    "cognitive_level": "application",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are the transplant coordinator on the afternoon coordinator phone line. A 61-year-old solid-organ transplant patient is the focus of today's interaction. The family completed initial orientation but has new questions today. The attending asks you to confirm the counseling point before it is charted. Which screening practice aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Annual prostate-specific antigen screening"
+      },
+      {
+        "id": "B",
+        "text": "Prostate screening only after twenty years post-transplant"
+      },
+      {
+        "id": "C",
+        "text": "No prostate screening because immunosuppression prevents prostate disease"
+      },
+      {
+        "id": "D",
+        "text": "Monthly prostate biopsy for all recipients"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Prostate health maintenance includes annual prostate screening antigen testing, with urology consultation for urinary obstruction or recurrent urinary tract infection symptoms.",
+      "rationale_incorrect": {
+        "B": "Annual rather than exclusively late post-transplant screening is referenced.",
+        "C": "Immunosuppressed recipients still require age-appropriate prostate health maintenance.",
+        "D": "Annual PSA screening is referenced rather than routine monthly biopsy."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 118,
+      "section": "Ch. 3, Patient Education → health maintenance → Prostate health",
+      "quote_hint": "Annual prostate screening antigen (PSA)",
+      "keywords": [
+        "Prostate",
+        "health",
+        "Annual",
+        "prostate",
+        "screening",
+        "antigen",
+        "PSA"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → health maintenance → Prostate health (annual PSA, urology consult for obstruction/UTI); PDF p. 118 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1107. Source-first item. Prostate PSA teaching angle distinct from breast self-exam (cctc-1106) and colonoscopy screening (cctc-2104); anchor verified on Cupples p. 118.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1107"
+  },
+  {
+    "id": "cctc-6072",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "one_best",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "recall",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are the transplant coordinator covering the outpatient education clinic. A 45-year-old solid-organ transplant patient is the focus of today's interaction. Teaching is being reinforced before a clinic return. Family members are present and ask for evidence-based guidance. When teaching infection-prevention lifestyle measures, which guidance aligns with standard references?",
+    "shuffle": true,
+    "options": [
+      {
+        "id": "A",
+        "text": "Avoid smoking tobacco and marijuana and exposure to tobacco smoke"
+      },
+      {
+        "id": "B",
+        "text": "Marijuana smoking is encouraged because it does not affect infection risk"
+      },
+      {
+        "id": "C",
+        "text": "Secondhand tobacco smoke exposure is safe for immunosuppressed recipients"
+      },
+      {
+        "id": "D",
+        "text": "Tobacco avoidance applies only before transplantation, not afterward"
+      }
+    ],
+    "correct": "A",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes avoiding smoking tobacco and marijuana and avoiding exposure to tobacco smoke.",
+      "rationale_incorrect": {
+        "B": "Marijuana is included in smoking avoidance rather than being encouraged.",
+        "C": "Exposure to tobacco smoke should be avoided rather than considered safe.",
+        "D": "Smoking avoidance continues as part of post-transplant infection and health maintenance teaching."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → ii. Airborne infections",
+      "quote_hint": "Avoid smoking (tobacco and marijuana) and exposure to tobacco smoke",
+      "keywords": [
+        "Avoid",
+        "smoking",
+        "tobacco",
+        "marijuana",
+        "exposure",
+        "tobacco",
+        "smoke"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → ii. Airborne infections (avoid tobacco and marijuana smoking and smoke exposure); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1110. Source-first item. Tobacco/marijuana avoidance angle distinct from crowded-area influenza teaching (cctc-1024) and dietary combo (cctc-1052); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1110"
+  },
+  {
+    "id": "cctc-6073",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604",
+      "010605"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating post-transplant infection-prevention teaching materials. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Recipients should avoid individuals with known infection when possible."
+      },
+      {
+        "id": "II",
+        "text": "Recipients should avoid crowded areas when community influenza rates are high."
+      },
+      {
+        "id": "III",
+        "text": "Consuming raw or undercooked eggs is recommended for immunosuppressed recipients."
+      },
+      {
+        "id": "IV",
+        "text": "Frequent hand-washing is a best practice to prevent infection."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II and III only",
+        "selects": [
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Infection-prevention teaching includes avoiding known infection contacts, crowded areas during high influenza activity, and frequent hand hygiene. Raw or undercooked eggs are not recommended.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—hand-washing is emphasized as a best practice.",
+        "C": "Statement III is false; dietary teaching advises against raw or undercooked eggs.",
+        "D": "Statement III is false; not all four statements are correct."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → ii. Airborne infections and iii. Dietary precautions",
+      "quote_hint": "Avoid individuals with known infection … Avoid crowded areas … Do not consume raw eggs",
+      "keywords": [
+        "Avoid",
+        "individuals",
+        "infection",
+        "crowded",
+        "raw",
+        "eggs",
+        "hand-washing"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → ii. Airborne infections and iii. Dietary precautions (statements I–III); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      },
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → i. Hand hygiene (statement IV); PDF p. 115 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1024. Synthesized item. Statements I–II and IV from Cupples pp. 115–116; fifth complex_combo in bank.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1024"
+  },
+  {
+    "id": "cctc-6074",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604",
+      "010605"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are revising post-transplant vaccination teaching materials. Attendees will apply the material when fielding recipient calls. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Varicella and herpes zoster vaccines are contraindicated after transplantation."
+      },
+      {
+        "id": "II",
+        "text": "Annual influenza vaccine should use the inactivated formulation."
+      },
+      {
+        "id": "III",
+        "text": "Live herpes zoster vaccine should be given routinely to all recipients immediately after transplant."
+      },
+      {
+        "id": "IV",
+        "text": "Recipients should avoid contact with family members who received a live-virus vaccine within 2 weeks."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II and III only",
+        "selects": [
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Post-transplant vaccination teaching includes inactivated annual influenza vaccine, contraindication of live varicella and zoster vaccines, and temporary avoidance of contact with recently live-vaccinated family members. Live zoster vaccine is not routinely given after transplant.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—household contact precautions after live-virus vaccination are part of teaching.",
+        "C": "Statements I and IV are also true; statement III is false.",
+        "D": "Statement III is false; live zoster vaccine is contraindicated after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → g. Health maintenance → ii.",
+      "quote_hint": "Varicella and herpes zoster vaccines are contraindicated … Annual influenza vaccine (not the live vaccine option) … Avoid contact with family members who have had live virus vaccine within 2 weeks",
+      "keywords": [
+        "Varicella",
+        "herpes",
+        "zoster",
+        "contraindicated",
+        "influenza",
+        "live",
+        "vaccine"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → g. Health maintenance after transplantation → ii. (inactivated influenza, live varicella/zoster contraindicated, household live-vaccine contact precautions); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1048. Synthesized item. Ninth complex_combo in bank; distinct from infection-prevention combo (cctc-1024); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1048"
+  },
+  {
+    "id": "cctc-6075",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "heart_lung",
+    "recipient_age": "adult",
+    "stem": "You are updating infection-prevention teaching for heart and heart-lung recipients. Attendees will apply the material when fielding recipient calls. Evaluate the following statements about toxoplasmosis:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Toxoplasmosis is more common in heart and heart-lung recipients than in other transplant groups."
+      },
+      {
+        "id": "II",
+        "text": "Toxoplasma-seronegative recipients of seropositive donor organs have higher incidence without prophylaxis."
+      },
+      {
+        "id": "III",
+        "text": "Toxoplasmosis characteristically occurs only after the first year post-transplant."
+      },
+      {
+        "id": "IV",
+        "text": "Toxoplasmosis can mimic rejection and may require endomyocardial biopsy for definitive diagnosis."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "III and IV only",
+        "selects": [
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Toxoplasmosis is more common in heart and heart-lung recipients because the organism encysts in heart muscle; seronegative recipients of seropositive donors are at high risk without prophylaxis; infection can mimic rejection requiring biopsy. Infection typically occurs during the first two months, not only after one year.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also correct—toxoplasmosis may mimic rejection and require endomyocardial biopsy.",
+        "C": "Statements I and II are also true; statement III is false regarding timing.",
+        "D": "Statement III is false; toxoplasmosis typically occurs in the first two months post-transplant."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 224,
+      "section": "Ch. 5, Infectious Diseases → B. Toxoplasma gondii → 2.–4.",
+      "quote_hint": "more common in heart and heart-lung recipients … seronegative recipients … seropositive donors … first 2 months … mimic rejection; endomyocardial biopsy",
+      "keywords": [
+        "Toxoplasmosis",
+        "heart",
+        "heart-lung",
+        "recipients",
+        "seronegative",
+        "seropositive",
+        "rejection",
+        "biopsy"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → B. Toxoplasma gondii → 2.–4. (heart/heart-lung risk, donor–recipient serostatus, early timing, mimic rejection); PDF p. 224 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1064. Synthesized item. Fifteenth complex_combo in bank; third heart_lung organ tag; distinct from lifestyle combo (cctc-1060); anchor verified on Cupples p. 224.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1064"
+  },
+  {
+    "id": "cctc-6076",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are updating JC virus teaching for solid-organ recipients. Statements will be checked against textbook and policy anchors. Evaluate the following statements about progressive multifocal leukoencephalopathy (PML):",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "JC virus causes progressive multifocal leukoencephalopathy."
+      },
+      {
+        "id": "II",
+        "text": "PML is typically associated with fever and meningeal signs such as nuchal rigidity."
+      },
+      {
+        "id": "III",
+        "text": "Onset may occur more than 6 months to several years after transplantation."
+      },
+      {
+        "id": "IV",
+        "text": "PML has been reported in renal, liver, heart, and lung transplant recipients."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, III, and IV only",
+        "selects": [
+          "I",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "JC virus causes PML with progressive neurological deficits; onset is typically delayed months to years after transplant; cases are reported across solid-organ groups. PML is a noninflammatory CNS infection not associated with fever or meningeal signs, so statement II is false.",
+      "rationale_incorrect": {
+        "A": "Statement II is false; statements III and IV are also correct.",
+        "C": "Statement I is also true; statement II is false.",
+        "D": "Statement II is false—PML is not typically associated with fever or nuchal rigidity."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 208,
+      "section": "Ch. 5, Infectious Diseases → J. Polyomaviruses → 3. JC virus → a.–b.",
+      "quote_hint": "Causes progressive multifocal leukoencephalopathy … more than 6 months to several years … not associated with fever or meningeal signs … renal, liver, heart, and lung",
+      "keywords": [
+        "progressive",
+        "multifocal",
+        "leukoencephalopathy",
+        "fever",
+        "meningeal",
+        "years",
+        "posttransplant",
+        "renal"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 5 → J. Polyomaviruses → 3. JC virus → a.–b. (PML cause, delayed onset, noninflammatory presentation, multi-organ reports); PDF p. 208 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1079. Synthesized item. Twenty-first complex_combo in bank; first JC-virus/PML teaching item; distinct from BK-virus combo (cctc-1075); anchor verified on Cupples p. 208.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1079"
+  },
+  {
+    "id": "cctc-6077",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010200",
+    "knowledge_codes": [
+      "010201"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "heart",
+    "recipient_age": "adult",
+    "stem": "You are preparing heart transplant evaluation teaching materials. The module supports orientation for new coordinators. Evaluate the following statements about cardiac catheterization:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Right heart catheterization assesses right heart function and pulmonary hypertension."
+      },
+      {
+        "id": "II",
+        "text": "Severe fixed pulmonary hypertension may contraindicate heart transplantation."
+      },
+      {
+        "id": "III",
+        "text": "Coronary angiography may identify lesions treatable without transplantation."
+      },
+      {
+        "id": "IV",
+        "text": "Right heart pressures never require re-evaluation after a patient is listed."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Right heart catheterization evaluates pulmonary hemodynamics, severe fixed pulmonary hypertension may contraindicate heart transplant, and coronary angiography may identify revascularizable lesions that relieve symptoms without transplant. Listed patients should have right heart pressures re-evaluated at regular intervals, so statement IV is false.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—coronary angiography may identify treatable coronary disease.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because right heart pressures are re-evaluated after listing."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 35,
+      "section": "Ch. 1, Evaluation → Heart transplantation → 4.a.i.–ii.",
+      "quote_hint": "Right heart catheterization … pulmonary hypertension … contraindication to heart transplantation … Coronary angiography … lesions amenable to intervention … right heart pressures should be re-evaluated at regular intervals",
+      "keywords": [
+        "Right",
+        "heart",
+        "catheterization",
+        "pulmonary",
+        "hypertension",
+        "contraindication",
+        "Coronary",
+        "angiography"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 1 → Heart transplantation → 4.a.i.–ii. (RHC pulmonary assessment, LHC revascularization option, listed-patient RHC monitoring); PDF p. 35 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1097. Source-first item. Heart-catheterization teaching combo distinct from initial cath requirement (cctc-2092) and fixed-PHTN recall item (cctc-1094); anchor verified on Cupples p. 35.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1097"
+  },
+  {
+    "id": "cctc-6078",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating animal-safety infection-prevention teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Recipients should avoid handling cat litter when possible because bacteria may become airborne."
+      },
+      {
+        "id": "II",
+        "text": "If cat litter handling is unavoidable, disposable gloves and a surgical mask should be used."
+      },
+      {
+        "id": "III",
+        "text": "Recipients should avoid contact with pets that have diarrhea."
+      },
+      {
+        "id": "IV",
+        "text": "Stray animals may be petted freely because bites and scratches never transmit infection."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and III only",
+        "selects": [
+          "I",
+          "II",
+          "III"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Teaching includes avoiding cat litter and fecal matter when possible, using gloves and a mask if unavoidable, and avoiding pets with diarrhea. Stray animals should be avoided because they may bite or scratch.",
+      "rationale_incorrect": {
+        "A": "Statement III is also true—contact with pets with diarrhea should be avoided.",
+        "C": "Statement I is also true; statement IV is false.",
+        "D": "Statement IV is false because stray animals may bite or scratch and should not be petted."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 116,
+      "section": "Ch. 3, Patient Education → e. Infection prevention → v. Animal safety",
+      "quote_hint": "Avoid handling fecal matter especially cat litter … wear gloves … surgical mask … Avoid contact with pets … with diarrhea … Avoid stray animals",
+      "keywords": [
+        "cat",
+        "litter",
+        "gloves",
+        "surgical",
+        "mask",
+        "diarrhea",
+        "stray",
+        "animals"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → e. Infection prevention → v. Animal safety (litter, gloves/mask, diarrhea, stray animals); PDF p. 116 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1117. Source-first item. Animal-safety combo distinct from pet-immunization recall (cctc-1116) and visitor-precaution combo (cctc-1113); anchor verified on Cupples p. 116.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1117"
+  },
+  {
+    "id": "cctc-6079",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010500",
+    "knowledge_codes": [
+      "010503"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "adult",
+    "stem": "You are updating return-to-work teaching materials. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Patients may be counseled to initially telework or work part-time and gradually increase to full-time employment as energy improves."
+      },
+      {
+        "id": "II",
+        "text": "Work activities should be assessed for suitability, including potential restrictions such as weightlifting and toxic exposures."
+      },
+      {
+        "id": "III",
+        "text": "All recipients must return to their previous full-time job without assessment or modification."
+      },
+      {
+        "id": "IV",
+        "text": "Patients who should not return to previous employment may be referred to Social Worker or Vocational Rehabilitation."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Gradual return, work-activity assessment with restrictions, and vocational referral are supported. Statement III is false because return-to-work planning is individualized rather than mandating unmodified return to prior full-time employment.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—vocational rehabilitation referral is cited when prior employment is unsuitable.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because work suitability and restrictions are assessed."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 121,
+      "section": "Ch. 3, Patient Education → n. Return to work",
+      "quote_hint": "telework or work part-time … gradually increase … Assess patient's work activities … weightlifting … toxic agents … Social Worker or Vocational Rehabilitation",
+      "keywords": [
+        "telework",
+        "part-time",
+        "work",
+        "activities",
+        "weightlifting",
+        "Social",
+        "Worker",
+        "Vocational"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → n. Return to work → ii.–iv. (gradual return, work restrictions, vocational referral); PDF p. 121 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1133. Source-first item. Return-to-work combo distinct from communication urgent/non-urgent combo (cctc-1011) and contraception combo (cctc-1129); anchor verified on Cupples p. 121.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1133"
+  },
+  {
+    "id": "cctc-6080",
+    "schema_version": 1,
+    "version": 1,
+    "status": "draft",
+    "type": "complex_combo",
+    "domain": 1,
+    "task": "010600",
+    "knowledge_codes": [
+      "010604",
+      "010605"
+    ],
+    "cognitive_level": "analysis",
+    "organ": "general",
+    "recipient_age": "both",
+    "stem": "You are revising post-transplant health-maintenance and psychological-care teaching. The module supports orientation for new coordinators. Evaluate the following statements:",
+    "shuffle": false,
+    "elements": [
+      {
+        "id": "I",
+        "text": "Hepatitis A and B vaccines should be given if the recipient was not immunized pretransplant."
+      },
+      {
+        "id": "II",
+        "text": "Transplant recipients may require vaccine boosters earlier due to immunosuppression."
+      },
+      {
+        "id": "III",
+        "text": "Live-virus vaccines are appropriate routine post-transplant immunization for all recipients."
+      },
+      {
+        "id": "IV",
+        "text": "The patient should be monitored for signs of depression and anxiety."
+      }
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "I and II only",
+        "selects": [
+          "I",
+          "II"
+        ]
+      },
+      {
+        "id": "B",
+        "text": "I, II, and IV only",
+        "selects": [
+          "I",
+          "II",
+          "IV"
+        ]
+      },
+      {
+        "id": "C",
+        "text": "II, III, and IV only",
+        "selects": [
+          "II",
+          "III",
+          "IV"
+        ]
+      },
+      {
+        "id": "D",
+        "text": "I, II, III, and IV",
+        "selects": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ]
+      }
+    ],
+    "correct": "B",
+    "explanation": {
+      "rationale_correct": "Hepatitis A/B vaccination when indicated, earlier boosters due to immunosuppression, and depression/anxiety monitoring are supported. Statement III is false because immunosuppressed patients should not receive live-virus vaccines.",
+      "rationale_incorrect": {
+        "A": "Statement IV is also true—psychological monitoring for depression and anxiety is recommended.",
+        "C": "Statement I is also true; statement III is false.",
+        "D": "Statement III is false because live-virus vaccines are contraindicated after transplantation."
+      }
+    },
+    "primary_anchor": {
+      "type": "pdf",
+      "source_id": "cupples",
+      "pdf_page": 117,
+      "section": "Ch. 3, Patient Education → f. Psychological care and g. Health maintenance",
+      "quote_hint": "Hepatitis A and B if not immunized pretransplant … boosters earlier … should not receive live-virus vaccines … Monitor patient for signs of depression and anxiety",
+      "keywords": [
+        "Hepatitis",
+        "boosters",
+        "earlier",
+        "live-virus",
+        "vaccines",
+        "depression",
+        "anxiety"
+      ]
+    },
+    "references": [
+      {
+        "citation": "Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016).",
+        "locator": "Ch. 3 → f. Psychological care → ii. and g. Health maintenance → ii. (hepatitis A/B, earlier boosters, live-vaccine contraindication, depression/anxiety monitoring); PDF p. 117 (repo file-page index; printed margin may differ).",
+        "kind": "textbook"
+      }
+    ],
+    "notes": "Scenario companion (wave 2) paired with cctc-1149. Source-first item. Health-maintenance/psychological combo distinct from prior health-maintenance combo (cctc-1141) and vaccination combo (cctc-1048); anchor verified on Cupples p. 117.",
+    "last_updated": "2026-06-05",
+    "companion_of": "cctc-1149"
+  }
+]
