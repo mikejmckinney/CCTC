@@ -39,7 +39,6 @@ describe('resolveLoadedBank', () => {
     expect(banks.scenario.questions.every((question) => typeof question.companion_of === 'string')).toBe(
       true,
     );
-    expect(banks.scenario.questions.filter((question) => question.status === 'reviewed').length).toBe(30);
-    expect(banks.scenario.questions.filter((question) => question.status === 'draft').length).toBe(476);
+    expect(banks.scenario.questions.every((question) => question.status === 'reviewed')).toBe(true);
   });
 });
