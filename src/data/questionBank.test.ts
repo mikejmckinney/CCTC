@@ -39,6 +39,6 @@ describe('resolveLoadedBank', () => {
     expect(banks.scenario.questions.every((question) => typeof question.companion_of === 'string')).toBe(
       true,
     );
-    expect(banks.scenario.questions.every((question) => question.status === 'draft')).toBe(true);
+    expect(banks.scenario.questions.every((question) => question.status === 'reviewed')).toBe(true);
   });
 });
