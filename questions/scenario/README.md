@@ -71,6 +71,14 @@ Regenerate: `node scripts/scenario/build-wave-03.mjs`.
 
 Status: **`draft`** until maintainer spot-check.
 
+## Wave 4 (Phase C — final content wave)
+
+**176** companions (`cctc-6331`–`cctc-6506`) in `questions/scenario/domain-*/wave-batch-04.json` — **59 / 59 / 58 per domain**, completing **506** 1:1 pairings with the standard bank.
+
+Regenerate: `node scripts/scenario/build-wave-04.mjs`.
+
+Status: **`draft`** until maintainer spot-check.
+
 ## App usage
 
 Learners choose **Scenario companions** on the start screen. Study, exam, and timed modes behave the same as the standard bank; blueprint task weighting applies to the scenario pool.

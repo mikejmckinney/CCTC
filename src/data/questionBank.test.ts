@@ -33,13 +33,13 @@ describe('resolveLoadedBank', () => {
     const banks = loadQuestionBanks();
 
     expect(banks.standard.questions.length).toBeGreaterThan(0);
-    expect(banks.scenario.questions.length).toBe(330);
-    expect(banks.scenario.notes).toEqual(['Scenario companion bank: 330/506 item(s) loaded.']);
+    expect(banks.scenario.questions.length).toBe(506);
+    expect(banks.scenario.notes).toEqual(['Scenario companion bank: 506/506 item(s) loaded.']);
     expect(banks.standard.questions.every((question) => !question.companion_of)).toBe(true);
     expect(banks.scenario.questions.every((question) => typeof question.companion_of === 'string')).toBe(
       true,
     );
     expect(banks.scenario.questions.filter((question) => question.status === 'reviewed').length).toBe(30);
-    expect(banks.scenario.questions.filter((question) => question.status === 'draft').length).toBe(300);
+    expect(banks.scenario.questions.filter((question) => question.status === 'draft').length).toBe(476);
   });
 });
