@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Direction C — Mobile Flashcard Trainer (prototype)</title>
+  <style>
+    :root { --font-body: "IBM Plex Sans", system-ui, sans-serif; --canvas: #102224; --surface: #1a3234; --card: #f5f1e8; --ink: #102224; --brand: #d7ebe4; --accent: #d79548; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-body); background: var(--canvas); min-height: 100vh; display: flex; justify-content: center; }
+    .phone { width: min(390px, 100%); min-height: 100vh; background: var(--surface); color: #e8f0ee; display: flex; flex-direction: column; }
+    .banner { background: #3d2e14; color: #ffe8c2; font-size: .7rem; padding: .5rem .75rem; text-align: center; }
+    .top { padding: 1rem; display: flex; justify-content: space-between; font-size: .8rem; opacity: .85; }
+    .card { margin: 0 1rem 1rem; background: var(--card); color: var(--ink); border-radius: 20px; padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .stem { font-size: 1.05rem; font-weight: 600; margin: 0 0 1rem; }
+    .option { padding: .85rem; border-radius: 12px; background: #fff; margin-bottom: .5rem; border: 2px solid transparent; }
+    .option.sel { border-color: var(--accent); }
+    .reveal { margin-top: auto; padding-top: 1rem; border-top: 1px dashed rgba(16,34,36,.2); font-size: .9rem; }
+    .bottom { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; padding: 1rem; }
+    .bottom button { padding: 1rem; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; }
+    .ghost { background: #2a4546; color: #fff; }
+    .primary { background: var(--accent); color: #102224; grid-column: span 2; }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <p class="banner">Prototype — Direction C: Mobile Flashcard Trainer</p>
+    <div class="top"><span>Study · 8/15</span><span>Blueprint 2026-07</span></div>
+    <div class="card">
+      <p class="stem">A transplant coordinator is teaching a recipient about hand hygiene after pet contact. Which instruction is most appropriate?</p>
+      <div class="option sel">Wash hands before and after animal contact</div>
+      <div class="option">Avoid all pets permanently</div>
+      <div class="reveal"><strong>Explanation.</strong> Immunosuppressed recipients need reinforced hand hygiene around animals; permanent avoidance is not the standard teaching point.</div>
+    </div>
+    <div class="bottom">
+      <button class="ghost">Flag</button>
+      <button class="ghost">Bookmark</button>
+      <button class="primary">Next card</button>
+    </div>
+  </div>
+</body>
+</html>

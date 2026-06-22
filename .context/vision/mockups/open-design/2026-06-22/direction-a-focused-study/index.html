@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Direction A — Focused Study Tool (prototype)</title>
+  <style>
+    :root {
+      --font-body: "IBM Plex Sans", system-ui, sans-serif;
+      --font-display: "Fraunces", Georgia, serif;
+      --canvas: #f6f3ec;
+      --surface: #fff;
+      --ink: #102224;
+      --muted: #5b6c72;
+      --brand: #123b3a;
+      --brand-soft: #d7ebe4;
+      --accent: #d79548;
+      --line: rgba(16,34,36,.12);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-body); background: var(--canvas); color: var(--ink); line-height: 1.5; }
+    h1, h2 { font-family: var(--font-display); font-weight: 600; }
+    .proto { max-width: 960px; margin: 0 auto; padding: 1.5rem; display: grid; gap: 2rem; }
+    .banner { background: #fff8e8; border: 1px solid #e8d4a8; padding: .75rem 1rem; border-radius: var(--radius); font-size: .875rem; }
+    .screen { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem; box-shadow: 0 12px 40px rgba(18,59,58,.08); }
+    .screen-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: .75rem; }
+    .hero h1 { margin: 0 0 .5rem; font-size: 1.75rem; }
+    .hero p { color: var(--muted); margin: 0 0 1rem; }
+    .setup-grid { display: grid; gap: .75rem; }
+    label { font-size: .875rem; font-weight: 600; display: block; margin-bottom: .25rem; }
+    select, input { width: 100%; padding: .65rem .75rem; border-radius: 10px; border: 1px solid var(--line); }
+    .btn { display: inline-block; padding: .75rem 1.25rem; border-radius: 10px; border: none; font-weight: 600; }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .session-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; font-size: .875rem; color: var(--muted); }
+    .stem { font-size: 1.125rem; font-weight: 500; margin: 0 0 1rem; }
+    .option { display: flex; gap: .75rem; padding: .85rem 1rem; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: .5rem; background: #fff; }
+    .option:hover { border-color: var(--brand); background: var(--brand-soft); }
+    .toolbar { display: flex; gap: .5rem; margin-top: 1rem; flex-wrap: wrap; }
+    .toolbar .btn { background: #fff; border: 1px solid var(--line); color: var(--ink); }
+  </style>
+</head>
+<body>
+  <div class="proto">
+    <p class="banner"><strong>Prototype only</strong> — Direction A: Focused Study Tool. Not the live CCTC app.</p>
+
+    <section class="screen">
+      <div class="screen-label">Home / setup</div>
+      <div class="hero">
+        <h1>Practice session</h1>
+        <p>Minimal chrome. Configure once, focus on questions.</p>
+      </div>
+      <div class="setup-grid">
+        <div><label>Blueprint</label><select><option>CCTC from 2026-07</option></select></div>
+        <div><label>Mode</label><select><option>Exam</option><option>Study</option></select></div>
+        <div><label>Question count</label><input type="number" value="25" /></div>
+        <button class="btn btn-primary">Start session</button>
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="screen-label">Active exam question</div>
+      <div class="session-head"><span>Item 4 of 25 · Exam · Untimed</span><span>00:42:18</span></div>
+      <h2 class="stem">Which topic is explicitly listed among standard transplant discharge education subjects?</h2>
+      <div class="option"><span>A.</span> Signs and symptoms of infection</div>
+      <div class="option"><span>B.</span> DonorNet refusal code entry</div>
+      <div class="option"><span>C.</span> LAS score manual override</div>
+      <div class="option"><span>D.</span> Crossmatch laboratory billing</div>
+      <div class="toolbar">
+        <button class="btn">Back</button>
+        <button class="btn">Flag</button>
+        <button class="btn btn-primary">Next</button>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
