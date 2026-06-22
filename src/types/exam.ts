@@ -127,7 +127,11 @@ export interface SessionSettings {
   mode: ExamMode;
   includeDrafts: boolean;
   targetThreshold: number;
+  /** Empty or omitted means all blueprint categories. */
+  focusCategoryIds?: string[];
 }
+
+export type ThemeMode = 'day' | 'night';
 
 export interface SessionItemSnapshot {
   itemId: string;
@@ -198,6 +202,10 @@ export interface ItemFlag {
 
 export interface AppMeta {
   disclaimerSeen: boolean;
+  /** ISO calendar date (YYYY-MM-DD) for dashboard exam countdown */
+  examDate?: string;
+  theme?: ThemeMode;
+  lastCustomSettings?: SessionSettings;
 }
 
 export interface LoadedBank {

@@ -58,3 +58,18 @@ export function formatTrendDelta(delta: number): string {
   const sign = delta > 0 ? '+' : '';
   return `${sign}${delta} pts`;
 }
+
+/** Progress "Latest" cell — matches prototype `histDelta` (+5 / -3 / —). */
+export function formatHistoryLatestDelta(delta: number | null): string {
+  if (delta === null) {
+    return '—';
+  }
+  return delta > 0 ? `+${delta}` : `${delta}`;
+}
+
+export function historyLatestDeltaTone(delta: number | null): 'muted' | 'success' | 'danger' {
+  if (delta === null || delta === 0) {
+    return 'muted';
+  }
+  return delta > 0 ? 'success' : 'danger';
+}

@@ -1,11 +1,29 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
 import { loadQuestionBanks } from '../data/questionBank';
-import { buildDefaultSettings, countAnswered, createSession, isBlueprintApplicable } from '../lib/sessionAssembly';
+import {
+  buildDefaultSettings,
+  countAnswered,
+  countAvailableQuestions,
+  createSession
+} from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { buildCategoryHistoryTrend, listHistoryCategories } from '../lib/categoryHistoryTrend';
-import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
+import {
+  buildFocusAreas,
+  buildReadinessSummary,
+  buildRecentTrend,
+  buildWeakAreaCategoryIds,
+  formatDomainBarName,
+  formatHomeSubtitle,
+  formatReadinessDelta,
+  performanceBand,
+  readinessDeltaTone
+} from '../lib/dashboardMetrics';
+import { buildHistoryTrend, formatHistoryLatestDelta, historyLatestDeltaTone } from '../lib/historyTrend';
+import { shouldRunSessionTimer } from '../lib/sessionTimer';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
+import { applyTheme, resolveInitialTheme } from '../lib/uiTheme';
 import {
   bootstrapState,
   clearActiveSession,
@@ -28,12 +46,13 @@ import type {
   HistoryEntry,
   ItemFlag,
   Question,
+  QuestionSet,
   SessionItemSnapshot,
   SessionSettings,
-  QuestionSet
+  ThemeMode
 } from '../types/exam';
 
-type View = 'home' | 'session' | 'history' | 'history-detail' | 'flags';
+type View = 'dashboard' | 'setup' | 'session' | 'results' | 'review' | 'history';
 
 interface FlagDraft {
   existingId?: string;
@@ -70,21 +89,148 @@ function incorrectRationalesForDisplay(item: SessionItemSnapshot): Array<{ displ
     if (optionId === item.question.correct) {
       return [];
     }
-
     const rationale = item.question.explanation.rationale_incorrect?.[optionId];
     if (!rationale) {
       return [];
     }
-
     return [{ displayLetter: displayLetterForIndex(optionIndex), rationale }];
   });
+}
+
+function answerOptionClasses({
+  selected,
+  revealed,
+  correct
+}: {
+  selected: boolean;
+  revealed: boolean;
+  correct: boolean;
+}): string {
+  const classes = ['option-row'];
+  if (revealed && correct) {
+    classes.push('is-correct');
+  } else if (revealed && selected && !correct) {
+    classes.push('is-incorrect');
+  } else if (selected) {
+    classes.push('is-selected');
+  }
+  return classes.join(' ');
+}
+
+function answerOptionNote({
+  revealed,
+  correct,
+  selected,
+  reviewMode
+}: {
+  revealed: boolean;
+  correct: boolean;
+  selected: boolean;
+  reviewMode: boolean;
+}): { text: string; tone: 'success' | 'danger' } | null {
+  if (reviewMode) {
+    if (correct) {
+      return { text: 'Correct answer', tone: 'success' };
+    }
+    if (selected && !correct) {
+      return { text: 'Your answer', tone: 'danger' };
+    }
+    return null;
+  }
+  return null;
+}
+
+function ExplanationPanel({
+  item,
+  variant
+}: {
+  item: SessionItemSnapshot;
+  variant: 'session' | 'review';
+}) {
+  const correctLetter = displayLetterForOptionId(item.optionOrder, item.question.correct);
+  const incorrect = incorrectRationalesForDisplay(item);
+
+  return (
+    <div className={['explanation-card', variant === 'review' ? 'explanation-card--review' : ''].filter(Boolean).join(' ')}>
+      <p className="explanation-card__eyebrow">Correct · {correctLetter}</p>
+      <p className="explanation-card__body">{item.question.explanation.rationale_correct}</p>
+      {incorrect.map(({ displayLetter, rationale }) => (
+        <p key={displayLetter} className="explanation-card__incorrect">
+          <strong>{displayLetter}.</strong> {rationale}
+        </p>
+      ))}
+      <div className="explanation-card__references">
+        <p className="explanation-card__references-label">References</p>
+        {item.question.references.map((reference) => (
+          <div key={`${reference.citation}-${reference.locator ?? ''}`} className="reference-item">
+            {reference.url ? (
+              <a className="reference-citation" href={reference.url} target="_blank" rel="noreferrer">
+                {reference.citation}
+              </a>
+            ) : (
+              <span className="reference-citation">{reference.citation}</span>
+            )}
+            {reference.locator ? <span className="reference-locator">{reference.locator}</span> : null}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AnswerOption({
+  letter,
+  text,
+  selected,
+  revealed,
+  correct,
+  interactive,
+  onSelect,
+  selects,
+  reviewMode = false
+}: {
+  letter: string;
+  text: string;
+  selected: boolean;
+  revealed: boolean;
+  correct: boolean;
+  interactive: boolean;
+  onSelect?: () => void;
+  selects?: string[];
+  reviewMode?: boolean;
+}) {
+  const note = answerOptionNote({ revealed: revealed || reviewMode, correct, selected, reviewMode });
+  const className = answerOptionClasses({
+    selected,
+    revealed: revealed || reviewMode,
+    correct
+  });
+  const body = (
+    <>
+      <span className="option-letter">{letter}</span>
+      <span className="option-copy">
+        {text}
+        {selects && selects.length > 0 ? <small className="option-helper">Selects: {selects.join(', ')}</small> : null}
+        {note ? <small className={`option-note option-note--${note.tone}`}>{note.text}</small> : null}
+      </span>
+    </>
+  );
+
+  if (interactive) {
+    return (
+      <button type="button" className={className} role="radio" aria-checked={selected} onClick={onSelect}>
+        {body}
+      </button>
+    );
+  }
+
+  return <div className={className}>{body}</div>;
 }
 
 function formatDuration(totalSeconds: number | null): string {
   if (totalSeconds === null) {
     return 'Untimed';
   }
-
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
@@ -121,30 +267,82 @@ function clampQuestionCount(value: number, max: number): number {
   if (max <= 0) {
     return 0;
   }
-
   return Math.min(Math.max(value, Math.min(QUESTION_MIN, max)), max);
 }
 
-function getAvailableQuestionCount(questions: Question[], blueprintId: BlueprintId, includeDrafts: boolean): number {
+function listBlueprintCategories(blueprintId: BlueprintId): Array<{ id: string; label: string }> {
   const blueprint = getBlueprint(blueprintId);
-
-  return questions.filter((question) => {
-    if (!includeDrafts && question.status !== 'reviewed') {
-      return false;
-    }
-
-    return isBlueprintApplicable(blueprint, question);
-  }).length;
+  if (blueprint.structure === 'domain_task') {
+    return blueprint.domains.map((domain) => ({ id: String(domain.id), label: domain.name }));
+  }
+  return blueprint.sections.map((section) => ({ id: section.id, label: section.name }));
 }
 
-function updateSessionTimestamp(session: ActiveSession): ActiveSession {
+function summarizeSettings(settings: SessionSettings): string {
+  const mode = settings.mode === 'exam' ? 'Exam' : 'Study';
+  const focusIds = settings.focusCategoryIds?.filter(Boolean) ?? [];
+  let focus = 'All domains';
+  if (focusIds.length > 0) {
+    const categories = listBlueprintCategories(settings.blueprintId);
+    const labels = focusIds
+      .map((id) => categories.find((category) => category.id === id)?.label)
+      .filter((label): label is string => Boolean(label));
+    focus = labels.length === 1 ? labels[0] : `${focusIds.length} focus area(s)`;
+  }
+  const timing = settings.timed ? `${settings.timeMinutes} min` : 'untimed';
+  const scenario = settings.questionSet === 'scenario' ? ' · scenario' : '';
+  return `${mode} · ${focus} · ${settings.questionCount} items · ${timing}${scenario}`;
+}
+
+function formatResumeSubtitle(session: ActiveSession): string {
+  const mode = session.settings.mode === 'exam' ? 'Exam' : 'Study';
+  let text = `Item ${session.currentIndex + 1} of ${session.items.length} · ${mode}`;
+  if (session.remainingSeconds !== null) {
+    text += ` · ${formatDuration(session.remainingSeconds)} left`;
+  }
+  return text;
+}
+
+function weakAreasPresetSubtitle(focusAreas: ReturnType<typeof buildFocusAreas>): string {
+  if (focusAreas.length === 0) {
+    return 'Study mode · 10 items';
+  }
+  return `Study mode · Domain ${focusAreas[0].categoryId}`;
+}
+
+function domainChipLabel(categoryId: string, label: string): string {
+  const shortNames: Record<string, string> = {
+    '1': 'Education',
+    '2': 'Pre-transplant',
+    '3': 'Post-op'
+  };
+  return shortNames[categoryId] ?? label;
+}
+
+function formatHistoryDate(completedAt: string): string {
+  return new Date(completedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+function normalizeActiveSession(session: ActiveSession): ActiveSession {
+  const showTimer = session.timerHidden ? false : session.settings.showTimer;
   return {
     ...session,
-    updatedAt: new Date().toISOString()
+    settings: { ...session.settings, showTimer },
+    timerHidden: !showTimer
   };
 }
 
-function buildInitialFlagDraft(item: Question, sessionId: string, blueprint: BlueprintId, mode: ExamMode, existing?: ItemFlag): FlagDraft {
+function updateSessionTimestamp(session: ActiveSession): ActiveSession {
+  return { ...session, updatedAt: new Date().toISOString() };
+}
+
+function buildInitialFlagDraft(
+  item: Question,
+  sessionId: string,
+  blueprint: BlueprintId,
+  mode: ExamMode,
+  existing?: ItemFlag
+): FlagDraft {
   return {
     existingId: existing?.id,
     item,
@@ -156,38 +354,55 @@ function buildInitialFlagDraft(item: Question, sessionId: string, blueprint: Blu
   };
 }
 
-function References({ question }: { question: Question }) {
-  return (
-    <div className="reference-list">
-      <h5>References</h5>
-      <ul className="plain-list">
-        {question.references.map((reference) => (
-          <li key={`${reference.citation}-${reference.locator ?? ''}`} className="reference-item">
-            {reference.url ? (
-              <a className="reference-citation" href={reference.url} target="_blank" rel="noreferrer">
-                {reference.citation}
-              </a>
-            ) : (
-              <span className="reference-citation">{reference.citation}</span>
-            )}
-            {reference.locator ? <div className="reference-locator">{reference.locator}</div> : null}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+function normalizeSettings(settings: SessionSettings): SessionSettings {
+  const defaults = buildDefaultSettings(settings.blueprintId);
+  return {
+    ...defaults,
+    ...settings,
+    questionSet: settings.questionSet ?? 'standard',
+    focusCategoryIds: settings.focusCategoryIds ?? []
+  };
 }
 
-function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: string | null }) {
+function normalizeMeta(meta: AppMeta): AppMeta {
+  const examDate =
+    meta.examDate && /^\d{4}-\d{2}-\d{2}$/.test(meta.examDate) ? meta.examDate : undefined;
+  return {
+    disclaimerSeen: meta.disclaimerSeen,
+    examDate,
+    theme: resolveInitialTheme(meta.theme),
+    lastCustomSettings: meta.lastCustomSettings ? normalizeSettings(meta.lastCustomSettings) : undefined
+  };
+}
+
+function QuestionReview({
+  item,
+  answer,
+  showVerdict = true
+}: {
+  item: SessionItemSnapshot;
+  answer: string | null;
+  showVerdict?: boolean;
+}) {
+  const skipped = !answer;
+  const correct = answer === item.question.correct;
+
   return (
-    <article className="question-card">
-      <div className="question-meta">
-        <span className="badge badge--soft">{item.categoryLabel}</span>
-        <span className={answer === item.question.correct ? 'badge badge--success' : 'badge badge--warning'}>
-          {answer === item.question.correct ? 'Correct' : 'Review'}
-        </span>
+    <article className="panel question-panel">
+      <div className="question-panel__meta">
+        <span className="category-pill">{formatDomainBarName(item.categoryId, item.categoryLabel)}</span>
+        {showVerdict && (
+          <span
+            className={[
+              'verdict-pill',
+              correct ? 'verdict-pill--success' : 'verdict-pill--danger'
+            ].join(' ')}
+          >
+            {skipped ? 'Skipped' : correct ? 'Correct' : 'Incorrect'}
+          </span>
+        )}
       </div>
-      <h3>{item.question.stem}</h3>
+      <p className="stem-text">{item.question.stem}</p>
       {item.question.elements && (
         <ol className="element-list">
           {item.question.elements.map((element) => (
@@ -201,61 +416,168 @@ function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: s
         {item.optionOrder.map((optionId, optionIndex) => {
           const option = item.question.options.find((entry) => entry.id === optionId)!;
           const selected = answer === option.id;
-          const correct = option.id === item.question.correct;
+          const isCorrect = option.id === item.question.correct;
           return (
-            <div
+            <AnswerOption
               key={option.id}
-              className={[
-                'option-button',
-                correct ? 'is-correct' : '',
-                selected && !correct ? 'is-incorrect' : '',
-                selected ? 'is-selected' : ''
-              ]
-                .filter(Boolean)
-                .join(' ')}
-            >
-              <span className="option-letter">{displayLetterForIndex(optionIndex)}</span>
-              <span>
-                {option.text}
-                {option.selects && <small className="option-helper">Selects: {option.selects.join(', ')}</small>}
-              </span>
-            </div>
+              letter={displayLetterForIndex(optionIndex)}
+              text={option.text}
+              selected={selected}
+              revealed
+              correct={isCorrect}
+              interactive={false}
+              selects={option.selects}
+              reviewMode
+            />
           );
         })}
       </div>
-      <div className="explanation-card">
-        <p>
-          <strong>Correct answer ({displayLetterForOptionId(item.optionOrder, item.question.correct)}):</strong>{' '}
-          {item.question.explanation.rationale_correct}
-        </p>
-        <ul className="plain-list">
-          {incorrectRationalesForDisplay(item).map(({ displayLetter, rationale }) => (
-            <li key={displayLetter}>
-              <strong>{displayLetter}:</strong> {rationale}
-            </li>
-          ))}
-        </ul>
-        <References question={item.question} />
-      </div>
+      <ExplanationPanel item={item} variant="review" />
     </article>
   );
 }
 
-function normalizeSettings(settings: SessionSettings): SessionSettings {
-  const defaults = buildDefaultSettings(settings.blueprintId);
-  return {
-    ...defaults,
-    ...settings,
-    questionSet: settings.questionSet ?? 'standard'
-  };
+function Switch({ checked, onChange, label }: { checked: boolean; onChange: (next: boolean) => void; label: string }) {
+  return (
+    <label className={['switch-row', label ? '' : 'switch-row--compact'].filter(Boolean).join(' ')}>
+      <span className="switch">
+        <input type="checkbox" checked={checked} onChange={(event) => onChange(event.target.checked)} aria-label={label || 'Toggle'} />
+        <span className="switch__track">
+          <span className="switch__knob" />
+        </span>
+      </span>
+      {label ? <span>{label}</span> : null}
+    </label>
+  );
+}
+
+function HomeSwitcher({
+  view,
+  onDashboard,
+  onSetup
+}: {
+  view: 'dashboard' | 'setup';
+  onDashboard: () => void;
+  onSetup: () => void;
+}) {
+  return (
+    <div className="home-switcher" role="tablist" aria-label="Home layout">
+      <span className="home-switcher__label">Home</span>
+      <button
+        type="button"
+        role="tab"
+        aria-selected={view === 'dashboard'}
+        className={['home-switcher__btn', view === 'dashboard' ? 'home-switcher__btn--active' : ''].filter(Boolean).join(' ')}
+        onClick={onDashboard}
+      >
+        Dashboard
+      </button>
+      <button
+        type="button"
+        role="tab"
+        aria-selected={view === 'setup'}
+        className={['home-switcher__btn', view === 'setup' ? 'home-switcher__btn--active' : ''].filter(Boolean).join(' ')}
+        onClick={onSetup}
+      >
+        Setup form
+      </button>
+    </div>
+  );
+}
+
+function QuickStartPanel({
+  blueprintDefaults,
+  weakSubtitle,
+  weakDisabled,
+  lastCustomSettings,
+  onPreset,
+  onLastCustom,
+  showCustomizeLink,
+  onCustomize,
+  wide = false
+}: {
+  blueprintDefaults: SessionSettings;
+  weakSubtitle: string;
+  weakDisabled?: boolean;
+  lastCustomSettings?: SessionSettings;
+  onPreset: (preset: 'full' | 'quick' | 'weak') => void;
+  onLastCustom: (settings: SessionSettings) => void;
+  showCustomizeLink: boolean;
+  onCustomize: () => void;
+  wide?: boolean;
+}) {
+  return (
+    <article className={['panel', 'quick-start-panel', wide ? 'dashboard-grid__wide' : ''].filter(Boolean).join(' ')}>
+      <p className="eyebrow">Quick start</p>
+      <div className="preset-grid">
+        <button type="button" className="preset-card" onClick={() => onPreset('full')}>
+          <span className="preset-card__title">Full mock exam</span>
+          <span className="preset-card__sub">
+            {blueprintDefaults.questionCount} items · timed {blueprintDefaults.timeMinutes} min
+          </span>
+        </button>
+        <button type="button" className="preset-card" onClick={() => onPreset('quick')}>
+          <span className="preset-card__title">Quick 10</span>
+          <span className="preset-card__sub">Untimed · all domains</span>
+        </button>
+        <button type="button" className="preset-card" onClick={() => onPreset('weak')} disabled={weakDisabled}>
+          <span className="preset-card__title">Weak areas</span>
+          <span className="preset-card__sub">{weakSubtitle}</span>
+        </button>
+      </div>
+      {lastCustomSettings && (
+        <button type="button" className="last-custom-tile" onClick={() => onLastCustom(lastCustomSettings)}>
+          <span>
+            <span className="last-custom-tile__label">Your last custom setup</span>
+            <span className="last-custom-tile__summary">{summarizeSettings(lastCustomSettings)}</span>
+          </span>
+          <span className="last-custom-tile__action">Start →</span>
+        </button>
+      )}
+      {showCustomizeLink && (
+        <button type="button" className="customize-session-link" onClick={onCustomize}>
+          Customize a session →
+        </button>
+      )}
+    </article>
+  );
+}
+
+function TrendChart({
+  points,
+  compact = false
+}: {
+  points: Array<{ id: string; label: string; percent: number; belowTarget?: boolean }>;
+  compact?: boolean;
+}) {
+  return (
+    <div
+      className={['trend-chart', compact ? 'trend-chart--compact' : ''].filter(Boolean).join(' ')}
+      role="img"
+      aria-label={`Score trend across ${points.length} sessions`}
+    >
+      <div className="trend-chart__plot">
+        {points.map((point) => (
+          <div key={point.id} className="trend-chart__bar-wrap">
+            <div
+              className={['trend-chart__bar', point.belowTarget ? 'trend-chart__bar--gold' : ''].filter(Boolean).join(' ')}
+              style={{ height: `${Math.max(4, point.percent)}%` }}
+              title={`${point.label}: ${point.percent}%`}
+            />
+            <span className="trend-chart__label">{point.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function App() {
   const banks = useMemo(() => loadQuestionBanks(), []);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [view, setView] = useState<View>('home');
-  const [meta, setMeta] = useState<AppMeta>({ disclaimerSeen: false });
+  const [view, setView] = useState<View>('dashboard');
+  const [meta, setMeta] = useState<AppMeta>(() => normalizeMeta({ disclaimerSeen: false }));
   const [settings, setSettings] = useState<SessionSettings>(() => buildDefaultSettings('cctc-from-2026-07'));
   const bank = useMemo(
     () => (settings.questionSet === 'scenario' ? banks.scenario : banks.standard),
@@ -263,7 +585,20 @@ function App() {
   );
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const blueprintDefaults = useMemo(() => buildDefaultSettings(settings.blueprintId), [settings.blueprintId]);
+  const homeSubtitle = useMemo(
+    () => formatHomeSubtitle(meta.examDate, bank.questions.length),
+    [meta.examDate, bank.questions.length]
+  );
   const historyTrend = useMemo(() => buildHistoryTrend(history), [history]);
+  const recentTrend = useMemo(() => buildRecentTrend(history, 8), [history]);
+  const readiness = useMemo(() => buildReadinessSummary(history), [history]);
+  const focusAreas = useMemo(() => buildFocusAreas(history), [history]);
+  const weakPresetSubtitle = useMemo(() => weakAreasPresetSubtitle(focusAreas), [focusAreas]);
+  const bestHistoryPercent = useMemo(
+    () => (history.length > 0 ? Math.max(...history.map((entry) => entry.result.percent)) : null),
+    [history]
+  );
   const historyCategories = useMemo(() => listHistoryCategories(history), [history]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const categoryTrend = useMemo(
@@ -272,11 +607,19 @@ function App() {
   );
   const [selectedHistory, setSelectedHistory] = useState<HistoryEntry | null>(null);
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [reviewFrom, setReviewFrom] = useState<'results' | 'history'>('results');
   const [flags, setFlags] = useState<ItemFlag[]>([]);
   const [flagDraft, setFlagDraft] = useState<FlagDraft | null>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
+  const autoSubmittedSessionIdRef = useRef<string | null>(null);
   const [sessionReplacePromptOpen, setSessionReplacePromptOpen] = useState(false);
   const [pendingSessionSettings, setPendingSessionSettings] = useState<SessionSettings | null>(null);
+  const [pendingFromCustomForm, setPendingFromCustomForm] = useState(false);
+  const [submitConfirmOpen, setSubmitConfirmOpen] = useState(false);
+  const [sessionOverflowOpen, setSessionOverflowOpen] = useState(false);
+  const [showAdvancedSetup, setShowAdvancedSetup] = useState(false);
+  const [showSessionMap, setShowSessionMap] = useState(false);
+  const [showReviewMap, setShowReviewMap] = useState(false);
   const lastPersistFingerprint = useRef('');
   const activeSessionRef = useRef<ActiveSession | null>(null);
 
@@ -284,18 +627,36 @@ function App() {
     () => [...banks.standard.questions, ...banks.scenario.questions],
     [banks]
   );
+  const blueprintCategories = useMemo(() => listBlueprintCategories(settings.blueprintId), [settings.blueprintId]);
+  const availableQuestionCount = useMemo(
+    () =>
+      countAvailableQuestions(bank.questions, {
+        blueprintId: settings.blueprintId,
+        includeDrafts: settings.includeDrafts,
+        focusCategoryIds: settings.focusCategoryIds
+      }),
+    [bank.questions, settings.blueprintId, settings.includeDrafts, settings.focusCategoryIds]
+  );
+
+  const theme = meta.theme ?? 'day';
+  const hasUnfinishedSession = Boolean(activeSession && !activeSession.submittedAt);
+
+  useEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
 
   useEffect(() => {
     let cancelled = false;
-
     bootstrapState(allQuestions)
       .then((state) => {
         if (cancelled) {
           return;
         }
-        setMeta(state.meta);
+        const nextMeta = normalizeMeta(state.meta);
+        setMeta(nextMeta);
+        applyTheme(nextMeta.theme ?? 'day');
         setSettings(normalizeSettings(state.settings ?? buildDefaultSettings('cctc-from-2026-07')));
-        setActiveSession(state.activeSession);
+        setActiveSession(state.activeSession ? normalizeActiveSession(state.activeSession) : null);
         setHistory(state.history);
         setFlags(state.flags);
       })
@@ -309,7 +670,6 @@ function App() {
           setReady(true);
         }
       });
-
     return () => {
       cancelled = true;
     };
@@ -330,19 +690,16 @@ function App() {
     if (!ready) {
       return undefined;
     }
-
     if (!activeSession) {
       lastPersistFingerprint.current = '';
       void clearActiveSession();
       return undefined;
     }
-
     const fingerprint = sessionPersistFingerprint(activeSession);
     if (fingerprint !== lastPersistFingerprint.current) {
       lastPersistFingerprint.current = fingerprint;
       void saveActiveSession(activeSession);
     }
-
     return undefined;
   }, [activeSession, ready]);
 
@@ -352,7 +709,6 @@ function App() {
         void saveActiveSession(activeSession);
       }
     };
-
     window.addEventListener('beforeunload', flushSession);
     return () => window.removeEventListener('beforeunload', flushSession);
   }, [activeSession]);
@@ -361,26 +717,24 @@ function App() {
     ready && activeSession && !activeSession.submittedAt && activeSession.remainingSeconds !== null
       ? activeSession.id
       : null;
+  const sessionTimerActive = shouldRunSessionTimer(view, activeSession);
 
   useEffect(() => {
     if (!ready || !timedSessionId) {
       return undefined;
     }
-
     const intervalId = window.setInterval(() => {
       if (activeSessionRef.current) {
         void saveActiveSession(activeSessionRef.current);
       }
     }, 15000);
-
     return () => window.clearInterval(intervalId);
   }, [ready, timedSessionId]);
 
   useEffect(() => {
-    if (!timedSessionId) {
+    if (!sessionTimerActive || !timedSessionId) {
       return undefined;
     }
-
     const intervalId = window.setInterval(() => {
       setActiveSession((current) => {
         if (
@@ -392,23 +746,39 @@ function App() {
         ) {
           return current;
         }
-
         return updateSessionTimestamp({
           ...current,
           remainingSeconds: Math.max(0, current.remainingSeconds - 1)
         });
       });
     }, 1000);
-
     return () => window.clearInterval(intervalId);
-  }, [timedSessionId]);
+  }, [sessionTimerActive, timedSessionId]);
+
+  useEffect(() => {
+    const current = activeSession;
+    if (
+      !current ||
+      current.submittedAt ||
+      !current.settings.timed ||
+      view !== 'session' ||
+      current.remainingSeconds !== 0 ||
+      isFinalizing
+    ) {
+      return;
+    }
+    if (autoSubmittedSessionIdRef.current === current.id) {
+      return;
+    }
+    autoSubmittedSessionIdRef.current = current.id;
+    void finalizeSession();
+  }, [activeSession?.id, activeSession?.remainingSeconds, activeSession?.submittedAt, activeSession?.settings.timed, isFinalizing, view]);
 
   const session = activeSession;
   const currentItem = session ? session.items[session.currentIndex] : null;
-  const currentBlueprint = getBlueprint(settings.blueprintId);
-  const availableQuestionCount = getAvailableQuestionCount(bank.questions, settings.blueprintId, settings.includeDrafts);
   const answeredCount = session ? countAnswered(session) : 0;
   const selectedHistoryItem = selectedHistory?.items[reviewIndex] ?? null;
+  const unansweredCount = session ? session.items.length - countAnswered(session) : 0;
 
   useEffect(() => {
     if (selectedCategoryId && !historyCategories.some((category) => category.categoryId === selectedCategoryId)) {
@@ -416,34 +786,25 @@ function App() {
     }
   }, [historyCategories, selectedCategoryId]);
 
-  function openCategoryTrend(categoryId: string): void {
-    setSelectedCategoryId(categoryId);
-    setView('history');
-  }
-
   useEffect(() => {
-    if (!selectedHistory || view !== 'history-detail') {
+    if (!selectedHistory || view !== 'review') {
       return undefined;
     }
-
     const handleKeyDown = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null;
       if (target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) {
         return;
       }
-
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         setReviewIndex((current) => Math.max(current - 1, 0));
         return;
       }
-
       if (event.key === 'ArrowRight' || event.key === 'Enter') {
         event.preventDefault();
         setReviewIndex((current) => Math.min(current + 1, selectedHistory.items.length - 1));
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedHistory, view]);
@@ -452,40 +813,33 @@ function App() {
     if (!session || view !== 'session') {
       return undefined;
     }
-
     const handleKeyDown = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null;
       if (target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) {
         return;
       }
-
       if (!currentItem) {
         return;
       }
-
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         navigateSession(-1);
         return;
       }
-
       if (event.key === 'ArrowRight' || event.key === 'Enter') {
         event.preventDefault();
         navigateSession(1);
         return;
       }
-
       if (event.key.length !== 1) {
         return;
       }
-
       const letterIndex = event.key.toUpperCase().charCodeAt(0) - 'A'.charCodeAt(0);
       if (letterIndex >= 0 && letterIndex < currentItem.optionOrder.length) {
         event.preventDefault();
         handleAnswer(currentItem.optionOrder[letterIndex]);
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [currentItem, session, view]);
@@ -495,41 +849,62 @@ function App() {
     void saveSettings(nextSettings);
   }
 
+  async function persistMeta(nextMeta: AppMeta): Promise<void> {
+    const normalized = normalizeMeta(nextMeta);
+    setMeta(normalized);
+    await saveMeta(normalized);
+  }
+
+  function updateExamDate(examDate: string): void {
+    void persistMeta({ ...meta, examDate: examDate || undefined });
+  }
+
   function updateSettings(next: Partial<SessionSettings>): void {
     const merged = { ...settings, ...next };
-    const max = getAvailableQuestionCount(bank.questions, merged.blueprintId, merged.includeDrafts);
+    const max = countAvailableQuestions(bank.questions, {
+      blueprintId: merged.blueprintId,
+      includeDrafts: merged.includeDrafts,
+      focusCategoryIds: merged.focusCategoryIds
+    });
     merged.questionCount = clampQuestionCount(merged.questionCount, max);
     persistSettings(merged);
+  }
+
+  function toggleFocusCategory(categoryId: string): void {
+    const current = settings.focusCategoryIds ?? [];
+    const next = current.includes(categoryId) ? current.filter((id) => id !== categoryId) : [...current, categoryId];
+    updateSettings({ focusCategoryIds: next });
   }
 
   function handleBlueprintChange(nextBlueprintId: BlueprintId): void {
     const blueprint = getBlueprint(nextBlueprintId);
     const includeDrafts = settings.mode === 'study' ? settings.includeDrafts : false;
-    const max = getAvailableQuestionCount(bank.questions, nextBlueprintId, includeDrafts);
     persistSettings({
       ...settings,
       blueprintId: nextBlueprintId,
-      questionCount: clampQuestionCount(blueprint.default_exam_items, max),
+      focusCategoryIds: [],
+      questionCount: clampQuestionCount(
+        blueprint.default_exam_items,
+        countAvailableQuestions(bank.questions, { blueprintId: nextBlueprintId, includeDrafts, focusCategoryIds: [] })
+      ),
       timeMinutes: blueprint.default_time_minutes,
       includeDrafts
     });
   }
 
   function handleModeChange(nextMode: ExamMode): void {
-    const includeDrafts = nextMode === 'exam' ? false : true;
-    const max = getAvailableQuestionCount(bank.questions, settings.blueprintId, includeDrafts);
-    persistSettings({
-      ...settings,
-      mode: nextMode,
-      includeDrafts,
-      questionCount: clampQuestionCount(settings.questionCount, max)
-    });
+    const includeDrafts = nextMode === 'exam' ? false : settings.includeDrafts;
+    updateSettings({ mode: nextMode, includeDrafts: nextMode === 'exam' ? false : includeDrafts });
   }
 
   function handleQuestionSetChange(nextQuestionSet: QuestionSet): void {
     const nextBank = nextQuestionSet === 'scenario' ? banks.scenario : banks.standard;
     const includeDrafts = settings.mode === 'study' ? settings.includeDrafts : false;
-    const max = getAvailableQuestionCount(nextBank.questions, settings.blueprintId, includeDrafts);
+    const max = countAvailableQuestions(nextBank.questions, {
+      blueprintId: settings.blueprintId,
+      includeDrafts,
+      focusCategoryIds: settings.focusCategoryIds
+    });
     persistSettings({
       ...settings,
       questionSet: nextQuestionSet,
@@ -555,10 +930,7 @@ function App() {
       },
       revealed:
         current.settings.mode === 'study'
-          ? {
-              ...current.revealed,
-              [current.items[current.currentIndex].itemId]: true
-            }
+          ? { ...current.revealed, [current.items[current.currentIndex].itemId]: true }
           : current.revealed
     }));
   }
@@ -583,46 +955,66 @@ function App() {
     });
   }
 
-  function toggleTimerHidden(): void {
-    mutateSession((current) => ({
-      ...current,
-      timerHidden: !current.timerHidden
-    }));
+  function toggleShowTimer(): void {
+    mutateSession((current) => {
+      const showTimer = !current.settings.showTimer;
+      return {
+        ...current,
+        settings: { ...current.settings, showTimer },
+        timerHidden: !showTimer
+      };
+    });
+    setSessionOverflowOpen(false);
   }
 
-  function beginNewSession(nextSettings: SessionSettings = settings): void {
+  function beginNewSession(nextSettings: SessionSettings): void {
+    const questionBank = nextSettings.questionSet === 'scenario' ? banks.scenario : banks.standard;
     const recentIds = buildRecentItemIds(history.map((entry) => ({ itemIds: entry.itemIds })));
-    const nextSession = createSession(bank.questions, nextSettings, recentIds);
+    const nextSession = createSession(questionBank.questions, nextSettings, recentIds);
     setActiveSession(nextSession);
+    setShowSessionMap(false);
     setView('session');
   }
 
-  function startSession(): void {
-    let nextSettings = settings;
+  function requestStartSession(nextSettings: SessionSettings, fromCustomForm = false): void {
+    let resolved = nextSettings;
+    const nextBank = resolved.questionSet === 'scenario' ? banks.scenario : banks.standard;
+    const max = countAvailableQuestions(nextBank.questions, {
+      blueprintId: resolved.blueprintId,
+      includeDrafts: resolved.includeDrafts,
+      focusCategoryIds: resolved.focusCategoryIds
+    });
 
-    if (availableQuestionCount === 0 && !settings.includeDrafts) {
+    if (max === 0 && !resolved.includeDrafts) {
       const useDrafts = window.confirm(
         'No reviewed items are available for this configuration yet. Click OK to include draft items for a bootstrap practice session.'
       );
       if (!useDrafts) {
         return;
       }
-      nextSettings = { ...settings, includeDrafts: true };
-      persistSettings(nextSettings);
+      resolved = { ...resolved, includeDrafts: true };
     }
 
+    resolved = { ...resolved, questionCount: clampQuestionCount(resolved.questionCount, max) };
+    persistSettings(resolved);
+
     if (activeSession && !activeSession.submittedAt) {
-      setPendingSessionSettings(nextSettings);
+      setPendingSessionSettings(resolved);
+      setPendingFromCustomForm(fromCustomForm);
       setSessionReplacePromptOpen(true);
       return;
     }
 
-    beginNewSession(nextSettings);
+    if (fromCustomForm) {
+      void persistMeta({ ...meta, lastCustomSettings: resolved });
+    }
+    beginNewSession(resolved);
   }
 
   function dismissSessionReplacePrompt(): void {
     setSessionReplacePromptOpen(false);
     setPendingSessionSettings(null);
+    setPendingFromCustomForm(false);
   }
 
   function resumeExistingSession(): void {
@@ -632,7 +1024,11 @@ function App() {
 
   function replaceActiveSession(): void {
     const nextSettings = pendingSessionSettings ?? settings;
+    const fromCustom = pendingFromCustomForm;
     dismissSessionReplacePrompt();
+    if (fromCustom) {
+      void persistMeta({ ...meta, lastCustomSettings: nextSettings });
+    }
     beginNewSession(nextSettings);
   }
 
@@ -641,26 +1037,17 @@ function App() {
     void clearActiveSession();
   }
 
+  function openSubmitConfirm(): void {
+    setSubmitConfirmOpen(true);
+  }
+
   async function finalizeSession(): Promise<void> {
     if (!activeSession || isFinalizing) {
       return;
     }
-
     setIsFinalizing(true);
-
+    setSubmitConfirmOpen(false);
     try {
-      const unanswered = activeSession.items.length - countAnswered(activeSession);
-      if (activeSession.settings.mode === 'exam') {
-        const shouldSubmit = window.confirm(
-          unanswered > 0
-            ? `Submit exam with ${unanswered} unanswered item(s)? There is no guessing penalty in this practice result.`
-            : 'Submit exam and score the results?'
-        );
-        if (!shouldSubmit) {
-          return;
-        }
-      }
-
       const result = scoreSession(
         activeSession.settings.blueprintId,
         activeSession.items,
@@ -673,15 +1060,13 @@ function App() {
         result
       });
       const historyEntry = toHistoryEntry(completedSession);
-
       await saveHistoryEntry(historyEntry);
       await clearActiveSession();
-
       setHistory((current) => [historyEntry, ...current]);
       setSelectedHistory(historyEntry);
       setReviewIndex(0);
       setActiveSession(null);
-      setView('history-detail');
+      setView('results');
     } finally {
       setIsFinalizing(false);
     }
@@ -690,13 +1075,13 @@ function App() {
   function openFlagComposer(item: Question, sessionId: string, blueprint: BlueprintId, mode: ExamMode): void {
     const existing = flags.find((flag) => flag.item_id === item.id);
     setFlagDraft(buildInitialFlagDraft(item, sessionId, blueprint, mode, existing));
+    setSessionOverflowOpen(false);
   }
 
   async function saveFlagDraft(): Promise<void> {
     if (!flagDraft) {
       return;
     }
-
     const existing = flags.find((flag) => flag.item_id === flagDraft.item.id);
     const timestamp = new Date().toISOString();
     const nextFlag: ItemFlag = {
@@ -712,9 +1097,12 @@ function App() {
       createdAt: existing?.createdAt ?? timestamp,
       updatedAt: timestamp
     };
-
     await upsertFlag(nextFlag);
-    setFlags((current) => [nextFlag, ...current.filter((flag) => flag.item_id !== nextFlag.item_id)].sort((left, right) => right.updatedAt.localeCompare(left.updatedAt)));
+    setFlags((current) =>
+      [nextFlag, ...current.filter((flag) => flag.item_id !== nextFlag.item_id)].sort((left, right) =>
+        right.updatedAt.localeCompare(left.updatedAt)
+      )
+    );
     setFlagDraft(null);
   }
 
@@ -743,24 +1131,66 @@ function App() {
   }
 
   async function acknowledgeDisclaimer(): Promise<void> {
-    const nextMeta = { disclaimerSeen: true };
-    setMeta(nextMeta);
-    await saveMeta(nextMeta);
+    await persistMeta({ ...meta, disclaimerSeen: true });
+  }
+
+  async function toggleTheme(): Promise<void> {
+    const nextTheme: ThemeMode = theme === 'day' ? 'night' : 'day';
+    await persistMeta({ ...meta, theme: nextTheme });
   }
 
   async function exportFlags(): Promise<void> {
-    downloadJson('cctc-flags.json', {
-      exportedAt: new Date().toISOString(),
-      flags
-    });
+    downloadJson('cctc-flags.json', { exportedAt: new Date().toISOString(), flags });
   }
 
   async function resetFlags(): Promise<void> {
-    if (!window.confirm('Clear every stored item flag?')) {
+    if (!window.confirm('Clear every reported item flag?')) {
       return;
     }
     await replaceFlags([]);
     setFlags([]);
+  }
+
+  function startPreset(preset: 'full' | 'quick' | 'weak'): void {
+    const defaults = buildDefaultSettings(settings.blueprintId);
+    if (preset === 'full') {
+      requestStartSession({ ...defaults, mode: 'exam', timed: true, questionSet: settings.questionSet });
+      return;
+    }
+    if (preset === 'quick') {
+      requestStartSession({
+        ...defaults,
+        mode: 'study',
+        timed: false,
+        questionCount: clampQuestionCount(10, availableQuestionCount),
+        questionSet: settings.questionSet
+      });
+      return;
+    }
+    const weakIds = buildWeakAreaCategoryIds(history);
+    requestStartSession({
+      ...defaults,
+      mode: 'study',
+      timed: false,
+      questionCount: clampQuestionCount(25, availableQuestionCount),
+      focusCategoryIds: weakIds,
+      questionSet: settings.questionSet
+    });
+  }
+
+  function retakeSelectedHistory(): void {
+    if (!selectedHistory) {
+      return;
+    }
+    requestStartSession(selectedHistory.settings);
+  }
+
+  function reviewChipState(entry: HistoryEntry, item: SessionItemSnapshot): 'correct' | 'incorrect' | 'skipped' {
+    const answer = entry.answers[item.itemId];
+    if (!answer) {
+      return 'skipped';
+    }
+    return answer === item.question.correct ? 'correct' : 'incorrect';
   }
 
   if (!ready) {
@@ -779,17 +1209,21 @@ function App() {
     );
   }
 
+  const readinessBand = readiness.averagePercent === null ? 'teal' : performanceBand(readiness.averagePercent);
+
   return (
-    <div className="shell">
+    <div className="app-frame">
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
+
       {!meta.disclaimerSeen && (
         <section className="modal-backdrop" aria-label="Study aid disclaimer">
           <div className="modal-card">
-            <h2>Independent study aid</h2>
+            <p className="modal-eyebrow">Independent study aid</p>
+            <h2>Before you begin</h2>
             <p>
-              This practice app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam items, and must not be used for
+              This practice app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam items, and is not a source of
               patient-care decisions. Practice results are unofficial estimates only.
             </p>
             <button className="primary-button" onClick={() => void acknowledgeDisclaimer()}>
@@ -799,26 +1233,44 @@ function App() {
         </section>
       )}
 
-      {sessionReplacePromptOpen && (
+      {sessionReplacePromptOpen && pendingSessionSettings && (
         <section className="modal-backdrop" aria-label="Unfinished session">
           <div className="modal-card">
-            <h2>Unfinished session</h2>
+            <h2>Session in progress</h2>
             <p>
-              You already have a session in progress. Resume it, or start a new session with your current setup (this discards
-              in-progress answers and bookmarks).
+              You have an unfinished session. Resume it, or start a new one — starting new discards your in-progress answers and bookmarks.
             </p>
-            <p>
-              <strong>Resume your in-progress session?</strong>
-            </p>
+            <p className="session-summary-chip">New session: {summarizeSettings(pendingSessionSettings)}</p>
             <div className="modal-actions">
               <button className="ghost-button" onClick={dismissSessionReplacePrompt}>
                 Cancel
               </button>
               <button className="secondary-button" onClick={replaceActiveSession}>
-                No, start new
+                Start new
               </button>
               <button className="primary-button" onClick={resumeExistingSession}>
-                Yes, resume
+                Resume current
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {submitConfirmOpen && session && (
+        <section className="modal-backdrop" aria-label="Confirm finish">
+          <div className="modal-card">
+            <h2>{session.settings.mode === 'exam' ? 'Submit exam?' : 'Finish session?'}</h2>
+            <p>
+              {unansweredCount > 0
+                ? `You have ${unansweredCount} unanswered item(s); they will be marked incorrect. Submit and score now? You can review every answer afterward.`
+                : `Submit and score your ${session.items.length} answers now? You can review every answer afterward.`}
+            </p>
+            <div className="modal-actions">
+              <button className="ghost-button" onClick={() => setSubmitConfirmOpen(false)}>
+                Keep going
+              </button>
+              <button className="primary-button" onClick={() => void finalizeSession()} disabled={isFinalizing}>
+                {session.settings.mode === 'exam' ? 'Submit' : 'Finish'}
               </button>
             </div>
           </div>
@@ -826,9 +1278,9 @@ function App() {
       )}
 
       {flagDraft && (
-        <section className="modal-backdrop" aria-label="Flag this item">
+        <section className="modal-backdrop" aria-label="Report an issue">
           <div className="modal-card">
-            <h2>Flag this item</h2>
+            <h2>Report an issue</h2>
             <label>
               Reason
               <select value={flagDraft.reason} onChange={(event) => setFlagDraft({ ...flagDraft, reason: event.target.value as FlagReason })}>
@@ -848,750 +1300,864 @@ function App() {
                 Cancel
               </button>
               <button className="primary-button" onClick={() => void saveFlagDraft()}>
-                Save flag
+                Save report
               </button>
             </div>
           </div>
         </section>
       )}
 
-      <header className="hero-panel" role="banner">
-        <div>
-          <p className="eyebrow">CCTC practice exam</p>
-          <h1>CCTC Practice Exam</h1>
-          <p className="hero-copy">
-            Client-side only, static-hostable, and offline-capable after first load. Sessions freeze question order, answer order,
-            timer state, and bookmarks exactly.
-          </p>
-        </div>
-        <nav className="nav-pills" aria-label="Primary">
-          <button className={view === 'home' ? 'pill active' : 'pill'} onClick={() => setView('home')}>
-            Start
+      <header className="app-header" role="banner">
+        <div className="app-header__inner">
+          <button type="button" className="brand" onClick={() => setView('dashboard')} aria-label="CCTC home">
+            <span className="brand__mark" aria-hidden="true">
+              C
+            </span>
+            <span className="brand__wordmark">CCTC Practice</span>
           </button>
-          <button className={view === 'history' ? 'pill active' : 'pill'} onClick={() => setView('history')}>
-            History
-          </button>
-          <button className={view === 'flags' ? 'pill active' : 'pill'} onClick={() => setView('flags')}>
-            Flags
-          </button>
-          {activeSession && (
-            <button className={view === 'session' ? 'pill active' : 'pill'} onClick={() => setView('session')}>
-              Resume
+          <nav className="header-nav" aria-label="Primary">
+            <button
+              type="button"
+              className={['nav-link', view === 'dashboard' || view === 'setup' ? 'nav-link--active' : ''].filter(Boolean).join(' ')}
+              onClick={() => setView('dashboard')}
+            >
+              Home
             </button>
-          )}
-        </nav>
+            <button
+              type="button"
+              className={['nav-link', view === 'history' ? 'nav-link--active' : ''].filter(Boolean).join(' ')}
+              onClick={() => setView('history')}
+            >
+              Progress
+            </button>
+            {hasUnfinishedSession && (
+              <button type="button" className={['nav-link', view === 'session' ? 'nav-link--active' : ''].filter(Boolean).join(' ')} onClick={() => setView('session')}>
+                Resume
+              </button>
+            )}
+            <button type="button" className="theme-toggle" onClick={() => void toggleTheme()} aria-label={theme === 'day' ? 'Switch to night theme' : 'Switch to day theme'}>
+              {theme === 'day' ? '☾' : '☀'}
+            </button>
+          </nav>
+        </div>
       </header>
 
-      <main id="main-content" className="main-grid">
-        {view === 'home' && (
-          <>
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Session setup</p>
-                  <h2>Build a practice session</h2>
-                </div>
-                <span className="badge badge--soft">
-                  {settings.questionSet === 'scenario' ? 'Scenario' : 'Standard'} bank: {bank.questions.length} item(s)
-                </span>
-              </div>
-
-              {bank.notes.length > 0 && (
-                <div className="notice-block">
-                  {bank.notes.map((note) => (
-                    <p key={note}>{note}</p>
-                  ))}
-                </div>
-              )}
-
-              <div className="settings-grid">
-                <label>
-                  Blueprint version
-                  <select value={settings.blueprintId} onChange={(event) => handleBlueprintChange(event.target.value as BlueprintId)}>
-                    <option value="cctc-from-2026-07">2026-07 (default)</option>
-                    <option value="cctc-thru-2026-06">Until 2026-06</option>
-                  </select>
-                </label>
-
-                <label>
-                  Question set
-                  <select value={settings.questionSet} onChange={(event) => handleQuestionSetChange(event.target.value as QuestionSet)}>
-                    <option value="standard">Standard bank</option>
-                    <option value="scenario">Scenario companions</option>
-                  </select>
-                  <span className="field-hint">
-                    Scenario companions are clinical vignettes paired 1:1 with the standard bank (506 target).
-                  </span>
-                </label>
-
-                <label>
-                  Question count
-                  <input
-                    type="number"
-                    min={Math.min(QUESTION_MIN, Math.max(1, availableQuestionCount))}
-                    max={Math.max(availableQuestionCount, 1)}
-                    value={settings.questionCount}
-                    onChange={(event) => updateSettings({ questionCount: Number(event.target.value) || 0 })}
-                  />
-                  <span className="field-hint">Available for this configuration: {availableQuestionCount}</span>
-                </label>
-
-                <label>
-                  Timed session
-                  <div className="toggle-row">
-                    <input type="checkbox" checked={settings.timed} onChange={(event) => updateSettings({ timed: event.target.checked })} />
-                    <span>{settings.timed ? 'Timer enabled' : 'Untimed session'}</span>
-                  </div>
-                </label>
-
-                <label>
-                  Minutes
-                  <input
-                    type="number"
-                    min={1}
-                    value={settings.timeMinutes}
-                    onChange={(event) => updateSettings({ timeMinutes: Math.max(1, Number(event.target.value) || 1) })}
-                    disabled={!settings.timed}
-                  />
-                </label>
-
-                <label>
-                  On-screen timer
-                  <div className="toggle-row">
-                    <input type="checkbox" checked={settings.showTimer} onChange={(event) => updateSettings({ showTimer: event.target.checked })} />
-                    <span>{settings.showTimer ? 'Visible during session' : 'Hidden during session'}</span>
-                  </div>
-                </label>
-
-                <label>
-                  Mode
-                  <select value={settings.mode} onChange={(event) => handleModeChange(event.target.value as ExamMode)}>
-                    <option value="exam">Exam</option>
-                    <option value="study">Study</option>
-                  </select>
-                </label>
-
-                <label>
-                  Include draft items
-                  <div className="toggle-row">
-                    <input
-                      type="checkbox"
-                      checked={settings.includeDrafts}
-                      onChange={(event) => updateSettings({ includeDrafts: event.target.checked })}
-                      disabled={settings.mode === 'exam'}
-                    />
-                    <span>{settings.mode === 'exam' ? 'Exam mode defaults to reviewed-only' : 'Drafts remain visibly labeled'}</span>
-                  </div>
-                </label>
-
-                <label>
-                  Target threshold (%)
-                  <input
-                    type="number"
-                    min={1}
-                    max={100}
-                    value={settings.targetThreshold}
-                    onChange={(event) => updateSettings({ targetThreshold: Math.min(100, Math.max(1, Number(event.target.value) || 1)) })}
-                  />
-                  <span className="field-hint">Used only for the unofficial practice estimate label.</span>
-                </label>
-              </div>
-
-              <div className="summary-card">
-                <h3>Selected setup</h3>
-                <p><strong>Blueprint:</strong> {getBlueprintLabel(settings.blueprintId)}</p>
-                <p><strong>Question set:</strong> {settings.questionSet === 'scenario' ? 'Scenario companions' : 'Standard bank'}</p>
-                <p><strong>Mode:</strong> {settings.mode === 'exam' ? 'Exam mode' : 'Study mode'}</p>
-                <p><strong>Timer:</strong> {settings.timed ? `${settings.timeMinutes} minutes` : 'Untimed'}</p>
-                <p><strong>Draft handling:</strong> {settings.includeDrafts ? 'Drafts included and labeled' : 'Reviewed items only'}</p>
-                <p>
-                  <strong>Weighting:</strong> {currentBlueprint.structure === 'domain_task' ? 'Current blueprint domains' : 'Legacy blueprint sections via crosswalk'}
-                </p>
-              </div>
-
-              <div className="action-row">
-                {activeSession && (
-                  <button className="secondary-button" onClick={() => setView('session')}>
-                    Resume current session
-                  </button>
+      <div className="shell">
+      <main id="main-content" className="main-stack">
+        {(view === 'dashboard' || view === 'setup') && (
+          <section className="stack-gap">
+            <div className="home-toolbar">
+              <div>
+                {view === 'dashboard' ? (
+                  <>
+                    <h1 className="page-title">Welcome back</h1>
+                    <p className="muted-text">{homeSubtitle}</p>
+                  </>
+                ) : (
+                  <>
+                    <h1 className="page-title">Build a session</h1>
+                    <p className="muted-text">{availableQuestionCount} items available for this focus</p>
+                  </>
                 )}
-                {activeSession && (
-                  <button className="ghost-button" onClick={discardActiveSession}>
-                    Discard unfinished session
-                  </button>
-                )}
-                <button className="primary-button" onClick={startSession}>
-                  {activeSession ? 'Replace or resume session' : 'Start session'}
-                </button>
               </div>
-            </section>
+              <HomeSwitcher view={view} onDashboard={() => setView('dashboard')} onSetup={() => setView('setup')} />
+            </div>
 
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Product constraints</p>
-                  <h2>v1 guardrails in the UI</h2>
-                </div>
+            {view === 'dashboard' && (
+              <div className="dashboard-grid">
+                <article className="panel readiness-card">
+                  {readiness.averagePercent === null ? (
+                    <p className="muted-text">Complete a session to see your unofficial readiness estimate.</p>
+                  ) : (
+                    <div className="readiness-card__layout">
+                      <div
+                        className={['readiness-donut', readinessBand === 'gold' ? 'readiness-donut--gold' : '', readinessBand === 'danger' ? 'readiness-donut--danger' : '']
+                          .filter(Boolean)
+                          .join(' ')}
+                        style={{ ['--pct' as string]: readiness.averagePercent }}
+                        aria-hidden="true"
+                      >
+                        <span className="readiness-donut__value">{readiness.averagePercent}%</span>
+                      </div>
+                      <div className="readiness-card__copy">
+                        <strong className="readiness-card__title">Practice readiness</strong>
+                        <p className="muted-text">Average, last 8 sessions</p>
+                        <p className={`readiness-card__delta readiness-card__delta--${readinessDeltaTone(readiness.deltaPercent)}`}>
+                          {formatReadinessDelta(readiness.deltaPercent)}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </article>
+
+                <article className="panel panel--teal continue-hero stack-gap">
+                  {hasUnfinishedSession && activeSession ? (
+                    <>
+                      <p className="eyebrow">Continue</p>
+                      <h2 className="card-title">Resume your session</h2>
+                      <p>{formatResumeSubtitle(activeSession)}</p>
+                      <button type="button" className="continue-hero__cta" onClick={() => setView('session')}>
+                        Resume →
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <p className="eyebrow">Get started</p>
+                      <h2 className="card-title">Start a practice session</h2>
+                      <p>Pick a quick-start below or customize your own.</p>
+                      <button type="button" className="continue-hero__cta" onClick={() => setView('setup')}>
+                        Customize →
+                      </button>
+                    </>
+                  )}
+                </article>
+
+                <QuickStartPanel
+                  blueprintDefaults={blueprintDefaults}
+                  weakSubtitle={weakPresetSubtitle}
+                  weakDisabled={focusAreas.length === 0}
+                  lastCustomSettings={meta.lastCustomSettings}
+                  onPreset={startPreset}
+                  onLastCustom={requestStartSession}
+                  showCustomizeLink
+                  onCustomize={() => setView('setup')}
+                  wide
+                />
+
+                <article className="panel">
+                  <p className="eyebrow">Focus areas</p>
+                  {focusAreas.length === 0 ? (
+                    <p className="muted-text">Domain readiness appears after you complete sessions.</p>
+                  ) : (
+                    <div className="stack-gap">
+                      {focusAreas.map((area) => (
+                        <div key={area.categoryId} className="focus-bar">
+                          <div className="focus-bar__label">
+                            <span>{formatDomainBarName(area.categoryId, area.categoryLabel)}</span>
+                            <strong>{area.percent}%</strong>
+                          </div>
+                          <div className="focus-bar__track focus-bar__track--gold">
+                            <div className={`focus-bar__fill focus-bar__fill--${area.band}`} style={{ width: `${area.percent}%` }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </article>
+
+                <article className="panel">
+                  <div className="section-heading section-heading--compact">
+                    <p className="eyebrow">Score trend</p>
+                    <button type="button" className="text-button" onClick={() => setView('history')}>
+                      View all →
+                    </button>
+                  </div>
+                  {recentTrend.points.length === 0 ? (
+                    <p className="muted-text">Complete a session to see your trend.</p>
+                  ) : (
+                    <TrendChart points={recentTrend.points} compact />
+                  )}
+                </article>
               </div>
-              <ul className="plain-list">
-                <li>Questions are static bundled JSON. No runtime model calls.</li>
-                <li>Raw scoring only. Pass-style labels are unofficial practice estimates.</li>
-                <li>Flags capture review feedback in IndexedDB and export as JSON; the app never mutates question files.</li>
-                <li>Example items prove both item formats while future shards auto-load outside underscore-prefixed paths.</li>
-              </ul>
-            </section>
-          </>
+            )}
+
+            {view === 'setup' && (
+              <div className="stack-gap">
+                {hasUnfinishedSession && activeSession && (
+                  <div className="resume-banner">
+                    <div>
+                      <strong>Session in progress</strong>
+                      <p className="resume-banner__sub">{formatResumeSubtitle(activeSession)}</p>
+                    </div>
+                    <div className="action-row">
+                      <button type="button" className="ghost-button" onClick={discardActiveSession}>
+                        Discard
+                      </button>
+                      <button type="button" className="primary-button" onClick={() => setView('session')}>
+                        Resume
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                <QuickStartPanel
+                  blueprintDefaults={blueprintDefaults}
+                  weakSubtitle={weakPresetSubtitle}
+                  weakDisabled={focusAreas.length === 0}
+                  lastCustomSettings={meta.lastCustomSettings}
+                  onPreset={startPreset}
+                  onLastCustom={requestStartSession}
+                  showCustomizeLink={false}
+                  onCustomize={() => setView('setup')}
+                />
+
+                <article className="panel setup-customize">
+                  <p className="eyebrow">Customize</p>
+
+                  <div className="setup-field">
+                    <p className="setup-field-label">Mode</p>
+                    <div className="segmented setup-segmented" role="radiogroup" aria-label="Mode">
+                      <button
+                        type="button"
+                        className={['segmented__btn', settings.mode === 'exam' ? 'segmented__btn--active' : ''].filter(Boolean).join(' ')}
+                        onClick={() => handleModeChange('exam')}
+                      >
+                        Exam
+                      </button>
+                      <button
+                        type="button"
+                        className={['segmented__btn', settings.mode === 'study' ? 'segmented__btn--active' : ''].filter(Boolean).join(' ')}
+                        onClick={() => handleModeChange('study')}
+                      >
+                        Study
+                      </button>
+                    </div>
+                    <p className="setup-field-hint">
+                      {settings.mode === 'exam'
+                        ? 'Answers and explanations are revealed only after you submit.'
+                        : 'Each answer reveals the explanation immediately.'}
+                    </p>
+                  </div>
+
+                  <div className="setup-field">
+                    <p className="setup-field-label">Question set</p>
+                    <div className="segmented setup-segmented" role="radiogroup" aria-label="Question set">
+                      <button
+                        type="button"
+                        className={['segmented__btn', settings.questionSet === 'standard' ? 'segmented__btn--active' : ''].filter(Boolean).join(' ')}
+                        onClick={() => handleQuestionSetChange('standard')}
+                      >
+                        Standard bank
+                      </button>
+                      <button
+                        type="button"
+                        className={['segmented__btn', settings.questionSet === 'scenario' ? 'segmented__btn--active' : ''].filter(Boolean).join(' ')}
+                        onClick={() => handleQuestionSetChange('scenario')}
+                      >
+                        Scenario companions
+                      </button>
+                    </div>
+                    <p className="setup-field-hint">
+                      {settings.questionSet === 'scenario'
+                        ? 'Longer clinical vignettes paired with the standard bank.'
+                        : 'Focused single-concept items written to the content outline.'}
+                    </p>
+                  </div>
+
+                  <div className="setup-field">
+                    <p className="setup-field-label">Focus</p>
+                    <div className="focus-chips" role="group" aria-label="Focus domains">
+                      <button
+                        type="button"
+                        className={['focus-chip', (settings.focusCategoryIds?.length ?? 0) === 0 ? 'focus-chip--active' : ''].filter(Boolean).join(' ')}
+                        onClick={() => updateSettings({ focusCategoryIds: [] })}
+                      >
+                        All domains
+                      </button>
+                      {blueprintCategories.map((category) => (
+                        <button
+                          key={category.id}
+                          type="button"
+                          className={['focus-chip', settings.focusCategoryIds?.includes(category.id) ? 'focus-chip--active' : '']
+                            .filter(Boolean)
+                            .join(' ')}
+                          onClick={() => toggleFocusCategory(category.id)}
+                        >
+                          {domainChipLabel(category.id, category.label)}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="settings-grid settings-grid--setup">
+                    <div className="setup-field">
+                      <p className="setup-field-label">Question count</p>
+                      <input
+                        type="number"
+                        aria-label="Question count"
+                        min={Math.min(QUESTION_MIN, Math.max(1, availableQuestionCount))}
+                        max={Math.max(availableQuestionCount, 1)}
+                        value={settings.questionCount}
+                        onChange={(event) => updateSettings({ questionCount: Number(event.target.value) || 0 })}
+                      />
+                      <p className="setup-field-hint setup-field-hint--count">{availableQuestionCount} items available for this focus</p>
+                    </div>
+                    <div className="setup-field">
+                      <p className="setup-field-label">Time limit (minutes)</p>
+                      <input
+                        type="number"
+                        aria-label="Time limit in minutes"
+                        min={1}
+                        value={settings.timeMinutes}
+                        onChange={(event) => updateSettings({ timeMinutes: Math.max(1, Number(event.target.value) || 1) })}
+                        disabled={!settings.timed}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="setup-toggle-list">
+                    <div className="setup-toggle-row">
+                      <div className="setup-toggle-copy">
+                        <p className="setup-toggle-title">Timed session</p>
+                        <p className="setup-toggle-desc">Counts down like the real 3-hour exam</p>
+                      </div>
+                      <Switch checked={settings.timed} onChange={(next) => updateSettings({ timed: next })} label="" />
+                    </div>
+                    <div className="setup-toggle-row">
+                      <div className="setup-toggle-copy">
+                        <p className="setup-toggle-title">Show timer on screen</p>
+                        <p className="setup-toggle-desc">Hide it to reduce pressure</p>
+                      </div>
+                      <Switch
+                        checked={settings.showTimer}
+                        onChange={(next) => updateSettings({ showTimer: next })}
+                        label=""
+                      />
+                    </div>
+                  </div>
+
+                  <div className="setup-advanced-section">
+                    <button type="button" className="setup-advanced-toggle" onClick={() => setShowAdvancedSetup((current) => !current)}>
+                      {showAdvancedSetup ? '− Advanced options' : '+ Advanced options'}
+                    </button>
+
+                    {showAdvancedSetup && (
+                      <div className="setup-advanced">
+                      <label>
+                        Target threshold (%)
+                        <input
+                          type="number"
+                          min={1}
+                          max={100}
+                          value={settings.targetThreshold}
+                          onChange={(event) =>
+                            updateSettings({ targetThreshold: Math.min(100, Math.max(1, Number(event.target.value) || 1)) })
+                          }
+                        />
+                      </label>
+                      <label>
+                        Exam date
+                        <input
+                          type="date"
+                          aria-label="Exam date"
+                          value={meta.examDate ?? ''}
+                          onChange={(event) => updateExamDate(event.target.value)}
+                        />
+                        <span className="field-hint">Optional — powers the dashboard countdown</span>
+                      </label>
+                      <label>
+                        Blueprint version
+                        <select value={settings.blueprintId} onChange={(event) => handleBlueprintChange(event.target.value as BlueprintId)}>
+                          <option value="cctc-from-2026-07">2026-07 (default)</option>
+                          <option value="cctc-thru-2026-06">Until 2026-06</option>
+                        </select>
+                      </label>
+                      <Switch
+                        checked={settings.includeDrafts}
+                        onChange={(next) => updateSettings({ includeDrafts: next })}
+                        label={
+                          settings.mode === 'exam'
+                            ? 'Exam mode uses reviewed items only'
+                            : settings.includeDrafts
+                              ? 'Include draft items'
+                              : 'Reviewed items only'
+                        }
+                      />
+                    </div>
+                    )}
+                  </div>
+
+                  <button type="button" className="primary-button setup-start-button" onClick={() => requestStartSession(settings, true)}>
+                    Start {settings.mode === 'exam' ? 'exam' : 'study'} · {settings.questionCount} items
+                  </button>
+                </article>
+              </div>
+            )}
+          </section>
         )}
 
         {view === 'session' && session && currentItem && (
-          <>
-            <section className="panel panel--span-2 stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">{session.settings.mode === 'exam' ? 'Exam session' : 'Study session'}</p>
-                  <h2>
-                    Item {session.currentIndex + 1} of {session.items.length}
-                  </h2>
-                </div>
-                <div className="session-stats">
-                  <span className="badge">Answered {answeredCount}</span>
-                  <span className="badge">Remaining {session.items.length - answeredCount}</span>
-                  <span className="badge">Bookmarks {session.flaggedForReview.length}</span>
-                  {session.settings.timed && (
-                    <button className="pill" onClick={toggleTimerHidden}>
-                      {session.timerHidden ? 'Show timer' : formatDuration(session.remainingSeconds)}
-                    </button>
+          <section className="stack-gap">
+            <div className="session-topbar">
+              <button type="button" className="session-back-button" onClick={() => setView('dashboard')}>
+                ‹ Exit
+              </button>
+              <strong className="session-position">
+                Item {session.currentIndex + 1} of {session.items.length}
+              </strong>
+              <div className="session-topbar__actions">
+                <button
+                  type="button"
+                  className={[
+                    'bookmark-toggle',
+                    session.flaggedForReview.includes(currentItem.itemId) ? 'bookmark-toggle--active' : ''
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                  onClick={toggleBookmark}
+                  aria-pressed={session.flaggedForReview.includes(currentItem.itemId)}
+                  aria-label={session.flaggedForReview.includes(currentItem.itemId) ? 'Remove bookmark' : 'Bookmark item'}
+                >
+                  {session.flaggedForReview.includes(currentItem.itemId) ? '★' : '☆'}
+                </button>
+                <div className="overflow-menu">
+                  <button
+                    type="button"
+                    className="overflow-trigger"
+                    onClick={() => setSessionOverflowOpen((open) => !open)}
+                    aria-expanded={sessionOverflowOpen}
+                    aria-label="Session menu"
+                  >
+                    ⋯
+                  </button>
+                  {sessionOverflowOpen && (
+                    <div className="overflow-menu__panel">
+                      <button type="button" className="overflow-menu__item" onClick={toggleShowTimer}>
+                        {session.settings.showTimer ? 'Hide timer' : 'Show timer'}
+                      </button>
+                      <button
+                        type="button"
+                        className="overflow-menu__item"
+                        onClick={() => openFlagComposer(currentItem.question, session.id, session.settings.blueprintId, session.settings.mode)}
+                      >
+                        Report an issue
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
+            </div>
 
-              {(session.bankSummary.length > 0 || session.shortageNotes.length > 0) && (
-                <div className="notice-block">
-                  {[...session.bankSummary, ...session.shortageNotes].map((note) => (
-                    <p key={note}>{note}</p>
+            <div className="session-progress session-progress--gold" aria-hidden="true">
+              <div className="session-progress__fill" style={{ width: `${((session.currentIndex + 1) / session.items.length) * 100}%` }} />
+            </div>
+
+            <div className="session-meta-row">
+              <div className="session-meta">
+                <span className="category-pill">{formatDomainBarName(currentItem.categoryId, currentItem.categoryLabel)}</span>
+                <span className="type-pill">
+                  {currentItem.question.type === 'one_best' ? 'Single best answer' : 'Complex combo'}
+                </span>
+                {currentItem.question.status === 'draft' ? <span className="badge badge--draft">draft</span> : null}
+              </div>
+              {session.settings.timed && session.settings.showTimer && session.remainingSeconds !== null && (
+                <span className="timer-pill">{formatDuration(session.remainingSeconds)}</span>
+              )}
+            </div>
+
+            <article className="panel question-panel">
+              <p className="stem-text">{currentItem.question.stem}</p>
+
+              {currentItem.question.elements && (
+                <ol className="element-list">
+                  {currentItem.question.elements.map((element) => (
+                    <li key={element.id}>
+                      <strong>{element.id}.</strong> {element.text}
+                    </li>
                   ))}
-                </div>
+                </ol>
               )}
 
-              <article className="question-card">
-                <div className="question-meta">
-                  <span className="badge badge--soft">{currentItem.categoryLabel}</span>
-                  <span className={currentItem.question.status === 'draft' ? 'badge badge--warning' : 'badge badge--success'}>
-                    {currentItem.question.status}
-                  </span>
-                  <span className="badge badge--soft">{currentItem.question.type === 'one_best' ? 'Single best answer' : 'Complex combo'}</span>
+              <div className="option-list" role="radiogroup" aria-label="Answer choices">
+                {currentItem.optionOrder.map((optionId, optionIndex) => {
+                  const option = currentItem.question.options.find((entry) => entry.id === optionId)!;
+                  const selected = session.answers[currentItem.itemId] === option.id;
+                  const revealed =
+                    session.settings.mode === 'study' ? session.revealed[currentItem.itemId] : Boolean(session.submittedAt);
+                  const correct = currentItem.question.correct === option.id;
+                  return (
+                    <AnswerOption
+                      key={option.id}
+                      letter={displayLetterForIndex(optionIndex)}
+                      text={option.text}
+                      selected={selected}
+                      revealed={revealed}
+                      correct={correct}
+                      interactive={!(revealed && session.settings.mode === 'exam')}
+                      onSelect={() => handleAnswer(option.id)}
+                      selects={option.selects}
+                    />
+                  );
+                })}
+              </div>
+
+              {((session.settings.mode === 'study' && session.revealed[currentItem.itemId]) || session.submittedAt) && (
+                <ExplanationPanel item={currentItem} variant="session" />
+              )}
+            </article>
+
+            <div className="session-nav">
+              <button
+                type="button"
+                className="session-nav__btn"
+                onClick={() => navigateSession(-1)}
+                disabled={session.currentIndex === 0}
+              >
+                Previous
+              </button>
+              <button
+                type="button"
+                className="session-nav__btn"
+                onClick={() => navigateSession(1)}
+                disabled={session.currentIndex === session.items.length - 1}
+              >
+                Next
+              </button>
+              <div className="session-nav__spacer" aria-hidden="true" />
+              <button type="button" className="session-nav__btn session-nav__btn--map" onClick={() => setShowSessionMap((open) => !open)}>
+                Map
+              </button>
+              <button type="button" className="session-nav__btn session-nav__btn--submit" onClick={openSubmitConfirm} disabled={isFinalizing}>
+                {session.settings.mode === 'exam' ? 'Submit' : 'Finish'}
+              </button>
+            </div>
+
+            {showSessionMap && (
+              <article className="panel stack-gap">
+                <div className="map-panel__header">
+                  <p className="eyebrow">Question map</p>
+                  <div className="map-legend">
+                    <span>● Answered</span>
+                    <span>★ Bookmarked</span>
+                  </div>
                 </div>
-
-                <h3>{currentItem.question.stem}</h3>
-
-                {currentItem.question.elements && (
-                  <ol className="element-list">
-                    {currentItem.question.elements.map((element) => (
-                      <li key={element.id}>
-                        <strong>{element.id}.</strong> {element.text}
-                      </li>
-                    ))}
-                  </ol>
-                )}
-
-                <div className="option-list" role="radiogroup" aria-label="Answer choices">
-                  {currentItem.optionOrder.map((optionId, optionIndex) => {
-                    const option = currentItem.question.options.find((entry) => entry.id === optionId)!;
-                    const displayLetter = displayLetterForIndex(optionIndex);
-                    const selected = session.answers[currentItem.itemId] === option.id;
-                    const revealed = session.settings.mode === 'study' ? session.revealed[currentItem.itemId] : Boolean(session.submittedAt);
-                    const correct = currentItem.question.correct === option.id;
-
+                <div className="tracker-grid">
+                  {session.items.map((item, index) => {
+                    const answered = Boolean(session.answers[item.itemId]);
+                    const bookmarked = session.flaggedForReview.includes(item.itemId);
+                    const isCurrent = index === session.currentIndex;
                     return (
                       <button
-                        key={option.id}
+                        key={item.itemId}
+                        type="button"
                         className={[
-                          'option-button',
-                          selected ? 'is-selected' : '',
-                          revealed && correct ? 'is-correct' : '',
-                          revealed && selected && !correct ? 'is-incorrect' : ''
+                          'tracker-chip',
+                          isCurrent ? 'is-current' : '',
+                          answered ? 'is-answered' : '',
+                          bookmarked ? 'is-bookmarked' : ''
                         ]
                           .filter(Boolean)
                           .join(' ')}
-                        role="radio"
-                        aria-checked={selected}
-                        aria-label={`${displayLetter}. ${option.text}`}
-                        onClick={() => handleAnswer(option.id)}
+                        onClick={() => {
+                          mutateSession((current) => ({ ...current, currentIndex: index }));
+                        }}
                       >
-                        <span className="option-letter">{displayLetter}</span>
-                        <span>
-                          {option.text}
-                          {option.selects && <small className="option-helper">Selects: {option.selects.join(', ')}</small>}
-                        </span>
+                        {index + 1}
                       </button>
                     );
                   })}
                 </div>
-
-                {((session.settings.mode === 'study' && session.revealed[currentItem.itemId]) || session.submittedAt) && (
-                  <div className="explanation-card">
-                    <p>
-                      <strong>Correct answer ({displayLetterForOptionId(currentItem.optionOrder, currentItem.question.correct)}):</strong>{' '}
-                      {currentItem.question.explanation.rationale_correct}
-                    </p>
-                    <ul className="plain-list">
-                      {incorrectRationalesForDisplay(currentItem).map(({ displayLetter, rationale }) => (
-                        <li key={displayLetter}>
-                          <strong>{displayLetter}:</strong> {rationale}
-                        </li>
-                      ))}
-                    </ul>
-                    <References question={currentItem.question} />
-                  </div>
-                )}
               </article>
+            )}
+          </section>
+        )}
 
-              <div className="action-row action-row--spread session-toolbar">
-                <div className="action-row">
-                  <button className="secondary-button" onClick={() => navigateSession(-1)} disabled={session.currentIndex === 0}>
-                    Previous
-                  </button>
-                  <button className="secondary-button" onClick={() => navigateSession(1)} disabled={session.currentIndex === session.items.length - 1}>
-                    Next
-                  </button>
-                </div>
-                <div className="action-row">
-                  <button className="ghost-button" onClick={toggleBookmark}>
-                    {session.flaggedForReview.includes(currentItem.itemId) ? 'Remove bookmark' : 'Bookmark item'}
-                  </button>
-                  <button className="ghost-button" onClick={() => openFlagComposer(currentItem.question, session.id, session.settings.blueprintId, session.settings.mode)}>
-                    Flag this item
-                  </button>
-                  <button className="primary-button" onClick={() => void finalizeSession()} disabled={isFinalizing}>
-                    {session.settings.mode === 'exam' ? 'Submit exam' : 'Complete session'}
-                  </button>
-                </div>
-              </div>
-            </section>
+        {view === 'results' && selectedHistory && (
+          <section className="stack-gap results-page">
+            <article className="results-hero">
+              <p className="results-hero__eyebrow">
+                {selectedHistory.settings.mode === 'exam' ? 'Exam complete' : 'Study complete'}
+              </p>
+              <p className="results-hero__score">{selectedHistory.result.percent}%</p>
+              <p className="results-hero__meta">
+                {selectedHistory.result.correct} of {selectedHistory.result.total} correct · Time{' '}
+                {formatDuration(selectedHistory.timeUsedSeconds)}
+              </p>
+              <span
+                className={[
+                  'results-pass-chip',
+                  selectedHistory.result.estimatedPass ? 'results-pass-chip--success' : 'results-pass-chip--warn'
+                ].join(' ')}
+              >
+                {selectedHistory.result.estimatedPass
+                  ? `At or above your ${selectedHistory.settings.targetThreshold}% target`
+                  : `Below your ${selectedHistory.settings.targetThreshold}% target`}
+              </span>
+            </article>
 
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Session overview</p>
-                  <h2>Tracking</h2>
-                </div>
-              </div>
-              <div className="tracker-grid">
-                {session.items.map((item, index) => {
-                  const answered = Boolean(session.answers[item.itemId]);
-                  const bookmarked = session.flaggedForReview.includes(item.itemId);
+            <article className="panel">
+              <p className="eyebrow">By domain</p>
+              <div className="breakdown-list">
+                {selectedHistory.result.breakdown.map((entry) => {
+                  const percent = entry.total > 0 ? Math.round((entry.correct / entry.total) * 100) : 0;
+                  const band = performanceBand(percent);
                   return (
-                    <button
-                      key={item.itemId}
-                      className={[
-                        'tracker-chip',
-                        index === session.currentIndex ? 'is-current' : '',
-                        answered ? 'is-answered' : '',
-                        bookmarked ? 'is-bookmarked' : ''
-                      ]
-                        .filter(Boolean)
-                        .join(' ')}
-                      onClick={() => mutateSession((current) => ({ ...current, currentIndex: index }))}
-                    >
-                      {index + 1}
-                    </button>
+                    <div key={entry.categoryId} className="breakdown-row">
+                      <div className="breakdown-row__header">
+                        <span>{formatDomainBarName(entry.categoryId, entry.categoryLabel)}</span>
+                        <span className="muted-text">
+                          {entry.correct}/{entry.total} · {percent}%
+                        </span>
+                      </div>
+                      <div className="breakdown-row__track">
+                        <div className={`breakdown-row__fill breakdown-row__fill--${band}`} style={{ width: `${percent}%` }} />
+                      </div>
+                    </div>
                   );
                 })}
               </div>
-            </section>
-          </>
+            </article>
+
+            <div className="results-actions">
+              <button
+                type="button"
+                className="primary-button results-actions__primary"
+                onClick={() => {
+                  setReviewFrom('results');
+                  setShowReviewMap(false);
+                  setView('review');
+                }}
+              >
+                Review answers
+              </button>
+              <button type="button" className="secondary-button" onClick={retakeSelectedHistory}>
+                Retake
+              </button>
+              <button type="button" className="secondary-button" onClick={() => setView('dashboard')}>
+                Home
+              </button>
+            </div>
+          </section>
+        )}
+
+        {view === 'review' && selectedHistory && selectedHistoryItem && (
+          <section className="stack-gap review-page">
+            <div className="session-topbar">
+              <button
+                type="button"
+                className="session-back-button"
+                onClick={() => setView(reviewFrom === 'history' ? 'history' : 'results')}
+              >
+                ‹ {reviewFrom === 'history' ? 'Back to progress' : 'Back to results'}
+              </button>
+              <strong className="session-position">
+                Item {reviewIndex + 1} of {selectedHistory.items.length}
+              </strong>
+              <div className="session-topbar__actions">
+                <button type="button" className="secondary-button secondary-button--compact" onClick={() => setShowReviewMap((open) => !open)}>
+                  Map
+                </button>
+                <button
+                  type="button"
+                  className="secondary-button secondary-button--compact"
+                  onClick={() => openFlagComposer(selectedHistoryItem.question, selectedHistory.id, selectedHistory.settings.blueprintId, selectedHistory.settings.mode)}
+                >
+                  Report
+                </button>
+              </div>
+            </div>
+
+            {showReviewMap && (
+              <article className="panel stack-gap">
+                <div className="map-panel__header">
+                  <p className="eyebrow">Jump to item</p>
+                  <div className="map-legend">
+                    <span className="map-legend__correct">● Correct</span>
+                    <span className="map-legend__incorrect">● Incorrect</span>
+                  </div>
+                </div>
+                <div className="review-map">
+                  {selectedHistory.items.map((item, index) => {
+                    const state = reviewChipState(selectedHistory, item);
+                    return (
+                      <button
+                        key={item.itemId}
+                        type="button"
+                        className={[
+                          'chip-button',
+                          state === 'correct' ? 'is-correct' : '',
+                          state === 'incorrect' ? 'is-incorrect' : '',
+                          state === 'skipped' ? 'is-skipped' : '',
+                          index === reviewIndex ? 'is-current' : ''
+                        ]
+                          .filter(Boolean)
+                          .join(' ')}
+                        onClick={() => {
+                          setReviewIndex(index);
+                        }}
+                      >
+                        {index + 1}
+                      </button>
+                    );
+                  })}
+                </div>
+              </article>
+            )}
+
+            <QuestionReview item={selectedHistoryItem} answer={selectedHistory.answers[selectedHistoryItem.itemId]} />
+
+            <div className="session-nav review-nav">
+              <button
+                type="button"
+                className="session-nav__btn"
+                onClick={() => setReviewIndex((current) => Math.max(current - 1, 0))}
+                disabled={reviewIndex === 0}
+              >
+                Previous
+              </button>
+              <button
+                type="button"
+                className="session-nav__btn session-nav__btn--next"
+                onClick={() => setReviewIndex((current) => Math.min(current + 1, selectedHistory.items.length - 1))}
+                disabled={reviewIndex === selectedHistory.items.length - 1}
+              >
+                Next
+              </button>
+            </div>
+          </section>
         )}
 
         {view === 'history' && (
-          <>
-            <section className="panel panel--span-2 stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Stored results</p>
-                  <h2>History</h2>
-                </div>
-                <div className="action-row">
-                  <button className="ghost-button" onClick={() => void handleClearHistory()} disabled={history.length === 0}>
-                    Clear history
-                  </button>
-                </div>
-              </div>
-
-              {history.length === 0 ? (
-                <p className="status-card">No completed sessions yet.</p>
-              ) : (
-                history.map((entry) => (
-                  <article key={entry.id} className="history-card">
-                    <div>
-                      <h3>{getBlueprintLabel(entry.settings.blueprintId)}</h3>
-                      <p>
-                        {new Date(entry.completedAt).toLocaleString()} · {entry.settings.mode} · {entry.result.correct}/{entry.result.total} correct · {entry.result.percent}%
-                      </p>
-                      <p>
-                        Unofficial practice estimate: {entry.result.estimatedPass ? 'at or above' : 'below'} your {entry.settings.targetThreshold}% target.
-                      </p>
-                    </div>
-                    <div className="action-row action-row--column">
-                      <button
-                        className="secondary-button"
-                        onClick={() => {
-                          setSelectedHistory(entry);
-                          setReviewIndex(0);
-                          setView('history-detail');
-                        }}
-                      >
-                        Review session
-                      </button>
-                      <button className="ghost-button" onClick={() => void removeHistoryEntry(entry.id)}>
-                        Delete
-                      </button>
-                    </div>
-                  </article>
-                ))
-              )}
-            </section>
-
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Trend snapshot</p>
-                  <h2>Score trend</h2>
-                </div>
-              </div>
-
-              {historyTrend.points.length === 0 ? (
-                <p className="status-card">Complete a session to see your unofficial practice score trend.</p>
-              ) : (
-                <>
-                  <div className="trend-summary" aria-label="Score trend summary">
-                    <div>
-                      <p className="eyebrow">Average</p>
-                      <strong>{historyTrend.averagePercent}%</strong>
-                    </div>
-                    <div>
-                      <p className="eyebrow">Best</p>
-                      <strong>{historyTrend.bestPercent}%</strong>
-                    </div>
-                    {historyTrend.recentDelta !== null && (
-                      <div>
-                        <p className="eyebrow">Latest change</p>
-                        <strong>{formatTrendDelta(historyTrend.recentDelta)}</strong>
-                      </div>
-                    )}
-                  </div>
-
-                  <div
-                    className="trend-chart"
-                    role="img"
-                    aria-label={`Score trend across the last ${historyTrend.points.length} sessions`}
-                  >
-                    <div className="trend-chart__plot">
-                      {historyTrend.targetThreshold !== null && (
-                        <div className="trend-chart__target" style={{ bottom: `${historyTrend.targetThreshold}%` }}>
-                          <span className="trend-chart__target-label">Target {historyTrend.targetThreshold}%</span>
-                        </div>
-                      )}
-                      {historyTrend.points.map((point) => (
-                        <div key={point.id} className="trend-chart__bar-wrap">
-                          <div
-                            className={['trend-chart__bar', point.belowTarget ? 'is-below-target' : ''].filter(Boolean).join(' ')}
-                            style={{ height: `${point.percent}%` }}
-                            title={`${point.label}: ${point.percent}% (${point.mode})`}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                    <div className="trend-chart__labels">
-                      {historyTrend.points.map((point) => (
-                        <span key={point.id} className="trend-chart__label">
-                          {point.label}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <ul className="plain-list">
-                    {[...historyTrend.points].reverse().slice(0, 5).map((point) => (
-                      <li key={point.id} className="trend-row">
-                        <span>
-                          {point.label} · {point.mode}
-                        </span>
-                        <strong>{point.percent}%</strong>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-
-              {historyCategories.length > 0 && (
-                <>
-                  <div className="section-heading section-heading--compact">
-                    <div>
-                      <p className="eyebrow">Per-category drill-down</p>
-                      <h2>Category trend</h2>
-                    </div>
-                  </div>
-                  <p className="field-hint">Select a content category to plot your unofficial score in that area across completed sessions.</p>
-                  <div className="category-pills" role="group" aria-label="Content categories">
-                    {historyCategories.map((category) => (
-                      <button
-                        key={category.categoryId}
-                        type="button"
-                        className={['pill', selectedCategoryId === category.categoryId ? 'active' : ''].filter(Boolean).join(' ')}
-                        aria-pressed={selectedCategoryId === category.categoryId}
-                        onClick={() => setSelectedCategoryId(category.categoryId)}
-                      >
-                        {category.categoryLabel}
-                      </button>
-                    ))}
-                  </div>
-
-                  {categoryTrend ? (
-                    <>
-                      <div className="trend-summary" aria-label={`${categoryTrend.categoryLabel} trend summary`}>
-                        <div>
-                          <p className="eyebrow">Category</p>
-                          <strong>{categoryTrend.categoryLabel}</strong>
-                        </div>
-                        <div>
-                          <p className="eyebrow">Average</p>
-                          <strong>{categoryTrend.averagePercent}%</strong>
-                        </div>
-                        <div>
-                          <p className="eyebrow">Best</p>
-                          <strong>{categoryTrend.bestPercent}%</strong>
-                        </div>
-                        {categoryTrend.recentDelta !== null && (
-                          <div>
-                            <p className="eyebrow">Latest change</p>
-                            <strong>{formatTrendDelta(categoryTrend.recentDelta)}</strong>
-                          </div>
-                        )}
-                      </div>
-
-                      <div
-                        className="trend-chart"
-                        role="img"
-                        aria-label={`${categoryTrend.categoryLabel} score trend across the last ${categoryTrend.points.length} sessions`}
-                      >
-                        <div className="trend-chart__plot">
-                          {categoryTrend.points.map((point) => (
-                            <div key={point.sessionId} className="trend-chart__bar-wrap">
-                              <div
-                                className={['trend-chart__bar', point.belowTarget ? 'is-below-target' : ''].filter(Boolean).join(' ')}
-                                style={{ height: `${point.percent}%` }}
-                                title={`${point.label}: ${point.correct}/${point.total} (${point.percent}%) · ${point.mode}`}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                        <div className="trend-chart__labels">
-                          {categoryTrend.points.map((point) => (
-                            <span key={point.sessionId} className="trend-chart__label">
-                              {point.label}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      <ul className="plain-list">
-                        {[...categoryTrend.points].reverse().slice(0, 5).map((point) => (
-                          <li key={point.sessionId} className="trend-row">
-                            <span>
-                              {point.label} · {point.correct}/{point.total} · {point.mode}
-                            </span>
-                            <strong>{point.percent}%</strong>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    selectedCategoryId && <p className="status-card">No scored items in this category yet.</p>
-                  )}
-                </>
-              )}
-            </section>
-          </>
-        )}
-
-        {view === 'history-detail' && selectedHistory && selectedHistoryItem && (
-          <>
-            <section className="panel panel--span-2 stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Session review</p>
-                  <h2>
-                    {selectedHistory.result.correct}/{selectedHistory.result.total} correct · {selectedHistory.result.percent}%
-                  </h2>
-                </div>
-                <button className="secondary-button" onClick={() => setView('history')}>
-                  Back to history
-                </button>
-              </div>
-              <p className="field-hint">Keyboard: use Left/Right arrow keys to move between items. Click a category card to open its trend chart.</p>
-
-              <div className="notice-block">
-                <p>
-                  Unofficial practice estimate: {selectedHistory.result.estimatedPass ? 'at or above' : 'below'} your {selectedHistory.settings.targetThreshold}% target.
+          <section className="stack-gap">
+            <div className="section-heading">
+              <div>
+                <h1 className="page-title">Progress</h1>
+                <p className="muted-text">
+                  {history.length} session{history.length === 1 ? '' : 's'} recorded
                 </p>
-                <p>Time used: {formatDuration(selectedHistory.timeUsedSeconds)}</p>
               </div>
-
-              <div className="breakdown-grid">
-                {selectedHistory.result.breakdown.map((entry) => (
-                  <button
-                    key={entry.categoryId}
-                    type="button"
-                    className="summary-card summary-card--interactive"
-                    onClick={() => openCategoryTrend(entry.categoryId)}
-                  >
-                    <h3>{entry.categoryLabel}</h3>
-                    <p>
-                      {entry.correct} / {entry.total} correct
-                    </p>
-                    <span className="field-hint">View category trend</span>
-                  </button>
-                ))}
-              </div>
-
-              <div className="action-row action-row--spread">
-                <button className="secondary-button" onClick={() => setReviewIndex((current) => Math.max(current - 1, 0))} disabled={reviewIndex === 0}>
-                  Previous item
+              {history.length > 0 && (
+                <button type="button" className="secondary-button secondary-button--compact" onClick={() => void handleClearHistory()}>
+                  Clear history
                 </button>
-                <button
-                  className="ghost-button"
-                  onClick={() => openFlagComposer(selectedHistoryItem.question, selectedHistory.id, selectedHistory.settings.blueprintId, selectedHistory.settings.mode)}
-                >
-                  Flag this item
+              )}
+            </div>
+
+            {history.length === 0 ? (
+              <article className="panel progress-empty">
+                <p className="muted-text">No completed sessions yet.</p>
+                <button type="button" className="primary-button" onClick={() => setView('setup')}>
+                  Start a session
                 </button>
-                <button
-                  className="secondary-button"
-                  onClick={() => setReviewIndex((current) => Math.min(current + 1, selectedHistory.items.length - 1))}
-                  disabled={reviewIndex === selectedHistory.items.length - 1}
-                >
-                  Next item
-                </button>
-              </div>
+              </article>
+            ) : (
+              <>
+                <div className="progress-grid">
+                  <article className="panel stack-gap">
+                    <p className="eyebrow">Score trend</p>
+                    <div className="trend-summary">
+                      <div className="trend-summary__stat">
+                        <span className="trend-summary__label">Average</span>
+                        <strong className="trend-summary__value">
+                          {readiness.averagePercent === null ? '—' : `${readiness.averagePercent}%`}
+                        </strong>
+                      </div>
+                      <div className="trend-summary__stat">
+                        <span className="trend-summary__label">Best</span>
+                        <strong className="trend-summary__value">
+                          {bestHistoryPercent === null ? '—' : `${bestHistoryPercent}%`}
+                        </strong>
+                      </div>
+                      <div className="trend-summary__stat">
+                        <span className="trend-summary__label">Latest</span>
+                        <strong
+                          className={[
+                            'trend-summary__value',
+                            `trend-summary__value--${historyLatestDeltaTone(historyTrend.recentDelta)}`
+                          ].join(' ')}
+                        >
+                          {formatHistoryLatestDelta(historyTrend.recentDelta)}
+                        </strong>
+                      </div>
+                    </div>
+                    <TrendChart points={historyTrend.points.slice(-8)} compact />
+                  </article>
 
-              <QuestionReview item={selectedHistoryItem} answer={selectedHistory.answers[selectedHistoryItem.itemId]} />
-            </section>
-
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Category totals</p>
-                  <h2>Breakdown</h2>
-                </div>
-              </div>
-              <ul className="plain-list">
-                {selectedHistory.result.breakdown.map((entry) => (
-                  <li key={entry.categoryId}>
-                    <button type="button" className="text-link-button" onClick={() => openCategoryTrend(entry.categoryId)}>
-                      {entry.categoryLabel}: {entry.correct}/{entry.total}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </>
-        )}
-
-        {view === 'flags' && (
-          <>
-            <section className="panel panel--span-2 stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Structured review feedback</p>
-                  <h2>Flags</h2>
-                </div>
-                <div className="action-row">
-                  <button className="secondary-button" onClick={() => void exportFlags()} disabled={flags.length === 0}>
-                    Export flags
-                  </button>
-                  <button className="ghost-button" onClick={() => void resetFlags()} disabled={flags.length === 0}>
-                    Clear all
-                  </button>
-                </div>
-              </div>
-
-              <p className="field-hint">
-                Use <strong>Export flags</strong> to download <code>cctc-flags.json</code>, then email that file to your SME reviewer.
-                Flags stay on this device only — the app never edits question files in the repository.
-              </p>
-
-              {flags.length === 0 ? (
-                <p className="status-card">No open flags yet.</p>
-              ) : (
-                Object.entries(
-                  flags.reduce<Record<string, ItemFlag[]>>((groups, flag) => {
-                    groups[flag.item_id] = [...(groups[flag.item_id] ?? []), flag];
-                    return groups;
-                  }, {})
-                ).map(([itemId, itemFlags]) => (
-                  <article key={itemId} className="history-card">
-                    <div>
-                      <h3>{itemId}</h3>
-                      {itemFlags.map((flag) => (
-                        <div key={flag.id} className="flag-row">
-                          <p>
-                            <strong>{flag.reason}</strong> · {flag.mode} · {getBlueprintLabel(flag.blueprint)}
-                          </p>
-                          <p>{flag.comment || 'No comment provided.'}</p>
+                  {focusAreas.length > 0 && (
+                    <article className="panel stack-gap">
+                      <p className="eyebrow">By domain</p>
+                      {focusAreas.map((area) => (
+                        <div key={area.categoryId} className="focus-bar">
+                          <div className="focus-bar__label">
+                            <span>{formatDomainBarName(area.categoryId, area.categoryLabel)}</span>
+                            <strong>{area.percent}%</strong>
+                          </div>
+                          <div className="focus-bar__track focus-bar__track--gold">
+                            <div className={`focus-bar__fill focus-bar__fill--${area.band}`} style={{ width: `${area.percent}%` }} />
+                          </div>
                         </div>
                       ))}
+                    </article>
+                  )}
+                </div>
+
+                <div className="history-list">
+                  {history.map((entry) => (
+                    <article key={entry.id} className="history-row">
+                      <div className="history-row__body">
+                        <p className="history-row__score">
+                          {entry.result.correct}/{entry.result.total} · {entry.result.percent}%
+                        </p>
+                        <p className="history-row__meta">
+                          {formatHistoryDate(entry.completedAt)} · {entry.settings.mode === 'exam' ? 'Exam' : 'Study'} ·{' '}
+                          {entry.result.estimatedPass ? 'On target' : 'Below target'}
+                        </p>
+                      </div>
+                      <div className="history-row__actions">
+                        <button
+                          type="button"
+                          className="secondary-button secondary-button--compact"
+                          onClick={() => {
+                            setSelectedHistory(entry);
+                            setReviewIndex(0);
+                            setReviewFrom('history');
+                            setShowReviewMap(false);
+                            setView('review');
+                          }}
+                        >
+                          Review
+                        </button>
+                        <button type="button" className="ghost-button ghost-button--compact" onClick={() => void removeHistoryEntry(entry.id)}>
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                {flags.length > 0 && (
+                  <article className="panel flags-panel">
+                    <div className="flags-panel__body">
+                      <strong>{flags.length} reported item{flags.length === 1 ? '' : 's'}</strong>
+                      <p className="muted-text">Reported items, stored on this device</p>
                     </div>
-                    <div className="action-row action-row--column">
-                      <button
-                        className="secondary-button"
-                        onClick={() => {
-                          const matchedQuestion = bank.questions.find((question) => question.id === itemId);
-                          if (matchedQuestion) {
-                            setFlagDraft(buildInitialFlagDraft(matchedQuestion, itemFlags[0].session_id, itemFlags[0].blueprint, itemFlags[0].mode, itemFlags[0]));
-                          }
-                        }}
-                      >
-                        Edit latest
+                    <div className="flags-panel__actions">
+                      <button type="button" className="secondary-button secondary-button--compact" onClick={() => void exportFlags()}>
+                        Export JSON
                       </button>
-                      <button className="ghost-button" onClick={() => void clearFlagById(itemFlags[0].id)}>
-                        Clear latest
+                      <button type="button" className="secondary-button secondary-button--compact" onClick={() => void resetFlags()}>
+                        Clear
                       </button>
                     </div>
                   </article>
-                ))
-              )}
-            </section>
+                )}
+              </>
+            )}
 
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Export contract</p>
-                  <h2>Shape</h2>
-                </div>
-              </div>
-              <pre className="code-block">{`{
-  "exportedAt": "ISO-8601",
-  "flags": [{
-    "item_id": "cctc-0001",
-    "version": 1,
-    "status": "draft",
-    "reason": "typo / wording",
-    "comment": "optional note",
-    "session_id": "...",
-    "blueprint": "cctc-from-2026-07",
-    "mode": "study"
-  }]
-}`}</pre>
-            </section>
-          </>
+            {history.length > 0 && categoryTrend && (
+              <article className="panel stack-gap">
+                <p className="eyebrow">{categoryTrend.categoryLabel} trend</p>
+                <TrendChart
+                  compact
+                  points={categoryTrend.points.map((point) => ({
+                    id: point.sessionId,
+                    label: point.label,
+                    percent: point.percent,
+                    belowTarget: false
+                  }))}
+                />
+              </article>
+            )}
+          </section>
         )}
       </main>
 
       <footer className="footer-bar">
         <p>
-          This practice app is an independent study aid, not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam questions, and is
-          not a source of patient-care decisions.
+          Independent study aid — not affiliated with or endorsed by ABTC or PSI. Practice scores are unofficial estimates, not official exam results.
         </p>
       </footer>
+      </div>
     </div>
   );
 }

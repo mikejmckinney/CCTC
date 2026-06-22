@@ -184,10 +184,18 @@ export function createSession(
   recentIds: Set<string>
 ): ActiveSession {
   const blueprint = getBlueprint(settings.blueprintId);
-  const filteredQuestions = questions.filter(
-    (question) =>
-      (settings.includeDrafts || question.status === 'reviewed') && isBlueprintApplicable(blueprint, question)
-  );
+  const focusIds = settings.focusCategoryIds?.filter(Boolean) ?? [];
+  const filteredQuestions = questions.filter((question) => {
+    if (!(settings.includeDrafts || question.status === 'reviewed') || !isBlueprintApplicable(blueprint, question)) {
+      return false;
+    }
+
+    if (focusIds.length === 0) {
+      return true;
+    }
+
+    return focusIds.includes(resolveCategory(blueprint, question).id);
+  });
   const targets = getBindingTargets(blueprint, settings.questionCount);
   const domainTolerance = getScaledDomainTolerance(blueprint, settings.questionCount);
   const buckets = buildCandidateBuckets(blueprint, filteredQuestions, recentIds);
@@ -281,6 +289,26 @@ export function buildDefaultSettings(blueprintId: BlueprintId): SessionSettings 
     includeDrafts: false,
     targetThreshold: 70
   };
+}
+
+export function countAvailableQuestions(
+  questions: Question[],
+  settings: Pick<SessionSettings, 'blueprintId' | 'includeDrafts' | 'focusCategoryIds'>
+): number {
+  const blueprint = getBlueprint(settings.blueprintId);
+  const focusIds = settings.focusCategoryIds?.filter(Boolean) ?? [];
+
+  return questions.filter((question) => {
+    if (!(settings.includeDrafts || question.status === 'reviewed') || !isBlueprintApplicable(blueprint, question)) {
+      return false;
+    }
+
+    if (focusIds.length === 0) {
+      return true;
+    }
+
+    return focusIds.includes(resolveCategory(blueprint, question).id);
+  }).length;
 }
 
 export function countAnswered(session: ActiveSession): number {

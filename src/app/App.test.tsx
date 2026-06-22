@@ -4,7 +4,7 @@ import App from './App';
 
 vi.mock('../lib/storage', () => ({
   bootstrapState: vi.fn(async () => ({
-    meta: { disclaimerSeen: true },
+    meta: { disclaimerSeen: true, theme: 'day' as const },
     settings: null,
     activeSession: null,
     history: [],
@@ -23,16 +23,14 @@ vi.mock('../lib/storage', () => ({
 }));
 
 describe('App', () => {
-  it('renders the start screen and loaded-bank summary', async () => {
+  it('renders the dashboard and loaded-bank summary', async () => {
     render(<App />);
 
-    await waitFor(() => expect(screen.getByRole('heading', { name: /build a practice session/i })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('heading', { name: /welcome back/i })).toBeInTheDocument());
 
-    expect(screen.getByRole('heading', { name: 'CCTC Practice Exam' })).toBeInTheDocument();
-    expect(
-      screen.getByText((_, element) => Boolean(element?.closest('.badge')?.textContent?.includes('506 item')))
-    ).toBeInTheDocument();
-    expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /start session/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /cctc home/i })).toBeInTheDocument();
+    expect(screen.getByText(/506 practice items/i)).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: /setup form/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Quick 10/i })).toBeInTheDocument();
   });
 });

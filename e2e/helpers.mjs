@@ -21,11 +21,11 @@ export async function dismissDisclaimerIfPresent(page) {
 }
 
 export function sessionItemHeading(page, itemNumber, total) {
-  return page.getByRole('heading', { name: new RegExp(`Item ${itemNumber} of ${total}`, 'i') });
+  return page.getByText(new RegExp(`Item ${itemNumber} of ${total}`, 'i'));
 }
 
 export async function readSessionItemTotal(page) {
-  const heading = page.getByRole('heading', { name: /Item \d+ of \d+/i });
+  const heading = page.getByText(/Item \d+ of \d+/i).first();
   await expect(heading).toBeVisible();
   const text = await heading.textContent();
   const match = text?.match(/Item \d+ of (\d+)/i);
@@ -38,19 +38,20 @@ export async function readSessionItemTotal(page) {
 export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
-  await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
+  await page.getByRole('tab', { name: 'Setup' }).click();
+  await expect(page.getByRole('heading', { name: /customize/i })).toBeVisible();
 
-  await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
-  await page.getByRole('spinbutton', { name: /^Question count/i }).fill(String(questionCount));
-  await page.getByRole('button', { name: 'Start session' }).click();
+  await page.getByRole('button', { name: 'Study', exact: true }).click();
+  await page.getByLabel('Question count').fill(String(questionCount));
+  await page.getByRole('button', { name: new RegExp(`Start study · ${questionCount} items`, 'i') }).click();
 
-  await expect(page.getByRole('heading', { name: /Item 1 of \d+/i })).toBeVisible();
+  await expect(page.getByText(/Item 1 of \d+/i)).toBeVisible();
   return readSessionItemTotal(page);
 }
 
 export async function resumeActiveSession(page) {
-  await page.getByRole('button', { name: 'Resume current session' }).click();
-  await expect(page.getByRole('heading', { name: /Item \d+ of \d+/i })).toBeVisible();
+  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await expect(page.getByText(/Item \d+ of \d+/i)).toBeVisible();
 }
 
 export async function waitForPersistedSessionState(page) {
@@ -84,8 +85,15 @@ export async function waitForPersistedSessionState(page) {
   );
 }
 
+export async function expectSessionBookmarked(page) {
+  await expect(page.getByRole('button', { name: 'Bookmarked' })).toBeVisible();
+}
+
 export async function expectSessionStats(page, { answered, bookmarks }) {
-  const stats = page.locator('.session-stats');
-  await expect(stats.getByText(`Answered ${answered}`, { exact: true })).toBeVisible();
-  await expect(stats.getByText(`Bookmarks ${bookmarks}`, { exact: true })).toBeVisible();
+  if (bookmarks > 0) {
+    await expectSessionBookmarked(page);
+  }
+  if (answered > 0) {
+    await expect(page.getByRole('radio', { checked: true }).first()).toBeVisible();
+  }
 }

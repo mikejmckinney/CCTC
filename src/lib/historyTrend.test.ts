@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildHistoryTrend, formatTrendDelta } from './historyTrend';
+import { buildHistoryTrend, formatHistoryLatestDelta, formatTrendDelta, historyLatestDeltaTone } from './historyTrend';
 import type { HistoryEntry } from '../types/exam';
 
 function makeEntry(id: string, completedAt: string, percent: number): HistoryEntry {
@@ -72,5 +72,17 @@ describe('formatTrendDelta', () => {
   it('prefixes positive deltas with a plus sign', () => {
     expect(formatTrendDelta(5)).toBe('+5 pts');
     expect(formatTrendDelta(-3)).toBe('-3 pts');
+  });
+});
+
+describe('formatHistoryLatestDelta', () => {
+  it('formats session-over-session delta like the prototype', () => {
+    expect(formatHistoryLatestDelta(null)).toBe('—');
+    expect(formatHistoryLatestDelta(5)).toBe('+5');
+    expect(formatHistoryLatestDelta(-3)).toBe('-3');
+    expect(formatHistoryLatestDelta(0)).toBe('0');
+    expect(historyLatestDeltaTone(5)).toBe('success');
+    expect(historyLatestDeltaTone(-3)).toBe('danger');
+    expect(historyLatestDeltaTone(0)).toBe('muted');
   });
 });
