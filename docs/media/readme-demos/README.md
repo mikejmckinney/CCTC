@@ -25,7 +25,7 @@ Outputs land in `docs/media/readme-demos/.outputs/` (gitignored).
 
 1. Open GitHub issue **README media asset uploads**
 2. Drag each `.outputs/*.mp4` into a comment
-3. Copy `user-attachments` URLs into `media-manifest.md`
-4. Merge README embeds or `README_SNIPPET_PENDING_URLS.md` until URLs exist
+3. Copy `user-attachments` URLs into `media-manifest.md` (see issue [#19](https://github.com/mikejmckinney/CCTC/issues/19))
+4. Merge README embeds from `README_SNIPPET_PENDING_URLS.md` (or edit `README.md` directly)
 
 See [`.github/prompts/04-cctc-open-design-redesign-and-readme-media-v2.md`](../../.github/prompts/04-cctc-open-design-redesign-and-readme-media-v2.md).
