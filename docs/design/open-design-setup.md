@@ -323,9 +323,9 @@ You can use **Live Server**, but in a **browser-based Codespace** it often opens
 }
 ```
 
-2. Right-click `direction-b-clinical-dashboard/index.html` → **Open with Live Server**.
-3. In **Ports**, forward **5500** → **Open in Browser** (use the forwarded URL).
-4. If the tab is still blank, check the address bar ends with `/direction-b-clinical-dashboard/index.html`.
+1. Right-click `direction-b-clinical-dashboard/index.html` → **Open with Live Server**.
+2. In **Ports**, forward **5500** → **Open in Browser** (use the forwarded URL).
+3. If the tab is still blank, check the address bar ends with `/direction-b-clinical-dashboard/index.html`.
 
 **Live Preview** has the same iframe/CSP limits as Simple Browser — prefer Live Server + external forwarded tab, or the `python3 -m http.server 8080` flow above.
 
