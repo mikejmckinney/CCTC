@@ -3,7 +3,7 @@ import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
 import { loadQuestionBanks } from '../data/questionBank';
 import { buildDefaultSettings, countAnswered, createSession, isBlueprintApplicable } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
-import { buildDashboardInsights } from '../lib/dashboardInsights';
+import { buildDashboardInsights, computeImprovementStreak, weakestCategoryLabel } from '../lib/dashboardInsights';
 import { buildCategoryHistoryTrend, listHistoryCategories } from '../lib/categoryHistoryTrend';
 import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
 import { applyTheme, persistTheme, resolveInitialTheme, type ThemePreference } from '../lib/theme';
@@ -34,8 +34,9 @@ import type {
   SessionSettings,
   QuestionSet
 } from '../types/exam';
+import type { CategoryPerformance } from '../lib/dashboardInsights';
 
-type View = 'home' | 'session' | 'history' | 'history-detail' | 'flags';
+type View = 'home' | 'session' | 'score' | 'history' | 'history-detail' | 'flags';
 type HomePanel = 'dashboard' | 'setup';
 
 interface FlagDraft {
@@ -58,6 +59,35 @@ const FLAG_REASONS: FlagReason[] = [
 ];
 
 const QUESTION_MIN = 10;
+
+function findFirstMissedIndex(entry: HistoryEntry): number {
+  return entry.items.findIndex((item) => entry.answers[item.itemId] !== item.question.correct);
+}
+
+function formatShortDate(isoTimestamp: string): string {
+  return new Date(isoTimestamp).toLocaleDateString(undefined, {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+}
+
+function formatRelativeTime(isoTimestamp: string): string {
+  const deltaMs = Date.now() - new Date(isoTimestamp).getTime();
+  const minutes = Math.floor(deltaMs / 60000);
+  if (minutes < 1) {
+    return 'just now';
+  }
+  if (minutes < 60) {
+    return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
+  }
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) {
+    return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+  }
+  const days = Math.floor(hours / 24);
+  return `${days} day${days === 1 ? '' : 's'} ago`;
+}
 
 function displayLetterForIndex(optionIndex: number): string {
   return String.fromCharCode('A'.charCodeAt(0) + optionIndex);
@@ -182,25 +212,29 @@ function References({ question }: { question: Question }) {
 }
 
 function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: string | null }) {
+  const isCorrect = answer === item.question.correct;
+
   return (
-    <article className="question-card">
-      <div className="question-meta">
-        <span className="badge badge--soft">{item.categoryLabel}</span>
-        <span className={answer === item.question.correct ? 'badge badge--success' : 'badge badge--warning'}>
-          {answer === item.question.correct ? 'Correct' : 'Review'}
-        </span>
-      </div>
-      <h3>{item.question.stem}</h3>
+    <article className="stack-gap">
+      <p className="item-meta">
+        <span className="num">{item.question.id}</span> · {item.categoryLabel}
+      </p>
+      <p className="question-stem">{item.question.stem}</p>
+
       {item.question.elements && (
-        <ol className="element-list">
-          {item.question.elements.map((element) => (
-            <li key={element.id}>
-              <strong>{element.id}.</strong> {element.text}
-            </li>
-          ))}
-        </ol>
+        <div className="combo-panel">
+          <ol className="element-list">
+            {item.question.elements.map((element) => (
+              <li key={element.id}>
+                <span className="combo-tag">{element.id}</span>
+                {element.text}
+              </li>
+            ))}
+          </ol>
+        </div>
       )}
-      <div className="option-list">
+
+      <div className="option-list" aria-label="Answer choices">
         {item.optionOrder.map((optionId, optionIndex) => {
           const option = item.question.options.find((entry) => entry.id === optionId)!;
           const selected = answer === option.id;
@@ -226,18 +260,21 @@ function QuestionReview({ item, answer }: { item: SessionItemSnapshot; answer: s
           );
         })}
       </div>
-      <div className="explanation-card">
-        <p>
-          <strong>Correct answer ({displayLetterForOptionId(item.optionOrder, item.question.correct)}):</strong>{' '}
-          {item.question.explanation.rationale_correct}
-        </p>
-        <ul className="plain-list">
-          {incorrectRationalesForDisplay(item).map(({ displayLetter, rationale }) => (
-            <li key={displayLetter}>
-              <strong>{displayLetter}:</strong> {rationale}
-            </li>
-          ))}
-        </ul>
+
+      <div className="explanation-panel" role="region" aria-label="Explanation">
+        <h4>
+          {isCorrect ? 'Correct' : 'Review'} — {displayLetterForOptionId(item.optionOrder, item.question.correct)}
+        </h4>
+        <p>{item.question.explanation.rationale_correct}</p>
+        {incorrectRationalesForDisplay(item).length > 0 && (
+          <ul className="plain-list">
+            {incorrectRationalesForDisplay(item).map(({ displayLetter, rationale }) => (
+              <li key={displayLetter}>
+                <strong>{displayLetter}:</strong> {rationale}
+              </li>
+            ))}
+          </ul>
+        )}
         <References question={item.question} />
       </div>
     </article>
@@ -273,6 +310,8 @@ function App() {
     () => buildDashboardInsights(history, settings.targetThreshold),
     [history, settings.targetThreshold]
   );
+  const improvementStreak = useMemo(() => computeImprovementStreak(history), [history]);
+  const recentHistoryPoints = useMemo(() => historyTrend.points.slice(-8), [historyTrend.points]);
   const historyCategories = useMemo(() => listHistoryCategories(history), [history]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const categoryTrend = useMemo(
@@ -284,6 +323,9 @@ function App() {
   const [flags, setFlags] = useState<ItemFlag[]>([]);
   const [flagDraft, setFlagDraft] = useState<FlagDraft | null>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
+  const [sessionNavigatorOpen, setSessionNavigatorOpen] = useState(false);
+  const [submitPromptOpen, setSubmitPromptOpen] = useState(false);
+  const [setupSuggestion, setSetupSuggestion] = useState<string | null>(null);
   const [sessionReplacePromptOpen, setSessionReplacePromptOpen] = useState(false);
   const [pendingSessionSettings, setPendingSessionSettings] = useState<SessionSettings | null>(null);
   const lastPersistFingerprint = useRef('');
@@ -345,6 +387,16 @@ function App() {
   }
 
   function openSetupPanel(): void {
+    setSetupSuggestion(null);
+    setHomePanel('setup');
+    setView('home');
+  }
+
+  function openWeakAreaQuickStart(category: CategoryPerformance): void {
+    const max = getAvailableQuestionCount(bank.questions, settings.blueprintId, settings.includeDrafts);
+    const nextCount = clampQuestionCount(25, max);
+    persistSettings({ ...settings, questionCount: nextCount });
+    setSetupSuggestion(`Suggested: ${nextCount}-item run — prioritize ${category.categoryLabel} during review.`);
     setHomePanel('setup');
     setView('home');
   }
@@ -437,6 +489,15 @@ function App() {
   const availableQuestionCount = getAvailableQuestionCount(bank.questions, settings.blueprintId, settings.includeDrafts);
   const answeredCount = session ? countAnswered(session) : 0;
   const selectedHistoryItem = selectedHistory?.items[reviewIndex] ?? null;
+  const sessionUnansweredCount = session ? session.items.length - answeredCount : 0;
+  const sessionFlaggedCount = session?.flaggedForReview.length ?? 0;
+
+  useEffect(() => {
+    if (view !== 'session') {
+      setSessionNavigatorOpen(false);
+      setSubmitPromptOpen(false);
+    }
+  }, [view]);
 
   useEffect(() => {
     if (selectedCategoryId && !historyCategories.some((category) => category.categoryId === selectedCategoryId)) {
@@ -669,26 +730,22 @@ function App() {
     void clearActiveSession();
   }
 
-  async function finalizeSession(): Promise<void> {
+  function requestSubmit(): void {
+    if (!activeSession || isFinalizing) {
+      return;
+    }
+    setSubmitPromptOpen(true);
+  }
+
+  async function confirmSubmit(): Promise<void> {
     if (!activeSession || isFinalizing) {
       return;
     }
 
+    setSubmitPromptOpen(false);
     setIsFinalizing(true);
 
     try {
-      const unanswered = activeSession.items.length - countAnswered(activeSession);
-      if (activeSession.settings.mode === 'exam') {
-        const shouldSubmit = window.confirm(
-          unanswered > 0
-            ? `Submit exam with ${unanswered} unanswered item(s)? There is no guessing penalty in this practice result.`
-            : 'Submit exam and score the results?'
-        );
-        if (!shouldSubmit) {
-          return;
-        }
-      }
-
       const result = scoreSession(
         activeSession.settings.blueprintId,
         activeSession.items,
@@ -709,7 +766,8 @@ function App() {
       setSelectedHistory(historyEntry);
       setReviewIndex(0);
       setActiveSession(null);
-      setView('history-detail');
+      setSessionNavigatorOpen(false);
+      setView('score');
     } finally {
       setIsFinalizing(false);
     }
@@ -827,26 +885,119 @@ function App() {
         </section>
       )}
 
-      {sessionReplacePromptOpen && (
-        <section className="modal-backdrop" aria-label="Unfinished session">
-          <div className="modal-card">
-            <h2>Unfinished session</h2>
-            <p>
-              You already have a session in progress. Resume it, or start a new session with your current setup (this discards
-              in-progress answers and bookmarks).
+      {sessionReplacePromptOpen && activeSession && (
+        <section className="modal-backdrop" aria-label="Resume saved session">
+          <div className="modal-card resume-card" role="dialog" aria-modal="true" aria-labelledby="resume-session-title">
+            <h2 id="resume-session-title">Resume saved session?</h2>
+            <p className="field-hint">
+              Your answers are saved after each question. Pick up where you left off or start fresh with your current setup.
             </p>
-            <p>
-              <strong>Resume your in-progress session?</strong>
-            </p>
+            <dl className="detail-list">
+              <dt>Progress</dt>
+              <dd className="num">
+                {countAnswered(activeSession)} / {activeSession.items.length} answered
+              </dd>
+              <dt>Mode</dt>
+              <dd>
+                {activeSession.settings.mode === 'exam' ? 'Exam' : 'Study'}
+                {activeSession.settings.timed ? ' · Timed' : ' · Untimed'}
+              </dd>
+              {activeSession.settings.timed && activeSession.remainingSeconds !== null && (
+                <>
+                  <dt>Time remaining</dt>
+                  <dd className="num">{formatDuration(activeSession.remainingSeconds)}</dd>
+                </>
+              )}
+              <dt>Blueprint</dt>
+              <dd>{getBlueprintLabel(activeSession.settings.blueprintId)}</dd>
+              <dt>Last saved</dt>
+              <dd>{formatRelativeTime(activeSession.updatedAt)}</dd>
+            </dl>
             <div className="modal-actions">
               <button className="ghost-button" onClick={dismissSessionReplacePrompt}>
                 Cancel
               </button>
               <button className="secondary-button" onClick={replaceActiveSession}>
-                No, start new
+                Discard &amp; start new
               </button>
               <button className="primary-button" onClick={resumeExistingSession}>
-                Yes, resume
+                Resume session
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {submitPromptOpen && session && (
+        <section className="modal-backdrop" role="presentation">
+          <div
+            className="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="submit-session-title"
+          >
+            <h2 id="submit-session-title">
+              {session.settings.mode === 'exam' ? 'Submit practice exam?' : 'Complete study session?'}
+            </h2>
+            <p>
+              {sessionUnansweredCount > 0 || sessionFlaggedCount > 0 ? (
+                <>
+                  You have{' '}
+                  {sessionUnansweredCount > 0 && (
+                    <>
+                      <strong className="num">{sessionUnansweredCount}</strong> unanswered item
+                      {sessionUnansweredCount === 1 ? '' : 's'}
+                    </>
+                  )}
+                  {sessionUnansweredCount > 0 && sessionFlaggedCount > 0 ? ' and ' : ''}
+                  {sessionFlaggedCount > 0 && (
+                    <>
+                      <strong className="num">{sessionFlaggedCount}</strong> bookmarked for review
+                    </>
+                  )}
+                  . You can return to the navigator or submit now.
+                </>
+              ) : (
+                'All items are answered. Submit to score this unofficial practice run.'
+              )}
+            </p>
+            {(sessionUnansweredCount > 0 || sessionFlaggedCount > 0) && (
+              <ul className="submit-summary-list">
+                {sessionUnansweredCount > 0 && (
+                  <li>
+                    Unanswered:{' '}
+                    {session.items
+                      .map((item, index) => (session.answers[item.itemId] ? -1 : index + 1))
+                      .filter((value) => value > 0)
+                      .join(', ')}
+                  </li>
+                )}
+                {sessionFlaggedCount > 0 && (
+                  <li>
+                    Bookmarked:{' '}
+                    {session.items
+                      .map((item, index) => (session.flaggedForReview.includes(item.itemId) ? index + 1 : -1))
+                      .filter((value) => value > 0)
+                      .join(', ')}
+                  </li>
+                )}
+              </ul>
+            )}
+            <div className="modal-actions">
+              <button
+                className="secondary-button"
+                onClick={() => {
+                  setSubmitPromptOpen(false);
+                  setSessionNavigatorOpen(true);
+                }}
+              >
+                Review navigator
+              </button>
+              <button className="ghost-button" onClick={() => setSubmitPromptOpen(false)}>
+                Cancel
+              </button>
+              <button className="primary-button" onClick={() => void confirmSubmit()} disabled={isFinalizing}>
+                {session.settings.mode === 'exam' ? 'Submit answers' : 'Complete session'}
               </button>
             </div>
           </div>
@@ -855,30 +1006,53 @@ function App() {
 
       {flagDraft && (
         <section className="modal-backdrop" aria-label="Flag this item">
-          <div className="modal-card">
-            <h2>Flag this item</h2>
-            <label>
-              Reason
-              <select value={flagDraft.reason} onChange={(event) => setFlagDraft({ ...flagDraft, reason: event.target.value as FlagReason })}>
-                {FLAG_REASONS.map((reason) => (
-                  <option key={reason} value={reason}>
-                    {reason}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label>
-              Comment
-              <textarea rows={4} value={flagDraft.comment} onChange={(event) => setFlagDraft({ ...flagDraft, comment: event.target.value })} />
-            </label>
-            <div className="modal-actions">
-              <button className="secondary-button" onClick={() => setFlagDraft(null)}>
-                Cancel
-              </button>
-              <button className="primary-button" onClick={() => void saveFlagDraft()}>
-                Save flag
-              </button>
-            </div>
+          <div className="modal-card" role="dialog" aria-modal="true" aria-labelledby="flag-item-title">
+            <h2 id="flag-item-title">
+              Flag item <span className="num">{flagDraft.item.id}</span>
+            </h2>
+            <p className="field-hint">Help improve the question bank. Flags can be exported for SME review.</p>
+            <form
+              className="form-grid"
+              onSubmit={(event) => {
+                event.preventDefault();
+                void saveFlagDraft();
+              }}
+            >
+              <fieldset className="field">
+                <legend>Reason</legend>
+                <div className="radio-row" style={{ flexDirection: 'column', alignItems: 'stretch' }}>
+                  {FLAG_REASONS.map((reason) => (
+                    <label key={reason} className="pill-opt pill-opt--stack">
+                      <input
+                        type="radio"
+                        name="flag-reason"
+                        value={reason}
+                        checked={flagDraft.reason === reason}
+                        onChange={() => setFlagDraft({ ...flagDraft, reason })}
+                      />
+                      {reason}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <label className="field">
+                Optional note
+                <textarea
+                  rows={4}
+                  placeholder="Describe the issue for reviewers…"
+                  value={flagDraft.comment}
+                  onChange={(event) => setFlagDraft({ ...flagDraft, comment: event.target.value })}
+                />
+              </label>
+              <div className="modal-actions">
+                <button type="button" className="secondary-button" onClick={() => setFlagDraft(null)}>
+                  Cancel
+                </button>
+                <button type="submit" className="primary-button">
+                  Save flag
+                </button>
+              </div>
+            </form>
           </div>
         </section>
       )}
@@ -916,7 +1090,7 @@ function App() {
         </div>
       </header>
 
-      <main id="main-content" className="main-grid">
+      <main id="main-content" className="main-grid main-grid--single">
         {view === 'home' && homePanel === 'dashboard' && (
           <>
             <section className="panel panel--span-2 stack-gap">
@@ -1001,7 +1175,7 @@ function App() {
                                   type="button"
                                   className="weak-chip"
                                   role="listitem"
-                                  onClick={openSetupPanel}
+                                  onClick={() => openWeakAreaQuickStart(category)}
                                 >
                                   <span>{category.categoryLabel}</span>
                                   <span className="weak-chip__pct">{category.percent}%</span>
@@ -1017,14 +1191,14 @@ function App() {
                             <div className="cat-bars">
                               {dashboardInsights.categories.map((category) => (
                                 <div key={category.categoryId} className="cat-bar-row">
-                                  <span className="field-hint">{category.categoryLabel}</span>
+                                  <span className="label">{category.categoryLabel}</span>
                                   <div className="cat-bar-track">
                                     <div
                                       className={['cat-bar-fill', category.percent < settings.targetThreshold ? 'is-weak' : ''].filter(Boolean).join(' ')}
                                       style={{ width: `${category.percent}%` }}
                                     />
                                   </div>
-                                  <strong>{category.percent}%</strong>
+                                  <span className="score num">{category.percent}%</span>
                                 </div>
                               ))}
                             </div>
@@ -1045,11 +1219,11 @@ function App() {
                 <aside className="side-stack">
                   <div className="metric-row">
                     <div className="metric-tile">
-                      <strong>{dashboardInsights.sessionCount}</strong>
+                      <strong className="num">{dashboardInsights.sessionCount}</strong>
                       <span>Sessions</span>
                     </div>
                     <div className="metric-tile">
-                      <strong>{dashboardInsights.latestPercent ?? '—'}</strong>
+                      <strong className="num">{dashboardInsights.latestPercent ?? '—'}{dashboardInsights.latestPercent !== null ? '%' : ''}</strong>
                       <span>Latest score</span>
                     </div>
                   </div>
@@ -1058,7 +1232,9 @@ function App() {
                     <div className="resume-strip stack-gap">
                       <h3>Saved session in progress</h3>
                       <p className="field-hint">
-                        Item {activeSession.currentIndex + 1} of {activeSession.items.length} · {activeSession.settings.mode} mode
+                        Saved {formatRelativeTime(activeSession.updatedAt)} · item{' '}
+                        <span className="num">{activeSession.currentIndex + 1}</span> of{' '}
+                        <span className="num">{activeSession.items.length}</span> · {activeSession.settings.mode} mode
                       </p>
                       <button type="button" className="secondary-button" onClick={() => setView('session')}>
                         Resume session
@@ -1068,16 +1244,30 @@ function App() {
 
                   <div className="summary-card stack-gap">
                     <h3>Quick start</h3>
-                    <p className="field-hint">Configure blueprint, mode, timer, and question count before you begin.</p>
-                    <button type="button" className="secondary-button" onClick={openSetupPanel}>
-                      Configure practice session
-                    </button>
+                    <p className="field-hint">
+                      {dashboardInsights.weakCategories.length > 0
+                        ? 'Target a weak domain with a shorter run.'
+                        : 'Configure blueprint, mode, timer, and question count before you begin.'}
+                    </p>
+                    {dashboardInsights.weakCategories.length > 0 ? (
+                      <button
+                        type="button"
+                        className="secondary-button"
+                        onClick={() => openWeakAreaQuickStart(dashboardInsights.weakCategories[0])}
+                      >
+                        25 items · {dashboardInsights.weakCategories[0].categoryLabel}
+                      </button>
+                    ) : (
+                      <button type="button" className="secondary-button" onClick={openSetupPanel}>
+                        Configure practice session
+                      </button>
+                    )}
                     <button type="button" className="ghost-button" onClick={() => setView('history')}>
-                      View full history
+                      View full history →
                     </button>
                   </div>
 
-                  <p className="field-hint">Unofficial practice scores are estimates only — not ABTC or PSI results.</p>
+                  <p className="disclaimer-inline">Unofficial practice scores are estimates only — not ABTC or PSI results.</p>
                 </aside>
               </div>
             </section>
@@ -1085,179 +1275,271 @@ function App() {
         )}
 
         {view === 'home' && homePanel === 'setup' && (
-          <>
-            <section className="panel panel--span-2 stack-gap">
-              <div className="setup-back-row">
+          <section className="panel panel--span-2">
+            <div className="session-shell">
+              <header className="session-bar session-bar--minimal">
                 <button type="button" className="ghost-button" onClick={openDashboardPanel}>
-                  ← Back to dashboard
+                  ← Back
                 </button>
-              </div>
+                <span className="item-meta">New session</span>
+              </header>
 
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Session setup</p>
-                  <h2>Configure practice</h2>
-                </div>
-                <span className="badge badge--soft">
-                  {settings.questionSet === 'scenario' ? 'Scenario' : 'Standard'} bank: {bank.questions.length} item(s)
-                </span>
-              </div>
+              <div className="session-body">
+                <h2>Configure practice</h2>
+                {setupSuggestion ? (
+                  <p className="setup-hint">{setupSuggestion}</p>
+                ) : (
+                  <p className="setup-hint">
+                    {dashboardInsights.weakCategories.length > 0
+                      ? `Suggested: shorter run in ${dashboardInsights.weakCategories[0].categoryLabel} based on your dashboard weak areas.`
+                      : 'Choose blueprint, mode, timer, and question count before you begin.'}
+                  </p>
+                )}
 
-              {bank.notes.length > 0 && (
-                <div className="notice-block">
-                  {bank.notes.map((note) => (
-                    <p key={note}>{note}</p>
-                  ))}
-                </div>
-              )}
-
-              <div className="settings-grid">
-                <label>
-                  Blueprint version
-                  <select value={settings.blueprintId} onChange={(event) => handleBlueprintChange(event.target.value as BlueprintId)}>
-                    <option value="cctc-from-2026-07">2026-07 (default)</option>
-                    <option value="cctc-thru-2026-06">Until 2026-06</option>
-                  </select>
-                </label>
-
-                <label>
-                  Question set
-                  <select value={settings.questionSet} onChange={(event) => handleQuestionSetChange(event.target.value as QuestionSet)}>
-                    <option value="standard">Standard bank</option>
-                    <option value="scenario">Scenario companions</option>
-                  </select>
-                  <span className="field-hint">
-                    Scenario companions are clinical vignettes paired 1:1 with the standard bank (506 target).
-                  </span>
-                </label>
-
-                <label>
-                  Question count
-                  <input
-                    type="number"
-                    min={Math.min(QUESTION_MIN, Math.max(1, availableQuestionCount))}
-                    max={Math.max(availableQuestionCount, 1)}
-                    value={settings.questionCount}
-                    onChange={(event) => updateSettings({ questionCount: Number(event.target.value) || 0 })}
-                  />
-                  <span className="field-hint">Available for this configuration: {availableQuestionCount}</span>
-                </label>
-
-                <label>
-                  Timed session
-                  <div className="toggle-row">
-                    <input type="checkbox" checked={settings.timed} onChange={(event) => updateSettings({ timed: event.target.checked })} />
-                    <span>{settings.timed ? 'Timer enabled' : 'Untimed session'}</span>
+                {bank.notes.length > 0 && (
+                  <div className="notice-block">
+                    {bank.notes.map((note) => (
+                      <p key={note}>{note}</p>
+                    ))}
                   </div>
-                </label>
+                )}
 
-                <label>
-                  Minutes
-                  <input
-                    type="number"
-                    min={1}
-                    value={settings.timeMinutes}
-                    onChange={(event) => updateSettings({ timeMinutes: Math.max(1, Number(event.target.value) || 1) })}
-                    disabled={!settings.timed}
-                  />
-                </label>
+                <form
+                  className="setup-card form-grid"
+                  aria-label="Session setup"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    startSession();
+                  }}
+                >
+                  <fieldset className="field">
+                    <legend>Blueprint version</legend>
+                    <div className="radio-row">
+                      <label className="pill-opt">
+                        <input
+                          type="radio"
+                          name="blueprint"
+                          checked={settings.blueprintId === 'cctc-from-2026-07'}
+                          onChange={() => handleBlueprintChange('cctc-from-2026-07')}
+                        />
+                        Current (effective 2026-07-01)
+                      </label>
+                      <label className="pill-opt">
+                        <input
+                          type="radio"
+                          name="blueprint"
+                          checked={settings.blueprintId === 'cctc-thru-2026-06'}
+                          onChange={() => handleBlueprintChange('cctc-thru-2026-06')}
+                        />
+                        Legacy (until 2026-06-30)
+                      </label>
+                    </div>
+                  </fieldset>
 
-                <label>
-                  On-screen timer
-                  <div className="toggle-row">
-                    <input type="checkbox" checked={settings.showTimer} onChange={(event) => updateSettings({ showTimer: event.target.checked })} />
-                    <span>{settings.showTimer ? 'Visible during session' : 'Hidden during session'}</span>
-                  </div>
-                </label>
+                  <label className="field">
+                    Question set
+                    <select value={settings.questionSet} onChange={(event) => handleQuestionSetChange(event.target.value as QuestionSet)}>
+                      <option value="standard">Standard bank</option>
+                      <option value="scenario">Scenario companions</option>
+                    </select>
+                    <span className="field-hint">
+                      {settings.questionSet === 'scenario' ? 'Scenario' : 'Standard'} bank: {bank.questions.length} item(s). Scenario
+                      companions are clinical vignettes paired 1:1 with the standard bank.
+                    </span>
+                  </label>
 
-                <label>
-                  Mode
-                  <select value={settings.mode} onChange={(event) => handleModeChange(event.target.value as ExamMode)}>
-                    <option value="exam">Exam</option>
-                    <option value="study">Study</option>
-                  </select>
-                </label>
+                  <fieldset className="field">
+                    <legend>Mode</legend>
+                    <div className="radio-row">
+                      <label className="pill-opt">
+                        <input
+                          type="radio"
+                          name="mode"
+                          checked={settings.mode === 'study'}
+                          onChange={() => handleModeChange('study')}
+                        />
+                        Study — explanations after each answer
+                      </label>
+                      <label className="pill-opt">
+                        <input
+                          type="radio"
+                          name="mode"
+                          checked={settings.mode === 'exam'}
+                          onChange={() => handleModeChange('exam')}
+                        />
+                        Exam — results after submit
+                      </label>
+                    </div>
+                  </fieldset>
 
-                <label>
-                  Include draft items
-                  <div className="toggle-row">
+                  <label className="field">
+                    Question count
                     <input
-                      type="checkbox"
-                      checked={settings.includeDrafts}
-                      onChange={(event) => updateSettings({ includeDrafts: event.target.checked })}
-                      disabled={settings.mode === 'exam'}
+                      type="number"
+                      min={Math.min(QUESTION_MIN, Math.max(1, availableQuestionCount))}
+                      max={Math.max(availableQuestionCount, 1)}
+                      value={settings.questionCount}
+                      onChange={(event) => updateSettings({ questionCount: Number(event.target.value) || 0 })}
                     />
-                    <span>{settings.mode === 'exam' ? 'Exam mode defaults to reviewed-only' : 'Drafts remain visibly labeled'}</span>
+                    <span className="field-hint">
+                      Real exam uses 175 items; shorter runs for focused review. Available for this configuration:{' '}
+                      {availableQuestionCount}
+                    </span>
+                  </label>
+
+                  <fieldset className="field">
+                    <legend>Timer</legend>
+                    <div className="radio-row">
+                      <label className="pill-opt">
+                        <input
+                          type="radio"
+                          name="timer"
+                          checked={settings.timed}
+                          onChange={() => updateSettings({ timed: true })}
+                        />
+                        Timed — {settings.timeMinutes} min default
+                      </label>
+                      <label className="pill-opt">
+                        <input type="radio" name="timer" checked={!settings.timed} onChange={() => updateSettings({ timed: false })} />
+                        Untimed
+                      </label>
+                    </div>
+                  </fieldset>
+
+                  {settings.timed && (
+                    <label className="field">
+                      Minutes
+                      <input
+                        type="number"
+                        min={1}
+                        value={settings.timeMinutes}
+                        onChange={(event) => updateSettings({ timeMinutes: Math.max(1, Number(event.target.value) || 1) })}
+                      />
+                    </label>
+                  )}
+
+                  <label className="field">
+                    <span>On-screen timer</span>
+                    <div className="check-row">
+                      <label className="pill-opt">
+                        <input
+                          type="checkbox"
+                          checked={settings.showTimer}
+                          onChange={(event) => updateSettings({ showTimer: event.target.checked })}
+                        />
+                        {settings.showTimer ? 'Visible during session' : 'Hidden during session'}
+                      </label>
+                    </div>
+                  </label>
+
+                  <label className="field">
+                    <span>Include draft items</span>
+                    <div className="check-row">
+                      <label className="pill-opt">
+                        <input
+                          type="checkbox"
+                          checked={settings.includeDrafts}
+                          onChange={(event) => updateSettings({ includeDrafts: event.target.checked })}
+                          disabled={settings.mode === 'exam'}
+                        />
+                        {settings.mode === 'exam' ? 'Exam mode defaults to reviewed-only' : 'Drafts remain visibly labeled'}
+                      </label>
+                    </div>
+                  </label>
+
+                  <label className="field">
+                    Target threshold (%)
+                    <input
+                      type="number"
+                      min={1}
+                      max={100}
+                      value={settings.targetThreshold}
+                      onChange={(event) =>
+                        updateSettings({ targetThreshold: Math.min(100, Math.max(1, Number(event.target.value) || 1)) })
+                      }
+                    />
+                    <span className="field-hint">Used for unofficial practice estimates and weak-area highlighting.</span>
+                  </label>
+
+                  <div className="summary-card stack-gap">
+                    <h3>Selected setup</h3>
+                    <p>
+                      <strong>Blueprint:</strong> {getBlueprintLabel(settings.blueprintId)}
+                    </p>
+                    <p>
+                      <strong>Question set:</strong> {settings.questionSet === 'scenario' ? 'Scenario companions' : 'Standard bank'}
+                    </p>
+                    <p>
+                      <strong>Mode:</strong> {settings.mode === 'exam' ? 'Exam mode' : 'Study mode'}
+                    </p>
+                    <p>
+                      <strong>Timer:</strong> {settings.timed ? `${settings.timeMinutes} minutes` : 'Untimed'}
+                    </p>
+                    <p>
+                      <strong>Draft handling:</strong> {settings.includeDrafts ? 'Drafts included and labeled' : 'Reviewed items only'}
+                    </p>
+                    <p>
+                      <strong>Weighting:</strong>{' '}
+                      {currentBlueprint.structure === 'domain_task' ? 'Current blueprint domains' : 'Legacy blueprint sections via crosswalk'}
+                    </p>
                   </div>
-                </label>
 
-                <label>
-                  Target threshold (%)
-                  <input
-                    type="number"
-                    min={1}
-                    max={100}
-                    value={settings.targetThreshold}
-                    onChange={(event) => updateSettings({ targetThreshold: Math.min(100, Math.max(1, Number(event.target.value) || 1)) })}
-                  />
-                  <span className="field-hint">Used for unofficial practice estimates and weak-area highlighting.</span>
-                </label>
+                  <div className="action-row">
+                    {activeSession && (
+                      <button type="button" className="secondary-button" onClick={() => setView('session')}>
+                        Resume current session
+                      </button>
+                    )}
+                    {activeSession && (
+                      <button type="button" className="ghost-button" onClick={discardActiveSession}>
+                        Discard unfinished session
+                      </button>
+                    )}
+                    <button type="submit" className="primary-button">
+                      {activeSession ? 'Replace or begin session' : 'Begin session'}
+                    </button>
+                  </div>
+                </form>
               </div>
-
-              <div className="summary-card">
-                <h3>Selected setup</h3>
-                <p><strong>Blueprint:</strong> {getBlueprintLabel(settings.blueprintId)}</p>
-                <p><strong>Question set:</strong> {settings.questionSet === 'scenario' ? 'Scenario companions' : 'Standard bank'}</p>
-                <p><strong>Mode:</strong> {settings.mode === 'exam' ? 'Exam mode' : 'Study mode'}</p>
-                <p><strong>Timer:</strong> {settings.timed ? `${settings.timeMinutes} minutes` : 'Untimed'}</p>
-                <p><strong>Draft handling:</strong> {settings.includeDrafts ? 'Drafts included and labeled' : 'Reviewed items only'}</p>
-                <p>
-                  <strong>Weighting:</strong> {currentBlueprint.structure === 'domain_task' ? 'Current blueprint domains' : 'Legacy blueprint sections via crosswalk'}
-                </p>
-              </div>
-
-              <div className="action-row">
-                {activeSession && (
-                  <button type="button" className="secondary-button" onClick={() => setView('session')}>
-                    Resume current session
-                  </button>
-                )}
-                {activeSession && (
-                  <button type="button" className="ghost-button" onClick={discardActiveSession}>
-                    Discard unfinished session
-                  </button>
-                )}
-                <button type="button" className="primary-button" onClick={startSession}>
-                  {activeSession ? 'Replace or resume session' : 'Begin session'}
-                </button>
-              </div>
-            </section>
-          </>
+            </div>
+          </section>
         )}
 
-        {view === 'session' && session && currentItem && (
-          <>
-            <section className="panel panel--span-2 stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">{session.settings.mode === 'exam' ? 'Exam session' : 'Study session'}</p>
-                  <h2>
-                    Item {session.currentIndex + 1} of {session.items.length}
-                  </h2>
-                </div>
-                <div className="session-stats">
-                  <span className="badge">Answered {answeredCount}</span>
-                  <span className="badge">Remaining {session.items.length - answeredCount}</span>
-                  <span className="badge">Bookmarks {session.flaggedForReview.length}</span>
-                  {session.settings.timed && (
-                    <button className="pill" onClick={toggleTimerHidden}>
-                      {session.timerHidden ? 'Show timer' : formatDuration(session.remainingSeconds)}
+        {view === 'session' && session && (
+          <section className="panel panel--span-2">
+            <div className="session-shell">
+              <header className="session-bar session-bar--minimal">
+                {sessionNavigatorOpen ? (
+                  <>
+                    <button type="button" className="ghost-button" onClick={() => setSessionNavigatorOpen(false)}>
+                      ← Return to question
                     </button>
-                  )}
-                </div>
-              </div>
+                    <span className="item-meta">Navigator</span>
+                  </>
+                ) : (
+                  <>
+                    <div className="session-chips">
+                      <span className="chip">{session.settings.mode === 'exam' ? 'Exam' : 'Study'}</span>
+                      <span className="chip chip--muted">
+                        Item <span className="num">{session.currentIndex + 1}</span> of{' '}
+                        <span className="num">{session.items.length}</span>
+                      </span>
+                      {sessionFlaggedCount > 0 && (
+                        <span className="chip chip--muted">
+                          <span className="num">{sessionFlaggedCount}</span> bookmarked
+                        </span>
+                      )}
+                    </div>
+                    {session.settings.timed && (
+                      <button type="button" className="ghost-button num" onClick={toggleTimerHidden}>
+                        {session.timerHidden ? 'Show timer' : formatDuration(session.remainingSeconds)}
+                      </button>
+                    )}
+                  </>
+                )}
+              </header>
 
-              {(session.bankSummary.length > 0 || session.shortageNotes.length > 0) && (
+              {(session.bankSummary.length > 0 || session.shortageNotes.length > 0) && !sessionNavigatorOpen && (
                 <div className="notice-block">
                   {[...session.bankSummary, ...session.shortageNotes].map((note) => (
                     <p key={note}>{note}</p>
@@ -1265,463 +1547,634 @@ function App() {
                 </div>
               )}
 
-              <article className="question-card">
-                <div className="question-meta">
-                  <span className="badge badge--soft">{currentItem.categoryLabel}</span>
-                  <span className={currentItem.question.status === 'draft' ? 'badge badge--warning' : 'badge badge--success'}>
-                    {currentItem.question.status}
-                  </span>
-                  <span className="badge badge--soft">{currentItem.question.type === 'one_best' ? 'Single best answer' : 'Complex combo'}</span>
-                </div>
-
-                <h3>{currentItem.question.stem}</h3>
-
-                {currentItem.question.elements && (
-                  <ol className="element-list">
-                    {currentItem.question.elements.map((element) => (
-                      <li key={element.id}>
-                        <strong>{element.id}.</strong> {element.text}
-                      </li>
-                    ))}
-                  </ol>
-                )}
-
-                <div className="option-list" role="radiogroup" aria-label="Answer choices">
-                  {currentItem.optionOrder.map((optionId, optionIndex) => {
-                    const option = currentItem.question.options.find((entry) => entry.id === optionId)!;
-                    const displayLetter = displayLetterForIndex(optionIndex);
-                    const selected = session.answers[currentItem.itemId] === option.id;
-                    const revealed = session.settings.mode === 'study' ? session.revealed[currentItem.itemId] : Boolean(session.submittedAt);
-                    const correct = currentItem.question.correct === option.id;
-
-                    return (
-                      <button
-                        key={option.id}
-                        className={[
-                          'option-button',
-                          selected ? 'is-selected' : '',
-                          revealed && correct ? 'is-correct' : '',
-                          revealed && selected && !correct ? 'is-incorrect' : ''
-                        ]
-                          .filter(Boolean)
-                          .join(' ')}
-                        role="radio"
-                        aria-checked={selected}
-                        aria-label={`${displayLetter}. ${option.text}`}
-                        onClick={() => handleAnswer(option.id)}
-                      >
-                        <span className="option-letter">{displayLetter}</span>
-                        <span>
-                          {option.text}
-                          {option.selects && <small className="option-helper">Selects: {option.selects.join(', ')}</small>}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {((session.settings.mode === 'study' && session.revealed[currentItem.itemId]) || session.submittedAt) && (
-                  <div className="explanation-card">
-                    <p>
-                      <strong>Correct answer ({displayLetterForOptionId(currentItem.optionOrder, currentItem.question.correct)}):</strong>{' '}
-                      {currentItem.question.explanation.rationale_correct}
-                    </p>
-                    <ul className="plain-list">
-                      {incorrectRationalesForDisplay(currentItem).map(({ displayLetter, rationale }) => (
-                        <li key={displayLetter}>
-                          <strong>{displayLetter}:</strong> {rationale}
-                        </li>
-                      ))}
-                    </ul>
-                    <References question={currentItem.question} />
+              {sessionNavigatorOpen ? (
+                <div className="session-body">
+                  <h2>Jump to item</h2>
+                  <p className="field-hint">
+                    <span className="num">{sessionUnansweredCount}</span> unanswered ·{' '}
+                    <span className="num">{sessionFlaggedCount}</span> bookmarked
+                  </p>
+                  <div className="nav-grid" role="group" aria-label="Question grid">
+                    {session.items.map((item, index) => {
+                      const answered = Boolean(session.answers[item.itemId]);
+                      const bookmarked = session.flaggedForReview.includes(item.itemId);
+                      return (
+                        <button
+                          key={item.itemId}
+                          type="button"
+                          className={[
+                            'nav-cell',
+                            index === session.currentIndex ? 'is-current' : '',
+                            bookmarked ? 'is-flagged' : '',
+                            !answered ? 'is-unanswered' : ''
+                          ]
+                            .filter(Boolean)
+                            .join(' ')}
+                          aria-current={index === session.currentIndex ? 'true' : undefined}
+                          aria-label={`Item ${index + 1}${bookmarked ? ', bookmarked' : ''}${!answered ? ', unanswered' : ''}`}
+                          onClick={() => {
+                            mutateSession((current) => ({ ...current, currentIndex: index }));
+                            setSessionNavigatorOpen(false);
+                          }}
+                        >
+                          {index + 1}
+                        </button>
+                      );
+                    })}
                   </div>
-                )}
-              </article>
-
-              <div className="action-row action-row--spread session-toolbar">
-                <div className="action-row">
-                  <button className="secondary-button" onClick={() => navigateSession(-1)} disabled={session.currentIndex === 0}>
-                    Previous
-                  </button>
-                  <button className="secondary-button" onClick={() => navigateSession(1)} disabled={session.currentIndex === session.items.length - 1}>
-                    Next
-                  </button>
-                </div>
-                <div className="action-row">
-                  <button className="ghost-button" onClick={toggleBookmark}>
-                    {session.flaggedForReview.includes(currentItem.itemId) ? 'Remove bookmark' : 'Bookmark item'}
-                  </button>
-                  <button className="ghost-button" onClick={() => openFlagComposer(currentItem.question, session.id, session.settings.blueprintId, session.settings.mode)}>
-                    Flag this item
-                  </button>
-                  <button className="primary-button" onClick={() => void finalizeSession()} disabled={isFinalizing}>
-                    {session.settings.mode === 'exam' ? 'Submit exam' : 'Complete session'}
-                  </button>
-                </div>
-              </div>
-            </section>
-
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Session overview</p>
-                  <h2>Tracking</h2>
-                </div>
-              </div>
-              <div className="tracker-grid">
-                {session.items.map((item, index) => {
-                  const answered = Boolean(session.answers[item.itemId]);
-                  const bookmarked = session.flaggedForReview.includes(item.itemId);
-                  return (
-                    <button
-                      key={item.itemId}
-                      className={[
-                        'tracker-chip',
-                        index === session.currentIndex ? 'is-current' : '',
-                        answered ? 'is-answered' : '',
-                        bookmarked ? 'is-bookmarked' : ''
-                      ]
-                        .filter(Boolean)
-                        .join(' ')}
-                      onClick={() => mutateSession((current) => ({ ...current, currentIndex: index }))}
-                    >
-                      {index + 1}
+                  <div className="nav-legend">
+                    <span>
+                      <span className="legend-dot" style={{ background: 'var(--brand)' }} />
+                      Current
+                    </span>
+                    <span>
+                      <span
+                        className="legend-dot"
+                        style={{ border: '2px dashed var(--accent)', background: 'transparent' }}
+                      />
+                      Unanswered
+                    </span>
+                    <span>
+                      <span className="legend-dot" style={{ background: 'var(--warning)' }} />
+                      Bookmarked
+                    </span>
+                  </div>
+                  <div className="action-row" style={{ marginTop: '1.5rem' }}>
+                    <button type="button" className="primary-button" onClick={requestSubmit} disabled={isFinalizing}>
+                      {session.settings.mode === 'exam' ? 'Submit exam' : 'Complete session'}
                     </button>
-                  );
-                })}
+                  </div>
+                </div>
+              ) : (
+                currentItem && (
+                  <div className="session-body session-body--focus">
+                    <p className="item-meta">
+                      <span className="num">{currentItem.question.id}</span> · {currentItem.categoryLabel}
+                      {currentItem.question.status === 'draft' ? ' · draft' : ''}
+                    </p>
+
+                    <p className="question-stem">{currentItem.question.stem}</p>
+
+                    {currentItem.question.elements && (
+                      <div className="combo-panel">
+                        <ol className="element-list">
+                          {currentItem.question.elements.map((element) => (
+                            <li key={element.id}>
+                              <span className="combo-tag">{element.id}</span>
+                              {element.text}
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+
+                    {currentItem.question.type !== 'one_best' && (
+                      <p className="select-all-note">Select the one answer that identifies all correct statements.</p>
+                    )}
+
+                    <div className="option-list" role="radiogroup" aria-label="Answer choices">
+                      {currentItem.optionOrder.map((optionId, optionIndex) => {
+                        const option = currentItem.question.options.find((entry) => entry.id === optionId)!;
+                        const displayLetter = displayLetterForIndex(optionIndex);
+                        const selected = session.answers[currentItem.itemId] === option.id;
+                        const revealed =
+                          session.settings.mode === 'study' ? session.revealed[currentItem.itemId] : Boolean(session.submittedAt);
+                        const correct = currentItem.question.correct === option.id;
+
+                        return (
+                          <button
+                            key={option.id}
+                            className={[
+                              'option-button',
+                              selected ? 'is-selected' : '',
+                              revealed && correct ? 'is-correct' : '',
+                              revealed && selected && !correct ? 'is-incorrect' : ''
+                            ]
+                              .filter(Boolean)
+                              .join(' ')}
+                            role="radio"
+                            aria-checked={selected}
+                            aria-label={`${displayLetter}. ${option.text}`}
+                            onClick={() => handleAnswer(option.id)}
+                          >
+                            <span className="option-letter">{displayLetter}</span>
+                            <span>
+                              {option.text}
+                              {option.selects && <small className="option-helper">Selects: {option.selects.join(', ')}</small>}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {((session.settings.mode === 'study' && session.revealed[currentItem.itemId]) || session.submittedAt) && (
+                      <div className="explanation-panel" role="region" aria-label="Explanation">
+                        <h4>
+                          Correct — {displayLetterForOptionId(currentItem.optionOrder, currentItem.question.correct)}
+                        </h4>
+                        <p>{currentItem.question.explanation.rationale_correct}</p>
+                        {incorrectRationalesForDisplay(currentItem).length > 0 && (
+                          <ul className="plain-list">
+                            {incorrectRationalesForDisplay(currentItem).map(({ displayLetter, rationale }) => (
+                              <li key={displayLetter}>
+                                <strong>{displayLetter}:</strong> {rationale}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        <References question={currentItem.question} />
+                      </div>
+                    )}
+
+                    <div className="session-toolbar">
+                      <button
+                        type="button"
+                        className="ghost-button"
+                        onClick={() =>
+                          openFlagComposer(currentItem.question, session.id, session.settings.blueprintId, session.settings.mode)
+                        }
+                      >
+                        Flag item
+                      </button>
+                      <div className="session-toolbar__group">
+                        <button
+                          type="button"
+                          className="secondary-button"
+                          onClick={() => navigateSession(-1)}
+                          disabled={session.currentIndex === 0}
+                        >
+                          Back
+                        </button>
+                        {session.settings.mode === 'exam' && (
+                          <button type="button" className="ghost-button" onClick={() => setSessionNavigatorOpen(true)}>
+                            Navigator
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          className="ghost-button"
+                          onClick={toggleBookmark}
+                        >
+                          {session.flaggedForReview.includes(currentItem.itemId) ? 'Remove bookmark' : 'Bookmark'}
+                        </button>
+                        {session.currentIndex === session.items.length - 1 ? (
+                          <button type="button" className="primary-button" onClick={requestSubmit} disabled={isFinalizing}>
+                            {session.settings.mode === 'exam' ? 'Submit exam' : 'Complete session'}
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="primary-button"
+                            onClick={() => navigateSession(1)}
+                          >
+                            Next
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+          </section>
+        )}
+
+        {view === 'score' && selectedHistory && (
+          <section className="panel panel--span-2">
+            <div className="session-shell">
+              <header className="session-bar">
+                <span className="app-logo">Session complete</span>
+                <button type="button" className="secondary-button" onClick={() => setView('history')}>
+                  View history
+                </button>
+              </header>
+              <div className="session-body stack-gap">
+                <div className="score-hero">
+                  <p className="item-meta">Practice estimate</p>
+                  <div className="score-hero__value num">{selectedHistory.result.percent}%</div>
+                  <p className="score-hero__disclaimer">
+                    This score is an unofficial practice estimate — not an ABTC or PSI exam result.
+                  </p>
+                  <p className="field-hint">
+                    {selectedHistory.result.correct}/{selectedHistory.result.total} correct ·{' '}
+                    {selectedHistory.result.estimatedPass ? 'at or above' : 'below'} your {selectedHistory.settings.targetThreshold}%
+                    target
+                  </p>
+                </div>
+
+                <h3>Category breakdown</h3>
+                <table className="cat-table">
+                  <thead>
+                    <tr>
+                      <th>Category</th>
+                      <th className="cat-table__bar">Performance</th>
+                      <th className="num">Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedHistory.result.breakdown.map((entry) => {
+                      const percent = entry.total > 0 ? Math.round((entry.correct / entry.total) * 100) : 0;
+                      const isWeak = percent < selectedHistory.settings.targetThreshold;
+                      return (
+                        <tr key={entry.categoryId}>
+                          <td>{entry.categoryLabel}</td>
+                          <td className="cat-table__bar">
+                            <div className="performance-bar" aria-hidden="true">
+                              <span className={isWeak ? 'is-weak' : ''} style={{ width: `${percent}%` }} />
+                            </div>
+                          </td>
+                          <td className="num">{percent}%</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+
+                <div className="action-row">
+                  <button type="button" className="primary-button" onClick={openSetupPanel}>
+                    Start new session
+                  </button>
+                  {findFirstMissedIndex(selectedHistory) >= 0 && (
+                    <button
+                      type="button"
+                      className="secondary-button"
+                      onClick={() => {
+                        setReviewIndex(findFirstMissedIndex(selectedHistory));
+                        setView('history-detail');
+                      }}
+                    >
+                      Review missed items
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    className="ghost-button"
+                    onClick={() => {
+                      setReviewIndex(0);
+                      setView('history-detail');
+                    }}
+                  >
+                    Review all items
+                  </button>
+                </div>
               </div>
-            </section>
-          </>
+            </div>
+          </section>
         )}
 
         {view === 'history' && (
-          <>
-            <section className="panel panel--span-2 stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Stored results</p>
-                  <h2>History</h2>
-                </div>
-                <div className="action-row">
-                  <button className="ghost-button" onClick={() => void handleClearHistory()} disabled={history.length === 0}>
-                    Clear history
-                  </button>
-                </div>
+          <section className="panel panel--span-2 stack-gap">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">Score history</p>
+                <h2>Last {recentHistoryPoints.length || 0} sessions</h2>
               </div>
-
-              {history.length === 0 ? (
-                <p className="status-card">No completed sessions yet.</p>
-              ) : (
-                history.map((entry) => (
-                  <article key={entry.id} className="history-card">
-                    <div>
-                      <h3>{getBlueprintLabel(entry.settings.blueprintId)}</h3>
-                      <p>
-                        {new Date(entry.completedAt).toLocaleString()} · {entry.settings.mode} · {entry.result.correct}/{entry.result.total} correct · {entry.result.percent}%
-                      </p>
-                      <p>
-                        Unofficial practice estimate: {entry.result.estimatedPass ? 'at or above' : 'below'} your {entry.settings.targetThreshold}% target.
-                      </p>
-                    </div>
-                    <div className="action-row action-row--column">
-                      <button
-                        className="secondary-button"
-                        onClick={() => {
-                          setSelectedHistory(entry);
-                          setReviewIndex(0);
-                          setView('history-detail');
-                        }}
-                      >
-                        Review session
-                      </button>
-                      <button className="ghost-button" onClick={() => void removeHistoryEntry(entry.id)}>
-                        Delete
-                      </button>
-                    </div>
-                  </article>
-                ))
-              )}
-            </section>
-
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Trend snapshot</p>
-                  <h2>Score trend</h2>
-                </div>
+              <div className="action-row">
+                <button type="button" className="ghost-button" onClick={openDashboardPanel}>
+                  ← Home
+                </button>
+                <button className="ghost-button" onClick={() => void handleClearHistory()} disabled={history.length === 0}>
+                  Clear history
+                </button>
               </div>
+            </div>
 
-              {historyTrend.points.length === 0 ? (
-                <p className="status-card">Complete a session to see your unofficial practice score trend.</p>
-              ) : (
-                <>
-                  <div className="trend-summary" aria-label="Score trend summary">
-                    <div>
-                      <p className="eyebrow">Average</p>
-                      <strong>{historyTrend.averagePercent}%</strong>
+            {history.length === 0 ? (
+              <p className="status-card">No completed sessions yet.</p>
+            ) : (
+              <div className="history-layout">
+                <div className="stack-gap">
+                  <p className="field-hint">Tap a session bar for review, or use the table below.</p>
+
+                  {recentHistoryPoints.length > 0 && (
+                    <div
+                      className="history-chart"
+                      role="img"
+                      aria-label={`Score trend across the last ${recentHistoryPoints.length} sessions`}
+                    >
+                      {recentHistoryPoints.map((point) => (
+                        <button
+                          key={point.id}
+                          type="button"
+                          className={['history-bar', selectedHistory?.id === point.id ? 'is-active' : ''].filter(Boolean).join(' ')}
+                          style={{ height: `${Math.max(point.percent, 8)}%` }}
+                          title={`${point.label}: ${point.percent}% (${point.mode})`}
+                          onClick={() => {
+                            const entry = history.find((candidate) => candidate.id === point.id);
+                            if (entry) {
+                              setSelectedHistory(entry);
+                              setReviewIndex(0);
+                              setView('history-detail');
+                            }
+                          }}
+                        >
+                          <span>{point.percent}</span>
+                        </button>
+                      ))}
                     </div>
-                    <div>
-                      <p className="eyebrow">Best</p>
-                      <strong>{historyTrend.bestPercent}%</strong>
-                    </div>
-                    {historyTrend.recentDelta !== null && (
-                      <div>
-                        <p className="eyebrow">Latest change</p>
-                        <strong>{formatTrendDelta(historyTrend.recentDelta)}</strong>
+                  )}
+
+                  {improvementStreak > 0 && (
+                    <p className="motivation-note">
+                      You&apos;re on a <span className="num">{improvementStreak}</span>-session improvement streak. Keep momentum
+                      with a targeted weak-area run.
+                    </p>
+                  )}
+
+                  <table className="cat-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Mode</th>
+                        <th className="num">Items</th>
+                        <th className="num">Score</th>
+                        <th>Weakest</th>
+                        <th aria-label="Actions" />
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {history.map((entry) => (
+                        <tr key={entry.id}>
+                          <td>{formatShortDate(entry.completedAt)}</td>
+                          <td>{entry.settings.mode === 'exam' ? 'Exam' : 'Study'}</td>
+                          <td className="num">{entry.result.total}</td>
+                          <td className="num">{entry.result.percent}%</td>
+                          <td>{weakestCategoryLabel(entry)}</td>
+                          <td>
+                            <div className="action-row">
+                              <button
+                                type="button"
+                                className="ghost-button"
+                                onClick={() => {
+                                  setSelectedHistory(entry);
+                                  setReviewIndex(0);
+                                  setView('history-detail');
+                                }}
+                              >
+                                Review
+                              </button>
+                              <button type="button" className="ghost-button" onClick={() => void removeHistoryEntry(entry.id)}>
+                                Delete
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <aside className="stack-gap">
+                  <div className="streak-card">
+                    <strong className="num">{improvementStreak}</strong>
+                    <p>
+                      {improvementStreak > 0
+                        ? 'Sessions trending up — keep the momentum with a targeted weak-area run.'
+                        : 'Complete more sessions to track improvement streaks.'}
+                    </p>
+                  </div>
+
+                  {dashboardInsights.categories.length > 0 && (
+                    <div className="summary-card stack-gap">
+                      <h3>Domain drill-down</h3>
+                      <div className="cat-bars">
+                        {dashboardInsights.categories.map((category) => {
+                          const isWeak = category.percent < settings.targetThreshold;
+                          return (
+                            <div key={category.categoryId} className="cat-bar-row">
+                              <span className="label">{category.categoryLabel}</span>
+                              <div className="cat-bar-track">
+                                <div
+                                  className={['cat-bar-fill', isWeak ? 'is-weak' : ''].filter(Boolean).join(' ')}
+                                  style={{ width: `${category.percent}%` }}
+                                />
+                              </div>
+                              <span className="score num">{category.percent}%</span>
+                            </div>
+                          );
+                        })}
                       </div>
-                    )}
-                  </div>
-
-                  <div
-                    className="trend-chart"
-                    role="img"
-                    aria-label={`Score trend across the last ${historyTrend.points.length} sessions`}
-                  >
-                    <div className="trend-chart__plot">
-                      {historyTrend.targetThreshold !== null && (
-                        <div className="trend-chart__target" style={{ bottom: `${historyTrend.targetThreshold}%` }}>
-                          <span className="trend-chart__target-label">Target {historyTrend.targetThreshold}%</span>
-                        </div>
+                      {dashboardInsights.weakCategories.length > 0 && (
+                        <button
+                          type="button"
+                          className="secondary-button"
+                          style={{ width: '100%' }}
+                          onClick={() => setSelectedCategoryId(dashboardInsights.weakCategories[0].categoryId)}
+                        >
+                          Focus {dashboardInsights.weakCategories[0].categoryLabel}
+                        </button>
                       )}
-                      {historyTrend.points.map((point) => (
-                        <div key={point.id} className="trend-chart__bar-wrap">
-                          <div
-                            className={['trend-chart__bar', point.belowTarget ? 'is-below-target' : ''].filter(Boolean).join(' ')}
-                            style={{ height: `${point.percent}%` }}
-                            title={`${point.label}: ${point.percent}% (${point.mode})`}
-                          />
-                        </div>
-                      ))}
                     </div>
-                    <div className="trend-chart__labels">
-                      {historyTrend.points.map((point) => (
-                        <span key={point.id} className="trend-chart__label">
-                          {point.label}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  )}
 
-                  <ul className="plain-list">
-                    {[...historyTrend.points].reverse().slice(0, 5).map((point) => (
-                      <li key={point.id} className="trend-row">
-                        <span>
-                          {point.label} · {point.mode}
-                        </span>
-                        <strong>{point.percent}%</strong>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-
-              {historyCategories.length > 0 && (
-                <>
-                  <div className="section-heading section-heading--compact">
-                    <div>
-                      <p className="eyebrow">Per-category drill-down</p>
-                      <h2>Category trend</h2>
-                    </div>
-                  </div>
-                  <p className="field-hint">Select a content category to plot your unofficial score in that area across completed sessions.</p>
-                  <div className="category-pills" role="group" aria-label="Content categories">
-                    {historyCategories.map((category) => (
-                      <button
-                        key={category.categoryId}
-                        type="button"
-                        className={['pill', selectedCategoryId === category.categoryId ? 'active' : ''].filter(Boolean).join(' ')}
-                        aria-pressed={selectedCategoryId === category.categoryId}
-                        onClick={() => setSelectedCategoryId(category.categoryId)}
-                      >
-                        {category.categoryLabel}
-                      </button>
-                    ))}
-                  </div>
-
-                  {categoryTrend ? (
-                    <>
+                  {selectedCategoryId && categoryTrend && (
+                    <div className="summary-card stack-gap">
+                      <h3>{categoryTrend.categoryLabel} trend</h3>
                       <div className="trend-summary" aria-label={`${categoryTrend.categoryLabel} trend summary`}>
                         <div>
-                          <p className="eyebrow">Category</p>
-                          <strong>{categoryTrend.categoryLabel}</strong>
-                        </div>
-                        <div>
                           <p className="eyebrow">Average</p>
-                          <strong>{categoryTrend.averagePercent}%</strong>
+                          <strong className="num">{categoryTrend.averagePercent}%</strong>
                         </div>
                         <div>
                           <p className="eyebrow">Best</p>
-                          <strong>{categoryTrend.bestPercent}%</strong>
-                        </div>
-                        {categoryTrend.recentDelta !== null && (
-                          <div>
-                            <p className="eyebrow">Latest change</p>
-                            <strong>{formatTrendDelta(categoryTrend.recentDelta)}</strong>
-                          </div>
-                        )}
-                      </div>
-
-                      <div
-                        className="trend-chart"
-                        role="img"
-                        aria-label={`${categoryTrend.categoryLabel} score trend across the last ${categoryTrend.points.length} sessions`}
-                      >
-                        <div className="trend-chart__plot">
-                          {categoryTrend.points.map((point) => (
-                            <div key={point.sessionId} className="trend-chart__bar-wrap">
-                              <div
-                                className={['trend-chart__bar', point.belowTarget ? 'is-below-target' : ''].filter(Boolean).join(' ')}
-                                style={{ height: `${point.percent}%` }}
-                                title={`${point.label}: ${point.correct}/${point.total} (${point.percent}%) · ${point.mode}`}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                        <div className="trend-chart__labels">
-                          {categoryTrend.points.map((point) => (
-                            <span key={point.sessionId} className="trend-chart__label">
-                              {point.label}
-                            </span>
-                          ))}
+                          <strong className="num">{categoryTrend.bestPercent}%</strong>
                         </div>
                       </div>
-
-                      <ul className="plain-list">
-                        {[...categoryTrend.points].reverse().slice(0, 5).map((point) => (
-                          <li key={point.sessionId} className="trend-row">
-                            <span>
-                              {point.label} · {point.correct}/{point.total} · {point.mode}
-                            </span>
-                            <strong>{point.percent}%</strong>
-                          </li>
+                      <div className="category-pills" role="group" aria-label="Content categories">
+                        {historyCategories.map((category) => (
+                          <button
+                            key={category.categoryId}
+                            type="button"
+                            className={['pill', selectedCategoryId === category.categoryId ? 'active' : ''].filter(Boolean).join(' ')}
+                            aria-pressed={selectedCategoryId === category.categoryId}
+                            onClick={() => setSelectedCategoryId(category.categoryId)}
+                          >
+                            {category.categoryLabel}
+                          </button>
                         ))}
-                      </ul>
-                    </>
-                  ) : (
-                    selectedCategoryId && <p className="status-card">No scored items in this category yet.</p>
+                      </div>
+                    </div>
                   )}
-                </>
-              )}
-            </section>
-          </>
+
+                  {historyCategories.length > 0 && !selectedCategoryId && (
+                    <div className="summary-card stack-gap">
+                      <h3>Category trend</h3>
+                      <p className="field-hint">Select a category to plot performance across sessions.</p>
+                      <div className="category-pills" role="group" aria-label="Content categories">
+                        {historyCategories.map((category) => (
+                          <button
+                            key={category.categoryId}
+                            type="button"
+                            className="pill"
+                            onClick={() => setSelectedCategoryId(category.categoryId)}
+                          >
+                            {category.categoryLabel}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </aside>
+              </div>
+            )}
+          </section>
         )}
 
         {view === 'history-detail' && selectedHistory && selectedHistoryItem && (
-          <>
-            <section className="panel panel--span-2 stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Session review</p>
-                  <h2>
-                    {selectedHistory.result.correct}/{selectedHistory.result.total} correct · {selectedHistory.result.percent}%
-                  </h2>
+          <section className="panel panel--span-2">
+            <div className="session-shell">
+              <header className="session-bar session-bar--minimal">
+                <button type="button" className="ghost-button" onClick={() => setView('history')}>
+                  ← Back to history
+                </button>
+                <div className="session-chips">
+                  <span className="chip chip--muted">
+                    Item <span className="num">{reviewIndex + 1}</span> of <span className="num">{selectedHistory.items.length}</span>
+                  </span>
+                  <span className="chip">
+                    <span className="num">{selectedHistory.result.percent}%</span>
+                  </span>
                 </div>
-                <button className="secondary-button" onClick={() => setView('history')}>
-                  Back to history
-                </button>
-              </div>
-              <p className="field-hint">Keyboard: use Left/Right arrow keys to move between items. Click a category card to open its trend chart.</p>
+              </header>
 
-              <div className="notice-block">
-                <p>
-                  Unofficial practice estimate: {selectedHistory.result.estimatedPass ? 'at or above' : 'below'} your {selectedHistory.settings.targetThreshold}% target.
-                </p>
-                <p>Time used: {formatDuration(selectedHistory.timeUsedSeconds)}</p>
-              </div>
+              <div className="review-layout">
+                <div className="session-body session-body--focus">
+                  <p className="field-hint">
+                    Keyboard: use Left/Right arrow keys to move between items. Time used:{' '}
+                    {formatDuration(selectedHistory.timeUsedSeconds)}.
+                  </p>
 
-              <div className="breakdown-grid">
-                {selectedHistory.result.breakdown.map((entry) => (
-                  <button
-                    key={entry.categoryId}
-                    type="button"
-                    className="summary-card summary-card--interactive"
-                    onClick={() => openCategoryTrend(entry.categoryId)}
-                  >
-                    <h3>{entry.categoryLabel}</h3>
-                    <p>
-                      {entry.correct} / {entry.total} correct
-                    </p>
-                    <span className="field-hint">View category trend</span>
-                  </button>
-                ))}
-              </div>
+                  <QuestionReview item={selectedHistoryItem} answer={selectedHistory.answers[selectedHistoryItem.itemId]} />
 
-              <div className="action-row action-row--spread">
-                <button className="secondary-button" onClick={() => setReviewIndex((current) => Math.max(current - 1, 0))} disabled={reviewIndex === 0}>
-                  Previous item
-                </button>
-                <button
-                  className="ghost-button"
-                  onClick={() => openFlagComposer(selectedHistoryItem.question, selectedHistory.id, selectedHistory.settings.blueprintId, selectedHistory.settings.mode)}
-                >
-                  Flag this item
-                </button>
-                <button
-                  className="secondary-button"
-                  onClick={() => setReviewIndex((current) => Math.min(current + 1, selectedHistory.items.length - 1))}
-                  disabled={reviewIndex === selectedHistory.items.length - 1}
-                >
-                  Next item
-                </button>
-              </div>
-
-              <QuestionReview item={selectedHistoryItem} answer={selectedHistory.answers[selectedHistoryItem.itemId]} />
-            </section>
-
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Category totals</p>
-                  <h2>Breakdown</h2>
-                </div>
-              </div>
-              <ul className="plain-list">
-                {selectedHistory.result.breakdown.map((entry) => (
-                  <li key={entry.categoryId}>
-                    <button type="button" className="text-link-button" onClick={() => openCategoryTrend(entry.categoryId)}>
-                      {entry.categoryLabel}: {entry.correct}/{entry.total}
+                  <div className="review-toolbar">
+                    <button
+                      type="button"
+                      className="secondary-button"
+                      onClick={() => setReviewIndex((current) => Math.max(current - 1, 0))}
+                      disabled={reviewIndex === 0}
+                    >
+                      Previous item
                     </button>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </>
+                    <button
+                      type="button"
+                      className="ghost-button"
+                      onClick={() =>
+                        openFlagComposer(
+                          selectedHistoryItem.question,
+                          selectedHistory.id,
+                          selectedHistory.settings.blueprintId,
+                          selectedHistory.settings.mode
+                        )
+                      }
+                    >
+                      Flag item
+                    </button>
+                    <button
+                      type="button"
+                      className="secondary-button"
+                      onClick={() => setReviewIndex((current) => Math.min(current + 1, selectedHistory.items.length - 1))}
+                      disabled={reviewIndex === selectedHistory.items.length - 1}
+                    >
+                      Next item
+                    </button>
+                  </div>
+                </div>
+
+                <aside className="review-sidebar stack-gap">
+                  <div>
+                    <h3>Category breakdown</h3>
+                    <div className="cat-bars">
+                      {selectedHistory.result.breakdown.map((entry) => {
+                        const percent = entry.total > 0 ? Math.round((entry.correct / entry.total) * 100) : 0;
+                        const isWeak = percent < selectedHistory.settings.targetThreshold;
+                        return (
+                          <button
+                            key={entry.categoryId}
+                            type="button"
+                            className="cat-bar-row cat-bar-button"
+                            onClick={() => openCategoryTrend(entry.categoryId)}
+                          >
+                            <span className="label">{entry.categoryLabel}</span>
+                            <div className="cat-bar-track">
+                              <div
+                                className={['cat-bar-fill', isWeak ? 'is-weak' : ''].filter(Boolean).join(' ')}
+                                style={{ width: `${percent}%` }}
+                              />
+                            </div>
+                            <span className="score num">{percent}%</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3>Jump to item</h3>
+                    <div className="nav-grid" role="group" aria-label="Session items">
+                      {selectedHistory.items.map((item, index) => {
+                        const answer = selectedHistory.answers[item.itemId];
+                        const isCorrect = answer === item.question.correct;
+                        return (
+                          <button
+                            key={item.itemId}
+                            type="button"
+                            className={[
+                              'nav-cell',
+                              index === reviewIndex ? 'is-current' : '',
+                              !isCorrect ? 'is-unanswered' : ''
+                            ]
+                              .filter(Boolean)
+                              .join(' ')}
+                            aria-current={index === reviewIndex ? 'true' : undefined}
+                            aria-label={`Item ${index + 1}${!isCorrect ? ', review' : ''}`}
+                            onClick={() => setReviewIndex(index)}
+                          >
+                            {index + 1}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </section>
         )}
 
         {view === 'flags' && (
-          <>
-            <section className="panel panel--span-2 stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Structured review feedback</p>
-                  <h2>Flags</h2>
-                </div>
-                <div className="action-row">
-                  <button className="secondary-button" onClick={() => void exportFlags()} disabled={flags.length === 0}>
-                    Export flags
-                  </button>
-                  <button className="ghost-button" onClick={() => void resetFlags()} disabled={flags.length === 0}>
-                    Clear all
-                  </button>
-                </div>
+          <section className="panel panel--span-2 stack-gap">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">Item feedback</p>
+                <h2>Flags</h2>
               </div>
+              <div className="action-row">
+                <button className="secondary-button" onClick={() => void exportFlags()} disabled={flags.length === 0}>
+                  Export flags
+                </button>
+                <button className="ghost-button" onClick={() => void resetFlags()} disabled={flags.length === 0}>
+                  Clear all
+                </button>
+              </div>
+            </div>
 
-              <p className="field-hint">
-                Use <strong>Export flags</strong> to download <code>cctc-flags.json</code>, then email that file to your SME reviewer.
-                Flags stay on this device only — the app never edits question files in the repository.
-              </p>
+            <p className="field-hint">
+              Use <strong>Export flags</strong> to download <code>cctc-flags.json</code>, then email that file to your SME reviewer.
+              Flags stay on this device only — the app never edits question files in the repository.
+            </p>
 
-              {flags.length === 0 ? (
-                <p className="status-card">No open flags yet.</p>
-              ) : (
-                Object.entries(
+            {flags.length === 0 ? (
+              <p className="status-card">No open flags yet.</p>
+            ) : (
+              <div className="flag-stack">
+                {Object.entries(
                   flags.reduce<Record<string, ItemFlag[]>>((groups, flag) => {
                     groups[flag.item_id] = [...(groups[flag.item_id] ?? []), flag];
                     return groups;
                   }, {})
                 ).map(([itemId, itemFlags]) => (
-                  <article key={itemId} className="history-card">
-                    <div>
+                  <article key={itemId} className="flag-card">
+                    <div className="flag-card__meta">
                       <h3>{itemId}</h3>
                       {itemFlags.map((flag) => (
                         <div key={flag.id} className="flag-row">
@@ -1732,13 +2185,21 @@ function App() {
                         </div>
                       ))}
                     </div>
-                    <div className="action-row action-row--column">
+                    <div className="flag-card__actions">
                       <button
                         className="secondary-button"
                         onClick={() => {
                           const matchedQuestion = bank.questions.find((question) => question.id === itemId);
                           if (matchedQuestion) {
-                            setFlagDraft(buildInitialFlagDraft(matchedQuestion, itemFlags[0].session_id, itemFlags[0].blueprint, itemFlags[0].mode, itemFlags[0]));
+                            setFlagDraft(
+                              buildInitialFlagDraft(
+                                matchedQuestion,
+                                itemFlags[0].session_id,
+                                itemFlags[0].blueprint,
+                                itemFlags[0].mode,
+                                itemFlags[0]
+                              )
+                            );
                           }
                         }}
                       >
@@ -1749,17 +2210,12 @@ function App() {
                       </button>
                     </div>
                   </article>
-                ))
-              )}
-            </section>
-
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Export contract</p>
-                  <h2>Shape</h2>
-                </div>
+                ))}
               </div>
+            )}
+
+            <details className="summary-card">
+              <summary>Export JSON shape</summary>
               <pre className="code-block">{`{
   "exportedAt": "ISO-8601",
   "flags": [{
@@ -1773,8 +2229,8 @@ function App() {
     "mode": "study"
   }]
 }`}</pre>
-            </section>
-          </>
+            </details>
+          </section>
         )}
       </main>
 

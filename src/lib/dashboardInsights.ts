@@ -78,3 +78,26 @@ export function buildDashboardInsights(history: HistoryEntry[], weakThreshold: n
     weakCategories
   };
 }
+
+export function computeImprovementStreak(history: HistoryEntry[]): number {
+  const chronological = [...history].sort((left, right) => left.completedAt.localeCompare(right.completedAt));
+  let streak = 0;
+
+  for (let index = chronological.length - 1; index > 0; index -= 1) {
+    if (chronological[index].result.percent > chronological[index - 1].result.percent) {
+      streak += 1;
+    } else {
+      break;
+    }
+  }
+
+  return streak;
+}
+
+export function weakestCategoryLabel(entry: HistoryEntry): string {
+  const ranked = [...entry.result.breakdown]
+    .filter((row) => row.total > 0)
+    .sort((left, right) => left.correct / left.total - right.correct / right.total);
+
+  return ranked[0]?.categoryLabel ?? '—';
+}

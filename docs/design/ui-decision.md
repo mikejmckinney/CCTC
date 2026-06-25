@@ -4,14 +4,14 @@
 
 ## Decision
 
-**Adopt Direction B (Clinical Dashboard) as the primary redesign shell**, with selective mobile Study patterns from Direction C on viewports under 768px.
+**Adopt Direction B (Clinical Dashboard) as the primary redesign shell** on all viewports. Direction C is reference-only for the prompt 04 comparison — do not import flashcard or mobile-only Study patterns into production.
 
 ### Implementation requirements
 
 1. **Light and dark mode** — user-toggleable theme (not system-only). Persist preference in `localStorage` (same key pattern as production when implemented). Dark palette defined in `DESIGN.md` at implementation time.
 2. **Dashboard-first home** — recent scores, weak-area chips, and category breakdown before “Start new session”.
 3. **Exam clarity preserved** — active-question screens stay stem-first with minimal chrome (borrowed from Direction A’s restraint on session surfaces).
-4. **Mobile parity** — sticky bottom session toolbar and thumb-reachable controls on narrow viewports (Direction C patterns, Study mode only where applicable).
+4. **Responsive B chrome** — session toolbar and navigator use Direction B patterns at every breakpoint (no Direction C flashcard metaphor).
 
 ### Not in scope for v1 redesign
 
@@ -44,7 +44,7 @@
 1. **Return learners need context before starting** — weak domains, trend, and resume strip reduce setup friction and support targeted runs.
 2. **Primary CTA remains clear** — “Start new session” stays prominent; analytics sit in supporting panels, not a full analytics wall.
 3. **Direction A patterns on session surfaces** — exam/study question UI keeps stem-first hierarchy and restrained chrome.
-4. **Direction C on small screens** — sticky toolbar and Study reveal patterns map onto existing modes without new engine behavior.
+4. **Direction B everywhere** — dashboard, session, score, and history share one visual system on desktop and mobile.
 5. **Dark mode** — long evening study sessions; must ship with the redesign, not as a follow-up.
 
 ## Artifacts
@@ -61,8 +61,7 @@
 
 1. File implementation issue/PR scoped to `src/app/**` + `src/app.css`
 2. Map `DESIGN.md` tokens (light + dark) into CSS variables
-3. Incremental rollout: home/dashboard → session → score → history → theme toggle
-4. Re-capture README media from production after merge
+3. Incremental rollout: home/dashboard → session → score → history → theme toggle → setup/review/flags (README media after UI lands)
 
 ## Supersedes
 

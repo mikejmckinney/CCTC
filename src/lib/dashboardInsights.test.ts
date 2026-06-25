@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildDashboardInsights } from './dashboardInsights';
+import { buildDashboardInsights, computeImprovementStreak, weakestCategoryLabel } from './dashboardInsights';
 import type { HistoryEntry } from '../types/exam';
 
 function makeEntry(overrides: Partial<HistoryEntry> = {}): HistoryEntry {
@@ -78,5 +78,23 @@ describe('buildDashboardInsights', () => {
       { categoryId: '2', categoryLabel: 'Pre-transplant', correct: 9, total: 16, percent: 56 }
     ]);
     expect(insights.weakCategories.map((category) => category.categoryLabel)).toEqual(['Pre-transplant']);
+  });
+});
+
+describe('computeImprovementStreak', () => {
+  it('counts consecutive sessions with rising scores from the latest backward', () => {
+    const streak = computeImprovementStreak([
+      makeEntry({ completedAt: '2026-06-18T12:00:00.000Z', result: { ...makeEntry().result, percent: 68 } }),
+      makeEntry({ completedAt: '2026-06-20T12:00:00.000Z', result: { ...makeEntry().result, percent: 72 } }),
+      makeEntry({ completedAt: '2026-06-22T12:00:00.000Z', result: { ...makeEntry().result, percent: 78 } })
+    ]);
+
+    expect(streak).toBe(2);
+  });
+});
+
+describe('weakestCategoryLabel', () => {
+  it('returns the lowest-performing category label', () => {
+    expect(weakestCategoryLabel(makeEntry())).toBe('Pre-transplant');
   });
 });

@@ -36,7 +36,7 @@ describe('App', () => {
     await user.click(screen.getByRole('button', { name: /start new session/i }));
 
     expect(screen.getByRole('heading', { name: /configure practice/i })).toBeInTheDocument();
-    expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
+    expect(screen.getByRole('group', { name: /blueprint version/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /begin session/i })).toBeInTheDocument();
   });
 });
