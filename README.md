@@ -1,4 +1,4 @@
-# CCTC Practice Exam
+# [CCTC Practice Exam](https://mikejmckinney.github.io/CCTC/)
 
 A client-side practice-exam web app for the ABTC **Certified Clinical Transplant Coordinator (CCTC®)** exam. Built from `ai-repo-template`; the app is intended to be implemented by an AI agent reading the prompts in `.github/prompts/`.
 
