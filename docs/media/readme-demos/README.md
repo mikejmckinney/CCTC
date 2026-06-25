@@ -28,4 +28,11 @@ Outputs land in `docs/media/readme-demos/.outputs/` (gitignored).
 3. Copy `user-attachments` URLs into `media-manifest.md` (see issue [#19](https://github.com/mikejmckinney/CCTC/issues/19))
 4. Merge README embeds from `README_SNIPPET_PENDING_URLS.md` (or edit `README.md` directly)
 
+### README formatting rules
+
+- Put each `<video>` tag on **one line** inside `<p align="center">…</p>`. Multi-line tags render as literal text on GitHub.
+- Use `https://github.com/user-attachments/assets/…` URLs only (not raw blob URLs).
+- Hero poster: commit PNG under `posters/` and reference with a normal `<img>` (optionally linked to the MP4).
+- GIF-like autoplay: try `autoplay loop muted playsinline` on the hero video; for guaranteed motion without click, export a short GIF (&lt;10 MB) via FFmpeg and embed with `![alt](url)`.
+
 See [`.github/prompts/04-cctc-open-design-redesign-and-readme-media-v2.md`](../../.github/prompts/04-cctc-open-design-redesign-and-readme-media-v2.md).

@@ -19,15 +19,12 @@ Upload order in the issue comment matches demo IDs `00`–`05` (see `storyboard.
 
 ## Embed template
 
+GitHub only renders `<video>` when the tag is **on one line** inside a block like `<p align="center">`. Multi-line tags show up as raw HTML text.
+
 ```html
-<video
-  src="https://github.com/user-attachments/assets/d19c9263-8a82-4114-b34e-c73011d04d43"
-  controls
-  muted
-  playsinline
-  preload="metadata"
-  width="100%"
-  poster="docs/media/readme-demos/posters/00-hero-overview.png"
-  aria-label="CCTC Practice Exam overview demo"
-></video>
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/d19c9263-8a82-4114-b34e-c73011d04d43" controls muted playsinline loop autoplay width="960"></video>
+</p>
 ```
+
+Optional GIF-like playback: add `loop autoplay` (keep `muted`). GitHub may still require a click on some browsers; for true auto-animated previews, export a short GIF/WebP and use `![demo](...)` instead.
