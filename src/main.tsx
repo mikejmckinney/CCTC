@@ -2,6 +2,9 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './app/App';
 import './app.css';
+import { applyTheme, resolveInitialTheme } from './lib/theme';
+
+applyTheme(resolveInitialTheme());
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -1,4 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import App from './App';
 
@@ -23,16 +24,19 @@ vi.mock('../lib/storage', () => ({
 }));
 
 describe('App', () => {
-  it('renders the start screen and loaded-bank summary', async () => {
+  it('renders the dashboard-first home and setup flow', async () => {
+    const user = userEvent.setup();
     render(<App />);
 
-    await waitFor(() => expect(screen.getByRole('heading', { name: /build a practice session/i })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('heading', { name: /your study dashboard/i })).toBeInTheDocument());
 
-    expect(screen.getByRole('heading', { name: 'CCTC Practice Exam' })).toBeInTheDocument();
-    expect(
-      screen.getByText((_, element) => Boolean(element?.closest('.badge')?.textContent?.includes('506 item')))
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /start new session/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /switch to (light|dark) theme/i })).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: /start new session/i }));
+
+    expect(screen.getByRole('heading', { name: /configure practice/i })).toBeInTheDocument();
     expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /start session/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /begin session/i })).toBeInTheDocument();
   });
 });

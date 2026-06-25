@@ -87,12 +87,257 @@ MCP is optional. You can also run Open Design via its web UI without MCP.
 
 ## Start the Open Design web UI
 
+**Recommended in Codespaces** (forward ports first, then two terminals):
+
+### Step 0 — Forward ports before starting servers
+
+In browser-based Codespaces, register the tunnels **before** starting the daemon and web UI:
+
+1. Open the **Ports** tab.
+2. Forward **`5173`** (web UI) and **`7456`** (daemon API).
+3. Set both to **Public** visibility (right-click each port).
+
+Starting the servers after forwarding avoids broken API calls from the Studio (e.g. setup repeating on refresh, “Couldn’t save changes. The local daemon may be offline.”).
+
+### Step 1 — Daemon (terminal 1)
+
 ```bash
 cd ~/.cache/cctc-tools/open-design
-pnpm tools-dev run web
+pnpm exec od daemon start --headless --port 7456 --no-open
+```
+
+Wait for `listening on http://127.0.0.1:7456`.
+
+### Step 2 — Web UI (terminal 2)
+
+```bash
+cd ~/.cache/cctc-tools/open-design/apps/web
+NODE_OPTIONS="--max-old-space-size=4096" OD_DAEMON_PORT=7456 PORT=5173 pnpm dev
+```
+
+Wait for `✓ Ready` and the first `GET / 200` (~30–60s on first compile).
+
+### Step 3 — Open the Studio
+
+Use the **Ports** tab → **Open in Browser** on the forwarded **`5173`** URL (`https://<codespace>-5173.app.github.dev`). Do not use `http://127.0.0.1:5173` in your laptop browser — that hits your local machine, not the Codespace.
+
+Keep **both terminals running**. If either stops, saves and settings will fail.
+
+**Single-command alternative** (works on some machines; flaky in Codespaces):
+
+```bash
+cd ~/.cache/cctc-tools/open-design
+NODE_OPTIONS="--max-old-space-size=4096" pnpm tools-dev run web --daemon-port 7456 --web-port 5173
 ```
 
 Use the Studio to generate redesign directions against this repo's `DESIGN.md` and fixture content.
+
+### Verify bootstrap succeeded
+
+```bash
+cd ~/.cache/cctc-tools/open-design
+git log -1 --oneline          # expect 67ade60bc (open-design-v0.11.0)
+node -v                       # expect v24.x
+pnpm -v                       # expect 10.33.2
+pnpm exec od --help           # should print od usage (not GNU octal dump)
+ls apps/daemon/dist/cli.js    # daemon build output must exist
+```
+
+Re-run from CCTC repo root if anything is missing:
+
+```bash
+bash scripts/bootstrap-open-design.sh
+```
+
+## GitHub Codespaces quick start
+
+Open Design is installed **outside** the CCTC repo (`~/.cache/cctc-tools/open-design`). In a Codespace, run it locally and open it through **port forwarding**.
+
+### 1. Bootstrap (once per Codespace)
+
+From the CCTC repo root:
+
+```bash
+bash scripts/bootstrap-open-design.sh
+```
+
+### 2. Forward ports first (before starting servers)
+
+1. Open the **Ports** tab.
+2. **Add port** `5173` and **Add port** `7456` if they are not listed yet.
+3. Set visibility on both to **Public**.
+4. Only then start the daemon and web UI (see [Start the Open Design web UI](#start-the-open-design-web-ui) above).
+
+### 3. Start the dev stack
+
+Prefer the **two-terminal** workflow (daemon + `apps/web` `pnpm dev`). `tools-dev run web` is a single-command alternative but is flaky in Codespaces:
+
+```bash
+cd ~/.cache/cctc-tools/open-design
+NODE_OPTIONS="--max-old-space-size=4096" pnpm tools-dev run web --daemon-port 7456 --web-port 5173
+```
+
+Leave this terminal running. When ready, you should see:
+
+```text
+Open Design dev server ready
+➜  Web:    http://127.0.0.1:5173/
+➜  Daemon: http://127.0.0.1:7456/
+```
+
+The first Next.js compile on a fresh Codespace can take **1–3 minutes** — wait until the forwarded `5173` URL responds before assuming failure.
+
+### 4. Open in the browser
+
+1. Use **Ports** → **Open in Browser** on the forwarded **`5173`** entry (`*.app.github.dev`).
+2. Keep **`7456`** forwarded as well so API/settings calls succeed.
+3. Do not use Simple Browser for the Studio — use an external tab.
+
+### 5. Point Open Design at this repo
+
+In the Studio, create or open a project whose workspace is the Codespace clone, e.g. `/workspaces/CCTE`. Import or reference:
+
+- `DESIGN.md`
+- `docs/design/fixtures/representative-cctc-items.json`
+- Existing prototypes under `docs/design/artifacts/`
+
+### Single-port fallback (daemon serves web UI)
+
+If `tools-dev run web` is slow or the web sidecar misbehaves, start the daemon alone:
+
+```bash
+cd ~/.cache/cctc-tools/open-design
+pnpm exec od daemon start --headless --serve-web --port 7456 --no-open
+```
+
+Forward port **`7456`** only and open `http://127.0.0.1:7456/` in the browser. Press `Ctrl+C` to stop.
+
+## Troubleshooting
+
+### `daemon did not expose status in time`
+
+Usually a **stale dev runtime** under Open Design's local `.tmp` tree from a prior failed start.
+
+```bash
+cd ~/.cache/cctc-tools/open-design
+pnpm tools-dev stop          # stop stamped daemon/web/desktop processes
+rm -rf .tmp/tools-dev/default
+pnpm tools-dev run web --daemon-port 7456 --web-port 5173
+```
+
+If it still fails, inspect logs:
+
+```bash
+cd ~/.cache/cctc-tools/open-design
+pnpm tools-dev check
+pnpm tools-dev logs daemon
+pnpm tools-dev logs web
+```
+
+**Codespaces workaround:** `tools-dev run web` spawns the Next.js UI through a sidecar process that often dies during the first compile (memory pressure, no swap). The **daemon is fine**; the **web sidecar** is the flaky part. Use two terminals instead:
+
+```bash
+# Terminal 1
+cd ~/.cache/cctc-tools/open-design
+pnpm exec od daemon start --headless --port 7456 --no-open
+
+# Terminal 2 (wait for "listening on", then first page compile can take ~45s)
+cd ~/.cache/cctc-tools/open-design/apps/web
+NODE_OPTIONS="--max-old-space-size=4096" OD_DAEMON_PORT=7456 PORT=5173 pnpm dev
+```
+
+Forward **5173** in the Ports tab. Do not use `od daemon start --serve-web` alone — in v0.11.0 it does not serve the Studio UI at `/` (API only).
+
+### Studio repeats setup on refresh / “daemon may be offline” when saving
+
+Usually the **web UI cannot reach the daemon**, or you opened the Studio before ports were forwarded.
+
+**Checklist:**
+
+1. **Both ports forwarded first** — `5173` and `7456`, visibility **Public**, before starting servers.
+2. **Both terminals still running** — daemon (`listening on …7456`) and `pnpm dev` (`Ready` / `GET / 200`).
+3. **Open via forwarded URL** — Ports → globe on `5173`, not `localhost` on your laptop.
+4. **Verify daemon from the Codespace terminal:**
+
+```bash
+curl -s http://127.0.0.1:7456/api/health
+# expect: {"ok":true,"version":"0.11.0"}
+```
+
+If health fails, restart terminal 1 (daemon). If health passes but the Studio still errors, restart terminal 2 (`pnpm dev`) and hard-refresh the forwarded `5173` tab.
+
+**Why setup repeats:** onboarding and project settings are stored by the **daemon** (SQLite under Open Design’s data dir). When API calls fail, the UI falls back to first-run setup and cannot persist changes — even if you can still see files in the project tree from a prior partial session.
+
+### Port already in use
+
+Pick alternate ports and forward those in the Ports tab:
+
+```bash
+pnpm tools-dev run web --daemon-port 17456 --web-port 15173
+```
+
+### Preview direction artifacts (HTML prototypes)
+
+**Do not use** editor right-click → **Open Preview** / **Show Preview** for artifact HTML. In browser-based Codespaces that webview is often blocked (`This content is blocked`) because:
+
+- `file://` and embedded previews run inside a restricted iframe
+- Artifacts load Google Fonts and other external URLs that fail CSP in the preview webview
+
+**Recommended — local static server + Ports tab:**
+
+```bash
+cd docs/design/artifacts
+python3 -m http.server 8080 --bind 127.0.0.1
+```
+
+Forward port **`8080`** in the **Ports** tab, then open in an **external browser tab** (not Simple Browser — same iframe limits as above):
+
+| Direction | URL path (after forwarding 8080) |
+|---|---|
+| A — Focused Study | `/direction-a-focused-study/index.html` |
+| B — Clinical Dashboard | `/direction-b-clinical-dashboard/index.html` |
+| C — Mobile Flashcard | `/direction-c-mobile-flashcard/index.html` |
+
+Example forwarded URL:
+
+`https://<your-codespace>-8080.app.github.dev/direction-b-clinical-dashboard/index.html`
+
+**Simple Browser** may still refuse to connect for the same iframe/CSP reasons as Open Design Studio — use the Ports **Open in Browser** (external tab) action.
+
+### Live Server / Live Preview extensions
+
+You can use **Live Server**, but in a **browser-based Codespace** it often opens a tab that looks blank:
+
+1. **Wrong host** — Live Server may open `http://127.0.0.1:5500/...` on **your laptop**, not the Codespace. The tab loads but shows nothing.
+2. **Wrong path** — If the server root is the repo root, "Go Live" opens `/` instead of the artifact path. You need the full path, e.g. `/docs/design/artifacts/direction-b-clinical-dashboard/index.html`.
+3. **Port not forwarded** — Forward Live Server's port (default **5500**) in the **Ports** tab, then open the **`*.app.github.dev`** URL from there — not the `localhost` link Live Server prints.
+
+**Reliable Live Server workflow in Codespaces:**
+
+1. Add to `.vscode/settings.json` (workspace) so the server root is the artifacts folder:
+
+```json
+{
+  "liveServer.settings.root": "/docs/design/artifacts",
+  "liveServer.settings.port": 5500
+}
+```
+
+2. Right-click `direction-b-clinical-dashboard/index.html` → **Open with Live Server**.
+3. In **Ports**, forward **5500** → **Open in Browser** (use the forwarded URL).
+4. If the tab is still blank, check the address bar ends with `/direction-b-clinical-dashboard/index.html`.
+
+**Live Preview** has the same iframe/CSP limits as Simple Browser — prefer Live Server + external forwarded tab, or the `python3 -m http.server 8080` flow above.
+
+## Direction artifact format (11 sections vs standalone app)
+
+Prompt 04 artifacts under `docs/design/artifacts/direction-*/index.html` use **labeled `.screen` sections in one scrollable file** plus a **screen-nav** jump list. That is intentional per [`open-design-studio-brief.md`](open-design-studio-brief.md):
+
+- **Review contract** — stakeholders compare directions on the same 11 required screens (home, setup, exam, study, navigator, score, history, flag, etc.) without clicking through a simulated app.
+- **Single HTML file** — easy to diff, forward on port 8080, and gate in PR review.
+- **Open Design emit pattern** — the Web Prototype skill and studio brief ask for one self-contained artifact with explicit screen labels, not a routed SPA.
+
+[`CCTC-Practice-standalone.html`](artifacts/CCTC-Practice-standalone.html) is a different deliverable: an Open Design **bundled export** (embedded manifest, client-side unpack, in-app navigation) that behaves like one interactive app. Use that when you want a click-through prototype; use `direction-*/index.html` when you want side-by-side screen review for the redesign decision.
 
 ## Media workflow split (CCTC convention)
 
@@ -108,7 +353,8 @@ Use the Studio to generate redesign directions against this repo's `DESIGN.md` a
 |---|---|
 | `DESIGN.md` | Brand/UX contract for redesign work |
 | `docs/design/**` | Briefs, decisions, fixtures, lock file, this guide |
-| `.context/vision/mockups/open-design/YYYY-MM-DD/` | Open Design direction artifacts |
+| `docs/design/artifacts/direction-*/` | Full-fidelity Open Design direction prototypes (11 screens each) |
+| `.context/vision/mockups/open-design/YYYY-MM-DD/` | Early sketch mockups (superseded by `docs/design/artifacts/` where present) |
 | `docs/media/readme-demos/**` | Reproducible media source (HTML, scripts, posters, manifest) |
 
 ## Do not commit

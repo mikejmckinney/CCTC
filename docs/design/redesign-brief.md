@@ -24,10 +24,10 @@ v1 on `main` delivers a complete static practice-exam app: Study/Exam modes, Ind
 
 ## Exploration directions
 
-Three Open Design directions (see `.context/vision/mockups/open-design/2026-06-22/`):
+Three Open Design directions (full fidelity under `docs/design/artifacts/direction-*/`; early sketches in `.context/vision/mockups/open-design/2026-06-22/`):
 
 1. **Focused Study Tool** — minimal chrome, exam readability
-2. **Clinical Dashboard** — progress, weak areas, analytics-forward home
+2. **Clinical Dashboard** — progress, weak areas, analytics-forward home (**approved** — see `ui-decision.md`)
 3. **Mobile-First Flashcard Trainer** — Study mode, thumb reach, short sessions
 
 ## Fixture content
@@ -46,5 +46,5 @@ Three Open Design directions (see `.context/vision/mockups/open-design/2026-06-2
 - [x] This brief
 - [x] `ui-decision.md`
 - [x] `accessibility-checklist.md`
-- [x] Mockup artifacts under `.context/vision/mockups/open-design/2026-06-22/`
+- [x] Mockup artifacts under `docs/design/artifacts/direction-*/` (supersedes `.context/vision/mockups/open-design/2026-06-22/` sketches)
 - [ ] README media source + manifest (media track)

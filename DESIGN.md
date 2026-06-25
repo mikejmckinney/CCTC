@@ -58,6 +58,8 @@ Question stems: `--text-lg` minimum on mobile; long stems may drop to `--text-ba
 
 ## Color tokens
 
+### Light (default)
+
 | Token | Role | Default |
 |---|---|---|
 | `--color-canvas` | Page background | `#f4f1ea` |
@@ -72,6 +74,27 @@ Question stems: `--text-lg` minimum on mobile; long stems may drop to `--text-ba
 | `--color-warning` | Flags, caution | `#8b5f18` |
 | `--color-danger` | Errors, destructive | `#a0413b` |
 | `--color-line` | Borders | `rgba(16, 34, 36, 0.12)` |
+
+### Dark (required — see `ui-decision.md`)
+
+Ship a **user-toggleable** dark theme with the redesign. Suggested starting values (tune during implementation for WCAG AA):
+
+| Token | Role | Default |
+|---|---|---|
+| `--color-canvas` | Page background | `#0f1819` |
+| `--color-surface` | Cards, panels | `#162326` |
+| `--color-surface-muted` | Secondary panels | `#1a2d30` |
+| `--color-ink` | Primary text | `#e8f0ef` |
+| `--color-ink-muted` | Secondary text | `#8fa3a6` |
+| `--color-brand` | Primary actions, links | `#4da89f` |
+| `--color-brand-soft` | Selected chips, soft fills | `#1f3d3a` |
+| `--color-accent` | Highlights, charts | `#d79548` |
+| `--color-success` | Correct / positive trend | `#3d9a6e` |
+| `--color-warning` | Flags, caution | `#c9a04a` |
+| `--color-danger` | Errors, destructive | `#d46a64` |
+| `--color-line` | Borders | `rgba(232, 240, 239, 0.12)` |
+
+Persist theme preference client-side (`localStorage`). Respect `prefers-color-scheme` only as the **initial default** when no saved preference exists.
 
 Do not use ABTC or PSI official brand colors as if endorsed.
 
@@ -129,5 +152,6 @@ Do not use ABTC or PSI official brand colors as if endorsed.
 - Fixture items: `docs/design/fixtures/representative-cctc-items.json`
 - Redesign brief: `docs/design/redesign-brief.md`
 - Direction decision: `docs/design/ui-decision.md`
-- Mockups: `.context/vision/mockups/open-design/2026-06-22/`
+- Direction prototypes: `docs/design/artifacts/direction-*/` (approved: B — `direction-b-clinical-dashboard/`)
+- Early sketches: `.context/vision/mockups/open-design/2026-06-22/` (superseded)
 - Open Design setup: `docs/design/open-design-setup.md`

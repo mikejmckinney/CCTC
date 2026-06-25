@@ -3,8 +3,10 @@ import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
 import { loadQuestionBanks } from '../data/questionBank';
 import { buildDefaultSettings, countAnswered, createSession, isBlueprintApplicable } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
+import { buildDashboardInsights } from '../lib/dashboardInsights';
 import { buildCategoryHistoryTrend, listHistoryCategories } from '../lib/categoryHistoryTrend';
 import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
+import { applyTheme, persistTheme, resolveInitialTheme, type ThemePreference } from '../lib/theme';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
 import {
   bootstrapState,
@@ -34,6 +36,7 @@ import type {
 } from '../types/exam';
 
 type View = 'home' | 'session' | 'history' | 'history-detail' | 'flags';
+type HomePanel = 'dashboard' | 'setup';
 
 interface FlagDraft {
   existingId?: string;
@@ -255,6 +258,8 @@ function App() {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState<View>('home');
+  const [homePanel, setHomePanel] = useState<HomePanel>('dashboard');
+  const [theme, setTheme] = useState<ThemePreference>(() => resolveInitialTheme());
   const [meta, setMeta] = useState<AppMeta>({ disclaimerSeen: false });
   const [settings, setSettings] = useState<SessionSettings>(() => buildDefaultSettings('cctc-from-2026-07'));
   const bank = useMemo(
@@ -264,6 +269,10 @@ function App() {
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const historyTrend = useMemo(() => buildHistoryTrend(history), [history]);
+  const dashboardInsights = useMemo(
+    () => buildDashboardInsights(history, settings.targetThreshold),
+    [history, settings.targetThreshold]
+  );
   const historyCategories = useMemo(() => listHistoryCategories(history), [history]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const categoryTrend = useMemo(
@@ -325,6 +334,25 @@ function App() {
   useEffect(() => {
     activeSessionRef.current = activeSession;
   }, [activeSession]);
+
+  useEffect(() => {
+    applyTheme(theme);
+    persistTheme(theme);
+  }, [theme]);
+
+  function toggleTheme(): void {
+    setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
+  }
+
+  function openSetupPanel(): void {
+    setHomePanel('setup');
+    setView('home');
+  }
+
+  function openDashboardPanel(): void {
+    setHomePanel('dashboard');
+    setView('home');
+  }
 
   useEffect(() => {
     if (!ready) {
@@ -855,41 +883,220 @@ function App() {
         </section>
       )}
 
-      <header className="hero-panel" role="banner">
-        <div>
-          <p className="eyebrow">CCTC practice exam</p>
-          <h1>CCTC Practice Exam</h1>
-          <p className="hero-copy">
-            Client-side only, static-hostable, and offline-capable after first load. Sessions freeze question order, answer order,
-            timer state, and bookmarks exactly.
-          </p>
-        </div>
-        <nav className="nav-pills" aria-label="Primary">
-          <button className={view === 'home' ? 'pill active' : 'pill'} onClick={() => setView('home')}>
-            Start
-          </button>
-          <button className={view === 'history' ? 'pill active' : 'pill'} onClick={() => setView('history')}>
-            History
-          </button>
-          <button className={view === 'flags' ? 'pill active' : 'pill'} onClick={() => setView('flags')}>
-            Flags
-          </button>
-          {activeSession && (
-            <button className={view === 'session' ? 'pill active' : 'pill'} onClick={() => setView('session')}>
-              Resume
+      <header className="app-bar" role="banner">
+        <span className="app-logo">CCTC Practice Exam</span>
+        <div className="app-bar__actions">
+          <nav className="nav-pills" aria-label="Primary">
+            <button
+              className={view === 'home' && homePanel === 'dashboard' ? 'pill active' : 'pill'}
+              onClick={openDashboardPanel}
+            >
+              Home
             </button>
-          )}
-        </nav>
+            <button className={view === 'history' ? 'pill active' : 'pill'} onClick={() => setView('history')}>
+              History
+            </button>
+            <button className={view === 'flags' ? 'pill active' : 'pill'} onClick={() => setView('flags')}>
+              Flags
+            </button>
+            {activeSession && (
+              <button className={view === 'session' ? 'pill active' : 'pill'} onClick={() => setView('session')}>
+                Resume
+              </button>
+            )}
+          </nav>
+          <button
+            type="button"
+            className="secondary-button theme-toggle"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          >
+            {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+          </button>
+        </div>
       </header>
 
       <main id="main-content" className="main-grid">
-        {view === 'home' && (
+        {view === 'home' && homePanel === 'dashboard' && (
           <>
-            <section className="panel stack-gap">
+            <section className="panel panel--span-2 stack-gap">
+              <div className="dash-top">
+                <div>
+                  <p className="eyebrow">Study dashboard</p>
+                  <h2>Your study dashboard</h2>
+                  <p className="field-hint">
+                    {dashboardInsights.sessionCount > 0 ? (
+                      <>
+                        {dashboardInsights.sessionCount} session{dashboardInsights.sessionCount === 1 ? '' : 's'} logged
+                        {dashboardInsights.latestPercent !== null && (
+                          <>
+                            {' '}
+                            · last practice <strong>{dashboardInsights.latestPercent}%</strong>
+                          </>
+                        )}
+                        {dashboardInsights.recentDelta !== null && (
+                          <> · {formatTrendDelta(dashboardInsights.recentDelta)} since prior session</>
+                        )}
+                      </>
+                    ) : (
+                      'Complete a practice session to unlock score trends and weak-area targeting.'
+                    )}
+                  </p>
+                </div>
+                <button type="button" className="primary-button" onClick={openSetupPanel}>
+                  Start new session
+                </button>
+              </div>
+
+              <div className="dash-grid">
+                <div className="stack-gap">
+                  <div className="trend-panel">
+                    <div className="trend-panel__header">
+                      <div>
+                        <h3>Recent score trend</h3>
+                        <p className="field-hint">Last {Math.min(historyTrend.points.length, 8) || 0} practice sessions</p>
+                      </div>
+                      {historyTrend.recentDelta !== null && historyTrend.recentDelta > 0 && (
+                        <span className="trend-delta">{formatTrendDelta(historyTrend.recentDelta)}</span>
+                      )}
+                    </div>
+
+                    {historyTrend.points.length === 0 ? (
+                      <p className="status-card">No completed sessions yet. Your trend chart appears after your first scored run.</p>
+                    ) : (
+                      <>
+                        <div className="trend-chart" role="img" aria-label="Recent unofficial practice score trend">
+                          <div className="trend-chart__plot">
+                            {historyTrend.targetThreshold !== null && (
+                              <div className="trend-chart__target" style={{ bottom: `${historyTrend.targetThreshold}%` }}>
+                                <span className="trend-chart__target-label">Target {historyTrend.targetThreshold}%</span>
+                              </div>
+                            )}
+                            {historyTrend.points.slice(-8).map((point) => (
+                              <div key={point.id} className="trend-chart__bar-wrap">
+                                <div
+                                  className={['trend-chart__bar', point.belowTarget ? 'is-below-target' : ''].filter(Boolean).join(' ')}
+                                  style={{ height: `${point.percent}%` }}
+                                  title={`${point.label}: ${point.percent}% (${point.mode})`}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                          <div className="trend-chart__labels">
+                            {historyTrend.points.slice(-8).map((point) => (
+                              <span key={point.id} className="trend-chart__label">
+                                {point.label}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {dashboardInsights.weakCategories.length > 0 && (
+                          <div className="stack-gap" style={{ marginTop: '1rem' }}>
+                            <h3>Focus areas — below {settings.targetThreshold}%</h3>
+                            <div className="weak-chips" role="list">
+                              {dashboardInsights.weakCategories.map((category) => (
+                                <button
+                                  key={category.categoryId}
+                                  type="button"
+                                  className="weak-chip"
+                                  role="listitem"
+                                  onClick={openSetupPanel}
+                                >
+                                  <span>{category.categoryLabel}</span>
+                                  <span className="weak-chip__pct">{category.percent}%</span>
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {dashboardInsights.categories.length > 0 && (
+                          <div className="stack-gap" style={{ marginTop: '1rem' }}>
+                            <h3>Category breakdown</h3>
+                            <div className="cat-bars">
+                              {dashboardInsights.categories.map((category) => (
+                                <div key={category.categoryId} className="cat-bar-row">
+                                  <span className="field-hint">{category.categoryLabel}</span>
+                                  <div className="cat-bar-track">
+                                    <div
+                                      className={['cat-bar-fill', category.percent < settings.targetThreshold ? 'is-weak' : ''].filter(Boolean).join(' ')}
+                                      style={{ width: `${category.percent}%` }}
+                                    />
+                                  </div>
+                                  <strong>{category.percent}%</strong>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+
+                  {dashboardInsights.recentDelta !== null && dashboardInsights.recentDelta > 0 && (
+                    <p className="motivation-note">
+                      Your latest session improved by {formatTrendDelta(dashboardInsights.recentDelta)}. A shorter focused run can
+                      help close weak-area gaps before your next full exam.
+                    </p>
+                  )}
+                </div>
+
+                <aside className="side-stack">
+                  <div className="metric-row">
+                    <div className="metric-tile">
+                      <strong>{dashboardInsights.sessionCount}</strong>
+                      <span>Sessions</span>
+                    </div>
+                    <div className="metric-tile">
+                      <strong>{dashboardInsights.latestPercent ?? '—'}</strong>
+                      <span>Latest score</span>
+                    </div>
+                  </div>
+
+                  {activeSession && !activeSession.submittedAt && (
+                    <div className="resume-strip stack-gap">
+                      <h3>Saved session in progress</h3>
+                      <p className="field-hint">
+                        Item {activeSession.currentIndex + 1} of {activeSession.items.length} · {activeSession.settings.mode} mode
+                      </p>
+                      <button type="button" className="secondary-button" onClick={() => setView('session')}>
+                        Resume session
+                      </button>
+                    </div>
+                  )}
+
+                  <div className="summary-card stack-gap">
+                    <h3>Quick start</h3>
+                    <p className="field-hint">Configure blueprint, mode, timer, and question count before you begin.</p>
+                    <button type="button" className="secondary-button" onClick={openSetupPanel}>
+                      Configure practice session
+                    </button>
+                    <button type="button" className="ghost-button" onClick={() => setView('history')}>
+                      View full history
+                    </button>
+                  </div>
+
+                  <p className="field-hint">Unofficial practice scores are estimates only — not ABTC or PSI results.</p>
+                </aside>
+              </div>
+            </section>
+          </>
+        )}
+
+        {view === 'home' && homePanel === 'setup' && (
+          <>
+            <section className="panel panel--span-2 stack-gap">
+              <div className="setup-back-row">
+                <button type="button" className="ghost-button" onClick={openDashboardPanel}>
+                  ← Back to dashboard
+                </button>
+              </div>
+
               <div className="section-heading">
                 <div>
                   <p className="eyebrow">Session setup</p>
-                  <h2>Build a practice session</h2>
+                  <h2>Configure practice</h2>
                 </div>
                 <span className="badge badge--soft">
                   {settings.questionSet === 'scenario' ? 'Scenario' : 'Standard'} bank: {bank.questions.length} item(s)
@@ -993,7 +1200,7 @@ function App() {
                     value={settings.targetThreshold}
                     onChange={(event) => updateSettings({ targetThreshold: Math.min(100, Math.max(1, Number(event.target.value) || 1)) })}
                   />
-                  <span className="field-hint">Used only for the unofficial practice estimate label.</span>
+                  <span className="field-hint">Used for unofficial practice estimates and weak-area highlighting.</span>
                 </label>
               </div>
 
@@ -1011,34 +1218,19 @@ function App() {
 
               <div className="action-row">
                 {activeSession && (
-                  <button className="secondary-button" onClick={() => setView('session')}>
+                  <button type="button" className="secondary-button" onClick={() => setView('session')}>
                     Resume current session
                   </button>
                 )}
                 {activeSession && (
-                  <button className="ghost-button" onClick={discardActiveSession}>
+                  <button type="button" className="ghost-button" onClick={discardActiveSession}>
                     Discard unfinished session
                   </button>
                 )}
-                <button className="primary-button" onClick={startSession}>
-                  {activeSession ? 'Replace or resume session' : 'Start session'}
+                <button type="button" className="primary-button" onClick={startSession}>
+                  {activeSession ? 'Replace or resume session' : 'Begin session'}
                 </button>
               </div>
-            </section>
-
-            <section className="panel stack-gap">
-              <div className="section-heading">
-                <div>
-                  <p className="eyebrow">Product constraints</p>
-                  <h2>v1 guardrails in the UI</h2>
-                </div>
-              </div>
-              <ul className="plain-list">
-                <li>Questions are static bundled JSON. No runtime model calls.</li>
-                <li>Raw scoring only. Pass-style labels are unofficial practice estimates.</li>
-                <li>Flags capture review feedback in IndexedDB and export as JSON; the app never mutates question files.</li>
-                <li>Example items prove both item formats while future shards auto-load outside underscore-prefixed paths.</li>
-              </ul>
             </section>
           </>
         )}
