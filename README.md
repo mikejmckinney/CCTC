@@ -1,10 +1,12 @@
-# CCTC Practice Exam
+# [CCTC Practice Exam](https://mikejmckinney.github.io/CCTC/)
 
 A client-side practice-exam web app for the ABTC **Certified Clinical Transplant Coordinator (CCTC®)** exam. Built from `ai-repo-template`; the app is intended to be implemented by an AI agent reading the prompts in `.github/prompts/`.
 
 > **Independent study aid.** This practice app is **not affiliated with or endorsed by ABTC or PSI** and does not reproduce real exam questions. All items are original, written to the published content outline. Practice scores are estimates, not official results.
 
-## What it does
+[00-hero-overview.mp4](https://github.com/user-attachments/assets/d19c9263-8a82-4114-b34e-c73011d04d43)
+
+## Features
 
 - Timed or untimed practice exams; timer defaults to the real exam's **180 minutes**, user-adjustable.
 - User-set question count (defaults to the real exam's **175 items**).
@@ -14,6 +16,78 @@ A client-side practice-exam web app for the ABTC **Certified Clinical Transplant
 - Blueprint-weighted sampling, randomized question + answer order, recently-seen de-prioritization.
 - **Save-after-each-question with resume.** Score history with per-content-category breakdown.
 - Responsive (phone/tablet/laptop), client-side only (IndexedDB), static-hostable, offline after first load.
+
+<table>
+  <!-- ROW 1 -->
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <h3>Customization</h3>
+      <img src="docs/media/readme-demos/posters/01-setup.png" alt="Setup" width="100%">
+      <p>Choose blueprint, question count, timer, and Study or Exam mode.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <h3>Study mode</h3>
+      <img src="docs/media/readme-demos/posters/02-study-mode.png" alt="Study mode" width="100%">
+      <p>In Study mode, reveal explanations and references immediately after answering.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <h3>Navigation and Flagging</h3>
+      <img src="docs/media/readme-demos/posters/03-exam-navigation-flagging.png" alt="Navigation and Flagging" width="100%">
+      <p>Navigate freely, flag items, and track unanswered questions — explanations stay hidden until submit.</p>
+    </td>
+  </tr>
+  <!-- ROW 2 -->
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <h3>History</h3>
+      <img src="docs/media/readme-demos/posters/04-score-history.png" alt="Score History" width="100%">
+      <p>Review your practice score breakdown and category trends over time.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <h3>Resume</h3>
+      <img src="docs/media/readme-demos/posters/05-resume-session.png" alt="Resume Session" width="100%">
+      <p>Close the app and resume exactly where you left off — answers and bookmarks preserved.</p>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <!-- Empty 6th cell left blank to maintain the clean 3x2 alignment grid -->
+    </td>
+  </tr>
+</table>
+
+<details>
+<summary>More feature demos</summary>
+
+### Practice setup
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/db0c00d6-529c-458c-ad7b-e822d09f360a" autoplay loop muted playsinline></video>
+</p>
+
+### Study mode
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/ded2bd23-33ed-43b3-bf56-8daf0ce8c9f6" autoplay loop muted playsinline></video>
+</p>
+
+### Exam navigation and flagging
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/58fcdee7-0a9e-43f1-8226-8e007c7d4b4f" autoplay loop muted playsinline></video>
+</p>
+
+### Score and history
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/0fea0fcf-0352-4bcb-b62b-5761f3be3bfc" autoplay loop muted playsinline></video>
+</p>
+
+### Resume session
+
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/d8d6711f-6bf5-437a-b357-de40c1ad68dd" autoplay loop muted playsinline></video>
+</p>
+
+</details>
 
 ## Repository layout
 
@@ -62,8 +136,8 @@ Blueprint data is transcribed from the ABTC Candidate Handbook (rev. 3/12/2026),
 Phases 1–4 are on `main`: exam engine, **506 reviewed items**, validation/stubs CI, history trends, category drill-down, and GitHub Pages at https://mikejmckinney.github.io/CCTC/.
 
 - **Local dev:** `npm install && npm run dev`
-- **Production build:** `npm run build` (relative assets) or `VITE_BASE_PATH=/CCTC/ npm run build:ci` for GitHub Pages
-- **Live demo (after Pages enabled):** https://mikejmckinney.github.io/CCTC/
+- **Production build:** `npm run build` (relative assets) or `VITE_BASE_PATH=/CCTC/ npm run build:ci` for GitHub Pages.  Use `npm run build:ci` if building locally to bypass the validation step (requires indexer setup)
+- **Live app :** https://mikejmckinney.github.io/CCTC/
 
 ## Hosting
 

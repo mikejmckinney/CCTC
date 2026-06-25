@@ -116,6 +116,16 @@ Use these files as the current product ground truth:
 | `.github/prompts/01-build-app.md` | App behavior: exam engine, modes, persistence, history, responsive UI |
 | `.github/prompts/02-author-questions.md` | Question-authoring rules, sourcing, copyright, blueprint mapping |
 | `.github/prompts/03-validate.md` | Validation requirements for schema, integrity, and coverage |
+| `.github/prompts/04-cctc-open-design-redesign-and-readme-media-v2.md` | Redesign prototypes + README demo media (optional Open Design tooling) |
+
+### Optional design / README media tooling
+
+| File | Purpose |
+|---|---|
+| `scripts/bootstrap-open-design.sh` | Clone/build pinned Open Design outside the repo (`docs/design/open-design.lock`) |
+| `docs/design/open-design-setup.md` | Human/agent setup for optional Open Design contributor tooling |
+| `docs/media/readme-demos/scripts/capture-readme-demos.mjs` | Playwright live captures for README feature demos |
+| `DESIGN.md` | UX/design contract for redesign exploration |
 
 ### App scaffold and validation
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CCTC Hero Overview Composition</title>
+  <style>
+    body { margin: 0; background: #102224; font-family: "IBM Plex Sans", sans-serif; color: #fff; }
+    .wrap { width: 1280px; height: 720px; margin: 0 auto; display: grid; grid-template-rows: auto 1fr auto; }
+    header { padding: 1.5rem 2rem 0; }
+    h1 { margin: 0; font-size: 1.5rem; }
+    .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 1rem 2rem 2rem; align-items: center; }
+    .strip img { width: 100%; border-radius: 12px; border: 2px solid rgba(255,255,255,.15); }
+    footer { padding: 0 2rem 1.5rem; font-size: .875rem; opacity: .8; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><h1>CCTC Practice Exam — overview</h1></header>
+    <div class="strip">
+      <img src="../posters/01-setup.png" alt="Practice setup" />
+      <img src="../posters/02-study-mode.png" alt="Study mode question" />
+      <img src="../posters/04-score-history.png" alt="Score and history" />
+    </div>
+    <footer>Composition uses Playwright capture posters — regenerate after UI changes.</footer>
+  </div>
+</body>
+</html>

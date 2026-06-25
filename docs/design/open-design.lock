@@ -1,0 +1,14 @@
+# Open Design Tool Pin
+# Purpose: record the exact Open Design tool version/ref that worked for this project.
+# Agents: read `ref`, `commit`, and `install_dir` before bootstrapping. Do not guess versions.
+
+repo: https://github.com/nexu-io/open-design.git
+ref: open-design-v0.11.0
+commit: 67ade60bced0f6f7888bf9dc487571f954e98e0d
+install_dir: ~/.cache/cctc-tools/open-design
+node: "~24"
+package_manager: pnpm@10.33.2 via corepack
+bootstrap_script: scripts/bootstrap-open-design.sh
+cursor_mcp: optional
+last_verified: 2026-06-22
+notes: Latest GitHub release at pin time; local vendored package.json had 0.11.1 on main — use this tag for reproducibility.
