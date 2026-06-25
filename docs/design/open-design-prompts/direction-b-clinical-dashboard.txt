@@ -1,0 +1,16 @@
+Generate Direction B — **Clinical Dashboard** for CCTC Practice Exam (prompt 04).
+
+Read `DESIGN.md`, `docs/design/open-design-studio-brief.md`, and `docs/design/fixtures/representative-cctc-items.json`.
+
+**Direction B goals:** progress-forward home; weak-area category chips; recent score trend visible before starting; history analytics feel motivating for return learners.
+
+**Constraints:**
+- Prototype HTML only — DO NOT edit `src/**` production code.
+- One self-contained HTML artifact with all 11 labeled screens from the studio brief.
+- Use real fixture copy where items appear.
+- Banner: "Prototype — not production UI".
+- Dashboard home should surface category breakdown / weak areas without hiding "Start session".
+
+**Differentiation:** richer home dashboard than A; still preserve exam-mode clarity on active-question screens.
+
+Emit the artifact now.

@@ -1,0 +1,15 @@
+Generate Direction C — **Mobile-First Flashcard Trainer** for CCTC Practice Exam (prompt 04).
+
+Read `DESIGN.md`, `docs/design/open-design-studio-brief.md`, and `docs/design/fixtures/representative-cctc-items.json`.
+
+**Direction C goals:** phone-first Study mode; sticky bottom toolbar; flashcard-style reveal; thumb-zone controls; 390px-friendly layouts.
+
+**Constraints:**
+- Prototype HTML only — DO NOT edit `src/**` production code.
+- One self-contained HTML artifact with all 11 labeled screens from the studio brief (show mobile-width frames or responsive layouts).
+- Use real fixture copy; Study reveal should feel natural on phone.
+- Banner: "Prototype — not production UI".
+
+**Differentiation:** optimize Study/flashcard flow and mobile ergonomics; exam screens still present but secondary visual language.
+
+Emit the artifact now.

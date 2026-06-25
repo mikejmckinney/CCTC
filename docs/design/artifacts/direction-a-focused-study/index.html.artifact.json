@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "docs/design/artifacts/direction-a-focused-study/index.html",
+  "entry": "docs/design/artifacts/direction-a-focused-study/index.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-22T23:30:28.313Z",
+  "updatedAt": "2026-06-22T23:30:28.313Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

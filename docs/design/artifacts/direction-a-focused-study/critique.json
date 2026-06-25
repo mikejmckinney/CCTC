@@ -1,0 +1,11 @@
+{
+  "kind": "critique-panel",
+  "score": 4,
+  "axes": {
+    "philosophy": { "score": 4, "notes": "Calm canvas, minimal exam chrome, stem-first hierarchy matches Direction A brief." },
+    "hierarchy": { "score": 4, "notes": "Stems dominate active screens; home leads with single Start action." },
+    "execution": { "score": 4, "notes": "Fraunces/Plex pairing, 44px targets, focus rings, fixture copy verbatim." },
+    "specificity": { "score": 5, "notes": "cctc-6198, cctc-1081, cctc-1011 fixture text used; flag enum matches production." },
+    "restraint": { "score": 4, "notes": "Brand teal primary only; history chart uses soft fills not competing accents." }
+  }
+}

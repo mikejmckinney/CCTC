@@ -1,0 +1,26 @@
+{
+  "kind": "critique-panel",
+  "score": 4,
+  "axes": {
+    "philosophy": {
+      "score": 4,
+      "notes": "Study-first mobile flashcard posture with warm accent canvas; exam screens deliberately muted and slate-backed as secondary language."
+    },
+    "hierarchy": {
+      "score": 4,
+      "notes": "Thumb toolbar anchors primary actions; flashcard front/back separation keeps stem then reveal path obvious on 390px."
+    },
+    "typography": {
+      "score": 4,
+      "notes": "Fraunces headlines, Plex body/mono stats; long stem cctc-6198 drops to smaller size with maintained line-height."
+    },
+    "motion": {
+      "score": 4,
+      "notes": "Card flip on reveal with reduced-motion fallback; bottom-sheet modals for navigator/submit/flag feel native on phone."
+    },
+    "brand": {
+      "score": 4,
+      "notes": "CCTC tokens bound (--accent #d79548, --brand #123b3a); prototype banner and unofficial disclaimer present on score/home."
+    }
+  }
+}

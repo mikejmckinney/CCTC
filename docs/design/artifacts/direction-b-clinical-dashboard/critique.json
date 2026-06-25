@@ -1,0 +1,11 @@
+{
+  "kind": "critique-panel",
+  "score": 4,
+  "axes": {
+    "philosophy": { "score": 4, "notes": "Progress-forward dashboard home with weak-area chips and trend sparkline; exam screens stay minimal stem-first." },
+    "hierarchy": { "score": 4, "notes": "Start new session remains top-level CTA; analytics support without burying primary action." },
+    "execution": { "score": 4, "notes": "Fraunces/Plex tokens, responsive dash grid, 44px targets, focus rings, category bar charts." },
+    "specificity": { "score": 5, "notes": "Fixture copy for cctc-6198, cctc-2004 (3 refs), cctc-1011, cctc-1003 flag; motivating history copy tied to domain scores." },
+    "restraint": { "score": 4, "notes": "Highlight accent budgeted to trends and weak bars; exam chrome unchanged from Direction A clarity." }
+  }
+}

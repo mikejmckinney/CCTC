@@ -1,0 +1,16 @@
+Generate Direction A — **Focused Study Tool** for CCTC Practice Exam (prompt 04).
+
+Read `DESIGN.md`, `docs/design/open-design-studio-brief.md`, and `docs/design/fixtures/representative-cctc-items.json`.
+
+**Direction A goals:** low-distraction, long-session readability; exam stem-first hierarchy; minimal chrome during active questions; calm canvas (#f4f1ea / #123b3a brand).
+
+**Constraints:**
+- Prototype HTML only — DO NOT edit `src/**` production code.
+- One self-contained HTML artifact with all 11 labeled screens from the studio brief.
+- Use real fixture copy (cctc-6198 long stem on exam screen, cctc-1011 complex-combo, cctc-1081 explanation in study screen).
+- Banner: "Prototype — not production UI".
+- Map DESIGN.md tokens to CSS variables; Fraunces display + IBM Plex Sans body.
+
+**Differentiation vs B/C:** prioritize exam readability over dashboard analytics; home is utilitarian with clear "Start session" primary action.
+
+Emit the artifact now.

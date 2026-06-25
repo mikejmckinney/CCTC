@@ -1,0 +1,1354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Direction C — Mobile Flashcard Trainer · CCTC Practice Exam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: rgba(255, 255, 255, 0.92);
+      --surface-strong: #ffffff;
+      --surface-muted: #eef4f1;
+      --fg: #111827;
+      --muted: #5b6c72;
+      --border: #d1d5db;
+      --accent: #d79548;
+      --accent-on: #ffffff;
+      --brand: #123b3a;
+      --brand-soft: #d7ebe4;
+      --success: #1f6a4b;
+      --warn: #8b5f18;
+      --danger: #a0413b;
+      --exam-muted: #94a3b8;
+      --exam-bg: #f1f5f9;
+      --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+      --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --radius-sm: 10px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-card: 0 18px 50px rgba(18, 59, 58, 0.12);
+      --shadow-flash: 0 12px 40px rgba(215, 149, 72, 0.18);
+      --focus-ring: 0 0 0 3px color-mix(in oklab, var(--accent), transparent 70%);
+      --tap: 44px;
+      --phone-w: 390px;
+      --toolbar-h: 72px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--brand); }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+    h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+    p { text-wrap: pretty; margin: 0; }
+    .num { font-family: var(--font-mono); }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      padding: 8px 16px;
+      background: var(--brand);
+      color: var(--surface-strong);
+      z-index: 100;
+    }
+    .skip-link:focus { left: 16px; top: 16px; }
+
+    .proto-banner {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--brand);
+      color: var(--surface-strong);
+      text-align: center;
+      padding: 10px 16px;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .proto-shell {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
+    }
+    .proto-header { margin-bottom: 28px; }
+    .proto-header h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .proto-header p { color: var(--muted); max-width: 52ch; font-size: var(--text-sm); }
+
+    .screen-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .screen-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--tap);
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: var(--text-xs);
+      text-decoration: none;
+      color: var(--fg);
+      background: var(--surface-strong);
+    }
+    .screen-nav a:hover { border-color: var(--accent); background: color-mix(in oklab, var(--accent) 8%, white); }
+    .screen-nav a[aria-current="true"] {
+      background: var(--accent);
+      color: var(--accent-on);
+      border-color: var(--accent);
+    }
+
+    .screen { margin-bottom: 48px; scroll-margin-top: 72px; }
+    .screen-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    /* Phone frame */
+    .phone-stage {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0 16px;
+    }
+    .phone {
+      width: min(var(--phone-w), 100%);
+      background: #0f172a;
+      border-radius: 36px;
+      padding: 12px;
+      box-shadow: var(--shadow-card), 0 0 0 1px rgba(15, 23, 42, 0.08);
+    }
+    .phone-notch {
+      width: 96px;
+      height: 28px;
+      background: #0f172a;
+      border-radius: 0 0 18px 18px;
+      margin: -4px auto 8px;
+    }
+    .phone-screen {
+      background: var(--bg);
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 680px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .phone-screen.exam-mode { background: var(--exam-bg); }
+
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 20px 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 16px 12px;
+      background: inherit;
+    }
+    .app-header.compact { padding: 6px 16px 8px; }
+    .app-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--brand);
+    }
+    .app-logo.study { color: var(--accent); }
+    .session-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.02em;
+    }
+    .chip.study {
+      background: color-mix(in oklab, var(--accent) 18%, white);
+      color: color-mix(in oklab, var(--accent), black 20%);
+    }
+    .chip.exam {
+      background: #e2e8f0;
+      color: #475569;
+    }
+    .chip.muted { background: var(--surface-muted); color: var(--muted); }
+
+    .phone-main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 16px 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .phone-main.has-toolbar {
+      padding-bottom: calc(var(--toolbar-h) + var(--safe-bottom) + 8px);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: var(--tap);
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: var(--fg);
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-on);
+      border-color: var(--accent);
+    }
+    .btn-primary.study { box-shadow: var(--shadow-flash); }
+    .btn-brand {
+      background: var(--brand);
+      color: var(--surface-strong);
+      border-color: var(--brand);
+    }
+    .btn-secondary {
+      border-color: var(--border);
+      background: var(--surface-strong);
+    }
+    .btn-ghost { border-color: transparent; color: var(--muted); }
+    .btn-exam {
+      background: var(--brand);
+      color: var(--surface-strong);
+      border-color: var(--brand);
+    }
+    .btn-sm { min-height: 36px; padding: 6px 12px; font-size: var(--text-xs); }
+    .btn-block { width: 100%; }
+    .btn-icon {
+      min-width: var(--tap);
+      min-height: var(--tap);
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+    }
+
+    /* Sticky bottom toolbar — thumb zone */
+    .thumb-toolbar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: var(--tap) 1fr var(--tap);
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px calc(10px + var(--safe-bottom));
+      background: color-mix(in oklab, var(--surface-strong) 94%, transparent);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      z-index: 10;
+    }
+    .thumb-toolbar.study {
+      border-top-color: color-mix(in oklab, var(--accent) 30%, var(--border));
+      background: color-mix(in oklab, white 92%, var(--accent) 8%);
+    }
+    .thumb-toolbar.exam {
+      background: color-mix(in oklab, var(--exam-bg) 90%, white);
+      border-top-color: #cbd5e1;
+    }
+    .thumb-toolbar .btn-reveal {
+      grid-column: 1 / -1;
+      min-height: 52px;
+      font-size: var(--text-base);
+      border-radius: var(--radius-md);
+    }
+    .thumb-toolbar .center-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    .thumb-toolbar .center-actions .btn { flex: 1; min-height: 48px; }
+
+    /* Flashcard */
+    .flashcard-stack {
+      perspective: 1200px;
+      margin-top: 8px;
+    }
+    .flashcard {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.45s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .flashcard.revealed { transform: rotateX(180deg); }
+    .flash-face {
+      backface-visibility: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid color-mix(in oklab, var(--accent) 25%, var(--border));
+      background: var(--surface-strong);
+      box-shadow: var(--shadow-flash);
+      padding: 20px 16px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+    }
+    .flash-face.back {
+      position: absolute;
+      inset: 0;
+      transform: rotateX(180deg);
+      border-color: color-mix(in oklab, var(--success) 30%, var(--border));
+      box-shadow: 0 12px 36px rgba(31, 106, 75, 0.12);
+    }
+    .flash-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .flash-stem {
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .flash-stem.long { font-size: var(--text-base); line-height: 1.6; }
+    .flash-hint {
+      font-size: var(--text-xs);
+      color: var(--muted);
+      text-align: center;
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    .options { display: flex; flex-direction: column; gap: 8px; }
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      min-height: var(--tap);
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+      cursor: pointer;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }
+    .option.selected {
+      border-color: var(--accent);
+      background: color-mix(in oklab, var(--accent) 10%, white);
+    }
+    .option.correct {
+      border-color: var(--success);
+      background: color-mix(in oklab, var(--success) 8%, white);
+    }
+    .option input { margin-top: 2px; accent-color: var(--accent); flex-shrink: 0; }
+    .option-id {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--accent);
+      min-width: 1.1em;
+    }
+    .exam-mode .option-id { color: var(--brand); }
+
+    .reveal-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .reveal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      align-self: flex-start;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--success) 12%, white);
+      color: var(--success);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .reveal-text {
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: var(--fg);
+    }
+    .refs {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .refs h4 {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .refs ol {
+      margin: 0;
+      padding-left: 18px;
+      font-size: var(--text-xs);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .refs li + li { margin-top: 6px; }
+
+    /* Home mobile */
+    .hero-study {
+      padding: 20px 16px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, color-mix(in oklab, var(--accent) 14%, white), var(--surface-strong));
+      border: 1px solid color-mix(in oklab, var(--accent) 22%, var(--border));
+      margin-bottom: 16px;
+    }
+    .hero-study h2 {
+      font-size: var(--text-xl);
+      margin-bottom: 6px;
+      color: var(--brand);
+    }
+    .hero-study p {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .stat-pills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .stat-pill {
+      text-align: center;
+      padding: 12px 8px;
+      border-radius: var(--radius-md);
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+    }
+    .stat-pill .val {
+      font-family: var(--font-mono);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .stat-pill .lbl {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .list-card {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+    .list-card h3 { font-size: var(--text-sm); font-family: var(--font-body); font-weight: 600; margin-bottom: 4px; }
+    .list-card p { font-size: var(--text-xs); color: var(--muted); }
+    .resume-banner {
+      border: 2px solid var(--accent);
+      background: color-mix(in oklab, var(--accent) 8%, white);
+    }
+
+    /* Setup */
+    .form-stack { display: flex; flex-direction: column; gap: 18px; }
+    .field label {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .field-hint { font-size: var(--text-xs); color: var(--muted); margin-top: 6px; }
+    .pill-row { display: flex; flex-direction: column; gap: 8px; }
+    .pill-opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: var(--tap);
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+      font-size: var(--text-sm);
+      cursor: pointer;
+    }
+    .pill-opt:has(input:checked) {
+      border-color: var(--accent);
+      background: color-mix(in oklab, var(--accent) 10%, white);
+    }
+    .pill-opt input { accent-color: var(--accent); }
+    input[type="number"] {
+      width: 100%;
+      min-height: var(--tap);
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font: inherit;
+      background: var(--surface-strong);
+    }
+
+    /* Exam secondary styling */
+    .exam-stem {
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: #334155;
+      margin-bottom: 16px;
+    }
+    .exam-stem.long { font-size: var(--text-sm); }
+    .exam-card {
+      background: var(--surface-strong);
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    /* Combo */
+    .combo-elements {
+      margin: 12px 0;
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: var(--radius-sm);
+      border: 1px solid #e2e8f0;
+      font-size: var(--text-sm);
+    }
+    .combo-elements li { margin-bottom: 8px; line-height: 1.45; }
+    .combo-elements li:last-child { margin-bottom: 0; }
+    .combo-tag {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      color: var(--brand);
+      margin-right: 6px;
+    }
+    .select-all-note {
+      font-size: var(--text-xs);
+      color: var(--exam-muted);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    /* Navigator bottom sheet style */
+    .nav-sheet {
+      padding: 16px;
+      background: var(--surface-strong);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      min-height: 360px;
+    }
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .nav-cell {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      background: var(--surface-strong);
+      cursor: pointer;
+      min-height: 44px;
+      position: relative;
+    }
+    .nav-cell.current { background: var(--brand); color: white; border-color: var(--brand); }
+    .nav-cell.flagged::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--warn);
+    }
+    .nav-cell.unanswered { border-style: dashed; border-color: var(--accent); }
+    .nav-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    /* Modals */
+    .modal-scrim {
+      flex: 1;
+      display: grid;
+      place-items: end center;
+      background: color-mix(in oklab, var(--fg) 35%, transparent);
+      padding: 0;
+    }
+    .modal-sheet {
+      width: 100%;
+      background: var(--surface-strong);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      padding: 24px 20px calc(24px + var(--safe-bottom));
+      box-shadow: 0 -8px 40px rgba(0,0,0,0.15);
+    }
+    .modal-sheet h2 {
+      font-size: var(--text-lg);
+      margin-bottom: 8px;
+    }
+    .modal-sheet p { color: var(--muted); font-size: var(--text-sm); margin-bottom: 16px; }
+    .modal-handle {
+      width: 36px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 999px;
+      margin: 0 auto 16px;
+    }
+
+    /* Score */
+    .score-ring {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--accent) 0 78%, var(--surface-muted) 78% 100%);
+      position: relative;
+    }
+    .score-ring::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      background: var(--surface-strong);
+      border-radius: 50%;
+    }
+    .score-ring .val {
+      position: relative;
+      z-index: 1;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--brand);
+    }
+    .cat-bars { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .cat-row {
+      display: grid;
+      grid-template-columns: 1fr 48px;
+      gap: 8px;
+      align-items: center;
+      font-size: var(--text-xs);
+    }
+    .cat-row .bar {
+      grid-column: 1 / -1;
+      height: 8px;
+      background: var(--surface-muted);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .cat-row .bar span {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    /* History sparkline */
+    .spark-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 80px;
+      margin: 16px 0;
+    }
+    .spark-bar {
+      flex: 1;
+      background: color-mix(in oklab, var(--accent) 25%, white);
+      border-radius: 4px 4px 0 0;
+      min-height: 16px;
+      position: relative;
+    }
+    .spark-bar.active { background: var(--accent); }
+    .spark-bar span {
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--muted);
+    }
+    .history-list { display: flex; flex-direction: column; gap: 8px; }
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface-strong);
+      font-size: var(--text-sm);
+    }
+    .history-item .score { font-family: var(--font-mono); font-weight: 500; color: var(--accent); }
+
+    .disclaimer-inline {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      line-height: 1.45;
+    }
+    .bottom-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      background: var(--surface-strong);
+      padding: 8px 0 calc(8px + var(--safe-bottom));
+    }
+    .bottom-nav button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px;
+      border: none;
+      background: none;
+      font-size: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      min-height: var(--tap);
+    }
+    .bottom-nav button.active { color: var(--accent); font-weight: 600; }
+    .bottom-nav svg { width: 22px; height: 22px; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="proto-banner" role="status">Prototype — not production UI</div>
+
+  <div class="proto-shell">
+    <header class="proto-header">
+      <h1>Direction C — Mobile Flashcard Trainer</h1>
+      <p>Phone-first Study flow with flashcard reveal, thumb-zone toolbar, and 390px layouts. Exam screens use a secondary, muted visual language. Independent CCTC study aid — not affiliated with ABTC or PSI.</p>
+    </header>
+
+    <nav class="screen-nav" aria-label="Prototype screens">
+      <a href="#screen-01" data-screen="01">01 Home</a>
+      <a href="#screen-02" data-screen="02">02 Setup</a>
+      <a href="#screen-03" data-screen="03">03 Resume</a>
+      <a href="#screen-04" data-screen="04">04 Exam Q</a>
+      <a href="#screen-05" data-screen="05">05 Study flashcard</a>
+      <a href="#screen-06" data-screen="06">06 Combo</a>
+      <a href="#screen-07" data-screen="07">07 Navigator</a>
+      <a href="#screen-08" data-screen="08">08 Submit</a>
+      <a href="#screen-09" data-screen="09">09 Score</a>
+      <a href="#screen-10" data-screen="10">10 History</a>
+      <a href="#screen-11" data-screen="11">11 Flag</a>
+    </nav>
+
+    <main id="main">
+      <!-- 01 Home -->
+      <section class="screen" id="screen-01" data-od-id="screen-01" data-screen-label="01 Home">
+        <div class="screen-label">01 · Home / dashboard</div>
+        <div class="phone-stage">
+          <div class="phone" aria-label="iPhone frame 390px">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="status-bar"><span>9:41</span><span>LTE ▮▮▮</span></div>
+              <header class="app-header">
+                <span class="app-logo study">CCTC Practice</span>
+                <button class="btn btn-ghost btn-sm" type="button">History</button>
+              </header>
+              <div class="phone-main">
+                <div class="hero-study">
+                  <h2>Study on the go</h2>
+                  <p>Flashcard-style review with instant explanations — optimized for phone breaks.</p>
+                  <button class="btn btn-primary study btn-block" type="button">Start Study session</button>
+                </div>
+                <div class="list-card resume-banner">
+                  <h3>Resume Study · item 12 of 25</h3>
+                  <p>Saved 18 min ago · cctc-1081 in progress</p>
+                  <button class="btn btn-secondary btn-block" type="button" style="margin-top:12px;">Continue flashcards</button>
+                </div>
+                <div class="stat-pills">
+                  <div class="stat-pill"><div class="val">12</div><div class="lbl">Sessions</div></div>
+                  <div class="stat-pill"><div class="val">78%</div><div class="lbl">Last score</div></div>
+                  <div class="stat-pill"><div class="val">D2</div><div class="lbl">Focus area</div></div>
+                </div>
+                <div class="list-card" style="margin-top:16px;">
+                  <h3>Exam mode</h3>
+                  <p>Timed practice runs — secondary to daily flashcard review</p>
+                  <button class="btn btn-ghost btn-sm" type="button" style="margin-top:8px;">Configure exam →</button>
+                </div>
+                <p class="disclaimer-inline">Unofficial practice scores are estimates only — not ABTC or PSI results.</p>
+              </div>
+              <nav class="bottom-nav" aria-label="App navigation">
+                <button type="button" class="active" aria-current="page">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1V9.5z"/></svg>
+                  Home
+                </button>
+                <button type="button">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+                  Study
+                </button>
+                <button type="button">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+                  History
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 Setup -->
+      <section class="screen" id="screen-02" data-od-id="screen-02" data-screen-label="02 Setup">
+        <div class="screen-label">02 · New practice setup</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="status-bar"><span>9:41</span><span>LTE ▮▮▮</span></div>
+              <header class="app-header compact">
+                <button class="btn btn-ghost btn-sm" type="button">← Back</button>
+                <span class="num" style="font-size:var(--text-xs);color:var(--muted);">New session</span>
+              </header>
+              <div class="phone-main has-toolbar">
+                <h2 style="font-size:var(--text-lg);margin-bottom:16px;">Configure practice</h2>
+                <form class="form-stack" aria-label="Session setup">
+                  <div class="field">
+                    <label>Blueprint version</label>
+                    <div class="pill-row">
+                      <label class="pill-opt"><input type="radio" name="bp" checked /> Current (effective 2026-07-01)</label>
+                      <label class="pill-opt"><input type="radio" name="bp" /> Legacy (until 2026-06-30)</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Mode</label>
+                    <div class="pill-row">
+                      <label class="pill-opt"><input type="radio" name="mode" checked /> Study — flashcard reveal + instant explanation</label>
+                      <label class="pill-opt"><input type="radio" name="mode" /> Exam — results after submit</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="count">Question count</label>
+                    <input type="number" id="count" value="25" min="5" max="175" aria-describedby="count-hint" />
+                    <p class="field-hint" id="count-hint">Shorter decks for phone study breaks; full 175 for exam simulation.</p>
+                  </div>
+                  <div class="field">
+                    <label>Timer</label>
+                    <div class="pill-row">
+                      <label class="pill-opt"><input type="radio" name="timer" /> Timed — 180 min default</label>
+                      <label class="pill-opt"><input type="radio" name="timer" checked /> Untimed — recommended for Study</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="thumb-toolbar study">
+                <button class="btn btn-primary study btn-reveal" type="button">Begin Study session</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 Resume -->
+      <section class="screen" id="screen-03" data-od-id="screen-03" data-screen-label="03 Resume">
+        <div class="screen-label">03 · Resume current session</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="status-bar"><span>9:41</span><span>LTE ▮▮▮</span></div>
+              <header class="app-header">
+                <span class="app-logo study">CCTC Practice</span>
+              </header>
+              <div class="phone-main has-toolbar">
+                <div class="hero-study" style="margin-top:24px;">
+                  <h2>Resume saved session?</h2>
+                  <p>Answers save after each card. Pick up where you left off or start fresh.</p>
+                  <dl style="display:grid;grid-template-columns:auto 1fr;gap:8px 12px;font-size:var(--text-sm);margin:16px 0;">
+                    <dt style="color:var(--muted);">Progress</dt>
+                    <dd class="num">12 / 25 answered</dd>
+                    <dt style="color:var(--muted);">Mode</dt>
+                    <dd>Study · Untimed</dd>
+                    <dt style="color:var(--muted);">Last item</dt>
+                    <dd class="num">cctc-1081</dd>
+                    <dt style="color:var(--muted);">Blueprint</dt>
+                    <dd>Current (2026+)</dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="thumb-toolbar study">
+                <div class="center-actions" style="grid-column:1/-1;">
+                  <button class="btn btn-primary study" type="button">Resume flashcards</button>
+                  <button class="btn btn-secondary" type="button">Discard</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 Exam cctc-6198 -->
+      <section class="screen" id="screen-04" data-od-id="screen-04" data-screen-label="04 Exam Q">
+        <div class="screen-label">04 · Active exam question (no explanation)</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen exam-mode">
+              <div class="status-bar"><span>9:41</span><span class="num">1:42:18</span></div>
+              <header class="app-header compact">
+                <div class="session-chips">
+                  <span class="chip exam">Exam</span>
+                  <span class="chip muted"><span class="num">47</span>/<span class="num">75</span></span>
+                </div>
+                <button class="btn btn-icon" type="button" aria-label="Flag item">⚑</button>
+              </header>
+              <div class="phone-main has-toolbar">
+                <p class="num" style="font-size:10px;color:var(--exam-muted);margin-bottom:10px;">cctc-6198 · Domain 1</p>
+                <div class="exam-card">
+                  <p class="exam-stem long">You are the transplant coordinator reviewing infection-prevention handouts before a home visit. A 55-year-old solid-organ transplant patient is the focus of today's interaction. Education was started during the waiting period and continues after listing. The team wants teaching aligned with standard references before documentation is finalized. When explaining why living donor organs may offer advantages over some deceased-donor options, which donor characteristic should the coordinator emphasize?</p>
+                  <fieldset class="options exam-mode" aria-label="Answer choices">
+                    <label class="option"><input type="radio" name="q6198" /><span class="option-id">A</span><span>The organ is typically from a young healthy person who completed an intensive medical evaluation</span></label>
+                    <label class="option selected"><input type="radio" name="q6198" checked /><span class="option-id">B</span><span>Living donors are never medically evaluated before donation</span></label>
+                    <label class="option"><input type="radio" name="q6198" /><span class="option-id">C</span><span>Deceased-donor organs always function better than any living-donor organ</span></label>
+                    <label class="option"><input type="radio" name="q6198" /><span class="option-id">D</span><span>Living donation eliminates the need for any immunosuppression after transplant</span></label>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="thumb-toolbar exam">
+                <button class="btn btn-icon" type="button" aria-label="Previous">←</button>
+                <div class="center-actions">
+                  <button class="btn btn-secondary btn-sm" type="button">Grid</button>
+                  <button class="btn btn-exam" type="button">Next</button>
+                </div>
+                <button class="btn btn-icon" type="button" aria-label="Next item">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 Study flashcard cctc-1081 -->
+      <section class="screen" id="screen-05" data-od-id="screen-05" data-screen-label="05 Study flashcard">
+        <div class="screen-label">05 · Active study question — flashcard reveal</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen" id="flashcard-demo">
+              <div class="status-bar"><span>9:41</span><span>Study</span></div>
+              <header class="app-header compact">
+                <div class="session-chips">
+                  <span class="chip study">Flashcard</span>
+                  <span class="chip muted"><span class="num">12</span>/<span class="num">25</span></span>
+                </div>
+                <button class="btn btn-icon" type="button" aria-label="Flag item" style="border-color:color-mix(in oklab,var(--accent) 40%,var(--border));">⚑</button>
+              </header>
+              <div class="phone-main has-toolbar">
+                <div class="flashcard-stack">
+                  <div class="flashcard" id="flashcard" role="group" aria-label="Study flashcard">
+                    <div class="flash-face front">
+                      <div class="flash-meta"><span class="num">cctc-1081</span><span>Domain 1</span></div>
+                      <p class="flash-stem">When counseling a transplant candidate about pretransplant immunizations, why is early vaccination emphasized in standard references?</p>
+                      <fieldset class="options" aria-label="Answer choices">
+                        <label class="option selected"><input type="radio" name="q1081" checked /><span class="option-id">A</span><span>Vaccine response may be diminished with organ failure and further reduced after immunosuppression</span></label>
+                        <label class="option"><input type="radio" name="q1081" /><span class="option-id">B</span><span>All live vaccines are preferred immediately after transplantation</span></label>
+                        <label class="option"><input type="radio" name="q1081" /><span class="option-id">C</span><span>Immunizations are unnecessary before transplant if the candidate feels well</span></label>
+                        <label class="option"><input type="radio" name="q1081" /><span class="option-id">D</span><span>Post-transplant vaccines always produce stronger immunity than pretransplant doses</span></label>
+                      </fieldset>
+                      <p class="flash-hint">Tap Reveal when ready — swipe up on explanation</p>
+                    </div>
+                    <div class="flash-face back" aria-hidden="true">
+                      <div class="reveal-panel">
+                        <span class="reveal-badge">✓ Correct — A</span>
+                        <p class="reveal-text">Candidates and recipients are at increased infection risk; response to many vaccines is diminished in organ failure, and transplant recipients may have suboptimal vaccination responses due to immunosuppression, so immunizations should be updated before transplantation when possible.</p>
+                        <div class="refs">
+                          <h4>References</h4>
+                          <ol>
+                            <li>Core Curriculum for Transplant Nurses, 2nd ed. (Cupples et al., 2016). Ch. 5 → Immunizations → A.2.–4. (diminished vaccine response with organ failure/immunosuppression; update before transplant); PDF p. 180.</li>
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="thumb-toolbar study" id="flash-toolbar">
+                <button class="btn btn-primary study btn-reveal" type="button" id="btn-reveal">Reveal answer</button>
+              </div>
+              <div class="thumb-toolbar study" id="flash-toolbar-next" hidden>
+                <button class="btn btn-icon" type="button" aria-label="Previous card">←</button>
+                <div class="center-actions">
+                  <button class="btn btn-secondary" type="button" id="btn-hide">Hide</button>
+                  <button class="btn btn-primary study" type="button">Next card</button>
+                </div>
+                <button class="btn btn-icon" type="button" aria-label="Flag">⚑</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 Combo cctc-1011 -->
+      <section class="screen" id="screen-06" data-od-id="screen-06" data-screen-label="06 Combo">
+        <div class="screen-label">06 · Complex-combo question</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen exam-mode">
+              <div class="status-bar"><span>9:41</span><span class="num">1:18:04</span></div>
+              <header class="app-header compact">
+                <div class="session-chips">
+                  <span class="chip exam">Exam</span>
+                  <span class="chip muted"><span class="num">28</span>/<span class="num">75</span></span>
+                </div>
+              </header>
+              <div class="phone-main has-toolbar">
+                <p class="num" style="font-size:10px;color:var(--exam-muted);margin-bottom:10px;">cctc-1011 · Complex multiple-choice</p>
+                <div class="exam-card">
+                  <p class="exam-stem">A coordinator is revising the post-discharge call guide for recipients and caregivers. Evaluate the following statements about when to contact the transplant team:</p>
+                  <div class="combo-elements">
+                    <ol style="margin:0;padding-left:18px;">
+                      <li><span class="combo-tag">I</span>Medication refill requests are examples of non-urgent matters.</li>
+                      <li><span class="combo-tag">II</span>Signs and symptoms of rejection are urgent matters.</li>
+                      <li><span class="combo-tag">III</span>General concerns about diet, activity, and exercise are urgent matters.</li>
+                      <li><span class="combo-tag">IV</span>Shortness of breath is an urgent matter.</li>
+                    </ol>
+                  </div>
+                  <p class="select-all-note">Select the one answer that identifies all correct statements.</p>
+                  <fieldset class="options exam-mode" aria-label="Combination answer choices">
+                    <label class="option"><input type="radio" name="q1011" /><span class="option-id">A</span><span>I and II only</span></label>
+                    <label class="option selected"><input type="radio" name="q1011" checked /><span class="option-id">B</span><span>I, II, and IV only</span></label>
+                    <label class="option"><input type="radio" name="q1011" /><span class="option-id">C</span><span>II and III only</span></label>
+                    <label class="option"><input type="radio" name="q1011" /><span class="option-id">D</span><span>I, II, III, and IV</span></label>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="thumb-toolbar exam">
+                <button class="btn btn-icon" type="button" aria-label="Previous">←</button>
+                <div class="center-actions">
+                  <button class="btn btn-secondary btn-sm" type="button">Grid</button>
+                  <button class="btn btn-exam" type="button">Next</button>
+                </div>
+                <button class="btn btn-icon" type="button" aria-label="Next">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 Navigator -->
+      <section class="screen" id="screen-07" data-od-id="screen-07" data-screen-label="07 Navigator">
+        <div class="screen-label">07 · Question navigator</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen exam-mode" style="display:flex;flex-direction:column;">
+              <div class="status-bar"><span>9:41</span><span>Navigator</span></div>
+              <div class="modal-scrim" style="flex:1;">
+                <div class="modal-sheet">
+                  <div class="modal-handle" aria-hidden="true"></div>
+                  <h2>Jump to item</h2>
+                  <p><span class="num">3</span> unanswered · <span class="num">2</span> flagged · item <span class="num">47</span> current</p>
+                  <div class="nav-grid" role="grid" aria-label="Question grid">
+                    <button class="nav-cell" type="button">1</button>
+                    <button class="nav-cell" type="button">2</button>
+                    <button class="nav-cell flagged" type="button" aria-label="Item 3 flagged">3</button>
+                    <button class="nav-cell" type="button">4</button>
+                    <button class="nav-cell unanswered" type="button" aria-label="Item 5 unanswered">5</button>
+                    <button class="nav-cell" type="button">6</button>
+                    <button class="nav-cell" type="button">7</button>
+                    <button class="nav-cell" type="button">8</button>
+                    <button class="nav-cell" type="button">9</button>
+                    <button class="nav-cell current" type="button" aria-current="true">47</button>
+                    <button class="nav-cell" type="button">48</button>
+                    <button class="nav-cell flagged" type="button">49</button>
+                    <button class="nav-cell unanswered" type="button">50</button>
+                    <button class="nav-cell" type="button">51</button>
+                    <button class="nav-cell" type="button">52</button>
+                  </div>
+                  <div class="nav-legend">
+                    <span><span class="legend-dot" style="background:var(--brand);"></span>Current</span>
+                    <span><span class="legend-dot" style="border:2px dashed var(--accent);background:transparent;"></span>Unanswered</span>
+                    <span><span class="legend-dot" style="background:var(--warn);"></span>Flagged</span>
+                  </div>
+                  <button class="btn btn-exam btn-block" type="button" style="margin-top:20px;">Submit exam</button>
+                  <button class="btn btn-ghost btn-block" type="button" style="margin-top:8px;">Return to question</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 Submit -->
+      <section class="screen" id="screen-08" data-od-id="screen-08" data-screen-label="08 Submit">
+        <div class="screen-label">08 · Submit confirmation</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen exam-mode" style="display:flex;flex-direction:column;">
+              <div class="status-bar"><span>9:41</span></div>
+              <div class="modal-scrim" style="flex:1;">
+                <div class="modal-sheet" role="dialog" aria-labelledby="submit-title" aria-modal="true">
+                  <div class="modal-handle" aria-hidden="true"></div>
+                  <h2 id="submit-title">Submit practice exam?</h2>
+                  <p>You have <strong class="num">3</strong> unanswered and <strong class="num">2</strong> flagged. Review or submit now.</p>
+                  <ul style="font-size:var(--text-sm);color:var(--muted);margin:0 0 16px;padding-left:18px;line-height:1.5;">
+                    <li>Unanswered: 5, 22, 61</li>
+                    <li>Flagged: 3, 49</li>
+                  </ul>
+                  <button class="btn btn-secondary btn-block" type="button">Review navigator</button>
+                  <button class="btn btn-exam btn-block" type="button" style="margin-top:10px;">Submit answers</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 Score -->
+      <section class="screen" id="screen-09" data-od-id="screen-09" data-screen-label="09 Score">
+        <div class="screen-label">09 · Score report</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="status-bar"><span>9:41</span><span>Complete</span></div>
+              <header class="app-header compact">
+                <span class="app-logo">Session complete</span>
+              </header>
+              <div class="phone-main has-toolbar">
+                <p class="num" style="font-size:10px;color:var(--muted);text-align:center;margin-bottom:8px;">Practice estimate</p>
+                <div class="score-ring"><span class="val num">78%</span></div>
+                <p style="font-size:var(--text-xs);color:var(--muted);text-align:center;max-width:28ch;margin:0 auto 20px;">Unofficial practice estimate — not an ABTC or PSI exam result.</p>
+                <h3 style="font-size:var(--text-sm);font-family:var(--font-body);font-weight:600;margin-bottom:8px;">Category breakdown</h3>
+                <div class="cat-bars">
+                  <div class="cat-row">
+                    <span>1 — Patient &amp; family education</span><span class="num">82%</span>
+                    <div class="bar"><span style="width:82%;"></span></div>
+                  </div>
+                  <div class="cat-row">
+                    <span>2 — Pre-transplant coordination</span><span class="num">71%</span>
+                    <div class="bar"><span style="width:71%;"></span></div>
+                  </div>
+                  <div class="cat-row">
+                    <span>3 — Post-transplant care</span><span class="num">76%</span>
+                    <div class="bar"><span style="width:76%;"></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="thumb-toolbar study">
+                <div class="center-actions" style="grid-column:1/-1;">
+                  <button class="btn btn-primary study" type="button">Study weak areas</button>
+                  <button class="btn btn-secondary" type="button">History</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 History -->
+      <section class="screen" id="screen-10" data-od-id="screen-10" data-screen-label="10 History">
+        <div class="screen-label">10 · History / trends</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="status-bar"><span>9:41</span></div>
+              <header class="app-header compact">
+                <button class="btn btn-ghost btn-sm" type="button">← Home</button>
+                <span style="font-size:var(--text-sm);font-weight:600;">Score history</span>
+              </header>
+              <div class="phone-main">
+                <h2 style="font-size:var(--text-lg);margin-bottom:4px;">Last 8 sessions</h2>
+                <p style="color:var(--muted);font-size:var(--text-xs);margin-bottom:4px;">Tap a row for category drill-down</p>
+                <div class="spark-row" aria-hidden="true">
+                  <div class="spark-bar" style="height:55%;"><span>68</span></div>
+                  <div class="spark-bar" style="height:62%;"><span>71</span></div>
+                  <div class="spark-bar" style="height:58%;"><span>69</span></div>
+                  <div class="spark-bar" style="height:70%;"><span>74</span></div>
+                  <div class="spark-bar" style="height:65%;"><span>72</span></div>
+                  <div class="spark-bar" style="height:75%;"><span>76</span></div>
+                  <div class="spark-bar" style="height:72%;"><span>75</span></div>
+                  <div class="spark-bar active" style="height:78%;"><span>78</span></div>
+                </div>
+                <div class="history-list">
+                  <button class="history-item" type="button">
+                    <span>Jun 22 · Exam · <span class="num">75</span> items</span>
+                    <span class="score">78%</span>
+                  </button>
+                  <button class="history-item" type="button">
+                    <span>Jun 20 · Study · <span class="num">25</span> cards</span>
+                    <span class="score">76%</span>
+                  </button>
+                  <button class="history-item" type="button">
+                    <span>Jun 18 · Exam · <span class="num">50</span> items</span>
+                    <span class="score">72%</span>
+                  </button>
+                </div>
+                <p class="disclaimer-inline">Domain 2 (Pre-transplant) trending lowest — suggested Study deck: cctc-2004, cctc-3019.</p>
+              </div>
+              <nav class="bottom-nav" aria-label="App navigation">
+                <button type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1V9.5z"/></svg>Home</button>
+                <button type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/></svg>Study</button>
+                <button type="button" class="active" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>History</button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 Flag cctc-6198 -->
+      <section class="screen" id="screen-11" data-od-id="screen-11" data-screen-label="11 Flag">
+        <div class="screen-label">11 · Item flag dialog</div>
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen exam-mode" style="display:flex;flex-direction:column;">
+              <div class="status-bar"><span>9:41</span></div>
+              <div class="modal-scrim" style="flex:1;">
+                <div class="modal-sheet" role="dialog" aria-labelledby="flag-title" aria-modal="true">
+                  <div class="modal-handle" aria-hidden="true"></div>
+                  <h2 id="flag-title">Flag item <span class="num">cctc-6198</span></h2>
+                  <p>Help improve the question bank. Flags export for SME review via email handoff.</p>
+                  <form class="form-stack">
+                    <div class="field">
+                      <label>Reason</label>
+                      <div class="pill-row">
+                        <label class="pill-opt"><input type="radio" name="flag-reason" /> Factual error</label>
+                        <label class="pill-opt"><input type="radio" name="flag-reason" /> Outdated policy</label>
+                        <label class="pill-opt"><input type="radio" name="flag-reason" checked /> Ambiguous</label>
+                        <label class="pill-opt"><input type="radio" name="flag-reason" /> Typo</label>
+                        <label class="pill-opt"><input type="radio" name="flag-reason" /> Broken link</label>
+                        <label class="pill-opt"><input type="radio" name="flag-reason" /> Other</label>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="flag-note">Optional note</label>
+                      <textarea id="flag-note" rows="3" placeholder="Describe the issue for reviewers…" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);font:inherit;resize:vertical;"></textarea>
+                    </div>
+                    <button class="btn btn-exam btn-block" type="button">Save flag</button>
+                    <button class="btn btn-ghost btn-block" type="button">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var card = document.getElementById('flashcard');
+      var btnReveal = document.getElementById('btn-reveal');
+      var btnHide = document.getElementById('btn-hide');
+      var toolbarReveal = document.getElementById('flash-toolbar');
+      var toolbarNext = document.getElementById('flash-toolbar-next');
+      var backFace = card && card.querySelector('.flash-face.back');
+
+      function reveal() {
+        if (!card) return;
+        card.classList.add('revealed');
+        if (backFace) backFace.setAttribute('aria-hidden', 'false');
+        toolbarReveal.hidden = true;
+        toolbarNext.hidden = false;
+      }
+      function hide() {
+        if (!card) return;
+        card.classList.remove('revealed');
+        if (backFace) backFace.setAttribute('aria-hidden', 'true');
+        toolbarReveal.hidden = false;
+        toolbarNext.hidden = true;
+      }
+      if (btnReveal) btnReveal.addEventListener('click', reveal);
+      if (btnHide) btnHide.addEventListener('click', hide);
+
+      var nav = document.querySelector('.screen-nav');
+      var sections = document.querySelectorAll('.screen[id^="screen-"]');
+      if (nav && sections.length) {
+        var links = nav.querySelectorAll('a[data-screen]');
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var id = entry.target.id.replace('screen-', '');
+              links.forEach(function (a) {
+                a.setAttribute('aria-current', a.getAttribute('data-screen') === id ? 'true' : 'false');
+              });
+            }
+          });
+        }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+        sections.forEach(function (s) { observer.observe(s); });
+      }
+    })();
+  </script>
+</body>
+</html>

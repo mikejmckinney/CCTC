@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "docs/design/artifacts/direction-c-mobile-flashcard/index.html",
+  "entry": "docs/design/artifacts/direction-c-mobile-flashcard/index.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-22T23:41:49.199Z",
+  "updatedAt": "2026-06-22T23:41:49.199Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

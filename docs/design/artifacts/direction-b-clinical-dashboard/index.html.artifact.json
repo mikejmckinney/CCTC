@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "docs/design/artifacts/direction-b-clinical-dashboard/index.html",
+  "entry": "docs/design/artifacts/direction-b-clinical-dashboard/index.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-22T23:35:17.373Z",
+  "updatedAt": "2026-06-22T23:35:17.373Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}
