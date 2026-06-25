@@ -19,13 +19,17 @@ read_lock() {
 
 expand_home() {
   local path="$1"
-  if [[ "$path" == '~/'* ]]; then
-    printf '%s\n' "$HOME/${path:2}"
-  elif [[ "$path" == '~' ]]; then
-    printf '%s\n' "$HOME"
-  else
-    printf '%s\n' "$path"
-  fi
+  case $path in
+    ~)
+      printf '%s\n' "$HOME"
+      ;;
+    ~/*)
+      printf '%s\n' "$HOME/${path#~/}"
+      ;;
+    *)
+      printf '%s\n' "$path"
+      ;;
+  esac
 }
 
 OD_REPO="${OD_REPO:-$(read_lock repo)}"
