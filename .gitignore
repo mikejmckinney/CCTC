@@ -67,6 +67,7 @@ blob-report/
 # --- Optional Open Design vendor clone at repo root (use ~/.cache/cctc-tools/open-design instead) ---
 /open-design/
 /~/
+.od-skills/
 
 # --- README demo media outputs (sources committed; binaries hosted on GitHub) ---
 docs/media/readme-demos/.outputs/

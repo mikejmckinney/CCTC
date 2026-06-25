@@ -19,7 +19,9 @@ const PREVIEW_PORT = 4173;
 const BASE_URL = `http://${PREVIEW_HOST}:${PREVIEW_PORT}`;
 const MIN_QUESTIONS = 10;
 const VIEWPORT = { width: 1920, height: 1080 };
-const SLOW_MO_MS = 120;
+const SLOW_MO_MS = 100;
+const MOUSE_STEPS = 28;
+const TYPE_DELAY_MS = 85;
 const DEMO_ORDER = [
   '01-setup',
   '02-study-mode',
@@ -29,53 +31,126 @@ const DEMO_ORDER = [
   '00-hero-overview'
 ];
 
+/** Visible pointer for Playwright video (OS cursor is not recorded). */
+const DEMO_CURSOR_INIT = () => {
+  if (document.getElementById('cctc-demo-cursor')) {
+    return;
+  }
+  const cursor = document.createElement('div');
+  cursor.id = 'cctc-demo-cursor';
+  cursor.style.cssText = [
+    'position:fixed',
+    'width:18px',
+    'height:18px',
+    'border-radius:50%',
+    'background:rgba(215,149,72,0.95)',
+    'border:2px solid rgba(18,59,58,0.9)',
+    'box-shadow:0 2px 10px rgba(0,0,0,0.28)',
+    'pointer-events:none',
+    'z-index:2147483647',
+    'transform:translate(-50%,-50%)',
+    'left:-80px',
+    'top:-80px',
+    'transition:left 45ms linear,top 45ms linear'
+  ].join(';');
+  document.documentElement.appendChild(cursor);
+  document.addEventListener(
+    'mousemove',
+    (event) => {
+      cursor.style.left = `${event.clientX}px`;
+      cursor.style.top = `${event.clientY}px`;
+    },
+    { passive: true }
+  );
+};
+
 function pacing(page) {
   const pause = (ms = 600) => page.waitForTimeout(ms);
-  const clickChoice = async (locator) => {
+
+  const moveToLocator = async (locator, steps = MOUSE_STEPS) => {
+    await locator.scrollIntoViewIfNeeded();
     const box = await locator.boundingBox();
-    if (box) {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2, { steps: 12 });
+    if (!box) {
+      return null;
     }
-    await pause(250);
-    await locator.click();
-    await pause(500);
+    const x = box.x + box.width / 2;
+    const y = box.y + box.height / 2;
+    await page.mouse.move(x, y, { steps });
+    return { x, y };
   };
-  const fillChoice = async (locator, value) => {
-    await locator.click();
-    await pause(200);
-    await locator.fill(String(value));
-    await pause(400);
+
+  const clickChoice = async (locator) => {
+    await moveToLocator(locator);
+    await pause(300);
+    await locator.hover();
+    await pause(180);
+    await page.mouse.down();
+    await pause(90);
+    await page.mouse.up();
+    await pause(520);
   };
-  return { pause, clickChoice, fillChoice };
+
+  const typeSlowly = async (locator, value) => {
+    await moveToLocator(locator);
+    await locator.click({ clickCount: 3 });
+    await pause(220);
+    await locator.pressSequentially(String(value), { delay: TYPE_DELAY_MS });
+    await pause(450);
+  };
+
+  const selectMode = async (mode) => {
+    const combobox = page.getByRole('combobox', { name: 'Mode', exact: true });
+    await moveToLocator(combobox);
+    await combobox.click();
+    await pause(350);
+    const current = await combobox.inputValue();
+    if (current !== mode) {
+      await page.keyboard.press(mode === 'study' ? 'ArrowDown' : 'ArrowUp');
+      await pause(280);
+    }
+    const selected = await combobox.inputValue();
+    if (selected !== mode) {
+      await combobox.selectOption(mode);
+    }
+    await pause(420);
+  };
+
+  const toggleCheckbox = async (labelText) => {
+    const checkbox = page.getByRole('checkbox', { name: labelText });
+    await clickChoice(checkbox);
+  };
+
+  return { pause, clickChoice, typeSlowly, selectMode, toggleCheckbox };
 }
 
 async function ensureAppReady(page) {
   await page.getByText('Loading local study data').waitFor({ state: 'hidden', timeout: 60_000 });
 }
 
-async function dismissDisclaimer(page) {
+async function dismissDisclaimer(page, { clickChoice, pause }) {
   const modal = page.getByLabel('Study aid disclaimer');
   try {
     await modal.waitFor({ state: 'visible', timeout: 5_000 });
-    await page.getByRole('button', { name: 'I understand' }).click();
+    await clickChoice(page.getByRole('button', { name: 'I understand' }));
     await modal.waitFor({ state: 'hidden' });
+    await pause(400);
   } catch {
     // already dismissed
   }
 }
 
-async function prepareHome(page, { pause }) {
+async function prepareHome(page, helpers) {
+  const { pause } = helpers;
   await page.goto('./');
   await ensureAppReady(page);
-  await dismissDisclaimer(page);
+  await dismissDisclaimer(page, helpers);
   await page.getByRole('heading', { name: /build a practice session/i }).waitFor();
   await pause(1200);
 }
 
-async function startSession(page, { pause, clickChoice, fillChoice }, { mode = 'study', count = MIN_QUESTIONS } = {}) {
-  await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption(mode);
-  await pause(400);
-  await fillChoice(page.getByRole('spinbutton', { name: /^Question count/i }), count);
+async function startSession(page, { pause, clickChoice, typeSlowly, selectMode }, { mode = 'study', count = MIN_QUESTIONS } = {}) {
+  await selectMode(mode);
+  await typeSlowly(page.getByRole('spinbutton', { name: /^Question count/i }), count);
   await clickChoice(page.getByRole('button', { name: /Start session/i }));
   await page.getByRole('heading', { name: /Item 1 of/i }).waitFor();
   await pause(800);
@@ -99,6 +174,7 @@ async function launchBrowser({ recordDir } = {}) {
       ? { dir: recordDir, size: { width: VIEWPORT.width, height: VIEWPORT.height } }
       : undefined
   });
+  await context.addInitScript(DEMO_CURSOR_INIT);
   const page = await context.newPage();
   page.on('dialog', (dialog) => dialog.accept());
   return { browser, context, page };
@@ -181,11 +257,12 @@ async function waitForPreview() {
 }
 
 const demos = {
-  async '01-setup'(page, { pause, clickChoice, fillChoice }) {
-    await prepareHome(page, { pause });
-    await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('exam');
-    await pause(500);
-    await fillChoice(page.getByRole('spinbutton', { name: /^Question count/i }), 25);
+  async '01-setup'(page, helpers) {
+    const { pause, selectMode, typeSlowly, toggleCheckbox } = helpers;
+    await prepareHome(page, helpers);
+    await selectMode('exam');
+    await typeSlowly(page.getByRole('spinbutton', { name: /^Question count/i }), 25);
+    await toggleCheckbox('Timed session');
     await pause(800);
     await page.getByText('Timer enabled').waitFor({ timeout: 2_000 }).catch(() => {});
     await pause(1200);
@@ -238,10 +315,9 @@ const demos = {
   },
 
   async '00-hero-overview'(page, helpers) {
-    const { pause, clickChoice } = helpers;
+    const { pause, clickChoice, selectMode } = helpers;
     await prepareHome(page, helpers);
-    await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
-    await pause(500);
+    await selectMode('study');
     await clickChoice(page.getByRole('button', { name: /Start session/i }));
     await clickChoice(page.getByRole('radio').first());
     await page.locator('.explanation-card').waitFor();
