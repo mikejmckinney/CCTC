@@ -1,6 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
 import { loadQuestionBanks } from '../data/questionBank';
+import {
+  buildReadinessScore,
+  buildFocusAreas,
+  buildRecentSessions,
+  collectIncorrectIds,
+  getBlueprintVersionLabel
+} from '../lib/dashboardStats';
 import { buildDefaultSettings, countAnswered, createSession, isBlueprintApplicable } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { buildCategoryHistoryTrend, listHistoryCategories } from '../lib/categoryHistoryTrend';
@@ -277,8 +284,14 @@ function App() {
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [sessionReplacePromptOpen, setSessionReplacePromptOpen] = useState(false);
   const [pendingSessionSettings, setPendingSessionSettings] = useState<SessionSettings | null>(null);
+  const [setupOpen, setSetupOpen] = useState(false);
   const lastPersistFingerprint = useRef('');
   const activeSessionRef = useRef<ActiveSession | null>(null);
+
+  const readiness = useMemo(() => buildReadinessScore(history), [history]);
+  const focusAreas = useMemo(() => buildFocusAreas(history), [history]);
+  const recentSessions = useMemo(() => buildRecentSessions(history), [history]);
+  const incorrectIds = useMemo(() => collectIncorrectIds(history), [history]);
 
   const allQuestions = useMemo(
     () => [...banks.standard.questions, ...banks.scenario.questions],
@@ -597,6 +610,40 @@ function App() {
     setView('session');
   }
 
+  function startQuickExam(): void {
+    const examSettings: SessionSettings = {
+      blueprintId: settings.blueprintId,
+      questionSet: 'standard',
+      questionCount: 25,
+      timed: true,
+      timeMinutes: 30,
+      showTimer: true,
+      mode: 'exam',
+      includeDrafts: false,
+      targetThreshold: settings.targetThreshold,
+    };
+    const recentIds = buildRecentItemIds(history.map((entry) => ({ itemIds: entry.itemIds })));
+    const nextSession = createSession(bank.questions, examSettings, recentIds);
+    setActiveSession(nextSession);
+    setView('session');
+  }
+
+  function startWeakAreas(): void {
+    const weakDomains = focusAreas.filter((area) => area.pct < settings.targetThreshold && area.total > 0);
+    const recentIds = buildRecentItemIds(history.map((entry) => ({ itemIds: entry.itemIds })));
+    const weakSettings: SessionSettings = {
+      ...settings,
+      mode: 'exam',
+      includeDrafts: false,
+      timed: true,
+      timeMinutes: 30,
+      questionCount: Math.min(25, availableQuestionCount),
+    };
+    const nextSession = createSession(bank.questions, weakSettings, recentIds, incorrectIds);
+    setActiveSession(nextSession);
+    setView('session');
+  }
+
   function startSession(): void {
     let nextSettings = settings;
 
@@ -885,160 +932,278 @@ function App() {
       <main id="main-content" className="main-grid">
         {view === 'home' && (
           <>
+            {/* Dashboard: Readiness + Focus Areas combined */}
+            <section className="panel panel--span-2 stack-gap">
+              <div className="section-heading">
+                <div>
+                  <p className="eyebrow">Dashboard</p>
+                  <h2>Readiness</h2>
+                </div>
+                <button className="ghost-button" onClick={() => setView('history')}>
+                  View full history →
+                </button>
+              </div>
+
+              {readiness.examCount === 0 ? (
+                <p className="status-card">Complete exam sessions to see your readiness score.</p>
+              ) : (
+                <div className="readiness-layout">
+                  <div className="readiness-donut-wrap">
+                    <div
+                      className="readiness-donut"
+                      style={{
+                        background: `conic-gradient(var(--brand) ${readiness.avg}%, rgba(16, 34, 36, 0.1) ${readiness.avg}%)`,
+                      }}
+                    >
+                      <div className="readiness-donut__inner">
+                        <span className="readiness-donut__score">{readiness.avg}%</span>
+                        {readiness.delta !== null && (
+                          <span className={`readiness-donut__delta ${readiness.delta >= 0 ? 'is-up' : 'is-down'}`}>
+                            {readiness.delta >= 0 ? '▲' : '▼'} {Math.abs(readiness.delta)} pts
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <p className="field-hint" style={{ textAlign: 'center' }}>
+                      Last {Math.min(readiness.examCount, 8)} exam{readiness.examCount > 1 ? 's' : ''}
+                    </p>
+                  </div>
+
+                  {focusAreas.length > 0 && (
+                    <div className="focus-areas">
+                      <p className="eyebrow">Focus areas</p>
+                      {focusAreas.slice(0, 6).map((area) => (
+                        <div key={area.categoryId} className="focus-bar-row">
+                          <div className="focus-bar-label">
+                            <span>{area.categoryLabel}</span>
+                            <span className="focus-bar-pct">{area.pct}%</span>
+                          </div>
+                          <div className="focus-bar-track">
+                            <div
+                              className={`focus-bar-fill ${area.pct < 50 ? 'is-low' : area.pct < 75 ? 'is-mid' : 'is-good'}`}
+                              style={{ width: `${area.pct}%` }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </section>
+
+            {/* Quick start row */}
             <section className="panel stack-gap">
               <div className="section-heading">
                 <div>
-                  <p className="eyebrow">Session setup</p>
-                  <h2>Build a practice session</h2>
+                  <p className="eyebrow">Quick start</p>
+                  <h2>Start a session</h2>
                 </div>
-                <span className="badge badge--soft">
-                  {settings.questionSet === 'scenario' ? 'Scenario' : 'Standard'} bank: {bank.questions.length} item(s)
-                </span>
               </div>
-
-              {bank.notes.length > 0 && (
-                <div className="notice-block">
-                  {bank.notes.map((note) => (
-                    <p key={note}>{note}</p>
-                  ))}
-                </div>
-              )}
-
-              <div className="settings-grid">
-                <label>
-                  Blueprint version
-                  <select value={settings.blueprintId} onChange={(event) => handleBlueprintChange(event.target.value as BlueprintId)}>
-                    <option value="cctc-from-2026-07">2026-07 (default)</option>
-                    <option value="cctc-thru-2026-06">Until 2026-06</option>
-                  </select>
-                </label>
-
-                <label>
-                  Question set
-                  <select value={settings.questionSet} onChange={(event) => handleQuestionSetChange(event.target.value as QuestionSet)}>
-                    <option value="standard">Standard bank</option>
-                    <option value="scenario">Scenario companions</option>
-                  </select>
-                  <span className="field-hint">
-                    Scenario companions are clinical vignettes paired 1:1 with the standard bank (506 target).
+              <div className="quick-start-grid">
+                <button className="quick-start-card" onClick={startQuickExam}>
+                  <strong>Quick Exam</strong>
+                  <span>25 items · 30 min · exam mode</span>
+                </button>
+                <button
+                  className="quick-start-card"
+                  onClick={startWeakAreas}
+                  disabled={incorrectIds.size === 0}
+                >
+                  <strong>Weak Areas</strong>
+                  <span>
+                    {incorrectIds.size > 0
+                      ? `${incorrectIds.size} missed items first`
+                      : 'No incorrect items yet'}
                   </span>
-                </label>
-
-                <label>
-                  Question count
-                  <input
-                    type="number"
-                    min={Math.min(QUESTION_MIN, Math.max(1, availableQuestionCount))}
-                    max={Math.max(availableQuestionCount, 1)}
-                    value={settings.questionCount}
-                    onChange={(event) => updateSettings({ questionCount: Number(event.target.value) || 0 })}
-                  />
-                  <span className="field-hint">Available for this configuration: {availableQuestionCount}</span>
-                </label>
-
-                <label>
-                  Timed session
-                  <div className="toggle-row">
-                    <input type="checkbox" checked={settings.timed} onChange={(event) => updateSettings({ timed: event.target.checked })} />
-                    <span>{settings.timed ? 'Timer enabled' : 'Untimed session'}</span>
-                  </div>
-                </label>
-
-                <label>
-                  Minutes
-                  <input
-                    type="number"
-                    min={1}
-                    value={settings.timeMinutes}
-                    onChange={(event) => updateSettings({ timeMinutes: Math.max(1, Number(event.target.value) || 1) })}
-                    disabled={!settings.timed}
-                  />
-                </label>
-
-                <label>
-                  On-screen timer
-                  <div className="toggle-row">
-                    <input type="checkbox" checked={settings.showTimer} onChange={(event) => updateSettings({ showTimer: event.target.checked })} />
-                    <span>{settings.showTimer ? 'Visible during session' : 'Hidden during session'}</span>
-                  </div>
-                </label>
-
-                <label>
-                  Mode
-                  <select value={settings.mode} onChange={(event) => handleModeChange(event.target.value as ExamMode)}>
-                    <option value="exam">Exam</option>
-                    <option value="study">Study</option>
-                  </select>
-                </label>
-
-                <label>
-                  Include draft items
-                  <div className="toggle-row">
-                    <input
-                      type="checkbox"
-                      checked={settings.includeDrafts}
-                      onChange={(event) => updateSettings({ includeDrafts: event.target.checked })}
-                      disabled={settings.mode === 'exam'}
-                    />
-                    <span>{settings.mode === 'exam' ? 'Exam mode defaults to reviewed-only' : 'Drafts remain visibly labeled'}</span>
-                  </div>
-                </label>
-
-                <label>
-                  Target threshold (%)
-                  <input
-                    type="number"
-                    min={1}
-                    max={100}
-                    value={settings.targetThreshold}
-                    onChange={(event) => updateSettings({ targetThreshold: Math.min(100, Math.max(1, Number(event.target.value) || 1)) })}
-                  />
-                  <span className="field-hint">Used only for the unofficial practice estimate label.</span>
-                </label>
-              </div>
-
-              <div className="summary-card">
-                <h3>Selected setup</h3>
-                <p><strong>Blueprint:</strong> {getBlueprintLabel(settings.blueprintId)}</p>
-                <p><strong>Question set:</strong> {settings.questionSet === 'scenario' ? 'Scenario companions' : 'Standard bank'}</p>
-                <p><strong>Mode:</strong> {settings.mode === 'exam' ? 'Exam mode' : 'Study mode'}</p>
-                <p><strong>Timer:</strong> {settings.timed ? `${settings.timeMinutes} minutes` : 'Untimed'}</p>
-                <p><strong>Draft handling:</strong> {settings.includeDrafts ? 'Drafts included and labeled' : 'Reviewed items only'}</p>
-                <p>
-                  <strong>Weighting:</strong> {currentBlueprint.structure === 'domain_task' ? 'Current blueprint domains' : 'Legacy blueprint sections via crosswalk'}
-                </p>
-              </div>
-
-              <div className="action-row">
-                {activeSession && (
-                  <button className="secondary-button" onClick={() => setView('session')}>
-                    Resume current session
-                  </button>
-                )}
-                {activeSession && (
-                  <button className="ghost-button" onClick={discardActiveSession}>
-                    Discard unfinished session
-                  </button>
-                )}
-                <button className="primary-button" onClick={startSession}>
-                  {activeSession ? 'Replace or resume session' : 'Start session'}
+                </button>
+                <button className="quick-start-card" onClick={startSession}>
+                  <strong>Custom Session</strong>
+                  <span>Use your current settings below</span>
                 </button>
               </div>
             </section>
 
+            {/* Recent sessions */}
             <section className="panel stack-gap">
               <div className="section-heading">
                 <div>
-                  <p className="eyebrow">Product constraints</p>
-                  <h2>v1 guardrails in the UI</h2>
+                  <p className="eyebrow">Recent activity</p>
+                  <h2>Recent sessions</h2>
                 </div>
+                <button className="ghost-button" onClick={() => setView('history')}>
+                  View all →
+                </button>
               </div>
-              <ul className="plain-list">
-                <li>Questions are static bundled JSON. No runtime model calls.</li>
-                <li>Raw scoring only. Pass-style labels are unofficial practice estimates.</li>
-                <li>Flags capture review feedback in IndexedDB and export as JSON; the app never mutates question files.</li>
-                <li>Example items prove both item formats while future shards auto-load outside underscore-prefixed paths.</li>
-              </ul>
+              {recentSessions.length === 0 ? (
+                <p className="status-card">No completed sessions yet.</p>
+              ) : (
+                <div className="recent-sessions-list">
+                  {recentSessions.map((rs) => (
+                    <div key={rs.id} className="recent-session-row">
+                      <div className="recent-session-row__main">
+                        <span className={`badge ${rs.percent >= 70 ? 'badge--success' : 'badge--warning'}`}>
+                          {rs.percent}%
+                        </span>
+                        <span className="badge badge--soft">{rs.mode}</span>
+                        <span className="recent-session-row__score">{rs.correct}/{rs.total} correct</span>
+                        {rs.durationSeconds !== null && (
+                          <span className="recent-session-row__duration">{formatDuration(rs.durationSeconds)}</span>
+                        )}
+                      </div>
+                      <span className="recent-session-row__date">{rs.date}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+
+            {/* Setup form (collapsible) */}
+            <section className="panel panel--span-2 stack-gap">
+              <button className="section-heading setup-toggle" onClick={() => setSetupOpen((prev) => !prev)}>
+                <div>
+                  <p className="eyebrow">Session setup</p>
+                  <h2>Customize session</h2>
+                </div>
+                <span className="setup-toggle__arrow">{setupOpen ? '▲' : '▼'}</span>
+              </button>
+
+              {setupOpen && (
+                <>
+                  <span className="badge badge--soft">
+                    {settings.questionSet === 'scenario' ? 'Scenario' : 'Standard'} bank: {bank.questions.length} item(s)
+                  </span>
+
+                  {bank.notes.length > 0 && (
+                    <div className="notice-block">
+                      {bank.notes.map((note) => (
+                        <p key={note}>{note}</p>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="settings-grid">
+                    <label>
+                      Blueprint version
+                      <select value={settings.blueprintId} onChange={(event) => handleBlueprintChange(event.target.value as BlueprintId)}>
+                        <option value="cctc-from-2026-07">2026-07 (default)</option>
+                        <option value="cctc-thru-2026-06">Until 2026-06</option>
+                      </select>
+                    </label>
+
+                    <label>
+                      Question set
+                      <select value={settings.questionSet} onChange={(event) => handleQuestionSetChange(event.target.value as QuestionSet)}>
+                        <option value="standard">Standard bank</option>
+                        <option value="scenario">Scenario companions</option>
+                      </select>
+                      <span className="field-hint">
+                        Scenario companions are clinical vignettes paired 1:1 with the standard bank (506 target).
+                      </span>
+                    </label>
+
+                    <label>
+                      Question count
+                      <input
+                        type="number"
+                        min={Math.min(QUESTION_MIN, Math.max(1, availableQuestionCount))}
+                        max={Math.max(availableQuestionCount, 1)}
+                        value={settings.questionCount}
+                        onChange={(event) => updateSettings({ questionCount: Number(event.target.value) || 0 })}
+                      />
+                      <span className="field-hint">Available for this configuration: {availableQuestionCount}</span>
+                    </label>
+
+                    <label>
+                      Timed session
+                      <div className="toggle-row">
+                        <input type="checkbox" checked={settings.timed} onChange={(event) => updateSettings({ timed: event.target.checked })} />
+                        <span>{settings.timed ? 'Timer enabled' : 'Untimed session'}</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      Minutes
+                      <input
+                        type="number"
+                        min={1}
+                        value={settings.timeMinutes}
+                        onChange={(event) => updateSettings({ timeMinutes: Math.max(1, Number(event.target.value) || 1) })}
+                        disabled={!settings.timed}
+                      />
+                    </label>
+
+                    <label>
+                      On-screen timer
+                      <div className="toggle-row">
+                        <input type="checkbox" checked={settings.showTimer} onChange={(event) => updateSettings({ showTimer: event.target.checked })} />
+                        <span>{settings.showTimer ? 'Visible during session' : 'Hidden during session'}</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      Mode
+                      <select value={settings.mode} onChange={(event) => handleModeChange(event.target.value as ExamMode)}>
+                        <option value="exam">Exam</option>
+                        <option value="study">Study</option>
+                      </select>
+                    </label>
+
+                    <label>
+                      Include draft items
+                      <div className="toggle-row">
+                        <input
+                          type="checkbox"
+                          checked={settings.includeDrafts}
+                          onChange={(event) => updateSettings({ includeDrafts: event.target.checked })}
+                          disabled={settings.mode === 'exam'}
+                        />
+                        <span>{settings.mode === 'exam' ? 'Exam mode defaults to reviewed-only' : 'Drafts remain visibly labeled'}</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      Target threshold (%)
+                      <input
+                        type="number"
+                        min={1}
+                        max={100}
+                        value={settings.targetThreshold}
+                        onChange={(event) => updateSettings({ targetThreshold: Math.min(100, Math.max(1, Number(event.target.value) || 1)) })}
+                      />
+                      <span className="field-hint">Used only for the unofficial practice estimate label.</span>
+                    </label>
+                  </div>
+
+                  <div className="summary-card">
+                    <h3>Selected setup</h3>
+                    <p><strong>Blueprint:</strong> {getBlueprintLabel(settings.blueprintId)}</p>
+                    <p><strong>Question set:</strong> {settings.questionSet === 'scenario' ? 'Scenario companions' : 'Standard bank'}</p>
+                    <p><strong>Mode:</strong> {settings.mode === 'exam' ? 'Exam mode' : 'Study mode'}</p>
+                    <p><strong>Timer:</strong> {settings.timed ? `${settings.timeMinutes} minutes` : 'Untimed'}</p>
+                    <p><strong>Draft handling:</strong> {settings.includeDrafts ? 'Drafts included and labeled' : 'Reviewed items only'}</p>
+                    <p>
+                      <strong>Weighting:</strong> {currentBlueprint.structure === 'domain_task' ? 'Current blueprint domains' : 'Legacy blueprint sections via crosswalk'}
+                    </p>
+                  </div>
+
+                  <div className="action-row">
+                    {activeSession && (
+                      <button className="secondary-button" onClick={() => setView('session')}>
+                        Resume current session
+                      </button>
+                    )}
+                    {activeSession && (
+                      <button className="ghost-button" onClick={discardActiveSession}>
+                        Discard unfinished session
+                      </button>
+                    )}
+                    <button className="primary-button" onClick={startSession}>
+                      {activeSession ? 'Replace or resume session' : 'Start session'}
+                    </button>
+                  </div>
+                </>
+              )}
             </section>
           </>
         )}
@@ -1223,10 +1388,20 @@ function App() {
                 history.map((entry) => (
                   <article key={entry.id} className="history-card">
                     <div>
-                      <h3>{getBlueprintLabel(entry.settings.blueprintId)}</h3>
+                      <div className="history-card__header">
+                        <h3>{getBlueprintLabel(entry.settings.blueprintId)}</h3>
+                        <span className="badge badge--soft">{getBlueprintVersionLabel(entry.settings.blueprintId)}</span>
+                      </div>
                       <p>
                         {new Date(entry.completedAt).toLocaleString()} · {entry.settings.mode} · {entry.result.correct}/{entry.result.total} correct · {entry.result.percent}%
                       </p>
+                      <div className="domain-pills-row">
+                        {entry.result.breakdown.map((bd) => (
+                          <span key={bd.categoryId} className="domain-pill">
+                            {bd.categoryLabel}: {bd.correct}/{bd.total}
+                          </span>
+                        ))}
+                      </div>
                       <p>
                         Unofficial practice estimate: {entry.result.estimatedPass ? 'at or above' : 'below'} your {entry.settings.targetThreshold}% target.
                       </p>
