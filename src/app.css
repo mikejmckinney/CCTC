@@ -670,6 +670,58 @@ button:focus:not(:focus-visible),
   font-size: 0.92rem;
 }
 
+.results-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 20px;
+  background: rgba(18, 59, 58, 0.06);
+  border: 1px solid rgba(18, 59, 58, 0.12);
+}
+
+.results-hero__percent {
+  display: block;
+  font-size: 2.5rem;
+  font-family: "Fraunces", Georgia, serif;
+  color: var(--brand);
+}
+
+.results-hero__score,
+.results-hero__estimate,
+.results-hero__time {
+  text-align: center;
+}
+
+.breakdown-card {
+  padding: 1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--line);
+}
+
+.breakdown-card h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 0.95rem;
+  margin: 0 0 0.35rem;
+}
+
+.breakdown-card__score {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ink);
+}
+
+.breakdown-card--weakest {
+  border-color: rgba(215, 149, 72, 0.5);
+  background: rgba(215, 149, 72, 0.08);
+}
+
+.breakdown-card__drill {
+  margin-top: 0.75rem;
+}
+
 .settings-grid--compact {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }

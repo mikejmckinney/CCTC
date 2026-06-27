@@ -1,6 +1,6 @@
 import type { BlueprintId, ExamMode, FlagReason, Question } from '../../types/exam';
 
-export type View = 'home' | 'session' | 'history' | 'history-detail' | 'flags';
+export type View = 'home' | 'session' | 'results' | 'history' | 'history-detail' | 'flags';
 
 export interface FlagDraft {
   existingId?: string;
