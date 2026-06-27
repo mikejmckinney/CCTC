@@ -32,19 +32,18 @@ export function SessionRunner({
   return (
     <>
       <section className="panel panel--span-2 stack-gap">
-        <div className="section-heading">
-          <div>
+        <div className="session-header">
+          <div className="session-header__main">
             <p className="eyebrow">{session.settings.mode === 'exam' ? 'Exam session' : 'Study session'}</p>
             <h2>
               Item {session.currentIndex + 1} of {session.items.length}
             </h2>
           </div>
-          <div className="session-stats">
-            <span className="badge">Answered {answeredCount}</span>
-            <span className="badge">Remaining {session.items.length - answeredCount}</span>
-            <span className="badge">Bookmarks {session.flaggedForReview.length}</span>
+          <div className="session-header__meta">
+            <span className="badge badge--compact">{answeredCount} answered</span>
+            <span className="badge badge--compact">{session.flaggedForReview.length} bookmarked</span>
             {session.settings.timed && (
-              <button className="pill" onClick={toggleTimerHidden}>
+              <button className="pill pill--compact" onClick={toggleTimerHidden}>
                 {session.timerHidden ? 'Show timer' : formatDuration(session.remainingSeconds)}
               </button>
             )}
@@ -59,7 +58,7 @@ export function SessionRunner({
           </div>
         )}
 
-        <article className="question-card">
+        <article className="question-card question-card--hero">
           <div className="question-meta">
             <span className="badge badge--soft">{currentItem.categoryLabel}</span>
             <span className={currentItem.question.status === 'draft' ? 'badge badge--warning' : 'badge badge--success'}>
@@ -68,7 +67,7 @@ export function SessionRunner({
             <span className="badge badge--soft">{currentItem.question.type === 'one_best' ? 'Single best answer' : 'Complex combo'}</span>
           </div>
 
-          <h3>{currentItem.question.stem}</h3>
+          <h3 className="question-stem">{currentItem.question.stem}</h3>
 
           {currentItem.question.elements && (
             <ol className="element-list">
@@ -132,28 +131,30 @@ export function SessionRunner({
           )}
         </article>
 
-        <div className="action-row action-row--spread session-toolbar">
-          <div className="action-row">
-            <button className="secondary-button" onClick={() => navigateSession(-1)} disabled={session.currentIndex === 0}>
-              Previous
-            </button>
-            <button className="secondary-button" onClick={() => navigateSession(1)} disabled={session.currentIndex === session.items.length - 1}>
-              Next
-            </button>
-          </div>
-          <div className="action-row">
-            <button className="ghost-button" onClick={toggleBookmark}>
-              {session.flaggedForReview.includes(currentItem.itemId) ? 'Remove bookmark' : 'Bookmark item'}
-            </button>
-            <button className="ghost-button" onClick={openFlagComposer}>
-              Flag this item
-            </button>
-            <button className="primary-button" onClick={() => void finalizeSession()} disabled={isFinalizing}>
-              {session.settings.mode === 'exam' ? 'Submit exam' : 'Complete session'}
-            </button>
-          </div>
-        </div>
+        <div className="session-toolbar-spacer" />
       </section>
+
+      <div className="session-toolbar" role="toolbar" aria-label="Session controls">
+        <div className="action-row">
+          <button className="secondary-button" onClick={() => navigateSession(-1)} disabled={session.currentIndex === 0}>
+            Previous
+          </button>
+          <button className="secondary-button" onClick={() => navigateSession(1)} disabled={session.currentIndex === session.items.length - 1}>
+            Next
+          </button>
+        </div>
+        <div className="action-row">
+          <button className="ghost-button" onClick={toggleBookmark}>
+            {session.flaggedForReview.includes(currentItem.itemId) ? 'Remove bookmark' : 'Bookmark item'}
+          </button>
+          <button className="ghost-button" onClick={openFlagComposer}>
+            Flag this item
+          </button>
+          <button className="primary-button" onClick={() => void finalizeSession()} disabled={isFinalizing}>
+            {session.settings.mode === 'exam' ? 'Submit exam' : 'Complete session'}
+          </button>
+        </div>
+      </div>
 
       <section className="panel stack-gap">
         <div className="section-heading">

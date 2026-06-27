@@ -543,6 +543,44 @@ button:focus:not(:focus-visible),
   box-shadow: var(--shadow);
 }
 
+.session-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.session-header__meta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.badge--compact {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.pill--compact {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.question-card--hero {
+  padding: 1.5rem;
+}
+
+.question-stem {
+  font-size: 1.12rem;
+  line-height: 1.55;
+}
+
+.session-toolbar-spacer {
+  min-height: 80px;
+}
+
 .option-button,
 .pill,
 .primary-button,
@@ -691,18 +729,24 @@ button:focus:not(:focus-visible),
   }
 
   .session-toolbar {
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 5;
+    border-radius: 20px 20px 0 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0.65rem;
     padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
-    margin-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   .session-toolbar .action-row {
     width: 100%;
     justify-content: stretch;
+  }
+
+  .session-toolbar-spacer {
+    min-height: 180px;
   }
 }
