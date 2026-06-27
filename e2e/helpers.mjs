@@ -38,9 +38,10 @@ export async function readSessionItemTotal(page) {
 export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
-  await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /session setup/i })).toBeVisible();
 
   await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
+  await page.getByRole('button', { name: /advanced settings/i }).click();
   await page.getByRole('spinbutton', { name: /^Question count/i }).fill(String(questionCount));
   await page.getByRole('button', { name: 'Start session' }).click();
 

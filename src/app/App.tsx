@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
+import { getBlueprint } from '../data/blueprints';
 import { loadQuestionBanks } from '../data/questionBank';
-import { buildDefaultSettings, countAnswered, createSession, isBlueprintApplicable } from '../lib/sessionAssembly';
+import { buildDefaultSettings, countAnswered, createSession } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { buildCategoryHistoryTrend, listHistoryCategories } from '../lib/categoryHistoryTrend';
-import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
+import { buildHistoryTrend } from '../lib/historyTrend';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
 import {
   bootstrapState,
@@ -28,7 +28,6 @@ import type {
   HistoryEntry,
   ItemFlag,
   Question,
-  SessionItemSnapshot,
   SessionSettings,
   QuestionSet
 } from '../types/exam';
@@ -47,6 +46,7 @@ import { SessionRunner } from './components/SessionRunner';
 import { ProgressHistory } from './components/ProgressHistory';
 import { HistoryDetail } from './components/HistoryDetail';
 import { ReviewFeedback } from './components/ReviewFeedback';
+import { Dashboard } from './components/Dashboard';
 
 function normalizeSettings(settings: SessionSettings): SessionSettings {
   const defaults = buildDefaultSettings(settings.blueprintId);
@@ -666,20 +666,16 @@ function App() {
         <div>
           <p className="eyebrow">CCTC practice exam</p>
           <h1>CCTC Practice Exam</h1>
-          <p className="hero-copy">
-            Client-side only, static-hostable, and offline-capable after first load. Sessions freeze question order, answer order,
-            timer state, and bookmarks exactly.
-          </p>
         </div>
         <nav className="nav-pills" aria-label="Primary">
           <button className={view === 'home' ? 'pill active' : 'pill'} onClick={() => setView('home')}>
-            Start
+            Home
           </button>
           <button className={view === 'history' ? 'pill active' : 'pill'} onClick={() => setView('history')}>
-            History
+            Progress
           </button>
           <button className={view === 'flags' ? 'pill active' : 'pill'} onClick={() => setView('flags')}>
-            Flags
+            Review feedback
           </button>
           {activeSession && (
             <button className={view === 'session' ? 'pill active' : 'pill'} onClick={() => setView('session')}>
@@ -691,21 +687,31 @@ function App() {
 
       <main id="main-content" className="main-grid">
         {view === 'home' && (
-          <SessionSetup
-            settings={settings}
-            bank={bank}
-            availableQuestionCount={availableQuestionCount}
-            currentBlueprint={currentBlueprint}
-            handleBlueprintChange={handleBlueprintChange}
-            handleQuestionSetChange={handleQuestionSetChange}
-            updateSettings={updateSettings}
-            handleModeChange={handleModeChange}
-            startSession={startSession}
-            activeSession={activeSession}
-            discardActiveSession={discardActiveSession}
-            setView={setView}
-            questionMin={QUESTION_MIN}
-          />
+          <>
+            <Dashboard
+              history={history}
+              historyTrend={historyTrend}
+              activeSession={activeSession}
+              onStartPractice={startSession}
+              onResumeSession={() => setView('session')}
+              onViewHistory={() => setView('history')}
+            />
+            <SessionSetup
+              settings={settings}
+              bank={bank}
+              availableQuestionCount={availableQuestionCount}
+              currentBlueprint={currentBlueprint}
+              handleBlueprintChange={handleBlueprintChange}
+              handleQuestionSetChange={handleQuestionSetChange}
+              updateSettings={updateSettings}
+              handleModeChange={handleModeChange}
+              startSession={startSession}
+              activeSession={activeSession}
+              discardActiveSession={discardActiveSession}
+              setView={setView}
+              questionMin={QUESTION_MIN}
+            />
+          </>
         )}
 
         {view === 'session' && session && currentItem && (
