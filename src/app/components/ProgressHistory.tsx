@@ -3,6 +3,7 @@ import { getBlueprintLabel } from '../../data/blueprints';
 import { formatTrendDelta } from '../../lib/historyTrend';
 import type { CategoryOption, CategoryTrendSummary } from '../../lib/categoryHistoryTrend';
 import type { HistoryTrendSummary } from '../../lib/historyTrend';
+import { findWeakestDomain } from '../../lib/weakestDomain';
 
 interface ProgressHistoryProps {
   history: HistoryEntry[];
@@ -31,56 +32,11 @@ export function ProgressHistory({
   handleClearHistory,
   removeHistoryEntry
 }: ProgressHistoryProps) {
+  const weakest = findWeakestDomain(history);
+
   return (
     <>
       <section className="panel panel--span-2 stack-gap">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">Stored results</p>
-            <h2>History</h2>
-          </div>
-          <div className="action-row">
-            <button className="ghost-button" onClick={() => void handleClearHistory()} disabled={history.length === 0}>
-              Clear history
-            </button>
-          </div>
-        </div>
-
-        {history.length === 0 ? (
-          <p className="status-card">No completed sessions yet.</p>
-        ) : (
-          history.map((entry) => (
-            <article key={entry.id} className="history-card">
-              <div>
-                <h3>{getBlueprintLabel(entry.settings.blueprintId)}</h3>
-                <p>
-                  {new Date(entry.completedAt).toLocaleString()} · {entry.settings.mode} · {entry.result.correct}/{entry.result.total} correct · {entry.result.percent}%
-                </p>
-                <p>
-                  Unofficial practice estimate: {entry.result.estimatedPass ? 'at or above' : 'below'} your {entry.settings.targetThreshold}% target.
-                </p>
-              </div>
-              <div className="action-row action-row--column">
-                <button
-                  className="secondary-button"
-                  onClick={() => {
-                    setSelectedHistory(entry);
-                    setReviewIndex(0);
-                    setView('history-detail');
-                  }}
-                >
-                  Review session
-                </button>
-                <button className="ghost-button" onClick={() => void removeHistoryEntry(entry.id)}>
-                  Delete
-                </button>
-              </div>
-            </article>
-          ))
-        )}
-      </section>
-
-      <section className="panel stack-gap">
         <div className="section-heading">
           <div>
             <p className="eyebrow">Trend snapshot</p>
@@ -152,12 +108,28 @@ export function ProgressHistory({
           </>
         )}
 
+        {weakest && weakest.total >= 3 && (
+          <>
+            <div className="section-heading section-heading--compact">
+              <div>
+                <p className="eyebrow">Focus area</p>
+                <h2>Where to improve</h2>
+              </div>
+            </div>
+            <div className="weakest-domain-card">
+              <h3>{weakest.categoryLabel}</h3>
+              <p>{weakest.percent}% correct over {weakest.total} items</p>
+              <span className="field-hint">Select this category below to see your trend over time.</span>
+            </div>
+          </>
+        )}
+
         {historyCategories.length > 0 && (
           <>
             <div className="section-heading section-heading--compact">
               <div>
                 <p className="eyebrow">Per-category drill-down</p>
-                <h2>Category trend</h2>
+                <h2>Domain trend</h2>
               </div>
             </div>
             <p className="field-hint">Select a content category to plot your unofficial score in that area across completed sessions.</p>
@@ -238,6 +210,50 @@ export function ProgressHistory({
               selectedCategoryId && <p className="status-card">No scored items in this category yet.</p>
             )}
           </>
+        )}
+      </section>
+
+      <section className="panel stack-gap">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Session log</p>
+            <h2>Past sessions</h2>
+          </div>
+          <div className="action-row">
+            <button className="ghost-button" onClick={() => void handleClearHistory()} disabled={history.length === 0}>
+              Clear all
+            </button>
+          </div>
+        </div>
+
+        {history.length === 0 ? (
+          <p className="status-card">No completed sessions yet.</p>
+        ) : (
+          history.slice(0, 10).map((entry) => (
+            <article key={entry.id} className="history-card">
+              <div>
+                <h3>{getBlueprintLabel(entry.settings.blueprintId)}</h3>
+                <p>
+                  {new Date(entry.completedAt).toLocaleString()} · {entry.settings.mode} · {entry.result.correct}/{entry.result.total} correct · {entry.result.percent}%
+                </p>
+              </div>
+              <div className="action-row action-row--column">
+                <button
+                  className="secondary-button"
+                  onClick={() => {
+                    setSelectedHistory(entry);
+                    setReviewIndex(0);
+                    setView('history-detail');
+                  }}
+                >
+                  Review session
+                </button>
+                <button className="ghost-button" onClick={() => void removeHistoryEntry(entry.id)}>
+                  Delete
+                </button>
+              </div>
+            </article>
+          ))
         )}
       </section>
     </>

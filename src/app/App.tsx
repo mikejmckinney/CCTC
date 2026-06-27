@@ -694,14 +694,14 @@ function App() {
           <button className={view === 'history' ? 'pill active' : 'pill'} onClick={() => setView('history')}>
             Progress
           </button>
-          <button className={view === 'flags' ? 'pill active' : 'pill'} onClick={() => setView('flags')}>
-            Review feedback
-          </button>
           {activeSession && (
             <button className={view === 'session' ? 'pill active' : 'pill'} onClick={() => setView('session')}>
               Resume
             </button>
           )}
+          <button className={view === 'flags' ? 'pill pill--utility active' : 'pill pill--utility'} onClick={() => setView('flags')}>
+            Review feedback
+          </button>
         </nav>
       </header>
 
