@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
-# verify-manifest.sh — Verifies that the React implementation matches the component manifest.
+# verify-manifest.sh — Structural verification of the React implementation.
+# Prototype HTML files are the source of truth (not a manifest).
 # Checks:
-#   1. Every CSS class listed in the manifest exists in app.css
-#   2. Every CSS class listed in the manifest is used in at least one React component
-#   3. Every CSS token referenced in the manifest exists in app.css :root
-#   4. Prototype SVG paths match what's in the React components
+#   1. CSS classes used in React components
+#   2. CSS tokens defined in app.css :root
+#   3. Dark mode block exists
+#   4. Prototype SVG paths match React components
+#   5. Responsive breakpoint, shell width, font families
+#   6. Dashboard structural patterns (gauge, etc.)
+#   7. "Reported items" naming
 #
 # Usage: ./verify-manifest.sh
 # Exit: 0 = all checks pass, 1 = mismatches found
@@ -12,7 +16,6 @@
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-MANIFEST="$SCRIPT_DIR/component-manifest.md"
 CSS_FILE="$SCRIPT_DIR/src/app.css"
 COMPONENTS_DIR="$SCRIPT_DIR/src/components"
 RED='\033[0;31m'
@@ -28,37 +31,11 @@ log_fail() { echo -e "  ${RED}✗${NC} $1"; errors=$((errors + 1)); }
 log_warn() { echo -e "  ${YELLOW}⚠${NC} $1"; warnings=$((warnings + 1)); }
 
 # ──────────────────────────────────────────────
-# 1. Extract CSS classes from manifest
+# 1. Check CSS classes used in React components
 # ──────────────────────────────────────────────
-echo "━━━ CCTC Manifest Verification ━━━"
+echo "━━━ CCTC Structural Verification ━━━"
 echo ""
-echo "1. Checking CSS classes in app.css..."
-
-# Extract class names from manifest: match `.classname` patterns
-manifest_classes=$(grep -oE '\.[a-zA-Z][a-zA-Z0-9_-]+' "$MANIFEST" \
-  | sed 's/^\.//' \
-  | sort -u \
-  | grep -vE '^(html|css|svg|tsx|ts|js|json|section|div|span|button|table|thead|tbody|tr|td|th|nav|header|a|h[1-6]|p|ul|li|ol|small|strong|article|label|select|option|input|textarea|img|md|sh|md)$')
-
-for cls in $manifest_classes; do
-  # Skip CSS property-like names and non-class tokens
-  if [[ "$cls" =~ ^(px|rem|em|ch|fr|ms|ease|none|auto|grid|flex|block|inline|relative|absolute|fixed|sticky|column|row|wrap|nowrap|center|left|right|space-between|space-around|normal|bold|italic|uppercase|lowercase|capitalize|hidden|visible|scroll|pointer|border-box|content-box|fill|stroke|round|collapse|separate)$ ]]; then
-    continue
-  fi
-
-  # Check in app.css
-  if ! grep -q "\.$cls" "$CSS_FILE" 2>/dev/null; then
-    log_fail "CSS class .$cls NOT found in app.css"
-  else
-    log_ok "CSS class .$cls found in app.css"
-  fi
-done
-
-# ──────────────────────────────────────────────
-# 2. Check CSS classes used in React components
-# ──────────────────────────────────────────────
-echo ""
-echo "2. Checking CSS classes used in React components..."
+echo "1. Checking CSS classes used in React components..."
 
 # Dashboard-specific classes that must appear in Dashboard.tsx
 dashboard_classes=(
@@ -98,7 +75,7 @@ done
 # 3. Check CSS tokens in :root
 # ──────────────────────────────────────────────
 echo ""
-echo "3. Checking CSS tokens defined in app.css..."
+echo "2. Checking CSS tokens defined in app.css..."
 
 required_tokens=(
   "--bg" "--surface" "--surface-raised" "--fg" "--fg-secondary" "--muted" "--border"
@@ -121,7 +98,7 @@ done
 # 4. Check dark mode tokens
 # ──────────────────────────────────────────────
 echo ""
-echo "4. Checking dark mode tokens..."
+echo "3. Checking dark mode tokens..."
 
 if grep -q '\[data-theme="dark"\]' "$CSS_FILE" 2>/dev/null; then
   log_ok "Dark mode [data-theme=\"dark\"] block exists"
@@ -133,7 +110,7 @@ fi
 # 5. Check prototype SVG paths
 # ──────────────────────────────────────────────
 echo ""
-echo "5. Checking SVG icons in Dashboard.tsx..."
+echo "4. Checking SVG icons in Dashboard.tsx..."
 
 # Full Exam icon
 if grep -q 'M9 3v18M3 9h18' "$COMPONENTS_DIR/Dashboard.tsx" 2>/dev/null; then
@@ -167,7 +144,7 @@ fi
 # 6. Check responsive breakpoint
 # ──────────────────────────────────────────────
 echo ""
-echo "6. Checking responsive breakpoint..."
+echo "5. Checking responsive breakpoint..."
 
 if grep -q 'max-width: 640px' "$CSS_FILE" 2>/dev/null; then
   log_ok "Mobile breakpoint (640px) exists in app.css"
@@ -179,7 +156,7 @@ fi
 # 7. Check shell width
 # ──────────────────────────────────────────────
 echo ""
-echo "7. Checking shell max-width..."
+echo "6. Checking shell max-width..."
 
 if grep -q 'max-width: 940px' "$CSS_FILE" 2>/dev/null; then
   log_ok "Shell max-width 940px matches prototype"
@@ -191,7 +168,7 @@ fi
 # 8. Check font families
 # ──────────────────────────────────────────────
 echo ""
-echo "8. Checking font families..."
+echo "7. Checking font families..."
 
 if grep -q "Fraunces" "$CSS_FILE" 2>/dev/null; then
   log_ok "Fraunces display font referenced in app.css"
@@ -209,7 +186,7 @@ fi
 # 9. Check key structural patterns in Dashboard
 # ──────────────────────────────────────────────
 echo ""
-echo "9. Checking Dashboard structural patterns..."
+echo "8. Checking Dashboard structural patterns..."
 
 # Gauge SVG with correct dimensions
 if grep -q 'width="130".*height="130"' "$COMPONENTS_DIR/Dashboard.tsx" 2>/dev/null || \
@@ -244,7 +221,7 @@ fi
 # 10. Check reported items naming
 # ──────────────────────────────────────────────
 echo ""
-echo "10. Checking 'Reported items' naming..."
+echo "9. Checking 'Reported items' naming..."
 
 if grep -qi "reported.items" "$COMPONENTS_DIR/HistoryPage.tsx" 2>/dev/null; then
   log_ok "HistoryPage.tsx references 'Reported items'"
@@ -275,6 +252,6 @@ if [[ $errors -eq 0 ]]; then
 else
   echo -e "${RED}$errors failures${NC}, $warnings warnings"
   echo ""
-  echo "Fix failures before shipping. Update component-manifest.md if the spec changed."
+  echo "Fix failures before shipping."
   exit 1
 fi

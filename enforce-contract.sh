@@ -27,7 +27,7 @@ run_check() {
   echo ""
 }
 
-run_check "1. Component Manifest Verification" "./verify-manifest.sh"
+run_check "1. Structural Verification" "./verify-manifest.sh"
 run_check "2. CSS Sync (prototype → app.css)" "./css-sync-check.sh"
 run_check "3. Prototype Section Skeletons" "./prototype-section-extractor.sh"
 run_check "4. Visual Regression (prototype vs React)" "./visual-regression.sh"
