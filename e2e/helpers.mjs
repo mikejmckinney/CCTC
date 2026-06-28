@@ -86,7 +86,7 @@ export async function waitForPersistedSessionState(page) {
 }
 
 export async function expectSessionStats(page, { answered, bookmarks }) {
-  const stats = page.locator('.session-stats');
-  await expect(stats.getByText(`Answered ${answered}`, { exact: true })).toBeVisible();
-  await expect(stats.getByText(`Bookmarks ${bookmarks}`, { exact: true })).toBeVisible();
+  const stats = page.locator('.session-header__meta');
+  await expect(stats.getByText(`${answered} answered`, { exact: true })).toBeVisible();
+  await expect(stats.getByText(`${bookmarks} bookmarked`, { exact: true })).toBeVisible();
 }
