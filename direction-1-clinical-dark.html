@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCTC Dashboard — Direction 1: Clinical Precision</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: oklch(14% 0.015 240);
+      --surface: oklch(18% 0.015 240);
+      --surface-raised: oklch(22% 0.015 240);
+      --fg: oklch(93% 0.008 200);
+      --muted: oklch(60% 0.018 210);
+      --border: oklch(28% 0.012 240);
+      --accent: oklch(72% 0.12 185);
+      --accent-dim: oklch(48% 0.08 185);
+      --success: oklch(68% 0.14 155);
+      --warning: oklch(72% 0.12 80);
+      --danger: oklch(62% 0.16 25);
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+      --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .direction-label {
+      background: var(--accent-dim);
+      color: var(--fg);
+      text-align: center;
+      padding: 0.6rem 1rem;
+      font: 600 0.75rem/1 var(--font-mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .shell {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .header-brand h1 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    .header-brand .tag {
+      font: 500 0.65rem/1 var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .nav-row {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .nav-pill {
+      font: 500 0.8rem/1 var(--font-body);
+      padding: 0.5rem 0.85rem;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .nav-pill.active {
+      background: var(--surface-raised);
+      color: var(--fg);
+      border-color: var(--border);
+    }
+
+    .nav-pill:hover:not(.active) {
+      color: var(--fg);
+    }
+
+    /* Readiness Score — hero module */
+    .readiness-hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .readiness-ring {
+      width: 140px;
+      height: 140px;
+      position: relative;
+    }
+
+    .readiness-ring svg {
+      transform: rotate(-90deg);
+    }
+
+    .readiness-ring .ring-bg {
+      stroke: var(--border);
+    }
+
+    .readiness-ring .ring-fill {
+      stroke: var(--accent);
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s ease;
+    }
+
+    .readiness-ring .ring-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .readiness-ring .ring-score {
+      font: 700 2.2rem/1 var(--font-display);
+      color: var(--fg);
+    }
+
+    .readiness-ring .ring-unit {
+      font: 500 0.7rem/1 var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    .readiness-info h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .readiness-info p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 38ch;
+    }
+
+    .readiness-meta {
+      text-align: right;
+    }
+
+    .readiness-meta .meta-item {
+      margin-bottom: 0.85rem;
+    }
+
+    .readiness-meta .meta-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .readiness-meta .meta-label {
+      font: 500 0.65rem/1 var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .readiness-meta .meta-value {
+      font: 600 1rem/1 var(--font-mono);
+      color: var(--fg);
+    }
+
+    .readiness-meta .meta-value.is-good {
+      color: var(--success);
+    }
+
+    .readiness-meta .meta-value.is-warn {
+      color: var(--warning);
+    }
+
+    /* Quick Start Grid */
+    .quickstart-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .section-label {
+      font: 600 0.65rem/1 var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .quickstart-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .quickstart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .quickstart-card:hover {
+      border-color: var(--accent-dim);
+      background: var(--surface-raised);
+    }
+
+    .quickstart-card .qs-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      font-size: 0.85rem;
+    }
+
+    .quickstart-card .qs-icon.blueprint {
+      background: oklch(28% 0.06 250);
+      color: oklch(72% 0.12 250);
+    }
+
+    .quickstart-card .qs-icon.quick {
+      background: oklch(28% 0.06 185);
+      color: var(--accent);
+    }
+
+    .quickstart-card .qs-icon.weak {
+      background: oklch(28% 0.06 80);
+      color: var(--warning);
+    }
+
+    .quickstart-card .qs-icon.custom {
+      background: oklch(28% 0.06 300);
+      color: oklch(72% 0.12 300);
+    }
+
+    .quickstart-card h3 {
+      font: 600 0.92rem/1.2 var(--font-body);
+      color: var(--fg);
+    }
+
+    .quickstart-card p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .quickstart-card .qs-meta {
+      font: 500 0.68rem/1 var(--font-mono);
+      color: var(--muted);
+      margin-top: auto;
+      padding-top: 0.35rem;
+    }
+
+    /* Two-column section */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .module-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.15rem;
+    }
+
+    .module-card h3 {
+      font: 600 0.92rem/1.2 var(--font-body);
+      color: var(--fg);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Category Breakdown */
+    .category-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid oklch(25% 0.008 240);
+    }
+
+    .category-row:last-child {
+      border-bottom: none;
+    }
+
+    .category-name {
+      font-size: 0.82rem;
+      color: var(--fg);
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .category-bar-wrap {
+      width: 100px;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .category-bar {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+
+    .category-bar.strong {
+      background: var(--success);
+    }
+
+    .category-bar.mid {
+      background: var(--accent);
+    }
+
+    .category-bar.weak {
+      background: var(--danger);
+    }
+
+    .category-pct {
+      font: 600 0.78rem/1 var(--font-mono);
+      width: 2.5rem;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .category-tag {
+      font: 500 0.6rem/1 var(--font-mono);
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .category-tag.strong {
+      background: oklch(28% 0.06 155);
+      color: var(--success);
+    }
+
+    .category-tag.weak {
+      background: oklch(28% 0.06 25);
+      color: var(--danger);
+    }
+
+    /* Am I Ready */
+    .ready-insights {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .insight-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .insight-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .insight-icon.pass {
+      background: oklch(28% 0.06 155);
+      color: var(--success);
+    }
+
+    .insight-icon.warn {
+      background: oklch(28% 0.06 80);
+      color: var(--warning);
+    }
+
+    .insight-icon.info {
+      background: oklch(28% 0.06 250);
+      color: oklch(72% 0.12 250);
+    }
+
+    /* Session History */
+    .history-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .history-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .history-header .view-all {
+      font: 500 0.78rem/1 var(--font-body);
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .history-header .view-all:hover {
+      text-decoration: underline;
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .history-table th {
+      font: 500 0.65rem/1 var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 0 0.65rem 0.55rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .history-table td {
+      font-size: 0.84rem;
+      padding: 0.65rem;
+      border-bottom: 1px solid oklch(20% 0.008 240);
+      color: var(--fg);
+    }
+
+    .history-table tr {
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+
+    .history-table tbody tr:hover {
+      background: var(--surface-raised);
+    }
+
+    .history-table .score-cell {
+      font: 600 0.84rem/1 var(--font-mono);
+    }
+
+    .history-table .score-cell.good {
+      color: var(--success);
+    }
+
+    .history-table .score-cell.mid {
+      color: var(--warning);
+    }
+
+    .history-table .score-cell.low {
+      color: var(--danger);
+    }
+
+    .history-table .mode-badge {
+      font: 500 0.65rem/1 var(--font-mono);
+      letter-spacing: 0.04em;
+      padding: 0.22rem 0.45rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    .history-table .mode-badge.exam {
+      background: oklch(28% 0.06 250);
+      color: oklch(72% 0.12 250);
+    }
+
+    .history-table .mode-badge.study {
+      background: oklch(28% 0.06 155);
+      color: var(--success);
+    }
+
+    /* Study Plan */
+    .study-plan {
+      margin-bottom: 1.25rem;
+    }
+
+    .plan-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.15rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .plan-action-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .plan-action-icon svg {
+      color: var(--accent);
+    }
+
+    .plan-content h3 {
+      font: 600 0.92rem/1.2 var(--font-body);
+      color: var(--fg);
+      margin-bottom: 0.3rem;
+    }
+
+    .plan-content p {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .plan-content .plan-action {
+      font: 500 0.82rem/1 var(--font-body);
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .shell {
+        padding: 1rem;
+      }
+
+      .header {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+      }
+
+      .readiness-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .readiness-ring {
+        margin: 0 auto;
+      }
+
+      .readiness-meta {
+        text-align: center;
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+      }
+
+      .readiness-meta .meta-item {
+        margin-bottom: 0;
+      }
+
+      .quickstart-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .history-table th:nth-child(4),
+      .history-table td:nth-child(4) {
+        display: none;
+      }
+
+      .nav-row {
+        width: 100%;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="direction-label">Direction 1 — Clinical Precision (Dark)</div>
+
+  <div class="shell">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-brand">
+        <h1>CCTC Practice</h1>
+        <span class="tag">Study Aid</span>
+      </div>
+      <nav class="nav-row" aria-label="Primary">
+        <button class="nav-pill active">Dashboard</button>
+        <button class="nav-pill">Setup</button>
+        <button class="nav-pill">History</button>
+        <button class="nav-pill">Flags</button>
+      </nav>
+    </header>
+
+    <!-- Readiness Score -->
+    <section class="readiness-hero" aria-label="Readiness score">
+      <div class="readiness-ring">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle class="ring-bg" cx="70" cy="70" r="58" fill="none" stroke-width="10" />
+          <circle class="ring-fill" cx="70" cy="70" r="58" fill="none" stroke-width="10"
+            stroke-dasharray="364.42" stroke-dashoffset="109.33" />
+        </svg>
+        <div class="ring-label">
+          <span class="ring-score">72</span>
+          <span class="ring-unit">Ready</span>
+        </div>
+      </div>
+      <div class="readiness-info">
+        <h2>You're on track</h2>
+        <p>Your exponential moving average is trending up. Focus on Domain 2 to close your weakest gap before the exam.</p>
+      </div>
+      <div class="readiness-meta">
+        <div class="meta-item">
+          <div class="meta-label">Trend</div>
+          <div class="meta-value is-good">+4 pts</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Sessions</div>
+          <div class="meta-value">18</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Best</div>
+          <div class="meta-value">84%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="quickstart-section">
+      <div class="section-label">Quick Start</div>
+      <div class="quickstart-grid">
+        <div class="quickstart-card">
+          <div class="qs-icon blueprint">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>
+          </div>
+          <h3>Full Exam</h3>
+          <p>175 items, timed, exam conditions</p>
+          <span class="qs-meta">2026-07 blueprint</span>
+        </div>
+        <div class="quickstart-card">
+          <div class="qs-icon quick">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <h3>Quick Session</h3>
+          <p>25 items, untimed, rapid review</p>
+          <span class="qs-meta">~15 min</span>
+        </div>
+        <div class="quickstart-card">
+          <div class="qs-icon weak">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Weak Areas</h3>
+          <p>Spaced repetition of missed items</p>
+          <span class="qs-meta">12 items due</span>
+        </div>
+        <div class="quickstart-card">
+          <div class="qs-icon custom">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          </div>
+          <h3>Last Settings</h3>
+          <p>50 items, study mode, 2026-07</p>
+          <span class="qs-meta">Resume config</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-column: Category Breakdown + Am I Ready -->
+    <div class="two-col">
+      <div class="module-card">
+        <h3>Category Breakdown</h3>
+        <div class="category-row">
+          <span class="category-name">Candidate Management</span>
+          <div class="category-bar-wrap"><div class="category-bar strong" style="width: 84%"></div></div>
+          <span class="category-pct">84%</span>
+          <span class="category-tag strong">Strong</span>
+        </div>
+        <div class="category-row">
+          <span class="category-name">Donor Management</span>
+          <div class="category-bar-wrap"><div class="category-bar strong" style="width: 78%"></div></div>
+          <span class="category-pct">78%</span>
+          <span class="category-tag strong">Strong</span>
+        </div>
+        <div class="category-row">
+          <span class="category-name">Organ Allocation</span>
+          <div class="category-bar-wrap"><div class="category-bar mid" style="width: 68%"></div></div>
+          <span class="category-pct">68%</span>
+          <span class="category-tag weak">Focus</span>
+        </div>
+        <div class="category-row">
+          <span class="category-name">Post-Transplant Care</span>
+          <div class="category-bar-wrap"><div class="category-bar weak" style="width: 52%"></div></div>
+          <span class="category-pct">52%</span>
+          <span class="category-tag weak">Weak</span>
+        </div>
+        <div class="category-row">
+          <span class="category-name">Education &amp; Advocacy</span>
+          <div class="category-bar-wrap"><div class="category-bar mid" style="width: 71%"></div></div>
+          <span class="category-pct">71%</span>
+          <span class="category-tag strong">OK</span>
+        </div>
+      </div>
+
+      <div class="module-card">
+        <h3>Am I Ready?</h3>
+        <div class="ready-insights">
+          <div class="insight-row">
+            <div class="insight-icon pass">&#10003;</div>
+            <span>EMA readiness score (72) is <strong>above</strong> your 70% target threshold.</span>
+          </div>
+          <div class="insight-row">
+            <div class="insight-icon warn">!</div>
+            <span><strong>Post-Transplant Care</strong> at 52% is your weakest domain — 3 sessions focused here would close the gap.</span>
+          </div>
+          <div class="insight-row">
+            <div class="insight-icon info">i</div>
+            <span>You've covered 68% of the blueprint's content areas. 14 items remain unseen.</span>
+          </div>
+          <div class="insight-row">
+            <div class="insight-icon pass">&#10003;</div>
+            <span>Your last 3 sessions trended +4, +2, +6 points — consistent improvement.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study Plan -->
+    <section class="study-plan">
+      <div class="section-label">Recommended Next</div>
+      <div class="plan-card">
+        <div class="plan-action-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="plan-content">
+          <h3>Study Post-Transplant Care — Weak Areas Session</h3>
+          <p>Your EMA in this domain dropped 8 points over the last week. A focused 15-item session targeting previously incorrect items will reinforce the gaps.</p>
+          <button class="plan-action">Start weak areas session →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Session History -->
+    <section class="history-section">
+      <div class="history-header">
+        <div class="section-label" style="margin-bottom:0">Recent Sessions</div>
+        <button class="view-all">View all history →</button>
+      </div>
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Mode</th>
+            <th>Questions</th>
+            <th>Score</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jun 26, 2026</td>
+            <td><span class="mode-badge exam">Exam</span></td>
+            <td>50</td>
+            <td class="score-cell good">78%</td>
+            <td>1:12:34</td>
+          </tr>
+          <tr>
+            <td>Jun 25, 2026</td>
+            <td><span class="mode-badge study">Study</span></td>
+            <td>25</td>
+            <td class="score-cell good">84%</td>
+            <td>0:38:12</td>
+          </tr>
+          <tr>
+            <td>Jun 24, 2026</td>
+            <td><span class="mode-badge exam">Exam</span></td>
+            <td>175</td>
+            <td class="score-cell mid">66%</td>
+            <td>2:45:08</td>
+          </tr>
+          <tr>
+            <td>Jun 23, 2026</td>
+            <td><span class="mode-badge study">Study</span></td>
+            <td>30</td>
+            <td class="score-cell good">72%</td>
+            <td>0:44:21</td>
+          </tr>
+          <tr>
+            <td>Jun 22, 2026</td>
+            <td><span class="mode-badge exam">Exam</span></td>
+            <td>50</td>
+            <td class="score-cell low">58%</td>
+            <td>1:08:45</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Independent study aid — not affiliated with or endorsed by ABTC or PSI. Practice results are unofficial estimates only. Does not reproduce real exam items.</p>
+    </footer>
+  </div>
+</body>
+</html>

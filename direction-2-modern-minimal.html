@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCTC Dashboard — Direction 2: Modern Minimal</title>
+  <style>
+    :root {
+      --bg: oklch(98.5% 0.003 250);
+      --surface: oklch(100% 0 0);
+      --surface-muted: oklch(96% 0.004 250);
+      --fg: oklch(16% 0.015 250);
+      --fg-secondary: oklch(42% 0.015 250);
+      --muted: oklch(55% 0.012 250);
+      --border: oklch(91% 0.006 250);
+      --accent: oklch(54% 0.2 255);
+      --accent-soft: oklch(93% 0.04 255);
+      --success: oklch(58% 0.16 155);
+      --success-soft: oklch(94% 0.04 155);
+      --warning: oklch(62% 0.16 80);
+      --warning-soft: oklch(94% 0.04 80);
+      --danger: oklch(56% 0.2 25);
+      --danger-soft: oklch(94% 0.04 25);
+      --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+      --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .direction-label {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font: 600 0.7rem/1 var(--font-mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .shell {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font: 700 0.75rem/1 var(--font-mono);
+    }
+
+    .header-brand h1 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+
+    .header-brand .subtitle {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .nav-row {
+      display: flex;
+      gap: 2px;
+      background: var(--surface-muted);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+    }
+
+    .nav-pill {
+      font: 500 0.78rem/1 var(--font-body);
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+
+    .nav-pill.active {
+      background: var(--surface);
+      color: var(--fg);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .nav-pill:hover:not(.active) {
+      color: var(--fg-secondary);
+    }
+
+    /* Readiness Score */
+    .readiness-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .readiness-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .readiness-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .readiness-score-block {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .readiness-score-block .score {
+      font: 700 3rem/1 var(--font-display);
+      letter-spacing: -0.03em;
+      color: var(--fg);
+    }
+
+    .readiness-score-block .score-label {
+      font: 500 0.7rem/1 var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .trend-chip {
+      font: 600 0.78rem/1 var(--font-mono);
+      padding: 0.35rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .trend-chip.up {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .readiness-desc {
+      font-size: 0.88rem;
+      color: var(--fg-secondary);
+      line-height: 1.5;
+    }
+
+    .readiness-sparkline {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 40px;
+      margin-top: auto;
+    }
+
+    .readiness-sparkline .bar {
+      flex: 1;
+      background: var(--accent-soft);
+      border-radius: 3px 3px 0 0;
+      transition: height 0.3s;
+    }
+
+    .readiness-sparkline .bar.current {
+      background: var(--accent);
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .stat-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      flex: 1;
+    }
+
+    .stat-item .stat-label {
+      font: 500 0.65rem/1 var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-item .stat-value {
+      font: 600 1.35rem/1 var(--font-display);
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+
+    .stat-item .stat-value.good {
+      color: var(--success);
+    }
+
+    /* Quick Start */
+    .section-title {
+      font: 600 0.72rem/1 var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+
+    .quickstart-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .qs-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.12s;
+      position: relative;
+    }
+
+    .qs-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    .qs-card .qs-label {
+      font: 600 0.88rem/1.25 var(--font-body);
+      color: var(--fg);
+      margin-bottom: 0.3rem;
+      padding-right: 1.5rem;
+    }
+
+    .qs-card .qs-desc {
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .qs-card .qs-badge {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .qs-card .qs-badge.blue { background: var(--accent); }
+    .qs-card .qs-badge.green { background: var(--success); }
+    .qs-card .qs-badge.orange { background: var(--warning); }
+    .qs-card .qs-badge.gray { background: var(--muted); }
+
+    /* Two-col modules */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .module-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem;
+    }
+
+    .module-card .mod-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+
+    .module-card h3 {
+      font: 600 0.88rem/1.2 var(--font-body);
+      letter-spacing: -0.01em;
+    }
+
+    /* Category breakdown */
+    .cat-row {
+      display: grid;
+      grid-template-columns: 1fr 64px auto 48px;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.4rem 0;
+      font-size: 0.82rem;
+    }
+
+    .cat-row + .cat-row {
+      border-top: 1px solid var(--border);
+    }
+
+    .cat-name {
+      color: var(--fg);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cat-bar-wrap {
+      height: 4px;
+      background: var(--surface-muted);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .cat-bar {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .cat-bar.strong { background: var(--success); }
+    .cat-bar.mid { background: var(--accent); }
+    .cat-bar.weak { background: var(--danger); }
+
+    .cat-tag {
+      font: 500 0.6rem/1 var(--font-mono);
+      padding: 0.18rem 0.35rem;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .cat-tag.strong {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .cat-tag.weak {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .cat-pct {
+      font: 600 0.78rem/1 var(--font-mono);
+      text-align: right;
+      color: var(--fg-secondary);
+    }
+
+    /* Am I Ready insights */
+    .insight-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .insight-item {
+      display: flex;
+      gap: 0.55rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--fg-secondary);
+    }
+
+    .insight-item .insight-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .insight-dot.green { background: var(--success); }
+    .insight-dot.orange { background: var(--warning); }
+    .insight-dot.blue { background: var(--accent); }
+
+    .insight-item strong { color: var(--fg); }
+
+    /* Session History */
+    .history-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .history-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.65rem;
+    }
+
+    .link-btn {
+      font: 500 0.78rem/1 var(--font-body);
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .link-btn:hover { text-decoration: underline; }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .history-table th {
+      font: 500 0.65rem/1 var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 0.65rem 0.85rem;
+      background: var(--surface-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .history-table td {
+      font-size: 0.82rem;
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--fg);
+    }
+
+    .history-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .history-table tbody tr {
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+
+    .history-table tbody tr:hover {
+      background: var(--surface-muted);
+    }
+
+    .score-pill {
+      font: 600 0.75rem/1 var(--font-mono);
+      padding: 0.22rem 0.5rem;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .score-pill.good {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .score-pill.mid {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .score-pill.low {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .mode-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+
+    .mode-dot.exam { background: var(--accent); }
+    .mode-dot.study { background: var(--success); }
+
+    /* Study Plan */
+    .plan-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .plan-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .plan-icon svg { color: var(--accent); }
+
+    .plan-text h3 {
+      font: 600 0.88rem/1.2 var(--font-body);
+      margin-bottom: 0.15rem;
+    }
+
+    .plan-text p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .plan-action {
+      margin-left: auto;
+      font: 500 0.8rem/1 var(--font-body);
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.55rem 0.9rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: opacity 0.12s;
+    }
+
+    .plan-action:hover { opacity: 0.85; }
+
+    /* Footer */
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .shell { padding: 1rem; }
+
+      .header {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+      }
+
+      .readiness-section {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-row {
+        flex-direction: column;
+      }
+
+      .quickstart-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .plan-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.65rem;
+      }
+
+      .plan-action { margin-left: 0; }
+
+      .history-table th:nth-child(5),
+      .history-table td:nth-child(5) {
+        display: none;
+      }
+
+      .nav-row {
+        width: 100%;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="direction-label">Direction 2 — Modern Minimal (Light)</div>
+
+  <div class="shell">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="header-logo">C</div>
+        <div class="header-brand">
+          <h1>CCTC Practice Exam</h1>
+          <span class="subtitle">Independent study aid</span>
+        </div>
+      </div>
+      <nav class="nav-row" aria-label="Primary">
+        <button class="nav-pill active">Dashboard</button>
+        <button class="nav-pill">Setup</button>
+        <button class="nav-pill">History</button>
+        <button class="nav-pill">Flags</button>
+      </nav>
+    </header>
+
+    <!-- Readiness + Stats -->
+    <div class="readiness-section">
+      <div class="readiness-card">
+        <div class="readiness-top">
+          <div class="readiness-score-block">
+            <span class="score">72</span>
+            <span class="score-label">Readiness</span>
+          </div>
+          <span class="trend-chip up">+4 pts</span>
+        </div>
+        <p class="readiness-desc">
+          Your EMA readiness is above the 70% target. Post-Transplant Care is the only domain below threshold — a focused study session will close the gap.
+        </p>
+        <div class="readiness-sparkline">
+          <div class="bar" style="height: 55%"></div>
+          <div class="bar" style="height: 62%"></div>
+          <div class="bar" style="height: 58%"></div>
+          <div class="bar" style="height: 70%"></div>
+          <div class="bar" style="height: 66%"></div>
+          <div class="bar" style="height: 68%"></div>
+          <div class="bar current" style="height: 72%"></div>
+        </div>
+      </div>
+      <div class="stats-row" style="flex-direction: column;">
+        <div class="stat-item">
+          <div class="stat-label">Sessions Completed</div>
+          <div class="stat-value">18</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Best Score</div>
+          <div class="stat-value good">84%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Items Reviewed</div>
+          <div class="stat-value">492</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Start -->
+    <div class="section-title">Quick Start</div>
+    <div class="quickstart-grid">
+      <div class="qs-card">
+        <span class="qs-badge blue"></span>
+        <div class="qs-label">Full Exam</div>
+        <div class="qs-desc">175 items, timed, exam conditions. 2026-07 blueprint.</div>
+      </div>
+      <div class="qs-card">
+        <span class="qs-badge green"></span>
+        <div class="qs-label">Quick Session</div>
+        <div class="qs-desc">25 items, untimed, rapid review. ~15 min.</div>
+      </div>
+      <div class="qs-card">
+        <span class="qs-badge orange"></span>
+        <div class="qs-label">Weak Areas</div>
+        <div class="qs-desc">Spaced repetition of previously-incorrect items. 12 due.</div>
+      </div>
+      <div class="qs-card">
+        <span class="qs-badge gray"></span>
+        <div class="qs-label">Last Settings</div>
+        <div class="qs-desc">50 items, study mode, 2026-07 blueprint.</div>
+      </div>
+    </div>
+
+    <!-- Two-col: Category + Insights -->
+    <div class="two-col">
+      <div class="module-card">
+        <div class="mod-header">
+          <h3>Category Breakdown</h3>
+        </div>
+        <div class="cat-row">
+          <span class="cat-name">Candidate Management</span>
+          <div class="cat-bar-wrap"><div class="cat-bar strong" style="width:84%"></div></div>
+          <span class="cat-tag strong">Strong</span>
+          <span class="cat-pct">84%</span>
+        </div>
+        <div class="cat-row">
+          <span class="cat-name">Donor Management</span>
+          <div class="cat-bar-wrap"><div class="cat-bar strong" style="width:78%"></div></div>
+          <span class="cat-tag strong">Strong</span>
+          <span class="cat-pct">78%</span>
+        </div>
+        <div class="cat-row">
+          <span class="cat-name">Organ Allocation</span>
+          <div class="cat-bar-wrap"><div class="cat-bar mid" style="width:68%"></div></div>
+          <span class="cat-tag" style="background:var(--accent-soft);color:var(--accent)">Focus</span>
+          <span class="cat-pct">68%</span>
+        </div>
+        <div class="cat-row">
+          <span class="cat-name">Post-Transplant Care</span>
+          <div class="cat-bar-wrap"><div class="cat-bar weak" style="width:52%"></div></div>
+          <span class="cat-tag weak">Weak</span>
+          <span class="cat-pct">52%</span>
+        </div>
+        <div class="cat-row">
+          <span class="cat-name">Education &amp; Advocacy</span>
+          <div class="cat-bar-wrap"><div class="cat-bar mid" style="width:71%"></div></div>
+          <span class="cat-tag" style="background:var(--accent-soft);color:var(--accent)">OK</span>
+          <span class="cat-pct">71%</span>
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="mod-header">
+          <h3>Am I Ready?</h3>
+        </div>
+        <div class="insight-list">
+          <div class="insight-item">
+            <span class="insight-dot green"></span>
+            <span>EMA score <strong>72%</strong> is above your 70% target — you're on track.</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-dot orange"></span>
+            <span><strong>Post-Transplant Care</strong> at 52% is the weakest domain. A focused session would raise it ~10 pts.</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-dot blue"></span>
+            <span>68% of blueprint content areas covered. 14 items remain unseen.</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-dot green"></span>
+            <span>Last 3 sessions: <strong>+4, +2, +6</strong> point trend — consistent improvement.</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-dot orange"></span>
+            <span>At current pace, estimated exam readiness in <strong>5 more sessions</strong>.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study Plan -->
+    <div class="plan-banner">
+      <div class="plan-icon">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="plan-text">
+        <h3>Study Post-Transplant Care</h3>
+        <p>Your weakest domain — a 15-item spaced repetition session targeting incorrect items.</p>
+      </div>
+      <button class="plan-action">Start session</button>
+    </div>
+
+    <!-- Recent Session History -->
+    <section class="history-section">
+      <div class="history-header">
+        <div class="section-title" style="margin-bottom:0">Recent Sessions</div>
+        <button class="link-btn">View all history →</button>
+      </div>
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Mode</th>
+            <th>Questions</th>
+            <th>Score</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jun 26, 2026</td>
+            <td><span class="mode-dot exam"></span>Exam</td>
+            <td>50</td>
+            <td><span class="score-pill good">78%</span></td>
+            <td>1:12:34</td>
+          </tr>
+          <tr>
+            <td>Jun 25, 2026</td>
+            <td><span class="mode-dot study"></span>Study</td>
+            <td>25</td>
+            <td><span class="score-pill good">84%</span></td>
+            <td>0:38:12</td>
+          </tr>
+          <tr>
+            <td>Jun 24, 2026</td>
+            <td><span class="mode-dot exam"></span>Exam</td>
+            <td>175</td>
+            <td><span class="score-pill mid">66%</span></td>
+            <td>2:45:08</td>
+          </tr>
+          <tr>
+            <td>Jun 23, 2026</td>
+            <td><span class="mode-dot study"></span>Study</td>
+            <td>30</td>
+            <td><span class="score-pill good">72%</span></td>
+            <td>0:44:21</td>
+          </tr>
+          <tr>
+            <td>Jun 22, 2026</td>
+            <td><span class="mode-dot exam"></span>Exam</td>
+            <td>50</td>
+            <td><span class="score-pill low">58%</span></td>
+            <td>1:08:45</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Independent study aid — not affiliated with or endorsed by ABTC or PSI. Practice results are unofficial estimates only. Does not reproduce real exam items.</p>
+    </footer>
+  </div>
+</body>
+</html>
