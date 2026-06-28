@@ -47,6 +47,7 @@ import { SessionRunner } from './components/SessionRunner';
 import { ProgressHistory } from './components/ProgressHistory';
 import { HistoryDetail } from './components/HistoryDetail';
 import { ReviewFeedback } from './components/ReviewFeedback';
+import { Dashboard } from './components/Dashboard';
 
 function normalizeSettings(settings: SessionSettings): SessionSettings {
   const defaults = buildDefaultSettings(settings.blueprintId);
@@ -662,50 +663,56 @@ function App() {
         </section>
       )}
 
-      <header className="hero-panel" role="banner">
+      <header className="hero-panel hero-panel--calm" role="banner">
         <div>
           <p className="eyebrow">CCTC practice exam</p>
           <h1>CCTC Practice Exam</h1>
-          <p className="hero-copy">
-            Client-side only, static-hostable, and offline-capable after first load. Sessions freeze question order, answer order,
-            timer state, and bookmarks exactly.
-          </p>
         </div>
         <nav className="nav-pills" aria-label="Primary">
           <button className={view === 'home' ? 'pill active' : 'pill'} onClick={() => setView('home')}>
-            Start
+            Home
           </button>
           <button className={view === 'history' ? 'pill active' : 'pill'} onClick={() => setView('history')}>
-            History
-          </button>
-          <button className={view === 'flags' ? 'pill active' : 'pill'} onClick={() => setView('flags')}>
-            Flags
+            Progress
           </button>
           {activeSession && (
             <button className={view === 'session' ? 'pill active' : 'pill'} onClick={() => setView('session')}>
               Resume
             </button>
           )}
+          <button className={view === 'flags' ? 'pill pill--utility active' : 'pill pill--utility'} onClick={() => setView('flags')}>
+            Review feedback
+          </button>
         </nav>
       </header>
 
       <main id="main-content" className="main-grid">
         {view === 'home' && (
-          <SessionSetup
-            settings={settings}
-            bank={bank}
-            availableQuestionCount={availableQuestionCount}
-            currentBlueprint={currentBlueprint}
-            handleBlueprintChange={handleBlueprintChange}
-            handleQuestionSetChange={handleQuestionSetChange}
-            updateSettings={updateSettings}
-            handleModeChange={handleModeChange}
-            startSession={startSession}
-            activeSession={activeSession}
-            discardActiveSession={discardActiveSession}
-            setView={setView}
-            questionMin={QUESTION_MIN}
-          />
+          <>
+            <Dashboard
+              history={history}
+              historyTrend={historyTrend}
+              activeSession={activeSession}
+              onStartPractice={startSession}
+              onResumeSession={() => setView('session')}
+              onViewHistory={() => setView('history')}
+            />
+            <SessionSetup
+              settings={settings}
+              bank={bank}
+              availableQuestionCount={availableQuestionCount}
+              currentBlueprint={currentBlueprint}
+              handleBlueprintChange={handleBlueprintChange}
+              handleQuestionSetChange={handleQuestionSetChange}
+              updateSettings={updateSettings}
+              handleModeChange={handleModeChange}
+              startSession={startSession}
+              activeSession={activeSession}
+              discardActiveSession={discardActiveSession}
+              setView={setView}
+              questionMin={QUESTION_MIN}
+            />
+          </>
         )}
 
         {view === 'session' && session && currentItem && (

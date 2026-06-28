@@ -26,13 +26,13 @@ describe('App', () => {
   it('renders the start screen and loaded-bank summary', async () => {
     render(<App />);
 
-    await waitFor(() => expect(screen.getByRole('heading', { name: /build a practice session/i })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('heading', { name: /dashboard/i })).toBeInTheDocument());
 
     expect(screen.getByRole('heading', { name: 'CCTC Practice Exam' })).toBeInTheDocument();
     expect(
       screen.getByText((_, element) => Boolean(element?.closest('.badge')?.textContent?.includes('506 item')))
     ).toBeInTheDocument();
-    expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /start session/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /session setup/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /start practice/i })).toBeInTheDocument();
   });
 });
