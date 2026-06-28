@@ -780,3 +780,58 @@ button:focus:not(:focus-visible),
 .settings-grid--compact {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
+.results-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: rgba(42, 92, 90, 0.04);
+  border: 1px solid rgba(42, 92, 90, 0.08);
+}
+
+.results-hero__percent {
+  display: block;
+  font-size: 2.25rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 400;
+  color: var(--brand);
+}
+
+.results-hero__score,
+.results-hero__estimate,
+.results-hero__time {
+  text-align: center;
+}
+
+.breakdown-card {
+  padding: 1.25rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid var(--line);
+  transition: border-color 160ms ease;
+}
+
+.breakdown-card h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin: 0 0 0.35rem;
+}
+
+.breakdown-card__score {
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--ink);
+}
+
+.breakdown-card--weakest {
+  border-color: rgba(196, 136, 74, 0.35);
+  background: rgba(196, 136, 74, 0.06);
+}
+
+.breakdown-card__drill {
+  margin-top: 0.75rem;
+}

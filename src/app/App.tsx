@@ -48,6 +48,7 @@ import { ProgressHistory } from './components/ProgressHistory';
 import { HistoryDetail } from './components/HistoryDetail';
 import { ReviewFeedback } from './components/ReviewFeedback';
 import { Dashboard } from './components/Dashboard';
+import { Results } from './components/Results';
 
 function normalizeSettings(settings: SessionSettings): SessionSettings {
   const defaults = buildDefaultSettings(settings.blueprintId);
@@ -83,6 +84,7 @@ function App() {
   const [flags, setFlags] = useState<ItemFlag[]>([]);
   const [flagDraft, setFlagDraft] = useState<FlagDraft | null>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
+  const [completedSession, setCompletedSession] = useState<HistoryEntry | null>(null);
   const [sessionReplacePromptOpen, setSessionReplacePromptOpen] = useState(false);
   const [pendingSessionSettings, setPendingSessionSettings] = useState<SessionSettings | null>(null);
   const lastPersistFingerprint = useRef('');
@@ -405,6 +407,26 @@ function App() {
     setView('session');
   }
 
+  function drillWeakest(categoryId: string): void {
+    const blueprint = getBlueprint(settings.blueprintId);
+    const domainQuestions = bank.questions.filter((q) => {
+      if (blueprint.structure === 'domain_task') {
+        return String(q.domain) === categoryId && (settings.includeDrafts || q.status === 'reviewed');
+      }
+      const legacyId = q.legacy_section ?? (q.task ? blueprint.crosswalk_from_new_task[q.task] : undefined);
+      return legacyId === categoryId && (settings.includeDrafts || q.status === 'reviewed');
+    });
+
+    const recentIds = buildRecentItemIds(history.map((entry) => ({ itemIds: entry.itemIds })));
+    const drillSettings: SessionSettings = {
+      ...settings,
+      questionCount: Math.min(domainQuestions.length, settings.questionCount)
+    };
+    const nextSession = createSession(domainQuestions, drillSettings, recentIds);
+    setActiveSession(nextSession);
+    setView('session');
+  }
+
   function startSession(): void {
     let nextSettings = settings;
 
@@ -487,9 +509,10 @@ function App() {
 
       setHistory((current) => [historyEntry, ...current]);
       setSelectedHistory(historyEntry);
+      setCompletedSession(historyEntry);
       setReviewIndex(0);
       setActiveSession(null);
-      setView('history-detail');
+      setView('results');
     } finally {
       setIsFinalizing(false);
     }
@@ -728,6 +751,19 @@ function App() {
             finalizeSession={finalizeSession}
             isFinalizing={isFinalizing}
             mutateSession={mutateSession}
+          />
+        )}
+
+        {view === 'results' && completedSession && (
+          <Results
+            result={completedSession}
+            onReviewAnswers={() => {
+              setSelectedHistory(completedSession);
+              setReviewIndex(0);
+              setView('history-detail');
+            }}
+            onDrillWeakest={drillWeakest}
+            onGoHome={() => setView('home')}
           />
         )}
 
