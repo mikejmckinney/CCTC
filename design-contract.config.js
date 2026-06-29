@@ -48,9 +48,76 @@ export default {
     outputDir: "visual-regression",
     skipClasses: [],
     screens: [
+      // 1. Dashboard (initial load)
       { name: "dashboard", navText: "Home" },
+
+      // 2. Setup
       { name: "setup", navText: "Setup" },
+
+      // 3. Session — start a study session
+      // text-is("Study") does EXACT match, avoiding the weak-areas preset
+      // that also contains "Study" in its description text.
+      {
+        name: "session",
+        steps: [
+          { click: "Home" },
+          { wait: 1000 },
+          { click: "Setup" },
+          { wait: 2000 },
+          { click: "button:text-is('Study')" },
+          { wait: 1500 },
+          { click: "Start study" },
+          { wait: 3000 },
+        ],
+      },
+
+      // 4. Session study reveal — click first option to show explanation
+      {
+        name: "session-study-reveal",
+        steps: [
+          { waitFor: ".option-button" },
+          { wait: 1000 },
+          { click: ".option-button" },
+          { wait: 2000 },
+        ],
+      },
+
+      // 5. Results — seed IndexedDB with sample history, reload to show readiness
+      {
+        name: "results",
+        reloadBeforeCapture: true,
+        steps: [
+          { click: "Home" },
+          { wait: 500 },
+          { seedIdb: true },
+          { wait: 2000 },
+        ],
+      },
+
+      // 6. Review — navigate to Progress, click Review
+      {
+        name: "review",
+        steps: [
+          { click: "Progress" },
+          { wait: 2000 },
+          { click: "button:has-text('Review →')" },
+          { wait: 2000 },
+        ],
+      },
+
+      // 7. Progress (history view)
       { name: "progress", navText: "Progress" },
+
+      // 8. Flags — navigate to Progress, click Manage flags
+      {
+        name: "flags",
+        steps: [
+          { click: "Progress" },
+          { wait: 2000 },
+          { click: "Manage flags" },
+          { wait: 1500 },
+        ],
+      },
     ],
   },
 };
