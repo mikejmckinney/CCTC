@@ -58,15 +58,6 @@ export default {
   skeleton: {
     enabled: true,
     output: "component-skeletons.md",
-    sections: [
-      { name: "Header", pattern: '(<header class="header".*?</header>)' },
-      { name: "ReadinessHero", pattern: '(<div class="readiness-hero".*?</div>\\s*</div>\\s*</div>)' },
-      { name: "QuickStartGrid", pattern: '(<div class="qs-grid".*?</div>\\s*</div>)' },
-      { name: "CategoryBreakdown", pattern: '(<div class="cat-section".*?</div>\\s*</div>\\s*</div>)' },
-      { name: "AmIReadyInsights", pattern: '(<div class="insights".*?</div>\\s*</div>\\s*</div>)' },
-      { name: "StudyPlan", pattern: '(<div class="plan-card".*?</div>\\s*</div>)' },
-      { name: "SessionHistory", pattern: '(<div class="history-card".*?</div>\\s*</div>\\s*</div>)' },
-    ],
   },
   visual: {
     enabled: true,
