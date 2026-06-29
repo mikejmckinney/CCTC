@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi, beforeAll } from 'vitest';
 import App from './App';
 
 vi.mock('../lib/storage', () => ({
@@ -22,17 +22,44 @@ vi.mock('../lib/storage', () => ({
   upsertFlag: vi.fn(async () => undefined)
 }));
 
+beforeAll(() => {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: vi.fn().mockImplementation((query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn()
+    }))
+  });
+});
+
 describe('App', () => {
-  it('renders the start screen and loaded-bank summary', async () => {
+  it('renders the dashboard as default home view', async () => {
     render(<App />);
 
-    await waitFor(() => expect(screen.getByRole('heading', { name: /build a practice session/i })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('CCTC Practice Exam')).toBeInTheDocument());
 
-    expect(screen.getByRole('heading', { name: 'CCTC Practice Exam' })).toBeInTheDocument();
-    expect(
-      screen.getByText((_, element) => Boolean(element?.closest('.badge')?.textContent?.includes('506 item')))
-    ).toBeInTheDocument();
-    expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /start session/i })).toBeInTheDocument();
+    expect(screen.getByText(/Practice readiness/i)).toBeInTheDocument();
+    expect(screen.getByText(/Quick start/i)).toBeInTheDocument();
+    expect(screen.getByText(/Recent sessions/i)).toBeInTheDocument();
+  });
+
+  it('renders theme toggle button', async () => {
+    render(<App />);
+    await waitFor(() => expect(screen.getByLabelText(/Switch to night theme/i)).toBeInTheDocument());
+  });
+
+  it('renders navigation items', async () => {
+    render(<App />);
+    await waitFor(() => {
+      expect(screen.getByText('Home')).toBeInTheDocument();
+      expect(screen.getByText('Setup')).toBeInTheDocument();
+      expect(screen.getByText('Progress')).toBeInTheDocument();
+    });
   });
 });

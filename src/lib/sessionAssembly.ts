@@ -132,7 +132,13 @@ function prioritizeBucketCandidates(candidates: Question[], selectedQuestions: Q
   });
 }
 
-function buildCandidateBuckets(blueprint: Blueprint, questions: Question[], recentIds: Set<string>): Map<string, Question[]> {
+function buildCandidateBuckets(
+  blueprint: Blueprint,
+  questions: Question[],
+  recentIds: Set<string>,
+  missedIds?: Set<string>,
+  prioritizeIncorrect?: boolean
+): Map<string, Question[]> {
   const buckets = new Map<string, Question[]>();
 
   questions.forEach((question) => {
@@ -144,9 +150,17 @@ function buildCandidateBuckets(blueprint: Blueprint, questions: Question[], rece
   });
 
   buckets.forEach((bucket, key) => {
-    const unseen = shuffleList(bucket.filter((question) => !recentIds.has(question.id)));
-    const seen = shuffleList(bucket.filter((question) => recentIds.has(question.id)));
-    buckets.set(key, [...unseen, ...seen]);
+    if (prioritizeIncorrect && missedIds && missedIds.size > 0) {
+      const missed = shuffleList(bucket.filter((q) => missedIds.has(q.id) && !recentIds.has(q.id)));
+      const missedSeen = shuffleList(bucket.filter((q) => missedIds.has(q.id) && recentIds.has(q.id)));
+      const rest = shuffleList(bucket.filter((q) => !missedIds.has(q.id) && !recentIds.has(q.id)));
+      const restSeen = shuffleList(bucket.filter((q) => !missedIds.has(q.id) && recentIds.has(q.id)));
+      buckets.set(key, [...missed, ...missedSeen, ...rest, ...restSeen]);
+    } else {
+      const unseen = shuffleList(bucket.filter((q) => !recentIds.has(q.id)));
+      const seen = shuffleList(bucket.filter((q) => recentIds.has(q.id)));
+      buckets.set(key, [...unseen, ...seen]);
+    }
   });
 
   return buckets;
@@ -181,7 +195,8 @@ function pushSelectedQuestion(
 export function createSession(
   questions: Question[],
   settings: SessionSettings,
-  recentIds: Set<string>
+  recentIds: Set<string>,
+  options?: { prioritizeIncorrect?: boolean; missedItemIds?: Set<string> }
 ): ActiveSession {
   const blueprint = getBlueprint(settings.blueprintId);
   const filteredQuestions = questions.filter(
@@ -190,7 +205,10 @@ export function createSession(
   );
   const targets = getBindingTargets(blueprint, settings.questionCount);
   const domainTolerance = getScaledDomainTolerance(blueprint, settings.questionCount);
-  const buckets = buildCandidateBuckets(blueprint, filteredQuestions, recentIds);
+  const buckets = buildCandidateBuckets(
+    blueprint, filteredQuestions, recentIds,
+    options?.missedItemIds, options?.prioritizeIncorrect
+  );
   const selected: SessionItemSnapshot[] = [];
   const selectedQuestions: Question[] = [];
   const selectedIds = new Set<string>();
@@ -235,7 +253,7 @@ export function createSession(
     });
   }
 
-  const orderedItems = shuffleList(selected);
+  const orderedItems = options?.prioritizeIncorrect ? selected : shuffleList(selected);
   const answers = Object.fromEntries(orderedItems.map((item) => [item.itemId, null]));
   const revealed = Object.fromEntries(orderedItems.map((item) => [item.itemId, false]));
   const now = new Date().toISOString();

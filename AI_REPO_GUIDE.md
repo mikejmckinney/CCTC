@@ -1,7 +1,7 @@
 # AI_REPO_GUIDE.md
 
 > Purpose: Canonical agent reference for the CCTC repository.
-> Last verified: 2026-06-09
+> Last verified: 2026-06-29
 
 This repository is the CCTC project: a static, client-side practice-exam app for the ABTC Certified Clinical Transplant Coordinator exam. The repo now contains an initial React + TypeScript + Vite app scaffold, local validation tooling, and CI workflows alongside the exam specification, blueprint data, schema, and example question content.
 
@@ -10,7 +10,7 @@ This repository is the CCTC project: a static, client-side practice-exam app for
 - Product: CCTC Practice Exam, an independent study aid for CCTC exam candidates.
 - Delivery model: static hosting, offline after first load, no backend, no runtime LLM calls.
 - Present in repo today: prompts, schema, blueprint JSON, question-bank conventions, a React/Vite frontend scaffold under `src/`, static assets under `public/`, a package manifest with local test/build/validate scripts, and validation workflows.
-- Current product maturity: **v1 complete on `main`** — exam engine, persistence, flagging, **506 reviewed items**, history/category trends, a11y polish, GitHub Pages.
+- Current product maturity: **v1 complete on `main`** — exam engine, persistence, flagging, **506 reviewed items**, history/category trends, a11y polish, GitHub Pages. **Redesign in progress** — "Editorial Institutional" visual system, dashboard with readiness/focus analytics, day/night themes, in-app modals.
 - Hosting: `.github/workflows/deploy-pages.yml` builds with `VITE_BASE_PATH=/CCTC/` for https://mikejmckinney.github.io/CCTC/
 - **v2 (planned):** `.context/vision/v2-roadmap.md` — sync, deep-linked references, runtime generation, organ-balance shards.
 - **Template feedback:** `.context/sessions/2026-06-09_cctc-v1-template-feedback.md` — lessons for upstream `ai-repo-template`.
@@ -18,7 +18,7 @@ This repository is the CCTC project: a static, client-side practice-exam app for
 The implementation surface is still driven by the prompt set in `.github/prompts/`:
 
 - Recommended stack: React + TypeScript + Vite.
-- Styling: Tailwind CSS.
+- Styling: CSS custom properties (design tokens) in `src/app.css` — "Editorial Institutional" design system with day/night themes.
 - Persistence: IndexedDB via `idb`.
 - Hosting target: static files such as GitHub Pages.
 
@@ -76,6 +76,20 @@ Use these files as the current product ground truth:
 │       └── examples.json
 ├── src/
 │   ├── app/
+│   │   ├── App.tsx
+│   │   ├── app.css
+│   │   ├── components/
+│   │   │   ├── Header.tsx
+│   │   │   ├── ConfirmModal.tsx
+│   │   │   └── QuestionMap.tsx
+│   │   └── views/
+│   │       ├── DashboardView.tsx
+│   │       ├── SetupView.tsx
+│   │       ├── SessionView.tsx
+│   │       ├── ResultsView.tsx
+│   │       ├── ReviewView.tsx
+│   │       ├── HistoryView.tsx
+│   │       └── FlagsView.tsx
 │   ├── data/
 │   ├── lib/
 │   ├── types/
