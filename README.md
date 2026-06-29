@@ -141,13 +141,10 @@ Phases 1–4 are on `main`: exam engine, **506 reviewed items**, validation/stub
 
 ## Design-to-Code Contract (d2cc)
 
-The prototype HTML files are the source of truth. `d2cc` verifies the React implementation matches them.
+The prototype HTML files (`direction-3-warm-productive.html`) are the single source of truth for the visual design. [d2cc](https://github.com/mikejmckinney/d2cc) verifies the React implementation matches them.
 
 ```bash
-# Run all contract checks
-npm run contract:verify
-# or
-./enforce-contract.sh
+npm run contract:verify   # runs d2cc verify via enforce-contract.sh
 ```
 
 Four checks run automatically:
