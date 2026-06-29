@@ -48,15 +48,15 @@ export default {
     outputDir: "visual-regression",
     skipClasses: [],
     screens: [
-      // 1. Dashboard (initial load)
+      // 1. Dashboard — fresh load, prototype auto-seeds
       { name: "dashboard", navText: "Home" },
 
       // 2. Setup
       { name: "setup", navText: "Setup" },
 
       // 3. Session — start a study session
-      // text-is("Study") does EXACT match, avoiding the weak-areas preset
-      // that also contains "Study" in its description text.
+      // clickExactButton uses getByRole('button', { name, exact: true })
+      // which handles whitespace normalization better than text-is
       {
         name: "session",
         steps: [
@@ -64,7 +64,7 @@ export default {
           { wait: 1000 },
           { click: "Setup" },
           { wait: 2000 },
-          { click: "button:text-is('Study')" },
+          { clickExactButton: "Study" },
           { wait: 1500 },
           { click: "Start study" },
           { wait: 3000 },
@@ -72,50 +72,64 @@ export default {
       },
 
       // 4. Session study reveal — click first option to show explanation
+      // React: .option-button class on each option
+      // Prototype: no class — options are buttons after the question card
+      // Use nth=6 to skip nav buttons and hit the first option button
       {
         name: "session-study-reveal",
         steps: [
-          { waitFor: ".option-button" },
-          { wait: 1000 },
-          { click: ".option-button" },
+          { waitFor: [".option-button", "button >> nth=6"] },
+          { wait: 1500 },
+          { click: [".option-button", "button >> nth=6"] },
           { wait: 2000 },
         ],
       },
 
-      // 5. Results — seed IndexedDB with sample history, reload to show readiness
+      // 5. Results — seed React data, reload, navigate to Progress, click Review
       {
         name: "results",
-        reloadBeforeCapture: true,
         steps: [
-          { click: "Home" },
-          { wait: 500 },
           { seedIdb: true },
-          { wait: 2000 },
-        ],
-      },
-
-      // 6. Review — navigate to Progress, click Review
-      {
-        name: "review",
-        steps: [
+          { reload: true },
           { click: "Progress" },
-          { wait: 2000 },
-          { click: "button:has-text('Review →')" },
+          { wait: 3000 },
+          { click: ["button:has-text('Review →')", "button:has-text('Review')"] },
           { wait: 2000 },
         ],
       },
 
-      // 7. Progress (history view)
-      { name: "progress", navText: "Progress" },
+      // 6. Progress — reload for clean seeded state
+      {
+        name: "progress",
+        steps: [
+          { reload: true },
+          { click: "Progress" },
+          { wait: 3000 },
+        ],
+      },
 
-      // 8. Flags — navigate to Progress, click Manage flags
+      // 7. Flags — reload, navigate to Progress, wait for Manage flags, click it
       {
         name: "flags",
         steps: [
+          { reload: true },
           { click: "Progress" },
+          { wait: 5000 },
+          { waitForText: "Manage flags" },
+          { click: ["button:has-text('Manage flags')", "button:has-text('Manage')"] },
           { wait: 2000 },
-          { click: "Manage flags" },
-          { wait: 1500 },
+        ],
+      },
+
+      // 8. Review — reload, navigate to Progress, click Review
+      {
+        name: "review",
+        steps: [
+          { reload: true },
+          { click: "Progress" },
+          { wait: 3000 },
+          { click: ["button:has-text('Review →')", "button:has-text('Review')"] },
+          { wait: 2000 },
         ],
       },
     ],
