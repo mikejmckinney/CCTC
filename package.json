@@ -42,7 +42,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^5.0.0",
-    "d2cc": "git+https://github.com/mikejmckinney/d2cc.git",
+    "d2cc": "git+https://github.com/mikejmckinney/d2cc.git#d139fb7",
     "jsdom": "^26.1.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
