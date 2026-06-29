@@ -258,10 +258,12 @@ a {
 }
 
 @media (max-width: 560px) {
-  .app-header__nav-label {
+  .app-header__nav-label,
+  .nav-label {
     display: none;
   }
-  .app-header__brand-word {
+  .app-header__brand-word,
+  .brand-word {
     display: none;
   }
 }

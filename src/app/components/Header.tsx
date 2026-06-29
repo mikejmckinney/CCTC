@@ -16,7 +16,7 @@ export function Header({ view, activeSession, theme, onNavigate, onThemeToggle, 
       <div className="app-header__inner">
         <span className="app-header__brand">
           <span className="app-header__brand-tile">C</span>
-          <span className="app-header__brand-word">CCTC Practice</span>
+          <span className="app-header__brand-word brand-word">CCTC Practice</span>
         </span>
         <nav className="app-header__nav" aria-label="Primary">
           <button
@@ -25,7 +25,7 @@ export function Header({ view, activeSession, theme, onNavigate, onThemeToggle, 
             aria-current={view === 'dashboard' ? 'page' : undefined}
           >
             <span className="nav-icon">🏠</span>
-            <span className="app-header__nav-label">Home</span>
+            <span className="app-header__nav-label nav-label">Home</span>
           </button>
           <button
             className={`app-header__nav-item${view === 'setup' ? ' is-active' : ''}`}
@@ -33,7 +33,7 @@ export function Header({ view, activeSession, theme, onNavigate, onThemeToggle, 
             aria-current={view === 'setup' ? 'page' : undefined}
           >
             <span className="nav-icon">⚙</span>
-            <span className="app-header__nav-label">Setup</span>
+            <span className="app-header__nav-label nav-label">Setup</span>
           </button>
           <button
             className={`app-header__nav-item${view === 'history' ? ' is-active' : ''}`}
@@ -41,7 +41,7 @@ export function Header({ view, activeSession, theme, onNavigate, onThemeToggle, 
             aria-current={view === 'history' ? 'page' : undefined}
           >
             <span className="nav-icon">📊</span>
-            <span className="app-header__nav-label">Progress</span>
+            <span className="app-header__nav-label nav-label">Progress</span>
           </button>
         </nav>
         <span className="app-header__spacer" />
