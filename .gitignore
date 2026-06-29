@@ -51,6 +51,10 @@
 docs/reference/*.pdf
 docs/reference/.index/
 
+# --- d2cc generated artifacts ---
+visual-regression/
+component-skeletons.md
+
 # --- Build / dist outputs ---
 dist/
 build/

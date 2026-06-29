@@ -6,7 +6,7 @@ export default {
   },
   cssSync: {
     enabled: true,
-    skipList: ["--serif", "--sans"], // font-family aliases, not visual tokens
+    skipList: ["--serif", "--sans"],
   },
   structural: {
     enabled: true,
@@ -47,5 +47,10 @@ export default {
     ],
     outputDir: "visual-regression",
     skipClasses: [],
+    screens: [
+      { name: "dashboard", navText: "Home" },
+      { name: "setup", navText: "Setup" },
+      { name: "progress", navText: "Progress" },
+    ],
   },
 };
