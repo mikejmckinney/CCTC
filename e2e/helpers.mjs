@@ -38,6 +38,10 @@ export async function readSessionItemTotal(page) {
 export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
+
+  // Dashboard-first: wait for dashboard, then navigate to Setup
+  await expect(page.getByLabel('Readiness score')).toBeVisible();
+  await page.getByRole('button', { name: 'Setup' }).click();
   await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
 
   await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
@@ -49,6 +53,11 @@ export async function startStudySession(page, questionCount = MIN_SESSION_QUESTI
 }
 
 export async function resumeActiveSession(page) {
+  // Navigate to Setup if we're on the dashboard
+  const setupBtn = page.getByRole('button', { name: 'Setup' });
+  if (await setupBtn.isVisible()) {
+    await setupBtn.click();
+  }
   await page.getByRole('button', { name: 'Resume current session' }).click();
   await expect(page.getByRole('heading', { name: /Item \d+ of \d+/i })).toBeVisible();
 }

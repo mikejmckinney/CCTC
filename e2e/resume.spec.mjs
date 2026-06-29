@@ -29,6 +29,9 @@ test.describe('session resume', () => {
     await ensureAppReady(page);
     await dismissDisclaimerIfPresent(page);
 
+    // Dashboard-first: navigate to Setup to find resume button
+    await expect(page.getByLabel('Readiness score')).toBeVisible();
+    await page.getByRole('button', { name: 'Setup' }).click();
     await expect(page.getByRole('button', { name: 'Resume current session' })).toBeVisible();
     await resumeActiveSession(page);
 
