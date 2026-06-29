@@ -404,7 +404,7 @@ function App() {
       setSelectedHistory(entry);
       setReviewIndex(0);
       setActiveSession(null);
-      setView('review');
+      setView('results');
     } finally {
       setIsFinalizing(false);
     }

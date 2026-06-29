@@ -55,8 +55,6 @@ export default {
       { name: "setup", navText: "Setup" },
 
       // 3. Session — start a study session
-      // clickExactButton uses getByRole('button', { name, exact: true })
-      // which handles whitespace normalization better than text-is
       {
         name: "session",
         steps: [
@@ -71,23 +69,36 @@ export default {
         ],
       },
 
-      // 4. Session study reveal — click first option to show explanation
-      // React: .option-button class on each option
-      // Prototype: no class — options are buttons after the question card
-      // Use nth=6 to skip nav buttons and hit the first option button
+      // 4. Session study reveal — click first option
+      // React: .option-button class, Prototype: button:has(span:text-is("A"))
       {
         name: "session-study-reveal",
         steps: [
-          { waitFor: [".option-button", "button >> nth=6"] },
-          { wait: 1500 },
-          { click: [".option-button", "button >> nth=6"] },
+          { waitFor: [".option-button", "button:has(span:text-is('A'))"] },
+          { wait: 1000 },
+          { click: [".option-button", "button:has(span:text-is('A'))"] },
           { wait: 2000 },
         ],
       },
 
-      // 5. Results — seed React data, reload, navigate to Progress, click Review
+      // 5. Results — continue from study-reveal session: submit and confirm
+      // No reload — this continues from the active session left by step 4
+      // React: Finish session → ConfirmModal → Finish → setView('results')
+      // Prototype: submitSession → confirmOpen → doFinalize → view='results'
       {
         name: "results",
+        steps: [
+          { click: ["button:has-text('Finish session')", "button:has-text('Finish')", "button:has-text('Submit')", "button:has-text('Submit exam')"] },
+          { wait: 1000 },
+          { click: ["button:has-text('Finish')", "button:has-text('Submit')"] },
+          { wait: 2000 },
+        ],
+      },
+
+      // 6. Review — seed data, reload, navigate to Progress, click Review
+      // Shows the same scored-session review for both apps
+      {
+        name: "review",
         steps: [
           { seedIdb: true },
           { reload: true },
@@ -98,7 +109,7 @@ export default {
         ],
       },
 
-      // 6. Progress — reload for clean seeded state
+      // 7. Progress — reload for clean seeded state
       {
         name: "progress",
         steps: [
@@ -108,7 +119,7 @@ export default {
         ],
       },
 
-      // 7. Flags — reload, navigate to Progress, wait for Manage flags, click it
+      // 8. Flags — reload, navigate to Progress, click Manage flags
       {
         name: "flags",
         steps: [
@@ -117,18 +128,6 @@ export default {
           { wait: 5000 },
           { waitForText: "Manage flags" },
           { click: ["button:has-text('Manage flags')", "button:has-text('Manage')"] },
-          { wait: 2000 },
-        ],
-      },
-
-      // 8. Review — reload, navigate to Progress, click Review
-      {
-        name: "review",
-        steps: [
-          { reload: true },
-          { click: "Progress" },
-          { wait: 3000 },
-          { click: ["button:has-text('Review →')", "button:has-text('Review')"] },
           { wait: 2000 },
         ],
       },
