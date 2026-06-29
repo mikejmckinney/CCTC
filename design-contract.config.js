@@ -62,6 +62,8 @@ export default {
   visual: {
     enabled: true,
     serverUrl: "http://localhost:5173",
+    devCommand: "npm run dev",
+    serverTimeout: 30000,
     viewports: [
       { name: "desktop", width: 940, height: 800 },
       { name: "mobile", width: 390, height: 844 },
