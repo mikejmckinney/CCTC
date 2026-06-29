@@ -50,7 +50,7 @@ export function SetupView({
 
       {/* Quick start presets */}
       <div className="row" style={{ gap: 12 }}>
-        <button className="quick-card quick-card--teal" style={{ flex: 1 }} onClick={() => {
+        <button className="quick-card" style={{ flex: 1 }} onClick={() => {
           onUpdateSettings({ mode: 'exam', questionCount: settings.blueprintId === 'cctc-from-2026-07' ? 175 : 150, timed: true, timeMinutes: 180 });
           handleStart();
         }}>

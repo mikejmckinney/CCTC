@@ -42,7 +42,7 @@ describe('App', () => {
   it('renders the dashboard as default home view', async () => {
     render(<App />);
 
-    await waitFor(() => expect(screen.getByText('CCTC Practice Exam')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText('Welcome back')).toBeInTheDocument());
 
     expect(screen.getByText(/Practice readiness/i)).toBeInTheDocument();
     expect(screen.getByText(/Quick start/i)).toBeInTheDocument();

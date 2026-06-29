@@ -68,7 +68,7 @@ export function DashboardView({
     <div className="stack stack--gap-lg">
       {/* Greeting + exam date */}
       <div>
-        <h1>CCTC Practice Exam</h1>
+        <h1>Welcome back</h1>
         <p className="field-hint" style={{ marginTop: 4 }}>
           {examDateText ?? (
             <button className="btn-ghost" style={{ padding: 0, minHeight: 'auto', fontSize: 12, color: 'var(--tealtext)' }}
@@ -83,10 +83,16 @@ export function DashboardView({
       {/* Resume banner */}
       {hasUnfinished && (
         <div className="resume-banner">
-          <span className="resume-banner__text">
-            Resume your session · Item {(activeSession.currentIndex + 1)} of {activeSession.items.length}
-          </span>
-          <button className="resume-banner__btn" onClick={onResumeSession}>Resume</button>
+          <div className="resume-banner__content">
+            <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 4 }}>Continue</p>
+            <span className="resume-banner__text" style={{ color: '#fff', fontWeight: 600 }}>
+              Resume your session
+            </span>
+            <span style={{ color: '#bfe0d6', marginLeft: 6 }}>
+              · Item {(activeSession.currentIndex + 1)} of {activeSession.items.length}
+            </span>
+          </div>
+          <button className="resume-banner__btn" onClick={onResumeSession} style={{ background: '#fff', color: '#123b3a', border: 'none' }}>Resume →</button>
         </div>
       )}
 
@@ -97,6 +103,7 @@ export function DashboardView({
           <div className="row row--spread" style={{ alignItems: 'flex-start' }}>
             <div>
               <p className="eyebrow">Practice readiness</p>
+              <p style={{ fontSize: 12, color: 'var(--muted)', margin: '0 0 8px' }}>Weighted recent exam average</p>
               <DonutChart percent={readiness.percent} />
             </div>
             {readiness.delta !== null && (
@@ -154,7 +161,7 @@ export function DashboardView({
         <div className="stack stack--gap">
           <div className="card card--panel stack stack--gap">
             <p className="eyebrow">Quick start</p>
-            <button className="quick-card quick-card--teal" onClick={() => onLaunchPreset({ mode: 'exam', questionCount: settings.blueprintId === 'cctc-from-2026-07' ? 175 : 150, timed: true, timeMinutes: 180 })}>
+            <button className="quick-card" onClick={() => onLaunchPreset({ mode: 'exam', questionCount: settings.blueprintId === 'cctc-from-2026-07' ? 175 : 150, timed: true, timeMinutes: 180 })}>
               <span className="quick-card__title">Full mock exam</span>
               <span className="quick-card__desc">175 questions · 180 min · exam</span>
             </button>
