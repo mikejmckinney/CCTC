@@ -29,43 +29,42 @@ do not rename or restructure.
 ```
 
 **React component**: `Header.tsx`
-**Source**: `direction-3-warm-productive.html`
+**Source**: `/private/tmp/CCTC/direction-3-warm-productive.html`
 
 ---
 
 ### ReadinessHero
 
-⚠️ Section not found in prototype — extract manually from `direction-3-warm-productive.html`
+⚠️ Section not found in prototype — extract manually from `/private/tmp/CCTC/direction-3-warm-productive.html`
 
 ---
 
 ### QuickStartGrid
 
-⚠️ Section not found in prototype — extract manually from `direction-3-warm-productive.html`
+⚠️ Section not found in prototype — extract manually from `/private/tmp/CCTC/direction-3-warm-productive.html`
 
 ---
 
 ### CategoryBreakdown
 
-⚠️ Section not found in prototype — extract manually from `direction-3-warm-productive.html`
+⚠️ Section not found in prototype — extract manually from `/private/tmp/CCTC/direction-3-warm-productive.html`
 
 ---
 
 ### AmIReadyInsights
 
-⚠️ Section not found in prototype — extract manually from `direction-3-warm-productive.html`
+⚠️ Section not found in prototype — extract manually from `/private/tmp/CCTC/direction-3-warm-productive.html`
 
 ---
 
 ### StudyPlan
 
-⚠️ Section not found in prototype — extract manually from `direction-3-warm-productive.html`
+⚠️ Section not found in prototype — extract manually from `/private/tmp/CCTC/direction-3-warm-productive.html`
 
 ---
 
 ### SessionHistory
 
-⚠️ Section not found in prototype — extract manually from `direction-3-warm-productive.html`
+⚠️ Section not found in prototype — extract manually from `/private/tmp/CCTC/direction-3-warm-productive.html`
 
 ---
-

@@ -25,6 +25,7 @@
     "test:e2e": "node scripts/run-e2e.mjs",
     "test:e2e:smoke": "node scripts/run-resume-smoke.mjs",
     "test:e2e:playwright": "playwright test -c playwright.config.mjs",
+    "contract:verify": "d2cc verify",
     "test:e2e:install": "playwright install chromium"
   },
   "dependencies": {
@@ -41,6 +42,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^5.0.0",
+    "d2cc": "git+https://github.com/mikejmckinney/d2cc.git",
     "jsdom": "^26.1.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",

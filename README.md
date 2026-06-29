@@ -139,6 +139,25 @@ Phases 1–4 are on `main`: exam engine, **506 reviewed items**, validation/stub
 - **Production build:** `npm run build` (relative assets) or `VITE_BASE_PATH=/CCTC/ npm run build:ci` for GitHub Pages.  Use `npm run build:ci` if building locally to bypass the validation step (requires indexer setup)
 - **Live app :** https://mikejmckinney.github.io/CCTC/
 
+## Design-to-Code Contract (d2cc)
+
+The prototype HTML files are the source of truth. `d2cc` verifies the React implementation matches them.
+
+```bash
+# Run all contract checks
+npm run contract:verify
+# or
+./enforce-contract.sh
+```
+
+Four checks run automatically:
+1. **CSS Sync** — every class from the prototype's `<style>` exists in `src/app.css`
+2. **Structural** — required CSS classes, tokens, SVG paths, naming conventions
+3. **Skeleton** — component markup extracted from prototype sections
+4. **Visual Regression** — Playwright screenshots + DOM class diff
+
+Config: `design-contract.config.js` — edit this when the prototype changes.
+
 ## Hosting
 
 The app is a static Vite build. Pushes to `main` run `.github/workflows/deploy-pages.yml`, which publishes `dist/` to GitHub Pages with `base: /CCTC/`. Enable **Settings → Pages → GitHub Actions** on the repo if the site is not live yet.

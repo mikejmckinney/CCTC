@@ -1,43 +1,21 @@
 #!/usr/bin/env bash
-# Master enforcement script — runs all contract checks.
+# Design-to-Code Contract enforcement — delegates to d2cc.
 # Usage: ./enforce-contract.sh
+#
+# Requires: npm install --include=dev
+# Config:  design-contract.config.js
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-PASS=0
-FAIL=0
-RESULTS=""
-
-run_check() {
-  local name="$1"
-  local cmd="$2"
-  echo "━━━ $name ━━━"
-  if output=$(eval "$cmd" 2>&1); then
-    RESULTS="${RESULTS}✅ ${name}\n"
-    PASS=$((PASS + 1))
-    echo "$output"
-  else
-    RESULTS="${RESULTS}❌ ${name}\n"
-    FAIL=$((FAIL + 1))
-    echo "$output"
-  fi
-  echo ""
-}
-
-run_check "1. Structural Verification" "./verify-manifest.sh"
-run_check "2. CSS Sync (prototype → app.css)" "./css-sync-check.sh"
-run_check "3. Prototype Section Skeletons" "./prototype-section-extractor.sh"
-run_check "4. Visual Regression (prototype vs React)" "./visual-regression.sh"
-
-echo "━━━ Summary ━━━"
-echo -e "$RESULTS"
-echo "$PASS passed, $FAIL failed"
-if [[ $FAIL -eq 0 ]]; then
-  echo "✅ All contract checks pass"
-else
-  echo "❌ Contract violations found — fix before shipping"
+D2CC="./node_modules/.bin/d2cc"
+if [[ ! -x "$D2CC" ]]; then
+  echo "d2cc not found. Run: npm install --include=dev"
+  exit 1
 fi
-exit "$FAIL"
+
+echo "Running d2cc verify..."
+echo ""
+"$D2CC" verify
