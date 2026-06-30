@@ -15,9 +15,10 @@
   "mcp": {
     "d2cc": {
       "type": "local",
-      "command": ["node", "/workspaces/d2cc/bin/d2cc.js", "mcp"],
+      "command": ["/home/codespace/nvm/current/bin/node", "/workspaces/d2cc/bin/d2cc.js", "mcp"],
       "enabled": true,
-      "timeout": 10000
+      "timeout": 15000,
+      "cwd": "/workspaces/d2cc"
     }
   }
 }
