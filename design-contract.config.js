@@ -47,6 +47,9 @@ export default {
     ],
     outputDir: "visual-regression",
     skipClasses: [],
+    customStepFiles: {
+      "seed-idb": "./scripts/d2cc-seed-idb.js",
+    },
     screens: [
       // 1. Dashboard — fresh load, prototype auto-seeds
       { name: "dashboard", navText: "Home" },
@@ -100,7 +103,7 @@ export default {
       {
         name: "review",
         steps: [
-          { seedIdb: true },
+          { custom: "seed-idb" },
           { reload: true },
           { click: "Progress" },
           { wait: 3000 },

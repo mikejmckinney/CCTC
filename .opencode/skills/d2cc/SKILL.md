@@ -69,14 +69,14 @@ screens: [
     { wait: 3000 },
   ]},
   { name: "results", steps: [
-    { seedIdb: true },      // inject test data (React only)
+    { custom: "seed-idb" },     // run project-defined seed script
     { reload: true },       // reload page (both platforms)
     { click: "Progress" },
   ]},
 ]
 ```
 
-Step types: `click` (string or array fallback), `clickExactButton` (exact role match), `waitFor`, `waitForText`, `wait`, `dismiss`, `seedIdb`, `reload`.
+Step types: `click` (string or array fallback), `clickExactButton` (exact role match), `waitFor`, `waitForText`, `wait`, `dismiss`, `custom` (project-defined script), `reload`.
 
 ## Common fixes
 
