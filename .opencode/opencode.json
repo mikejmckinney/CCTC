@@ -6,6 +6,7 @@
     "openrouter": {
       "models": {
         "xiaomi/mimo-v2.5-pro@preset/default": {},
+        "xiaomi/mimo-v2.5@preset/default": {},
         "google/gemini-3.5-flash@preset/default": {},
         "openrouter/auto@preset/default": {}
       }
@@ -15,7 +16,8 @@
     "d2cc": {
       "type": "local",
       "command": ["node", "/workspaces/d2cc/bin/d2cc.js", "mcp"],
-      "enabled": true
+      "enabled": true,
+      "timeout": 10000
     }
   }
 }
