@@ -161,7 +161,7 @@ export function SessionView({ session, currentItem, answeredCount, onAnswer, onN
           <button className="btn-ghost" onClick={() => onOpenFlagComposer(currentItem.question, session.id, session.settings.blueprintId, session.settings.mode)}>
             Report an issue
           </button>
-          <button className="btn-primary" onClick={onSubmit}>
+          <button className="btn-gold" onClick={onSubmit}>
             {session.settings.mode === 'exam' ? 'Submit exam' : 'Finish session'}
           </button>
         </div>

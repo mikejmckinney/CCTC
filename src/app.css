@@ -134,7 +134,7 @@ a {
   top: 0;
   z-index: 15;
   background: var(--headerbg);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   padding: 0 20px;
 }
@@ -145,7 +145,7 @@ a {
   gap: 16px;
   max-width: 940px;
   margin: 0 auto;
-  height: 52px;
+  padding: 13px 20px;
 }
 
 .app-header__brand {
@@ -358,6 +358,12 @@ h3 { font-size: 20px; font-weight: 600; }
 .btn-primary {
   background: var(--teal);
   border-color: var(--teal);
+  color: #fff;
+}
+
+.btn-gold {
+  background: var(--gold);
+  border-color: var(--gold);
   color: #fff;
 }
 
