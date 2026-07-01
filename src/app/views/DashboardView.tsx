@@ -163,7 +163,7 @@ export function DashboardView({
             <p className="eyebrow">Quick start</p>
             <button className="quick-card" onClick={() => onLaunchPreset({ mode: 'exam', questionCount: settings.blueprintId === 'cctc-from-2026-07' ? 175 : 150, timed: true, timeMinutes: 180 })}>
               <span className="quick-card__title">Full mock exam</span>
-              <span className="quick-card__desc">175 questions · 180 min · exam</span>
+              <span className="quick-card__desc">All {settings.blueprintId === 'cctc-from-2026-07' ? 175 : 150} items · timed 180 min</span>
             </button>
             <button className="quick-card" onClick={() => onLaunchPreset({ mode: 'exam', questionCount: 25, timed: true, timeMinutes: 30 })}>
               <span className="quick-card__title">Quick exam</span>
