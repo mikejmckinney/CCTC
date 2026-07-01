@@ -14,8 +14,6 @@ npm run test
 npm run build
 ```
 
-Use Open Design only when executing [`.github/prompts/04-cctc-open-design-redesign-and-readme-media-v2.md`](../../.github/prompts/04-cctc-open-design-redesign-and-readme-media-v2.md).
-
 ## Version pin
 
 Do not guess which Open Design version to use. Read:
