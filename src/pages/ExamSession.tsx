@@ -119,7 +119,13 @@ export default function ExamSession({
                   textAlign: 'left',
                   padding: '12px 16px',
                   minHeight: 44,
-                  borderColor: selected ? 'var(--accent)' : undefined,
+                  borderColor: showIncorrect
+                    ? 'var(--danger)'
+                    : showCorrect
+                    ? 'var(--success)'
+                    : selected
+                    ? 'var(--accent)'
+                    : undefined,
                   background: showCorrect
                     ? 'var(--success-soft)'
                     : showIncorrect
@@ -136,8 +142,14 @@ export default function ExamSession({
                   borderRadius: '50%',
                   display: 'grid',
                   placeItems: 'center',
-                  background: selected ? 'var(--accent)' : 'var(--surface-muted)',
-                  color: selected ? 'var(--accent-fg)' : 'var(--fg-muted)',
+                  background: showIncorrect
+                    ? 'var(--danger)'
+                    : showCorrect
+                    ? 'var(--success)'
+                    : selected
+                    ? 'var(--accent)'
+                    : 'var(--surface-muted)',
+                  color: (showCorrect || showIncorrect || selected) ? 'var(--accent-fg)' : 'var(--fg-muted)',
                   fontSize: 12,
                   fontWeight: 700,
                   flexShrink: 0,

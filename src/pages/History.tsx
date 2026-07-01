@@ -17,11 +17,16 @@ export default function History({ history, flags, onClearHistory }: HistoryProps
   const domainStrengths = useMemo(() => calcDomainStrengths(history), [history]);
 
   const chartData = useMemo(() => {
-    return emaData.map((point) => ({
-      date: new Date(point.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
-      ema: point.value,
-      session: point.sessionPercent,
-    }));
+    return emaData.map((point, idx) => {
+      const d = new Date(point.date);
+      return {
+        idx,
+        ema: point.value,
+        session: point.sessionPercent,
+        dateLabel: d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
+        timeLabel: d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }),
+      };
+    });
   }, [emaData]);
 
   const targetThreshold = history.length > 0 ? history[0].settings.targetThreshold : 70;
@@ -68,7 +73,13 @@ export default function History({ history, flags, onClearHistory }: HistoryProps
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-                <XAxis dataKey="date" tick={{ fontSize: 11, fill: 'var(--fg-muted)' }} />
+                <XAxis
+                  dataKey="idx"
+                  type="number"
+                  domain={[0, Math.max(chartData.length - 1, 1)]}
+                  tickFormatter={(i: number) => chartData[i]?.dateLabel ?? ''}
+                  tick={{ fontSize: 11, fill: 'var(--fg-muted)' }}
+                />
                 <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: 'var(--fg-muted)' }} />
                 <Tooltip
                   contentStyle={{
@@ -76,6 +87,13 @@ export default function History({ history, flags, onClearHistory }: HistoryProps
                     border: '1px solid var(--border)',
                     borderRadius: 8,
                     fontSize: 12,
+                  }}
+                  labelFormatter={(_, payload) => {
+                    if (payload && payload.length > 0) {
+                      const p = payload[0].payload;
+                      return `${p.dateLabel} ${p.timeLabel}`;
+                    }
+                    return '';
                   }}
                 />
                 <ReferenceLine
