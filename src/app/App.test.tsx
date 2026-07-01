@@ -1,5 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
+import { ThemeProvider } from './ThemeContext';
 import App from './App';
 
 vi.mock('../lib/storage', () => ({
@@ -22,17 +24,25 @@ vi.mock('../lib/storage', () => ({
   upsertFlag: vi.fn(async () => undefined)
 }));
 
+function renderApp() {
+  return render(
+    <BrowserRouter>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
+  );
+}
+
 describe('App', () => {
-  it('renders the start screen and loaded-bank summary', async () => {
-    render(<App />);
+  it('renders the dashboard with quick start cards', async () => {
+    renderApp();
 
-    await waitFor(() => expect(screen.getByRole('heading', { name: /build a practice session/i })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getAllByText('Dashboard').length).toBeGreaterThan(0));
 
-    expect(screen.getByRole('heading', { name: 'CCTC Practice Exam' })).toBeInTheDocument();
-    expect(
-      screen.getByText((_, element) => Boolean(element?.closest('.badge')?.textContent?.includes('506 item')))
-    ).toBeInTheDocument();
-    expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /start session/i })).toBeInTheDocument();
+    expect(screen.getByText('Quick Start')).toBeInTheDocument();
+    expect(screen.getByText('Full Exam')).toBeInTheDocument();
+    expect(screen.getByText('Quick Session')).toBeInTheDocument();
+    expect(screen.getByText('Weak Areas')).toBeInTheDocument();
   });
 });
