@@ -8,16 +8,16 @@ export async function ensureAppReady(page) {
 }
 
 export async function dismissDisclaimerIfPresent(page) {
-  const modal = page.getByLabel('Study aid disclaimer');
+  const button = page.getByRole('button', { name: 'I understand' });
 
   try {
-    await modal.waitFor({ state: 'visible', timeout: 5_000 });
+    await button.waitFor({ state: 'visible', timeout: 5_000 });
   } catch {
     return;
   }
 
-  await page.getByRole('button', { name: 'I understand' }).click();
-  await expect(modal).toBeHidden();
+  await button.click();
+  await expect(button).toBeHidden();
 }
 
 export function sessionItemHeading(page, itemNumber, total) {
