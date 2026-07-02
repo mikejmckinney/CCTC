@@ -127,6 +127,7 @@ export interface SessionSettings {
   mode: ExamMode;
   includeDrafts: boolean;
   targetThreshold: number;
+  examDate?: string;
 }
 
 export interface SessionItemSnapshot {

@@ -132,7 +132,7 @@ function prioritizeBucketCandidates(candidates: Question[], selectedQuestions: Q
   });
 }
 
-function buildCandidateBuckets(blueprint: Blueprint, questions: Question[], recentIds: Set<string>): Map<string, Question[]> {
+function buildCandidateBuckets(blueprint: Blueprint, questions: Question[], recentIds: Set<string>, weakAreaIds?: Set<string>): Map<string, Question[]> {
   const buckets = new Map<string, Question[]>();
 
   questions.forEach((question) => {
@@ -144,9 +144,16 @@ function buildCandidateBuckets(blueprint: Blueprint, questions: Question[], rece
   });
 
   buckets.forEach((bucket, key) => {
-    const unseen = shuffleList(bucket.filter((question) => !recentIds.has(question.id)));
-    const seen = shuffleList(bucket.filter((question) => recentIds.has(question.id)));
-    buckets.set(key, [...unseen, ...seen]);
+    if (weakAreaIds && weakAreaIds.size > 0) {
+      const weak = shuffleList(bucket.filter((q) => weakAreaIds.has(q.id)));
+      const otherUnseen = shuffleList(bucket.filter((q) => !weakAreaIds.has(q.id) && !recentIds.has(q.id)));
+      const otherSeen = shuffleList(bucket.filter((q) => !weakAreaIds.has(q.id) && recentIds.has(q.id)));
+      buckets.set(key, [...weak, ...otherUnseen, ...otherSeen]);
+    } else {
+      const unseen = shuffleList(bucket.filter((question) => !recentIds.has(question.id)));
+      const seen = shuffleList(bucket.filter((question) => recentIds.has(question.id)));
+      buckets.set(key, [...unseen, ...seen]);
+    }
   });
 
   return buckets;
@@ -181,7 +188,8 @@ function pushSelectedQuestion(
 export function createSession(
   questions: Question[],
   settings: SessionSettings,
-  recentIds: Set<string>
+  recentIds: Set<string>,
+  weakAreaIds?: string[]
 ): ActiveSession {
   const blueprint = getBlueprint(settings.blueprintId);
   const filteredQuestions = questions.filter(
@@ -190,7 +198,8 @@ export function createSession(
   );
   const targets = getBindingTargets(blueprint, settings.questionCount);
   const domainTolerance = getScaledDomainTolerance(blueprint, settings.questionCount);
-  const buckets = buildCandidateBuckets(blueprint, filteredQuestions, recentIds);
+  const weakAreaSet = weakAreaIds && weakAreaIds.length > 0 ? new Set(weakAreaIds) : undefined;
+  const buckets = buildCandidateBuckets(blueprint, filteredQuestions, recentIds, weakAreaSet);
   const selected: SessionItemSnapshot[] = [];
   const selectedQuestions: Question[] = [];
   const selectedIds = new Set<string>();
