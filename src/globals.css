@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ─── Clean Clinical Design Tokens ─── */
+
+@theme {
+  /* Color palette — light mode defaults */
+  --color-primary: #1E5FAA;
+  --color-primary-hover: #174A87;
+  --color-secondary: #5B7C99;
+  --color-accent: #3B9A8A;
+  --color-success: #1F8A4C;
+  --color-warning: #B45309;
+  --color-error: #B91C1C;
+
+  --color-background: #FAFBFC;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F1F5F9;
+  --color-border: #E2E8F0;
+  --color-border-strong: #CBD5E1;
+
+  --color-text: #0F2A44;
+  --color-text-secondary: #4B6275;
+  --color-text-muted: #94A3B8;
+
+  /* Typography */
+  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Spacing scale (4px base) */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows — navy-tinted */
+  --shadow-xs: 0 1px 2px rgba(15, 42, 68, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 42, 68, 0.06), 0 1px 2px rgba(15, 42, 68, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 42, 68, 0.08), 0 2px 4px rgba(15, 42, 68, 0.04);
+  --shadow-lg: 0 12px 32px rgba(15, 42, 68, 0.10), 0 4px 8px rgba(15, 42, 68, 0.04);
+}
+
+/* ─── Dark Mode Overrides ─── */
+.dark {
+  --color-primary: #6BA6E5;
+  --color-primary-hover: #8FBCEC;
+  --color-secondary: #94A8B8;
+  --color-accent: #5BBFAE;
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --color-error: #F87171;
+
+  --color-background: #0F1419;
+  --color-surface: #1A1F26;
+  --color-surface-muted: #232A33;
+  --color-border: #2D3748;
+  --color-border-strong: #3D4A5C;
+
+  --color-text: #E2E8F0;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Base Styles ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Skip Link (a11y) ─── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.75rem;
+  z-index: 50;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 0.75rem;
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Scrollbar Styling ─── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-full);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}

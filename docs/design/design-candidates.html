@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCTC Redesign — Design System Candidates</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0f0f0f;
+    color: #e0e0e0;
+    padding: 32px 24px;
+  }
+
+  h1.page-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .page-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 32px;
+  }
+
+  /* Mode toggle */
+  .mode-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .mode-toggle button {
+    padding: 8px 20px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: #1a1a1a;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .mode-toggle button.active {
+    background: #fff;
+    color: #111;
+    border-color: #fff;
+  }
+
+  /* Three-column layout */
+  .candidates {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  @media (max-width: 1100px) {
+    .candidates { grid-template-columns: 1fr; max-width: 480px; }
+  }
+
+  /* Candidate wrapper */
+  .candidate {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+  }
+  .candidate-header {
+    padding: 16px 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ============================================================
+     CANDIDATE A — Clean Clinical
+     ============================================================ */
+  .cand-a { --cand-bg: #FAFBFC; --cand-surface: #FFFFFF; --cand-surface-alt: #F1F5F9; --cand-border: #E2E8F0; --cand-primary: #1E5FAA; --cand-primary-hover: #174A87; --cand-accent: #3B9A8A; --cand-success: #1F8A4C; --cand-warning: #B45309; --cand-error: #B91C1C; --cand-text: #0F2A44; --cand-text-sec: #4B6275; --cand-text-muted: #94A3B8; --cand-shadow: rgba(15,42,68,0.08); --cand-radius: 12px; --cand-font-display: 'Inter', system-ui, sans-serif; --cand-display-weight: 700; }
+  .cand-a.dark { --cand-bg: #0F1419; --cand-surface: #1A1F26; --cand-surface-alt: #232A33; --cand-border: #2D3748; --cand-primary: #6BA6E5; --cand-primary-hover: #8FBCEC; --cand-accent: #5BBFAE; --cand-success: #34D399; --cand-warning: #FBBF24; --cand-error: #F87171; --cand-text: #E2E8F0; --cand-text-sec: #94A3B8; --cand-text-muted: #64748B; --cand-shadow: rgba(0,0,0,0.2); }
+  .cand-a .candidate-header { background: var(--cand-primary); color: #fff; }
+
+  /* ============================================================
+     CANDIDATE B — Warm Scholarly
+     ============================================================ */
+  .cand-b { --cand-bg: #FBF7F0; --cand-surface: #FEFDFB; --cand-surface-alt: #F4ECDF; --cand-border: #E8DFD0; --cand-primary: #B45309; --cand-primary-hover: #92400E; --cand-accent: #C75D3A; --cand-success: #15803D; --cand-warning: #D97706; --cand-error: #B91C1C; --cand-text: #2A1F12; --cand-text-sec: #6B5C4D; --cand-text-muted: #A39580; --cand-shadow: rgba(180,83,9,0.08); --cand-radius: 14px; --cand-font-display: 'Fraunces', Georgia, serif; --cand-display-weight: 600; }
+  .cand-b.dark { --cand-bg: #1A1612; --cand-surface: #25201A; --cand-surface-alt: #2E2820; --cand-border: #3D3528; --cand-primary: #FBBF24; --cand-primary-hover: #FCD34D; --cand-accent: #E8896A; --cand-success: #4ADE80; --cand-warning: #FBBF24; --cand-error: #F87171; --cand-text: #F5EDE0; --cand-text-sec: #B8AB97; --cand-text-muted: #7D705C; --cand-shadow: rgba(0,0,0,0.25); }
+  .cand-b .candidate-header { background: var(--cand-primary); color: #fff; font-family: 'Fraunces', serif; }
+
+  /* ============================================================
+     CANDIDATE C — Modern Slate
+     ============================================================ */
+  .cand-c { --cand-bg: #FAFAFA; --cand-surface: #FFFFFF; --cand-surface-alt: #F4F4F5; --cand-border: #E4E4E7; --cand-primary: #059669; --cand-primary-hover: #047857; --cand-accent: #7C3AED; --cand-success: #10B981; --cand-warning: #F59E0B; --cand-error: #EF4444; --cand-text: #0A0A0B; --cand-text-sec: #52525B; --cand-text-muted: #A1A1AA; --cand-shadow: rgba(0,0,0,0.04); --cand-radius: 8px; --cand-font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; --cand-display-weight: 800; }
+  .cand-c.dark { --cand-bg: #09090B; --cand-surface: #18181B; --cand-surface-alt: #27272A; --cand-border: #3F3F46; --cand-primary: #34D399; --cand-primary-hover: #6EE7B7; --cand-accent: #A78BFA; --cand-success: #34D399; --cand-warning: #FBBF24; --cand-error: #F87171; --cand-text: #FAFAFA; --cand-text-sec: #A1A1AA; --cand-text-muted: #71717A; --cand-shadow: rgba(0,0,0,0.15); }
+  .cand-c .candidate-header { background: #0A0A0B; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .cand-c.dark .candidate-header { background: #18181B; }
+
+  /* Dashboard shell (shared) */
+  .dash {
+    background: var(--cand-bg);
+    color: var(--cand-text);
+    font-family: 'Inter', system-ui, sans-serif;
+    padding: 0;
+  }
+  .dash-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--cand-border);
+    background: var(--cand-surface);
+  }
+  .dash-nav-logo {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--cand-primary);
+    font-family: var(--cand-font-display);
+  }
+  .dash-nav-links {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--cand-text-sec);
+  }
+  .dash-nav-links span { cursor: pointer; }
+  .dash-nav-links span:hover { color: var(--cand-text); }
+  .dash-nav-toggle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--cand-border);
+    background: var(--cand-surface-alt);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--cand-text-sec);
+  }
+  .dash-body { padding: 20px; }
+
+  /* Dashboard sections */
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cand-text-muted);
+    margin-bottom: 10px;
+  }
+
+  /* Readiness score hero */
+  .readiness-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: stretch;
+  }
+  .readiness-card {
+    flex: 1;
+    background: var(--cand-surface);
+    border: 1px solid var(--cand-border);
+    border-radius: var(--cand-radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--cand-shadow);
+  }
+  .readiness-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cand-text-muted);
+    margin-bottom: 8px;
+  }
+  .readiness-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--cand-primary);
+    line-height: 1;
+  }
+  .readiness-sub {
+    font-size: 12px;
+    color: var(--cand-text-sec);
+    margin-top: 6px;
+  }
+  .readiness-ring {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 6px solid var(--cand-border);
+    border-top-color: var(--cand-primary);
+    border-right-color: var(--cand-primary);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cand-primary);
+    transform: rotate(-45deg);
+  }
+  .readiness-ring span { transform: rotate(45deg); }
+
+  /* Quick start buttons */
+  .quick-start {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .qs-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 12px;
+    border-radius: var(--cand-radius);
+    border: 1px solid var(--cand-border);
+    background: var(--cand-surface);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .qs-btn:hover { border-color: var(--cand-primary); box-shadow: 0 2px 8px var(--cand-shadow); }
+  .qs-btn.primary {
+    background: var(--cand-primary);
+    color: #fff;
+    border-color: var(--cand-primary);
+  }
+  .qs-btn.primary:hover { background: var(--cand-primary-hover); }
+  .qs-icon { font-size: 18px; }
+  .qs-label { font-size: 12px; font-weight: 600; }
+  .qs-sub { font-size: 10px; color: var(--cand-text-muted); }
+  .qs-btn.primary .qs-sub { color: rgba(255,255,255,0.75); }
+
+  /* Study plan */
+  .study-plan {
+    background: var(--cand-surface);
+    border: 1px solid var(--cand-border);
+    border-radius: var(--cand-radius);
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px var(--cand-shadow);
+  }
+  .plan-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--cand-border);
+    font-size: 12px;
+  }
+  .plan-item:last-child { border-bottom: none; }
+  .plan-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .plan-dot.high { background: var(--cand-error); }
+  .plan-dot.med { background: var(--cand-warning); }
+  .plan-dot.low { background: var(--cand-success); }
+  .plan-label { flex: 1; color: var(--cand-text); }
+  .plan-time { color: var(--cand-text-muted); font-size: 11px; }
+
+  /* Category breakdown */
+  .category-section {
+    margin-bottom: 20px;
+  }
+  .cat-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+  .cat-name { width: 90px; flex-shrink: 0; color: var(--cand-text-sec); text-align: right; font-size: 11px; }
+  .cat-bar-track {
+    flex: 1;
+    height: 10px;
+    background: var(--cand-surface-alt);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .cat-bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s;
+  }
+  .cat-pct { width: 36px; text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; }
+
+  /* Recent sessions table */
+  .sessions-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  .sessions-table th {
+    text-align: left;
+    padding: 6px 8px;
+    font-weight: 600;
+    color: var(--cand-text-muted);
+    border-bottom: 1px solid var(--cand-border);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .sessions-table td {
+    padding: 8px 8px;
+    border-bottom: 1px solid var(--cand-border);
+    color: var(--cand-text);
+  }
+  .sessions-table tr:last-child td { border-bottom: none; }
+  .score-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+  }
+  .score-pill.good { background: rgba(31,138,76,0.12); color: var(--cand-success); }
+  .score-pill.ok { background: rgba(180,83,9,0.12); color: var(--cand-warning); }
+  .score-pill.bad { background: rgba(185,28,28,0.12); color: var(--cand-error); }
+  .mode-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    background: var(--cand-surface-alt);
+    color: var(--cand-text-sec);
+  }
+
+  /* Insight card */
+  .insight-card {
+    background: var(--cand-surface);
+    border: 1px solid var(--cand-border);
+    border-left: 3px solid var(--cand-accent);
+    border-radius: var(--cand-radius);
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: var(--cand-text-sec);
+    line-height: 1.5;
+  }
+  .insight-card strong { color: var(--cand-text); }
+
+  /* Stacked area chart placeholder */
+  .chart-placeholder {
+    background: var(--cand-surface);
+    border: 1px solid var(--cand-border);
+    border-radius: var(--cand-radius);
+    padding: 16px;
+    margin-bottom: 20px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px var(--cand-shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .chart-placeholder .section-title { margin-bottom: 4px; }
+  .chart-svg { flex: 1; width: 100%; }
+
+  /* Footer link */
+  .dash-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--cand-border);
+    font-size: 11px;
+    color: var(--cand-text-muted);
+    display: flex;
+    justify-content: space-between;
+  }
+  .dash-footer a { color: var(--cand-primary); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">CCTC Redesign — Design System Candidates</h1>
+<p class="page-subtitle">Side-by-side comparison of all three candidates. Toggle light/dark mode below.</p>
+
+<div class="mode-toggle">
+  <button id="btn-light" class="active" onclick="setMode('light')">☀ Light</button>
+  <button id="btn-dark" onclick="setMode('dark')">☾ Dark</button>
+</div>
+
+<div class="candidates">
+
+  <!-- ============================================================
+       CANDIDATE A — Clean Clinical
+       ============================================================ -->
+  <div class="candidate cand-a" id="cand-a">
+    <div class="candidate-header">A — Clean Clinical</div>
+    <div class="dash">
+      <div class="dash-nav">
+        <div class="dash-nav-logo">CCTC</div>
+        <div class="dash-nav-links">
+          <span style="color:var(--cand-primary);font-weight:600;">Dashboard</span>
+          <span>Setup</span>
+          <span>History</span>
+        </div>
+        <div class="dash-nav-toggle">◐</div>
+      </div>
+      <div class="dash-body">
+
+        <!-- Readiness -->
+        <div class="readiness-row">
+          <div class="readiness-card">
+            <div class="readiness-label">Readiness</div>
+            <div class="readiness-ring"><span>72%</span></div>
+            <div class="readiness-sub">↑ 4% from last session</div>
+          </div>
+          <div class="readiness-card" style="align-items:flex-start;">
+            <div class="readiness-label">Am I Ready?</div>
+            <div style="font-size:13px;font-weight:600;color:var(--cand-warning);margin-bottom:4px;">Almost there</div>
+            <div style="font-size:11px;color:var(--cand-text-sec);line-height:1.5;">Focus on Domain 2 (Pre-Transplant) — your weakest area at 58%. 3 more sessions should bring you to target.</div>
+          </div>
+        </div>
+
+        <!-- Quick Start -->
+        <div class="section-title">Quick Start</div>
+        <div class="quick-start">
+          <div class="qs-btn primary">
+            <div class="qs-icon">▶</div>
+            <div class="qs-label">Full Exam</div>
+            <div class="qs-sub">175 items · 180 min</div>
+          </div>
+          <div class="qs-btn">
+            <div class="qs-icon">⚡</div>
+            <div class="qs-label">Quick Session</div>
+            <div class="qs-sub">25 items · 30 min</div>
+          </div>
+          <div class="qs-btn">
+            <div class="qs-icon">🎯</div>
+            <div class="qs-label">Weak Areas</div>
+            <div class="qs-sub">Spaced review</div>
+          </div>
+          <div class="qs-btn">
+            <div class="qs-icon">↻</div>
+            <div class="qs-label">Resume</div>
+            <div class="qs-sub">Question 14/25</div>
+          </div>
+        </div>
+
+        <!-- Category Breakdown -->
+        <div class="category-section">
+          <div class="section-title">Category Breakdown</div>
+          <div class="cat-bar-row">
+            <div class="cat-name">Education</div>
+            <div class="cat-bar-track"><div class="cat-bar-fill" style="width:78%;background:var(--cand-success);"></div></div>
+            <div class="cat-pct">78%</div>
+          </div>
+          <div class="cat-bar-row">
+            <div class="cat-name">Pre-Transplant</div>
+            <div class="cat-bar-track"><div class="cat-bar-fill" style="width:58%;background:var(--cand-error);"></div></div>
+            <div class="cat-pct">58%</div>
+          </div>
+          <div class="cat-bar-row">
+            <div class="cat-name">Post-Operative</div>
+            <div class="cat-bar-track"><div class="cat-bar-fill" style="width:71%;background:var(--cand-warning);"></div></div>
+            <div class="cat-pct">71%</div>
+          </div>
+        </div>
+
+        <!-- Study Plan -->
+        <div class="study-plan">
+          <div class="section-title" style="margin-bottom:8px;">Study Plan</div>
+          <div class="plan-item"><div class="plan-dot high"></div><div class="plan-label">Pre-Tx: Waitlist Management</div><div class="plan-time">~20 min</div></div>
+          <div class="plan-item"><div class="plan-dot med"></div><div class="plan-label">Post-Op: Immunosuppression</div><div class="plan-time">~15 min</div></div>
+          <div class="plan-item"><div class="plan-dot low"></div><div class="plan-label">Education: Patient Teaching</div><div class="plan-time">~10 min</div></div>
+        </div>
+
+        <!-- Recent Sessions -->
+        <div class="section-title">Recent Sessions</div>
+        <div style="background:var(--cand-surface);border:1px solid var(--cand-border);border-radius:var(--cand-radius);overflow:hidden;margin-bottom:16px;">
+          <table class="sessions-table">
+            <tr><th>Date</th><th>Mode</th><th>#</th><th>Score</th><th>Time</th></tr>
+            <tr><td>Jul 1</td><td><span class="mode-badge">Exam</span></td><td>25</td><td><span class="score-pill good">84%</span></td><td>28m</td></tr>
+            <tr><td>Jun 30</td><td><span class="mode-badge">Study</span></td><td>50</td><td><span class="score-pill ok">68%</span></td><td>42m</td></tr>
+            <tr><td>Jun 29</td><td><span class="mode-badge">Exam</span></td><td>175</td><td><span class="score-pill ok">64%</span></td><td>2h 45m</td></tr>
+            <tr><td>Jun 28</td><td><span class="mode-badge">Weak</span></td><td>20</td><td><span class="score-pill bad">52%</span></td><td>18m</td></tr>
+            <tr><td>Jun 27</td><td><span class="mode-badge">Exam</span></td><td>50</td><td><span class="score-pill good">76%</span></td><td>55m</td></tr>
+          </table>
+        </div>
+
+        <!-- Stacked area chart placeholder -->
+        <div class="chart-placeholder">
+          <div class="section-title">Progress Over Time</div>
+          <svg class="chart-svg" viewBox="0 0 300 60" preserveAspectRatio="none">
+            <line x1="0" y1="40" x2="300" y2="40" stroke="var(--cand-error)" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <path d="M0,55 L30,48 L60,50 L90,42 L120,38 L150,35 L180,30 L210,28 L240,25 L270,22 L300,20 L300,60 L0,60Z" fill="var(--cand-primary)" opacity="0.15"/>
+            <path d="M0,55 L30,48 L60,50 L90,42 L120,38 L150,35 L180,30 L210,28 L240,25 L270,22 L300,20" fill="none" stroke="var(--cand-primary)" stroke-width="2"/>
+            <path d="M0,58 L30,55 L60,52 L90,48 L120,50 L150,45 L180,42 L210,40 L240,38 L270,35 L300,32 L300,60 L0,60Z" fill="var(--cand-accent)" opacity="0.1"/>
+            <path d="M0,58 L30,55 L60,52 L90,48 L120,50 L150,45 L180,42 L210,40 L240,38 L270,35 L300,32" fill="none" stroke="var(--cand-accent)" stroke-width="1.5"/>
+          </svg>
+        </div>
+
+      </div>
+      <div class="dash-footer">
+        <span>506 items · 12 sessions</span>
+        <a href="#">View all history →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CANDIDATE B — Warm Scholarly
+       ============================================================ -->
+  <div class="candidate cand-b" id="cand-b">
+    <div class="candidate-header">B — Warm Scholarly</div>
+    <div class="dash">
+      <div class="dash-nav">
+        <div class="dash-nav-logo">CCTC</div>
+        <div class="dash-nav-links">
+          <span style="color:var(--cand-primary);font-weight:600;">Dashboard</span>
+          <span>Setup</span>
+          <span>History</span>
+        </div>
+        <div class="dash-nav-toggle">◐</div>
+      </div>
+      <div class="dash-body">
+
+        <!-- Readiness -->
+        <div class="readiness-row">
+          <div class="readiness-card">
+            <div class="readiness-label">Readiness</div>
+            <div class="readiness-score">72%</div>
+            <div class="readiness-sub">↑ 4% from last session</div>
+          </div>
+          <div class="readiness-card" style="align-items:flex-start;">
+            <div class="readiness-label">Am I Ready?</div>
+            <div style="font-size:13px;font-weight:600;color:var(--cand-warning);margin-bottom:4px;">Almost there</div>
+            <div style="font-size:11px;color:var(--cand-text-sec);line-height:1.6;">Focus on Domain 2 (Pre-Transplant) — your weakest area at 58%. 3 more sessions should bring you to target.</div>
+          </div>
+        </div>
+
+        <!-- Quick Start -->
+        <div class="section-title">Quick Start</div>
+        <div class="quick-start">
+          <div class="qs-btn primary">
+            <div class="qs-icon">▶</div>
+            <div class="qs-label">Full Exam</div>
+            <div class="qs-sub">175 items · 180 min</div>
+          </div>
+          <div class="qs-btn">
+            <div class="qs-icon">⚡</div>
+            <div class="qs-label">Quick Session</div>
+            <div class="qs-sub">25 items · 30 min</div>
+          </div>
+          <div class="qs-btn">
+            <div class="qs-icon">🎯</div>
+            <div class="qs-label">Weak Areas</div>
+            <div class="qs-sub">Spaced review</div>
+          </div>
+          <div class="qs-btn">
+            <div class="qs-icon">↻</div>
+            <div class="qs-label">Resume</div>
+            <div class="qs-sub">Question 14/25</div>
+          </div>
+        </div>
+
+        <!-- Category Breakdown -->
+        <div class="category-section">
+          <div class="section-title">Category Mastery</div>
+          <div class="cat-bar-row">
+            <div class="cat-name">Education</div>
+            <div class="cat-bar-track"><div class="cat-bar-fill" style="width:78%;background:var(--cand-success);"></div></div>
+            <div class="cat-pct">78%</div>
+          </div>
+          <div class="cat-bar-row">
+            <div class="cat-name">Pre-Transplant</div>
+            <div class="cat-bar-track"><div class="cat-bar-fill" style="width:58%;background:var(--cand-error);"></div></div>
+            <div class="cat-pct">58%</div>
+          </div>
+          <div class="cat-bar-row">
+            <div class="cat-name">Post-Operative</div>
+            <div class="cat-bar-track"><div class="cat-bar-fill" style="width:71%;background:var(--cand-warning);"></div></div>
+            <div class="cat-pct">71%</div>
+          </div>
+        </div>
+
+        <!-- Study Plan -->
+        <div class="study-plan">
+          <div class="section-title" style="margin-bottom:8px;">Recommended Next</div>
+          <div class="plan-item"><div class="plan-dot high"></div><div class="plan-label">Pre-Tx: Waitlist Management</div><div class="plan-time">~20 min</div></div>
+          <div class="plan-item"><div class="plan-dot med"></div><div class="plan-label">Post-Op: Immunosuppression</div><div class="plan-time">~15 min</div></div>
+          <div class="plan-item"><div class="plan-dot low"></div><div class="plan-label">Education: Patient Teaching</div><div class="plan-time">~10 min</div></div>
+        </div>
+
+        <!-- Recent Sessions -->
+        <div class="section-title">Recent Sessions</div>
+        <div style="background:var(--cand-surface);border:1px solid var(--cand-border);border-radius:var(--cand-radius);overflow:hidden;margin-bottom:16px;">
+          <table class="sessions-table">
+            <tr><th>Date</th><th>Mode</th><th>#</th><th>Score</th><th>Time</th></tr>
+            <tr><td>Jul 1</td><td><span class="mode-badge">Exam</span></td><td>25</td><td><span class="score-pill good">84%</span></td><td>28m</td></tr>
+            <tr><td>Jun 30</td><td><span class="mode-badge">Study</span></td><td>50</td><td><span class="score-pill ok">68%</span></td><td>42m</td></tr>
+            <tr><td>Jun 29</td><td><span class="mode-badge">Exam</span></td><td>175</td><td><span class="score-pill ok">64%</span></td><td>2h 45m</td></tr>
+            <tr><td>Jun 28</td><td><span class="mode-badge">Weak</span></td><td>20</td><td><span class="score-pill bad">52%</span></td><td>18m</td></tr>
+            <tr><td>Jun 27</td><td><span class="mode-badge">Exam</span></td><td>50</td><td><span class="score-pill good">76%</span></td><td>55m</td></tr>
+          </table>
+        </div>
+
+        <!-- Stacked area chart placeholder -->
+        <div class="chart-placeholder">
+          <div class="section-title">Progress Over Time</div>
+          <svg class="chart-svg" viewBox="0 0 300 60" preserveAspectRatio="none">
+            <line x1="0" y1="40" x2="300" y2="40" stroke="var(--cand-error)" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <path d="M0,55 L30,48 L60,50 L90,42 L120,38 L150,35 L180,30 L210,28 L240,25 L270,22 L300,20 L300,60 L0,60Z" fill="var(--cand-primary)" opacity="0.12"/>
+            <path d="M0,55 L30,48 L60,50 L90,42 L120,38 L150,35 L180,30 L210,28 L240,25 L270,22 L300,20" fill="none" stroke="var(--cand-primary)" stroke-width="2"/>
+            <path d="M0,58 L30,55 L60,52 L90,48 L120,50 L150,45 L180,42 L210,40 L240,38 L270,35 L300,32 L300,60 L0,60Z" fill="var(--cand-accent)" opacity="0.08"/>
+            <path d="M0,58 L30,55 L60,52 L90,48 L120,50 L150,45 L180,42 L210,40 L240,38 L270,35 L300,32" fill="none" stroke="var(--cand-accent)" stroke-width="1.5"/>
+          </svg>
+        </div>
+
+      </div>
+      <div class="dash-footer">
+        <span>506 items · 12 sessions</span>
+        <a href="#">View all history →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CANDIDATE C — Modern Slate
+       ============================================================ -->
+  <div class="candidate cand-c" id="cand-c">
+    <div class="candidate-header">C — Modern Slate</div>
+    <div class="dash">
+      <div class="dash-nav">
+        <div class="dash-nav-logo">CCTC</div>
+        <div class="dash-nav-links">
+          <span style="color:var(--cand-primary);font-weight:600;">Dashboard</span>
+          <span>Setup</span>
+          <span>History</span>
+        </div>
+        <div class="dash-nav-toggle">◐</div>
+      </div>
+      <div class="dash-body">
+
+        <!-- Readiness -->
+        <div class="readiness-row">
+          <div class="readiness-card">
+            <div class="readiness-label">Readiness</div>
+            <div class="readiness-score" style="font-size:48px;letter-spacing:-0.03em;">72<span style="font-size:20px;color:var(--cand-text-muted);">%</span></div>
+            <div class="readiness-sub"><span style="color:var(--cand-success);">↑ 4%</span> from last</div>
+          </div>
+          <div class="readiness-card" style="align-items:flex-start;">
+            <div class="readiness-label">Am I Ready?</div>
+            <div style="font-size:13px;font-weight:600;color:var(--cand-warning);margin-bottom:4px;">Almost there</div>
+            <div style="font-size:11px;color:var(--cand-text-sec);line-height:1.5;">Focus on Domain 2 (Pre-Transplant) — your weakest area at 58%. 3 more sessions should bring you to target.</div>
+          </div>
+        </div>
+
+        <!-- Quick Start -->
+        <div class="section-title">Quick Start</div>
+        <div class="quick-start">
+          <div class="qs-btn primary">
+            <div class="qs-icon">▶</div>
+            <div class="qs-label">Full Exam</div>
+            <div class="qs-sub">175 items · 180 min</div>
+          </div>
+          <div class="qs-btn">
+            <div class="qs-icon">⚡</div>
+            <div class="qs-label">Quick Session</div>
+            <div class="qs-sub">25 items · 30 min</div>
+          </div>
+          <div class="qs-btn">
+            <div class="qs-icon">🎯</div>
+            <div class="qs-label">Weak Areas</div>
+            <div class="qs-sub">Spaced review</div>
+          </div>
+          <div class="qs-btn">
+            <div class="qs-icon">↻</div>
+            <div class="qs-label">Resume</div>
+            <div class="qs-sub">Q 14/25</div>
+          </div>
+        </div>
+
+        <!-- Category Breakdown -->
+        <div class="category-section">
+          <div class="section-title">Category Performance</div>
+          <div class="cat-bar-row">
+            <div class="cat-name">Education</div>
+            <div class="cat-bar-track"><div class="cat-bar-fill" style="width:78%;background:var(--cand-primary);"></div></div>
+            <div class="cat-pct">78%</div>
+          </div>
+          <div class="cat-bar-row">
+            <div class="cat-name">Pre-Transplant</div>
+            <div class="cat-bar-track"><div class="cat-bar-fill" style="width:58%;background:var(--cand-error);"></div></div>
+            <div class="cat-pct">58%</div>
+          </div>
+          <div class="cat-bar-row">
+            <div class="cat-name">Post-Operative</div>
+            <div class="cat-bar-track"><div class="cat-bar-fill" style="width:71%;background:var(--cand-warning);"></div></div>
+            <div class="cat-pct">71%</div>
+          </div>
+        </div>
+
+        <!-- Study Plan -->
+        <div class="study-plan">
+          <div class="section-title" style="margin-bottom:8px;">Study Queue</div>
+          <div class="plan-item"><div class="plan-dot high"></div><div class="plan-label">Pre-Tx: Waitlist Management</div><div class="plan-time">~20 min</div></div>
+          <div class="plan-item"><div class="plan-dot med"></div><div class="plan-label">Post-Op: Immunosuppression</div><div class="plan-time">~15 min</div></div>
+          <div class="plan-item"><div class="plan-dot low"></div><div class="plan-label">Education: Patient Teaching</div><div class="plan-time">~10 min</div></div>
+        </div>
+
+        <!-- Recent Sessions -->
+        <div class="section-title">Recent Sessions</div>
+        <div style="background:var(--cand-surface);border:1px solid var(--cand-border);border-radius:var(--cand-radius);overflow:hidden;margin-bottom:16px;">
+          <table class="sessions-table">
+            <tr><th>Date</th><th>Mode</th><th>#</th><th>Score</th><th>Time</th></tr>
+            <tr><td>Jul 1</td><td><span class="mode-badge">Exam</span></td><td>25</td><td><span class="score-pill good">84%</span></td><td>28m</td></tr>
+            <tr><td>Jun 30</td><td><span class="mode-badge">Study</span></td><td>50</td><td><span class="score-pill ok">68%</span></td><td>42m</td></tr>
+            <tr><td>Jun 29</td><td><span class="mode-badge">Exam</span></td><td>175</td><td><span class="score-pill ok">64%</span></td><td>2h 45m</td></tr>
+            <tr><td>Jun 28</td><td><span class="mode-badge">Weak</span></td><td>20</td><td><span class="score-pill bad">52%</span></td><td>18m</td></tr>
+            <tr><td>Jun 27</td><td><span class="mode-badge">Exam</span></td><td>50</td><td><span class="score-pill good">76%</span></td><td>55m</td></tr>
+          </table>
+        </div>
+
+        <!-- Stacked area chart placeholder -->
+        <div class="chart-placeholder">
+          <div class="section-title">Progress Over Time</div>
+          <svg class="chart-svg" viewBox="0 0 300 60" preserveAspectRatio="none">
+            <line x1="0" y1="40" x2="300" y2="40" stroke="var(--cand-error)" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <path d="M0,55 L30,48 L60,50 L90,42 L120,38 L150,35 L180,30 L210,28 L240,25 L270,22 L300,20 L300,60 L0,60Z" fill="var(--cand-primary)" opacity="0.1"/>
+            <path d="M0,55 L30,48 L60,50 L90,42 L120,38 L150,35 L180,30 L210,28 L240,25 L270,22 L300,20" fill="none" stroke="var(--cand-primary)" stroke-width="2"/>
+            <path d="M0,58 L30,55 L60,52 L90,48 L120,50 L150,45 L180,42 L210,40 L240,38 L270,35 L300,32 L300,60 L0,60Z" fill="var(--cand-accent)" opacity="0.06"/>
+            <path d="M0,58 L30,55 L60,52 L90,48 L120,50 L150,45 L180,42 L210,40 L240,38 L270,35 L300,32" fill="none" stroke="var(--cand-accent)" stroke-width="1.5"/>
+          </svg>
+        </div>
+
+      </div>
+      <div class="dash-footer">
+        <span>506 items · 12 sessions</span>
+        <a href="#">View all history →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function setMode(mode) {
+  document.querySelectorAll('.candidate').forEach(el => {
+    el.classList.toggle('dark', mode === 'dark');
+  });
+  document.getElementById('btn-light').classList.toggle('active', mode === 'light');
+  document.getElementById('btn-dark').classList.toggle('active', mode === 'dark');
+}
+</script>
+
+</body>
+</html>
