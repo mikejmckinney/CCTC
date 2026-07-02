@@ -104,9 +104,10 @@ export function ReportedItemsPage() {
                     <button
                       className="secondary-button"
                       onClick={() => {
-                        const question = allQuestions.find((q) => q.id === flag.item_id);
+                        const firstFlag = itemFlags[0];
+                        const question = allQuestions.find((q) => q.id === firstFlag.item_id);
                         if (question) {
-                          openFlagComposer(question, flag.session_id, flag.blueprint, flag.mode);
+                          openFlagComposer(question, firstFlag.session_id, firstFlag.blueprint, firstFlag.mode);
                         }
                       }}
                       style={{ fontSize: '0.8rem', minHeight: 'auto', padding: '0.4rem 0.75rem' }}
