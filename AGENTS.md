@@ -294,3 +294,28 @@ If context was compacted, summarized, resumed, or transferred, treat the next re
 4. the session context receipt with accurate `In context` values for every row you may cite.
 
 If any are missing, load the mandatory files for the current read profile and re-emit the session handshake with `Receipt boundary: post-compaction`. Set `In context: no` on every row until each file is re-read this boundary.
+
+## Canonical agent reference
+
+See [AI_REPO_GUIDE.md](AI_REPO_GUIDE.md) for the canonical agent reference covering product context, stack, hosting, and repo state.
+
+## Per-concern process rules
+
+Each concern is isolated into its own rule file under `.context/rules/`. Read profiles select which files to load based on the task at hand.
+
+| File | Description |
+|---|---|
+| [process_template_detection.md](.context/rules/process_template_detection.md) | Detect template vs product mode |
+| [process_critical_thinking.md](.context/rules/process_critical_thinking.md) | Critical thinking and verification heuristics |
+| [process_work_style.md](.context/rules/process_work_style.md) | PR readiness surfaces, testing requirements, review response |
+| [process_clarification.md](.context/rules/process_clarification.md) | When and how to ask clarifying questions |
+| [process_role_selection.md](.context/rules/process_role_selection.md) | Selecting the right agent role for a task |
+| [process_gates.md](.context/rules/process_gates.md) | Gate invocation and enforcement rules |
+| [process_session_state.md](.context/rules/process_session_state.md) | Session state management and persistence |
+| [process_pr_completion.md](.context/rules/process_pr_completion.md) | PR completion criteria and checklist |
+| [process_model_tier.md](.context/rules/process_model_tier.md) | Per-role model tiering policy |
+| [process_subagent_bootstrap.md](.context/rules/process_subagent_bootstrap.md) | Subagent dispatch, compliance, and bootstrap contracts |
+| [process_doc_maintenance.md](.context/rules/process_doc_maintenance.md) | Documentation maintenance triggers and process |
+| [domain_code_quality.md](.context/rules/domain_code_quality.md) | Code quality heuristics and refactoring triggers |
+| [repo_orchestration_patterns.md](.context/rules/repo_orchestration_patterns.md) | Multi-agent coordination and orchestration |
+| [agent_ownership.md](.context/rules/agent_ownership.md) | Agent ownership boundaries and responsibilities |
