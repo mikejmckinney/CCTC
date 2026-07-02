@@ -2,9 +2,10 @@ import { openDB } from 'idb';
 import { buildQuestionVersionMap } from '../data/questionBank';
 import { pruneStaleFlags } from './sessionPersistence';
 import type { ActiveSession, AppMeta, HistoryEntry, ItemFlag, Question, SessionSettings } from '../types/exam';
+import type { UserPreferences } from '../types/dashboard';
 
 const DB_NAME = 'cctc-app';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const KV_STORE = 'kv';
 const HISTORY_STORE = 'history';
 const FLAGS_STORE = 'flags';
@@ -12,10 +13,18 @@ const FLAGS_STORE = 'flags';
 const META_KEY = 'app-meta';
 const SETTINGS_KEY = 'settings';
 const ACTIVE_SESSION_KEY = 'active-session';
+const USER_PREFS_KEY = 'user-prefs';
+
+const DEFAULT_USER_PREFS: UserPreferences = {
+  examDate: null,
+  targetScore: 65,
+  lastQuickStart: null,
+  lastSettings: null
+};
 
 async function getDb() {
   return openDB(DB_NAME, DB_VERSION, {
-    upgrade(db) {
+    upgrade(db, oldVersion) {
       if (!db.objectStoreNames.contains(KV_STORE)) {
         db.createObjectStore(KV_STORE);
       }
@@ -25,6 +34,7 @@ async function getDb() {
       if (!db.objectStoreNames.contains(FLAGS_STORE)) {
         db.createObjectStore(FLAGS_STORE, { keyPath: 'id' });
       }
+      // v2: no new stores needed, just new keys in kv
     }
   });
 }
@@ -115,4 +125,15 @@ export async function replaceFlags(flags: ItemFlag[]): Promise<void> {
   await tx.store.clear();
   await Promise.all(flags.map((flag) => tx.store.put(flag)));
   await tx.done;
+}
+
+export async function loadUserPrefs(): Promise<UserPreferences> {
+  const db = await getDb();
+  const stored = await db.get(KV_STORE, USER_PREFS_KEY);
+  return stored ? { ...DEFAULT_USER_PREFS, ...stored } : { ...DEFAULT_USER_PREFS };
+}
+
+export async function saveUserPrefs(prefs: UserPreferences): Promise<void> {
+  const db = await getDb();
+  await db.put(KV_STORE, prefs, USER_PREFS_KEY);
 }
