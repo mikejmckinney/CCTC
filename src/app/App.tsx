@@ -1216,7 +1216,7 @@ function App() {
                   className="ghost-button"
                   onClick={() => openFlagComposer(selectedHistoryItem.question, selectedHistory.id, selectedHistory.settings.blueprintId, selectedHistory.settings.mode)}
                 >
-                  Flag this item
+                  Report
                 </button>
                 <button
                   className="secondary-button"
