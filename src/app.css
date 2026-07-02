@@ -365,6 +365,7 @@ h3 { font-size: 20px; font-weight: 600; }
   background: var(--gold);
   border-color: var(--gold);
   color: #fff;
+  border-radius: 11px;
 }
 
 .btn-primary:hover {
@@ -777,7 +778,7 @@ input[type="range"]::-webkit-slider-thumb {
   flex: 1;
   height: 8px;
   border-radius: 999px;
-  background: var(--surface2);
+  background: var(--goldsoft);
   overflow: hidden;
 }
 
@@ -959,8 +960,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* ---- Explanation card ---- */
 .explanation-card {
-  padding: 16px;
-  border-radius: 14px;
+  padding: 18px;
+  border-radius: 13px;
   border: 1px solid var(--expline);
   background: var(--successsoft);
   display: flex;
@@ -1209,8 +1210,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 /* ---- Readiness insight ---- */
 .readiness-insight {
-  padding: 14px 16px;
-  border-radius: 14px;
+  padding: 14px;
+  border-radius: 12px;
   border: 1px solid var(--line);
   background: var(--surface2);
   display: flex;
