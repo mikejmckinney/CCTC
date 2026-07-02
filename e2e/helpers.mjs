@@ -53,8 +53,8 @@ export async function startStudySession(page, questionCount = MIN_SESSION_QUESTI
   // Select Study mode (segmented button, not combobox)
   await page.getByRole('button', { name: 'Study' }).click();
 
-  // Set question count via the slider (fill on range input)
-  const slider = page.locator('input[type="range"]').last();
+  // Set question count — the first range slider on the page is question count
+  const slider = page.locator('input[type="range"]').first();
   await slider.evaluate((el, val) => {
     el.value = val;
     el.dispatchEvent(new Event('input', { bubbles: true }));
