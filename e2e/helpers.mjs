@@ -38,11 +38,14 @@ export async function readSessionItemTotal(page) {
 export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
-  await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
+
+  // Navigate to setup page (new routed architecture)
+  await page.goto('./setup');
+  await expect(page.getByRole('heading', { name: /^Setup$/i })).toBeVisible();
 
   await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
   await page.getByRole('spinbutton', { name: /^Question count/i }).fill(String(questionCount));
-  await page.getByRole('button', { name: 'Start session' }).click();
+  await page.getByRole('button', { name: /Start session/ }).click();
 
   await expect(page.getByRole('heading', { name: /Item 1 of \d+/i })).toBeVisible();
   return readSessionItemTotal(page);
