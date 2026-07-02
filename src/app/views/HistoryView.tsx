@@ -7,7 +7,7 @@ import type { CategoryTrendPoint } from '../../lib/categoryHistoryTrend';
 interface HistoryViewProps {
   history: HistoryEntry[];
   historyTrend: HistoryTrendSummary;
-  historyCategories: Array<{ categoryId: string; categoryLabel: string }>;
+  historyCategories: Array<{ categoryId: string; categoryLabel: string; categoryShort?: string }>;
   selectedCategoryId: string | null;
   categoryTrend: CategoryTrendSummary | null;
   onSelectCategory: (id: string | null) => void;
@@ -15,6 +15,7 @@ interface HistoryViewProps {
   onDeleteEntry: (id: string) => void;
   onClearHistory: () => void;
   onNavigateToFlags: () => void;
+  focusAreas?: Array<{ categoryId: string; categoryShort: string; pooledPercent: number | null; examWeightPct: number }>;
 }
 
 function formatDuration(seconds: number | null): string {
@@ -28,7 +29,7 @@ function formatDuration(seconds: number | null): string {
 export function HistoryView({
   history, historyTrend, historyCategories, selectedCategoryId,
   categoryTrend, onSelectCategory, onSelectHistory, onDeleteEntry,
-  onClearHistory, onNavigateToFlags
+  onClearHistory, onNavigateToFlags, focusAreas
 }: HistoryViewProps) {
   return (
     <div className="stack stack--gap-lg">
@@ -137,6 +138,34 @@ export function HistoryView({
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* By domain */}
+      {focusAreas && focusAreas.length > 0 && (
+        <div className="card card--panel stack stack--gap">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14 }}>
+            <p className="eyebrow">By domain</p>
+            <span style={{ fontSize: 11, color: 'var(--muted)' }}>accuracy · share of exam</span>
+          </div>
+          {focusAreas.map((area) => (
+            <div key={area.categoryId} style={{ marginBottom: 14 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--ink)', marginBottom: 6, gap: 10 }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+                  {area.categoryShort}
+                  <span style={{ flexShrink: 0, font: '600 10px var(--sans)', color: 'var(--tealtext)', background: 'var(--tealsoft)', padding: '2px 7px', borderRadius: 6 }}>
+                    {area.examWeightPct}% of exam
+                  </span>
+                </span>
+                <span style={{ color: 'var(--muted)' }}>
+                  {area.pooledPercent !== null ? `${area.pooledPercent}%` : '—'}
+                </span>
+              </div>
+              <div style={{ height: 8, borderRadius: 5, background: 'var(--goldsoft)' }}>
+                <div style={{ width: `${area.pooledPercent ?? 0}%`, height: '100%', borderRadius: 5, background: area.pooledPercent !== null ? (area.pooledPercent >= 75 ? 'var(--teal)' : area.pooledPercent >= 65 ? 'var(--gold)' : 'var(--danger)') : 'var(--line2)' }} />
+              </div>
+            </div>
+          ))}
         </div>
       )}
 

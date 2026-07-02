@@ -12,6 +12,7 @@ export interface ReadinessResult {
 export interface FocusArea {
   categoryId: string;
   categoryLabel: string;
+  categoryShort: string;
   pooledPercent: number | null;
   examWeightPct: number;
 }
@@ -19,6 +20,7 @@ export interface FocusArea {
 export interface WeakDomain {
   categoryId: string;
   categoryLabel: string;
+  categoryShort: string;
   pooledPercent: number | null;
 }
 
@@ -131,6 +133,7 @@ export function computeFocusAreas(
     return {
       categoryId: binding.id,
       categoryLabel: binding.label,
+      categoryShort: binding.short,
       pooledPercent,
       examWeightPct: binding.weightPct
     };
@@ -171,6 +174,7 @@ export function computeWeakDomains(
       weakDomains.push({
         categoryId: binding.id,
         categoryLabel: binding.label,
+        categoryShort: binding.short,
         pooledPercent
       });
     }
@@ -229,7 +233,7 @@ export function computeReadinessInsight(
     };
   }
 
-  const weakestDomain = weakDomains.length > 0 ? weakDomains[0].categoryLabel : null;
+  const weakestDomain = weakDomains.length > 0 ? weakDomains[0].categoryShort : null;
 
   if (readiness.percent >= targetThreshold && weakDomains.length === 0) {
     let verdict = `At ${readiness.percent}%, you're on track for your ${targetThreshold}% target.`;
@@ -251,14 +255,14 @@ export function computeReadinessInsight(
   if (readiness.percent >= targetThreshold && weakDomains.length > 0) {
     const weakest = weakDomains[0];
     const weakestPct = weakest.pooledPercent ?? 0;
-    let verdict = `At ${readiness.percent}%, you're near your ${targetThreshold}% target, but ${weakest.categoryLabel} is at ${weakestPct}%.`;
+    let verdict = `At ${readiness.percent}%, you're near your ${targetThreshold}% target, but ${weakest.categoryShort} is at ${weakestPct}%.`;
     if (daysToExam !== null && daysToExam > 0) {
       verdict += ` ${daysToExam} day${daysToExam === 1 ? '' : 's'} to go.`;
     }
     return {
       status: 'nearly_ready',
       verdict,
-      recommendedAction: `Practice ${weakest.categoryLabel} · 10 questions`,
+      recommendedAction: `Practice ${weakest.categoryShort} · 10 questions`,
       weakestDomain: weakest.categoryId
     };
   }
@@ -267,7 +271,7 @@ export function computeReadinessInsight(
   const weakest = weakDomains.length > 0 ? weakDomains[0] : null;
   let verdict = `At ${readiness.percent}%, you're ${gap} point${gap === 1 ? '' : 's'} below your ${targetThreshold}% target.`;
   if (weakest && weakest.pooledPercent !== null) {
-    verdict += ` Start with ${weakest.categoryLabel} (${weakest.pooledPercent}%).`;
+    verdict += ` Start with ${weakest.categoryShort} (${weakest.pooledPercent}%).`;
   }
   if (daysToExam !== null && daysToExam > 0) {
     verdict += ` ${daysToExam} day${daysToExam === 1 ? '' : 's'} to go.`;
@@ -277,7 +281,7 @@ export function computeReadinessInsight(
     status: 'below_target',
     verdict,
     recommendedAction: weakest
-      ? `Practice ${weakest.categoryLabel} · 10 questions`
+      ? `Practice ${weakest.categoryShort} · 10 questions`
       : 'Take a quick exam',
     weakestDomain: weakest?.categoryId ?? null
   };
@@ -312,17 +316,19 @@ export function collectMissedItemIds(entries: HistoryEntry[]): Set<string> {
   return missed;
 }
 
-function getBlueprintBindings(blueprint: Blueprint): Array<{ id: string; label: string; weightPct: number }> {
+function getBlueprintBindings(blueprint: Blueprint): Array<{ id: string; label: string; short: string; weightPct: number }> {
   if (blueprint.structure === 'domain_task') {
     return blueprint.domains.map((d) => ({
       id: String(d.id),
       label: d.name,
+      short: (d as any).short || d.name,
       weightPct: d.weight_pct
     }));
   }
   return blueprint.sections.map((s) => ({
     id: s.id,
     label: s.name,
+    short: s.name,
     weightPct: blueprint.scored_items > 0 ? Math.round((s.items / blueprint.scored_items) * 100) : 0
   }));
 }

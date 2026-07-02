@@ -714,6 +714,7 @@ function App() {
             historyCategories={historyCategories}
             selectedCategoryId={selectedCategoryId}
             categoryTrend={categoryTrend}
+            focusAreas={focusAreas}
             onSelectCategory={setSelectedCategoryId}
             onSelectHistory={(entry) => { setSelectedHistory(entry); setReviewIndex(0); setView('review'); }}
             onDeleteEntry={(id) => {

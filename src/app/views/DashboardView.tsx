@@ -116,7 +116,6 @@ export function DashboardView({
             )}
           </div>
 
-          {/* Readiness insight */}
           <div className="readiness-insight">
             <span className={`badge badge--${readinessInsight.status === 'on_track' ? 'success' : readinessInsight.status === 'nearly_ready' ? 'gold' : readinessInsight.status === 'below_target' ? 'danger' : ''}`}>
               {readinessInsight.status === 'not_measured' ? 'Not measured' :
@@ -124,7 +123,7 @@ export function DashboardView({
                readinessInsight.status === 'nearly_ready' ? 'Nearly ready' : 'On track'}
             </span>
             <p className="readiness-verdict">{readinessInsight.verdict}</p>
-            <button className="btn-secondary" style={{ alignSelf: 'flex-start' }} onClick={
+            <button className="btn-primary" style={{ marginTop: 11, alignSelf: 'flex-start', fontSize: '12.5px', padding: '9px 14px', borderRadius: 9 }} onClick={
               readinessInsight.weakestDomain ? onLaunchWeakAreas : onStartSession
             }>
               {readinessInsight.recommendedAction} →
@@ -137,7 +136,7 @@ export function DashboardView({
             <div className="stack stack--gap">
               {focusAreas.map((area) => (
                 <div key={area.categoryId} className="focus-bar-row">
-                  <span className="focus-bar-label">{area.categoryLabel}</span>
+                  <span className="focus-bar-label">{area.categoryShort}</span>
                   <div className="focus-bar-track">
                     <div
                       className="focus-bar-fill"

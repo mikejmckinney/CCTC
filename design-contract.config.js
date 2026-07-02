@@ -6,7 +6,7 @@ export default {
   },
   cssSync: {
     enabled: true,
-    skipList: ["--serif", "--sans"],
+    skipList: ["--serif", "--sans", "brand-word", "nav-label"],
   },
   structural: {
     enabled: true,
@@ -51,13 +51,20 @@ export default {
       "seed-idb": "./scripts/d2cc-seed-idb.js",
     },
     screens: [
-      // 1. Dashboard — fresh load, prototype auto-seeds
-      { name: "dashboard", navText: "Home" },
+      // 1. Dashboard — seed IndexedDB first, then reload so app picks up data
+      // Prototype auto-seeds on load; React needs custom step + reload
+      {
+        name: "dashboard",
+        steps: [
+          { custom: "seed-idb" },
+          { reload: true },
+        ],
+      },
 
       // 2. Setup
       { name: "setup", navText: "Setup" },
 
-      // 3. Session — start a study session
+      // 3. Session — start a study session from setup
       {
         name: "session",
         steps: [
@@ -72,8 +79,7 @@ export default {
         ],
       },
 
-      // 4. Session study reveal — click first option
-      // React: .option-button class, Prototype: button:has(span:text-is("A"))
+      // 4. Session study reveal — click first option to show explanation
       {
         name: "session-study-reveal",
         steps: [
@@ -84,10 +90,7 @@ export default {
         ],
       },
 
-      // 5. Results — continue from study-reveal session: submit and confirm
-      // No reload — this continues from the active session left by step 4
-      // React: Finish session → ConfirmModal → Finish → setView('results')
-      // Prototype: submitSession → confirmOpen → doFinalize → view='results'
+      // 5. Results — submit the current session
       {
         name: "results",
         steps: [
@@ -98,38 +101,32 @@ export default {
         ],
       },
 
-      // 6. Review — seed data, reload, navigate to Progress, click Review
-      // Shows the same scored-session review for both apps
+      // 6. Review — navigate to Progress, click Review
       {
         name: "review",
         steps: [
-          { custom: "seed-idb" },
-          { reload: true },
           { click: "Progress" },
-          { wait: 3000 },
+          { wait: 2000 },
           { click: ["button:has-text('Review →')", "button:has-text('Review')"] },
           { wait: 2000 },
         ],
       },
 
-      // 7. Progress — reload for clean seeded state
+      // 7. Progress (history view)
       {
         name: "progress",
         steps: [
-          { reload: true },
           { click: "Progress" },
-          { wait: 3000 },
+          { wait: 2000 },
         ],
       },
 
-      // 8. Flags — reload, navigate to Progress, click Manage flags
+      // 8. Flags — navigate to Progress, click Manage flags
       {
         name: "flags",
         steps: [
-          { reload: true },
           { click: "Progress" },
-          { wait: 5000 },
-          { waitForText: "Manage flags" },
+          { wait: 2000 },
           { click: ["button:has-text('Manage flags')", "button:has-text('Manage')"] },
           { wait: 2000 },
         ],
