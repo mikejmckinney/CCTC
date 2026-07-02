@@ -1,4 +1,4 @@
-import type { HistoryEntry, SessionResultBreakdown } from '../types/exam';
+import type { BlueprintId, HistoryEntry, SessionResultBreakdown } from '../types/exam';
 import type { DomainPerformance, ReadinessState } from '../types/dashboard';
 import { getBlueprint } from '../data/blueprints';
 
@@ -19,9 +19,9 @@ export function calculateEMA(scores: number[], alpha = DEFAULT_ALPHA): number {
 // Measures what fraction of blueprint domains the user has practiced
 export function calculateCoverageBreadth(
   history: HistoryEntry[],
-  blueprintId: string
+  blueprintId: BlueprintId
 ): { breadth: number; practicedDomains: Set<string>; totalDomains: number } {
-  const blueprint = getBlueprint(blueprintId as any);
+  const blueprint = getBlueprint(blueprintId);
   const allDomainIds =
     blueprint.structure === 'domain_task'
       ? blueprint.domains.map((d) => String(d.id))
@@ -77,7 +77,7 @@ const WEAK_THRESHOLD = 60; // domains below this % are "weak"
 
 export function calculateReadiness(
   history: HistoryEntry[],
-  blueprintId: string
+  blueprintId: BlueprintId
 ): ReadinessState {
   if (history.length === 0) {
     return {
@@ -105,7 +105,7 @@ export function calculateReadiness(
   const composite = Math.round(overallEma * EMA_WEIGHT + breadth * COVERAGE_WEIGHT);
 
   // Per-domain performance
-  const blueprint = getBlueprint(blueprintId as any);
+  const blueprint = getBlueprint(blueprintId);
   const domainDefs =
     blueprint.structure === 'domain_task'
       ? blueprint.domains.map((d) => ({

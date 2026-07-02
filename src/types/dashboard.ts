@@ -2,13 +2,15 @@ import type { BlueprintId, ExamMode, SessionSettings } from './exam';
 
 // ─── Expanded View type ───
 export type View =
+  | 'home'
   | 'dashboard'
   | 'setup'
   | 'session'
   | 'history'
   | 'history-detail'
   | 'review'
-  | 'reported';
+  | 'reported'
+  | 'flags';
 
 // ─── User Preferences (persisted in IndexedDB) ───
 export interface UserPreferences {

@@ -6,17 +6,24 @@ import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { buildCategoryHistoryTrend, listHistoryCategories } from '../lib/categoryHistoryTrend';
 import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
+import { calculateReadiness } from '../lib/readiness';
+import { generateStudyPlan } from '../lib/studyPlan';
+import { generateAmIReady } from '../lib/studyPlan';
+import { AppLayout } from '../components/layout/app-layout';
+import { DashboardPage } from '../components/dashboard/dashboard-page';
 import {
   bootstrapState,
   clearActiveSession,
   clearHistory,
   deleteFlag,
   deleteHistoryEntry,
+  loadUserPrefs,
   replaceFlags,
   saveActiveSession,
   saveHistoryEntry,
   saveMeta,
   saveSettings,
+  saveUserPrefs,
   upsertFlag
 } from '../lib/storage';
 import type {
@@ -32,8 +39,7 @@ import type {
   SessionSettings,
   QuestionSet
 } from '../types/exam';
-
-type View = 'home' | 'session' | 'history' | 'history-detail' | 'flags';
+import type { UserPreferences, QuickStartType, View } from '../types/dashboard';
 
 interface FlagDraft {
   existingId?: string;
@@ -254,7 +260,7 @@ function App() {
   const banks = useMemo(() => loadQuestionBanks(), []);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [view, setView] = useState<View>('home');
+  const [view, setView] = useState<View>('dashboard');
   const [meta, setMeta] = useState<AppMeta>({ disclaimerSeen: false });
   const [settings, setSettings] = useState<SessionSettings>(() => buildDefaultSettings('cctc-from-2026-07'));
   const bank = useMemo(
@@ -263,6 +269,7 @@ function App() {
   );
   const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [userPrefs, setUserPrefs] = useState<UserPreferences>({ examDate: null, targetScore: 65, lastQuickStart: null, lastSettings: null });
   const historyTrend = useMemo(() => buildHistoryTrend(history), [history]);
   const historyCategories = useMemo(() => listHistoryCategories(history), [history]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
@@ -283,6 +290,20 @@ function App() {
   const allQuestions = useMemo(
     () => [...banks.standard.questions, ...banks.scenario.questions],
     [banks]
+  );
+
+  // Dashboard computations
+  const readiness = useMemo(
+    () => calculateReadiness(history, settings.blueprintId),
+    [history, settings.blueprintId]
+  );
+  const amIReady = useMemo(
+    () => generateAmIReady(readiness, userPrefs.targetScore, userPrefs.examDate),
+    [readiness, userPrefs.targetScore, userPrefs.examDate]
+  );
+  const studyPlan = useMemo(
+    () => generateStudyPlan(history, readiness, userPrefs.examDate, userPrefs.targetScore),
+    [history, readiness, userPrefs.examDate, userPrefs.targetScore]
   );
 
   useEffect(() => {
@@ -309,6 +330,11 @@ function App() {
           setReady(true);
         }
       });
+
+    // Load user preferences separately (non-blocking)
+    loadUserPrefs().then((prefs) => {
+      if (!cancelled) setUserPrefs(prefs);
+    }).catch(() => {});
 
     return () => {
       cancelled = true;
@@ -763,6 +789,48 @@ function App() {
     setFlags([]);
   }
 
+  // Dashboard quick start handler
+  function handleQuickStart(type: QuickStartType): void {
+    if (type === 'resume' && activeSession) {
+      setView('session');
+      return;
+    }
+
+    const quickSettings: Record<QuickStartType, Partial<SessionSettings>> = {
+      'full-exam': {
+        questionCount: 175,
+        timed: true,
+        timeMinutes: 180,
+        mode: 'exam'
+      },
+      'quick-session': {
+        questionCount: 25,
+        timed: true,
+        timeMinutes: 30,
+        mode: 'study'
+      },
+      'weak-areas': {
+        questionCount: 20,
+        timed: false,
+        timeMinutes: 0,
+        mode: 'study'
+      },
+      'resume': {}
+    };
+
+    if (type === 'resume') return;
+
+    const newSettings = { ...settings, ...quickSettings[type] };
+
+    if (activeSession) {
+      setPendingSessionSettings(newSettings);
+      setSessionReplacePromptOpen(true);
+      return;
+    }
+
+    beginNewSession(newSettings as SessionSettings);
+  }
+
   if (!ready) {
     return (
       <div className="shell">
@@ -780,10 +848,11 @@ function App() {
   }
 
   return (
-    <div className="shell">
-      <a className="skip-link" href="#main-content">
-        Skip to main content
-      </a>
+    <AppLayout
+      currentView={view}
+      onNavigate={(v) => setView(v as View)}
+      hasActiveSession={activeSession !== null}
+    >
       {!meta.disclaimerSeen && (
         <section className="modal-backdrop" aria-label="Study aid disclaimer">
           <div className="modal-card">
@@ -855,35 +924,31 @@ function App() {
         </section>
       )}
 
-      <header className="hero-panel" role="banner">
-        <div>
-          <p className="eyebrow">CCTC practice exam</p>
-          <h1>CCTC Practice Exam</h1>
-          <p className="hero-copy">
-            Client-side only, static-hostable, and offline-capable after first load. Sessions freeze question order, answer order,
-            timer state, and bookmarks exactly.
-          </p>
-        </div>
-        <nav className="nav-pills" aria-label="Primary">
-          <button className={view === 'home' ? 'pill active' : 'pill'} onClick={() => setView('home')}>
-            Start
-          </button>
-          <button className={view === 'history' ? 'pill active' : 'pill'} onClick={() => setView('history')}>
-            History
-          </button>
-          <button className={view === 'flags' ? 'pill active' : 'pill'} onClick={() => setView('flags')}>
-            Flags
-          </button>
-          {activeSession && (
-            <button className={view === 'session' ? 'pill active' : 'pill'} onClick={() => setView('session')}>
-              Resume
-            </button>
-          )}
-        </nav>
-      </header>
+      {/* Dashboard view (new default) */}
+      {view === 'dashboard' && (
+        <DashboardPage
+          readiness={readiness}
+          amIReady={amIReady}
+          studyPlan={studyPlan}
+          history={history}
+          targetScore={userPrefs.targetScore}
+          hasActiveSession={activeSession !== null}
+          onQuickStart={handleQuickStart}
+          onSelectHistory={(entry) => {
+            setSelectedHistory(entry);
+            setView('history-detail');
+          }}
+          onViewAllHistory={() => setView('history')}
+          onStudyDomain={(domainId) => {
+            // For now, navigate to setup with study mode preset
+            setSettings((prev) => ({ ...prev, mode: 'study' }));
+            setView('setup');
+          }}
+        />
+      )}
 
       <main id="main-content" className="main-grid">
-        {view === 'home' && (
+        {(view === 'home' || view === 'setup') && (
           <>
             <section className="panel stack-gap">
               <div className="section-heading">
@@ -1592,7 +1657,7 @@ function App() {
           not a source of patient-care decisions.
         </p>
       </footer>
-    </div>
+    </AppLayout>
   );
 }
 

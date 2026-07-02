@@ -90,8 +90,9 @@ export interface CurrentBlueprint {
     id: number;
     code: string;
     name: string;
+    weight_pct: number;
     items: number;
-    tasks: Array<{ code: string; items: number; name: string }>;
+    tasks: Array<{ code: string; weight_pct: number; items: number; name: string }>;
   }>;
 }
 

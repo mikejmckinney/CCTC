@@ -1,4 +1,4 @@
-import type { HistoryEntry, ItemPerformanceRecord } from '../types/exam';
+import type { HistoryEntry } from '../types/exam';
 import type { ItemPerformanceRecord as ItemPerf } from '../types/dashboard';
 
 // ─── Item-level Performance Tracking ───
