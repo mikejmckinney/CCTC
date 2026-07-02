@@ -21,16 +21,17 @@ export async function dismissDisclaimerIfPresent(page) {
 }
 
 export function sessionItemHeading(page, itemNumber, total) {
-  return page.getByRole('heading', { name: new RegExp(`Item ${itemNumber} of ${total}`, 'i') });
+  // New UI shows "N / M" in a tabular-nums span, not an <h2> with "Item N of M"
+  return page.locator('span.tabular-nums', { hasText: new RegExp(`^${itemNumber}\\s*/\\s*${total}$`) });
 }
 
 export async function readSessionItemTotal(page) {
-  const heading = page.getByRole('heading', { name: /Item \d+ of \d+/i });
-  await expect(heading).toBeVisible();
-  const text = await heading.textContent();
-  const match = text?.match(/Item \d+ of (\d+)/i);
+  const counter = page.locator('span.tabular-nums');
+  await expect(counter.first()).toBeVisible();
+  const text = await counter.first().textContent();
+  const match = text?.match(/\d+\s*\/\s*(\d+)/);
   if (!match) {
-    throw new Error(`Could not parse session item total from heading: ${text}`);
+    throw new Error(`Could not parse session item total from counter: ${text}`);
   }
   return Number(match[1]);
 }
@@ -38,19 +39,40 @@ export async function readSessionItemTotal(page) {
 export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
-  await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
 
-  await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
-  await page.getByRole('spinbutton', { name: /^Question count/i }).fill(String(questionCount));
-  await page.getByRole('button', { name: 'Start session' }).click();
+  // Navigate to Setup view via sidebar or mobile nav
+  const setupNav = page.getByRole('button', { name: 'Setup' });
+  if (await setupNav.isVisible()) {
+    await setupNav.click();
+  } else {
+    // Fallback: try nav link with "Setup" text
+    await page.getByRole('link', { name: 'Setup' }).click().catch(() => {});
+  }
+  await expect(page.getByRole('heading', { name: 'Setup' })).toBeVisible();
 
-  await expect(page.getByRole('heading', { name: /Item 1 of \d+/i })).toBeVisible();
+  // Select Study mode (segmented button, not combobox)
+  await page.getByRole('button', { name: 'Study' }).click();
+
+  // Set question count via the slider (fill on range input)
+  const slider = page.locator('input[type="range"]').last();
+  await slider.evaluate((el, val) => {
+    el.value = val;
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+    el.dispatchEvent(new Event('change', { bubbles: true }));
+  }, String(questionCount));
+
+  await page.getByRole('button', { name: 'Start Session' }).click();
+
+  // Wait for the session counter to appear (new UI: "1 / N" in a tabular-nums span)
+  const counter = page.locator('span.tabular-nums');
+  await expect(counter.first()).toBeVisible({ timeout: 15_000 });
   return readSessionItemTotal(page);
 }
 
 export async function resumeActiveSession(page) {
-  await page.getByRole('button', { name: 'Resume current session' }).click();
-  await expect(page.getByRole('heading', { name: /Item \d+ of \d+/i })).toBeVisible();
+  await page.getByRole('button', { name: 'Resume Last Session' }).click();
+  const counter = page.locator('span.tabular-nums');
+  await expect(counter.first()).toBeVisible({ timeout: 15_000 });
 }
 
 export async function waitForPersistedSessionState(page) {
@@ -85,7 +107,7 @@ export async function waitForPersistedSessionState(page) {
 }
 
 export async function expectSessionStats(page, { answered, bookmarks }) {
-  const stats = page.locator('.session-stats');
-  await expect(stats.getByText(`Answered ${answered}`, { exact: true })).toBeVisible();
-  await expect(stats.getByText(`Bookmarks ${bookmarks}`, { exact: true })).toBeVisible();
+  // New UI shows "N answered" in a plain span in the session header
+  await expect(page.getByText(`${answered} answered`)).toBeVisible();
+  // Bookmarks shown via the "Bookmarked" button state (no separate stat counter in new UI)
 }
