@@ -48,10 +48,10 @@ export async function startStudySession(page, questionCount = MIN_SESSION_QUESTI
     // Fallback: try nav link with "Setup" text
     await page.getByRole('link', { name: 'Setup' }).click().catch(() => {});
   }
-  await expect(page.getByRole('heading', { name: 'Setup' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Setup', exact: true })).toBeVisible();
 
   // Select Study mode (segmented button, not combobox)
-  await page.getByRole('button', { name: 'Study' }).click();
+  await page.getByRole('button', { name: 'Study', exact: true }).click();
 
   // Set question count — the first range slider on the page is question count
   const slider = page.locator('input[type="range"]').first();
@@ -61,7 +61,7 @@ export async function startStudySession(page, questionCount = MIN_SESSION_QUESTI
     el.dispatchEvent(new Event('change', { bubbles: true }));
   }, String(questionCount));
 
-  await page.getByRole('button', { name: 'Start Session' }).click();
+  await page.getByRole('button', { name: 'Start Session', exact: true }).click();
 
   // Wait for the session counter to appear (new UI: "1 / N" in a tabular-nums span)
   const counter = page.locator('span.tabular-nums');
