@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* =========================================================
+   CCTC Design System — "Warm Authority"
+   Paper-toned neutrals, deep teal brand, amber for progress.
+   ========================================================= */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Font families */
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', ui-monospace, Menlo, monospace;
+  --font-display: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+  /* Brand colors */
+  --color-brand: #123b3a;
+  --color-brand-light: #1a5c5a;
+  --color-brand-muted: #e8f4f3;
+  --color-brand-fg: #fafaf8;
+
+  --color-accent: #d79548;
+  --color-accent-light: #f5e6d0;
+  --color-accent-hover: #bf7d34;
+  --color-accent-fg: #1a1a18;
+
+  /* Semantic */
+  --color-success: #2d8a4e;
+  --color-success-light: #e8f5ed;
+  --color-warning: #c77d2a;
+  --color-warning-light: #fef3e2;
+  --color-danger: #b83a3a;
+  --color-danger-light: #fde8e8;
+  --color-info: #3a7ab8;
+  --color-info-light: #e8f2fa;
+
+  /* Chart palette (6 domains) */
+  --color-chart-1: #123b3a;
+  --color-chart-2: #2d8a4e;
+  --color-chart-3: #c77d2a;
+  --color-chart-4: #7b5ea7;
+  --color-chart-5: #3a7ab8;
+  --color-chart-6: #9c7a4f;
+}
+
+:root {
+  /* Light mode — warm paper tones */
+  --bg: #fafaf8;
+  --bg-alt: #f5f1ea;
+  --surface: #ffffff;
+  --surface-raised: #f5f5f2;
+  --surface-muted: #f1ece3;
+  --border: #e5e2dd;
+  --border-strong: #c9bfac;
+  --ring: rgba(18, 59, 58, 0.3);
+  --shadow: 0 1px 3px rgba(18, 59, 58, 0.08), 0 1px 2px rgba(18, 59, 58, 0.06);
+  --shadow-lg: 0 10px 25px rgba(18, 59, 58, 0.1), 0 4px 10px rgba(18, 59, 58, 0.05);
+
+  --text: #1a1a18;
+  --text-secondary: #6b6860;
+  --text-muted: #9b9788;
+
+  --primary: #123b3a;
+  --primary-hover: #0f2e2d;
+  --primary-fg: #fafaf8;
+
+  --accent: #d79548;
+  --accent-hover: #bf7d34;
+  --accent-fg: #1a1a18;
+
+  color-scheme: light;
+}
+
+.dark {
+  /* Dark mode — warm charcoal, not pure black */
+  --bg: #141413;
+  --bg-alt: #1a1a18;
+  --surface: #1e1e1c;
+  --surface-raised: #282825;
+  --surface-muted: #222220;
+  --border: #3a3a35;
+  --border-strong: #4a4a44;
+  --ring: rgba(74, 191, 184, 0.3);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  --text: #f0ede8;
+  --text-secondary: #a09b8e;
+  --text-muted: #6b6860;
+
+  --primary: #4abfb8;
+  --primary-hover: #5cc8c2;
+  --primary-fg: #141413;
+
+  --accent: #e8a85c;
+  --accent-hover: #f0bc70;
+  --accent-fg: #141413;
+
+  color-scheme: dark;
+}
+
+/* =========================================================
+   Base styles
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Tabular numbers for scores, percentages, timers */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus ring */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.75rem;
+  z-index: 50;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--primary-fg);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 0.75rem;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

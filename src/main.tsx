@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './app/App';
-import './app.css';
+import './index.css';
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
