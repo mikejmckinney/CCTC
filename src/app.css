@@ -142,7 +142,7 @@ a {
 .app-header__inner {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   max-width: 940px;
   margin: 0 auto;
   padding: 13px 20px;
@@ -273,6 +273,9 @@ a {
   max-width: 940px;
   margin: 0 auto;
   padding: 20px 20px 24px;
+  gap: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---- Cards, panels ---- */
