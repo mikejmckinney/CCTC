@@ -38,18 +38,22 @@ export async function readSessionItemTotal(page) {
 export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
-  await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
 
-  await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
-  await page.getByRole('spinbutton', { name: /^Question count/i }).fill(String(questionCount));
-  await page.getByRole('button', { name: 'Start session' }).click();
+  // Navigate to Setup page (dashboard is now the default landing)
+  await page.getByRole('button', { name: 'Setup' }).first().click();
+  await expect(page.getByRole('heading', { name: /setup/i })).toBeVisible();
+
+  await page.locator('select').filter({ hasText: /exam.*results after submit|Study.*reveal/i }).selectOption('study');
+  await page.locator('input[type="number"]').first().fill(String(questionCount));
+  await page.getByRole('button', { name: /start session/i }).click();
 
   await expect(page.getByRole('heading', { name: /Item 1 of \d+/i })).toBeVisible();
   return readSessionItemTotal(page);
 }
 
 export async function resumeActiveSession(page) {
-  await page.getByRole('button', { name: 'Resume current session' }).click();
+  // On the dashboard, click the Resume quick-start button to go to the session
+  await page.getByRole('button', { name: /^resume$/i }).click();
   await expect(page.getByRole('heading', { name: /Item \d+ of \d+/i })).toBeVisible();
 }
 

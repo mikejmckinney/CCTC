@@ -29,7 +29,7 @@ test.describe('session resume', () => {
     await ensureAppReady(page);
     await dismissDisclaimerIfPresent(page);
 
-    await expect(page.getByRole('button', { name: 'Resume current session' })).toBeVisible();
+    // Dashboard is now the default; Resume button appears in quick start
     await resumeActiveSession(page);
 
     await expect(sessionItemHeading(page, 1, questionCount)).toBeVisible();
