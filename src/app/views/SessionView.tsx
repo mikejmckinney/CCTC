@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { ActiveSession, FlagReason, Question, SessionItemSnapshot } from '../../types/exam';
 import type { BlueprintId, ExamMode } from '../../types/exam';
 
@@ -33,10 +34,11 @@ function QuestionMapInline({ session, onSelectItem }: { session: ActiveSession; 
       {session.items.map((item, i) => {
         const answered = Boolean(session.answers[item.itemId]);
         const isCurrent = i === session.currentIndex;
+        const isBookmarked = session.flaggedForReview.includes(item.itemId);
         return (
           <button
             key={item.itemId}
-            className={`question-map__chip${isCurrent ? ' is-current' : ''}${answered ? ' is-answered' : ''}`}
+            className={`question-map__chip${isCurrent ? ' is-current' : ''}${answered ? ' is-answered' : ''}${isBookmarked ? ' is-bookmarked' : ''}`}
             onClick={() => onSelectItem(i)}
           >
             {i + 1}
@@ -50,6 +52,7 @@ function QuestionMapInline({ session, onSelectItem }: { session: ActiveSession; 
 export function SessionView({ session, currentItem, answeredCount, onAnswer, onNavigate, onToggleBookmark, onToggleTimerHidden, onSubmit, onExit, onOpenFlagComposer, onSelectItem }: SessionViewProps) {
   const revealed = session.settings.mode === 'study' ? session.revealed[currentItem.itemId] : Boolean(session.submittedAt);
   const bookmarked = session.flaggedForReview.includes(currentItem.itemId);
+  const [mapOpen, setMapOpen] = useState(false);
 
   return (
     <div className="stack stack--gap-lg">
@@ -71,22 +74,22 @@ export function SessionView({ session, currentItem, answeredCount, onAnswer, onN
       </div>
 
       {/* Badges + timer */}
-      <div className="row" style={{ gap: 8 }}>
-        <span className="badge badge--teal">{currentItem.categoryLabel}</span>
-        <span className={`badge${currentItem.question.status === 'draft' ? ' badge--gold' : ' badge--success'}`}>{currentItem.question.status}</span>
-        <span className="badge">{currentItem.question.type === 'one_best' ? 'Single best' : 'Complex combo'}</span>
-        {session.settings.timed && (
-          <button className="timer-pill" onClick={onToggleTimerHidden}>
-            {session.timerHidden ? 'Show timer' : formatDuration(session.remainingSeconds)}
+      <div className="row row--spread" style={{ alignItems: 'center' }}>
+        <div className="row" style={{ gap: 8 }}>
+          <span className="badge badge--teal">{currentItem.categoryLabel}</span>
+          {session.settings.mode === 'study' && <span className="badge">study</span>}
+          {currentItem.question.shuffle === false && <span className="badge">fixed options</span>}
+        </div>
+        {session.remainingSeconds !== null && (
+          <button className={`timer-btn${session.timerHidden ? ' is-hidden' : ''}`} onClick={onToggleTimerHidden}>
+            {session.timerHidden ? '⏱ Show' : formatDuration(session.remainingSeconds)}
           </button>
         )}
-        <span className="badge">Answered {answeredCount}</span>
-        <span className="badge">Bookmarks {session.flaggedForReview.length}</span>
       </div>
 
-      {/* Question */}
+      {/* Question card */}
       <article className="card card--panel stack stack--gap">
-        <h3 className="question-stem">{currentItem.question.stem}</h3>
+        <p className="question-stem">{currentItem.question.stem}</p>
 
         {currentItem.question.elements && (
           <ol style={{ margin: 0, paddingLeft: 20 }}>
@@ -116,6 +119,7 @@ export function SessionView({ session, currentItem, answeredCount, onAnswer, onN
                 role="radio"
                 aria-checked={selected}
                 onClick={() => onAnswer(option.id)}
+                disabled={Boolean(session.submittedAt)}
               >
                 <span className="option-letter">{displayLetter(i)}</span>
                 <span>
@@ -137,13 +141,13 @@ export function SessionView({ session, currentItem, answeredCount, onAnswer, onN
               return <p key={optionId}><strong>{displayLetter(i)}:</strong> {rationale}</p>;
             })}
             {currentItem.question.references.length > 0 && (
-              <div>
-                <p style={{ fontWeight: 600, marginBottom: 4 }}>References</p>
+              <div style={{ marginTop: 12, borderTop: '1px solid var(--expline)', paddingTop: 12 }}>
+                <p style={{ fontWeight: 600, fontSize: 11, letterSpacing: '.08em', textTransform: 'uppercase', color: 'var(--successtext)', marginBottom: 7 }}>References</p>
                 {currentItem.question.references.map((ref) => (
-                  <p key={`${ref.citation}-${ref.locator ?? ''}`} style={{ marginBottom: 4 }}>
+                  <div key={`${ref.citation}-${ref.locator ?? ''}`} style={{ fontSize: 12, color: 'var(--ink)', marginBottom: 6, lineHeight: 1.45 }}>
                     {ref.url ? <a href={ref.url} target="_blank" rel="noreferrer">{ref.citation}</a> : ref.citation}
-                    {ref.locator && <span className="field-hint" style={{ display: 'block' }}>{ref.locator}</span>}
-                  </p>
+                    {ref.locator && <span style={{ display: 'block', color: 'var(--muted)', fontSize: 11.5, marginTop: 2 }} className="field-hint">{ref.locator}</span>}
+                  </div>
                 ))}
               </div>
             )}
@@ -161,17 +165,39 @@ export function SessionView({ session, currentItem, answeredCount, onAnswer, onN
           <button className="btn-ghost" onClick={() => onOpenFlagComposer(currentItem.question, session.id, session.settings.blueprintId, session.settings.mode)}>
             Report an issue
           </button>
+          <button className="btn-secondary" onClick={() => setMapOpen(true)}>Map</button>
           <button className="btn-gold" onClick={onSubmit}>
             {session.settings.mode === 'exam' ? 'Submit exam' : 'Finish session'}
           </button>
         </div>
       </div>
 
-      {/* Question map */}
-      <div className="card card--panel">
-        <p className="eyebrow" style={{ marginBottom: 8 }}>Question map</p>
-        <QuestionMapInline session={session} onSelectItem={onSelectItem} />
-      </div>
+      {/* Question map modal overlay */}
+      {mapOpen && (
+        <section className="modal-backdrop" aria-label="Question map" onClick={() => setMapOpen(false)}>
+          <div className="modal-card" onClick={(e) => e.stopPropagation()} style={{ width: 'min(700px, 100%)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+              <h2>Question map</h2>
+              <div style={{ display: 'flex', gap: 14, fontSize: 11, color: 'var(--muted)' }}>
+                <span>● Answered</span>
+                <span>★ Bookmarked</span>
+              </div>
+            </div>
+            <div style={{ overflowY: 'auto', maxHeight: '60vh', paddingRight: 4 }}>
+              <QuestionMapInline
+                session={session}
+                onSelectItem={(index) => {
+                  onSelectItem(index);
+                  setMapOpen(false);
+                }}
+              />
+            </div>
+            <button className="btn-secondary" onClick={() => setMapOpen(false)} style={{ marginTop: 12, alignSelf: 'flex-end' }}>
+              Close
+            </button>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

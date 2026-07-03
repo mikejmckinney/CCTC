@@ -40,50 +40,82 @@ export function HistoryView({
         </button>
       </div>
 
-      {/* Trend summary */}
-      {historyTrend.points.length > 0 && (
-        <div className="card card--panel stack stack--gap">
-          <p className="eyebrow">Score trend</p>
-          <div className="trend-summary">
-            <div>
-              <p className="eyebrow">Average</p>
-              <strong>{historyTrend.averagePercent}%</strong>
-            </div>
-            <div>
-              <p className="eyebrow">Best</p>
-              <strong>{historyTrend.bestPercent}%</strong>
-            </div>
-            {historyTrend.recentDelta !== null && (
-              <div>
-                <p className="eyebrow">Latest change</p>
-                <strong>{historyTrend.recentDelta > 0 ? '+' : ''}{historyTrend.recentDelta} pts</strong>
+      {history.length > 0 && (
+        <div className="dashboard-grid">
+          {/* Trend summary */}
+          {historyTrend.points.length > 0 && (
+            <div className="card card--panel stack stack--gap">
+              <p className="eyebrow">Score trend</p>
+              <div className="trend-summary">
+                <div>
+                  <p className="eyebrow">Average</p>
+                  <strong>{historyTrend.averagePercent}%</strong>
+                </div>
+                <div>
+                  <p className="eyebrow">Best</p>
+                  <strong>{historyTrend.bestPercent}%</strong>
+                </div>
+                {historyTrend.recentDelta !== null && (
+                  <div>
+                    <p className="eyebrow">Latest change</p>
+                    <strong>{historyTrend.recentDelta > 0 ? '+' : ''}{historyTrend.recentDelta} pts</strong>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
 
-          <div className="trend-chart">
-            <div className="trend-chart__plot">
-              {historyTrend.targetThreshold !== null && (
-                <div className="trend-chart__target" style={{ bottom: `${historyTrend.targetThreshold}%` }}>
-                  <span className="trend-chart__target-label">Target {historyTrend.targetThreshold}%</span>
+              <div className="trend-chart">
+                <div className="trend-chart__plot">
+                  {historyTrend.targetThreshold !== null && (
+                    <div className="trend-chart__target" style={{ bottom: `${historyTrend.targetThreshold}%` }}>
+                      <span className="trend-chart__target-label">Target {historyTrend.targetThreshold}%</span>
+                    </div>
+                  )}
+                  {historyTrend.points.map((pt) => (
+                    <div key={pt.id} className="trend-chart__bar-wrap">
+                      <div
+                        className={`trend-chart__bar${pt.belowTarget ? ' is-below-target' : ''}`}
+                        style={{ height: `${pt.percent}%` }}
+                        title={`${pt.label}: ${pt.percent}% (${pt.mode})`}
+                      />
+                    </div>
+                  ))}
                 </div>
-              )}
-              {historyTrend.points.map((pt) => (
-                <div key={pt.id} className="trend-chart__bar-wrap">
-                  <div
-                    className={`trend-chart__bar${pt.belowTarget ? ' is-below-target' : ''}`}
-                    style={{ height: `${pt.percent}%` }}
-                    title={`${pt.label}: ${pt.percent}% (${pt.mode})`}
-                  />
+                <div className="trend-chart__labels">
+                  {historyTrend.points.map((pt) => (
+                    <span key={pt.id} className="trend-chart__label">{pt.label}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* By domain */}
+          {focusAreas && focusAreas.length > 0 && (
+            <div className="card card--panel stack stack--gap">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14 }}>
+                <p className="eyebrow">By domain</p>
+                <span style={{ fontSize: 11, color: 'var(--muted)' }}>accuracy · share of exam</span>
+              </div>
+              {focusAreas.map((area) => (
+                <div key={area.categoryId} style={{ marginBottom: 14 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--ink)', marginBottom: 6, gap: 10 }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+                      {area.categoryShort}
+                      <span style={{ flexShrink: 0, font: '600 10px var(--sans)', color: 'var(--tealtext)', background: 'var(--tealsoft)', padding: '2px 7px', borderRadius: 6 }}>
+                        {area.examWeightPct}% of exam
+                      </span>
+                    </span>
+                    <span style={{ color: 'var(--muted)' }}>
+                      {area.pooledPercent !== null ? `${area.pooledPercent}%` : '—'}
+                    </span>
+                  </div>
+                  <div style={{ height: 8, borderRadius: 5, background: 'var(--goldsoft)' }}>
+                    <div style={{ width: `${area.pooledPercent ?? 0}%`, height: '100%', borderRadius: 5, background: area.pooledPercent !== null ? (area.pooledPercent >= 75 ? 'var(--teal)' : area.pooledPercent >= 65 ? 'var(--gold)' : 'var(--danger)') : 'var(--line2)' }} />
+                  </div>
                 </div>
               ))}
             </div>
-            <div className="trend-chart__labels">
-              {historyTrend.points.map((pt) => (
-                <span key={pt.id} className="trend-chart__label">{pt.label}</span>
-              ))}
-            </div>
-          </div>
+          )}
         </div>
       )}
 
@@ -141,34 +173,6 @@ export function HistoryView({
         </div>
       )}
 
-      {/* By domain */}
-      {focusAreas && focusAreas.length > 0 && (
-        <div className="card card--panel stack stack--gap">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14 }}>
-            <p className="eyebrow">By domain</p>
-            <span style={{ fontSize: 11, color: 'var(--muted)' }}>accuracy · share of exam</span>
-          </div>
-          {focusAreas.map((area) => (
-            <div key={area.categoryId} style={{ marginBottom: 14 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--ink)', marginBottom: 6, gap: 10 }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
-                  {area.categoryShort}
-                  <span style={{ flexShrink: 0, font: '600 10px var(--sans)', color: 'var(--tealtext)', background: 'var(--tealsoft)', padding: '2px 7px', borderRadius: 6 }}>
-                    {area.examWeightPct}% of exam
-                  </span>
-                </span>
-                <span style={{ color: 'var(--muted)' }}>
-                  {area.pooledPercent !== null ? `${area.pooledPercent}%` : '—'}
-                </span>
-              </div>
-              <div style={{ height: 8, borderRadius: 5, background: 'var(--goldsoft)' }}>
-                <div style={{ width: `${area.pooledPercent ?? 0}%`, height: '100%', borderRadius: 5, background: area.pooledPercent !== null ? (area.pooledPercent >= 75 ? 'var(--teal)' : area.pooledPercent >= 65 ? 'var(--gold)' : 'var(--danger)') : 'var(--line2)' }} />
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
       {/* Session list */}
       <div className="card card--panel stack stack--gap">
         <div className="row row--spread">
@@ -209,7 +213,7 @@ export function HistoryView({
                     onClick={(e) => { e.stopPropagation(); onSelectHistory(entry); }}>
                     Review →
                   </button>
-                  <button className="btn-ghost" style={{ fontSize: 12, padding: '6px 12px', minHeight: 32, color: 'var(--dangertext)' }}
+                  <button className="btn-secondary" style={{ fontSize: 12, padding: '6px 12px', minHeight: 32, color: 'var(--dangertext)' }}
                     onClick={(e) => { e.stopPropagation(); onDeleteEntry(entry.id); }}>
                     Delete
                   </button>

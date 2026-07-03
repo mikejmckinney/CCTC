@@ -83,6 +83,7 @@
 /* ---- Reset ---- */
 * {
   box-sizing: border-box;
+  scroll-margin-top: 90px;
 }
 
 body {
@@ -193,9 +194,11 @@ a {
   border: none;
   background: transparent;
   color: var(--muted);
+  font-family: var(--sans);
   font-size: 13px;
-  font-weight: 500;
-  transition: background 0.16s ease, color 0.16s ease;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
 }
 
 .app-header__nav-item:hover {
@@ -206,7 +209,6 @@ a {
 .app-header__nav-item.is-active {
   background: var(--tealsoft);
   color: var(--tealtext);
-  font-weight: 600;
 }
 
 .app-header__nav-item .nav-icon {
@@ -1431,6 +1433,20 @@ label {
 
   .results-hero__big {
     font-size: 42px;
+  }
+
+  .recent-table {
+    min-width: 500px;
+  }
+
+  .only-desktop {
+    display: none !important;
+  }
+}
+
+@media (min-width: 641px) {
+  .only-mobile {
+    display: none !important;
   }
 }
 

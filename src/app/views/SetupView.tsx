@@ -13,6 +13,7 @@ interface SetupViewProps {
   onStartSession: () => void;
   onResumeSession: () => void;
   onLaunchLastCustom: () => void;
+  onLaunchWeakAreas: () => void;
   onSaveLastCustom: (settings: SessionSettings) => void;
   onUpdateExamDate: (date: string) => void;
 }
@@ -20,7 +21,7 @@ interface SetupViewProps {
 export function SetupView({
   settings, bank, availableQuestionCount, activeSession, lastCustomSettings,
   examDate, onUpdateSettings, onStartSession, onResumeSession, onLaunchLastCustom,
-  onSaveLastCustom, onUpdateExamDate
+  onLaunchWeakAreas, onSaveLastCustom, onUpdateExamDate
 }: SetupViewProps) {
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const hasUnfinished = activeSession && !activeSession.submittedAt;
@@ -28,6 +29,27 @@ export function SetupView({
   function handleStart(): void {
     onSaveLastCustom(settings);
     onStartSession();
+  }
+
+  function handleToggleDomain(id: number | 'all') {
+    const currentDomains = settings.domains ?? 'all';
+    if (id === 'all') {
+      onUpdateSettings({ domains: 'all' });
+      return;
+    }
+    let next: number[];
+    if (currentDomains === 'all') {
+      next = [id];
+    } else {
+      next = [...currentDomains];
+      const i = next.indexOf(id);
+      if (i >= 0) {
+        next.splice(i, 1);
+      } else {
+        next.push(id);
+      }
+    }
+    onUpdateSettings({ domains: next.length > 0 ? next : 'all' });
   }
 
   return (
@@ -64,6 +86,10 @@ export function SetupView({
           <span className="quick-card__title">Quick exam</span>
           <span className="quick-card__desc">25 q · 30 min</span>
         </button>
+        <button className="quick-card" style={{ flex: 1 }} onClick={onLaunchWeakAreas}>
+          <span className="quick-card__title">Weak areas</span>
+          <span className="quick-card__desc">Study · revisits misses</span>
+        </button>
       </div>
 
       {lastCustomSettings && (
@@ -96,6 +122,20 @@ export function SetupView({
               onClick={() => onUpdateSettings({ questionSet: 'standard' as QuestionSet })}>Standard bank</button>
             <button className={`segmented__option${settings.questionSet === 'scenario' ? ' is-active' : ''}`}
               onClick={() => onUpdateSettings({ questionSet: 'scenario' as QuestionSet })}>Scenario companions</button>
+          </div>
+        </label>
+
+        <label>
+          Focus
+          <div className="focus-chips">
+            <button className={`focus-chip${(settings.domains === 'all' || !settings.domains) ? ' is-selected' : ''}`}
+              onClick={() => handleToggleDomain('all')}>All domains</button>
+            <button className={`focus-chip${(settings.domains !== 'all' && settings.domains?.includes(1)) ? ' is-selected' : ''}`}
+              onClick={() => handleToggleDomain(1)}>Education</button>
+            <button className={`focus-chip${(settings.domains !== 'all' && settings.domains?.includes(2)) ? ' is-selected' : ''}`}
+              onClick={() => handleToggleDomain(2)}>Pre-transplant</button>
+            <button className={`focus-chip${(settings.domains !== 'all' && settings.domains?.includes(3)) ? ' is-selected' : ''}`}
+              onClick={() => handleToggleDomain(3)}>Post-op</button>
           </div>
         </label>
 

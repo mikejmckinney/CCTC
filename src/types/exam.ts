@@ -128,6 +128,7 @@ export interface SessionSettings {
   mode: ExamMode;
   includeDrafts: boolean;
   targetThreshold: number;
+  domains?: number[] | 'all';
 }
 
 export interface SessionItemSnapshot {

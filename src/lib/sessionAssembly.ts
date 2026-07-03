@@ -201,7 +201,9 @@ export function createSession(
   const blueprint = getBlueprint(settings.blueprintId);
   const filteredQuestions = questions.filter(
     (question) =>
-      (settings.includeDrafts || question.status === 'reviewed') && isBlueprintApplicable(blueprint, question)
+      (settings.includeDrafts || question.status === 'reviewed') &&
+      isBlueprintApplicable(blueprint, question) &&
+      (!settings.domains || settings.domains === 'all' || settings.domains.includes(question.domain))
   );
   const targets = getBindingTargets(blueprint, settings.questionCount);
   const domainTolerance = getScaledDomainTolerance(blueprint, settings.questionCount);
@@ -230,7 +232,8 @@ export function createSession(
     });
 
     const minimumAcceptable = Math.max(0, target.target - domainTolerance);
-    if (chosen.length < minimumAcceptable) {
+    const hasAnyInPool = filteredQuestions.some((q) => resolveCategory(blueprint, q).id === target.id);
+    if (chosen.length < minimumAcceptable && hasAnyInPool) {
       shortageNotes.push(
         `${target.label}: requested ${target.target} (±${domainTolerance}), loaded ${chosen.length}.`
       );
@@ -297,7 +300,8 @@ export function buildDefaultSettings(blueprintId: BlueprintId): SessionSettings 
     showTimer: true,
     mode: 'exam',
     includeDrafts: false,
-    targetThreshold: 70
+    targetThreshold: 70,
+    domains: 'all'
   };
 }
 

@@ -35,28 +35,31 @@ export function ResultsView({ entry, onReview, onRetake, onHome }: ResultsViewPr
         <p className="eyebrow">By domain</p>
         {result.breakdown.map((bd) => {
           const pct = bd.total > 0 ? Math.round((bd.correct / bd.total) * 100) : 0;
+          const fillStyle = {
+            width: `${pct}%`,
+            background: pct >= 75 ? 'var(--teal)' : pct >= 65 ? 'var(--gold)' : 'var(--danger)',
+            height: '100%',
+            borderRadius: 5,
+            transition: 'width 0.3s ease'
+          };
           return (
-            <div key={bd.categoryId} className="focus-bar-row">
-              <span className="focus-bar-label">{bd.categoryLabel}</span>
-              <div className="focus-bar-track">
-                <div
-                  className="focus-bar-fill"
-                  style={{
-                    width: `${pct}%`,
-                    background: pct >= 75 ? 'var(--teal)' : pct >= 65 ? 'var(--gold)' : 'var(--danger)'
-                  }}
-                />
+            <div key={bd.categoryId} style={{ marginBottom: 14 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--ink)', marginBottom: 6 }}>
+                <span>Domain {bd.categoryId} · {bd.categoryLabel}</span>
+                <span style={{ color: 'var(--muted)' }}>{bd.correct}/{bd.total} · {pct}%</span>
               </div>
-              <span className="focus-bar-value">{bd.correct}/{bd.total}</span>
+              <div style={{ height: 8, borderRadius: 5, background: 'var(--goldsoft)', overflow: 'hidden' }}>
+                <div style={fillStyle} />
+              </div>
             </div>
           );
         })}
       </div>
 
-      <div className="action-row">
-        <button className="btn-primary" onClick={onReview}>Review answers</button>
-        <button className="btn-secondary" onClick={onRetake}>Retake same settings</button>
-        <button className="btn-ghost" onClick={onHome}>Home</button>
+      <div className="action-row" style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+        <button className="btn-primary" onClick={onReview} style={{ flex: 1, minWidth: 160 }}>Review answers</button>
+        <button className="btn-secondary" onClick={onRetake}>Retake</button>
+        <button className="btn-secondary" onClick={onHome}>Home</button>
       </div>
     </div>
   );

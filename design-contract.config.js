@@ -19,6 +19,11 @@ export default {
       "night-theme": { file: "src/app.css", pattern: '[data-theme="night"]' },
       "header-component": { file: "src/app/components/Header.tsx", pattern: "app-header" },
       "confirm-modal": { file: "src/app/components/ConfirmModal.tsx", pattern: "modal-backdrop" },
+      "donut-wrap-usage": { file: "src/app/views/DashboardView.tsx", pattern: "donut-wrap" },
+      "focus-areas-nested": { file: "src/app/views/DashboardView.tsx", pattern: "Focus areas" },
+      "nav-header-icons": { file: "src/app/components/Header.tsx", pattern: "svg viewBox" },
+      "responsive-scroll-wrapper": { file: "src/app/views/DashboardView.tsx", pattern: "overflowX" },
+      "results-actions-bordered": { file: "src/app/views/ResultsView.tsx", pattern: "btn-secondary" },
     },
   },
   skeleton: {

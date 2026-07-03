@@ -357,6 +357,17 @@ function App() {
     setView('session');
   }
 
+  function handleLaunchWeakAreas(): void {
+    const next: SessionSettings = { ...settings, mode: 'study', questionCount: 10 };
+    if (activeSession && !activeSession.submittedAt) {
+      setPendingSessionSettings(next);
+      setPendingPrioritizeIncorrect(true);
+      setSessionReplacePromptOpen(true);
+      return;
+    }
+    beginNewSession(next, true);
+  }
+
   function startSession(): void {
     if (availableQuestionCount === 0 && !settings.includeDrafts) {
       setDraftConfirmOpen(true);
@@ -622,17 +633,7 @@ function App() {
               }
               beginNewSession(meta.lastCustomSettings);
             }}
-            onLaunchWeakAreas={() => {
-              const weakIds = new Set(weakDomains.map((d) => d.categoryId));
-              const next: SessionSettings = { ...settings, mode: 'study', questionCount: 10 };
-              if (activeSession && !activeSession.submittedAt) {
-                setPendingSessionSettings(next);
-                setPendingPrioritizeIncorrect(true);
-                setSessionReplacePromptOpen(true);
-                return;
-              }
-              beginNewSession(next, true);
-            }}
+            onLaunchWeakAreas={handleLaunchWeakAreas}
             onSelectSession={(sessionId) => {
               const entry = history.find((e) => e.id === sessionId);
               if (entry) {
@@ -664,6 +665,7 @@ function App() {
               }
               beginNewSession(meta.lastCustomSettings);
             }}
+            onLaunchWeakAreas={handleLaunchWeakAreas}
             onSaveLastCustom={saveLastCustomSettings}
             onUpdateExamDate={updateExamDate}
           />

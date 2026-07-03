@@ -46,11 +46,8 @@ function DonutChart({ percent }: { percent: number | null }) {
           strokeDashoffset={offset}
         />
       )}
-      <text className="donut-value" x="40" y="37" textAnchor="middle" dominantBaseline="central">
+      <text className="donut-value" x="40" y="42" textAnchor="middle" dominantBaseline="central">
         {percent !== null ? `${percent}%` : '—'}
-      </text>
-      <text className="donut-label" x="40" y="52" textAnchor="middle" dominantBaseline="central">
-        readiness
       </text>
     </svg>
   );
@@ -98,60 +95,110 @@ export function DashboardView({
 
       {/* Main grid */}
       <div className="dashboard-grid">
-        {/* Left: combined readiness + focus card */}
-        <div className="card card--panel stack stack--gap">
-          <div className="row row--spread" style={{ alignItems: 'flex-start' }}>
-            <div>
-              <p className="eyebrow">Practice readiness</p>
-              <p style={{ fontSize: 12, color: 'var(--muted)', margin: '0 0 8px' }}>Weighted recent exam average</p>
+        {/* Left column */}
+        <div className="stack stack--gap">
+          <div className="card card--panel stack stack--gap" style={{ padding: 20 }}>
+            {/* Donut / Readiness Header */}
+            <div className="donut-wrap" style={{ paddingBottom: 18, borderBottom: '1px solid var(--line)' }}>
               <DonutChart percent={readiness.percent} />
-            </div>
-            {readiness.delta !== null && (
-              <div style={{ textAlign: 'right' }}>
-                <p className="eyebrow">Latest change</p>
-                <strong style={{ fontSize: 16, fontFamily: 'var(--serif)' }}>
-                  {readiness.delta > 0 ? '+' : ''}{readiness.delta} pts
-                </strong>
-              </div>
-            )}
-          </div>
-
-          <div className="readiness-insight">
-            <span className={`badge badge--${readinessInsight.status === 'on_track' ? 'success' : readinessInsight.status === 'nearly_ready' ? 'gold' : readinessInsight.status === 'below_target' ? 'danger' : ''}`}>
-              {readinessInsight.status === 'not_measured' ? 'Not measured' :
-               readinessInsight.status === 'below_target' ? 'Below target' :
-               readinessInsight.status === 'nearly_ready' ? 'Nearly ready' : 'On track'}
-            </span>
-            <p className="readiness-verdict">{readinessInsight.verdict}</p>
-            <button className="btn-primary" style={{ marginTop: 11, alignSelf: 'flex-start', fontSize: '12.5px', padding: '9px 14px', borderRadius: 9 }} onClick={
-              readinessInsight.weakestDomain ? onLaunchWeakAreas : onStartSession
-            }>
-              {readinessInsight.recommendedAction} →
-            </button>
-          </div>
-
-          {/* Focus areas */}
-          <div>
-            <p className="eyebrow" style={{ marginBottom: 8 }}>Focus areas</p>
-            <div className="stack stack--gap">
-              {focusAreas.map((area) => (
-                <div key={area.categoryId} className="focus-bar-row">
-                  <span className="focus-bar-label">{area.categoryShort}</span>
-                  <div className="focus-bar-track">
-                    <div
-                      className="focus-bar-fill"
-                      style={{
-                        width: `${area.pooledPercent ?? 0}%`,
-                        background: area.pooledPercent !== null ? donutColor(area.pooledPercent) : 'var(--line2)'
-                      }}
-                    />
-                  </div>
-                  <span className="focus-bar-value" style={{ color: area.pooledPercent !== null ? donutColor(area.pooledPercent) : 'var(--muted)' }}>
-                    {area.pooledPercent !== null ? `${area.pooledPercent}%` : '—'}
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ font: '600 13px var(--sans)', color: 'var(--ink)' }}>Practice readiness</span>
+                  <span className={`badge badge--${readinessInsight.status === 'on_track' ? 'success' : readinessInsight.status === 'nearly_ready' ? 'gold' : readinessInsight.status === 'below_target' ? 'danger' : ''}`} style={{ fontSize: '10.5px', padding: '2px 8px' }}>
+                    {readinessInsight.status === 'not_measured' ? 'Not measured' :
+                     readinessInsight.status === 'below_target' ? 'Below target' :
+                     readinessInsight.status === 'nearly_ready' ? 'Nearly ready' : 'On track'}
                   </span>
-                  <span className="focus-bar-chip">{area.examWeightPct}% of exam</span>
                 </div>
-              ))}
+                <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 3 }}>Weighted recent exam average</div>
+                {readiness.delta !== null && (
+                  <div style={{
+                    fontSize: 12,
+                    fontWeight: 700,
+                    marginTop: 9,
+                    color: readiness.delta >= 0 ? 'var(--successtext)' : 'var(--dangertext)'
+                  }}>
+                    {readiness.delta > 0 ? `+${readiness.delta}` : readiness.delta} pts vs last week
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Recommendation Insight */}
+            <div style={{ marginTop: 16, padding: 14, borderRadius: 12, background: 'var(--surface2)', border: '1px solid var(--line)', display: 'flex', flexDirection: 'column' }}>
+              <p style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--ink)', margin: 0 }}>{readinessInsight.verdict}</p>
+              <button
+                className="btn-primary"
+                style={{
+                  marginTop: 11,
+                  padding: '9px 14px',
+                  border: 'none',
+                  borderRadius: 9,
+                  background: 'var(--teal)',
+                  color: '#fff',
+                  font: '600 12.5px var(--sans)',
+                  cursor: 'pointer',
+                  alignSelf: 'flex-start'
+                }}
+                onClick={readinessInsight.weakestDomain ? onLaunchWeakAreas : onStartSession}
+              >
+                {readinessInsight.recommendedAction}
+              </button>
+            </div>
+
+            {/* Focus areas header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', margin: '18px 0 14px' }}>
+              <span style={{ font: '600 11px var(--sans)', letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--muted)' }}>Focus areas</span>
+              <span style={{ fontSize: 11, color: 'var(--muted)' }}>accuracy · share of exam</span>
+            </div>
+
+            {/* Focus areas progress bars */}
+            <div className="stack" style={{ gap: 14 }}>
+              {focusAreas.map((area) => {
+                const pct = area.pooledPercent;
+                const target = settings.targetThreshold;
+                let statusLabel = 'Weak';
+                let statusColorClass = 'danger';
+                let statusColor = 'var(--danger)';
+                if (pct !== null) {
+                  if (pct >= target) {
+                    statusLabel = 'Strong';
+                    statusColorClass = 'success';
+                    statusColor = 'var(--success)';
+                  } else if (pct >= target - 15) {
+                    statusLabel = 'Developing';
+                    statusColorClass = 'gold';
+                    statusColor = 'var(--gold)';
+                  }
+                }
+
+                const fillStyle = {
+                  width: `${pct ?? 0}%`,
+                  background: statusColor,
+                  height: '100%',
+                  borderRadius: 5,
+                  transition: 'width 0.3s ease'
+                };
+                return (
+                  <div key={area.categoryId}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13, color: 'var(--ink)', marginBottom: 6, gap: 10 }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+                        Domain {area.categoryId} · {area.categoryShort}
+                        <span className="focus-bar-chip only-desktop">
+                          {area.examWeightPct}% of exam
+                        </span>
+                        <span className={`badge badge--${statusColorClass} only-mobile`} style={{ fontSize: '9px', padding: '1px 5px', borderRadius: 4, flexShrink: 0 }}>
+                          {statusLabel}
+                        </span>
+                      </span>
+                      <span style={{ color: 'var(--muted)' }}>{pct !== null ? `${pct}%` : '—'}</span>
+                    </div>
+                    <div style={{ height: 8, borderRadius: 5, background: 'var(--goldsoft)', overflow: 'hidden' }}>
+                      <div style={fillStyle} />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -203,30 +250,32 @@ export function DashboardView({
         {recentSessions.length === 0 ? (
           <p className="empty-state">No completed sessions yet.</p>
         ) : (
-          <table className="recent-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Mode</th>
-                <th>Questions</th>
-                <th>Score</th>
-                <th>Result</th>
-                <th>Duration</th>
-              </tr>
-            </thead>
-            <tbody>
-              {recentSessions.map((s) => (
-                <tr key={s.id} onClick={() => onSelectSession(s.id)}>
-                  <td>{new Date(s.completedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</td>
-                  <td><span className={`badge badge--${s.mode === 'exam' ? 'exam' : 'study'}`}>{s.mode}</span></td>
-                  <td>{s.correct}/{s.total}</td>
-                  <td style={{ color: donutColor(s.percent), fontWeight: 600 }}>{s.percent}%</td>
-                  <td><span className={`badge badge--${s.resultLabel === 'Pass' ? 'success' : 'danger'}`}>{s.resultLabel}</span></td>
-                  <td>{s.duration}</td>
+          <div style={{ overflowX: 'auto', width: '100%', WebkitOverflowScrolling: 'touch' }}>
+            <table className="recent-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Mode</th>
+                  <th>Questions</th>
+                  <th>Score</th>
+                  <th>Result</th>
+                  <th>Duration</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {recentSessions.map((s) => (
+                  <tr key={s.id} onClick={() => onSelectSession(s.id)}>
+                    <td>{new Date(s.completedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</td>
+                    <td><span className={`badge badge--${s.mode === 'exam' ? 'exam' : 'study'}`}>{s.mode}</span></td>
+                    <td>{s.correct}/{s.total}</td>
+                    <td style={{ color: donutColor(s.percent), fontWeight: 600 }}>{s.percent}%</td>
+                    <td><span className={`badge badge--${s.resultLabel === 'Pass' ? 'success' : 'danger'}`}>{s.resultLabel}</span></td>
+                    <td>{s.duration}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>
