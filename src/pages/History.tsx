@@ -29,8 +29,13 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       const date = new Date(entry.completedAt);
       const label = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       const domains: Record<string, number> = {};
+      const totalItems = entry.result.breakdown.reduce((sum, bd) => sum + bd.total, 0);
       for (const bd of entry.result.breakdown) {
-        domains[`d${bd.categoryId}`] = bd.total > 0 ? Math.round((bd.correct / bd.total) * 100) : 0;
+        // Weight each domain's score by its proportion of the exam
+        // so stacked areas sum to the overall percentage (max 100%)
+        const domainWeight = totalItems > 0 ? bd.total / totalItems : 0;
+        const domainScore = bd.total > 0 ? bd.correct / bd.total : 0;
+        domains[`d${bd.categoryId}`] = Math.round(domainScore * domainWeight * 100);
       }
       return { label, ...domains, total: entry.result.percent };
     });

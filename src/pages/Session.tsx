@@ -121,10 +121,15 @@ export function SessionView({
           {/* Explanation (study mode or after submit) */}
           {isRevealed && (
             <div className="rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4 space-y-2">
-              <p className="text-sm"><strong className="text-[var(--success)]">Correct:</strong> {currentItem.question.explanation.rationale_correct}</p>
-              {Object.entries(currentItem.question.explanation.rationale_incorrect).map(([id, text]) => (
-                <p key={id} className="text-sm text-[var(--muted-foreground)]"><strong>{id.toUpperCase()}:</strong> {text}</p>
-              ))}
+              <p className="text-sm"><strong className="text-[var(--success)]">Correct ({String.fromCharCode(65 + currentItem.optionOrder.indexOf(currentItem.question.correct))}):</strong> {currentItem.question.explanation.rationale_correct}</p>
+              {currentItem.optionOrder
+                .filter((optId) => optId !== currentItem.question.correct && currentItem.question.explanation.rationale_incorrect[optId])
+                .map((optId) => {
+                  const displayLetter = String.fromCharCode(65 + currentItem.optionOrder.indexOf(optId));
+                  return (
+                    <p key={optId} className="text-sm text-[var(--muted-foreground)]"><strong>{displayLetter}:</strong> {currentItem.question.explanation.rationale_incorrect[optId]}</p>
+                  );
+                })}
               {currentItem.question.references.length > 0 && (
                 <div className="pt-2 border-t border-[var(--border)]">
                   <p className="text-xs font-medium text-[var(--muted-foreground)] mb-1">References</p>

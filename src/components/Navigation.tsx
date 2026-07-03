@@ -1,5 +1,5 @@
 import { cn } from '../lib/cn';
-
+import { performCircularReveal } from '../lib/circularReveal';
 import { useTheme } from './ThemeProvider';
 import { Sun, Moon, Home, Settings, BarChart3, Flag, Play, BookOpen } from 'lucide-react';
 
@@ -66,7 +66,7 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession }: Naviga
           </div>
           <div className="flex items-center gap-2">
             <button
-              onClick={toggleColorMode}
+              onClick={(e) => performCircularReveal(e, toggleColorMode)}
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)] hover:bg-[var(--muted)]"
               aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
             >
@@ -111,7 +111,7 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession }: Naviga
             </button>
           )}
           <button
-            onClick={toggleColorMode}
+            onClick={(e) => performCircularReveal(e, toggleColorMode)}
             className="flex flex-col items-center gap-0.5 rounded-lg px-3 py-2 text-[var(--muted-foreground)] min-w-[44px] min-h-[44px] justify-center"
             aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
           >
