@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
+import { ThemeProvider } from '../components/ThemeProvider';
 import App from './App';
 
 vi.mock('../lib/storage', () => ({
@@ -23,16 +24,15 @@ vi.mock('../lib/storage', () => ({
 }));
 
 describe('App', () => {
-  it('renders the start screen and loaded-bank summary', async () => {
-    render(<App />);
+  it('renders the dashboard after loading', async () => {
+    render(
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    );
 
-    await waitFor(() => expect(screen.getByRole('heading', { name: /build a practice session/i })).toBeInTheDocument());
-
-    expect(screen.getByRole('heading', { name: 'CCTC Practice Exam' })).toBeInTheDocument();
-    expect(
-      screen.getByText((_, element) => Boolean(element?.closest('.badge')?.textContent?.includes('506 item')))
-    ).toBeInTheDocument();
-    expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /start session/i })).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText(/CCTC Practice Exam/i)).toBeInTheDocument();
+    });
   });
 });
