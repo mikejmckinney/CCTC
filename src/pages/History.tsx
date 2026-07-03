@@ -2,6 +2,7 @@ import { useMemo, useRef, useEffect } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Progress } from '../components/ui';
 import { computeReadiness } from '../lib/readiness';
+import { formatDuration } from '../lib/format';
 import type { HistoryEntry } from '../types/exam';
 import {
   BarChart3, ChevronRight, Trash2, TrendingUp, Target, Award
@@ -15,14 +16,6 @@ interface HistoryProps {
   onViewSession: (entry: HistoryEntry) => void;
   onDeleteSession: (id: string) => void;
   onClearAll: () => void;
-}
-
-function formatDuration(seconds: number | null): string {
-  if (seconds === null) return 'Untimed';
-  const h = Math.floor(seconds / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  if (h > 0) return `${h}h ${m}m`;
-  return `${m}m`;
 }
 
 export function History({ history, onViewSession, onDeleteSession, onClearAll }: HistoryProps) {

@@ -1,5 +1,5 @@
 import { cn } from '../../lib/cn';
-import { type ReactNode, useEffect, useRef, useCallback } from 'react';
+import { type ReactNode, useEffect, useRef, useCallback, useId } from 'react';
 import { X } from 'lucide-react';
 
 interface ModalProps {
@@ -79,8 +79,8 @@ export function Modal({ open, onClose, title, description, children, className }
 
   if (!open) return null;
 
-  const titleId = title ? 'modal-title' : undefined;
-  const descId = description ? 'modal-description' : undefined;
+  const titleId = useId();
+  const descId = useId();
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby={titleId} aria-describedby={descId}>

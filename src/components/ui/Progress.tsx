@@ -1,8 +1,8 @@
 import { cn } from '../../lib/cn';
 import { type HTMLAttributes, forwardRef } from 'react';
 
-export const Progress = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { value: number; max?: number; variant?: 'default' | 'success' | 'warning' | 'accent' }>(
-  ({ className, value, max = 100, variant = 'default', ...props }, ref) => {
+export const Progress = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { value: number; max?: number; variant?: 'default' | 'success' | 'warning' | 'accent'; label?: string }>(
+  ({ className, value, max = 100, variant = 'default', label, ...props }, ref) => {
     const percent = Math.min(100, Math.max(0, (value / max) * 100));
     const bgColor = variant === 'success' ? 'bg-[var(--success)]' :
       variant === 'warning' ? 'bg-[var(--warning)]' :
@@ -12,6 +12,11 @@ export const Progress = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement
     return (
       <div
         ref={ref}
+        role="progressbar"
+        aria-valuenow={Math.round(percent)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={label}
         className={cn('relative h-2.5 w-full overflow-hidden rounded-full bg-[var(--muted)]', className)}
         {...props}
       >

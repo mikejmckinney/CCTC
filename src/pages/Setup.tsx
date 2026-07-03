@@ -14,8 +14,15 @@ interface SetupProps {
 
 export function Setup({ settings, onUpdate, onStart, availableCount }: SetupProps) {
   const [showAdvanced, setShowAdvanced] = useState(false);
-  const [examDate, setExamDate] = useState('');
+  const [examDate, setExamDate] = useState(() => {
+    try { return localStorage.getItem('cctc-exam-date') ?? ''; } catch { return ''; }
+  });
   const [targetScore, setTargetScore] = useState(settings.targetThreshold);
+
+  const handleExamDateChange = (value: string) => {
+    setExamDate(value);
+    try { localStorage.setItem('cctc-exam-date', value); } catch {}
+  };
 
   return (
     <div className="space-y-6">
@@ -109,7 +116,7 @@ export function Setup({ settings, onUpdate, onStart, availableCount }: SetupProp
                   label="Exam Date (optional)"
                   type="date"
                   value={examDate}
-                  onChange={(e) => setExamDate(e.target.value)}
+                  onChange={(e) => handleExamDateChange(e.target.value)}
                   hint="Set a target date for your exam"
                 />
 

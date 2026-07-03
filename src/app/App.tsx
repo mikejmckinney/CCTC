@@ -22,7 +22,6 @@ import type {
   ActiveSession, AppMeta, BlueprintId, ExamMode, FlagReason,
   HistoryEntry, ItemFlag, Question, SessionSettings, QuestionSet
 } from '../types/exam';
-import { cn } from '../lib/cn';
 
 type Page = 'dashboard' | 'setup' | 'history' | 'reported' | 'session' | 'review';
 

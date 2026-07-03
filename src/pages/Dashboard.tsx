@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Badge, Progress, Button } from '../components/ui';
 import { computeReadiness, computeSpacedRepetition, generateStudyPlan } from '../lib/readiness';
+import { formatDuration } from '../lib/format';
 import type { HistoryEntry } from '../types/exam';
 import {
   Play, Settings, Zap, Target, Clock, BookOpen, Brain, CheckCircle2,
@@ -99,7 +100,9 @@ export function Dashboard({
 
   const recentSessions = history.slice(0, 5);
 
-  const examDate = null; // Would come from settings
+  const examDate = (() => {
+    try { return localStorage.getItem('cctc-exam-date') || null; } catch { return null; }
+  })();
   const daysUntilExam = examDate ? Math.ceil((new Date(examDate).getTime() - Date.now()) / 86400000) : null;
 
   return (
@@ -308,11 +311,3 @@ const DEMO_DOMAINS_PLACEHOLDER = [
   { id: '2', label: 'Domain 2: Pre-Transplant', weight: 39 },
   { id: '3', label: 'Domain 3: Post-Transplant Care', weight: 28 },
 ];
-
-function formatDuration(seconds: number | null): string {
-  if (seconds === null) return 'Untimed';
-  const h = Math.floor(seconds / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  if (h > 0) return `${h}h ${m}m`;
-  return `${m}m`;
-}

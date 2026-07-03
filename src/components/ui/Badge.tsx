@@ -22,11 +22,11 @@ const badgeVariants = cva(
   }
 );
 
-export interface BadgeProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {}
+export interface BadgeProps extends HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {}
 
-export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   ({ className, variant, ...props }, ref) => (
-    <div ref={ref} className={cn(badgeVariants({ variant }), className)} {...props} />
+    <span ref={ref} className={cn(badgeVariants({ variant }), className)} {...props} />
   )
 );
 Badge.displayName = 'Badge';

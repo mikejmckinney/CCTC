@@ -42,6 +42,7 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession }: Naviga
                       ? 'bg-[var(--primary)]/10 text-[var(--primary)]'
                       : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]'
                   )}
+                  aria-current={currentPage === page ? 'page' : undefined}
                 >
                   <Icon className="h-4 w-4" />
                   {label}
