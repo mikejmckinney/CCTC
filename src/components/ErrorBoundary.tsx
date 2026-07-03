@@ -34,7 +34,7 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div className="flex min-h-screen items-center justify-center bg-[var(--background)] p-4">
-          <div className="max-w-md text-center space-y-4">
+          <div className="max-w-md text-center space-y-4" role="alert" aria-live="assertive">
             <h1 className="text-xl font-semibold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
               Something went wrong
             </h1>

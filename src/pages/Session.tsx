@@ -182,7 +182,7 @@ export function SessionView({
                 key={item.itemId}
                 onClick={() => onGoToQuestion(idx)}
                 className={cn(
-                  'h-8 w-8 rounded-md text-xs font-medium transition-colors',
+                  'h-8 w-8 min-h-[44px] min-w-[44px] rounded-md text-xs font-medium transition-colors flex items-center justify-center',
                   idx === session.currentIndex && 'bg-[var(--primary)] text-[var(--primary-foreground)]',
                   idx !== session.currentIndex && session.answers[item.itemId] && 'bg-[var(--success)]/10 text-[var(--success)]',
                   idx !== session.currentIndex && !session.answers[item.itemId] && 'bg-[var(--muted)] text-[var(--muted-foreground)]',

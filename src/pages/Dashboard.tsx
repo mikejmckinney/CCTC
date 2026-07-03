@@ -174,7 +174,7 @@ export function Dashboard({
           <QuickStartButton label="Full Exam" icon={BookOpen} description="175 questions, 180 minutes" onClick={onStartExam} />
           <QuickStartButton label="Quick Session" icon={Zap} description="25 questions, 30 minutes" onClick={onStartQuick} />
           <QuickStartButton label="Weak Areas" icon={Target} description="Spaced repetition of missed items" onClick={onStartWeakAreas} />
-          <QuickStartButton label="Last Settings" icon={Clock} description="Resume your previous setup" onClick={onStartLastSettings} />
+          <QuickStartButton label="Current Settings" icon={Clock} description="Resume your previous setup" onClick={onStartLastSettings} />
         </div>
       </div>
 

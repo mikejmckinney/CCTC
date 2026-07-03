@@ -11,6 +11,7 @@ import { loadQuestionBanks } from '../data/questionBank';
 import { buildDefaultSettings, createSession, countAnswered } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
+import { computeSpacedRepetition } from '../lib/readiness';
 import { generateDemoHistory, generateDemoFlags } from '../lib/demoData';
 import {
   bootstrapState, clearActiveSession, clearHistory, deleteFlag,
@@ -190,6 +191,7 @@ export default function App() {
     const session = createSession(bank.questions, merged, recentIds);
     setActiveSession(session);
     setSettings(merged);
+    setSelectedHistory(null);
     setPage('session');
   }, [settings, history, bank]);
 
@@ -328,7 +330,10 @@ export default function App() {
             history={history}
             onStartExam={() => handleStartSession({ mode: 'exam', questionCount: 175, timed: true, timeMinutes: 180 })}
             onStartQuick={() => handleStartSession({ mode: 'study', questionCount: 25, timed: true, timeMinutes: 30 })}
-            onStartWeakAreas={() => handleStartSession({ mode: 'study', questionCount: 30, timed: false })}
+            onStartWeakAreas={() => {
+              const weakIds = computeSpacedRepetition(history);
+              handleStartSession({ mode: 'study', questionCount: Math.min(30, weakIds.length || 30), timed: false });
+            }}
             onStartLastSettings={() => handleStartSession()}
             onGoToSetup={() => setPage('setup')}
             onGoToHistory={() => setPage('history')}

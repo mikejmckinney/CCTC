@@ -1,4 +1,4 @@
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useRef, useEffect, useId } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge } from '../components/ui';
 import { computeReadiness } from '../lib/readiness';
@@ -36,9 +36,16 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll }:
 
   // Track whether chart has already animated to prevent re-animation on theme toggle
   const hasAnimatedChart = useRef(false);
+  const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   useEffect(() => {
     if (chartData.length > 0) hasAnimatedChart.current = true;
   }, [chartData]);
+
+  // Unique gradient IDs to prevent collision if multiple charts mount
+  const chartId = useId();
+  const g1 = `grad-${chartId}-1`;
+  const g2 = `grad-${chartId}-2`;
+  const g3 = `grad-${chartId}-3`;
 
   const targetThreshold = history[0]?.settings.targetThreshold ?? 70;
 
@@ -91,15 +98,15 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll }:
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={chartData} margin={{ top: 10, right: 8, left: -10, bottom: 0 }}>
                 <defs>
-                  <linearGradient id="gradD1" x1="0" y1="0" x2="0" y2="1">
+                  <linearGradient id={g1} x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="var(--chart-1)" stopOpacity={0.3} />
                     <stop offset="95%" stopColor="var(--chart-1)" stopOpacity={0} />
                   </linearGradient>
-                  <linearGradient id="gradD2" x1="0" y1="0" x2="0" y2="1">
+                  <linearGradient id={g2} x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="var(--chart-2)" stopOpacity={0.3} />
                     <stop offset="95%" stopColor="var(--chart-2)" stopOpacity={0} />
                   </linearGradient>
-                  <linearGradient id="gradD3" x1="0" y1="0" x2="0" y2="1">
+                  <linearGradient id={g3} x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="var(--chart-3)" stopOpacity={0.3} />
                     <stop offset="95%" stopColor="var(--chart-3)" stopOpacity={0} />
                   </linearGradient>
@@ -119,9 +126,9 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll }:
                   labelStyle={{ color: 'var(--foreground)', fontWeight: 600 }}
                 />
                 <ReferenceLine y={targetThreshold} stroke="var(--accent)" strokeDasharray="6 3" label={{ value: `Target ${targetThreshold}%`, fill: 'var(--accent)', fontSize: 11, position: 'right' }} />
-                <Area type="monotone" dataKey="d1" name="Domain 1" stackId="1" stroke="var(--chart-1)" fill="url(#gradD1)" isAnimationActive={!hasAnimatedChart.current} />
-                <Area type="monotone" dataKey="d2" name="Domain 2" stackId="1" stroke="var(--chart-2)" fill="url(#gradD2)" isAnimationActive={!hasAnimatedChart.current} />
-                <Area type="monotone" dataKey="d3" name="Domain 3" stackId="1" stroke="var(--chart-3)" fill="url(#gradD3)" isAnimationActive={!hasAnimatedChart.current} />
+                <Area type="monotone" dataKey="d1" name="Domain 1" stackId="1" stroke="var(--chart-1)" fill={`url(#${g1})`} isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion} />
+                <Area type="monotone" dataKey="d2" name="Domain 2" stackId="1" stroke="var(--chart-2)" fill={`url(#${g2})`} isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion} />
+                <Area type="monotone" dataKey="d3" name="Domain 3" stackId="1" stroke="var(--chart-3)" fill={`url(#${g3})`} isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion} />
               </AreaChart>
             </ResponsiveContainer>
           ) : (
