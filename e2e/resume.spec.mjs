@@ -41,6 +41,9 @@ test.describe('session resume', () => {
     await page.getByRole('button', { name: 'Next' }).click();
     await expect(sessionItemHeading(page, 2, questionCount)).toBeVisible();
 
+    // Give the async persist (saveActiveSession) time to write currentIndex=1
+    await page.waitForTimeout(500);
+
     await page.reload();
     await ensureAppReady(page);
     await dismissDisclaimerIfPresent(page);

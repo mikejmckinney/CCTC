@@ -53,7 +53,10 @@ export async function startStudySession(page, questionCount = MIN_SESSION_QUESTI
 
 export async function resumeActiveSession(page) {
   // On the dashboard, click the Resume quick-start button to go to the session
-  await page.getByRole('button', { name: /^resume$/i }).click();
+  // The button contains icon + "Resume" label + "Continue session" sub-text
+  const resumeBtn = page.locator('button').filter({ hasText: /^Resume$/ }).first();
+  await expect(resumeBtn).toBeVisible({ timeout: 10_000 });
+  await resumeBtn.click();
   await expect(page.getByRole('heading', { name: /Item \d+ of \d+/i })).toBeVisible();
 }
 
