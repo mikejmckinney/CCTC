@@ -1,7 +1,7 @@
 import { cn } from '../lib/cn';
 import { performCircularReveal } from '../lib/circularReveal';
 import { useTheme } from './ThemeProvider';
-import { Sun, Moon, Home, Settings, BarChart3, Flag, Play, BookOpen } from 'lucide-react';
+import { Sun, Moon, Home, Settings, BarChart3, Play, BookOpen } from 'lucide-react';
 
 type Page = 'dashboard' | 'setup' | 'history' | 'reported' | 'session' | 'review';
 
@@ -11,11 +11,10 @@ interface NavigationProps {
   hasActiveSession: boolean;
 }
 
-const NAV_ITEMS: Array<{ page: Page; label: string; icon: React.ElementType; mobileIcon: React.ElementType; show: boolean }> = [
-  { page: 'dashboard', label: 'Home', icon: Home, mobileIcon: Home, show: true },
-  { page: 'setup', label: 'Setup', icon: Settings, mobileIcon: Settings, show: true },
-  { page: 'history', label: 'History', icon: BarChart3, mobileIcon: BarChart3, show: true },
-  { page: 'reported', label: 'Reported', icon: Flag, mobileIcon: Flag, show: true },
+const NAV_ITEMS: Array<{ page: Page; label: string; icon: React.ElementType; mobileIcon: React.ElementType }> = [
+  { page: 'dashboard', label: 'Home', icon: Home, mobileIcon: Home },
+  { page: 'setup', label: 'Setup', icon: Settings, mobileIcon: Settings },
+  { page: 'history', label: 'History', icon: BarChart3, mobileIcon: BarChart3 },
 ];
 
 export function Navigation({ currentPage, onNavigate, hasActiveSession }: NavigationProps) {
@@ -32,7 +31,7 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession }: Naviga
               <span className="text-lg font-bold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>CCTC</span>
             </button>
             <nav className="flex items-center gap-1" aria-label="Primary">
-              {NAV_ITEMS.filter((item) => item.show).map(({ page, label, icon: Icon }) => (
+              {NAV_ITEMS.map(({ page, label, icon: Icon }) => (
                 <button
                   key={page}
                   onClick={() => onNavigate(page)}
@@ -79,7 +78,7 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession }: Naviga
       {/* Mobile bottom nav */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 sm:hidden border-t border-[var(--border)] bg-[var(--card)]/90 backdrop-blur-sm safe-area-pb" aria-label="Mobile navigation">
         <div className="flex items-center justify-around px-2 py-1 pb-[max(0.25rem,env(safe-area-inset-bottom))]">
-          {NAV_ITEMS.filter((item) => item.show).map(({ page, mobileIcon: Icon, label }) => (
+          {NAV_ITEMS.map(({ page, mobileIcon: Icon, label }) => (
             <button
               key={page}
               onClick={() => onNavigate(page)}

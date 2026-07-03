@@ -2,9 +2,8 @@
  * Circular reveal animation for theme switching.
  * Inspired by Radix UI's "magic curtain" effect.
  *
- * Captures the current background color, creates an overlay with it,
- * switches the theme underneath, then animates the overlay shrinking
- * to a point — revealing the new theme from the click origin outward.
+ * NEW theme expands FROM the click point outward,
+ * replacing the old theme as the circle grows.
  */
 export function performCircularReveal(
   event: React.MouseEvent<HTMLElement>,
@@ -22,10 +21,12 @@ export function performCircularReveal(
     Math.max(cy, vh - cy)
   );
 
-  // Capture computed background BEFORE theme switch
-  const oldBg = getComputedStyle(document.body).backgroundColor;
+  // Sample new background by toggling twice without committing
+  callback();
+  const newBg = getComputedStyle(document.body).backgroundColor;
+  callback(); // revert
 
-  // Create overlay covering everything with old background
+  // Create overlay with NEW background, starting as tiny circle at click point
   const overlay = document.createElement('div');
   overlay.setAttribute('data-curtain', '');
   overlay.style.cssText = `
@@ -33,23 +34,18 @@ export function performCircularReveal(
     inset: 0;
     z-index: 99999;
     pointer-events: none;
-    background: ${oldBg};
-    clip-path: circle(${maxRadius * 1.1}px at ${cx}px ${cy}px);
+    background: ${newBg};
+    clip-path: circle(0px at ${cx}px ${cy}px);
   `;
   document.body.appendChild(overlay);
-
-  // Trigger reflow
   overlay.getBoundingClientRect();
 
-  // Switch theme (new content renders behind overlay)
-  callback();
-
-  // Animate overlay shrinking to click point (reveals new theme)
+  // Animate circle expanding from click point to cover viewport
   const duration = 500;
-  overlay.animate(
+  const animation = overlay.animate(
     [
-      { clipPath: `circle(${maxRadius * 1.1}px at ${cx}px ${cy}px)` },
       { clipPath: `circle(0px at ${cx}px ${cy}px)` },
+      { clipPath: `circle(${maxRadius * 1.1}px at ${cx}px ${cy}px)` },
     ],
     {
       duration,
@@ -58,7 +54,9 @@ export function performCircularReveal(
     }
   );
 
-  setTimeout(() => {
+  // Switch theme once overlay covers viewport
+  animation.onfinish = () => {
+    callback();
     overlay.remove();
-  }, duration + 50);
+  };
 }
