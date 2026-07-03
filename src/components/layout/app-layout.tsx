@@ -128,7 +128,8 @@ function MobileNavButton({ icon, label, active, onClick }: {
     <button
       onClick={onClick}
       className={cn(
-        'flex flex-col items-center gap-0.5 rounded-md px-2 py-1 text-[10px] font-medium transition-colors',
+        'flex flex-col items-center gap-0.5 rounded-md px-2.5 py-1.5 text-[10px] font-medium transition-colors',
+        'min-h-[44px] min-w-[44px] justify-center', // 44px touch target
         active ? 'text-primary' : 'text-text-muted'
       )}
       aria-label={label}
