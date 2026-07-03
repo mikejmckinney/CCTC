@@ -14,6 +14,8 @@ interface ModalProps {
 export function Modal({ open, onClose, title, description, children, className }: ModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
+  const titleId = useId();
+  const descId = useId();
 
   // Save previously focused element on open, restore on close
   useEffect(() => {
@@ -78,9 +80,6 @@ export function Modal({ open, onClose, title, description, children, className }
   }, [open]);
 
   if (!open) return null;
-
-  const titleId = useId();
-  const descId = useId();
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby={titleId} aria-describedby={descId}>

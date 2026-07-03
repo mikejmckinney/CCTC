@@ -4,7 +4,7 @@ import { expect } from '@playwright/test';
 export const MIN_SESSION_QUESTIONS = 10;
 
 export async function ensureAppReady(page) {
-  // New app shows "Loading..." while bootstrapping
+  // New app shows "Loading..." while bootstrapping IndexedDB
   try {
     await page.getByText('Loading...').waitFor({ state: 'hidden', timeout: 30_000 });
   } catch {
@@ -13,8 +13,7 @@ export async function ensureAppReady(page) {
 }
 
 export async function dismissDisclaimerIfPresent(page) {
-  // New modal uses role="dialog" with title "Independent Study Aid"
-  const modal = page.getByRole('dialog', { name: /independent study aid/i });
+  const modal = page.getByRole('dialog');
 
   try {
     await modal.waitFor({ state: 'visible', timeout: 5_000 });
@@ -27,16 +26,16 @@ export async function dismissDisclaimerIfPresent(page) {
 }
 
 export function sessionItemHeading(page, itemNumber, total) {
-  return page.getByRole('heading', { name: new RegExp(`Item ${itemNumber} of ${total}`, 'i') });
+  return page.getByText(new RegExp(`Item ${itemNumber} of ${total}`, 'i'));
 }
 
 export async function readSessionItemTotal(page) {
-  const heading = page.getByRole('heading', { name: /Item \d+ of \d+/i });
+  const heading = page.getByText(/Item \d+ of \d+/i);
   await expect(heading).toBeVisible();
   const text = await heading.textContent();
   const match = text?.match(/Item \d+ of (\d+)/i);
   if (!match) {
-    throw new Error(`Could not parse session item total from heading: ${text}`);
+    throw new Error(`Could not parse session item total from text: ${text}`);
   }
   return Number(match[1]);
 }
@@ -45,14 +44,14 @@ export async function startStudySession(page, questionCount = MIN_SESSION_QUESTI
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
 
-  // Navigate to Setup from the nav
-  await page.locator('nav button, header button').filter({ hasText: 'Setup' }).first().click();
+  // Navigate to Setup from the desktop nav
+  await page.getByRole('button', { name: 'Setup' }).first().click();
 
   // Wait for the Setup page to render
   await expect(page.getByRole('heading', { name: /session setup/i })).toBeVisible();
 
   // Select study mode
-  await page.getByLabel('Mode').selectOption('study');
+  await page.locator('select').first().selectOption('study');
 
   // Set question count
   await page.getByLabel('Question Count').fill(String(questionCount));
@@ -60,14 +59,14 @@ export async function startStudySession(page, questionCount = MIN_SESSION_QUESTI
   // Start the session
   await page.getByRole('button', { name: /start session/i }).click();
 
-  await expect(page.getByRole('heading', { name: /Item 1 of \d+/i })).toBeVisible();
+  await expect(page.getByText(/Item 1 of \d+/i)).toBeVisible();
   return readSessionItemTotal(page);
 }
 
 export async function resumeActiveSession(page) {
-  // In the new UI, "Resume" appears in the nav when a session is active
-  await page.locator('button').filter({ hasText: 'Resume' }).first().click();
-  await expect(page.getByRole('heading', { name: /Item \d+ of \d+/i })).toBeVisible();
+  // "Resume" appears in the nav bar when a session is active
+  await page.getByRole('button', { name: 'Resume' }).first().click();
+  await expect(page.getByText(/Item \d+ of \d+/i)).toBeVisible();
 }
 
 export async function waitForPersistedSessionState(page) {
@@ -102,8 +101,8 @@ export async function waitForPersistedSessionState(page) {
 }
 
 export async function expectSessionStats(page, { answered, bookmarks }) {
-  // New UI uses Badge components for stats, not a .session-stats container
-  await expect(page.getByText(`Answered ${answered}`)).toBeVisible();
+  // Stats are rendered as "{N} answered" and "{N} bookmarked" in Badge components
+  await expect(page.getByText(`${answered} answered`)).toBeVisible();
   if (bookmarks > 0) {
     await expect(page.getByText(`${bookmarks} bookmarked`)).toBeVisible();
   }

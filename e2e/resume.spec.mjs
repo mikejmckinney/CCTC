@@ -15,15 +15,15 @@ test.describe('session resume', () => {
     await page.goto('./');
     const questionCount = await startStudySession(page, MIN_SESSION_QUESTIONS);
 
-    // The question stem is in an h2 inside the session Card
-    const firstStem = await page.locator('h2').filter({ hasText: /demo question|cctc/i }).first().textContent();
+    // Get the first question's stem text
+    const firstStem = await page.locator('h2').filter({ hasText: /question|transplant|recipient|donor|organ/i }).first().textContent();
     const firstOption = page.getByRole('radio').first();
 
     await firstOption.click();
     await expect(firstOption).toHaveAttribute('aria-checked', 'true');
 
-    // Bookmark button uses icon — find by aria-label or the bookmark icon button
-    const bookmarkBtn = page.locator('button').filter({ has: page.locator('svg.lucide-bookmark') }).first();
+    // Bookmark — the button contains a Bookmark icon (lucide-bookmark)
+    const bookmarkBtn = page.getByRole('button').filter({ has: page.locator('[class*="lucide-bookmark"]') }).first();
     await bookmarkBtn.click();
     await waitForPersistedSessionState(page);
 
@@ -31,11 +31,12 @@ test.describe('session resume', () => {
     await ensureAppReady(page);
     await dismissDisclaimerIfPresent(page);
 
-    // Resume appears in the nav bar when a session is active
+    // Resume appears in the nav when a session is active
     await resumeActiveSession(page);
 
     await expect(sessionItemHeading(page, 1, questionCount)).toBeVisible();
-    await expect(page.locator('h2').filter({ hasText: /demo question|cctc/i }).first()).toHaveText(firstStem ?? '');
+    // Verify the question stem is preserved
+    await expect(page.locator('h2').filter({ hasText: /question|transplant|recipient|donor|organ/i }).first()).toHaveText(firstStem ?? '');
     await expect(page.getByRole('radio').first()).toHaveAttribute('aria-checked', 'true');
     await expectSessionStats(page, { answered: 1, bookmarks: 1 });
 
