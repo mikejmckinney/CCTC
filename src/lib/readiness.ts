@@ -1,4 +1,5 @@
 import type { HistoryEntry } from '../types/exam';
+import { getBlueprint } from '../data/blueprints';
 
 /**
  * Exponential Moving Average smoothing factor.
@@ -39,6 +40,28 @@ function computeEma(values: number[], alpha: number): number {
   return Math.round(ema);
 }
 
+/**
+ * Get exam weight percentages from the blueprint definition.
+ * Returns a map of categoryId -> percentage of scored items.
+ */
+function getBlueprintWeights(blueprintId: string): Map<string, number> {
+  const weights = new Map<string, number>();
+  try {
+    const blueprint = getBlueprint(blueprintId as 'cctc-from-2026-07' | 'cctc-thru-2026-06');
+    const scoredItems = blueprint.scored_items ?? 150;
+    if (blueprint.structure === 'domain_task') {
+      for (const domain of blueprint.domains) {
+        weights.set(String(domain.id), Math.round((domain.items / scoredItems) * 100));
+      }
+    } else {
+      for (const section of blueprint.sections) {
+        weights.set(section.id, Math.round((section.items / scoredItems) * 100));
+      }
+    }
+  } catch {}
+  return weights;
+}
+
 export function computeReadiness(history: HistoryEntry[]): ReadinessState {
   if (history.length === 0) {
     return {
@@ -55,23 +78,24 @@ export function computeReadiness(history: HistoryEntry[]): ReadinessState {
   const overallScores = chronological.map((e) => e.result.percent);
   const overallEma = computeEma(overallScores, EMA_ALPHA);
 
+  // Get exam weights from the blueprint definition (not from session data)
+  const latestBlueprintId = chronological[chronological.length - 1]?.settings.blueprintId ?? 'cctc-from-2026-07';
+  const blueprintWeights = getBlueprintWeights(latestBlueprintId);
+
   const domainMap = new Map<string, { label: string; scores: number[]; examWeight: number }>();
 
   for (const entry of chronological) {
-    const totalItems = entry.result.breakdown.reduce((sum, b) => sum + b.total, 0);
-
     for (const bd of entry.result.breakdown) {
       if (!domainMap.has(bd.categoryId)) {
         domainMap.set(bd.categoryId, {
           label: bd.categoryLabel,
           scores: [],
-          examWeight: 0,
+          examWeight: blueprintWeights.get(bd.categoryId) ?? 0,
         });
       }
       const domain = domainMap.get(bd.categoryId)!;
       const pct = bd.total > 0 ? Math.round((bd.correct / bd.total) * 100) : 0;
       domain.scores.push(pct);
-      domain.examWeight = totalItems > 0 ? Math.round((bd.total / totalItems) * 100) : 0;
     }
   }
 

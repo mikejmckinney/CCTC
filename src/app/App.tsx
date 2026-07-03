@@ -61,6 +61,9 @@ export default function App() {
   const [selectedHistory, setSelectedHistory] = useState<HistoryEntry | null>(null);
   const [flagDraft, setFlagDraft] = useState<{ item: Question; sessionId: string; reason: FlagReason; comment: string } | null>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
+  const [submitConfirm, setSubmitConfirm] = useState<{ unanswered: number } | null>(null);
+  const [clearHistoryConfirm, setClearHistoryConfirm] = useState(false);
+  const [clearFlagsConfirm, setClearFlagsConfirm] = useState(false);
   const lastFingerprint = useRef('');
   const activeSessionRef = useRef<ActiveSession | null>(null);
 
@@ -198,13 +201,13 @@ export default function App() {
   // Submit session
   const handleSubmitSession = useCallback(async () => {
     if (!activeSession || isFinalizing) return;
+    const unanswered = activeSession.items.length - countAnswered(activeSession);
+    if (activeSession.settings.mode === 'exam') {
+      setSubmitConfirm({ unanswered });
+      return;
+    }
     setIsFinalizing(true);
     try {
-      const unanswered = activeSession.items.length - countAnswered(activeSession);
-      if (activeSession.settings.mode === 'exam') {
-        const ok = window.confirm(unanswered > 0 ? `Submit with ${unanswered} unanswered?` : 'Submit exam?');
-        if (!ok) return;
-      }
       const result = scoreSession(activeSession.settings.blueprintId, activeSession.items, activeSession.answers, activeSession.settings.targetThreshold);
       const completed = { ...activeSession, submittedAt: new Date().toISOString(), result, updatedAt: new Date().toISOString() };
       const entry = toHistoryEntry(completed);
@@ -254,9 +257,7 @@ export default function App() {
   }, []);
 
   const handleClearFlags = useCallback(async () => {
-    if (!window.confirm('Clear all reports?')) return;
-    await replaceFlags([]);
-    setFlags([]);
+    setClearFlagsConfirm(true);
   }, []);
 
   const handleExportFlags = useCallback(() => {
@@ -273,10 +274,7 @@ export default function App() {
   }, [selectedHistory]);
 
   const handleClearHistory = useCallback(async () => {
-    if (!window.confirm('Delete all history?')) return;
-    await clearHistory();
-    setHistory([]);
-    setSelectedHistory(null);
+    setClearHistoryConfirm(true);
   }, []);
 
   const handleViewSession = useCallback((entry: HistoryEntry) => {
@@ -322,6 +320,73 @@ export default function App() {
         )}
       </Modal>
 
+      {/* Submit confirmation modal */}
+      <Modal
+        open={submitConfirm !== null}
+        onClose={() => { setSubmitConfirm(null); setIsFinalizing(false); }}
+        title="Submit Exam"
+        description={submitConfirm && submitConfirm.unanswered > 0
+          ? `Submit with ${submitConfirm.unanswered} unanswered item${submitConfirm.unanswered > 1 ? 's' : ''}? There is no guessing penalty.`
+          : 'Submit exam and score the results?'}
+      >
+        <div className="flex justify-end gap-3 mt-4">
+          <Button variant="secondary" onClick={() => { setSubmitConfirm(null); setIsFinalizing(false); }}>Cancel</Button>
+          <Button onClick={() => {
+            setSubmitConfirm(null);
+            // Trigger actual submit
+            if (activeSession) {
+              setIsFinalizing(true);
+              const result = scoreSession(activeSession.settings.blueprintId, activeSession.items, activeSession.answers, activeSession.settings.targetThreshold);
+              const completed = { ...activeSession, submittedAt: new Date().toISOString(), result, updatedAt: new Date().toISOString() };
+              const entry = toHistoryEntry(completed);
+              void saveHistoryEntry(entry).then(() => clearActiveSession()).then(() => {
+                setHistory((prev) => [entry, ...prev]);
+                setSelectedHistory(entry);
+                setActiveSession(null);
+                setPage('review');
+              }).finally(() => setIsFinalizing(false));
+            }
+          }}>Submit</Button>
+        </div>
+      </Modal>
+
+      {/* Clear history confirmation modal */}
+      <Modal
+        open={clearHistoryConfirm}
+        onClose={() => setClearHistoryConfirm(false)}
+        title="Delete All History"
+        description="Are you sure you want to delete all session history? This action cannot be undone."
+      >
+        <div className="flex justify-end gap-3 mt-4">
+          <Button variant="secondary" onClick={() => setClearHistoryConfirm(false)}>Cancel</Button>
+          <Button variant="destructive" onClick={() => {
+            void clearHistory().then(() => {
+              setHistory([]);
+              setSelectedHistory(null);
+              setClearHistoryConfirm(false);
+            });
+          }}>Delete All</Button>
+        </div>
+      </Modal>
+
+      {/* Clear flags confirmation modal */}
+      <Modal
+        open={clearFlagsConfirm}
+        onClose={() => setClearFlagsConfirm(false)}
+        title="Clear All Reports"
+        description="Are you sure you want to clear all reported items? This action cannot be undone."
+      >
+        <div className="flex justify-end gap-3 mt-4">
+          <Button variant="secondary" onClick={() => setClearFlagsConfirm(false)}>Cancel</Button>
+          <Button variant="destructive" onClick={() => {
+            void replaceFlags([]).then(() => {
+              setFlags([]);
+              setClearFlagsConfirm(false);
+            });
+          }}>Clear All</Button>
+        </div>
+      </Modal>
+
       <Navigation currentPage={page} onNavigate={setPage} hasActiveSession={activeSession !== null && !activeSession.submittedAt} />
 
       <main className="mx-auto max-w-5xl px-4 py-6">
@@ -351,7 +416,7 @@ export default function App() {
         )}
 
         {page === 'history' && (
-          <History history={history} onViewSession={handleViewSession} onDeleteSession={(id) => void handleDeleteHistory(id)} onClearAll={() => void handleClearHistory()} />
+          <History history={history} onViewSession={handleViewSession} onDeleteSession={(id) => void handleDeleteHistory(id)} onClearAll={() => void handleClearHistory()} onNavigateToReported={() => setPage('reported')} />
         )}
 
         {page === 'reported' && (

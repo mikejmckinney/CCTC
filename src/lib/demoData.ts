@@ -61,7 +61,9 @@ export function generateDemoHistory(): HistoryEntry[] {
     const percent = Math.round((correct / total) * 100);
 
     const items: SessionItemSnapshot[] = [];
-    for (let j = 0; j < Math.min(s.count, 20); j++) {
+    // Generate a representative sample of items (capped at 50 for demo performance)
+    const itemCount = Math.min(s.count, 50);
+    for (let j = 0; j < itemCount; j++) {
       const domain = DEMO_DOMAINS[j % 3];
       items.push({
         itemId: `demo-${i}-${j}`,

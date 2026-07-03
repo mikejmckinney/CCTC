@@ -84,7 +84,7 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession }: Naviga
               key={page}
               onClick={() => onNavigate(page)}
               className={cn(
-                'flex flex-col items-center gap-0.5 rounded-lg px-3 py-2 text-xs transition-colors min-w-[44px] min-h-[44px] justify-center',
+                'flex flex-col items-center gap-0.5 rounded-lg px-3 py-2 transition-colors min-w-[44px] min-h-[44px] justify-center',
                 currentPage === page
                   ? 'text-[var(--primary)] font-semibold'
                   : 'text-[var(--muted-foreground)]'
@@ -93,14 +93,13 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession }: Naviga
               aria-current={currentPage === page ? 'page' : undefined}
             >
               <Icon className="h-5 w-5" />
-              <span className="text-[10px]">{label}</span>
             </button>
           ))}
           {hasActiveSession && (
             <button
               onClick={() => onNavigate('session')}
               className={cn(
-                'flex flex-col items-center gap-0.5 rounded-lg px-3 py-2 text-xs transition-colors min-w-[44px] min-h-[44px] justify-center',
+                'flex flex-col items-center gap-0.5 rounded-lg px-3 py-2 transition-colors min-w-[44px] min-h-[44px] justify-center',
                 currentPage === 'session'
                   ? 'text-[var(--accent)] font-semibold'
                   : 'text-[var(--muted-foreground)]'
@@ -109,16 +108,14 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession }: Naviga
               aria-current={currentPage === 'session' ? 'page' : undefined}
             >
               <Play className="h-5 w-5" />
-              <span className="text-[10px]">Resume</span>
             </button>
           )}
           <button
             onClick={toggleColorMode}
-            className="flex flex-col items-center gap-0.5 rounded-lg px-3 py-2 text-xs text-[var(--muted-foreground)] min-w-[44px] min-h-[44px] justify-center"
+            className="flex flex-col items-center gap-0.5 rounded-lg px-3 py-2 text-[var(--muted-foreground)] min-w-[44px] min-h-[44px] justify-center"
             aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
           >
             {colorMode === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-            <span className="text-[10px]">{colorMode === 'light' ? 'Dark' : 'Light'}</span>
           </button>
         </div>
       </nav>

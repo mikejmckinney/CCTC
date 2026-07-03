@@ -1,11 +1,11 @@
-import { useMemo, useRef, useEffect, useId } from 'react';
+import { useMemo, useRef, useEffect, useId, useState } from 'react';
 import { cn } from '../lib/cn';
-import { Card, CardContent, CardHeader, CardTitle, Button, Badge } from '../components/ui';
+import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '../components/ui';
 import { computeReadiness } from '../lib/readiness';
 import { formatDuration } from '../lib/format';
 import type { HistoryEntry } from '../types/exam';
 import {
-  BarChart3, ChevronRight, Trash2, TrendingUp, Target
+  BarChart3, ChevronRight, Trash2, TrendingUp, Target, Flag
 } from 'lucide-react';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine
@@ -16,10 +16,12 @@ interface HistoryProps {
   onViewSession: (entry: HistoryEntry) => void;
   onDeleteSession: (id: string) => void;
   onClearAll: () => void;
+  onNavigateToReported?: () => void;
 }
 
-export function History({ history, onViewSession, onDeleteSession, onClearAll }: HistoryProps) {
+export function History({ history, onViewSession, onDeleteSession, onClearAll, onNavigateToReported }: HistoryProps) {
   const readiness = useMemo(() => computeReadiness(history), [history]);
+  const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
 
   const chartData = useMemo(() => {
     const chronological = [...history].sort((a, b) => a.completedAt.localeCompare(b.completedAt));
@@ -178,7 +180,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll }:
                     <Badge variant={entry.result.percent >= 70 ? 'success' : 'warning'}>
                       {entry.result.percent}%
                     </Badge>
-                    <Button variant="ghost" size="icon-sm" onClick={() => onDeleteSession(entry.id)} aria-label="Delete session">
+                    <Button variant="ghost" size="icon-sm" onClick={() => setDeleteConfirmId(entry.id)} aria-label="Delete session">
                       <Trash2 className="h-4 w-4" />
                     </Button>
                     <ChevronRight className="h-4 w-4 text-[var(--muted-foreground)]" />
@@ -191,6 +193,38 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll }:
           )}
         </CardContent>
       </Card>
+
+      {/* Link to Reported Items */}
+      {onNavigateToReported && (
+        <button
+          onClick={onNavigateToReported}
+          className="flex w-full items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--card)] p-4 text-left shadow-sm transition-all hover:shadow-md hover:border-[var(--warning)]/30"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--warning)]/10">
+              <Flag className="h-5 w-5 text-[var(--warning)]" />
+            </div>
+            <div>
+              <p className="font-semibold text-[var(--foreground)]">Reported Items</p>
+              <p className="text-xs text-[var(--muted-foreground)]">View and manage items you've flagged for review</p>
+            </div>
+          </div>
+          <ChevronRight className="h-5 w-5 text-[var(--muted-foreground)]" />
+        </button>
+      )}
+
+      {/* Delete confirmation modal */}
+      <Modal
+        open={deleteConfirmId !== null}
+        onClose={() => setDeleteConfirmId(null)}
+        title="Delete Session"
+        description="Are you sure you want to delete this session? This action cannot be undone."
+      >
+        <div className="flex justify-end gap-3 mt-4">
+          <Button variant="secondary" onClick={() => setDeleteConfirmId(null)}>Cancel</Button>
+          <Button variant="destructive" onClick={() => { if (deleteConfirmId) { onDeleteSession(deleteConfirmId); setDeleteConfirmId(null); } }}>Delete</Button>
+        </div>
+      </Modal>
     </div>
   );
 }
