@@ -287,7 +287,7 @@ export function countAnswered(session: ActiveSession): number {
   return Object.values(session.answers).filter((answer) => Boolean(answer)).length;
 }
 
-export function summarizeSoftTargets(questions: Question[], blueprint: Blueprint): {
+export function summarizeSoftTargets(questions: Question[], _blueprint: Blueprint): {
   cognitive: Map<CognitiveLevel, number>;
   organ: Map<string, number>;
 } {

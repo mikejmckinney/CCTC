@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { cn } from '../lib/cn';
+
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '../components/ui';
 import type { ItemFlag } from '../types/exam';
 import { Flag, Edit3, Trash2, Download, AlertCircle } from 'lucide-react';

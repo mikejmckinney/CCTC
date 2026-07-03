@@ -1,11 +1,11 @@
 import { useMemo, useRef, useEffect } from 'react';
 import { cn } from '../lib/cn';
-import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Progress } from '../components/ui';
+import { Card, CardContent, CardHeader, CardTitle, Button, Badge } from '../components/ui';
 import { computeReadiness } from '../lib/readiness';
 import { formatDuration } from '../lib/format';
 import type { HistoryEntry } from '../types/exam';
 import {
-  BarChart3, ChevronRight, Trash2, TrendingUp, Target, Award
+  BarChart3, ChevronRight, Trash2, TrendingUp, Target
 } from 'lucide-react';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine

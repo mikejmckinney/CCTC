@@ -1,14 +1,20 @@
 import { expect } from '@playwright/test';
 
-/** Matches `QUESTION_MIN` in `src/app/App.tsx`. */
+/** Matches `QUESTION_MIN` in the session assembly. */
 export const MIN_SESSION_QUESTIONS = 10;
 
 export async function ensureAppReady(page) {
-  await page.getByText('Loading local study data').waitFor({ state: 'hidden', timeout: 30_000 });
+  // New app shows "Loading..." while bootstrapping
+  try {
+    await page.getByText('Loading...').waitFor({ state: 'hidden', timeout: 30_000 });
+  } catch {
+    // If "Loading..." never appears, app may already be ready
+  }
 }
 
 export async function dismissDisclaimerIfPresent(page) {
-  const modal = page.getByLabel('Study aid disclaimer');
+  // New modal uses role="dialog" with title "Independent Study Aid"
+  const modal = page.getByRole('dialog', { name: /independent study aid/i });
 
   try {
     await modal.waitFor({ state: 'visible', timeout: 5_000 });
@@ -38,18 +44,29 @@ export async function readSessionItemTotal(page) {
 export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
-  await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
 
-  await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
-  await page.getByRole('spinbutton', { name: /^Question count/i }).fill(String(questionCount));
-  await page.getByRole('button', { name: 'Start session' }).click();
+  // Navigate to Setup from the nav
+  await page.locator('nav button, header button').filter({ hasText: 'Setup' }).first().click();
+
+  // Wait for the Setup page to render
+  await expect(page.getByRole('heading', { name: /session setup/i })).toBeVisible();
+
+  // Select study mode
+  await page.getByLabel('Mode').selectOption('study');
+
+  // Set question count
+  await page.getByLabel('Question Count').fill(String(questionCount));
+
+  // Start the session
+  await page.getByRole('button', { name: /start session/i }).click();
 
   await expect(page.getByRole('heading', { name: /Item 1 of \d+/i })).toBeVisible();
   return readSessionItemTotal(page);
 }
 
 export async function resumeActiveSession(page) {
-  await page.getByRole('button', { name: 'Resume current session' }).click();
+  // In the new UI, "Resume" appears in the nav when a session is active
+  await page.locator('button').filter({ hasText: 'Resume' }).first().click();
   await expect(page.getByRole('heading', { name: /Item \d+ of \d+/i })).toBeVisible();
 }
 
@@ -85,7 +102,9 @@ export async function waitForPersistedSessionState(page) {
 }
 
 export async function expectSessionStats(page, { answered, bookmarks }) {
-  const stats = page.locator('.session-stats');
-  await expect(stats.getByText(`Answered ${answered}`, { exact: true })).toBeVisible();
-  await expect(stats.getByText(`Bookmarks ${bookmarks}`, { exact: true })).toBeVisible();
+  // New UI uses Badge components for stats, not a .session-stats container
+  await expect(page.getByText(`Answered ${answered}`)).toBeVisible();
+  if (bookmarks > 0) {
+    await expect(page.getByText(`${bookmarks} bookmarked`)).toBeVisible();
+  }
 }

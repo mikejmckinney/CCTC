@@ -1,6 +1,6 @@
 import { cn } from '../lib/cn';
-import { Card, CardContent, CardHeader, CardTitle, Button, Badge } from '../components/ui';
-import type { ActiveSession, HistoryEntry } from '../types/exam';
+import { Card, CardContent, Button, Badge } from '../components/ui';
+import type { ActiveSession } from '../types/exam';
 import { ChevronLeft, ChevronRight, Flag, Bookmark, Clock, CheckCircle2, XCircle } from 'lucide-react';
 
 interface SessionViewProps {

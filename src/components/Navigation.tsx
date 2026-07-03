@@ -1,5 +1,5 @@
 import { cn } from '../lib/cn';
-import { Button } from './ui';
+
 import { useTheme } from './ThemeProvider';
 import { Sun, Moon, Home, Settings, BarChart3, Flag, Play, BookOpen } from 'lucide-react';
 

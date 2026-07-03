@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { cn } from '../lib/cn';
+
 import { Card, CardContent, CardHeader, CardTitle, Button, Input } from '../components/ui';
 import type { BlueprintId, ExamMode, QuestionSet, SessionSettings } from '../types/exam';
 import { getBlueprintLabel } from '../data/blueprints';

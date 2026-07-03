@@ -1,26 +1,27 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef, lazy, Suspense } from 'react';
 import { Navigation } from '../components/Navigation';
 import { Dashboard } from '../pages/Dashboard';
 import { Setup } from '../pages/Setup';
-import { History } from '../pages/History';
 import { ReportedItems } from '../pages/ReportedItems';
 import { SessionView } from '../pages/Session';
 import { Review } from '../pages/Review';
 import { Modal, Button } from '../components/ui';
 import { loadQuestionBanks } from '../data/questionBank';
-import { getBlueprint, getBlueprintLabel } from '../data/blueprints';
-import { buildDefaultSettings, createSession, countAnswered, isBlueprintApplicable } from '../lib/sessionAssembly';
+import { buildDefaultSettings, createSession, countAnswered } from '../lib/sessionAssembly';
 import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
 import { generateDemoHistory, generateDemoFlags } from '../lib/demoData';
+
+// Lazy-load History page — it imports Recharts (~200KB) which is only needed on that page
+const History = lazy(() => import('../pages/History').then((m) => ({ default: m.History })));
 import {
   bootstrapState, clearActiveSession, clearHistory, deleteFlag,
   deleteHistoryEntry, replaceFlags, saveActiveSession, saveHistoryEntry,
   saveMeta, saveSettings, upsertFlag
 } from '../lib/storage';
 import type {
-  ActiveSession, AppMeta, BlueprintId, ExamMode, FlagReason,
-  HistoryEntry, ItemFlag, Question, SessionSettings, QuestionSet
+  ActiveSession, AppMeta, FlagReason,
+  HistoryEntry, ItemFlag, Question, SessionSettings
 } from '../types/exam';
 
 type Page = 'dashboard' | 'setup' | 'history' | 'reported' | 'session' | 'review';
@@ -342,12 +343,14 @@ export default function App() {
             settings={settings}
             onUpdate={(p) => setSettings((prev) => ({ ...prev, ...p }))}
             onStart={() => handleStartSession()}
-            availableCount={bank.questions.filter((q) => settings.includeDrafts || q.status === 'reviewed').length}
+            availableCount={bank.questions.filter((q: Question) => settings.includeDrafts || q.status === 'reviewed').length}
           />
         )}
 
         {page === 'history' && (
-          <History history={history} onViewSession={handleViewSession} onDeleteSession={(id) => void handleDeleteHistory(id)} onClearAll={() => void handleClearHistory()} />
+          <Suspense fallback={<div className="flex items-center justify-center py-12"><p className="text-[var(--muted-foreground)]">Loading history...</p></div>}>
+            <History history={history} onViewSession={handleViewSession} onDeleteSession={(id) => void handleDeleteHistory(id)} onClearAll={() => void handleClearHistory()} />
+          </Suspense>
         )}
 
         {page === 'reported' && (

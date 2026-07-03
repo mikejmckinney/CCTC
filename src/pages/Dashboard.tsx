@@ -20,33 +20,6 @@ interface DashboardProps {
   onViewSession: (entry: HistoryEntry) => void;
 }
 
-function StatCard({ label, value, subtext, icon: Icon, variant = 'default' }: {
-  label: string; value: string; subtext?: string; icon: React.ElementType;
-  variant?: 'default' | 'accent' | 'success' | 'warning';
-}) {
-  const borderColor = variant === 'accent' ? 'border-l-[var(--accent)]' :
-    variant === 'success' ? 'border-l-[var(--success)]' :
-    variant === 'warning' ? 'border-l-[var(--warning)]' :
-    'border-l-[var(--primary)]';
-
-  return (
-    <Card className={cn('border-l-4 transition-shadow hover:shadow-md', borderColor)}>
-      <CardContent className="p-5">
-        <div className="flex items-start justify-between">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]">{label}</p>
-            <p className="mt-1 text-3xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>{value}</p>
-            {subtext && <p className="mt-1 text-sm text-[var(--muted-foreground)]">{subtext}</p>}
-          </div>
-          <div className="rounded-lg bg-[var(--muted)] p-2">
-            <Icon className="h-5 w-5 text-[var(--primary)]" />
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
 function QuickStartButton({ label, icon: Icon, description, onClick }: {
   label: string; icon: React.ElementType; description: string; onClick: () => void;
 }) {

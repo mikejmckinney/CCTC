@@ -1,4 +1,4 @@
-import type { HistoryEntry, SessionResultBreakdown } from '../types/exam';
+import type { HistoryEntry } from '../types/exam';
 
 /**
  * Exponential Moving Average smoothing factor.
@@ -58,7 +58,6 @@ export function computeReadiness(history: HistoryEntry[]): ReadinessState {
   const domainMap = new Map<string, { label: string; scores: number[]; examWeight: number }>();
 
   for (const entry of chronological) {
-    const blueprint = entry.settings.blueprintId;
     const totalItems = entry.result.breakdown.reduce((sum, b) => sum + b.total, 0);
 
     for (const bd of entry.result.breakdown) {
