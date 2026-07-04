@@ -2,8 +2,9 @@
  * Theme toggle with View Transitions API circular wipe.
  *
  * Uses `document.startViewTransition()` where supported — the browser
- * snapshots old and new renders and clips between them, so both themes
- * are visible live along the wipe edge (no blocking overlay, no fade).
+ * snapshots old and new renders. Only the NEW snapshot animates
+ * (expanding circle from click point). The OLD snapshot stays fully
+ * rendered underneath and is naturally covered as the circle grows.
  *
  * Falls back to instant swap where View Transitions is unsupported
  * or when the user prefers reduced motion.
@@ -15,7 +16,6 @@ export function performCircularReveal(
   const button = event.currentTarget;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Fallback: instant swap
   if (!('startViewTransition' in document) || prefersReducedMotion) {
     callback();
     return;
@@ -35,25 +35,12 @@ export function performCircularReveal(
     callback();
   });
 
-  // Animate the transition pseudo-elements with a circular clip-path
   vt.ready.then(() => {
     const duration = 500;
     const easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
 
-    // ::view-transition-old(root) fades out
-    document.documentElement.animate(
-      [
-        { clipPath: `circle(${endRadius * 1.1}px at ${cx}px ${cy}px)` },
-        { clipPath: `circle(0px at ${cx}px ${cy}px)` },
-      ],
-      {
-        duration,
-        easing,
-        pseudoElement: '::view-transition-old(root)',
-      }
-    );
-
-    // ::view-transition-new(root) reveals in
+    // Only animate the NEW snapshot expanding from click point.
+    // The OLD snapshot stays at full size underneath — no animation needed.
     document.documentElement.animate(
       [
         { clipPath: `circle(0px at ${cx}px ${cy}px)` },

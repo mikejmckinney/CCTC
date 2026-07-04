@@ -23,6 +23,17 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
   const readiness = useMemo(() => computeReadiness(history), [history]);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
 
+  // Build domain name mapping from history
+  const domainNames = useMemo(() => {
+    const names: Record<string, string> = {};
+    for (const entry of history) {
+      for (const bd of entry.result.breakdown) {
+        names[bd.categoryId] = bd.categoryLabel;
+      }
+    }
+    return names;
+  }, [history]);
+
   const chartData = useMemo(() => {
     const chronological = [...history].sort((a, b) => a.completedAt.localeCompare(b.completedAt));
     return chronological.map((entry) => {
@@ -35,7 +46,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
         // so stacked areas sum to the overall percentage (max 100%)
         const domainWeight = totalItems > 0 ? bd.total / totalItems : 0;
         const domainScore = bd.total > 0 ? bd.correct / bd.total : 0;
-        domains[`d${bd.categoryId}`] = Math.round(domainScore * domainWeight * 100);
+        domains[bd.categoryId] = Math.round(domainScore * domainWeight * 100);
       }
       return { label, ...domains, total: entry.result.percent };
     });
@@ -48,11 +59,10 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
     if (chartData.length > 0) hasAnimatedChart.current = true;
   }, [chartData]);
 
-  // Unique gradient IDs to prevent collision if multiple charts mount
+  // Unique gradient IDs per domain to prevent collision
   const chartId = useId();
-  const g1 = `grad-${chartId}-1`;
-  const g2 = `grad-${chartId}-2`;
-  const g3 = `grad-${chartId}-3`;
+  const domainIds = Object.keys(domainNames);
+  const gradients = domainIds.map((id, i) => ({ id, gradId: `grad-${chartId}-${i}` }));
 
   const targetThreshold = history[0]?.settings.targetThreshold ?? 70;
 
@@ -105,18 +115,12 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={chartData} margin={{ top: 10, right: 8, left: -10, bottom: 0 }}>
                 <defs>
-                  <linearGradient id={g1} x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="var(--chart-1)" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="var(--chart-1)" stopOpacity={0} />
-                  </linearGradient>
-                  <linearGradient id={g2} x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="var(--chart-2)" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="var(--chart-2)" stopOpacity={0} />
-                  </linearGradient>
-                  <linearGradient id={g3} x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="var(--chart-3)" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="var(--chart-3)" stopOpacity={0} />
-                  </linearGradient>
+                  {gradients.map(({ id, gradId }, i) => (
+                    <linearGradient key={id} id={gradId} x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={`var(--chart-${i + 1})`} stopOpacity={0.3} />
+                      <stop offset="95%" stopColor={`var(--chart-${i + 1})`} stopOpacity={0} />
+                    </linearGradient>
+                  ))}
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
                 <XAxis dataKey="label" tick={{ fontSize: 11, fill: 'var(--muted-foreground)' }} interval="preserveStartEnd" />
@@ -131,12 +135,24 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
                   }}
                   formatter={(value: unknown, name: unknown) => [`${value}%`, String(name)]}
                   labelStyle={{ color: 'var(--foreground)', fontWeight: 600 }}
-                  itemSorter={(item) => 10 - Number(String(item.dataKey).replace('d', ''))}
+                  itemSorter={(item) => {
+                    const idx = domainIds.indexOf(String(item.dataKey));
+                    return -idx;
+                  }}
                 />
                 <ReferenceLine y={targetThreshold} stroke="var(--accent)" strokeDasharray="6 3" label={{ value: `Target ${targetThreshold}%`, fill: 'var(--accent)', fontSize: 11, position: 'right' }} />
-                <Area type="monotone" dataKey="d1" name="Domain 1" stackId="1" stroke="var(--chart-1)" fill={`url(#${g1})`} isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion} />
-                <Area type="monotone" dataKey="d2" name="Domain 2" stackId="1" stroke="var(--chart-2)" fill={`url(#${g2})`} isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion} />
-                <Area type="monotone" dataKey="d3" name="Domain 3" stackId="1" stroke="var(--chart-3)" fill={`url(#${g3})`} isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion} />
+                {gradients.map(({ id, gradId }, i) => (
+                  <Area
+                    key={id}
+                    type="monotone"
+                    dataKey={id}
+                    name={domainNames[id] || id}
+                    stackId="1"
+                    stroke={`var(--chart-${i + 1})`}
+                    fill={`url(#${gradId})`}
+                    isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion}
+                  />
+                ))}
               </AreaChart>
             </ResponsiveContainer>
           ) : (

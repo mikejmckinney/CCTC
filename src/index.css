@@ -408,16 +408,20 @@ input[type="range"]:focus-visible {
 /* ═══════════════════════════════════════════════════════
    View Transitions API — circular wipe for theme toggle
    ═══════════════════════════════════════════════════════ */
-::view-transition-old(root),
-::view-transition-new(root) {
+
+/* Kill the default cross-fade: old snapshot stays fully visible,
+   new snapshot starts hidden and is animated via JS clip-path */
+::view-transition-old(root) {
   animation: none;
   mix-blend-mode: normal;
-}
-
-::view-transition-old(root) {
+  opacity: 1;
   z-index: 1;
 }
 
 ::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  opacity: 1;
   z-index: 2;
+  clip-path: inset(0);
 }
