@@ -131,7 +131,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
                   }}
                   formatter={(value: unknown, name: unknown) => [`${value}%`, String(name)]}
                   labelStyle={{ color: 'var(--foreground)', fontWeight: 600 }}
-                  itemSorter={(item) => String(item.dataKey)}
+                  itemSorter={(item) => 10 - Number(String(item.dataKey).replace('d', ''))}
                 />
                 <ReferenceLine y={targetThreshold} stroke="var(--accent)" strokeDasharray="6 3" label={{ value: `Target ${targetThreshold}%`, fill: 'var(--accent)', fontSize: 11, position: 'right' }} />
                 <Area type="monotone" dataKey="d1" name="Domain 1" stackId="1" stroke="var(--chart-1)" fill={`url(#${g1})`} isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion} />

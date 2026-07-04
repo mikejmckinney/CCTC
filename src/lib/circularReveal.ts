@@ -1,62 +1,69 @@
 /**
- * Circular reveal animation for theme switching.
- * Inspired by Radix UI's "magic curtain" effect.
+ * Theme toggle with View Transitions API circular wipe.
  *
- * NEW theme expands FROM the click point outward,
- * replacing the old theme as the circle grows.
+ * Uses `document.startViewTransition()` where supported — the browser
+ * snapshots old and new renders and clips between them, so both themes
+ * are visible live along the wipe edge (no blocking overlay, no fade).
+ *
+ * Falls back to instant swap where View Transitions is unsupported
+ * or when the user prefers reduced motion.
  */
 export function performCircularReveal(
   event: React.MouseEvent<HTMLElement>,
   callback: () => void
 ): void {
   const button = event.currentTarget;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Fallback: instant swap
+  if (!('startViewTransition' in document) || prefersReducedMotion) {
+    callback();
+    return;
+  }
+
   const rect = button.getBoundingClientRect();
   const cx = rect.left + rect.width / 2;
   const cy = rect.top + rect.height / 2;
-
   const vw = window.innerWidth;
   const vh = window.innerHeight;
-  const maxRadius = Math.hypot(
+  const endRadius = Math.hypot(
     Math.max(cx, vw - cx),
     Math.max(cy, vh - cy)
   );
 
-  // Sample new background by toggling twice without committing
-  callback();
-  const newBg = getComputedStyle(document.body).backgroundColor;
-  callback(); // revert
-
-  // Create overlay with NEW background, starting as tiny circle at click point
-  const overlay = document.createElement('div');
-  overlay.setAttribute('data-curtain', '');
-  overlay.style.cssText = `
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    pointer-events: none;
-    background: ${newBg};
-    clip-path: circle(0px at ${cx}px ${cy}px);
-  `;
-  document.body.appendChild(overlay);
-  overlay.getBoundingClientRect();
-
-  // Animate circle expanding from click point to cover viewport
-  const duration = 500;
-  const animation = overlay.animate(
-    [
-      { clipPath: `circle(0px at ${cx}px ${cy}px)` },
-      { clipPath: `circle(${maxRadius * 1.1}px at ${cx}px ${cy}px)` },
-    ],
-    {
-      duration,
-      easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-      fill: 'forwards',
-    }
-  );
-
-  // Switch theme once overlay covers viewport
-  animation.onfinish = () => {
+  const vt = (document as any).startViewTransition(() => {
     callback();
-    overlay.remove();
-  };
+  });
+
+  // Animate the transition pseudo-elements with a circular clip-path
+  vt.ready.then(() => {
+    const duration = 500;
+    const easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
+
+    // ::view-transition-old(root) fades out
+    document.documentElement.animate(
+      [
+        { clipPath: `circle(${endRadius * 1.1}px at ${cx}px ${cy}px)` },
+        { clipPath: `circle(0px at ${cx}px ${cy}px)` },
+      ],
+      {
+        duration,
+        easing,
+        pseudoElement: '::view-transition-old(root)',
+      }
+    );
+
+    // ::view-transition-new(root) reveals in
+    document.documentElement.animate(
+      [
+        { clipPath: `circle(0px at ${cx}px ${cy}px)` },
+        { clipPath: `circle(${endRadius * 1.1}px at ${cx}px ${cy}px)` },
+      ],
+      {
+        duration,
+        easing,
+        pseudoElement: '::view-transition-new(root)',
+      }
+    );
+  });
 }

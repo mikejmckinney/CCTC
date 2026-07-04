@@ -404,3 +404,20 @@ input[type="range"]:focus-visible {
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
+
+/* ═══════════════════════════════════════════════════════
+   View Transitions API — circular wipe for theme toggle
+   ═══════════════════════════════════════════════════════ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
