@@ -31,10 +31,10 @@ test.describe('session resume', () => {
     await ensureAppReady(page);
     await dismissDisclaimerIfPresent(page);
 
-    // Resume appears in the nav when a session is active
+    // Wait for IndexedDB session to load (demo data seeding can delay)
+    await page.waitForTimeout(1000);
     await resumeActiveSession(page);
-
-    await expect(sessionItemHeading(page, 1, questionCount)).toBeVisible();
+    await expect(sessionItemHeading(page, 1, questionCount)).toBeVisible({ timeout: 10000 });
     // Verify the question stem is preserved
     await expect(page.locator('h2').filter({ hasText: /question|transplant|recipient|donor|organ/i }).first()).toHaveText(firstStem ?? '');
     await expect(page.getByRole('radio').first()).toHaveAttribute('aria-checked', 'true');

@@ -1,5 +1,6 @@
 import type { HistoryEntry } from '../types/exam';
 import { getBlueprint } from '../data/blueprints';
+import { getDomainShortLabel } from './domains';
 
 /**
  * Exponential Moving Average smoothing factor.
@@ -113,7 +114,7 @@ export function computeReadiness(history: HistoryEntry[]): ReadinessState {
   }
 
   domains.sort((a, b) => a.emaScore - b.emaScore);
-  const weakDomains = domains.filter((d) => d.isWeak).map((d) => d.domainLabel);
+  const weakDomains = domains.filter((d) => d.isWeak).map((d) => getDomainShortLabel(d.domainId, d.domainLabel));
 
   let recentTrend: 'improving' | 'declining' | 'stable' = 'stable';
   if (chronological.length >= 3) {

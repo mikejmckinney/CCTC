@@ -1,11 +1,12 @@
 import { useMemo, useRef, useEffect, useId, useState } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '../components/ui';
-import { computeReadiness } from '../lib/readiness';
+import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
 import { formatDuration } from '../lib/format';
+import { DOMAIN_SHORT_LABELS } from '../lib/domains';
 import type { HistoryEntry } from '../types/exam';
 import {
-  BarChart3, ChevronRight, Trash2, TrendingUp, Target, Flag
+  ChevronRight, Trash2, Flag
 } from 'lucide-react';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine
@@ -20,7 +21,7 @@ interface HistoryProps {
 }
 
 export function History({ history, onViewSession, onDeleteSession, onClearAll, onNavigateToReported }: HistoryProps) {
-  const readiness = useMemo(() => computeReadiness(history), [history]);
+  const trend = useMemo(() => buildHistoryTrend(history), [history]);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
 
   // Build domain name mapping from history
@@ -28,7 +29,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
     const names: Record<string, string> = {};
     for (const entry of history) {
       for (const bd of entry.result.breakdown) {
-        names[bd.categoryId] = bd.categoryLabel;
+        names[bd.categoryId] = DOMAIN_SHORT_LABELS[bd.categoryId] || bd.categoryLabel;
       }
     }
     return names;
@@ -42,8 +43,6 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       const domains: Record<string, number> = {};
       const totalItems = entry.result.breakdown.reduce((sum, bd) => sum + bd.total, 0);
       for (const bd of entry.result.breakdown) {
-        // Weight each domain's score by its proportion of the exam
-        // so stacked areas sum to the overall percentage (max 100%)
         const domainWeight = totalItems > 0 ? bd.total / totalItems : 0;
         const domainScore = bd.total > 0 ? bd.correct / bd.total : 0;
         domains[bd.categoryId] = Math.round(domainScore * domainWeight * 100);
@@ -52,63 +51,42 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
     });
   }, [history]);
 
-  // Track whether chart has already animated to prevent re-animation on theme toggle
   const hasAnimatedChart = useRef(false);
   const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   useEffect(() => {
     if (chartData.length > 0) hasAnimatedChart.current = true;
   }, [chartData]);
 
-  // Unique gradient IDs per domain to prevent collision
   const chartId = useId();
   const domainIds = Object.keys(domainNames);
   const gradients = domainIds.map((id, i) => ({ id, gradId: `grad-${chartId}-${i}` }));
-
   const targetThreshold = history[0]?.settings.targetThreshold ?? 70;
 
   return (
     <div className="space-y-6">
-      {/* Stats summary */}
-      <div className="grid gap-4 sm:grid-cols-3">
-        <Card className="border-l-4 border-l-[var(--primary)]">
-          <CardContent className="p-5">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]">Readiness</p>
-                <p className="text-3xl font-bold tracking-tight" style={{ fontFamily: 'var(--font-serif)' }}>{readiness.overallEma}%</p>
-              </div>
-              <Target className="h-5 w-5 text-[var(--primary)]" />
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="border-l-4 border-l-[var(--accent)]">
-          <CardContent className="p-5">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]">Sessions</p>
-                <p className="text-3xl font-bold tracking-tight" style={{ fontFamily: 'var(--font-serif)' }}>{history.length}</p>
-              </div>
-              <BarChart3 className="h-5 w-5 text-[var(--accent)]" />
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="border-l-4 border-l-[var(--success)]">
-          <CardContent className="p-5">
-            <div className="flex items-start justify-between">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]">Trend</p>
-                <p className="text-lg font-bold capitalize" style={{ fontFamily: 'var(--font-serif)' }}>{readiness.recentTrend}</p>
-              </div>
-              <TrendingUp className={cn('h-5 w-5', readiness.recentTrend === 'improving' ? 'text-[var(--success)]' : readiness.recentTrend === 'declining' ? 'text-[var(--destructive)]' : 'text-[var(--muted-foreground)]')} />
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Stacked Area Chart */}
+      {/* Stacked Area Chart with stats */}
       <Card>
         <CardHeader>
-          <CardTitle>Progress Over Time</CardTitle>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <CardTitle>Progress Over Time</CardTitle>
+            {trend.averagePercent !== null && (
+              <div className="flex items-center gap-4 text-sm">
+                <span className="text-[var(--muted-foreground)]">
+                  Avg <strong className="text-[var(--foreground)]">{trend.averagePercent}%</strong>
+                </span>
+                <span className="text-[var(--muted-foreground)]">
+                  Best <strong className="text-[var(--foreground)]">{trend.bestPercent}%</strong>
+                </span>
+                {trend.recentDelta !== null && (
+                  <span className="text-[var(--muted-foreground)]">
+                    Trend <strong className={cn(
+                      trend.recentDelta > 0 ? 'text-[var(--success)]' : trend.recentDelta < 0 ? 'text-[var(--destructive)]' : 'text-[var(--muted-foreground)]'
+                    )}>{formatTrendDelta(trend.recentDelta)}</strong>
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
         </CardHeader>
         <CardContent>
           {chartData.length > 0 ? (
@@ -193,7 +171,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
                     <div className="flex flex-wrap gap-3 mt-1">
                       {entry.result.breakdown.map((bd) => (
                         <span key={bd.categoryId} className="text-xs text-[var(--muted-foreground)]">
-                          {bd.categoryLabel}: {bd.correct}/{bd.total}
+                          {DOMAIN_SHORT_LABELS[bd.categoryId] || bd.categoryLabel}: {bd.correct}/{bd.total}
                         </span>
                       ))}
                     </div>

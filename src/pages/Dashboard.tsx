@@ -3,6 +3,7 @@ import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Badge, Progress, Button } from '../components/ui';
 import { computeReadiness, computeSpacedRepetition, generateStudyPlan } from '../lib/readiness';
 import { formatDuration } from '../lib/format';
+import { getDomainShortLabel } from '../lib/domains';
 import type { HistoryEntry } from '../types/exam';
 import {
   Play, Settings, Zap, Target, Clock, BookOpen, Brain, CheckCircle2,
@@ -149,7 +150,7 @@ export function Dashboard({
                         ) : (
                           <CheckCircle2 className="h-4 w-4 text-[var(--success)]" />
                         )}
-                        <span className="text-[var(--foreground)]">{d.domainLabel} — <strong>{d.emaScore}%</strong></span>
+                        <span className="text-[var(--foreground)]">{getDomainShortLabel(d.domainId, d.domainLabel)} — <strong>{d.emaScore}%</strong></span>
                       </div>
                     ))}
                     {readiness.weakDomains.length > 0 && (
@@ -187,9 +188,9 @@ export function Dashboard({
           <CardContent className="space-y-4">
             {readiness.domains.length > 0 ? (
               readiness.domains.map((d) => (
-                <CategoryBar
+                  <CategoryBar
                   key={d.domainId}
-                  name={d.domainLabel}
+                  name={getDomainShortLabel(d.domainId, d.domainLabel)}
                   percent={d.emaScore}
                   examWeight={`${d.examWeight}%`}
                   isStrong={!d.isWeak}
@@ -280,7 +281,7 @@ export function Dashboard({
 }
 
 const DEMO_DOMAINS_PLACEHOLDER = [
-  { id: '1', label: 'Transplant Education', weight: 33 },
-  { id: '2', label: 'Pre-Transplant Evaluation and Management', weight: 39 },
-  { id: '3', label: 'Post-operative Monitoring, Evaluation, and Reporting', weight: 28 },
+  { id: '1', label: 'D1: Education', weight: 33 },
+  { id: '2', label: 'D2: Pre-Transplant', weight: 39 },
+  { id: '3', label: 'D3: Post-Op', weight: 28 },
 ];
