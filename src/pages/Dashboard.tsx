@@ -280,7 +280,7 @@ export function Dashboard({
 }
 
 const DEMO_DOMAINS_PLACEHOLDER = [
-  { id: '1', label: 'Domain 1: Educator & Coordinator', weight: 33 },
-  { id: '2', label: 'Domain 2: Pre-Transplant', weight: 39 },
-  { id: '3', label: 'Domain 3: Post-Transplant Care', weight: 28 },
+  { id: '1', label: 'Transplant Education', weight: 33 },
+  { id: '2', label: 'Pre-Transplant Evaluation and Management', weight: 39 },
+  { id: '3', label: 'Post-operative Monitoring, Evaluation, and Reporting', weight: 28 },
 ];

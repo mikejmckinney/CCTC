@@ -193,7 +193,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
                     <div className="flex flex-wrap gap-3 mt-1">
                       {entry.result.breakdown.map((bd) => (
                         <span key={bd.categoryId} className="text-xs text-[var(--muted-foreground)]">
-                          {bd.categoryLabel.split(':')[0]}: {bd.correct}/{bd.total}
+                          {bd.categoryLabel}: {bd.correct}/{bd.total}
                         </span>
                       ))}
                     </div>

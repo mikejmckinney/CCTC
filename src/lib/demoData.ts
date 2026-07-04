@@ -1,9 +1,9 @@
 import type { HistoryEntry, SessionSettings, SessionResultBreakdown, Question, SessionItemSnapshot, ItemFlag } from '../types/exam';
 
 const DEMO_DOMAINS = [
-  { id: '1', label: 'Domain 1: Educator & Coordinator', examWeight: 33 },
-  { id: '2', label: 'Domain 2: Pre-Transplant', examWeight: 39 },
-  { id: '3', label: 'Domain 3: Post-Transplant Care', examWeight: 28 },
+  { id: '1', label: 'Transplant Education', examWeight: 33 },
+  { id: '2', label: 'Pre-Transplant Evaluation and Management', examWeight: 39 },
+  { id: '3', label: 'Post-operative Monitoring, Evaluation, and Reporting', examWeight: 28 },
 ];
 
 function randomBetween(min: number, max: number): number {
