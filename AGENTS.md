@@ -1,148 +1,22 @@
 # AGENTS.md
 
 <!-- AGENTS_MD_VERSION: 26 -->
+<!-- Bump AGENTS_MD_VERSION whenever this file is materially edited so the
+     handshake below proves agents loaded the *current* copy, not a stale one.
+     The canary covers AGENTS.md only — per-concern files in .context/rules/
+     evolve through their own PRs and aren't gated by this token (ADR-021). -->
 
-# Domain: Code Quality
-
-## Hard Rules (Never Violate)
-
-Hard rules block diff-gate. If you relax one, the Architect writes an ADR under `docs/decisions/` recording the tradeoff and Judge references it during review.
-
-### H1 — Single Responsibility
-Every function, class, and module has **one reason to change**. If you can describe a unit with "and" ("parses input **and** writes to the database"), split it. Flag any unit where two unrelated reasons to change live in the same file.
-
-### H2 — Open / Closed
-Extend behavior by adding new code, not by mutating stable interfaces. Any breaking change to a published interface, exported type, or public API requires an ADR plus a migration note for downstream callers.
-
-### H3 — Liskov Substitution
-Subtypes must honor their base contract. Do not narrow preconditions or widen postconditions in an override. If a subtype can't honor the contract, it's not a subtype — compose instead of inherit.
-
-### H4 — Interface Segregation
-Callers must not be forced to depend on methods they don't use. Split fat interfaces into role-specific ones. "One method per caller concern" is the floor, not the ceiling.
-
-### H5 — Dependency Inversion
-High-level modules depend on abstractions, not concrete low-level modules. Inject dependencies; don't `new` them inside business logic. Concrete wiring lives at the composition root (main / entry point).
-
-### H6 — TDD Discipline
-Write a failing test **before** implementation. Keep the red-green-refactor loop explicit. See `AGENTS.md` → "Testing requirements" for the test pyramid and CI expectations — this file does not duplicate them.
-
-### H7 — No Dead Code
-Unreachable branches, unused exports, commented-out blocks, and speculative helpers ship zero value. Delete them before merge. If you think you'll need something "soon," open a task instead of leaving a stub.
-
-### H8 — No Silent Error Swallowing
-Every `catch` / `rescue` / `recover` block must either rethrow with context, log with enough detail to diagnose, or convert to a handled result that the caller can act on. Empty catch blocks and bare `except: pass` fail diff-gate.
-
-## Soft Rules (Prefer Unless Justified)
-
-Soft rules are targets. Judge does not block on them; Critic flags them as `CRAFT NOTES` or `NITS`. A justified exception in the commit message is enough.
-
-### S1 — Function Length
-Target: a function fits on one screen without scrolling. The exact line count is stack-specific — set a threshold in the "How to extend" block below. Rationale matters more than the count: if a longer function is genuinely more readable than its split form, keep it and say why in a comment.
-
-### S2 — Complexity and Nesting
-Target: cyclomatic complexity and nesting depth stay low enough that a reader can hold the control flow in their head. When you feel yourself indenting a fourth level, extract.
-
-### S3 — Names Describe Intent
-Names say **what the code is for**, not **how it works**. Prefer `calculateRenewalDate` over `addThirtyDays`. Avoid abbreviations unless the abbreviation is a term of art in your domain — and if it is, capture it in a glossary.
-
-### S4 — Comments Explain Why
-Comments say **why**, not **what**. If the code already says what it does, a comment that restates it is noise — delete it. Use comments to record non-obvious tradeoffs, links to issues, and decisions the reader can't reconstruct from the code.
-
-### S5 — Duplication Beats the Wrong Abstraction
-Two similar blocks are cheaper than a premature abstraction. Three is a signal to extract — but only if the three genuinely share a reason to change (see H1). Rushing to DRY fuses code that should diverge.
-
-### S6 — Test Pyramid
-Many unit tests, fewer integration tests, minimal E2E tests. Concrete CI commands and coverage expectations live in `AGENTS.md` → "Testing requirements" and the project's own `README.md`.
-
-
-
-## Stack-Specific Overrides
-
-- S1 function length:     <N> lines (target), <N> lines (hard max)
-- S2 cyclomatic complexity: <N> (target), <N> (hard max)
-- S2 nesting depth:       <N> (target), <N> (hard max)
-- Lint / format tool:     <tool + config path>
-- Test framework:         <framework + command>
-- Coverage target:        <percent> (changed files only)
-
-
-# Clarification and ambiguity
-
-When a request is ambiguous — where different reasonable interpretations lead to meaningfully different work — stop, ask, recommend and explain reasoning before proceeding. Don't guess and build, and don't ask and build in parallel; ask, then wait.
-
-- **Always Verify details with live sources when available and cite sources**
-- **When to trigger a clarifying question.** Ask specifically when: (1) the request could reasonably mean two or more different things, (2) a decision requires information only the user has (business context, preferences, external constraints), (3) the request conflicts with something in the repo's rules or prior decisions (follow the **Push back** rule in [Critical thinking and communication](#Critical-thinking-and-communication) rather than just asking), or (4) proceeding would require inventing facts (API shapes, data structures, domain terms) that can't be verified.
-
-For unexpected issues that are difficult to resolve like a process that consistently hangs or fails despite multiple attempts to fix it, research the issue on the internet to see if it is a known issue others have encountered and what the fix or workaround is.
-
-# Critical thinking and communication
-
-Agents must reason critically rather than agree by default. The bar is "objective and evidence-based," not "agreeable."
-
-- **Push back when warranted.** If the user's plan, premise, or proposed code has a flaw, say so directly and explain why. Don't hedge to be polite. If a better approach exists, recommend it and justify the tradeoff.
-- **Calibrate confidence.** State what you verified vs. what you assumed. When something is uncertain, say "uncertain" — don't pad with false confidence and don't hide behind vague qualifiers.
-- **Don't guess APIs, file contents, or runtime behavior.** Verify by reading the file or searching the codebase. If you can't verify, say so explicitly rather than asserting.
-- **Compare approaches honestly.** When multiple options are viable, name the tradeoffs (cost, risk, reversibility, blast radius) before recommending one.
-- **Cite your sources.** When stating a fact about the codebase or docs, include a relative path (and a line number when precision matters: `path/to/file.md:42`). Statements without a citation are treated as assumptions and must be marked `uncertain`. Judge and Critic reject uncited claims of fact.
-- **Always Explain your reasoning and Default to concise.** Add structure only when it earns its keep; don't pad length or drop detail the answer needs. If a complete answer genuinely requires length, use multiple parts or multiple responses rather than cutting corners.
-
-# Opportunity feedback channel
-
-## Purpose
-
-Adjacent improvements (brittle script, stale doc, automation gap) historically caused scope creep or got dropped. The `opportunity_notes` channel gives agents a capped, evaluable triage queue.
-
-## When this rule fires
-
-- Out-of-scope observation during in-scope work.
-- Recommendation benefiting future sessions but not needed now.
-- Duplicate, contradictory, or stale convention noticed while reading.
-
-## What counts as an opportunity note
-
-- Outside current task scope but inside repo improvement surface.
-- Deferrable — current task can complete without it.
-- Concrete — names a file, behavior, or symptom.
-- NOT urgent for correctness, security, or in-flight work (use escalation below).
-
-## Required fields (9 total)
-
-Empty list permitted; partially-filled entries are not.
-
-| Field | Type | Description |
-|---|---|---|
-| `title` | string | One-line headline. ≤80 chars. |
-| `evidence` | string | What you observed. File path, command output, or behavior. |
-| `impact` | string | Who/what is affected and how. |
-| `recommendation` | string | Concrete enough to file. |
-| `scope` | enum | `rule`, `script`, `doc`, `workflow`, `code`, `test`, `process`. |
-| `suggested_next_action` | enum | `file-issue`, `fold-into-<n>`, `discuss`, `defer`. |
-| `confidence` | enum | `high`, `medium`, `low`. |
-| `duplicate_check` | string | Search/issue compared. `none` if not checked. |
-
-## When agents may implement directly
-
-MAY implement without a note ONLY when ALL FOUR hold:
-
-1. **≤ ~20 LOC**, single file.
-2. **Directly necessary** for in-scope task (not "while I'm here").
-3. Does **not** touch role-sensitive surfaces.
-
-When in doubt, surface the note.
-
-## Escalation (blocking observations)
-
-For items that **halt current work**, use `## Blocking observation` — not the 9-field schema.
-
-Use when: **security** (secrets, auth, injection); **data-loss** risk; **CI-breaking** change the task can't fix; **plan-invalidating** false precondition.
-
-If unsure, treat as blocking.
-
-# Process: Session Start
+> **Pointer files**: [`CLAUDE.md`](CLAUDE.md) and
+> [`.github/copilot-instructions.md`](.github/copilot-instructions.md) are
+> thin pointers into this file. When you change a section heading here or
+> rename/move any `.context/rules/process_*.md` file, verify their pointer
+> tables still resolve — see
+> [`.context/rules/process_doc_maintenance.md`](.context/rules/process_doc_maintenance.md).
 
 ## Session handshake (read-receipt)
 
-When you have read this file at the start of a session, open your first reply with the following:
+When you have read this file at the start of a session, open your first
+substantive reply with the following:
 
 ```text
 Session handshake vAGENTS_MD_VERSION
@@ -156,141 +30,138 @@ Session handshake vAGENTS_MD_VERSION
 | Session type | <parent/default agent | dispatched subagent | other> |
 | Dispatch mode | <plan-gate | diff-gate | n/a> |
 | Read profile | <profile-name | full | none> |
-| Receipt boundary | <fresh | post-compaction | on-demand-replay> |
 ```
 
-Replace `AGENTS_MD_VERSION` with the version number specified in the HTML comment at the top of `AGENTS.md`.
+Replace AGENTS_MD_VERSION with the version number specified in the HTML comment
+at the top of this file. The session handshake should be on its own line before
+any other content for parent agents; see the subagent rule below.
 
-The session handshake should be on its own line before any other content.
+`Dispatch mode`: dispatched subagents record the mode from the dispatch packet
+(`plan-gate` or `diff-gate`). Parent/default agents and non-exact-output
+subagents use `n/a`. Required for Judge and Critic — see
+`.context/rules/process_subagent_bootstrap.md` § "Positional output
+contract".
+
+`Read profile`: record the named profile used, `full` if all standard startup
+files were loaded, or `none` if only AGENTS.md was loaded. Named profiles will
+be defined in R4; use `full` until then.
+
+This is a per-session signal, not a per-reply one. Emit it once at the start of
+the session; suppress it on subsequent replies in the same conversation.
+
+For parent/default-agent work, this token is the parent startup receipt required
+by ADR-026 compliance evidence. Follow the handshake with a
+`## Session context receipt` section (see below).
+
+For dispatched subagents: emit your role-specific output **first**, so
+exact-output contracts are satisfied (`DECISION:` is the literal first line for
+Judge; `CRITIC DECISION:` for Critic). After the role body, append in order:
+
+1. `## Subagent session handshake` — the 7-field table above.
+2. `## Subagent context receipt` — the file table from `## Session context receipt`.
+3. `subagent_compliance` YAML block.
+
+**`subagent_compliance` (item 3) is required for all dispatched subagents.**
+The heading sections (items 1–2) are **required** for exact-output roles (Judge,
+Critic) and **encouraged but not required** for all other roles; see
+`.context/rules/process_subagent_bootstrap.md` § "Positional output contract".
 
 ## Session context receipt
 
-follow the session handshake with this section. Dispatched subagents emit it as `## Subagent context receipt` after `## Subagent session handshake`.
+Parent agents follow the `## Session handshake (read-receipt)` with this section. Dispatched
+subagents emit it as `## Subagent context receipt` at the end of their response,
+after `## Subagent session handshake`.
+
+Parent agent form (use `## Subagent context receipt` heading when emitting as a dispatched subagent):
 
 ```text
 ## Session context receipt
 
-| File | Load | In context | Why it was read | Decision affected |
-|---|---|---|---|---|
-| `AGENTS.md` | Read | yes | Startup contract | Loaded handshake, truth hierarchy, rule catalog pointer |
-| `.context/rules/process_session_start.md` | Read | yes | Startup receipt contract | Loaded read-credit and receipt rules |
-| `.context/rules/README.md` | Read | yes | Rule catalog | Selected read profile and triggered rules |
-| `<path>` | <Read / Skipped> | <yes / no / partial> | <reason> | <decision, gate, or output affected> |
+| File | Status | Why it was read | Decision affected |
+|---|---|---|---|
+| `AGENTS.md` | Read | Startup contract | Loaded handshake, truth hierarchy, per-concern read list |
+| `<path>` | <Read / Reviewed / Skipped> | <reason> | <decision, gate, or output affected> |
 ```
 
-Use one row per file that was required, triggered, explicitly dispatched, or intentionally skipped.
+### Prompt-context read credit
 
-### Load vs In context
+If the full contents of a referenced rule file are already present verbatim in the current prompt context, you may treat that file as `Reviewed` for orientation and avoid re-reading it from disk. A pointer or filename reference alone does not count as read credit. You must still read the on-disk file when freshness matters, when the rule's cadence requires a read or re-read, when a dispatch packet explicitly names it, or when you need line-accurate citations or compliance evidence.
 
-| Column | Values | Meaning |
+## Truth hierarchy
+
+When information conflicts, use this priority order:
+
+1. `./.context/**` — canonical project direction and constraints
+2. `./docs/**` — supporting detail and reference material
+3. Codebase — current implementation reality
+
+For **live agent coordination state** on GitHub-connected work, ADR-025
+adds a narrower source-of-truth split: issue body → PR body → latest
+`agent-state:v1` issue/PR comment → labels. `.context/**` remains
+canonical for durable repo rules, decisions, and process constraints;
+repo-local live-state files are transitional compatibility surfaces, not
+the primary live state machine.
+
+When you detect a conflict between two sources at adjacent priorities, do
+**not** silently pick one. Instead:
+
+1. **Note the conflict** in your output (a one-line callout naming both sources).
+2. **Follow the higher-priority source** for the current task.
+3. **File a follow-up** issue or open a PR updating the lower-priority source so it matches.
+4. **Never edit the higher-priority source to match the lower one** without an ADR. If the lower source is what's actually correct, that's an architectural change that needs `docs/decisions/`.
+
+## Per-concern process rules
+
+Read the concern files relevant to the work you are about to do. The
+re-read cadence (which files at which boundaries) lives in
+[`.context/rules/process_session_state.md`](.context/rules/process_session_state.md).
+
+| Concern | File | Read when |
 |---|---|---|
-| **Load** | `Read`, `Skipped` | `Read` = full file loaded from disk **this receipt boundary**. `Skipped` = intentionally not loaded. |
-| **In context** | `yes`, `no`, `partial` | Whether the **full** file text is **currently** in working prompt context. |
+| Template detection (Mode A vs Mode B) | [`.context/rules/process_template_detection.md`](.context/rules/process_template_detection.md) | First session in a new clone |
+| Critical thinking and communication | [`.context/rules/process_critical_thinking.md`](.context/rules/process_critical_thinking.md) | Every reply |
+| Work style, testing, validation | [`.context/rules/process_work_style.md`](.context/rules/process_work_style.md) | Before any non-trivial implementation |
+| Clarification and ambiguity | [`.context/rules/process_clarification.md`](.context/rules/process_clarification.md) | When request is ambiguous |
+| Role selection, OP default, context pack, onboarding | [`.context/rules/process_role_selection.md`](.context/rules/process_role_selection.md) | Before claiming a task |
+| Pre-implementation gates (Analyst pre-flight + plan-as-comment) | [`.context/rules/process_gates.md`](.context/rules/process_gates.md) | Before writing code on any non-exempt issue |
+| Session-state cadence + close-out PR discipline | [`.context/rules/process_session_state.md`](.context/rules/process_session_state.md) | Every task boundary |
+| PR completion, templates, review | [`.context/rules/process_pr_completion.md`](.context/rules/process_pr_completion.md) | Before opening a PR or reviewing one |
+| Subagent bootstrap and compliance return | [`.context/rules/process_subagent_bootstrap.md`](.context/rules/process_subagent_bootstrap.md) | When dispatching subagents, receiving dispatched role work, or using subagent output as gate evidence |
+| Model tier dispatch convention | [`.context/rules/process_model_tier.md`](.context/rules/process_model_tier.md) | When dispatching subagents or upshifting tier |
+| OP end-to-end issue→merge playbook | [`.github/prompts/op-issue-workflow.md`](.github/prompts/op-issue-workflow.md) | First time you pick up an issue as the default agent |
+| Doc-sync triggers (which files must update together) | [`.context/rules/process_doc_maintenance.md`](.context/rules/process_doc_maintenance.md) | Before opening a PR |
+| Code quality (SOLID, TDD, clean code) | [`.context/rules/domain_code_quality.md`](.context/rules/domain_code_quality.md) | Before non-trivial code refactors |
+| Orchestration patterns (P/AP citations for review) | [`.context/rules/repo_orchestration_patterns.md`](.context/rules/repo_orchestration_patterns.md) | When reviewing orchestration-layer changes |
+| Path ownership map | [`.context/rules/agent_ownership.md`](.context/rules/agent_ownership.md) | Before claiming a task or making cross-role edits |
+| Opportunity feedback (out-of-scope notes channel) | [`.context/rules/process_opportunity_feedback.md`](.context/rules/process_opportunity_feedback.md) | When you notice an out-of-scope improvement opportunity during in-scope work |
 
-Rules:
+For project overview start at [`AI_REPO_GUIDE.md`](AI_REPO_GUIDE.md) and
+[`.context/00_INDEX.md`](.context/00_INDEX.md).
 
-- `Load: Read` requires a disk/current-source read **this boundary** only.
-- `In context: yes` requires verbatim full file in current prompt — not memory, summary, transcript, or grep.
-- `In context: partial` for search hits, excerpts, or conversation summaries that mention the file.
-- After compaction or when re-displaying a prior receipt without re-read: set `In context: no` for affected rows even if `Load: Read` at an earlier boundary.
-- Do not claim `In context: yes` for a file you cannot cite by line without re-reading.
+## Section-anchor redirects (for ADR back-compat)
 
-### Showing the receipt mid-session
+ADRs and other docs may cite AGENTS.md sections by anchor (e.g., `AGENTS.md §"Session-state cadence"`). After ADR-021's decomposition, those sections live at new paths. Resolve old citations as follows:
 
-When the user asks to see the session context receipt:
-
-1. Treat it as a **freshness check**, not a history request.
-2. If mandatory profile files were not re-read **this turn**, either re-read them first (`Receipt boundary: fresh`) or emit `## Session context receipt (stale)` with every row `In context: no` and a one-line note that re-read is required before line-accurate citations.
-3. **Never** copy a prior receipt table from transcript, tool output, or conversation summary as if it reflects current context.
-
-### Stale receipt heading
-
-Use `## Session context receipt (stale)` when `Receipt boundary` is `post-compaction` or `on-demand-replay` and profile files were not re-read this turn. Include:
-
-```text
-Prior boundary: <profile-name or unknown>. File contents not retained in context. Re-read required before compliance claims or line-accurate citations.
-```
-
-## Prompt-context read credit
-
-If the full contents of a referenced rule file are already present verbatim in the current prompt context, you may record `Load: Skipped` and `In context: yes` for orientation and avoid re-reading it from disk.
-
-A pointer, filename, path, heading, excerpt, search result, or summary alone does **not** count as read credit and must be `In context: partial` at best.
-
-You must still read the on-disk file when any of the following apply:
-
-- freshness matters;
-- the rule's cadence requires a read or re-read;
-- a dispatch packet explicitly names the file;
-- line-accurate citations are needed;
-- compliance evidence requires a disk/current-source read;
-- the prompt content may be stale, partial, or transformed;
-- the file is the object being edited or reviewed.
-
-## Load / In context / legacy Reviewed definitions
-
-Use these exact meanings in the session context receipt.
-
-### `Load: Read`
-
-Use `Load: Read` when you loaded the current full contents of the file from the repo or another authoritative current source during **this receipt boundary**.
-
-`Load: Read` is required when the file is:
-
-- part of the startup-required set;
-- explicitly named by a dispatch packet;
-- required by the selected read profile;
-- required by a triggered rule before the affected decision;
-- being edited, reviewed, cited by line, or used as compliance evidence.
-
-Examples:
-
-| File | Load | In context | Why it was read | Decision affected |
-|---|---|---|---|---|
-| `.context/rules/process_work_style.md` | Read | yes | PR readiness surfaces | PR checklist and review response |
-| `docs/decisions/adr-019-per-role-model-tiering.md` | Read | yes | Model routing policy edit | ADR-019 amendment recommendation |
-| `docs/decisions/adr-016-pre-merge-verification-gate.md` | Read | yes | Workflow-risk change | Sandbox verification requirement |
-
-### `In context: yes` / `no` / `partial`
-
-- `yes` — full verbatim file is in current prompt context right now.
-- `no` — file was loaded earlier or named in a summary, but full text is not available now (compaction, new turn without re-read, transcript replay).
-- `partial` — only an excerpt, grep hit, or summary is available.
-
-### `Load: Skipped`
-
-Use `Load: Skipped` when the file was considered but intentionally not loaded because its trigger did not apply, the chosen profile did not require it, or the task was blocked before the file could be read.
-
-Every `Load: Skipped` row must explain why. Do not use `Skipped` for startup-required files unless work is blocked and no repo-changing action is being taken.
-
-Examples:
-
-| File | Load | In context | Why it was read | Decision affected |
-|---|---|---|---|---|
-| `.context/rules/domain_code_quality.md` | Skipped | no | Docs-only change; no code/refactor trigger | No code-quality gate applied |
-| `docs/guides/subagent-bootstrap-reference.md` | Skipped | no | No subagents dispatched or evaluated | No subagent compliance needed |
-| `.github/prompts/repo-onboarding.md` | Skipped | no | Existing repo mode already known; not onboarding a new clone | No Mode A/B decision |
-
-### Invalid status claims
-
-Do not claim:
-
-- `Load: Read` from a filename, pointer, heading, excerpt, search result, or summary.
-- `In context: yes` for stale prompt context, transcript replay, or post-compaction memory.
-- `In context: yes` when you cannot cite the file by line without re-reading.
-- `Load: Skipped` for a required file while still performing the action that required it.
-- `none` read profile for repo-changing work.
-- A non-stale `## Session context receipt` heading when `Receipt boundary` is `post-compaction` or `on-demand-replay` and profile files were not re-read this turn.
-
-If a required read is impossible, mark the task blocked, explain the missing source, and stop before repo-changing work.
-
-## Context compaction / resumed-session behavior
-
-If context was compacted, summarized, resumed, or transferred, treat the next reply as a task boundary unless the active context still contains:
-
-1. the current `AGENTS_MD_VERSION`;
-2. the prior session handshake with current `Receipt boundary`;
-3. the selected read profile;
-4. the session context receipt with accurate `In context` values for every row you may cite.
-
-If any are missing, load the mandatory files for the current read profile and re-emit the session handshake with `Receipt boundary: post-compaction`. Set `In context: no` on every row until each file is re-read this boundary.
+| Pre-decomposition section in AGENTS.md | Now lives in |
+|---|---|
+| §"Template detection" | `.context/rules/process_template_detection.md` |
+| §"Critical thinking and communication" | `.context/rules/process_critical_thinking.md` |
+| §"Work style" | `.context/rules/process_work_style.md` § "Work style" |
+| §"Clarification and ambiguity" | `.context/rules/process_clarification.md` |
+| §"Truth hierarchy" | this file (above) |
+| §"Role selection (multi-agent workflow)" | `.context/rules/process_role_selection.md` § "Role selection (multi-agent workflow)" |
+| §"Analyst pre-flight gate" | `.context/rules/process_gates.md` § "Analyst pre-flight gate (REQUIRED before implementation)" |
+| §"Plan-as-comment requirement" | `.context/rules/process_gates.md` § "Plan-as-comment requirement (REQUIRED before implementation)" |
+| §"Model tier dispatch convention" | `.context/rules/process_model_tier.md` |
+| §"Context pack usage" | `.context/rules/process_role_selection.md` § "Context pack usage" |
+| §"Onboarding procedure" | `.context/rules/process_role_selection.md` § "Onboarding procedure" |
+| §"Ongoing maintenance" | `.context/rules/process_doc_maintenance.md` (always was the source of truth) |
+| §"Postmortem feedback loop" | `.context/rules/process_session_state.md` § "Postmortem feedback loop" |
+| §"Session-state cadence" | `.context/rules/process_session_state.md` |
+| §"Close-out (three actions, three triggers)" | `.context/rules/process_session_state.md` § "Close-out (three actions, three triggers)" |
+| §"Testing requirements" | `.context/rules/process_work_style.md` § "Testing requirements" |
+| §"PR completion criteria (interactive sessions)" | `.context/rules/process_pr_completion.md` § "PR completion criteria (interactive sessions)" |
+| §"Validation" | `.context/rules/process_work_style.md` § "Validation" |
+| §"Templates and conventions" | `.context/rules/process_pr_completion.md` § "Templates and conventions" |
+| §"Code quality" | `.context/rules/process_pr_completion.md` § "Code quality" (pointer) → `.context/rules/domain_code_quality.md` (canonical) |
+| §"Review guidelines" | `.context/rules/process_pr_completion.md` § "Review guidelines" |
