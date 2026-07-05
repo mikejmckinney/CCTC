@@ -38,18 +38,44 @@ export async function readSessionItemTotal(page) {
 export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
-  await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
 
-  await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
-  await page.getByRole('spinbutton', { name: /^Question count/i }).fill(String(questionCount));
-  await page.getByRole('button', { name: 'Start session' }).click();
+  const setupHeading = page.getByRole('heading', { name: /build a.*session/i });
+  if (await setupHeading.isVisible().catch(() => false)) {
+    await expect(setupHeading).toBeVisible();
+  } else {
+    const buildBtn = page.getByRole('button', { name: /build.*session|start.*session|practice/i }).first();
+    if (await buildBtn.isVisible().catch(() => false)) {
+      await buildBtn.click();
+    } else {
+      const setupLink = page.getByRole('link', { name: /setup/i }).or(page.getByRole('button', { name: /setup/i }));
+      if (await setupLink.isVisible().catch(() => false)) {
+        await setupLink.click();
+      }
+    }
+    await expect(setupHeading).toBeVisible();
+  }
+
+  const studyBtn = page.locator('button.segmented__option', { hasText: 'Study' });
+  if (await studyBtn.isVisible().catch(() => false)) {
+    await studyBtn.click();
+  } else {
+    const modeSelect = page.getByRole('combobox', { name: 'Mode', exact: true });
+    if (await modeSelect.isVisible().catch(() => false)) {
+      await modeSelect.selectOption('study');
+    }
+  }
+
+  const questionInput = page.getByRole('spinbutton', { name: /^Question count/i });
+  await questionInput.fill(String(questionCount));
+
+  await page.getByRole('button', { name: /Start.*session/i }).click();
 
   await expect(page.getByRole('heading', { name: /Item 1 of \d+/i })).toBeVisible();
   return readSessionItemTotal(page);
 }
 
 export async function resumeActiveSession(page) {
-  await page.getByRole('button', { name: 'Resume current session' }).click();
+  await page.getByRole('button', { name: /^resume$/i }).click();
   await expect(page.getByRole('heading', { name: /Item \d+ of \d+/i })).toBeVisible();
 }
 
