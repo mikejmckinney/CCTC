@@ -198,28 +198,11 @@ export default function App() {
     setPage('session');
   }, [settings, history, bank]);
 
-  // Submit session
+  // Submit session — always confirm before submitting
   const handleSubmitSession = useCallback(async () => {
     if (!activeSession || isFinalizing) return;
     const unanswered = activeSession.items.length - countAnswered(activeSession);
-    if (activeSession.settings.mode === 'exam') {
-      setSubmitConfirm({ unanswered });
-      return;
-    }
-    setIsFinalizing(true);
-    try {
-      const result = scoreSession(activeSession.settings.blueprintId, activeSession.items, activeSession.answers, activeSession.settings.targetThreshold);
-      const completed = { ...activeSession, submittedAt: new Date().toISOString(), result, updatedAt: new Date().toISOString() };
-      const entry = toHistoryEntry(completed);
-      await saveHistoryEntry(entry);
-      await clearActiveSession();
-      setHistory((prev) => [entry, ...prev]);
-      setSelectedHistory(entry);
-      setActiveSession(null);
-      setPage('review');
-    } finally {
-      setIsFinalizing(false);
-    }
+    setSubmitConfirm({ unanswered });
   }, [activeSession, isFinalizing]);
 
   // Report item
@@ -324,10 +307,10 @@ export default function App() {
       <Modal
         open={submitConfirm !== null}
         onClose={() => { setSubmitConfirm(null); setIsFinalizing(false); }}
-        title="Submit Exam"
+        title={activeSession?.settings.mode === 'exam' ? 'Submit Exam' : 'Complete Session'}
         description={submitConfirm && submitConfirm.unanswered > 0
-          ? `Submit with ${submitConfirm.unanswered} unanswered item${submitConfirm.unanswered > 1 ? 's' : ''}? There is no guessing penalty.`
-          : 'Submit exam and score the results?'}
+          ? `${activeSession?.settings.mode === 'exam' ? 'Submit exam' : 'Complete session'} with ${submitConfirm.unanswered} unanswered item${submitConfirm.unanswered > 1 ? 's' : ''}?${activeSession?.settings.mode === 'exam' ? ' There is no guessing penalty.' : ''}`
+          : `${activeSession?.settings.mode === 'exam' ? 'Submit exam and score the results?' : 'Complete session and save your results?'}`}
       >
         <div className="flex justify-end gap-3 mt-4">
           <Button variant="secondary" onClick={() => { setSubmitConfirm(null); setIsFinalizing(false); }}>Cancel</Button>
@@ -393,14 +376,15 @@ export default function App() {
         {page === 'dashboard' && (
           <Dashboard
             history={history}
+            settings={settings}
             onStartExam={() => handleStartSession({ mode: 'exam', questionCount: 175, timed: true, timeMinutes: 180 })}
             onStartQuick={() => handleStartSession({ mode: 'study', questionCount: 25, timed: true, timeMinutes: 30 })}
-            onStartWeakAreas={() => {
+            onStartWeakAreas={(_domains) => {
               const weakIds = computeSpacedRepetition(history);
               handleStartSession({ mode: 'study', questionCount: Math.min(30, weakIds.length || 30), timed: false });
             }}
-            onStartLastSettings={() => handleStartSession()}
-            onGoToSetup={() => setPage('setup')}
+            onStartCustom={(overrides) => handleStartSession(overrides)}
+            onUpdateSettings={(partial) => setSettings((prev) => ({ ...prev, ...partial }))}
             onGoToHistory={() => setPage('history')}
             onViewSession={handleViewSession}
           />

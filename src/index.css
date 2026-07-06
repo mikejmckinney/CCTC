@@ -2,8 +2,8 @@
 
 @theme {
   /* ── Font families ── */
-  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Newsreader", Georgia, serif;
   --font-mono: "IBM Plex Mono", "Consolas", monospace;
 
   /* ── Base radius ── */
@@ -329,6 +329,15 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    margin: 0 0 0.25rem;
   }
 }
 
