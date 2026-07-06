@@ -57,6 +57,7 @@ component-skeletons.md
 
 # --- Build / dist outputs ---
 dist/
+dist-preview/
 build/
 coverage/
 
