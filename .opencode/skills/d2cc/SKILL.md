@@ -87,12 +87,15 @@ export default {
       { name: "mobile", width: 390, height: 844 },
     ],
     outputDir: "visual-regression",
-    // Pair proto data-el hooks with implementation CSS selectors
-    layoutSelectors: {
-      card:  { proto: '[data-el="card"]', impl: ".card" },
-      badge: { proto: '[data-el="badge"]', impl: ".badge" },
-    },
-    layoutSeverity: "error",  // or "warning" to allow drift through
+    // Optional: override auto-discovered data-el pairs when impl class
+    // names differ from data-el values. Omit to auto-discover all pairs.
+    // layoutSelectors: {
+    //   card: { proto: '[data-el="card"]', impl: ".card-custom" },
+    // },
+    // Optional: restrict comparison to specific properties. Empty/omitted = compare ALL.
+    layoutProperties: [],
+    // Severity for layout mismatches: "error" (default) or "warning"
+    layoutSeverity: "error",
     screens: [
       { name: "dashboard", navText: "Home" },
       { name: "setup", navText: "Setup" },
@@ -120,7 +123,7 @@ Extracts HTML sections from the prototype using regex patterns and generates a `
 ### Visual Regression
 Captures screenshots of both prototype and implementation using Playwright, navigates through configured screens with multi-step sequences, and generates side-by-side comparisons.
 
-Beyond screenshots, the `visual` check compares **computed styles of matched elements** between prototype and implementation. Because prototypes are inline-styled (no classes), elements are matched by a shared **`data-el` hook**: tag canonical elements in the prototype (`<div data-el="card">…`), and map them to implementation selectors in `visual.layoutSelectors` as `{ proto, impl }` pairs.
+Beyond screenshots, the `visual` check compares **computed styles of matched elements** between prototype and implementation. Elements are matched automatically: tag canonical elements in the prototype with `data-el` attributes (`<div data-el="card">…`), and d2cc discovers them — no config needed. Each `data-el="X"` on the prototype is matched to `.X` on the implementation side. If class names differ, override specific pairs via `layoutSelectors` in config.
 
 By default, **all computed CSS properties** are compared — not a curated list. `getComputedStyle` returns everything the browser is actually rendering, so drift in any property (padding, boxShadow, opacity, z-index, color, etc.) is caught. Values are normalized (rgb↔rgba, whitespace, transform/shadow no-ops) and lengths compared with 1px tolerance. Layout drift defaults to severity `error`.
 
@@ -193,9 +196,9 @@ screens: [
 | Screenshots not captured | Run `npx playwright install chromium`, ensure dev server is running |
 | `seedIdb` has no effect | `seedIdb` is deprecated. Use `custom` step with `customStepFiles` instead. |
 | Button not visible after reload | Prototype runtime may need more time. Increase wait after reload step. |
-| `data-el` hook not found | Add `data-el="name"` to the canonical element in the prototype, or remove the pair from `layoutSelectors` |
+| `data-el` hook not found | Add `data-el="name"` to the canonical element in the prototype. d2cc auto-discovers all data-el elements — no config needed. |
 | Layout property mismatch | Check the specific computed style (boxShadow, borderRadius, etc.) — fix in implementation CSS |
-| `data-el` untracked | Advisory only. Add the element to `layoutSelectors` if it's a canonical contract element. |
+| No data-el elements found | Tag canonical elements in the prototype with `data-el="name"` attributes |
 
 ## Comparisons
 
