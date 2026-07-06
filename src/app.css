@@ -133,7 +133,7 @@ a {
 .app-header {
   position: sticky;
   top: 0;
-  z-index: 15;
+  z-index: 20;
   background: var(--headerbg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);

@@ -52,6 +52,10 @@ export default {
     ],
     outputDir: "visual-regression",
     skipClasses: [],
+    layoutSelectors: {
+      header: { proto: '[data-el="header"]', impl: "header, .app-header" },
+      nav:    { proto: '[data-el="nav"]',    impl: "nav, .app-header__nav" },
+    },
     customStepFiles: {
       "seed-idb": "./scripts/d2cc-seed-idb.js",
     },
