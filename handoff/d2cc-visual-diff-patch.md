@@ -179,12 +179,3 @@ Add under the checks/visual section:
 > ### Computed-style (layout) diff
 > Beyond token sync and class-existence, the `visual` check compares **computed styles of matched elements** between prototype and implementation, so element-level treatment drift is caught even when tokens are correct. Because prototypes are inline-styled (no classes), elements are matched by a shared **`data-el` hook**: tag the canonical elements in the prototype (`<div data-el="card">…`), and map them to implementation selectors in `visual.layoutSelectors` as `{ proto, impl }` pairs. Compared properties default to `padding, gap, borderRadius, display, flexDirection, gridTemplateColumns, boxShadow, transform, backgroundColor, borderColor, borderWidth, fontSize, fontWeight, lineHeight`; values are normalized (rgb↔rgba, whitespace, transform/shadow no-ops) and lengths compared with a 1px tolerance. Layout drift defaults to **severity `error`** (fails the build); set `visual.layoutSeverity: "warning"` to downgrade. This is the layer that catches card-shadow, badge-radius, option-letter-shape, and hover-transform drift that a token+class check cannot.
 
-## Regression note for this PR (`redesign/claude-design2`)
-
-Once the above lands, these real drifts (from `src/app.css` on that branch) will surface as failures to fix:
-- `.card` has `box-shadow: 0 1px 3px var(--shadow)` — prototype cards are flat (border only).
-- `.badge` `border-radius: 999px` (pill) — prototype badges are `~7px` rounded-rects.
-- `.option-letter` `border-radius: 8px` (rounded square) — prototype is `50%` (circle).
-- Focus chips/pills `999px` — prototype `9px`.
-- `.quick-card:hover` / `.option-button.is-selected` add `translateY(-1px)` — not in prototype.
-- Focus-bar rendered as a one-line `label · track · value` row — prototype stacks name+% above a full-width bar.
