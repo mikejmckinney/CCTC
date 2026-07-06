@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, Badge, Progress, Button } fro
 import { computeReadiness, computeSpacedRepetition } from '../lib/readiness';
 import { formatDuration } from '../lib/format';
 import { getDomainShortLabel } from '../lib/domains';
-import type { HistoryEntry, SessionSettings } from '../types/exam';
+import type { HistoryEntry, SessionSettings, QuestionSet } from '../types/exam';
 import { getBlueprintLabel } from '../data/blueprints';
 import {
   Play, Zap, Target, Clock, BookOpen, Brain, CheckCircle2,
@@ -178,99 +178,103 @@ export function Dashboard({
         </div>
       </Card>
 
-      {/* Readiness Score */}
-      <Card>
-        <CardContent className="p-5 sm:p-6">
-          <div className="flex items-start gap-4">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--accent)]/10">
-              <Target className="h-7 w-7 text-[var(--accent)]" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="eyebrow">Readiness Score</p>
-              <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
-                {readiness.overallEma || '—'}{readiness.overallEma ? '%' : ''}
-              </p>
-              {readiness.overallEma > 0 && (
-                <>
+      {/* Readiness + Am I Ready — side by side */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        {/* Readiness Score */}
+        <Card>
+          <CardContent className="p-5 sm:p-6">
+            <div className="flex items-start gap-4">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--accent)]/10">
+                <Target className="h-7 w-7 text-[var(--accent)]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="eyebrow">Readiness Score</p>
+                <div className="flex items-baseline gap-2">
+                  <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+                    {readiness.overallEma || '—'}{readiness.overallEma ? '%' : ''}
+                  </p>
+                  {/* Hover tooltip for EMA explanation */}
+                  <div className="group relative inline-block">
+                    <Info className="h-4 w-4 text-[var(--muted-foreground)] cursor-help" />
+                    <div className="invisible group-hover:visible absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-10">
+                      Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with smoothing factor α=0.3. Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
+                    </div>
+                  </div>
+                </div>
+                {readiness.overallEma > 0 && (
                   <div className="mt-3">
                     <Progress value={readiness.overallEma} variant={readiness.overallEma >= target ? 'success' : 'warning'} label="Readiness score" />
+                    <p className="mt-1 text-xs text-[var(--muted-foreground)]">
+                      Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}
+                    </p>
                   </div>
-                  <p className="mt-2 text-xs text-[var(--muted-foreground)] leading-relaxed">
-                    Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
-                    Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
-                    improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
-                    Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.
+                )}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Am I Ready Insights */}
+        <Card>
+          <CardContent className="p-5 sm:p-6 space-y-3">
+            <div className="flex items-center gap-2 mb-1">
+              <Brain className="h-5 w-5 text-[var(--primary)]" />
+              <p className="eyebrow !mb-0">Am I Ready?</p>
+            </div>
+
+            {/* Insight 1: Verdict */}
+            <div className={cn(
+              'flex items-start gap-2.5 rounded-lg p-2.5',
+              verdict.verdict === 'exam-ready' && 'bg-[var(--success)]/5 border border-[var(--success)]/20',
+              verdict.verdict === 'on-pace' && 'bg-[var(--info)]/5 border border-[var(--info)]/20',
+              verdict.verdict === 'on-track' && 'bg-[var(--warning)]/5 border border-[var(--warning)]/20',
+              verdict.verdict === 'at-risk' && 'bg-[var(--destructive)]/5 border border-[var(--destructive)]/20',
+            )}>
+              {verdict.verdict === 'exam-ready' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--success)]" /> :
+               verdict.verdict === 'at-risk' ? <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--destructive)]" /> :
+               <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-[var(--primary)]" />}
+              <div>
+                <p className="text-[13px] font-semibold text-[var(--foreground)]">{verdict.label}</p>
+                <p className="text-xs text-[var(--muted-foreground)] mt-0.5">{verdict.detail}</p>
+              </div>
+            </div>
+
+            {/* Insight 2: Largest gap */}
+            {laggingDomains.length > 0 && (
+              <div className="flex items-start gap-2.5 rounded-lg bg-[var(--muted)] p-2.5">
+                <Target className="mt-0.5 h-4 w-4 shrink-0 text-[var(--warning)]" />
+                <div>
+                  <p className="text-[13px] font-semibold text-[var(--foreground)]">Largest gap</p>
+                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                    {getDomainShortLabel(laggingDomains[0].domainId)} at {laggingDomains[0].emaScore}% — {target - laggingDomains[0].emaScore}% below target.
                   </p>
-                </>
-              )}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Am I Ready Insights */}
-      <Card>
-        <CardHeader>
-          <div className="flex items-center gap-2">
-            <Brain className="h-5 w-5 text-[var(--primary)]" />
-            <CardTitle>Am I Ready?</CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {/* Insight 1: Verdict */}
-          <div className={cn(
-            'flex items-start gap-3 rounded-lg p-3',
-            verdict.verdict === 'exam-ready' && 'bg-[var(--success)]/5 border border-[var(--success)]/20',
-            verdict.verdict === 'on-pace' && 'bg-[var(--info)]/5 border border-[var(--info)]/20',
-            verdict.verdict === 'on-track' && 'bg-[var(--warning)]/5 border border-[var(--warning)]/20',
-            verdict.verdict === 'at-risk' && 'bg-[var(--destructive)]/5 border border-[var(--destructive)]/20',
-          )}>
-            {verdict.verdict === 'exam-ready' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--success)]" /> :
-             verdict.verdict === 'at-risk' ? <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--destructive)]" /> :
-             <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-[var(--primary)]" />}
-            <div>
-              <p className="text-[13px] font-semibold text-[var(--foreground)]">{verdict.label}</p>
-              <p className="text-xs text-[var(--muted-foreground)] mt-0.5">{verdict.detail}</p>
-            </div>
-          </div>
-
-          {/* Insight 2: Largest gap */}
-          {laggingDomains.length > 0 && (
-            <div className="flex items-start gap-3 rounded-lg bg-[var(--muted)] p-3">
-              <Target className="mt-0.5 h-4 w-4 shrink-0 text-[var(--warning)]" />
-              <div>
-                <p className="text-[13px] font-semibold text-[var(--foreground)]">Largest gap</p>
-                <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                  {getDomainShortLabel(laggingDomains[0].domainId)} at {laggingDomains[0].emaScore}% —
-                  {target - laggingDomains[0].emaScore}% below target ({target}%).
-                  Weighted at {laggingDomains[0].examWeight}% of the exam.
-                </p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Insight 3: Due for review */}
-          {spacedCount > 0 && (
-            <div className="flex items-start gap-3 rounded-lg bg-[var(--muted)] p-3">
-              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent)]" />
-              <div>
-                <p className="text-[13px] font-semibold text-[var(--foreground)]">Due for review</p>
-                <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                  {spacedCount} previously-incorrect item{spacedCount !== 1 ? 's' : ''} ready for spaced repetition review.
-                </p>
+            {/* Insight 3: Due for review */}
+            {spacedCount > 0 && (
+              <div className="flex items-start gap-2.5 rounded-lg bg-[var(--muted)] p-2.5">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent)]" />
+                <div>
+                  <p className="text-[13px] font-semibold text-[var(--foreground)]">Due for review</p>
+                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                    {spacedCount} item{spacedCount !== 1 ? 's' : ''} ready for spaced repetition.
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Empty state */}
-          {readiness.totalSessions === 0 && (
-            <div className="flex items-start gap-3 rounded-lg bg-[var(--muted)] p-3">
-              <Info className="mt-0.5 h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
-              <p className="text-xs text-[var(--muted-foreground)]">Complete practice sessions to see your readiness breakdown.</p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+            {/* Empty state */}
+            {readiness.totalSessions === 0 && (
+              <div className="flex items-start gap-2.5 rounded-lg bg-[var(--muted)] p-2.5">
+                <Info className="mt-0.5 h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
+                <p className="text-xs text-[var(--muted-foreground)]">Complete practice sessions to see your readiness breakdown.</p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
 
       {/* Category Breakdown + Study Plan */}
       <div className="grid gap-4 lg:grid-cols-2">
@@ -344,89 +348,153 @@ export function Dashboard({
               className="flex items-center gap-2 text-sm font-medium text-[var(--primary)] hover:underline"
             >
               {showSetup ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-              Advanced Setup
+              {showSetup ? 'Hide Setup' : 'Customize Settings'}
             </button>
 
             {showSetup && (
-              <div className="mt-4 grid gap-4 sm:grid-cols-2 rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4">
-                <div className="grid gap-1.5">
-                  <label className="text-[13px] font-medium text-[var(--foreground)]">Mode</label>
-                  <select
-                    value={settings.mode}
-                    onChange={(e) => onUpdateSettings({ mode: e.target.value as 'exam' | 'study' })}
-                    className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-                  >
-                    <option value="exam">Exam</option>
-                    <option value="study">Study</option>
-                  </select>
-                </div>
+              <div className="mt-4 space-y-4 rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4">
+                {/* Core settings */}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="grid gap-1.5">
+                    <label className="text-[13px] font-medium text-[var(--foreground)]">Mode</label>
+                    <select
+                      value={settings.mode}
+                      onChange={(e) => onUpdateSettings({ mode: e.target.value as 'exam' | 'study' })}
+                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                    >
+                      <option value="exam">Exam</option>
+                      <option value="study">Study</option>
+                    </select>
+                  </div>
 
-                <div className="grid gap-1.5">
-                  <label className="text-[13px] font-medium text-[var(--foreground)]">Blueprint</label>
-                  <select
-                    value={settings.blueprintId}
-                    onChange={(e) => onUpdateSettings({ blueprintId: e.target.value as any })}
-                    className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-                  >
-                    <option value="cctc-from-2026-07">2026-07 (default)</option>
-                    <option value="cctc-thru-2026-06">Until 2026-06</option>
-                  </select>
-                </div>
+                  <div className="grid gap-1.5">
+                    <label className="text-[13px] font-medium text-[var(--foreground)]">Question Set</label>
+                    <select
+                      value={settings.questionSet}
+                      onChange={(e) => onUpdateSettings({ questionSet: e.target.value as QuestionSet })}
+                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                    >
+                      <option value="standard">Standard Bank</option>
+                      <option value="scenario">Scenario Companions</option>
+                    </select>
+                  </div>
 
-                <div className="grid gap-1.5">
-                  <label className="text-[13px] font-medium text-[var(--foreground)]">Exam Date (optional)</label>
-                  <input
-                    type="date"
-                    value={examDate}
-                    onChange={(e) => handleExamDateChange(e.target.value)}
-                    className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-                  />
-                </div>
+                  <div className="grid gap-1.5">
+                    <label className="text-[13px] font-medium text-[var(--foreground)]">Question Count</label>
+                    <input
+                      type="number"
+                      min={1}
+                      max={settings.questionSet === 'scenario' ? 506 : 506}
+                      value={settings.questionCount}
+                      onChange={(e) => onUpdateSettings({ questionCount: Math.max(1, Number(e.target.value) || 1) })}
+                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                    />
+                  </div>
 
-                <div className="grid gap-1.5">
-                  <label className="text-[13px] font-medium text-[var(--foreground)]">
-                    Target Score: <span className="text-[var(--accent)] font-bold">{targetScore}%</span>
-                  </label>
-                  <input
-                    type="range"
-                    min={50}
-                    max={90}
-                    value={targetScore}
-                    onChange={(e) => {
-                      const val = Number(e.target.value);
-                      setTargetScore(val);
-                      onUpdateSettings({ targetThreshold: val });
-                    }}
-                    className="w-full accent-[var(--primary)]"
-                  />
-                  <div className="flex justify-between text-xs text-[var(--muted-foreground)]">
-                    <span>50%</span>
-                    <span>90%</span>
+                  <div className="grid gap-1.5">
+                    <label className="text-[13px] font-medium text-[var(--foreground)]">Blueprint</label>
+                    <select
+                      value={settings.blueprintId}
+                      onChange={(e) => onUpdateSettings({ blueprintId: e.target.value as any })}
+                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                    >
+                      <option value="cctc-from-2026-07">2026-07 (default)</option>
+                      <option value="cctc-thru-2026-06">Until 2026-06</option>
+                    </select>
                   </div>
                 </div>
 
-                <label className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={settings.includeDrafts}
-                    onChange={(e) => onUpdateSettings({ includeDrafts: e.target.checked })}
-                    disabled={settings.mode === 'exam'}
-                    className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
-                  />
-                  <span className="text-[13px] text-[var(--foreground)]">Include draft items</span>
-                </label>
+                {/* Timer settings */}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="grid gap-1.5">
+                    <label className="flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        checked={settings.timed}
+                        onChange={(e) => onUpdateSettings({ timed: e.target.checked })}
+                        className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                      />
+                      <span className="text-[13px] text-[var(--foreground)]">Enable timer</span>
+                    </label>
+                    {settings.timed && (
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="number"
+                          min={1}
+                          value={settings.timeMinutes}
+                          onChange={(e) => onUpdateSettings({ timeMinutes: Math.max(1, Number(e.target.value) || 1) })}
+                          className="flex h-10 w-24 rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                        />
+                        <span className="text-[13px] text-[var(--muted-foreground)]">minutes</span>
+                      </div>
+                    )}
+                  </div>
 
-                <label className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={settings.showTimer}
-                    onChange={(e) => onUpdateSettings({ showTimer: e.target.checked })}
-                    className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
-                  />
-                  <span className="text-[13px] text-[var(--foreground)]">Show on-screen timer</span>
-                </label>
+                  <label className="flex items-center gap-2 self-center">
+                    <input
+                      type="checkbox"
+                      checked={settings.showTimer}
+                      onChange={(e) => onUpdateSettings({ showTimer: e.target.checked })}
+                      className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                    />
+                    <span className="text-[13px] text-[var(--foreground)]">Show on-screen timer</span>
+                  </label>
+                </div>
 
-                <div className="sm:col-span-2 flex gap-3 pt-2">
+                {/* Advanced settings */}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="grid gap-1.5">
+                    <label className="text-[13px] font-medium text-[var(--foreground)]">Exam Date (optional)</label>
+                    <input
+                      type="date"
+                      value={examDate}
+                      onChange={(e) => handleExamDateChange(e.target.value)}
+                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                    />
+                  </div>
+
+                  <div className="grid gap-1.5">
+                    <label className="text-[13px] font-medium text-[var(--foreground)]">
+                      Target Score: <span className="text-[var(--accent)] font-bold">{targetScore}%</span>
+                    </label>
+                    <input
+                      type="range"
+                      min={50}
+                      max={90}
+                      value={targetScore}
+                      onChange={(e) => {
+                        const val = Number(e.target.value);
+                        setTargetScore(val);
+                        onUpdateSettings({ targetThreshold: val });
+                      }}
+                      className="w-full accent-[var(--primary)]"
+                    />
+                    <div className="flex justify-between text-xs text-[var(--muted-foreground)]">
+                      <span>50%</span>
+                      <span>90%</span>
+                    </div>
+                  </div>
+
+                  <label className="flex items-center gap-2 self-center">
+                    <input
+                      type="checkbox"
+                      checked={settings.includeDrafts}
+                      onChange={(e) => onUpdateSettings({ includeDrafts: e.target.checked })}
+                      disabled={settings.mode === 'exam'}
+                      className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                    />
+                    <span className="text-[13px] text-[var(--foreground)]">Include draft items</span>
+                  </label>
+                </div>
+
+                {/* Summary + Start */}
+                <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-3">
+                  <p className="text-xs text-[var(--muted-foreground)]">
+                    {getBlueprintLabel(settings.blueprintId)} · {settings.mode === 'exam' ? 'Exam' : 'Study'} · {settings.questionCount}q · {settings.timed ? `${settings.timeMinutes}m` : 'Untimed'}
+                  </p>
+                </div>
+
+                <div className="flex gap-3">
                   <Button onClick={() => onStartCustom({})} className="flex-1 gap-2">
                     <Play className="h-4 w-4" /> Start with Custom Settings
                   </Button>

@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { Navigation } from '../components/Navigation';
 import { Dashboard } from '../pages/Dashboard';
-import { Setup } from '../pages/Setup';
 import { History } from '../pages/History';
 import { ReportedItems } from '../pages/ReportedItems';
 import { SessionView } from '../pages/Session';
@@ -23,7 +22,7 @@ import type {
   HistoryEntry, ItemFlag, Question, SessionSettings
 } from '../types/exam';
 
-type Page = 'dashboard' | 'setup' | 'history' | 'reported' | 'session' | 'review';
+type Page = 'dashboard' | 'history' | 'reported' | 'session' | 'review';
 
 const FLAG_REASONS: FlagReason[] = [
   'factual error',
@@ -387,15 +386,6 @@ export default function App() {
             onUpdateSettings={(partial) => setSettings((prev) => ({ ...prev, ...partial }))}
             onGoToHistory={() => setPage('history')}
             onViewSession={handleViewSession}
-          />
-        )}
-
-        {page === 'setup' && (
-          <Setup
-            settings={settings}
-            onUpdate={(p) => setSettings((prev) => ({ ...prev, ...p }))}
-            onStart={() => handleStartSession()}
-            availableCount={bank.questions.filter((q: Question) => settings.includeDrafts || q.status === 'reviewed').length}
           />
         )}
 

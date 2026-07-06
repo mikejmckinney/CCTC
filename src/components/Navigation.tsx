@@ -1,9 +1,9 @@
 import { cn } from '../lib/cn';
 import { performCircularReveal } from '../lib/circularReveal';
 import { useTheme } from './ThemeProvider';
-import { Sun, Moon, Home, Settings, BarChart3, Play, BookOpen } from 'lucide-react';
+import { Sun, Moon, Home, BarChart3, Play, BookOpen } from 'lucide-react';
 
-type Page = 'dashboard' | 'setup' | 'history' | 'reported' | 'session' | 'review';
+type Page = 'dashboard' | 'history' | 'reported' | 'session' | 'review';
 
 interface NavigationProps {
   currentPage: Page;
@@ -13,7 +13,6 @@ interface NavigationProps {
 
 const NAV_ITEMS: Array<{ page: Page; label: string; icon: React.ElementType; mobileIcon: React.ElementType }> = [
   { page: 'dashboard', label: 'Home', icon: Home, mobileIcon: Home },
-  { page: 'setup', label: 'Setup', icon: Settings, mobileIcon: Settings },
   { page: 'history', label: 'History', icon: BarChart3, mobileIcon: BarChart3 },
 ];
 
