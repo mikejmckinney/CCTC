@@ -20,10 +20,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="cctc-data.js"></script>
+<script src="score-trend-chart.js"></script>
 <style>
   body { margin:0; background:#f4efe6; transition:background .2s ease; }
   * { box-sizing:border-box; }
   @media (max-width:560px){ .nav-label{ display:none; } .brand-word{ display:none; } }
+  /* Theme toggle uses View Transitions: disable the default cross-fade so only our
+     circular clip-path wipe plays (the new render is revealed by the growing circle). */
+  ::view-transition-old(root){ animation:none; }
+  ::view-transition-new(root){ animation:none; }
 </style>
 </helmet>
 
@@ -111,15 +116,14 @@
   </sc-if>
 
   <!-- ============ HEADER ============ -->
-  <header style="position:sticky; top:0; z-index:20; background:var(--headerbg); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);">
+  <header data-el="header" style="position:sticky; top:0; z-index:20; background:var(--headerbg); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);">
     <div style="max-width:940px; margin:0 auto; padding:13px 20px; display:flex; align-items:center; justify-content:space-between; gap:14px;">
       <button onClick="{{ goHome }}" style="display:flex; gap:11px; align-items:center; background:none; border:none; cursor:pointer; padding:0;">
         <span style="width:32px; height:32px; border-radius:8px; background:var(--teal); color:#fff; display:grid; place-items:center; font-family:var(--serif); font-weight:600; font-size:17px; flex-shrink:0;">C</span>
         <span class="brand-word" style="font-family:var(--serif); font-size:18px; font-weight:600; color:var(--ink);">CCTC Practice</span>
       </button>
-      <nav style="display:flex; gap:4px; align-items:center;">
+      <nav data-el="nav" style="display:flex; gap:4px; align-items:center;">
         <button onClick="{{ goHome }}" title="Home" style="{{ navHomeStyle }}"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg><span class="nav-label">Home</span></button>
-        <button onClick="{{ goSetup }}" title="Build a session" style="{{ navSetupStyle }}"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><span class="nav-label">Setup</span></button>
         <button onClick="{{ goHistory }}" title="Progress" style="{{ navHistoryStyle }}"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg><span class="nav-label">Progress</span></button>
         <sc-if value="{{ hasResume }}" hint-placeholder-val="{{ false }}">
           <button onClick="{{ onResume }}" title="Resume session" style="display:flex; gap:6px; align-items:center; padding:8px 12px; border-radius:8px; border:1px solid var(--tealtext); cursor:pointer; font:600 13px var(--sans); background:var(--tealsoft); color:var(--tealtext);"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" style="flex-shrink:0;"><path d="M8 5v14l11-7z"></path></svg><span class="nav-label">Resume</span></button>
@@ -162,7 +166,7 @@
         </sc-if>
 
         <div style="display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); align-items:start;">
-          <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
+        <div data-el="card" style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
             <div style="display:flex; align-items:center; gap:18px; padding-bottom:18px; border-bottom:1px solid var(--line);">
               <div style="position:relative; width:90px; height:90px; border-radius:50%; flex-shrink:0; {{ donutStyle }}">
                 <div style="position:absolute; inset:12px; border-radius:50%; background:var(--surface); display:grid; place-items:center;">
@@ -171,7 +175,7 @@
               </div>
               <div>
                 <div style="display:flex; align-items:center; gap:8px;"><span style="font:600 13px var(--sans); color:var(--ink);">Practice readiness</span><span style="{{ readyBadgeStyle }}">{{ readyBadge }}</span></div>
-                <div style="font-size:12px; color:var(--muted); margin-top:3px;">Weighted recent exam average</div>
+                <div title="{{ readinessTooltip }}" style="display:inline-flex; align-items:center; gap:5px; font-size:12px; color:var(--muted); margin-top:3px; cursor:help;">Weighted recent exam average <span style="display:inline-grid; place-items:center; width:14px; height:14px; border-radius:50%; border:1px solid var(--line2); font-size:9px; font-weight:700; color:var(--muted);">i</span></div>
                 <div style="font-size:12px; font-weight:700; margin-top:9px; {{ deltaStyle }}">{{ deltaText }}</div>
               </div>
             </div>
@@ -180,12 +184,12 @@
               <button onClick="{{ recommendedAction }}" style="margin-top:11px; padding:9px 14px; border:none; border-radius:9px; background:var(--teal); color:#fff; font:600 12.5px var(--sans); cursor:pointer;">{{ recommendedLabel }}</button>
             </div>
             <div style="display:flex; justify-content:space-between; align-items:baseline; margin:18px 0 14px;">
-              <span style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Focus areas</span>
-              <span style="font-size:11px; color:var(--muted);">accuracy · share of exam</span>
+              <span style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Domains</span>
+              <span style="font-size:11px; color:var(--muted);">recent performance · share of exam</span>
             </div>
             <sc-for list="{{ domainBars }}" as="d" hint-placeholder-count="3">
               <div style="margin-bottom:14px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--ink); margin-bottom:6px; gap:10px;"><span style="display:flex; align-items:center; gap:8px; min-width:0;">{{ d.name }}<span style="flex-shrink:0; font:600 10px var(--sans); color:var(--tealtext); background:var(--tealsoft); padding:2px 7px; border-radius:6px;">{{ d.weightChip }}</span></span><span style="color:var(--muted);">{{ d.pctLabel }}</span></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--ink); margin-bottom:6px; gap:10px;"><span style="display:flex; align-items:center; gap:8px; min-width:0;">{{ d.name }}<span style="flex-shrink:0; font:600 10px var(--sans); color:var(--tealtext); background:var(--tealsoft); padding:2px 7px; border-radius:6px;">{{ d.weightChip }}</span></span><span style="display:flex; align-items:center; gap:8px; flex-shrink:0;"><span style="{{ d.statusStyle }}">{{ d.statusLabel }}</span><span style="{{ d.pctStyle }}">{{ d.pctLabel }}</span></span></div>
                 <div style="height:8px; border-radius:5px; background:var(--goldsoft);"><div style="{{ d.fillStyle }}"></div></div>
               </div>
             </sc-for>
@@ -193,7 +197,7 @@
           <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
             <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Quick start</div>
             <div style="display:flex; flex-direction:column; gap:12px;">
-              <button onClick="{{ presetFull }}" style="text-align:left; padding:16px; border:1px solid var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; font-family:var(--sans);">
+              <button data-el="quick-card" onClick="{{ presetFull }}" style="text-align:left; padding:16px; border:1px solid var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; font-family:var(--sans);">
                 <div style="font:600 15px var(--sans); color:var(--ink);">Full mock exam</div>
                 <div style="font-size:12.5px; color:var(--muted); margin-top:4px;">{{ fullMockSub }}</div>
               </button>
@@ -215,7 +219,101 @@
                 <span style="font:600 12px var(--sans); color:var(--tealtext); white-space:nowrap;">Start →</span>
               </button>
             </sc-if>
-            <button onClick="{{ goSetup }}" style="margin-top:14px; width:100%; padding:11px 16px; border:1px solid var(--line2); border-radius:10px; background:var(--surface); color:var(--tealtext); font:600 13px var(--sans); cursor:pointer;">Customize a session →</button>
+
+            <!-- expandable customize (inside quick-start, under last-custom tile) -->
+            <div id="customize-anchor" style="margin-top:14px; border-top:1px solid var(--line); overflow:hidden;">
+            <button onClick="{{ toggleCustomize }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 0 0; background:none; border:none; cursor:pointer; font-family:var(--sans); text-align:left;">
+              <span>
+                <span style="display:block; font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Customize a session</span>
+                <span style="display:block; font-size:12.5px; color:var(--muted); margin-top:3px;">Mode, question set, focus, count, timing &amp; more</span>
+              </span>
+              <span style="font:600 20px var(--sans); color:var(--tealtext); line-height:1;">{{ customizeChevron }}</span>
+            </button>
+            <sc-if value="{{ customizeOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:16px 0 4px; display:flex; flex-direction:column; gap:20px;">
+                <div style="margin-top:0;">
+                  <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Mode</div>
+                  <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
+                    <button onClick="{{ setModeExam }}" style="{{ modeExamStyle }}">Exam</button>
+                    <button onClick="{{ setModeStudy }}" style="{{ modeStudyStyle }}">Study</button>
+                  </div>
+                  <div style="font-size:12px; color:var(--muted); margin-top:8px;">{{ modeHint }}</div>
+                </div>
+
+                <div>
+                  <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Question set</div>
+                  <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
+                    <button onClick="{{ setSetStandard }}" style="{{ qsStdStyle }}">Standard bank</button>
+                    <button onClick="{{ setSetScenario }}" style="{{ qsScnStyle }}">Scenario companions</button>
+                  </div>
+                  <div style="font-size:12px; color:var(--muted); margin-top:8px;">{{ questionSetHint }}</div>
+                </div>
+
+                <div>
+                  <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Focus</div>
+                  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <sc-for list="{{ domainChips }}" as="c" hint-placeholder-count="4">
+                      <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+
+                <div style="display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+                  <div>
+                    <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Question count</div>
+                    <input type="number" min="5" max="{{ countAvailable }}" value="{{ countValue }}" onChange="{{ onCount }}" style="width:100%; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink);" />
+                    <div style="font-size:12px; color:var(--muted); margin-top:6px;">{{ availLabel }}</div>
+                  </div>
+                  <div>
+                    <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Time limit (minutes)</div>
+                    <input type="number" min="1" value="{{ minutesValue }}" onChange="{{ onMinutes }}" disabled="{{ minutesDisabled }}" style="{{ minutesInputStyle }}" />
+                  </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:14px;">
+                  <div style="display:flex; align-items:center; justify-content:space-between;">
+                    <div><div style="font:600 13px var(--sans); color:var(--ink);">Timed session</div><div style="font-size:12px; color:var(--muted);">Counts down like the real 3-hour exam</div></div>
+                    <button onClick="{{ toggleTimed }}" style="{{ timedTrack }}"><span style="{{ timedKnob }}"></span></button>
+                  </div>
+                  <div style="display:flex; align-items:center; justify-content:space-between;">
+                    <div><div style="font:600 13px var(--sans); color:var(--ink);">Show timer on screen</div><div style="font-size:12px; color:var(--muted);">Hide it to reduce pressure</div></div>
+                    <button onClick="{{ toggleShowTimer }}" style="{{ showTimerTrack }}"><span style="{{ showTimerKnob }}"></span></button>
+                  </div>
+                </div>
+
+                <div style="border-top:1px solid var(--line); padding-top:16px;">
+                  <button onClick="{{ toggleAdvanced }}" style="background:none; border:none; padding:0; cursor:pointer; font:600 13px var(--sans); color:var(--tealtext);">{{ advancedLabel }}</button>
+                  <sc-if value="{{ advancedOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:14px; display:flex; flex-direction:column; gap:14px;">
+                      <div>
+                        <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Exam date</div>
+                        <input type="date" value="{{ examDateValue }}" onChange="{{ onExamDate }}" style="width:100%; max-width:340px; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink);" />
+                        <div style="font-size:12px; color:var(--muted); margin-top:6px;">{{ examDateHint }}</div>
+                      </div>
+                      <div>
+                        <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Target score: {{ targetValue }}%</div>
+                        <input type="range" min="50" max="90" step="1" value="{{ targetValue }}" onChange="{{ onTarget }}" onInput="{{ onTarget }}" style="width:100%; max-width:340px; accent-color:var(--teal);" />
+                        <div style="font-size:12px; color:var(--muted); margin-top:6px;">Your personal pass goal. Sets the pass/below line on results, readiness, weak areas, and trend bars. Saved as a preference.</div>
+                      </div>
+                      <div>
+                        <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Blueprint version</div>
+                        <select value="{{ blueprintValue }}" onChange="{{ onBlueprint }}" style="width:100%; max-width:340px; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink);">
+                          <option value="cctc-from-2026-07">2026-07 outline (default)</option>
+                          <option value="cctc-thru-2026-06">Legacy outline (until 2026-06)</option>
+                        </select>
+                      </div>
+                      <div style="display:flex; align-items:center; justify-content:space-between; max-width:340px;">
+                        <div><div style="font:600 13px var(--sans); color:var(--ink);">Include draft items</div><div style="font-size:12px; color:var(--muted);">Exam mode is reviewed-only</div></div>
+                        <button onClick="{{ toggleDrafts }}" style="{{ draftsTrack }}"><span style="{{ draftsKnob }}"></span></button>
+                      </div>
+                    </div>
+                  </sc-if>
+                </div>
+
+                <button data-el="btn-primary" onClick="{{ onStart }}" style="padding:15px; border:none; border-radius:12px; background:var(--teal); color:#fff; font:600 15px var(--sans); cursor:pointer;">{{ startLabel }}</button>
+              </div>
+            </sc-if>
+            </div>
           </div>
         </div>
 
@@ -250,131 +348,6 @@
       </div>
     </sc-if>
 
-    <!-- ============ SETUP ============ -->
-    <sc-if value="{{ isSetupView }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex; flex-direction:column; gap:18px;">
-        <div>
-          <h1 style="font-family:var(--serif); font-size:30px; font-weight:600; margin:0 0 4px; color:var(--ink);">Build a session</h1>
-          <p style="font-size:14px; color:var(--muted); margin:0;">{{ availLabel }}</p>
-        </div>
-
-        <sc-if value="{{ hasResume }}" hint-placeholder-val="{{ false }}">
-          <div style="background:var(--tealsoft); border:1px solid var(--resumeline); border-radius:14px; padding:16px 18px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
-            <div><div style="font:600 14px var(--sans); color:var(--tealtext);">Session in progress</div><div style="font-size:12.5px; color:var(--tealtext);">{{ resumeSub }}</div></div>
-            <div style="display:flex; gap:8px;">
-              <button onClick="{{ onDiscard }}" style="padding:9px 14px; border:1px solid var(--resumeline); border-radius:9px; background:transparent; color:var(--tealtext); font:600 12.5px var(--sans); cursor:pointer;">Discard</button>
-              <button onClick="{{ onResume }}" style="padding:9px 14px; border:none; border-radius:9px; background:var(--teal); color:#fff; font:600 12.5px var(--sans); cursor:pointer;">Resume</button>
-            </div>
-          </div>
-        </sc-if>
-
-        <!-- presets -->
-        <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
-          <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Quick start</div>
-          <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
-            <button onClick="{{ presetFull }}" style="text-align:left; padding:14px; border:1px solid var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; font-family:var(--sans);"><div style="font:600 14px var(--sans); color:var(--ink);">Full mock exam</div><div style="font-size:12px; color:var(--muted); margin-top:3px;">{{ fullMockSub }}</div></button>
-            <button onClick="{{ presetQuick }}" style="text-align:left; padding:14px; border:1px solid var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; font-family:var(--sans);"><div style="font:600 14px var(--sans); color:var(--ink);">Quick exam</div><div style="font-size:12px; color:var(--muted); margin-top:3px;">25 questions · 30 min · exam</div></button>
-            <button onClick="{{ presetWeak }}" style="text-align:left; padding:14px; border:1px solid var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; font-family:var(--sans);"><div style="font:600 14px var(--sans); color:var(--ink);">Weak areas</div><div style="font-size:12px; color:var(--muted); margin-top:3px;">{{ weakSub }}</div></button>
-          </div>
-          <sc-if value="{{ hasLastCustom }}" hint-placeholder-val="{{ false }}">
-            <button onClick="{{ recentStart }}" style="margin-top:12px; width:100%; text-align:left; padding:14px 16px; border:1px dashed var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; font-family:var(--sans);">
-              <span>
-                <span style="display:block; font:600 11px var(--sans); letter-spacing:.1em; text-transform:uppercase; color:var(--goldtext);">Your last custom setup</span>
-                <span style="display:block; font-size:13px; color:var(--ink); margin-top:4px;">{{ lastCustomSummary }}</span>
-              </span>
-              <span style="font:600 12px var(--sans); color:var(--tealtext); white-space:nowrap;">Start →</span>
-            </button>
-          </sc-if>
-        </div>
-
-        <!-- customize -->
-        <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px; display:flex; flex-direction:column; gap:20px;">
-          <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Customize</div>
-
-          <div>
-            <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Mode</div>
-            <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
-              <button onClick="{{ setModeExam }}" style="{{ modeExamStyle }}">Exam</button>
-              <button onClick="{{ setModeStudy }}" style="{{ modeStudyStyle }}">Study</button>
-            </div>
-            <div style="font-size:12px; color:var(--muted); margin-top:8px;">{{ modeHint }}</div>
-          </div>
-
-          <div>
-            <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Question set</div>
-            <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
-              <button onClick="{{ setSetStandard }}" style="{{ qsStdStyle }}">Standard bank</button>
-              <button onClick="{{ setSetScenario }}" style="{{ qsScnStyle }}">Scenario companions</button>
-            </div>
-            <div style="font-size:12px; color:var(--muted); margin-top:8px;">{{ questionSetHint }}</div>
-          </div>
-
-          <div>
-            <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Focus</div>
-            <div style="display:flex; gap:8px; flex-wrap:wrap;">
-              <sc-for list="{{ domainChips }}" as="c" hint-placeholder-count="4">
-                <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
-              </sc-for>
-            </div>
-          </div>
-
-          <div style="display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
-            <div>
-              <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Question count</div>
-              <input type="number" min="5" max="{{ countAvailable }}" value="{{ countValue }}" onChange="{{ onCount }}" style="width:100%; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink);" />
-              <div style="font-size:12px; color:var(--muted); margin-top:6px;">{{ availLabel }}</div>
-            </div>
-            <div>
-              <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Time limit (minutes)</div>
-              <input type="number" min="1" value="{{ minutesValue }}" onChange="{{ onMinutes }}" disabled="{{ minutesDisabled }}" style="{{ minutesInputStyle }}" />
-            </div>
-          </div>
-
-          <div style="display:flex; flex-direction:column; gap:14px;">
-            <div style="display:flex; align-items:center; justify-content:space-between;">
-              <div><div style="font:600 13px var(--sans); color:var(--ink);">Timed session</div><div style="font-size:12px; color:var(--muted);">Counts down like the real 3-hour exam</div></div>
-              <button onClick="{{ toggleTimed }}" style="{{ timedTrack }}"><span style="{{ timedKnob }}"></span></button>
-            </div>
-            <div style="display:flex; align-items:center; justify-content:space-between;">
-              <div><div style="font:600 13px var(--sans); color:var(--ink);">Show timer on screen</div><div style="font-size:12px; color:var(--muted);">Hide it to reduce pressure</div></div>
-              <button onClick="{{ toggleShowTimer }}" style="{{ showTimerTrack }}"><span style="{{ showTimerKnob }}"></span></button>
-            </div>
-          </div>
-
-          <div style="border-top:1px solid var(--line); padding-top:16px;">
-            <button onClick="{{ toggleAdvanced }}" style="background:none; border:none; padding:0; cursor:pointer; font:600 13px var(--sans); color:var(--tealtext);">{{ advancedLabel }}</button>
-            <sc-if value="{{ advancedOpen }}" hint-placeholder-val="{{ false }}">
-              <div style="margin-top:14px; display:flex; flex-direction:column; gap:14px;">
-                <div>
-                  <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Exam date</div>
-                  <input type="date" value="{{ examDateValue }}" onChange="{{ onExamDate }}" style="width:100%; max-width:340px; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink);" />
-                  <div style="font-size:12px; color:var(--muted); margin-top:6px;">{{ examDateHint }}</div>
-                </div>
-                <div>
-                  <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Target score: {{ targetValue }}%</div>
-                  <input type="range" min="50" max="90" step="1" value="{{ targetValue }}" onChange="{{ onTarget }}" onInput="{{ onTarget }}" style="width:100%; max-width:340px; accent-color:var(--teal);" />
-                  <div style="font-size:12px; color:var(--muted); margin-top:6px;">Your personal pass goal. Sets the pass/below line on results, readiness, weak areas, and trend bars. Saved as a preference.</div>
-                </div>
-                <div>
-                  <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Blueprint version</div>
-                  <select value="{{ blueprintValue }}" onChange="{{ onBlueprint }}" style="width:100%; max-width:340px; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink);">
-                    <option value="cctc-from-2026-07">2026-07 outline (default)</option>
-                    <option value="cctc-thru-2026-06">Legacy outline (until 2026-06)</option>
-                  </select>
-                </div>
-                <div style="display:flex; align-items:center; justify-content:space-between; max-width:340px;">
-                  <div><div style="font:600 13px var(--sans); color:var(--ink);">Include draft items</div><div style="font-size:12px; color:var(--muted);">Exam mode is reviewed-only</div></div>
-                  <button onClick="{{ toggleDrafts }}" style="{{ draftsTrack }}"><span style="{{ draftsKnob }}"></span></button>
-                </div>
-              </div>
-            </sc-if>
-          </div>
-
-          <button onClick="{{ onStart }}" style="padding:15px; border:none; border-radius:12px; background:var(--teal); color:#fff; font:600 15px var(--sans); cursor:pointer;">{{ startLabel }}</button>
-        </div>
-      </div>
-    </sc-if>
-
     <!-- ============ SESSION ============ -->
     <sc-if value="{{ isSession }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex; flex-direction:column; gap:16px;">
@@ -397,7 +370,7 @@
 
         <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <span style="font:600 11px var(--sans); color:var(--tealtext); background:var(--tealsoft); padding:5px 11px; border-radius:7px;">{{ currentCategory }}</span>
+            <span data-el="badge" style="font:600 11px var(--sans); color:var(--tealtext); background:var(--tealsoft); padding:5px 11px; border-radius:7px;">{{ currentCategory }}</span>
             <span style="font:600 11px var(--sans); color:var(--muted); background:var(--surface2); border:1px solid var(--line); padding:5px 11px; border-radius:7px;">{{ currentType }}</span>
           </div>
           <sc-if value="{{ showTimerPill }}" hint-placeholder-val="{{ false }}">
@@ -414,8 +387,8 @@
           </sc-if>
           <div style="display:flex; flex-direction:column; gap:10px;">
             <sc-for list="{{ sessionOptions }}" as="opt" hint-placeholder-count="4">
-              <button onClick="{{ opt.onClick }}" style="{{ opt.containerStyle }}">
-                <span style="{{ opt.letterStyle }}">{{ opt.letter }}</span>
+              <button data-el="option-button" onClick="{{ opt.onClick }}" style="{{ opt.containerStyle }}">
+                <span data-el="option-letter" style="{{ opt.letterStyle }}">{{ opt.letter }}</span>
                 <span style="font-size:14px; color:var(--ink); line-height:1.4; padding-top:3px;">{{ opt.text }}<sc-if value="{{ opt.hasSelects }}" hint-placeholder-val="{{ false }}"><small style="display:block; color:var(--muted); margin-top:3px;">{{ opt.selectsText }}</small></sc-if></span>
               </button>
             </sc-for>
@@ -458,14 +431,14 @@
       </div>
     </sc-if>
 
-    <!-- ============ RESULTS ============ -->
+    <!-- ============ RESULTS + REVIEW (combined) ============ -->
     <sc-if value="{{ isResults }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex; flex-direction:column; gap:18px;">
-        <div style="background:var(--teal); border-radius:18px; padding:32px; text-align:center;">
+        <div style="background:var(--teal); border-radius:18px; padding:28px 32px; text-align:center;">
           <div style="font:600 11px var(--sans); letter-spacing:.16em; text-transform:uppercase; color:#8fb6ae;">{{ rsModeText }} complete</div>
-          <div style="font-family:var(--serif); font-size:64px; font-weight:600; color:#fff; line-height:1.05; margin:10px 0 6px;">{{ rsPercent }}%</div>
+          <div style="font-family:var(--serif); font-size:60px; font-weight:600; color:#fff; line-height:1.05; margin:8px 0 6px;">{{ rsPercent }}%</div>
           <div style="font-size:14px; color:#bfe0d6;">{{ rsCorrect }} of {{ rsTotal }} correct · {{ rsTimeText }}</div>
-          <div style="display:inline-block; margin-top:16px; padding:8px 16px; border-radius:9px; font:600 13px var(--sans); {{ rsPassStyle }}">{{ rsPassLabel }}</div>
+          <div style="display:inline-block; margin-top:14px; padding:8px 16px; border-radius:9px; font:600 13px var(--sans); {{ rsPassStyle }}">{{ rsPassLabel }}</div>
         </div>
 
         <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
@@ -479,67 +452,68 @@
         </div>
 
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button onClick="{{ reviewFromResults }}" style="flex:1; min-width:160px; padding:14px; border:none; border-radius:12px; background:var(--teal); color:#fff; font:600 14px var(--sans); cursor:pointer;">Review answers</button>
-          <button onClick="{{ retake }}" style="padding:14px 18px; border:1px solid var(--line2); border-radius:12px; background:var(--surface); color:var(--ink); font:600 14px var(--sans); cursor:pointer;">Retake</button>
-          <button onClick="{{ goHome }}" style="padding:14px 18px; border:1px solid var(--line2); border-radius:12px; background:var(--surface); color:var(--ink); font:600 14px var(--sans); cursor:pointer;">Home</button>
+          <button onClick="{{ retake }}" style="flex:1; min-width:150px; padding:14px 18px; border:none; border-radius:12px; background:var(--teal); color:#fff; font:600 14px var(--sans); cursor:pointer;">Retake</button>
+          <button onClick="{{ resultsBack }}" style="padding:14px 18px; border:1px solid var(--line2); border-radius:12px; background:var(--surface); color:var(--ink); font:600 14px var(--sans); cursor:pointer;">{{ resultsBackLabel }}</button>
         </div>
-      </div>
-    </sc-if>
 
-    <!-- ============ REVIEW ============ -->
-    <sc-if value="{{ isReview }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-          <button onClick="{{ reviewBack }}" style="background:none; border:none; cursor:pointer; font:600 13px var(--sans); color:var(--muted); padding:0;">‹ {{ reviewBackLabel }}</button>
-          <span style="font:600 13px var(--sans); color:var(--ink); white-space:nowrap;">{{ rvPosText }}</span>
-          <div style="display:flex; gap:6px;">
-            <button onClick="{{ openReviewMap }}" style="background:var(--surface); border:1px solid var(--line2); border-radius:8px; padding:7px 12px; cursor:pointer; font:600 12px var(--sans); color:var(--ink);">Map</button>
-            <button onClick="{{ openReport }}" style="background:var(--surface); border:1px solid var(--line2); border-radius:8px; padding:7px 12px; cursor:pointer; font:600 12px var(--sans); color:var(--muted);">Report</button>
+        <!-- review-inline: filter bar + expandable question list -->
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+            <div style="font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink);">Review answers</div>
+            <div style="font-size:12.5px; color:var(--muted);">{{ reviewCountText }}</div>
           </div>
-        </div>
-
-        <sc-if value="{{ reviewMapOpen }}" hint-placeholder-val="{{ false }}">
-          <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:18px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-              <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Jump to item</div>
-              <div style="display:flex; gap:14px; font-size:11px; color:var(--muted);"><span style="color:var(--successtext);">● Correct</span><span style="color:var(--dangertext);">● Incorrect</span></div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
+              <button onClick="{{ setFilterAll }}" style="{{ filterAllStyle }}">All {{ filterAllCount }}</button>
+              <button onClick="{{ setFilterIncorrect }}" style="{{ filterIncorrectStyle }}">Incorrect {{ filterIncorrectCount }}</button>
+              <button onClick="{{ setFilterCorrect }}" style="{{ filterCorrectStyle }}">Correct {{ filterCorrectCount }}</button>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(46px,1fr)); gap:8px;">
-              <sc-for list="{{ rvTrackerChips }}" as="t" hint-placeholder-count="10"><button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button></sc-for>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <sc-for list="{{ reviewDomainChips }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
             </div>
           </div>
-        </sc-if>
 
-        <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px;">
-          <div style="display:flex; gap:8px; margin-bottom:14px;">
-            <span style="font:600 11px var(--sans); color:var(--tealtext); background:var(--tealsoft); padding:5px 11px; border-radius:7px;">{{ rvCategory }}</span>
-            <span style="font:600 11px var(--sans); padding:5px 11px; border-radius:7px; {{ rvVerdictStyle }}">{{ rvVerdict }}</span>
-          </div>
-          <p style="font-family:var(--serif); font-size:19px; line-height:1.5; color:var(--ink); margin:0 0 18px;">{{ rvStem }}</p>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <sc-for list="{{ rvOptions }}" as="opt" hint-placeholder-count="4">
-              <div style="{{ opt.containerStyle }}">
-                <span style="{{ opt.letterStyle }}">{{ opt.letter }}</span>
-                <span style="font-size:14px; color:var(--ink); line-height:1.4; padding-top:3px;">{{ opt.text }}<sc-if value="{{ opt.hasNote }}" hint-placeholder-val="{{ false }}"><small style="display:block; font-weight:600; margin-top:3px; {{ opt.noteStyle }}">{{ opt.note }}</small></sc-if></span>
-              </div>
-            </sc-for>
-          </div>
-          <div style="margin-top:18px; background:var(--surface2); border:1px solid var(--line); border-radius:13px; padding:18px;">
-            <div style="font:700 11px var(--sans); letter-spacing:.1em; text-transform:uppercase; color:var(--successtext); margin-bottom:9px;">{{ rvExpHeader }}</div>
-            <p style="font-size:13.5px; line-height:1.55; color:var(--ink); margin:0 0 12px;">{{ rvExpCorrect }}</p>
-            <sc-for list="{{ rvExpIncorrect }}" as="x" hint-placeholder-count="2"><p style="font-size:12.5px; line-height:1.5; color:var(--muted); margin:0 0 7px;"><strong style="color:var(--ink);">{{ x.letter }}.</strong> {{ x.text }}</p></sc-for>
-            <sc-if value="{{ rvHasRefs }}" hint-placeholder-val="{{ false }}">
-              <div style="margin-top:12px; border-top:1px solid var(--line); padding-top:12px;">
-                <div style="font:600 11px var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:7px;">References</div>
-                <sc-for list="{{ rvExpRefs }}" as="r" hint-placeholder-count="1"><div style="font-size:12px; color:var(--ink); margin-bottom:6px; line-height:1.45;">{{ r.citation }}<sc-if value="{{ r.hasLoc }}" hint-placeholder-val="{{ false }}"><span style="display:block; color:var(--muted); font-size:11.5px; margin-top:2px;">{{ r.locator }}</span></sc-if></div></sc-for>
-              </div>
-            </sc-if>
-          </div>
-        </div>
+          <sc-if value="{{ reviewListEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:28px; text-align:center; font-size:13px; color:var(--muted);">No questions match this filter.</div>
+          </sc-if>
 
-        <div style="display:flex; gap:10px;">
-          <button onClick="{{ rvPrev }}" style="{{ rvPrevStyle }}">Previous</button>
-          <button onClick="{{ rvNext }}" style="{{ rvNextStyle }}">Next</button>
+          <sc-for list="{{ reviewItems }}" as="q" hint-placeholder-count="4">
+            <div style="background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden;">
+              <button onClick="{{ q.onToggle }}" style="width:100%; display:flex; align-items:center; gap:12px; padding:14px 16px; background:none; border:none; cursor:pointer; text-align:left; font-family:var(--sans);">
+                <span style="{{ q.numStyle }}">{{ q.num }}</span>
+                <span style="flex:1; min-width:0;">
+                  <span style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:4px;"><span style="{{ q.verdictStyle }}">{{ q.verdict }}</span><span style="font:600 10.5px var(--sans); color:var(--tealtext); background:var(--tealsoft); padding:2px 8px; border-radius:6px;">{{ q.category }}</span></span>
+                  <span style="display:block; font-size:13px; color:var(--ink); line-height:1.4; {{ q.stemClampStyle }}">{{ q.stemPreview }}</span>
+                </span>
+                <span style="font:600 18px var(--sans); color:var(--muted); line-height:1;">{{ q.chevron }}</span>
+              </button>
+              <sc-if value="{{ q.expanded }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:0 16px 16px; border-top:1px solid var(--line);">
+                  <p style="font-family:var(--serif); font-size:17px; line-height:1.5; color:var(--ink); margin:16px 0 14px;">{{ q.stem }}</p>
+                  <div style="display:flex; flex-direction:column; gap:9px;">
+                    <sc-for list="{{ q.options }}" as="opt" hint-placeholder-count="4">
+                      <div style="{{ opt.containerStyle }}">
+                        <span style="{{ opt.letterStyle }}">{{ opt.letter }}</span>
+                        <span style="font-size:13.5px; color:var(--ink); line-height:1.4; padding-top:3px;">{{ opt.text }}<sc-if value="{{ opt.hasNote }}" hint-placeholder-val="{{ false }}"><small style="display:block; font-weight:600; margin-top:3px; {{ opt.noteStyle }}">{{ opt.note }}</small></sc-if></span>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="margin-top:16px; background:var(--surface2); border:1px solid var(--line); border-radius:12px; padding:16px;">
+                    <div style="font:700 11px var(--sans); letter-spacing:.1em; text-transform:uppercase; color:var(--successtext); margin-bottom:9px;">{{ q.expHeader }}</div>
+                    <p style="font-size:13px; line-height:1.55; color:var(--ink); margin:0 0 12px;">{{ q.expCorrect }}</p>
+                    <sc-for list="{{ q.expIncorrect }}" as="x" hint-placeholder-count="2"><p style="font-size:12.5px; line-height:1.5; color:var(--muted); margin:0 0 7px;"><strong style="color:var(--ink);">{{ x.letter }}.</strong> {{ x.text }}</p></sc-for>
+                    <sc-if value="{{ q.hasRefs }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top:12px; border-top:1px solid var(--line); padding-top:12px;">
+                        <div style="font:600 11px var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:7px;">References</div>
+                        <sc-for list="{{ q.refs }}" as="r" hint-placeholder-count="1"><div style="font-size:12px; color:var(--ink); margin-bottom:6px; line-height:1.45;">{{ r.citation }}<sc-if value="{{ r.hasLoc }}" hint-placeholder-val="{{ false }}"><span style="display:block; color:var(--muted); font-size:11.5px; margin-top:2px;">{{ r.locator }}</span></sc-if></div></sc-for>
+                      </div>
+                    </sc-if>
+                    <button onClick="{{ q.onReport }}" style="margin-top:14px; background:var(--surface); border:1px solid var(--line2); border-radius:8px; padding:7px 12px; cursor:pointer; font:600 12px var(--sans); color:var(--muted);">Report an issue</button>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
         </div>
       </div>
     </sc-if>
@@ -563,41 +537,50 @@
         </sc-if>
 
         <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ true }}">
-          <div style="display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
-            <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
-              <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Score trend</div>
-              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px;">
-                <div><div style="font-size:11px; color:var(--muted);">Average</div><div style="font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink);">{{ histAvg }}%</div></div>
-                <div><div style="font-size:11px; color:var(--muted);">Best</div><div style="font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink);">{{ histBest }}%</div></div>
-                <div><div style="font-size:11px; color:var(--muted);">Latest</div><div style="font-family:var(--serif); font-size:22px; font-weight:600; {{ histDeltaStyle }}">{{ histDelta }}</div></div>
-              </div>
-              <div style="display:flex; align-items:flex-end; gap:6px; height:120px;">
-                <sc-for list="{{ trendBars }}" as="t" hint-placeholder-count="6"><div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:5px;"><div style="{{ t.fillStyle }}"></div><span style="font-size:10px; color:var(--muted);">{{ t.label }}</span></div></sc-for>
+          <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
+              <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Score trend</div>
+              <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
+                <button onClick="{{ setTrendExam }}" style="{{ trendScopeExamStyle }}">Exam</button>
+                <button onClick="{{ setTrendStudy }}" style="{{ trendScopeStudyStyle }}">Study</button>
+                <button onClick="{{ setTrendBoth }}" style="{{ trendScopeBothStyle }}">Both</button>
               </div>
             </div>
-            <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
-              <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">By domain</div>
-              <sc-for list="{{ domainBars }}" as="d" hint-placeholder-count="3"><div style="margin-bottom:14px;"><div style="display:flex; justify-content:space-between; font-size:13px; color:var(--ink); margin-bottom:6px;"><span>{{ d.name }}</span><span style="color:var(--muted);">{{ d.pctLabel }}</span></div><div style="height:8px; border-radius:5px; background:var(--goldsoft);"><div style="{{ d.fillStyle }}"></div></div></div></sc-for>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px; max-width:360px;">
+              <div><div style="font-size:11px; color:var(--muted);">Average</div><div style="font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink);">{{ histAvg }}%</div></div>
+              <div><div style="font-size:11px; color:var(--muted);">Best</div><div style="font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink);">{{ histBest }}%</div></div>
+              <div><div style="font-size:11px; color:var(--muted);">Latest</div><div style="font-family:var(--serif); font-size:22px; font-weight:600; {{ histDeltaStyle }}">{{ histDelta }}</div></div>
             </div>
+            <sc-if value="{{ hasTrend }}" hint-placeholder-val="{{ true }}">
+              <div style="position:relative; height:240px; overflow:hidden;">
+                <x-import component-from-global-scope="score-trend-chart" from="./score-trend-chart.js" data="{{ trendConfigJson }}" hint-size="100%,240px" style="display:block; width:100%; height:240px;"></x-import>
+              </div>
+            </sc-if>
+            <sc-if value="{{ trendEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="height:120px; display:grid; place-items:center; font-size:13px; color:var(--muted);">{{ trendEmptyText }}</div>
+            </sc-if>
           </div>
 
           <div style="display:flex; flex-direction:column; gap:10px;">
             <sc-for list="{{ historyRows }}" as="h" hint-placeholder-count="4">
               <div onClick="{{ h.onRowClick }}" style="{{ h.rowStyle }}">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
-                  <div>
-                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span style="font:600 15px var(--sans); color:var(--ink);">{{ h.scoreText }}</span><sc-if value="{{ h.isSample }}" hint-placeholder-val="{{ false }}"><span style="font:600 10px var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--goldtext); background:var(--goldsoft); padding:3px 7px; border-radius:5px;">Sample</span></sc-if></div>
-                    <div style="font-size:12.5px; color:var(--muted); margin-top:4px;">{{ h.metaText }}</div>
-                    <div style="font-size:11.5px; color:var(--muted); margin-top:2px;">Blueprint: {{ h.blueprintText }}</div>
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
+                  <div style="min-width:0;">
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span style="font:600 15px var(--sans); color:var(--ink);">{{ h.dateLine }}</span><sc-if value="{{ h.isSample }}" hint-placeholder-val="{{ false }}"><span style="font:600 10px var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--goldtext); background:var(--goldsoft); padding:3px 7px; border-radius:5px;">Sample</span></sc-if></div>
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:7px;"><span style="{{ h.modeChipStyle }}">{{ h.mode }}</span><span style="font-size:12.5px; color:var(--muted);">{{ h.itemsText }} · {{ h.durationText }}</span></div>
+                    <div style="font-size:11.5px; color:var(--muted); margin-top:5px;">blueprint {{ h.blueprintText }}</div>
                   </div>
-                  <div style="display:flex; gap:8px;">
-                    <sc-if value="{{ h.canReview }}" hint-placeholder-val="{{ false }}"><button onClick="{{ h.onReview }}" style="padding:9px 14px; border:none; border-radius:9px; background:var(--teal); color:#fff; font:600 12.5px var(--sans); cursor:pointer;">Review →</button></sc-if>
-                    <button onClick="{{ h.onDelete }}" style="padding:9px 12px; border:1px solid var(--line2); border-radius:9px; background:transparent; color:var(--muted); font:600 12.5px var(--sans); cursor:pointer;">Delete</button>
+                  <div style="display:flex; gap:12px; align-items:flex-start; flex-shrink:0;">
+                    <div style="text-align:right;"><div style="font-family:var(--serif); font-size:22px; font-weight:600; {{ h.scoreStyle }}">{{ h.scorePct }}</div><div style="font-size:11.5px; color:var(--muted);">{{ h.correctText }}</div></div>
+                    <button onClick="{{ h.onDelete }}" title="Delete session" style="flex-shrink:0; width:34px; height:34px; border:1px solid var(--line2); border-radius:9px; background:transparent; color:var(--muted); cursor:pointer; display:grid; place-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
                   </div>
                 </div>
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; padding-top:12px; border-top:1px solid var(--line);">
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; margin-top:14px; padding-top:14px; border-top:1px solid var(--line);">
                   <sc-for list="{{ h.domainCells }}" as="dc" hint-placeholder-count="3">
-                    <div style="background:var(--surface2); border:1px solid var(--line); border-radius:8px; padding:6px 11px;"><span style="font-size:11px; color:var(--muted);">{{ dc.label }}</span> <span style="font:600 12px var(--sans); color:var(--ink); margin-left:3px;">{{ dc.score }}</span></div>
+                    <div style="background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:11px 13px;">
+                      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:8px;"><span style="min-width:0;"><span style="{{ dc.tagStyle }}">{{ dc.tag }}</span> <span style="font-size:12.5px; color:var(--ink);">{{ dc.name }}</span></span><span style="font:600 13px var(--sans); color:var(--ink); flex-shrink:0;">{{ dc.score }}</span></div>
+                      <div style="height:7px; border-radius:5px; background:var(--goldsoft);"><div style="{{ dc.barStyle }}"></div></div>
+                    </div>
                   </sc-for>
                 </div>
               </div>
@@ -696,9 +679,9 @@ class Component extends DCLogic {
     ready:false, view:'home', disclaimerSeen:false, theme:'day', targetThreshold:null,
     QUESTIONS:[], SCENARIOS:[], DOMAINS:[], BLUEPRINT:null,
     settings:{ mode:'exam', questionSet:'standard', timed:true, timeMinutes:180, showTimer:true, count:10, domains:'all', blueprint:'cctc-from-2026-07', includeDrafts:false },
-    session:null, completed:null, reviewIndex:0, reviewFrom:'results',
+    session:null, completed:null, reviewIndex:0, reviewFrom:'results', resultFilter:'all', resultDomain:'all', expandedReview:{}, trendScope:'exam',
     history:[], flags:[], lastCustom:null,
-    menuOpen:false, mapOpen:false, reviewMapOpen:false, advancedOpen:false,
+    menuOpen:false, mapOpen:false, reviewMapOpen:false, advancedOpen:false, customizeOpen:false,
     startPromptOpen:false, pendingStart:null, confirmOpen:false, destructive:null, examDate:null,
     reportOpen:false, reportReason:'factual error', reportComment:'', editingFlagId:null
   };
@@ -748,6 +731,21 @@ class Component extends DCLogic {
       settings: { ...this.state.settings, mode: this.props.startMode || 'exam', count: Math.min(10, (mod.QUESTIONS||[]).length||10) }
     }, ()=>{ this.persistPrefs({seeded:true}); this.applyTheme(); });
     this.timer = setInterval(()=>this.tick(), 1000);
+    this.loadChartLibs();
+  }
+  loadChartLibs(){
+    // Load React/ReactDOM/Recharts UMD AFTER the DC has mounted, so they can't clobber the
+    // DC runtime's own React at init. <score-trend-chart> retries until Recharts is present.
+    if(this._chartLibsStarted) return; this._chartLibsStarted=true;
+    var urls=[
+      'https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js',
+      'https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js',
+      'https://cdn.jsdelivr.net/npm/prop-types@15.8.1/prop-types.min.js',
+      'https://cdn.jsdelivr.net/npm/recharts@2.12.7/umd/Recharts.js'
+    ];
+    var i=0;
+    function next(){ if(i>=urls.length) return; var s=document.createElement('script'); s.src=urls[i++]; s.async=false; s.onload=next; s.onerror=next; document.head.appendChild(s); }
+    next();
   }
   componentDidUpdate(){ this.applyTheme(); }
   componentWillUnmount(){ clearInterval(this.timer); }
@@ -758,7 +756,36 @@ class Component extends DCLogic {
     if(this.props.accent) this.rootEl.style.setProperty('--gold', this.props.accent);
     try { document.body.style.background = t['--bg']; } catch(e){}
   }
-  toggleTheme(){ this.setState(s=>({ theme: s.theme==='night'?'day':'night' }), ()=>{ this.persistPrefs(); this.applyTheme(); }); }
+  toggleTheme(e){
+    var self=this;
+    try { if(e){ this._themeX=e.clientX; this._themeY=e.clientY; } } catch(_){}
+    var next = this.state.theme==='night'?'day':'night';
+    var swap = function(){ self.setState({ theme:next }, function(){ self.persistPrefs(); self.applyTheme(); }); };
+    var reduced=false; try{ reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(_){}
+    var x = (this._themeX!=null? this._themeX : window.innerWidth-40);
+    var y = (this._themeY!=null? this._themeY : 30);
+    // True real-time curtain: View Transitions snapshots the OLD render and the NEW render and
+    // clips between them, so both themes are visible live along the wipe edge — no overlay, no
+    // fade, never blocks content. The new snapshot is revealed by a circle grown from the toggle.
+    if(!reduced && document.startViewTransition){
+      this._vtx=x; this._vty=y;
+      var done=false;
+      try {
+        var vt = document.startViewTransition(function(){ return new Promise(function(res){ self.setState({ theme:next }, function(){ self.persistPrefs(); self.applyTheme(); done=true; res(); }); }); });
+        vt.ready.then(function(){
+          var endR = Math.hypot(Math.max(x, window.innerWidth-x), Math.max(y, window.innerHeight-y)) + 4;
+          document.documentElement.animate(
+            { clipPath: ['circle(0px at '+x+'px '+y+'px)', 'circle('+endR+'px at '+x+'px '+y+'px)'] },
+            { duration: 480, easing:'cubic-bezier(.4,0,.2,1)', pseudoElement:'::view-transition-new(root)' }
+          );
+        }).catch(function(){});
+        // Guard: if the transition never fires, ensure the swap still happens.
+        setTimeout(function(){ if(!done) swap(); }, 400);
+      } catch(_){ swap(); }
+      return;
+    }
+    swap();
+  }
 
   // Build reviewable items+answers for a sample session from the real bank, consistent with
   // the per-domain correct/total breakdown, so seeded demo sessions can be reviewed.
@@ -815,6 +842,7 @@ class Component extends DCLogic {
   daysToExam(){ if(!this.state.examDate) return null; const today=new Date(); today.setHours(0,0,0,0); const ex=new Date(this.state.examDate+'T00:00:00'); if(isNaN(ex.getTime())) return null; return Math.round((ex-today)/86400000); }
 
   setView(v){ this.setState({ view:v, menuOpen:false, mapOpen:false }); }
+  openCustomize(alsoAdvanced){ this.setState({ view:'home', customizeOpen:true, advancedOpen: alsoAdvanced? true : this.state.advancedOpen, menuOpen:false, mapOpen:false }, ()=>{ const doScroll=()=>{ try{ const el=document.getElementById('customize-anchor'); if(el){ const y=el.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop)-70; window.scrollTo(0, Math.max(0,y)); } }catch(e){} }; [120,300,550,850].forEach(t=>setTimeout(doScroll, t)); }); }
   ackDisclaimer(){ this.setState({ disclaimerSeen:true }, ()=>this.persistPrefs()); }
 
   bank(settings){ return (settings.questionSet==='scenario'? this.state.SCENARIOS : this.state.QUESTIONS) || []; }
@@ -850,7 +878,7 @@ class Component extends DCLogic {
     const items=pool.slice(0,count).map(q=>({ q, optionOrder: shuffle(q.options.map(o=>o.id)) }));
     return { id:uid(), createdAt:Date.now(), settings:{...settings}, items, answers:{}, revealed:{}, bookmarks:[], currentIndex:0, remainingSeconds: settings.timed? settings.timeMinutes*60 : null, submittedAt:null };
   }
-  startSession(settings){ const sess=this.buildSession(settings); if(!sess.items.length){ this.setState({ bankError:true, startPromptOpen:false, pendingStart:null, view:'setup' }); return; } this.setState({ bankError:false, session:sess, completed:null, view:'session', menuOpen:false, mapOpen:false, startPromptOpen:false, pendingStart:null }); save(LS.session, sess); }
+  startSession(settings){ const sess=this.buildSession(settings); if(!sess.items.length){ this.setState({ bankError:true, startPromptOpen:false, pendingStart:null, view:'home', customizeOpen:true }); return; } this.setState({ bankError:false, session:sess, completed:null, view:'session', menuOpen:false, mapOpen:false, startPromptOpen:false, pendingStart:null }); save(LS.session, sess); }
 
   startFlow(settings){
     if(this.state.session && !this.state.session.submittedAt){
@@ -880,7 +908,7 @@ class Component extends DCLogic {
   // noise of an EMA on a thin per-domain series. Returns pct or null (unattempted in window).
   windowSize(){ return this.props.weakWindowSessions ?? 6; }
   recentDomainPct(id){ const N=this.windowSize(); const recent=(this.state.history||[]).slice().sort((a,b)=>b.completedAt-a.completedAt).slice(0,N); let c=0,t=0; recent.forEach(e=>(e.result.breakdown||[]).forEach(b=>{ if(b.domain===id){ c+=b.correct; t+=b.total; } })); return t? c/t*100 : null; }
-  weakDomains(){ const th=this.target(); return (this.state.DOMAINS||[]).map(d=>({id:d.id, short:d.short, pct:this.recentDomainPct(d.id)})).filter(x=> x.pct!=null && x.pct < th).sort((a,b)=>a.pct-b.pct); }
+  weakDomains(){ const th=this.target(); return (this.state.DOMAINS||[]).map(d=>({id:d.id, short:d.short, pct:this.domainEma(d.id)})).filter(x=> x.pct!=null && x.pct < th).sort((a,b)=>a.pct-b.pct); }
   // Plain-language readiness verdict + a one-tap recommended next action.
   // Inputs: readiness EMA vs target, weakest domain, and days-to-exam (all optional).
   readinessInsight(readinessPct){
@@ -892,10 +920,10 @@ class Component extends DCLogic {
       return { badge:'Not measured', badgeKind:'muted', text:'Take a practice exam to measure where you stand against your '+t+'% target.'+daysPhrase, action:'quick', label:'Take a quick exam →' };
     }
     if(readinessPct>=t && !weakest){
-      return { badge:'On track', badgeKind:'success', text:'You\u2019re at '+readinessPct+'%, at or above your '+t+'% target across every domain. Keep sharp with a full mock.'+daysPhrase, action:'full', label:'Take a full mock exam →' };
+      return { badge:'Exam-ready', badgeKind:'success', text:'You\u2019re at '+readinessPct+'% \u2014 at or above your '+t+'% target across every domain. On your practice data you\u2019re exam-ready; keep sharp with a full mock.'+daysPhrase, action:'full', label:'Take a full mock exam →' };
     }
     if(readinessPct>=t && weakest){
-      return { badge:'Nearly ready', badgeKind:'gold', text:'Overall you\u2019re at '+readinessPct+'% \u2014 at your '+t+'% target \u2014 but '+weakest.short+' ('+Math.round(weakest.pct)+'%) still lags. One focused set will shore it up.'+daysPhrase, action:'weakDomain', actionDomain:weakest.id, label:'Practice '+weakest.short+' \u00b7 10 questions →' };
+      return { badge:'On track', badgeKind:'gold', text:'Overall you\u2019re at '+readinessPct+'% \u2014 at your '+t+'% target \u2014 but '+weakest.short+' ('+Math.round(weakest.pct)+'%) still lags. One focused set will shore it up.'+daysPhrase, action:'weakDomain', actionDomain:weakest.id, label:'Practice '+weakest.short+' \u00b7 10 questions →' };
     }
     // below target
     const gap=t-readinessPct;
@@ -915,6 +943,11 @@ class Component extends DCLogic {
   // Exponential moving average over a date-ordered series (oldest→newest). α default 0.3
   // (~last-6 carry half the weight). Returns rounded EMA or null for an empty series.
   ema(series){ if(!series.length) return null; const a=this.props.readinessAlpha ?? 0.3; let v=series[0]; for(let i=1;i<series.length;i++){ v = a*series[i] + (1-a)*v; } return Math.round(v); }
+  // Per-domain EMA over EXAM sessions (date-ordered), same method/window as readiness, so the
+  // domain bars reconcile with the overall readiness number (both recency-weighted, exam-only).
+  domainEma(id){ const series=(this.state.history||[]).filter(e=>e.settings&&e.settings.mode==='exam').slice().sort((a,b)=>a.completedAt-b.completedAt).map(e=>{ const b=(e.result.breakdown||[]).find(x=>x.domain===id); return b? b.percent : null; }).filter(p=>p!=null); return this.ema(series); }
+  // Status of a domain EMA vs the user's target: ≥target Strong, within 15pts Developing, else Weak.
+  domStatus(ema){ const t=this.target(); if(ema==null) return { key:'none', label:'No data', color:'var(--line2)', text:'var(--muted)' }; if(ema>=t) return { key:'strong', label:'Strong', color:'var(--success)', text:'var(--successtext)' }; if(ema>=t-15) return { key:'developing', label:'Developing', color:'var(--gold)', text:'var(--goldtext)' }; return { key:'weak', label:'Weak', color:'var(--danger)', text:'var(--dangertext)' }; }
 
   mutate(fn){ this.setState(st=>{ if(!st.session) return null; const ns=fn(st.session); save(LS.session, ns); return { session:ns }; }); }
   answer(oid){ this.mutate(s=>{ const it=s.items[s.currentIndex]; const id=it.q.id; const revealed= s.settings.mode==='study'? {...s.revealed,[id]:true} : s.revealed; return {...s, answers:{...s.answers,[id]:oid}, revealed}; }); }
@@ -939,10 +972,11 @@ class Component extends DCLogic {
   deleteEntry(id){ const entry=(this.state.history||[]).find(e=>e.id===id); const label= entry? (entry.result.percent+'% · '+shortDate(entry.completedAt)) : 'this session'; this.askConfirm({ title:'Delete this session?', body:'This permanently removes the '+label+' result and its answer review. This cannot be undone.', cta:'Delete', run:()=>{ const h=this.state.history.filter(e=>e.id!==id); save(LS.history, h); this.setState({ history:h }); } }); }
   discardSession(){ save(LS.session, null); this.setState({ session:null, view:'home', startPromptOpen:false, pendingStart:null }); }
 
-  openReport(){ this.setState({ reportOpen:true, menuOpen:false, editingFlagId:null, reportReason:'factual error', reportComment:'' }); }
+  openReport(){ this.setState({ reportOpen:true, menuOpen:false, editingFlagId:null, reportQ:null, reportReason:'factual error', reportComment:'' }); }
+  openReportFor(q){ this.setState({ reportOpen:true, menuOpen:false, editingFlagId:null, reportQ:q, reportReason:'factual error', reportComment:'' }); }
   editFlag(id){ const f=(this.state.flags||[]).find(x=>x.id===id); if(!f) return; this.setState({ reportOpen:true, editingFlagId:id, reportReason:f.reason, reportComment:f.comment||'' }); }
   saveReport(){ const editId=this.state.editingFlagId; if(editId){ const flags=this.state.flags.map(f=> f.id===editId? {...f, reason:this.state.reportReason, comment:this.state.reportComment, at:Date.now()} : f); this.setState({ flags, reportOpen:false, editingFlagId:null }, ()=>this.persistPrefs()); return; } const it=this.reportItem(); const flag={ id:uid(), itemId: it? it.id : '?', itemStem: it? (it.stem||'').slice(0,160) : '', domain: it? it.domain : null, reason:this.state.reportReason, comment:this.state.reportComment, at:Date.now() }; const flags=[flag, ...this.state.flags]; this.setState({ flags, reportOpen:false }, ()=>this.persistPrefs()); }
-  reportItem(){ if(this.state.view==='session' && this.state.session){ return this.state.session.items[this.state.session.currentIndex].q; } if(this.state.completed){ return this.state.completed.items[this.state.reviewIndex].q; } return null; }
+  reportItem(){ if(this.state.reportQ) return this.state.reportQ; if(this.state.view==='session' && this.state.session){ return this.state.session.items[this.state.session.currentIndex].q; } if(this.state.completed){ return this.state.completed.items[this.state.reviewIndex].q; } return null; }
   deleteFlag(id){ this.askConfirm({ title:'Delete this flag?', body:'This removes the reported item from your device. This cannot be undone.', cta:'Delete', run:()=>{ const flags=this.state.flags.filter(f=>f.id!==id); this.setState({ flags }, ()=>this.persistPrefs()); } }); }
   clearFlags(){ this.askConfirm({ title:'Clear all flags?', body:'This removes every reported item saved on this device. This cannot be undone.', cta:'Clear flags', run:()=>{ this.setState({ flags:[] }, ()=>this.persistPrefs()); } }); }
   exportFlags(){ try{ const payload={ schema:'cctc-flags', version:1, exportedAt:new Date().toISOString(), blueprint: this.state.settings.blueprint, count:(this.state.flags||[]).length, flags:(this.state.flags||[]).map(f=>({ itemId:f.itemId, domain:f.domain||null, reason:f.reason, comment:f.comment||'', reportedAt:new Date(f.at).toISOString(), itemStem:f.itemStem||'' })) }; const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='cctc-flags-'+new Date().toISOString().slice(0,10)+'.json'; document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(()=>URL.revokeObjectURL(url), 1000); }catch(e){} }
@@ -956,6 +990,9 @@ class Component extends DCLogic {
   knob(on){ return 'position:absolute; top:3px; left:'+(on?'22px':'3px')+'; width:21px; height:21px; border-radius:50%; background:#fff; transition:left .15s; box-shadow:0 1px 3px rgba(0,0,0,.25);'; }
   barFill(pct, color){ return 'height:100%; width:'+pct+'%; border-radius:5px; background:'+color+';'; }
   domColor(pct){ if(pct==null) return 'var(--line2)'; if(pct>=75) return 'var(--teal)'; if(pct>=65) return 'var(--gold)'; return 'var(--danger)'; }
+  // Fixed per-domain identity colors (used in composition views: stacked trend + session cards).
+  domColorId(id){ return id===1?'var(--teal)': id===2?'var(--gold)':'var(--danger)'; }
+  domTextId(id){ return id===1?'var(--tealtext)': id===2?'var(--goldtext)':'var(--dangertext)'; }
 
   renderVals(){
     const st=this.state; const S=st.settings;
@@ -963,7 +1000,6 @@ class Component extends DCLogic {
     const ready=st.ready;
     const isHome = st.view==='home';
     const isDashboard = ready && isHome;
-    const isSetupView = ready && st.view==='setup';
     const isSession = ready && st.view==='session' && !!st.session && st.session.items.length>0;
     const isResults = ready && st.view==='results' && !!st.completed;
     const isReview = ready && st.view==='review' && !!st.completed;
@@ -985,11 +1021,36 @@ class Component extends DCLogic {
     const deltaStyle= delta==null? 'color:var(--muted);' : (delta>0? 'color:var(--successtext);' : delta<0? 'color:var(--dangertext);' : 'color:var(--muted);');
 
     const agg=this.domainAgg();
-    const domainBars=(st.DOMAINS||[]).map(d=>{ const a=agg[d.id]; const pct= a&&a.t? Math.round(a.c/a.t*100):null; const color=this.domColor(pct); return { key:d.id, name:'Domain '+d.id+' · '+d.short, weightChip:(d.weightPct!=null? d.weightPct+'% of exam':''), pctLabel: pct==null?'—':pct+'%', fillStyle:this.barFill(pct==null?0:pct, color) }; });
+    const domainBars=(st.DOMAINS||[]).map(d=>{ const ema=this.domainEma(d.id); const stt=this.domStatus(ema); return { key:d.id, name:d.short, weightChip:(d.weightPct!=null? d.weightPct+'% of exam':''), pctLabel: ema==null?'—':ema+'%', statusLabel: stt.label, statusStyle:'font:600 10px var(--sans); letter-spacing:.04em; text-transform:uppercase; padding:2px 7px; border-radius:6px; color:'+stt.text+'; background:'+(stt.key==='strong'?'var(--successsoft)':stt.key==='developing'?'var(--goldsoft)':stt.key==='weak'?'var(--dangersoft)':'var(--surface2)')+';', pctStyle:'color:'+stt.text+';', fillStyle:this.barFill(ema==null?0:ema, stt.color) }; });
 
-    const trendSrc=examHist.slice(-8);
-    const trendBars=trendSrc.map((e,i)=>{ const below=e.result.percent<this.target(); return { key:e.id+'-'+i, label:shortDate(e.completedAt), fillStyle:'width:100%; max-width:30px; border-radius:6px 6px 3px 3px; height:'+Math.max(4,e.result.percent)+'%; background:'+(below?'var(--gold)':'var(--teal)')+';' }; });
-    const hasTrend=trendBars.length>0;
+    // Score trend chart source respects the scope filter (exam default / study / both).
+    const _histSorted=(st.history||[]).slice().sort((a,b)=>a.completedAt-b.completedAt);
+    const _scoped= st.trendScope==='study'? _histSorted.filter(e=>e.settings&&e.settings.mode==='study')
+                 : st.trendScope==='both'? _histSorted
+                 : _histSorted.filter(e=>e.settings&&e.settings.mode==='exam');
+    const trendSrc=_scoped.slice(-8);
+    // Score trend = Recharts stacked-area (bar-chart fallback). Each session's overall % split
+    // into per-domain contributions; dashed target line + date labels.
+    const _th = THEME[st.theme==='night'?'night':'day'];
+    const domSorted=(st.DOMAINS||[]).slice().sort((a,b)=>a.id-b.id);
+    const _night = st.theme==='night';
+    // Score-trend domain palette (chart-only): user-specified light/dark hex per domain.
+    const _trendPalette = { 1: _night?'#2a937c':'#006652', 2: _night?'#f4a24b':'#a75c00', 3: _night?'#767ad8':'#6364c0' };
+    const _domColHex = (id)=> _trendPalette[id] || _th['--muted'];
+    const _trendData = trendSrc.map(e=>{ const tot=e.result.total||1; const bd=e.result.breakdown||[]; const row={ name: shortDate(e.completedAt) }; domSorted.forEach(d=>{ const b=bd.find(x=>x.domain===d.id); row[d.short]= b? Math.round(b.correct/tot*1000)/10 : 0; }); return row; });
+    const trendConfig = {
+      data: _trendData,
+      keys: domSorted.map(d=>({ key:'d'+d.id, label:d.short, color:_domColHex(d.id) })),
+      target: this.target(), targetLabel:'TARGET '+this.target(), targetColor:_th['--ink'],
+      axisColor:_th['--muted'], gridColor:_th['--line'],
+      tooltipBg:_th['--surface'], tooltipBorder:_th['--line2'], tooltipInk:_th['--ink'], height:240,
+      barStrong:_th['--success'], barMid:_th['--gold'], barWeak:_th['--danger']
+    };
+    const trendConfigJson = JSON.stringify(trendConfig);
+    const hasTrend = trendSrc.length>0;
+    const _tScope=st.trendScope;
+    const trendScopeStyle=(k)=>'padding:6px 12px; border-radius:8px; border:none; cursor:pointer; font:600 12px var(--sans); '+(_tScope===k?'background:var(--teal); color:#fff;':'background:transparent; color:var(--muted);');
+    const trendLegend = domSorted.map(d=>({ key:d.id, label:d.short, dotStyle:'width:9px; height:9px; border-radius:3px; background:'+this.domColorId(d.id)+'; display:inline-block;' }));
 
     const hasResume= !!(st.session && !st.session.submittedAt);
     const resumeSub= hasResume? ('Item '+(st.session.currentIndex+1)+' of '+st.session.items.length+' · '+(st.session.settings.mode==='exam'?'Exam':'Study')+(st.session.remainingSeconds!=null?(' · '+clock(st.session.remainingSeconds)+' left'):'')) : '';
@@ -1001,23 +1062,28 @@ class Component extends DCLogic {
       showDisclaimer: ready && !st.disclaimerSeen,
       ackDisclaimer: ()=>self.ackDisclaimer(),
       // theme
-      toggleTheme: ()=>self.toggleTheme(),
+      toggleTheme: (e)=>self.toggleTheme(e),
       themeIcon: st.theme==='night'? '☀' : '☾',
       themeTitle: st.theme==='night'? 'Switch to day mode' : 'Switch to night mode',
+      readinessTooltip: 'Readiness is an exponential moving average (EMA) of your recent exam-mode scores — the most recent sessions count the most, so it tracks where you are now rather than your all-time average. Study sessions are excluded. Target: '+this.target()+'%.',
       // nav
       goHome: ()=>self.setView('home'),
       goHistory: ()=>self.setView('history'),
-      goSetup: ()=>self.setView('setup'),
+      openCustomize: ()=>self.openCustomize(false),
       navHomeStyle: this.navStyle(isHome),
-      navSetupStyle: this.navStyle(isSetupView),
+      navSetupStyle: this.navStyle(isHome && st.customizeOpen),
       navHistoryStyle: this.navStyle(isHistory),
       hasResume, onResume: ()=>self.setView('session'), onDiscard: ()=>self.discardSession(),
-      isHome, isDashboard, isSetupView, isSession, isResults, isReview, isHistory,
+      isHome, isDashboard, isSession, isResults, isReview, isHistory,
+      customizeOpen: st.customizeOpen,
+      customizeChevron: st.customizeOpen? '−' : '+',
+      customizeLabel: (st.customizeOpen?'− ':'+ ')+'Customize a session',
+      toggleCustomize: ()=>self.setState(s=>({ customizeOpen:!s.customizeOpen })),
       // dashboard
       daysText:(()=>{ const d=this.daysToExam(); if(d==null) return 'Set your exam date'; if(d<0) return 'Exam date has passed'; if(d===0) return 'Your exam is today'; return d+' day'+(d===1?'':'s')+' to your exam'; })(),
       examDateUnset: this.daysToExam()==null,
       greetingDateStyle: 'background:none; border:none; padding:0; cursor:pointer; font:inherit; color:'+(this.daysToExam()==null?'var(--tealtext)':'var(--muted)')+'; text-decoration:'+(this.daysToExam()==null?'underline':'none')+'; text-underline-offset:2px;',
-      onGreetingDate: ()=>{ self.setState({ view:'setup', advancedOpen:true }); },
+      onGreetingDate: ()=>{ self.openCustomize(true); },
       bankText:(st.BLUEPRINT? (st.BLUEPRINT.productionBankTotal+' items · '+st.BLUEPRINT.totalItems+'-item exam, '+st.BLUEPRINT.timeMinutes+' min') : ((st.QUESTIONS||[]).length+' practice items')),
       readinessText: readinessPct==null? '—' : readinessPct+'%',
       donutStyle: 'background:conic-gradient(var(--teal) 0% '+(readinessPct==null?0:readinessPct)+'%, var(--ring) '+(readinessPct==null?0:readinessPct)+'% 100%);',
@@ -1031,8 +1097,11 @@ class Component extends DCLogic {
       resumeTitle: hasResume? 'Resume your session' : 'Start a practice session',
       resumeSub: hasResume? resumeSub : 'Pick a quick-start below or customize your own.',
       resumeCardLabel: hasResume? 'Resume →' : 'Customize →',
-      resumeCardAction: hasResume? (()=>self.setView('session')) : (()=>self.setView('setup')),
-      domainBars, trendBars, hasTrend, noTrend: !hasTrend,
+      resumeCardAction: hasResume? (()=>self.setView('session')) : (()=>self.openCustomize(false)),
+      domainBars, hasTrend, noTrend: !hasTrend, trendConfigJson, trendLegend,
+      trendScopeExamStyle: trendScopeStyle('exam'), trendScopeStudyStyle: trendScopeStyle('study'), trendScopeBothStyle: trendScopeStyle('both'),
+      setTrendExam: ()=>self.setState({trendScope:'exam'}), setTrendStudy: ()=>self.setState({trendScope:'study'}), setTrendBoth: ()=>self.setState({trendScope:'both'}),
+      trendEmpty: !hasTrend, trendEmptyText: st.trendScope==='study'? 'No study sessions yet.' : (st.trendScope==='both'? 'No sessions yet.' : 'No exam sessions yet.'),
       fullMockSub: 'All '+((st.QUESTIONS||[]).length)+' items · timed 180 min',
       hasRecent: (st.history||[]).length>0, noRecent: (st.history||[]).length===0,
       recentRows: (st.history||[]).slice().sort((a,b)=>b.completedAt-a.completedAt).slice(0,5).map(e=>{
@@ -1041,7 +1110,7 @@ class Component extends DCLogic {
         const canReview= !!(e.items && e.items.length>0);
         return {
           key:e.id,
-          onReview:()=>{ if(canReview) self.setState({ completed:e, reviewIndex:0, reviewFrom:'dashboard', view:'review', reviewMapOpen:false }); },
+          onReview:()=>{ if(canReview) self.setState({ completed:e, reviewFrom:'dashboard', view:'results', resultFilter:'all', resultDomain:'all', expandedReview:{} }); },
           rowStyle:'display:grid; grid-template-columns:1.2fr .9fr .9fr .7fr .8fr .8fr; gap:10px; align-items:center; padding:13px 4px; border-bottom:1px solid var(--line);'+(canReview?' cursor:pointer;':''),
           date:shortDate(e.completedAt),
           mode:(isExam?'Exam':'Study'),
@@ -1168,42 +1237,82 @@ class Component extends DCLogic {
       out.rsPassLabel= c.result.estimatedPass? ('At or above your '+this.target()+'% target') : ('Below your '+this.target()+'% target');
       out.rsPassStyle= c.result.estimatedPass? 'background:var(--successsoft); color:var(--successtext);' : 'background:var(--goldsoft); color:var(--goldtext);';
       out.rsBreakdown= c.result.breakdown.map(b=>({ key:b.domain, name:'Domain '+b.domain+' · '+b.name, scoreText:b.correct+'/'+b.total+' · '+b.percent+'%', fillStyle:this.barFill(b.percent, this.domColor(b.percent)) }));
-      out.reviewFromResults=()=>self.setState({ view:'review', reviewIndex:0, reviewFrom:'results', reviewMapOpen:false });
       out.retake=()=>self.startSession(c.settings);
-      const idx=Math.min(st.reviewIndex, (c.items?c.items.length:1)-1);
-      if(c.items && c.items.length){
-        const it=c.items[idx]; const ans=c.answers[it.q.id]; const correct=ans===it.q.correct; const total=c.items.length;
-        out.rvPosText='Item '+(idx+1)+' of '+total;
-        out.rvCategory='Domain '+it.q.domain+' · '+it.q.domainShort;
-        out.rvVerdict= correct? 'Correct' : (ans? 'Incorrect':'Skipped');
-        out.rvVerdictStyle= correct? 'background:var(--successsoft); color:var(--successtext);' : 'background:var(--dangersoft); color:var(--dangertext);';
-        out.rvStem= it.q.stem;
-        out.rvOptions= it.optionOrder.map((oid,i)=>{ const opt=it.q.options.find(o=>o.id===oid); const letter=String.fromCharCode(65+i); const isCorrect=it.q.correct===oid; const isSel=ans===oid; let bd='1px solid var(--line2)', bg='var(--surface)', lb='var(--letterbg)', lc='var(--ink)', note='', ns=''; if(isCorrect){ bd='1.5px solid var(--success)'; bg='var(--successsoft)'; lb='var(--success)'; lc='#fff'; note='Correct answer'; ns='color:var(--successtext);'; } if(isSel&&!isCorrect){ bd='1.5px solid var(--danger)'; bg='var(--dangersoft)'; lb='var(--danger)'; lc='#fff'; note='Your answer'; ns='color:var(--dangertext);'; } return { key:oid, letter, text:opt.text, hasNote:!!note, note, noteStyle:ns, containerStyle:'display:flex; gap:13px; align-items:flex-start; padding:14px 15px; border-radius:11px; border:'+bd+'; background:'+bg+';', letterStyle:'width:27px; height:27px; border-radius:50%; background:'+lb+'; color:'+lc+'; display:grid; place-items:center; font-size:12.5px; font-weight:700; flex-shrink:0;' }; });
+      out.resultsBack=()=> st.reviewFrom==='history'? self.setView('history') : (st.reviewFrom==='dashboard'? self.setView('home') : self.setView('home'));
+      out.resultsBackLabel= st.reviewFrom==='history'? 'Back to progress' : 'Home';
+      // ---- combined review: filter + expandable question list ----
+      const items=c.items||[];
+      const isCorrect=(it)=> c.answers[it.q.id]===it.q.correct;
+      const nCorrect=items.filter(isCorrect).length, nIncorrect=items.length-nCorrect;
+      const flt=st.resultFilter, fdom=st.resultDomain;
+      out.reviewCountText= items.length+' question'+(items.length===1?'':'s');
+      out.filterAllCount=items.length; out.filterCorrectCount=nCorrect; out.filterIncorrectCount=nIncorrect;
+      out.setFilterAll=()=>self.setState({resultFilter:'all'}); out.setFilterCorrect=()=>self.setState({resultFilter:'correct'}); out.setFilterIncorrect=()=>self.setState({resultFilter:'incorrect'});
+      const segS=(a)=>'padding:7px 13px; border-radius:8px; border:none; cursor:pointer; font:600 12.5px var(--sans); '+(a?'background:var(--teal); color:#fff;':'background:transparent; color:var(--muted);');
+      out.filterAllStyle=segS(flt==='all'); out.filterCorrectStyle=segS(flt==='correct'); out.filterIncorrectStyle=segS(flt==='incorrect');
+      const dchip=(a)=>'padding:8px 13px; border-radius:9px; cursor:pointer; font:600 12.5px var(--sans); '+(a?'background:var(--tealsoft); color:var(--tealtext); border:1.5px solid var(--teal);':'background:var(--surface2); color:var(--muted); border:1px solid var(--line2);');
+      const domsInSession=[...new Set(items.map(it=>it.q.domain))].sort();
+      out.reviewDomainChips=[{key:'all',label:'All domains',style:dchip(fdom==='all'),onClick:()=>self.setState({resultDomain:'all'})}].concat(domsInSession.map(id=>{ const dd=(st.DOMAINS||[]).find(d=>d.id===id)||{}; return {key:id,label:(dd.short||('D'+id)),style:dchip(fdom===id),onClick:()=>self.setState({resultDomain:id})}; }));
+      const filtered=items.map((it,i)=>({it,i})).filter(({it})=>{ if(flt==='correct'&&!isCorrect(it))return false; if(flt==='incorrect'&&isCorrect(it))return false; if(fdom!=='all'&&it.q.domain!==fdom)return false; return true; });
+      out.reviewListEmpty=filtered.length===0;
+      out.reviewItems=filtered.map(({it,i})=>{
+        const ans=c.answers[it.q.id]; const correct=ans===it.q.correct; const expanded=!!st.expandedReview[i];
+        const options=it.optionOrder.map((oid,k)=>{ const opt=it.q.options.find(o=>o.id===oid); const letter=String.fromCharCode(65+k); const isC=it.q.correct===oid; const isSel=ans===oid; let bd='1px solid var(--line2)',bg='var(--surface)',lb='var(--letterbg)',lc='var(--ink)',note='',ns=''; if(isC){bd='1.5px solid var(--success)';bg='var(--successsoft)';lb='var(--success)';lc='#fff';note='Correct answer';ns='color:var(--successtext);';} if(isSel&&!isC){bd='1.5px solid var(--danger)';bg='var(--dangersoft)';lb='var(--danger)';lc='#fff';note='Your answer';ns='color:var(--dangertext);';} return { key:oid, letter, text:opt.text, hasNote:!!note, note, noteStyle:ns, containerStyle:'display:flex; gap:12px; align-items:flex-start; padding:12px 14px; border-radius:10px; border:'+bd+'; background:'+bg+';', letterStyle:'width:25px; height:25px; border-radius:50%; background:'+lb+'; color:'+lc+'; display:grid; place-items:center; font-size:12px; font-weight:700; flex-shrink:0;' }; });
         const cidx=it.optionOrder.indexOf(it.q.correct);
-        out.rvExpHeader='Correct · '+String.fromCharCode(65+(cidx>=0?cidx:0));
-        out.rvExpCorrect= it.q.rationaleCorrect;
-        out.rvExpIncorrect= it.optionOrder.map((oid,i)=>({oid,i})).filter(o=>o.oid!==it.q.correct && it.q.rationaleIncorrect && it.q.rationaleIncorrect[o.oid]).map(o=>({ key:o.oid, letter:String.fromCharCode(65+o.i), text: it.q.rationaleIncorrect[o.oid] }));
-        const refs=(it.q.references||[]); out.rvHasRefs=refs.length>0; out.rvExpRefs=refs.map((r,i)=>({key:i,citation:r.citation,hasLoc:!!r.locator,locator:r.locator||''}));
-        out.rvPrev=()=>self.setState(x=>({reviewIndex:Math.max(0,x.reviewIndex-1)}));
-        out.rvNext=()=>self.setState(x=>({reviewIndex:Math.min(total-1,x.reviewIndex+1)}));
-        out.rvPrevStyle='padding:12px 18px; border-radius:11px; font:600 13px var(--sans); cursor:pointer; border:1px solid var(--line2); background:var(--surface); color:var(--ink); opacity:'+(idx===0?'0.45':'1')+';';
-        out.rvNextStyle='flex:1; padding:12px 18px; border-radius:11px; font:600 13px var(--sans); cursor:pointer; border:none; background:var(--teal); color:#fff; opacity:'+(idx===total-1?'0.6':'1')+';';
-        out.rvTrackerChips= c.items.map((item,i)=>{ const a=c.answers[item.q.id]; const cor=a===item.q.correct; const answered=!!a; const cur=i===idx; let bg='var(--surface2)', bdc='var(--line2)'; if(cor){ bg='var(--successsoft)'; bdc='var(--success)'; } else if(answered){ bg='var(--dangersoft)'; bdc='var(--danger)'; } const style='min-height:44px; border-radius:9px; cursor:pointer; font:600 13px var(--sans); color:var(--ink); background:'+bg+'; border:'+(cur?'2px solid var(--teal)':'1px solid '+bdc)+';'; return { key:item.q.id, label:i+1, style, onClick:()=>self.setState({reviewIndex:i, reviewMapOpen:false}) }; });
-      }
-      out.reviewMapOpen= st.reviewMapOpen;
-      out.openReviewMap= ()=>self.setState(x=>({reviewMapOpen:!x.reviewMapOpen}));
-      out.reviewBackLabel= st.reviewFrom==='history'? 'Back to progress' : (st.reviewFrom==='dashboard'? 'Back to home' : 'Back to results');
-      out.reviewBack=()=> st.reviewFrom==='history'? self.setView('history') : (st.reviewFrom==='dashboard'? self.setView('home') : self.setState({view:'results'}));
+        const refs=(it.q.references||[]);
+        return {
+          key:it.q.id, num:i+1,
+          numStyle:'width:28px; height:28px; border-radius:8px; flex-shrink:0; display:grid; place-items:center; font:700 12px var(--sans); background:'+(correct?'var(--successsoft)':(ans?'var(--dangersoft)':'var(--surface2)'))+'; color:'+(correct?'var(--successtext)':(ans?'var(--dangertext)':'var(--muted)'))+';',
+          verdict: correct?'Correct':(ans?'Incorrect':'Skipped'),
+          verdictStyle:'font:600 10px var(--sans); letter-spacing:.04em; text-transform:uppercase; padding:2px 8px; border-radius:6px; background:'+(correct?'var(--successsoft)':'var(--dangersoft)')+'; color:'+(correct?'var(--successtext)':'var(--dangertext)')+';',
+          category:'D'+it.q.domain+' · '+it.q.domainShort,
+          stemPreview: it.q.stem, stem: it.q.stem,
+          stemClampStyle: expanded? 'display:none;' : 'overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical;',
+          chevron: expanded?'−':'+', expanded,
+          onToggle:()=>self.setState(x=>({ expandedReview:{...x.expandedReview, [i]: !x.expandedReview[i]} })),
+          options,
+          expHeader:'Correct · '+String.fromCharCode(65+(cidx>=0?cidx:0)),
+          expCorrect: it.q.rationaleCorrect,
+          expIncorrect: it.optionOrder.map((oid,k)=>({oid,k})).filter(o=>o.oid!==it.q.correct && it.q.rationaleIncorrect && it.q.rationaleIncorrect[o.oid]).map(o=>({key:o.oid,letter:String.fromCharCode(65+o.k),text:it.q.rationaleIncorrect[o.oid]})),
+          hasRefs: refs.length>0, refs: refs.map((r,k)=>({key:k,citation:r.citation,hasLoc:!!r.locator,locator:r.locator||''})),
+          onReport:()=>self.openReportFor(it.q)
+        };
+      });
       out.openReport=()=>self.openReport();
     }
 
     // ---------- HISTORY ----------
     out.historySubtitle= (st.history||[]).length? ((st.history||[]).length+' sessions recorded') : 'Your completed sessions appear here';
     out.hasHistory= (st.history||[]).length>0; out.noHistory= (st.history||[]).length===0;
-    out.histAvg= readinessPct==null?0:readinessPct; out.histBest= best==null?0:best;
-    out.histDelta= delta==null? '—' : (delta>0?'+'+delta:delta+''); out.histDeltaStyle= deltaStyle;
+    // Summary stats follow the trend scope so they match the chart.
+    const _scopedPct=_scoped.map(e=>e.result.percent);
+    const _scLast8=_scopedPct.slice(-8);
+    const _scAvg=_scLast8.length? Math.round(_scLast8.reduce((a,b)=>a+b,0)/_scLast8.length):null;
+    const _scBest=_scopedPct.length? Math.max.apply(null,_scopedPct):null;
+    const _scDelta=_scLast8.length>=2? _scLast8[_scLast8.length-1]-_scLast8[_scLast8.length-2]:null;
+    out.histAvg= _scAvg==null?0:_scAvg; out.histBest= _scBest==null?0:_scBest;
+    out.histDelta= _scDelta==null? '—' : (_scDelta>0?'+'+_scDelta:_scDelta+'');
+    out.histDeltaStyle= _scDelta==null?'color:var(--muted);':(_scDelta>0?'color:var(--successtext);':_scDelta<0?'color:var(--dangertext);':'color:var(--muted);');
     out.clearHistory=()=>self.clearHistory();
-    out.historyRows= (st.history||[]).map(e=>{ const canReview= !!(e.items && e.items.length>0); const review=()=>{ if(canReview) self.setState({ completed:e, reviewIndex:0, reviewFrom:'history', view:'review', reviewMapOpen:false }); }; return { key:e.id, scoreText:e.result.correct+'/'+e.result.total+' · '+e.result.percent+'%', isSample:!!e.sample, canReview, rowStyle:'background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px;'+(canReview?' cursor:pointer;':''), metaText: dateTime(e.completedAt)+' · '+(e.settings.mode==='exam'?'Exam':'Study')+' · '+(e.result.estimatedPass?'On target':'Below target'), blueprintText: blueprintLabel(e.settings&&e.settings.blueprint), domainCells: (e.result.breakdown||[]).map(b=>({ key:b.domain, label:'D'+b.domain+' '+b.name, score:b.correct+'/'+b.total })), onReview:review, onRowClick:review, onDelete:(ev)=>{ if(ev&&ev.stopPropagation) ev.stopPropagation(); self.deleteEntry(e.id); } }; });
+    out.historyRows= (st.history||[]).map(e=>{
+      const canReview= !!(e.items && e.items.length>0);
+      const review=()=>{ if(canReview) self.setState({ completed:e, reviewFrom:'history', view:'results', resultFilter:'all', resultDomain:'all', expandedReview:{} }); };
+      const isExam=e.settings&&e.settings.mode==='exam'; const pass=e.result.estimatedPass;
+      return { key:e.id, isSample:!!e.sample, canReview,
+        rowStyle:'background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px;'+(canReview?' cursor:pointer;':''),
+        dateLine: dateTime(e.completedAt),
+        mode: isExam?'Exam':'Study',
+        modeChipStyle:'font:600 10.5px var(--sans); letter-spacing:.04em; text-transform:uppercase; padding:4px 9px; border-radius:7px; background:'+(isExam?'var(--tealsoft)':'var(--goldsoft)')+'; color:'+(isExam?'var(--tealtext)':'var(--goldtext)')+';',
+        itemsText: e.result.total+' items',
+        durationText: durationMin(e.timeUsedSeconds),
+        scorePct: e.result.percent+'%',
+        correctText: e.result.correct+'/'+e.result.total+' correct',
+        scoreStyle:'color:'+(pass?'var(--successtext)':'var(--dangertext)')+';',
+        blueprintText: blueprintLabel(e.settings&&e.settings.blueprint),
+        domainCells: (e.result.breakdown||[]).map(b=>{ const dd=(st.DOMAINS||[]).find(d=>d.id===b.domain)||{}; const stt=self.domStatus(b.percent); return { key:b.domain, tag:'D'+b.domain, tagStyle:'font:700 11px var(--sans); color:'+stt.text+';', name:(dd.short||b.name), score:b.correct+'/'+b.total, barStyle:self.barFill(b.percent, stt.color) }; }),
+        onReview:review, onRowClick:review,
+        onDelete:(ev)=>{ if(ev&&ev.stopPropagation) ev.stopPropagation(); self.deleteEntry(e.id); } };
+    });
     out.hasFlags=(st.flags||[]).length>0; out.flagsCountText=(st.flags||[]).length+' reported item(s)'; out.clearFlags=()=>self.clearFlags();
     out.isFlags=isFlags; out.goFlags=()=>self.setView('flags');
     out.noFlags=(st.flags||[]).length===0;
