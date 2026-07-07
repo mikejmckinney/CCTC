@@ -97,7 +97,7 @@ export function DashboardView({
       <div className="dashboard-grid">
         {/* Left column */}
         <div className="stack stack--gap">
-          <div className="card card--panel stack stack--gap" style={{ padding: 20 }}>
+          <div className="card card--panel" style={{ padding: 20 }}>
             {/* Donut / Readiness Header */}
             <div className="donut-wrap" style={{ paddingBottom: 18, borderBottom: '1px solid var(--line)' }}>
               <DonutChart percent={readiness.percent} />
@@ -205,7 +205,7 @@ export function DashboardView({
 
         {/* Right: quick start */}
         <div className="stack stack--gap">
-          <div className="card card--panel stack stack--gap">
+          <div className="card card--panel">
             <p className="eyebrow">Quick start</p>
             <button className="quick-card" onClick={() => onLaunchPreset({ mode: 'exam', questionCount: settings.blueprintId === 'cctc-from-2026-07' ? 175 : 150, timed: true, timeMinutes: 180 })}>
               <span className="quick-card__title">Full mock exam</span>
@@ -239,7 +239,7 @@ export function DashboardView({
       </div>
 
       {/* Recent sessions */}
-      <div className="card card--panel stack stack--gap">
+      <div className="card card--panel">
         <div className="row row--spread">
           <p className="eyebrow">Recent sessions</p>
           <button className="btn-ghost" style={{ padding: 0, minHeight: 'auto', fontSize: 12, color: 'var(--tealtext)' }}
