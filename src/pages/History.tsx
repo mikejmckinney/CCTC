@@ -1,7 +1,7 @@
 import { useMemo, useRef, useEffect, useId, useState } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '../components/ui';
-import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
+import { buildHistoryTrend } from '../lib/historyTrend';
 import { formatDuration } from '../lib/format';
 import { DOMAIN_SHORT_LABELS } from '../lib/domains';
 import type { HistoryEntry } from '../types/exam';
@@ -23,6 +23,13 @@ interface HistoryProps {
 export function History({ history, onViewSession, onDeleteSession, onClearAll, onNavigateToReported }: HistoryProps) {
   const trend = useMemo(() => buildHistoryTrend(history), [history]);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [sessionFilter, setSessionFilter] = useState<'all' | 'exam' | 'study'>('all');
+
+  // Filtered history based on session type
+  const filteredHistory = useMemo(() => {
+    if (sessionFilter === 'all') return history;
+    return history.filter((e) => e.settings.mode === sessionFilter);
+  }, [history, sessionFilter]);
 
   // Build domain name mapping from history
   const domainNames = useMemo(() => {
@@ -36,7 +43,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
   }, [history]);
 
   const chartData = useMemo(() => {
-    const chronological = [...history].sort((a, b) => a.completedAt.localeCompare(b.completedAt));
+    const chronological = [...filteredHistory].sort((a, b) => a.completedAt.localeCompare(b.completedAt));
     return chronological.map((entry) => {
       const date = new Date(entry.completedAt);
       const label = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -49,7 +56,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       }
       return { label, ...domains, total: entry.result.percent };
     });
-  }, [history]);
+  }, [filteredHistory]);
 
   const hasAnimatedChart = useRef(false);
   const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -69,24 +76,46 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <CardTitle>Progress Over Time</CardTitle>
-            {trend.averagePercent !== null && (
-              <div className="flex items-center gap-4 text-sm">
-                <span className="text-[var(--muted-foreground)]">
-                  Avg <strong className="text-[var(--foreground)]">{trend.averagePercent}%</strong>
-                </span>
-                <span className="text-[var(--muted-foreground)]">
-                  Best <strong className="text-[var(--foreground)]">{trend.bestPercent}%</strong>
-                </span>
-                {trend.recentDelta !== null && (
-                  <span className="text-[var(--muted-foreground)]">
-                    Trend <strong className={cn(
-                      trend.recentDelta > 0 ? 'text-[var(--success)]' : trend.recentDelta < 0 ? 'text-[var(--destructive)]' : 'text-[var(--muted-foreground)]'
-                    )}>{formatTrendDelta(trend.recentDelta)}</strong>
-                  </span>
-                )}
-              </div>
-            )}
+            {/* Session type filter */}
+            <div className="flex items-center gap-1 rounded-lg border border-[var(--border)] bg-[var(--card)] p-0.5">
+              {(['all', 'exam', 'study'] as const).map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setSessionFilter(f)}
+                  className={cn(
+                    'rounded-md px-3 py-1.5 text-xs font-medium transition-colors',
+                    sessionFilter === f
+                      ? 'bg-[var(--primary)] text-[var(--primary-foreground)]'
+                      : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)]'
+                  )}
+                >
+                  {f === 'all' ? 'All' : f === 'exam' ? 'Exam' : 'Study'}
+                </button>
+              ))}
+            </div>
           </div>
+          {trend.averagePercent !== null && (
+            <div className="flex items-center gap-4 text-sm mt-2">
+              <span className="text-[var(--muted-foreground)]">
+                Avg <strong className="text-[var(--foreground)]">{trend.averagePercent}%</strong>
+              </span>
+              <span className="text-[var(--muted-foreground)]">
+                Best <strong className="text-[var(--foreground)]">{trend.bestPercent}%</strong>
+              </span>
+              <span className="text-[var(--muted-foreground)] flex items-center gap-1">
+                Trend
+                <strong className={cn(
+                  trend.recentDelta !== null && trend.recentDelta > 0 ? 'text-[var(--success)]' :
+                  trend.recentDelta !== null && trend.recentDelta < 0 ? 'text-[var(--destructive)]' :
+                  'text-[var(--muted-foreground)]'
+                )}>
+                  {trend.recentDelta !== null && trend.recentDelta > 0 && '↑ Improving'}
+                  {trend.recentDelta !== null && trend.recentDelta < 0 && '↓ Declining'}
+                  {trend.recentDelta === null || trend.recentDelta === 0 ? '→ Stable' : ''}
+                </strong>
+              </span>
+            </div>
+          )}
         </CardHeader>
         <CardContent>
           {chartData.length > 0 ? (
@@ -143,8 +172,8 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle>All Sessions</CardTitle>
-            {history.length > 0 && (
+            <CardTitle>{sessionFilter === 'all' ? 'All' : sessionFilter === 'exam' ? 'Exam' : 'Study'} Sessions</CardTitle>
+            {filteredHistory.length > 0 && (
               <Button variant="ghost" size="sm" onClick={onClearAll} className="gap-1 text-[var(--destructive)]">
                 <Trash2 className="h-4 w-4" /> Clear All
               </Button>
@@ -152,9 +181,9 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
           </div>
         </CardHeader>
         <CardContent>
-          {history.length > 0 ? (
+          {filteredHistory.length > 0 ? (
             <div className="divide-y divide-[var(--border)]">
-              {history.map((entry) => (
+              {filteredHistory.map((entry) => (
                 <div key={entry.id} className="flex items-center justify-between py-3 -mx-2 px-2 rounded-lg hover:bg-[var(--muted)]/50 transition-colors">
                   <button onClick={() => onViewSession(entry)} className="flex-1 min-w-0 text-left">
                     <p className="text-sm font-medium text-[var(--foreground)]">
@@ -189,7 +218,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
               ))}
             </div>
           ) : (
-            <p className="text-sm text-[var(--muted-foreground)] text-center py-12">No completed sessions yet.</p>
+            <p className="text-sm text-[var(--muted-foreground)] text-center py-12">No {sessionFilter === 'all' ? '' : sessionFilter + ' '}sessions yet.</p>
           )}
         </CardContent>
       </Card>

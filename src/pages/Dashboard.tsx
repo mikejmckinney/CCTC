@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Badge, Progress, Button } from '../components/ui';
+import { RadialGauge } from '../components/ui/RadialGauge';
 import { computeReadiness, computeSpacedRepetition } from '../lib/readiness';
 import { formatDuration } from '../lib/format';
 import { getDomainShortLabel } from '../lib/domains';
@@ -221,8 +222,10 @@ export function Dashboard({
 
   return (
     <div className="space-y-6">
-      {/* Readiness Score */}
-      <Card>
+      {/* Readiness + Quick Start — side by side */}
+      <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+        {/* Readiness Score */}
+        <Card>
         <CardContent className="p-5 sm:p-6 space-y-4">
           <div>
             <div className="flex items-center gap-2 flex-wrap">
@@ -262,7 +265,12 @@ export function Dashboard({
             </p>
             {readiness.overallEma > 0 && (
               <div className="mt-2">
-                <Progress value={readiness.overallEma} variant={readiness.overallEma >= target ? 'success' : 'warning'} label="Readiness score" />
+                <RadialGauge value={readiness.overallEma} target={target} size={120} strokeWidth={8}>
+                  <span className="text-2xl font-bold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+                    {readiness.overallEma}%
+                  </span>
+                  <span className="text-[10px] text-[var(--muted-foreground)]">target {target}%</span>
+                </RadialGauge>
               </div>
             )}
 
@@ -344,199 +352,197 @@ export function Dashboard({
         </CardContent>
       </Card>
 
-      {/* Quick Start + Recent Sessions — side by side */}
-      <div className="grid gap-4 lg:grid-cols-2">
-        {/* Quick Start */}
+        {/* Quick Start — right of readiness */}
         <Card>
-        <CardHeader>
-          <CardTitle>Quick Start</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
-            <QuickStartButton label="Full Exam" icon={BookOpen} description="175 questions, 180 minutes" onClick={onStartExam} />
-            <QuickStartButton label="Quick Session" icon={Zap} description="25 questions, 30 minutes" onClick={onStartQuick} />
-            <QuickStartButton
-              label="Weak Areas"
-              icon={Target}
-              description={laggingDomains.length > 0
-                ? `Focus on ${laggingDomains.map((d) => getDomainShortLabel(d.domainId)).join(', ')}`
-                : 'Spaced repetition of missed items'}
-              onClick={() => onStartWeakAreas(laggingDomains.map((d) => d.domainId))}
-            />
-            <QuickStartButton label="Current Settings" icon={Clock} description={getBlueprintLabel(settings.blueprintId)} onClick={() => onStartCustom({})} />
-          </div>
+          <CardHeader>
+            <CardTitle>Quick Start</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+              <QuickStartButton label="Full Exam" icon={BookOpen} description="175 questions, 180 minutes" onClick={onStartExam} />
+              <QuickStartButton label="Quick Session" icon={Zap} description="25 questions, 30 minutes" onClick={onStartQuick} />
+              <QuickStartButton
+                label="Weak Areas"
+                icon={Target}
+                description={laggingDomains.length > 0
+                  ? `Focus on ${laggingDomains.map((d) => getDomainShortLabel(d.domainId)).join(', ')}`
+                  : 'Spaced repetition of missed items'}
+                onClick={() => onStartWeakAreas(laggingDomains.map((d) => d.domainId))}
+              />
+              <QuickStartButton label="Current Settings" icon={Clock} description={getBlueprintLabel(settings.blueprintId)} onClick={() => onStartCustom({})} />
+            </div>
 
-          {/* Expandable Setup */}
-          <div>
-            <button
-              onClick={() => setShowSetup(!showSetup)}
-              className="flex items-center gap-2 text-sm font-medium text-[var(--primary)] hover:underline"
-            >
-              {showSetup ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-              {showSetup ? 'Hide Setup' : 'Customize Settings'}
-            </button>
+            {/* Expandable Setup */}
+            <div>
+              <button
+                onClick={() => setShowSetup(!showSetup)}
+                className="flex items-center gap-2 text-sm font-medium text-[var(--primary)] hover:underline"
+              >
+                {showSetup ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                {showSetup ? 'Hide Setup' : 'Customize Settings'}
+              </button>
 
-            {showSetup && (
-              <div className="mt-4 space-y-4 rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4">
-                {/* Core settings */}
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="grid gap-1.5">
-                    <label className="text-[13px] font-medium text-[var(--foreground)]">Mode</label>
-                    <select
-                      value={settings.mode}
-                      onChange={(e) => onUpdateSettings({ mode: e.target.value as 'exam' | 'study' })}
-                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-                    >
-                      <option value="exam">Exam</option>
-                      <option value="study">Study</option>
-                    </select>
-                  </div>
+              {showSetup && (
+                <div className="mt-4 space-y-4 rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4">
+                  {/* Core settings */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Mode</label>
+                      <select
+                        value={settings.mode}
+                        onChange={(e) => onUpdateSettings({ mode: e.target.value as 'exam' | 'study' })}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                      >
+                        <option value="exam">Exam</option>
+                        <option value="study">Study</option>
+                      </select>
+                    </div>
 
-                  <div className="grid gap-1.5">
-                    <label className="text-[13px] font-medium text-[var(--foreground)]">Question Set</label>
-                    <select
-                      value={settings.questionSet}
-                      onChange={(e) => onUpdateSettings({ questionSet: e.target.value as QuestionSet })}
-                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-                    >
-                      <option value="standard">Standard Bank</option>
-                      <option value="scenario">Scenario Companions</option>
-                    </select>
-                  </div>
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Question Set</label>
+                      <select
+                        value={settings.questionSet}
+                        onChange={(e) => onUpdateSettings({ questionSet: e.target.value as QuestionSet })}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                      >
+                        <option value="standard">Standard Bank</option>
+                        <option value="scenario">Scenario Companions</option>
+                      </select>
+                    </div>
 
-                  <div className="grid gap-1.5">
-                    <label className="text-[13px] font-medium text-[var(--foreground)]">Question Count</label>
-                    <input
-                      type="number"
-                      min={1}
-                      max={settings.questionSet === 'scenario' ? 506 : 506}
-                      value={settings.questionCount}
-                      onChange={(e) => onUpdateSettings({ questionCount: Math.max(1, Number(e.target.value) || 1) })}
-                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-                    />
-                  </div>
-
-                  <div className="grid gap-1.5">
-                    <label className="text-[13px] font-medium text-[var(--foreground)]">Blueprint</label>
-                    <select
-                      value={settings.blueprintId}
-                      onChange={(e) => onUpdateSettings({ blueprintId: e.target.value as any })}
-                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-                    >
-                      <option value="cctc-from-2026-07">2026-07 (default)</option>
-                      <option value="cctc-thru-2026-06">Until 2026-06</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Timer settings */}
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="grid gap-1.5">
-                    <label className="flex items-center gap-2">
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Question Count</label>
                       <input
-                        type="checkbox"
-                        checked={settings.timed}
-                        onChange={(e) => onUpdateSettings({ timed: e.target.checked })}
-                        className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                        type="number"
+                        min={1}
+                        max={506}
+                        value={settings.questionCount}
+                        onChange={(e) => onUpdateSettings({ questionCount: Math.max(1, Number(e.target.value) || 1) })}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
                       />
-                      <span className="text-[13px] text-[var(--foreground)]">Enable timer</span>
-                    </label>
-                    {settings.timed && (
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="number"
-                          min={1}
-                          value={settings.timeMinutes}
-                          onChange={(e) => onUpdateSettings({ timeMinutes: Math.max(1, Number(e.target.value) || 1) })}
-                          className="flex h-10 w-24 rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-                        />
-                        <span className="text-[13px] text-[var(--muted-foreground)]">minutes</span>
-                      </div>
-                    )}
-                  </div>
+                    </div>
 
-                  <label className="flex items-center gap-2 self-center">
-                    <input
-                      type="checkbox"
-                      checked={settings.showTimer}
-                      onChange={(e) => onUpdateSettings({ showTimer: e.target.checked })}
-                      className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
-                    />
-                    <span className="text-[13px] text-[var(--foreground)]">Show on-screen timer</span>
-                  </label>
-                </div>
-
-                {/* Advanced settings */}
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="grid gap-1.5">
-                    <label className="text-[13px] font-medium text-[var(--foreground)]">Exam Date (optional)</label>
-                    <input
-                      ref={examDateRef}
-                      type="date"
-                      value={examDate}
-                      onChange={(e) => handleExamDateChange(e.target.value)}
-                      className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-                    />
-                  </div>
-
-                  <div className="grid gap-1.5">
-                    <label className="text-[13px] font-medium text-[var(--foreground)]">
-                      Target Score: <span className="text-[var(--accent)] font-bold">{targetScore}%</span>
-                    </label>
-                    <input
-                      ref={targetScoreRef}
-                      type="range"
-                      min={50}
-                      max={90}
-                      value={targetScore}
-                      onChange={(e) => {
-                        const val = Number(e.target.value);
-                        setTargetScore(val);
-                        onUpdateSettings({ targetThreshold: val });
-                      }}
-                      className="w-full accent-[var(--primary)]"
-                    />
-                    <div className="flex justify-between text-xs text-[var(--muted-foreground)]">
-                      <span>50%</span>
-                      <span>90%</span>
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Blueprint</label>
+                      <select
+                        value={settings.blueprintId}
+                        onChange={(e) => onUpdateSettings({ blueprintId: e.target.value as any })}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                      >
+                        <option value="cctc-from-2026-07">2026-07 (default)</option>
+                        <option value="cctc-thru-2026-06">Until 2026-06</option>
+                      </select>
                     </div>
                   </div>
 
-                  <label className="flex items-center gap-2 self-center">
-                    <input
-                      type="checkbox"
-                      checked={settings.includeDrafts}
-                      onChange={(e) => onUpdateSettings({ includeDrafts: e.target.checked })}
-                      disabled={settings.mode === 'exam'}
-                      className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
-                    />
-                    <span className="text-[13px] text-[var(--foreground)]">Include draft items</span>
-                  </label>
-                </div>
+                  {/* Timer settings */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-1.5">
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          checked={settings.timed}
+                          onChange={(e) => onUpdateSettings({ timed: e.target.checked })}
+                          className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                        />
+                        <span className="text-[13px] text-[var(--foreground)]">Enable timer</span>
+                      </label>
+                      {settings.timed && (
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="number"
+                            min={1}
+                            value={settings.timeMinutes}
+                            onChange={(e) => onUpdateSettings({ timeMinutes: Math.max(1, Number(e.target.value) || 1) })}
+                            className="flex h-10 w-24 rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                          />
+                          <span className="text-[13px] text-[var(--muted-foreground)]">minutes</span>
+                        </div>
+                      )}
+                    </div>
 
-                {/* Summary + Start */}
-                <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-3">
-                  <p className="text-xs text-[var(--muted-foreground)]">
-                    {getBlueprintLabel(settings.blueprintId)} · {settings.mode === 'exam' ? 'Exam' : 'Study'} · {settings.questionCount}q · {settings.timed ? `${settings.timeMinutes}m` : 'Untimed'}
-                  </p>
-                </div>
+                    <label className="flex items-center gap-2 self-center">
+                      <input
+                        type="checkbox"
+                        checked={settings.showTimer}
+                        onChange={(e) => onUpdateSettings({ showTimer: e.target.checked })}
+                        className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                      />
+                      <span className="text-[13px] text-[var(--foreground)]">Show on-screen timer</span>
+                    </label>
+                  </div>
 
-                <div className="flex gap-3">
-                  <Button onClick={() => onStartCustom({})} className="flex-1 gap-2">
-                    <Play className="h-4 w-4" /> Start with Custom Settings
-                  </Button>
-                  <Button variant="secondary" onClick={() => {
-                    onUpdateSettings({ questionCount: 175, timed: true, timeMinutes: 180, targetThreshold: 70 });
-                    setTargetScore(70);
-                  }} className="gap-2">
-                    <RotateCcw className="h-4 w-4" /> Reset
-                  </Button>
+                  {/* Advanced settings */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Exam Date (optional)</label>
+                      <input
+                        ref={examDateRef}
+                        type="date"
+                        value={examDate}
+                        onChange={(e) => handleExamDateChange(e.target.value)}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                      />
+                    </div>
+
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">
+                        Target Score: <span className="text-[var(--accent)] font-bold">{targetScore}%</span>
+                      </label>
+                      <input
+                        ref={targetScoreRef}
+                        type="range"
+                        min={50}
+                        max={90}
+                        value={targetScore}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          setTargetScore(val);
+                          onUpdateSettings({ targetThreshold: val });
+                        }}
+                        className="w-full accent-[var(--primary)]"
+                      />
+                      <div className="flex justify-between text-xs text-[var(--muted-foreground)]">
+                        <span>50%</span>
+                        <span>90%</span>
+                      </div>
+                    </div>
+
+                    <label className="flex items-center gap-2 self-center">
+                      <input
+                        type="checkbox"
+                        checked={settings.includeDrafts}
+                        onChange={(e) => onUpdateSettings({ includeDrafts: e.target.checked })}
+                        disabled={settings.mode === 'exam'}
+                        className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                      />
+                      <span className="text-[13px] text-[var(--foreground)]">Include draft items</span>
+                    </label>
+                  </div>
+
+                  {/* Summary + Start */}
+                  <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-3">
+                    <p className="text-xs text-[var(--muted-foreground)]">
+                      {getBlueprintLabel(settings.blueprintId)} · {settings.mode === 'exam' ? 'Exam' : 'Study'} · {settings.questionCount}q · {settings.timed ? `${settings.timeMinutes}m` : 'Untimed'}
+                    </p>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <Button onClick={() => onStartCustom({})} className="flex-1 gap-2">
+                      <Play className="h-4 w-4" /> Start with Custom Settings
+                    </Button>
+                    <Button variant="secondary" onClick={() => {
+                      onUpdateSettings({ questionCount: 175, timed: true, timeMinutes: 180, targetThreshold: 70 });
+                      setTargetScore(70);
+                    }} className="gap-2">
+                      <RotateCcw className="h-4 w-4" /> Reset
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </CardContent>
-      </Card>
+              )}
+            </div>
+          </CardContent>
+        </Card>
 
       {/* Recent Sessions */}
       <Card>

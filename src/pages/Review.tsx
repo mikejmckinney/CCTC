@@ -160,22 +160,34 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                   className="w-full text-left p-4 flex items-start gap-3"
                   onClick={() => setExpandedIndex(isExpanded ? null : idx)}
                 >
-                  <Badge variant={isCorrect ? 'success' : 'destructive'} className="mt-0.5 shrink-0">
-                    {isCorrect ? '✓' : '✗'}
-                  </Badge>
+                  {/* Question number instead of check/x */}
+                  <span className={cn(
+                    'flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold',
+                    isCorrect ? 'bg-[var(--success)]/10 text-[var(--success)]' : 'bg-[var(--destructive)]/10 text-[var(--destructive)]'
+                  )}>
+                    {idx + 1}
+                  </span>
                   <div className="flex-1 min-w-0">
+                    {/* Question ID */}
+                    <p className="text-[10px] text-[var(--muted-foreground)] mb-0.5 font-mono">{item.question.id}</p>
                     <p className="text-[13px] text-[var(--foreground)] leading-relaxed">{item.question.stem}</p>
-                    {/* User's answer + correct answer visible without expanding */}
-                    <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <span className="text-xs text-[var(--muted-foreground)]">
-                        Your answer: <strong className={cn(isCorrect ? 'text-[var(--success)]' : 'text-[var(--destructive)]')}>
-                          {answer ? String.fromCharCode(65 + item.optionOrder.indexOf(answer)) : '—'}
+                    {/* User's actual choice text + correct answer */}
+                    <div className="mt-1.5 space-y-0.5">
+                      <p className="text-xs text-[var(--muted-foreground)]">
+                        Your answer:{' '}
+                        <strong className={cn(isCorrect ? 'text-[var(--success)]' : 'text-[var(--destructive)]')}>
+                          {answer
+                            ? `${String.fromCharCode(65 + item.optionOrder.indexOf(answer))}. ${item.question.options.find(o => o.id === answer)?.text ?? ''}`
+                            : '—'}
                         </strong>
-                      </span>
+                      </p>
                       {!isCorrect && (
-                        <span className="text-xs text-[var(--success)]">
-                          Correct: <strong>{String.fromCharCode(65 + item.optionOrder.indexOf(item.question.correct))}</strong>
-                        </span>
+                        <p className="text-xs text-[var(--success)]">
+                          Correct:{' '}
+                          <strong>
+                            {String.fromCharCode(65 + item.optionOrder.indexOf(item.question.correct))}. {item.question.options.find(o => o.id === item.question.correct)?.text ?? ''}
+                          </strong>
+                        </p>
                       )}
                     </div>
                     <div className="flex items-center gap-2 mt-1.5">
