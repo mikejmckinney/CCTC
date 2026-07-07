@@ -189,20 +189,17 @@ export function Dashboard({
     }
   }, [pendingSettingNav, navigateToSetting, onClearPendingNav]);
 
-  // Close tooltip on click outside
+  // Close tooltip on click outside (pointerdown covers both mouse and touch,
+  // but doesn't interfere with scroll like touchstart does)
   useEffect(() => {
     if (!showEmaTooltip) return;
-    const handler = (e: Event) => {
+    const handler = (e: PointerEvent) => {
       if (tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
         setShowEmaTooltip(false);
       }
     };
-    document.addEventListener('mousedown', handler);
-    document.addEventListener('touchstart', handler);
-    return () => {
-      document.removeEventListener('mousedown', handler);
-      document.removeEventListener('touchstart', handler);
-    };
+    document.addEventListener('pointerdown', handler);
+    return () => document.removeEventListener('pointerdown', handler);
   }, [showEmaTooltip]);
 
   const handleExamDateChange = (value: string) => {
@@ -225,8 +222,6 @@ export function Dashboard({
                   <button
                     type="button"
                     onClick={() => setShowEmaTooltip((v) => !v)}
-                    onMouseEnter={() => setShowEmaTooltip(true)}
-                    onMouseLeave={() => setShowEmaTooltip(false)}
                     className="flex h-5 w-5 items-center justify-center rounded-full text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
                     aria-label="How is readiness calculated?"
                   >

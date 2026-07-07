@@ -164,16 +164,25 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                     {isCorrect ? '✓' : '✗'}
                   </Badge>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-[var(--foreground)] line-clamp-2">{item.question.stem}</p>
-                    <div className="flex items-center gap-2 mt-1">
-                      <span className="text-xs text-[var(--muted-foreground)]">{item.categoryLabel}</span>
-                      <span className="text-xs text-[var(--muted-foreground)]">·</span>
+                    <p className="text-[13px] text-[var(--foreground)] leading-relaxed">{item.question.stem}</p>
+                    {/* User's answer + correct answer visible without expanding */}
+                    <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
                       <span className="text-xs text-[var(--muted-foreground)]">
-                        {item.question.type === 'one_best' ? 'Single best' : 'Complex combo'}
+                        Your answer: <strong className={cn(isCorrect ? 'text-[var(--success)]' : 'text-[var(--destructive)]')}>
+                          {answer ? String.fromCharCode(65 + item.optionOrder.indexOf(answer)) : '—'}
+                        </strong>
                       </span>
+                      {!isCorrect && (
+                        <span className="text-xs text-[var(--success)]">
+                          Correct: <strong>{String.fromCharCode(65 + item.optionOrder.indexOf(item.question.correct))}</strong>
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 mt-1.5">
+                      <span className="text-xs text-[var(--muted-foreground)]">{item.categoryLabel}</span>
                     </div>
                   </div>
-                  <ChevronRight className={cn('h-4 w-4 text-[var(--muted-foreground)] shrink-0 transition-transform', isExpanded && 'rotate-90')} />
+                  <ChevronRight className={cn('h-4 w-4 text-[var(--muted-foreground)] shrink-0 mt-0.5 transition-transform', isExpanded && 'rotate-90')} />
                 </button>
 
                 {/* Expanded details */}
