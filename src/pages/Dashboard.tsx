@@ -1,7 +1,6 @@
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Badge, Progress, Button } from '../components/ui';
-import { RadialGauge } from '../components/ui/RadialGauge';
 import { computeReadiness, computeSpacedRepetition } from '../lib/readiness';
 import { formatDuration } from '../lib/format';
 import { getDomainShortLabel } from '../lib/domains';
@@ -265,12 +264,7 @@ export function Dashboard({
             </p>
             {readiness.overallEma > 0 && (
               <div className="mt-2">
-                <RadialGauge value={readiness.overallEma} target={target} size={120} strokeWidth={8}>
-                  <span className="text-2xl font-bold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
-                    {readiness.overallEma}%
-                  </span>
-                  <span className="text-[10px] text-[var(--muted-foreground)]">target {target}%</span>
-                </RadialGauge>
+                <Progress value={readiness.overallEma} variant={readiness.overallEma >= target ? 'success' : 'warning'} label="Readiness score" />
               </div>
             )}
 

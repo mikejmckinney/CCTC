@@ -1,7 +1,7 @@
 import { useMemo, useRef, useEffect, useId, useState } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '../components/ui';
-import { buildHistoryTrend } from '../lib/historyTrend';
+import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
 import { formatDuration } from '../lib/format';
 import { DOMAIN_SHORT_LABELS } from '../lib/domains';
 import type { HistoryEntry } from '../types/exam';
@@ -109,9 +109,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
                   trend.recentDelta !== null && trend.recentDelta < 0 ? 'text-[var(--destructive)]' :
                   'text-[var(--muted-foreground)]'
                 )}>
-                  {trend.recentDelta !== null && trend.recentDelta > 0 && '↑ Improving'}
-                  {trend.recentDelta !== null && trend.recentDelta < 0 && '↓ Declining'}
-                  {trend.recentDelta === null || trend.recentDelta === 0 ? '→ Stable' : ''}
+                  {trend.recentDelta !== null ? formatTrendDelta(trend.recentDelta) : '—'}
                 </strong>
               </span>
             </div>
@@ -147,7 +145,20 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
                     return -idx;
                   }}
                 />
-                <ReferenceLine y={targetThreshold} stroke="var(--accent)" strokeDasharray="6 3" label={{ value: `Target ${targetThreshold}%`, fill: 'var(--accent)', fontSize: 11, position: 'right' }} />
+                <ReferenceLine
+                  y={targetThreshold}
+                  stroke="var(--accent)"
+                  strokeDasharray="6 3"
+                  strokeWidth={1.5}
+                  label={{
+                    value: `Target ${targetThreshold}%`,
+                    fill: 'var(--accent)',
+                    fontSize: 12,
+                    fontWeight: 600,
+                    position: 'insideTopRight',
+                    offset: 10,
+                  }}
+                />
                 {gradients.map(({ id, gradId }, i) => (
                   <Area
                     key={id}
