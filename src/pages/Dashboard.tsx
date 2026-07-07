@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect, useRef } from 'react';
+import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Badge, Progress, Button } from '../components/ui';
 import { computeReadiness, computeSpacedRepetition } from '../lib/readiness';
@@ -22,6 +22,8 @@ interface DashboardProps {
   onUpdateSettings: (partial: Partial<SessionSettings>) => void;
   onGoToHistory: () => void;
   onViewSession: (entry: HistoryEntry) => void;
+  pendingSettingNav?: 'examDate' | 'targetScore' | null;
+  onClearPendingNav?: () => void;
 }
 
 type ReadinessVerdict = 'exam-ready' | 'on-pace' | 'on-track' | 'at-risk';
@@ -134,7 +136,8 @@ function CategoryBar({ name, percent, examWeight, isStrong }: {
 
 export function Dashboard({
   history, settings, onStartExam, onStartQuick, onStartWeakAreas,
-  onStartCustom, onUpdateSettings, onGoToHistory, onViewSession
+  onStartCustom, onUpdateSettings, onGoToHistory, onViewSession,
+  pendingSettingNav, onClearPendingNav
 }: DashboardProps) {
   const readiness = useMemo(() => computeReadiness(history), [history]);
   const spacedCount = useMemo(() => computeSpacedRepetition(history).length, [history]);
@@ -153,6 +156,38 @@ export function Dashboard({
 
   const [showEmaTooltip, setShowEmaTooltip] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const examDateRef = useRef<HTMLInputElement>(null);
+  const targetScoreRef = useRef<HTMLInputElement>(null);
+
+  // Navigate to a specific setting: expand setup, scroll to field, focus it
+  const navigateToSetting = useCallback((field: 'examDate' | 'targetScore') => {
+    setShowSetup(true);
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        const ref = field === 'examDate' ? examDateRef : targetScoreRef;
+        if (ref.current) {
+          ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          ref.current.focus();
+          ref.current.style.outline = '2px solid var(--ring)';
+          ref.current.style.outlineOffset = '2px';
+          setTimeout(() => {
+            if (ref.current) {
+              ref.current.style.outline = '';
+              ref.current.style.outlineOffset = '';
+            }
+          }, 2000);
+        }
+      }, 100);
+    });
+  }, []);
+
+  // Handle pending navigation from header pills
+  useEffect(() => {
+    if (pendingSettingNav) {
+      navigateToSetting(pendingSettingNav);
+      onClearPendingNav?.();
+    }
+  }, [pendingSettingNav, navigateToSetting, onClearPendingNav]);
 
   // Close tooltip on click outside
   useEffect(() => {
@@ -216,12 +251,12 @@ export function Dashboard({
                 </div>
               )}
 
-              {/* Exam countdown + Target score — clickable to setup */}
+              {/* Exam countdown + Target score — clickable to navigate to setting */}
               <div className="mt-3 flex flex-wrap gap-2">
                 {daysUntilExam !== null && (
                   <button
                     type="button"
-                    onClick={() => setShowSetup(true)}
+                    onClick={() => navigateToSetting('examDate')}
                     className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
                   >
                     <Calendar className="h-3.5 w-3.5 text-[var(--accent)]" />
@@ -230,7 +265,7 @@ export function Dashboard({
                 )}
                 <button
                   type="button"
-                  onClick={() => setShowSetup(true)}
+                  onClick={() => navigateToSetting('targetScore')}
                   className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
                 >
                   <Target className="h-3.5 w-3.5 text-[var(--accent)]" />
@@ -333,8 +368,10 @@ export function Dashboard({
         </Card>
       </div>
 
-      {/* Category Breakdown */}
-      <Card>
+      {/* Category Breakdown + Quick Start — side by side */}
+      <div className="grid gap-4 lg:grid-cols-2">
+        {/* Category Breakdown */}
+        <Card>
         <CardHeader>
           <CardTitle>Category Breakdown</CardTitle>
         </CardHeader>
@@ -482,6 +519,7 @@ export function Dashboard({
                   <div className="grid gap-1.5">
                     <label className="text-[13px] font-medium text-[var(--foreground)]">Exam Date (optional)</label>
                     <input
+                      ref={examDateRef}
                       type="date"
                       value={examDate}
                       onChange={(e) => handleExamDateChange(e.target.value)}
@@ -494,6 +532,7 @@ export function Dashboard({
                       Target Score: <span className="text-[var(--accent)] font-bold">{targetScore}%</span>
                     </label>
                     <input
+                      ref={targetScoreRef}
                       type="range"
                       min={50}
                       max={90}
@@ -546,6 +585,7 @@ export function Dashboard({
           </div>
         </CardContent>
       </Card>
+      </div>
 
       {/* Recent Sessions */}
       <Card>

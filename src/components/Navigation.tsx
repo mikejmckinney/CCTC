@@ -11,6 +11,8 @@ interface NavigationProps {
   hasActiveSession: boolean;
   daysUntilExam?: number | null;
   targetScore?: number;
+  onNavigateToExamDate?: () => void;
+  onNavigateToTargetScore?: () => void;
 }
 
 const NAV_ITEMS: Array<{ page: Page; label: string; icon: React.ElementType }> = [
@@ -18,7 +20,10 @@ const NAV_ITEMS: Array<{ page: Page; label: string; icon: React.ElementType }> =
   { page: 'history', label: 'Progress', icon: BarChart3 },
 ];
 
-export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUntilExam, targetScore }: NavigationProps) {
+export function Navigation({
+  currentPage, onNavigate, hasActiveSession, daysUntilExam, targetScore,
+  onNavigateToExamDate, onNavigateToTargetScore
+}: NavigationProps) {
   const { colorMode, toggleColorMode } = useTheme();
 
   return (
@@ -65,23 +70,34 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUnti
               )}
             </nav>
           </div>
-          <div className="flex items-center gap-3">
-            {/* Exam info pills — desktop only */}
+          <div className="flex items-center gap-2">
+            {/* Exam info pills — always visible, clickable */}
             {daysUntilExam !== null && daysUntilExam !== undefined && (
-              <span className="hidden sm:flex items-center gap-1.5 text-xs text-[var(--muted-foreground)]">
-                <Calendar className="h-3.5 w-3.5" />
-                {daysUntilExam > 0 ? `${daysUntilExam}d to exam` : daysUntilExam === 0 ? 'Exam today' : 'Exam passed'}
-              </span>
+              <button
+                type="button"
+                onClick={onNavigateToExamDate}
+                className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-2.5 py-1 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
+              >
+                <Calendar className="h-3.5 w-3.5 text-[var(--accent)]" />
+                <span className="hidden sm:inline">{daysUntilExam > 0 ? `${daysUntilExam}d to exam` : daysUntilExam === 0 ? 'Exam today' : 'Exam passed'}</span>
+                <span className="sm:hidden">{daysUntilExam > 0 ? `${daysUntilExam}d` : daysUntilExam === 0 ? 'Today' : 'Passed'}</span>
+              </button>
             )}
             {targetScore !== undefined && (
-              <span className="hidden sm:flex items-center gap-1.5 text-xs text-[var(--muted-foreground)]">
-                <Target className="h-3.5 w-3.5" />
-                Target {targetScore}%
-              </span>
+              <button
+                type="button"
+                onClick={onNavigateToTargetScore}
+                className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-2.5 py-1 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
+              >
+                <Target className="h-3.5 w-3.5 text-[var(--accent)]" />
+                <span className="hidden sm:inline">Target {targetScore}%</span>
+                <span className="sm:hidden">{targetScore}%</span>
+              </button>
             )}
+            {/* Dark/light toggle — desktop only (already in bottom nav on mobile) */}
             <button
               onClick={(e) => performCircularReveal(e, toggleColorMode)}
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)] hover:bg-[var(--muted)]"
+              className="hidden sm:flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)] hover:bg-[var(--muted)]"
               aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
             >
               {colorMode === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}

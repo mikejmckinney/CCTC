@@ -63,6 +63,7 @@ export default function App() {
   const [submitConfirm, setSubmitConfirm] = useState<{ unanswered: number } | null>(null);
   const [clearHistoryConfirm, setClearHistoryConfirm] = useState(false);
   const [clearFlagsConfirm, setClearFlagsConfirm] = useState(false);
+  const [pendingSettingNav, setPendingSettingNav] = useState<'examDate' | 'targetScore' | null>(null);
   const lastFingerprint = useRef('');
   const activeSessionRef = useRef<ActiveSession | null>(null);
 
@@ -395,6 +396,8 @@ export default function App() {
           } catch { return null; }
         })()}
         targetScore={settings.targetThreshold}
+        onNavigateToExamDate={() => { setPage('dashboard'); setPendingSettingNav('examDate'); }}
+        onNavigateToTargetScore={() => { setPage('dashboard'); setPendingSettingNav('targetScore'); }}
       />
 
       <main className="mx-auto max-w-5xl px-4 py-6 pb-20 sm:pb-6">
@@ -412,6 +415,8 @@ export default function App() {
             onUpdateSettings={(partial) => setSettings((prev) => ({ ...prev, ...partial }))}
             onGoToHistory={() => setPage('history')}
             onViewSession={handleViewSession}
+            pendingSettingNav={pendingSettingNav}
+            onClearPendingNav={() => setPendingSettingNav(null)}
           />
         )}
 
