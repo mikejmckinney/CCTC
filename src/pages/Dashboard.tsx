@@ -198,7 +198,7 @@ export function Dashboard({
                     <Info className="h-3.5 w-3.5" />
                   </button>
                   {showEmaTooltip && (
-                    <div className="absolute left-0 bottom-full mb-2 w-72 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-20">
+                    <div className="absolute left-0 top-full mt-2 w-72 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-20">
                       Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
                       Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
                       improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).

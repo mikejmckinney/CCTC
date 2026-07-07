@@ -13,9 +13,9 @@ interface NavigationProps {
   targetScore?: number;
 }
 
-const NAV_ITEMS: Array<{ page: Page; label: string; icon: React.ElementType; mobileIcon: React.ElementType }> = [
-  { page: 'dashboard', label: 'Home', icon: Home, mobileIcon: Home },
-  { page: 'history', label: 'History', icon: BarChart3, mobileIcon: BarChart3 },
+const NAV_ITEMS: Array<{ page: Page; label: string; icon: React.ElementType }> = [
+  { page: 'dashboard', label: 'Home', icon: Home },
+  { page: 'history', label: 'Progress', icon: BarChart3 },
 ];
 
 export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUntilExam, targetScore }: NavigationProps) {
@@ -23,15 +23,16 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUnti
 
   return (
     <>
-      {/* Desktop header */}
-      <header className="sticky top-0 z-50 hidden sm:block border-b border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-sm">
+      {/* Header — visible on all viewports */}
+      <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-sm">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-4">
             <button onClick={() => onNavigate('dashboard')} className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-[var(--primary)]" />
               <span className="text-lg font-bold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>CCTC</span>
             </button>
-            <nav className="flex items-center gap-1" aria-label="Primary">
+            {/* Desktop nav links */}
+            <nav className="hidden sm:flex items-center gap-1" aria-label="Primary">
               {NAV_ITEMS.map(({ page, label, icon: Icon }) => (
                 <button
                   key={page}
@@ -65,15 +66,15 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUnti
             </nav>
           </div>
           <div className="flex items-center gap-3">
-            {/* Exam info pills */}
+            {/* Exam info pills — desktop only */}
             {daysUntilExam !== null && daysUntilExam !== undefined && (
-              <span className="flex items-center gap-1.5 text-xs text-[var(--muted-foreground)]">
+              <span className="hidden sm:flex items-center gap-1.5 text-xs text-[var(--muted-foreground)]">
                 <Calendar className="h-3.5 w-3.5" />
                 {daysUntilExam > 0 ? `${daysUntilExam}d to exam` : daysUntilExam === 0 ? 'Exam today' : 'Exam passed'}
               </span>
             )}
             {targetScore !== undefined && (
-              <span className="flex items-center gap-1.5 text-xs text-[var(--muted-foreground)]">
+              <span className="hidden sm:flex items-center gap-1.5 text-xs text-[var(--muted-foreground)]">
                 <Target className="h-3.5 w-3.5" />
                 Target {targetScore}%
               </span>
@@ -89,10 +90,10 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUnti
         </div>
       </header>
 
-      {/* Mobile bottom nav */}
+      {/* Mobile bottom nav — with labels */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 sm:hidden border-t border-[var(--border)] bg-[var(--card)]/90 backdrop-blur-sm safe-area-pb" aria-label="Mobile navigation">
         <div className="flex items-center justify-around px-2 py-1 pb-[max(0.25rem,env(safe-area-inset-bottom))]">
-          {NAV_ITEMS.map(({ page, mobileIcon: Icon, label }) => (
+          {NAV_ITEMS.map(({ page, icon: Icon, label }) => (
             <button
               key={page}
               onClick={() => onNavigate(page)}
@@ -106,6 +107,7 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUnti
               aria-current={currentPage === page ? 'page' : undefined}
             >
               <Icon className="h-5 w-5" />
+              <span className="text-[10px]">{label}</span>
             </button>
           ))}
           {hasActiveSession && (
@@ -121,6 +123,7 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUnti
               aria-current={currentPage === 'session' ? 'page' : undefined}
             >
               <Play className="h-5 w-5" />
+              <span className="text-[10px]">Resume</span>
             </button>
           )}
           <button
@@ -129,6 +132,7 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUnti
             aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
           >
             {colorMode === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+            <span className="text-[10px]">{colorMode === 'light' ? 'Dark' : 'Light'}</span>
           </button>
         </div>
       </nav>
