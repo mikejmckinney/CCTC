@@ -153,6 +153,21 @@ export default function App() {
     return () => clearInterval(interval);
   }, [timedSessionId]);
 
+  // Auto-submit when timer expires
+  useEffect(() => {
+    if (!activeSession || activeSession.submittedAt || activeSession.remainingSeconds === null || activeSession.remainingSeconds > 0) return;
+    // Timer hit 0 — auto-submit
+    const result = scoreSession(activeSession.settings.blueprintId, activeSession.items, activeSession.answers, activeSession.settings.targetThreshold);
+    const completed = { ...activeSession, submittedAt: new Date().toISOString(), result, updatedAt: new Date().toISOString() };
+    const entry = toHistoryEntry(completed);
+    void saveHistoryEntry(entry).then(() => clearActiveSession()).then(() => {
+      setHistory((prev) => [entry, ...prev]);
+      setSelectedHistory(entry);
+      setActiveSession(null);
+      setPage('review');
+    });
+  }, [activeSession?.remainingSeconds, activeSession?.submittedAt]);
+
   // Mutate session helper
   const mutateSession = useCallback((fn: (s: ActiveSession) => ActiveSession) => {
     setActiveSession((prev) => prev ? { ...fn(prev), updatedAt: new Date().toISOString() } : prev);
@@ -369,9 +384,20 @@ export default function App() {
         </div>
       </Modal>
 
-      <Navigation currentPage={page} onNavigate={setPage} hasActiveSession={activeSession !== null && !activeSession.submittedAt} />
+      <Navigation
+        currentPage={page}
+        onNavigate={setPage}
+        hasActiveSession={activeSession !== null && !activeSession.submittedAt}
+        daysUntilExam={(() => {
+          try {
+            const d = localStorage.getItem('cctc-exam-date');
+            return d ? Math.ceil((new Date(d).getTime() - Date.now()) / 86400000) : null;
+          } catch { return null; }
+        })()}
+        targetScore={settings.targetThreshold}
+      />
 
-      <main className="mx-auto max-w-5xl px-4 py-6">
+      <main className="mx-auto max-w-5xl px-4 py-6 pb-20 sm:pb-6">
         {page === 'dashboard' && (
           <Dashboard
             history={history}

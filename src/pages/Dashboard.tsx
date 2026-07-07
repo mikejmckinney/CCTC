@@ -158,59 +158,28 @@ export function Dashboard({
 
   return (
     <div className="space-y-6">
-      {/* Hero */}
-      <Card>
-        <div className="p-5 sm:p-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <h1 className="text-[30px] font-semibold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
-                CCTC Practice Exam
-              </h1>
-              <p className="mt-1 text-[13px] text-[var(--muted-foreground)]">
-                {daysUntilExam !== null && daysUntilExam > 0
-                  ? `Your exam is in ${daysUntilExam} days.`
-                  : daysUntilExam !== null && daysUntilExam <= 0
-                  ? 'Exam day has arrived. Good luck!'
-                  : 'Welcome back. Ready to study?'}
-              </p>
-            </div>
-          </div>
-        </div>
-      </Card>
-
       {/* Readiness + Am I Ready — side by side */}
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Readiness Score */}
         <Card>
           <CardContent className="p-5 sm:p-6">
-            <div className="flex items-start gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--accent)]/10">
-                <Target className="h-7 w-7 text-[var(--accent)]" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="eyebrow">Readiness Score</p>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
-                    {readiness.overallEma || '—'}{readiness.overallEma ? '%' : ''}
-                  </p>
-                  {/* Hover tooltip for EMA explanation */}
-                  <div className="group relative inline-block">
-                    <Info className="h-4 w-4 text-[var(--muted-foreground)] cursor-help" />
-                    <div className="invisible group-hover:visible absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-10">
-                      Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with smoothing factor α=0.3. Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
-                    </div>
-                  </div>
+            <p className="eyebrow">Readiness Score</p>
+            <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+              {readiness.overallEma || '—'}{readiness.overallEma ? '%' : ''}
+            </p>
+            {readiness.overallEma > 0 && (
+              <>
+                <div className="mt-3">
+                  <Progress value={readiness.overallEma} variant={readiness.overallEma >= target ? 'success' : 'warning'} label="Readiness score" />
                 </div>
-                {readiness.overallEma > 0 && (
-                  <div className="mt-3">
-                    <Progress value={readiness.overallEma} variant={readiness.overallEma >= target ? 'success' : 'warning'} label="Readiness score" />
-                    <p className="mt-1 text-xs text-[var(--muted-foreground)]">
-                      Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
+                <p className="mt-2 text-xs text-[var(--muted-foreground)] leading-relaxed">
+                  Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
+                  Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
+                  improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
+                  Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.
+                </p>
+              </>
+            )}
           </CardContent>
         </Card>
 
@@ -306,9 +275,22 @@ export function Dashboard({
             <CardTitle>Recommended Next Action</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-start gap-3 rounded-lg bg-[var(--muted)] p-4">
+            <button
+              onClick={() => {
+                if (readiness.totalSessions === 0) {
+                  onStartQuick();
+                } else if (laggingDomains.length > 0) {
+                  onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                } else if (readiness.overallEma >= target) {
+                  onStartExam();
+                } else {
+                  onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                }
+              }}
+              className="w-full flex items-start gap-3 rounded-lg bg-[var(--muted)] p-4 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent"
+            >
               <studyAction.icon className="mt-0.5 h-5 w-5 shrink-0 text-[var(--primary)]" />
-              <div>
+              <div className="flex-1 min-w-0">
                 <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
                 {spacedCount > 0 && readiness.totalSessions > 0 && (
                   <p className="text-xs text-[var(--muted-foreground)] mt-1">
@@ -316,7 +298,8 @@ export function Dashboard({
                   </p>
                 )}
               </div>
-            </div>
+              <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
+            </button>
           </CardContent>
         </Card>
       </div>
@@ -327,7 +310,7 @@ export function Dashboard({
           <CardTitle>Quick Start</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
             <QuickStartButton label="Full Exam" icon={BookOpen} description="175 questions, 180 minutes" onClick={onStartExam} />
             <QuickStartButton label="Quick Session" icon={Zap} description="25 questions, 30 minutes" onClick={onStartQuick} />
             <QuickStartButton

@@ -1,7 +1,7 @@
 import { cn } from '../lib/cn';
 import { performCircularReveal } from '../lib/circularReveal';
 import { useTheme } from './ThemeProvider';
-import { Sun, Moon, Home, BarChart3, Play, BookOpen } from 'lucide-react';
+import { Sun, Moon, Home, BarChart3, Play, BookOpen, Calendar, Target } from 'lucide-react';
 
 type Page = 'dashboard' | 'history' | 'reported' | 'session' | 'review';
 
@@ -9,6 +9,8 @@ interface NavigationProps {
   currentPage: Page;
   onNavigate: (page: Page) => void;
   hasActiveSession: boolean;
+  daysUntilExam?: number | null;
+  targetScore?: number;
 }
 
 const NAV_ITEMS: Array<{ page: Page; label: string; icon: React.ElementType; mobileIcon: React.ElementType }> = [
@@ -16,7 +18,7 @@ const NAV_ITEMS: Array<{ page: Page; label: string; icon: React.ElementType; mob
   { page: 'history', label: 'History', icon: BarChart3, mobileIcon: BarChart3 },
 ];
 
-export function Navigation({ currentPage, onNavigate, hasActiveSession }: NavigationProps) {
+export function Navigation({ currentPage, onNavigate, hasActiveSession, daysUntilExam, targetScore }: NavigationProps) {
   const { colorMode, toggleColorMode } = useTheme();
 
   return (
@@ -62,7 +64,20 @@ export function Navigation({ currentPage, onNavigate, hasActiveSession }: Naviga
               )}
             </nav>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            {/* Exam info pills */}
+            {daysUntilExam !== null && daysUntilExam !== undefined && (
+              <span className="flex items-center gap-1.5 text-xs text-[var(--muted-foreground)]">
+                <Calendar className="h-3.5 w-3.5" />
+                {daysUntilExam > 0 ? `${daysUntilExam}d to exam` : daysUntilExam === 0 ? 'Exam today' : 'Exam passed'}
+              </span>
+            )}
+            {targetScore !== undefined && (
+              <span className="flex items-center gap-1.5 text-xs text-[var(--muted-foreground)]">
+                <Target className="h-3.5 w-3.5" />
+                Target {targetScore}%
+              </span>
+            )}
             <button
               onClick={(e) => performCircularReveal(e, toggleColorMode)}
               className="flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)] hover:bg-[var(--muted)]"

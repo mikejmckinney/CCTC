@@ -32,7 +32,7 @@ describe('App', () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText(/CCTC Practice Exam/i)).toBeInTheDocument();
+      expect(screen.getByText(/Readiness Score/i)).toBeInTheDocument();
     });
   });
 });
