@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Badge, Progress, Button } from '../components/ui';
 import { computeReadiness, computeSpacedRepetition } from '../lib/readiness';
@@ -9,7 +9,7 @@ import { getBlueprintLabel } from '../data/blueprints';
 import {
   Play, Zap, Target, Clock, BookOpen, Brain, CheckCircle2,
   AlertTriangle, TrendingUp, ChevronRight, BarChart3, ChevronDown,
-  ChevronUp, RotateCcw, Info
+  ChevronUp, RotateCcw, Info, Calendar
 } from 'lucide-react';
 
 interface DashboardProps {
@@ -151,6 +151,25 @@ export function Dashboard({
   const laggingDomains = readiness.domains.filter((d) => d.emaScore < target);
   const recentSessions = history.slice(0, 5);
 
+  const [showEmaTooltip, setShowEmaTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+
+  // Close tooltip on click outside
+  useEffect(() => {
+    if (!showEmaTooltip) return;
+    const handler = (e: Event) => {
+      if (tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
+        setShowEmaTooltip(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    document.addEventListener('touchstart', handler);
+    return () => {
+      document.removeEventListener('mousedown', handler);
+      document.removeEventListener('touchstart', handler);
+    };
+  }, [showEmaTooltip]);
+
   const handleExamDateChange = (value: string) => {
     setExamDate(value);
     try { localStorage.setItem('cctc-exam-date', value); } catch {}
@@ -166,15 +185,26 @@ export function Dashboard({
             <div>
               <div className="flex items-center gap-1.5">
                 <p className="eyebrow !mb-0">Readiness Score</p>
-                {/* Tooltip for EMA explanation */}
-                <div className="group relative inline-block">
-                  <Info className="h-3.5 w-3.5 text-[var(--muted-foreground)] cursor-help" />
-                  <div className="invisible group-hover:visible absolute left-0 bottom-full mb-2 w-72 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-10">
-                    Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
-                    Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
-                    improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
-                    Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.
-                  </div>
+                {/* Tooltip — works on hover (desktop) and tap (mobile) */}
+                <div className="relative inline-block" ref={tooltipRef}>
+                  <button
+                    type="button"
+                    onClick={() => setShowEmaTooltip((v) => !v)}
+                    onMouseEnter={() => setShowEmaTooltip(true)}
+                    onMouseLeave={() => setShowEmaTooltip(false)}
+                    className="flex h-5 w-5 items-center justify-center rounded-full text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                    aria-label="How is readiness calculated?"
+                  >
+                    <Info className="h-3.5 w-3.5" />
+                  </button>
+                  {showEmaTooltip && (
+                    <div className="absolute left-0 bottom-full mb-2 w-72 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-20">
+                      Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
+                      Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
+                      improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
+                      Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.
+                    </div>
+                  )}
                 </div>
               </div>
               <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
@@ -185,6 +215,28 @@ export function Dashboard({
                   <Progress value={readiness.overallEma} variant={readiness.overallEma >= target ? 'success' : 'warning'} label="Readiness score" />
                 </div>
               )}
+
+              {/* Exam countdown + Target score — clickable to setup */}
+              <div className="mt-3 flex flex-wrap gap-2">
+                {daysUntilExam !== null && (
+                  <button
+                    type="button"
+                    onClick={() => setShowSetup(true)}
+                    className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
+                  >
+                    <Calendar className="h-3.5 w-3.5 text-[var(--accent)]" />
+                    {daysUntilExam > 0 ? `${daysUntilExam}d to exam` : daysUntilExam === 0 ? 'Exam today' : 'Exam passed'}
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setShowSetup(true)}
+                  className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
+                >
+                  <Target className="h-3.5 w-3.5 text-[var(--accent)]" />
+                  Target {target}%
+                </button>
+              </div>
             </div>
 
             {/* Recommended Next Action — inside readiness pane */}
