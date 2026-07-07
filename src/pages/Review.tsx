@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react';
+import Fuse from 'fuse.js';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Progress } from '../components/ui';
 import type { HistoryEntry } from '../types/exam';
 import {
   ChevronRight, CheckCircle2, XCircle, ArrowLeft, Flag,
-  Filter, ListChecks, X
+  Filter, ListChecks, X, Search
 } from 'lucide-react';
 
 interface ReviewProps {
@@ -19,8 +20,29 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
   const [filter, setFilter] = useState<FilterMode>('all');
   const [domainFilter, setDomainFilter] = useState<string | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const domains = entry.result.breakdown;
+
+  // Fuse.js instance for fuzzy text search across questions
+  const fuse = useMemo(() => {
+    const questions = entry.items.map((i) => ({
+      ...i.question,
+      itemId: i.itemId,
+      categoryId: i.categoryId,
+    }));
+    return new Fuse(questions, {
+      keys: [
+        { name: 'stem', weight: 3 },
+        { name: 'options.text', weight: 2 },
+        { name: 'explanation.rationale_correct', weight: 1 },
+        { name: 'id', weight: 1 },
+      ],
+      threshold: 0.4,
+      minMatchCharLength: 2,
+      ignoreLocation: true,
+    });
+  }, [entry]);
 
   const filterCounts = useMemo(() => {
     const all = entry.items.length;
@@ -37,9 +59,10 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
         (filter === 'correct' && isCorrect) ||
         (filter === 'incorrect' && !isCorrect);
       const matchesDomain = !domainFilter || item.categoryId === domainFilter;
-      return matchesFilter && matchesDomain;
+      const matchesSearch = !searchQuery.trim() || fuse.search(searchQuery.trim()).some((r) => r.item.itemId === item.itemId);
+      return matchesFilter && matchesDomain && matchesSearch;
     });
-  }, [entry, filter, domainFilter]);
+  }, [entry, filter, domainFilter, searchQuery, fuse]);
 
   return (
     <div className="space-y-4">
@@ -104,7 +127,29 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
 
       {/* Filter bar */}
       <Card>
-        <CardContent className="p-3">
+        <CardContent className="p-3 space-y-3">
+          {/* Text search */}
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--muted-foreground)]" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => { setSearchQuery(e.target.value); setExpandedIndex(null); }}
+              placeholder="Search questions, answers, explanations..."
+              className="w-full h-9 rounded-lg border border-[var(--input)] bg-[var(--card)] pl-9 pr-3 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
+                aria-label="Clear search"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            )}
+          </div>
+          {/* Status + domain filters */}
           <div className="flex flex-wrap items-center gap-2">
             <Filter className="h-4 w-4 text-[var(--muted-foreground)]" />
             {(['all', 'incorrect', 'correct'] as FilterMode[]).map((mode) => (
