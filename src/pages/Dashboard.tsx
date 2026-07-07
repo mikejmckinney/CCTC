@@ -160,26 +160,62 @@ export function Dashboard({
     <div className="space-y-6">
       {/* Readiness + Am I Ready — side by side */}
       <div className="grid gap-4 sm:grid-cols-2">
-        {/* Readiness Score */}
+        {/* Readiness Score + Recommended Action */}
         <Card>
-          <CardContent className="p-5 sm:p-6">
-            <p className="eyebrow">Readiness Score</p>
-            <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
-              {readiness.overallEma || '—'}{readiness.overallEma ? '%' : ''}
-            </p>
-            {readiness.overallEma > 0 && (
-              <>
-                <div className="mt-3">
+          <CardContent className="p-5 sm:p-6 space-y-4">
+            <div>
+              <div className="flex items-center gap-1.5">
+                <p className="eyebrow !mb-0">Readiness Score</p>
+                {/* Tooltip for EMA explanation */}
+                <div className="group relative inline-block">
+                  <Info className="h-3.5 w-3.5 text-[var(--muted-foreground)] cursor-help" />
+                  <div className="invisible group-hover:visible absolute left-0 bottom-full mb-2 w-72 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-10">
+                    Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
+                    Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
+                    improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
+                    Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.
+                  </div>
+                </div>
+              </div>
+              <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+                {readiness.overallEma || '—'}{readiness.overallEma ? '%' : ''}
+              </p>
+              {readiness.overallEma > 0 && (
+                <div className="mt-2">
                   <Progress value={readiness.overallEma} variant={readiness.overallEma >= target ? 'success' : 'warning'} label="Readiness score" />
                 </div>
-                <p className="mt-2 text-xs text-[var(--muted-foreground)] leading-relaxed">
-                  Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
-                  Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
-                  improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
-                  Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.
-                </p>
-              </>
-            )}
+              )}
+            </div>
+
+            {/* Recommended Next Action — inside readiness pane */}
+            <div className="border-t border-[var(--border)] pt-4">
+              <p className="eyebrow">Recommended Next Action</p>
+              <button
+                onClick={() => {
+                  if (readiness.totalSessions === 0) {
+                    onStartQuick();
+                  } else if (laggingDomains.length > 0) {
+                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                  } else if (readiness.overallEma >= target) {
+                    onStartExam();
+                  } else {
+                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                  }
+                }}
+                className="w-full flex items-center gap-3 rounded-lg bg-[var(--muted)] p-3 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent mt-1"
+              >
+                <studyAction.icon className="h-5 w-5 shrink-0 text-[var(--primary)]" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
+                  {spacedCount > 0 && readiness.totalSessions > 0 && (
+                    <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                      {spacedCount} item{spacedCount !== 1 ? 's' : ''} due for spaced repetition.
+                    </p>
+                  )}
+                </div>
+                <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
+              </button>
+            </div>
           </CardContent>
         </Card>
 
@@ -245,64 +281,29 @@ export function Dashboard({
         </Card>
       </div>
 
-      {/* Category Breakdown + Study Plan */}
-      <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Category Breakdown</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {readiness.domains.length > 0 ? (
-              readiness.domains.map((d) => (
-                <CategoryBar
-                  key={d.domainId}
-                  name={getDomainShortLabel(d.domainId, d.domainLabel)}
-                  percent={d.emaScore}
-                  examWeight={`${d.examWeight}%`}
-                  isStrong={d.emaScore >= target}
-                />
-              ))
-            ) : (
-              DEMO_DOMAINS_PLACEHOLDER.map((d) => (
-                <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong />
-              ))
-            )}
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Recommended Next Action</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <button
-              onClick={() => {
-                if (readiness.totalSessions === 0) {
-                  onStartQuick();
-                } else if (laggingDomains.length > 0) {
-                  onStartWeakAreas(laggingDomains.map((d) => d.domainId));
-                } else if (readiness.overallEma >= target) {
-                  onStartExam();
-                } else {
-                  onStartWeakAreas(laggingDomains.map((d) => d.domainId));
-                }
-              }}
-              className="w-full flex items-start gap-3 rounded-lg bg-[var(--muted)] p-4 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent"
-            >
-              <studyAction.icon className="mt-0.5 h-5 w-5 shrink-0 text-[var(--primary)]" />
-              <div className="flex-1 min-w-0">
-                <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
-                {spacedCount > 0 && readiness.totalSessions > 0 && (
-                  <p className="text-xs text-[var(--muted-foreground)] mt-1">
-                    {spacedCount} item{spacedCount !== 1 ? 's' : ''} due for spaced repetition.
-                  </p>
-                )}
-              </div>
-              <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
-            </button>
-          </CardContent>
-        </Card>
-      </div>
+      {/* Category Breakdown */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Category Breakdown</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {readiness.domains.length > 0 ? (
+            readiness.domains.map((d) => (
+              <CategoryBar
+                key={d.domainId}
+                name={getDomainShortLabel(d.domainId, d.domainLabel)}
+                percent={d.emaScore}
+                examWeight={`${d.examWeight}%`}
+                isStrong={d.emaScore >= target}
+              />
+            ))
+          ) : (
+            DEMO_DOMAINS_PLACEHOLDER.map((d) => (
+              <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong />
+            ))
+          )}
+        </CardContent>
+      </Card>
 
       {/* Quick Start */}
       <Card>
