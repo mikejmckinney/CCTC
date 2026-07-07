@@ -274,36 +274,6 @@ export function Dashboard({
               </div>
             </div>
 
-            {/* Recommended Next Action — inside readiness pane */}
-            <div className="border-t border-[var(--border)] pt-4">
-              <p className="eyebrow">Recommended Next Action</p>
-              <button
-                onClick={() => {
-                  if (readiness.totalSessions === 0) {
-                    onStartQuick();
-                  } else if (laggingDomains.length > 0) {
-                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
-                  } else if (readiness.overallEma >= target) {
-                    onStartExam();
-                  } else {
-                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
-                  }
-                }}
-                className="w-full flex items-center gap-3 rounded-lg bg-[var(--muted)] p-3 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent mt-1"
-              >
-                <studyAction.icon className="h-5 w-5 shrink-0 text-[var(--primary)]" />
-                <div className="flex-1 min-w-0">
-                  <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
-                  {spacedCount > 0 && readiness.totalSessions > 0 && (
-                    <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                      {spacedCount} item{spacedCount !== 1 ? 's' : ''} due for spaced repetition.
-                    </p>
-                  )}
-                </div>
-                <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
-              </button>
-            </div>
-
             {/* Domains — inside readiness pane */}
             <div className="border-t border-[var(--border)] pt-4">
               <p className="eyebrow">Domains</p>
@@ -386,12 +356,44 @@ export function Dashboard({
                 <p className="text-xs text-[var(--muted-foreground)]">Complete practice sessions to see your readiness breakdown.</p>
               </div>
             )}
+
+            {/* Recommended Next Action — inside Am I Ready pane */}
+            <div className="border-t border-[var(--border)] pt-3 mt-1">
+              <p className="eyebrow">Recommended Next Action</p>
+              <button
+                onClick={() => {
+                  if (readiness.totalSessions === 0) {
+                    onStartQuick();
+                  } else if (laggingDomains.length > 0) {
+                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                  } else if (readiness.overallEma >= target) {
+                    onStartExam();
+                  } else {
+                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                  }
+                }}
+                className="w-full flex items-center gap-3 rounded-lg bg-[var(--muted)] p-3 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent mt-1"
+              >
+                <studyAction.icon className="h-5 w-5 shrink-0 text-[var(--primary)]" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
+                  {spacedCount > 0 && readiness.totalSessions > 0 && (
+                    <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                      {spacedCount} item{spacedCount !== 1 ? 's' : ''} due for spaced repetition.
+                    </p>
+                  )}
+                </div>
+                <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
+              </button>
+            </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Quick Start */}
-      <Card>
+      {/* Quick Start + Recent Sessions — side by side */}
+      <div className="grid gap-4 lg:grid-cols-2">
+        {/* Quick Start */}
+        <Card>
         <CardHeader>
           <CardTitle>Quick Start</CardTitle>
         </CardHeader>
@@ -625,6 +627,7 @@ export function Dashboard({
           )}
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }
