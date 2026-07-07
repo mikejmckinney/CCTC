@@ -260,10 +260,7 @@ export function Dashboard({
                 )}
               </div>
             </div>
-            <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
-              {readiness.overallEma || '—'}{readiness.overallEma ? '%' : ''}
-            </p>
-            {readiness.overallEma > 0 && (
+            {readiness.overallEma > 0 ? (
               <div className="mt-2 flex justify-center">
                 <RadialGauge value={readiness.overallEma} target={target} size={200}>
                   <span className="text-3xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
@@ -272,6 +269,8 @@ export function Dashboard({
                   <span className="text-xs text-[var(--muted-foreground)] mt-0.5">target {target}%</span>
                 </RadialGauge>
               </div>
+            ) : (
+              <p className="mt-2 text-sm text-[var(--muted-foreground)]">Complete sessions to see your readiness score.</p>
             )}
 
             {/* Exam countdown + Target score pills */}

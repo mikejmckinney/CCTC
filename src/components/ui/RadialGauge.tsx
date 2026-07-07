@@ -10,22 +10,25 @@ interface RadialGaugeProps {
 }
 
 const COLORS = {
-  track: 'var(--muted)',
   low: 'var(--destructive)',
   mid: 'var(--warning)',
   high: 'var(--success)',
-  accent: 'var(--accent)',
 };
 
 export function RadialGauge({ value, target, size = 180, className, children }: RadialGaugeProps) {
   const clamped = Math.min(100, Math.max(0, value));
   const isAbove = clamped >= target;
 
-  // Three threshold bands: red (0-60), amber (60-80), green (80-100)
+  // Dynamic threshold bands based on user's target:
+  // Red: 0 to target*0.7  (well below target)
+  // Amber: target*0.7 to target  (approaching target)
+  // Green: target to 100  (at or above target)
+  const redEnd = Math.round(target * 0.7);
+  const amberEnd = target;
   const bands = [
-    { name: 'low', value: 60, color: COLORS.low },
-    { name: 'mid', value: 20, color: COLORS.mid },
-    { name: 'high', value: 20, color: COLORS.high },
+    { name: 'low', value: redEnd, color: COLORS.low },
+    { name: 'mid', value: amberEnd - redEnd, color: COLORS.mid },
+    { name: 'high', value: 100 - amberEnd, color: COLORS.high },
   ];
 
   // The filled arc represents the current score
@@ -37,7 +40,7 @@ export function RadialGauge({ value, target, size = 180, className, children }: 
   return (
     <div className={cn('relative inline-flex items-center justify-center', className)} style={{ width: size, height: size / 2 + 20 }}>
       <PieChart width={size} height={size / 2 + 20}>
-        {/* Background threshold bands */}
+        {/* Background threshold bands — dynamic based on target */}
         <Pie
           data={bands}
           cx={size / 2}

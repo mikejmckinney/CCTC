@@ -1,5 +1,4 @@
 import { useState, useMemo } from 'react';
-import Fuse from 'fuse.js';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Progress } from '../components/ui';
 import type { HistoryEntry } from '../types/exam';
@@ -24,33 +23,15 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
 
   const domains = entry.result.breakdown;
 
-  // Fuse.js instance for fuzzy text search across questions
-  const fuse = useMemo(() => {
-    const questions = entry.items.map((i) => ({
-      ...i.question,
-      itemId: i.itemId,
-      categoryId: i.categoryId,
-    }));
-    return new Fuse(questions, {
-      keys: [
-        { name: 'stem', weight: 3 },
-        { name: 'options.text', weight: 2 },
-        { name: 'explanation.rationale_correct', weight: 1 },
-        { name: 'id', weight: 1 },
-      ],
-      threshold: 0.4,
-      minMatchCharLength: 2,
-      ignoreLocation: true,
-    });
-  }, [entry]);
-
   const filterCounts = useMemo(() => {
     const all = entry.items.length;
     const incorrect = entry.items.filter((i) => entry.answers[i.itemId] !== i.question.correct).length;
     return { all, incorrect, correct: all - incorrect };
   }, [entry]);
 
+  // Search uses simple .includes() — fast for <1000 questions, no fuzzy matching overhead
   const filteredItems = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
     return entry.items.filter((item) => {
       const answer = entry.answers[item.itemId];
       const isCorrect = answer === item.question.correct;
@@ -59,10 +40,14 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
         (filter === 'correct' && isCorrect) ||
         (filter === 'incorrect' && !isCorrect);
       const matchesDomain = !domainFilter || item.categoryId === domainFilter;
-      const matchesSearch = !searchQuery.trim() || fuse.search(searchQuery.trim()).some((r) => r.item.itemId === item.itemId);
+      const matchesSearch = !q ||
+        item.question.stem.toLowerCase().includes(q) ||
+        item.question.options.some((o) => o.text.toLowerCase().includes(q)) ||
+        item.question.explanation.rationale_correct.toLowerCase().includes(q) ||
+        item.question.id.toLowerCase().includes(q);
       return matchesFilter && matchesDomain && matchesSearch;
     });
-  }, [entry, filter, domainFilter, searchQuery, fuse]);
+  }, [entry, filter, domainFilter, searchQuery]);
 
   return (
     <div className="space-y-4">
