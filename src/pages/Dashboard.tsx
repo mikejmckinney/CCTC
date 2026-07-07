@@ -7,9 +7,9 @@ import { getDomainShortLabel } from '../lib/domains';
 import type { HistoryEntry, SessionSettings, QuestionSet } from '../types/exam';
 import { getBlueprintLabel } from '../data/blueprints';
 import {
-  Play, Zap, Target, Clock, BookOpen, Brain, CheckCircle2,
+  Play, Zap, Target, Clock, BookOpen, CheckCircle2,
   AlertTriangle, TrendingUp, ChevronRight, BarChart3, ChevronDown,
-  ChevronUp, RotateCcw, Info, Calendar
+  ChevronUp, RotateCcw, Calendar
 } from 'lucide-react';
 
 interface DashboardProps {
@@ -114,13 +114,20 @@ function QuickStartButton({ label, icon: Icon, description, onClick }: {
   );
 }
 
-function CategoryBar({ name, percent, examWeight, isStrong }: {
-  name: string; percent: number; examWeight: string; isStrong: boolean;
+function CategoryBar({ name, percent, examWeight, isStrong, isLargestGap }: {
+  name: string; percent: number; examWeight: string; isStrong: boolean; isLargestGap?: boolean;
 }) {
   return (
     <div className="space-y-1.5">
       <div className="flex items-center justify-between text-[13px]">
-        <span className="font-medium text-[var(--foreground)]">{name}</span>
+        <div className="flex items-center gap-2">
+          <span className="font-medium text-[var(--foreground)]">{name}</span>
+          {isLargestGap && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-[var(--warning)]/10 px-2 py-0.5 text-[10px] font-semibold text-[var(--warning)]">
+              <AlertTriangle className="h-3 w-3" /> Largest gap
+            </span>
+          )}
+        </div>
         <div className="flex items-center gap-2">
           <span className="text-xs text-[var(--muted-foreground)]">{examWeight} of exam</span>
           <span className={cn(
@@ -214,181 +221,128 @@ export function Dashboard({
 
   return (
     <div className="space-y-6">
-      {/* Readiness + Am I Ready — side by side */}
-      <div className="grid gap-4 sm:grid-cols-2">
-        {/* Readiness Score + Recommended Action */}
-        <Card>
-          <CardContent className="p-5 sm:p-6 space-y-4">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <p className="eyebrow !mb-0">Readiness Score</p>
-                {/* Tooltip — works on hover (desktop) and tap (mobile) */}
-                <div className="relative inline-block" ref={tooltipRef}>
-                  <button
-                    type="button"
-                    onClick={() => setShowEmaTooltip((v) => !v)}
-                    className="flex h-5 w-5 items-center justify-center rounded-full text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
-                    aria-label="How is readiness calculated?"
-                  >
-                    <Info className="h-3.5 w-3.5" />
-                  </button>
-                  {showEmaTooltip && (
-                    <div className="absolute left-0 top-full mt-2 w-72 rounded-lg border border-[var(--border)] bg-[var(--card)] p-3 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-20">
-                      Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
-                      Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
-                      improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
-                      Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.
-                    </div>
-                  )}
-                </div>
-              </div>
-              <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
-                {readiness.overallEma || '—'}{readiness.overallEma ? '%' : ''}
-              </p>
-              {readiness.overallEma > 0 && (
-                <div className="mt-2">
-                  <Progress value={readiness.overallEma} variant={readiness.overallEma >= target ? 'success' : 'warning'} label="Readiness score" />
-                </div>
-              )}
-
-              {/* Exam countdown + Target score — clickable to navigate to setting */}
-              <div className="mt-3 flex flex-wrap gap-2">
-                {daysUntilExam !== null && (
-                  <button
-                    type="button"
-                    onClick={() => navigateToSetting('examDate')}
-                    className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
-                  >
-                    <Calendar className="h-3.5 w-3.5 text-[var(--accent)]" />
-                    {daysUntilExam > 0 ? `${daysUntilExam}d to exam` : daysUntilExam === 0 ? 'Exam today' : 'Exam passed'}
-                  </button>
-                )}
+      {/* Readiness Score */}
+      <Card>
+        <CardContent className="p-5 sm:p-6 space-y-4">
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <p className="eyebrow !mb-0">Readiness Score</p>
+              {/* Verdict badge with tooltip */}
+              <div className="relative inline-block" ref={tooltipRef}>
                 <button
                   type="button"
-                  onClick={() => navigateToSetting('targetScore')}
-                  className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
+                  onClick={() => setShowEmaTooltip((v) => !v)}
+                  className={cn(
+                    'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-colors',
+                    verdict.verdict === 'exam-ready' && 'bg-[var(--success)]/10 text-[var(--success)]',
+                    verdict.verdict === 'on-pace' && 'bg-[var(--info)]/10 text-[var(--info)]',
+                    verdict.verdict === 'on-track' && 'bg-[var(--warning)]/10 text-[var(--warning)]',
+                    verdict.verdict === 'at-risk' && 'bg-[var(--destructive)]/10 text-[var(--destructive)]',
+                  )}
+                  aria-label={`${verdict.label}. Click for details.`}
                 >
-                  <Target className="h-3.5 w-3.5 text-[var(--accent)]" />
-                  Target {target}%
+                  {verdict.verdict === 'exam-ready' && <CheckCircle2 className="h-3 w-3" />}
+                  {verdict.verdict === 'at-risk' && <AlertTriangle className="h-3 w-3" />}
+                  {(verdict.verdict === 'on-pace' || verdict.verdict === 'on-track') && <TrendingUp className="h-3 w-3" />}
+                  {verdict.label}
                 </button>
-              </div>
-            </div>
-
-            {/* Domains — inside readiness pane */}
-            <div className="border-t border-[var(--border)] pt-4">
-              <p className="eyebrow">Domains</p>
-              <div className="mt-2 space-y-3">
-                {readiness.domains.length > 0 ? (
-                  readiness.domains.map((d) => (
-                    <CategoryBar
-                      key={d.domainId}
-                      name={getDomainShortLabel(d.domainId, d.domainLabel)}
-                      percent={d.emaScore}
-                      examWeight={`${d.examWeight}%`}
-                      isStrong={d.emaScore >= target}
-                    />
-                  ))
-                ) : (
-                  DEMO_DOMAINS_PLACEHOLDER.map((d) => (
-                    <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong />
-                  ))
+                {showEmaTooltip && (
+                  <div className="absolute left-0 top-full mt-2 w-80 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-20 space-y-2">
+                    <p><strong className="text-[var(--foreground)]">{verdict.label}:</strong> {verdict.detail}</p>
+                    <p>Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
+                    Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
+                    improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
+                    Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.</p>
+                  </div>
                 )}
               </div>
             </div>
-          </CardContent>
-        </Card>
-
-        {/* Am I Ready Insights */}
-        <Card>
-          <CardContent className="p-5 sm:p-6 space-y-3">
-            <div className="flex items-center gap-2 mb-1">
-              <Brain className="h-5 w-5 text-[var(--primary)]" />
-              <p className="eyebrow !mb-0">Am I Ready?</p>
-            </div>
-
-            {/* Insight 1: Verdict */}
-            <div className={cn(
-              'flex items-start gap-2.5 rounded-lg p-2.5',
-              verdict.verdict === 'exam-ready' && 'bg-[var(--success)]/5 border border-[var(--success)]/20',
-              verdict.verdict === 'on-pace' && 'bg-[var(--info)]/5 border border-[var(--info)]/20',
-              verdict.verdict === 'on-track' && 'bg-[var(--warning)]/5 border border-[var(--warning)]/20',
-              verdict.verdict === 'at-risk' && 'bg-[var(--destructive)]/5 border border-[var(--destructive)]/20',
-            )}>
-              {verdict.verdict === 'exam-ready' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--success)]" /> :
-               verdict.verdict === 'at-risk' ? <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--destructive)]" /> :
-               <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-[var(--primary)]" />}
-              <div>
-                <p className="text-[13px] font-semibold text-[var(--foreground)]">{verdict.label}</p>
-                <p className="text-xs text-[var(--muted-foreground)] mt-0.5">{verdict.detail}</p>
-              </div>
-            </div>
-
-            {/* Insight 2: Largest gap */}
-            {laggingDomains.length > 0 && (
-              <div className="flex items-start gap-2.5 rounded-lg bg-[var(--muted)] p-2.5">
-                <Target className="mt-0.5 h-4 w-4 shrink-0 text-[var(--warning)]" />
-                <div>
-                  <p className="text-[13px] font-semibold text-[var(--foreground)]">Largest gap</p>
-                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                    {getDomainShortLabel(laggingDomains[0].domainId)} at {laggingDomains[0].emaScore}% — {target - laggingDomains[0].emaScore}% below target.
-                  </p>
-                </div>
+            <p className="text-[36px] font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+              {readiness.overallEma || '—'}{readiness.overallEma ? '%' : ''}
+            </p>
+            {readiness.overallEma > 0 && (
+              <div className="mt-2">
+                <Progress value={readiness.overallEma} variant={readiness.overallEma >= target ? 'success' : 'warning'} label="Readiness score" />
               </div>
             )}
 
-            {/* Insight 3: Due for review */}
-            {spacedCount > 0 && (
-              <div className="flex items-start gap-2.5 rounded-lg bg-[var(--muted)] p-2.5">
-                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent)]" />
-                <div>
-                  <p className="text-[13px] font-semibold text-[var(--foreground)]">Due for review</p>
-                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                    {spacedCount} item{spacedCount !== 1 ? 's' : ''} ready for spaced repetition.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* Empty state */}
-            {readiness.totalSessions === 0 && (
-              <div className="flex items-start gap-2.5 rounded-lg bg-[var(--muted)] p-2.5">
-                <Info className="mt-0.5 h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
-                <p className="text-xs text-[var(--muted-foreground)]">Complete practice sessions to see your readiness breakdown.</p>
-              </div>
-            )}
-
-            {/* Recommended Next Action — inside Am I Ready pane */}
-            <div className="border-t border-[var(--border)] pt-3 mt-1">
-              <p className="eyebrow">Recommended Next Action</p>
+            {/* Exam countdown + Target score pills */}
+            <div className="mt-3 flex flex-wrap gap-2">
+              {daysUntilExam !== null && (
+                <button
+                  type="button"
+                  onClick={() => navigateToSetting('examDate')}
+                  className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
+                >
+                  <Calendar className="h-3.5 w-3.5 text-[var(--accent)]" />
+                  {daysUntilExam > 0 ? `${daysUntilExam}d to exam` : daysUntilExam === 0 ? 'Exam today' : 'Exam passed'}
+                </button>
+              )}
               <button
-                onClick={() => {
-                  if (readiness.totalSessions === 0) {
-                    onStartQuick();
-                  } else if (laggingDomains.length > 0) {
-                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
-                  } else if (readiness.overallEma >= target) {
-                    onStartExam();
-                  } else {
-                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
-                  }
-                }}
-                className="w-full flex items-center gap-3 rounded-lg bg-[var(--muted)] p-3 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent mt-1"
+                type="button"
+                onClick={() => navigateToSetting('targetScore')}
+                className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
               >
-                <studyAction.icon className="h-5 w-5 shrink-0 text-[var(--primary)]" />
-                <div className="flex-1 min-w-0">
-                  <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
-                  {spacedCount > 0 && readiness.totalSessions > 0 && (
-                    <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                      {spacedCount} item{spacedCount !== 1 ? 's' : ''} due for spaced repetition.
-                    </p>
-                  )}
-                </div>
-                <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
+                <Target className="h-3.5 w-3.5 text-[var(--accent)]" />
+                Target {target}%
               </button>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+
+          {/* Domains */}
+          <div className="border-t border-[var(--border)] pt-4">
+            <p className="eyebrow">Domains</p>
+            <div className="mt-2 space-y-3">
+              {readiness.domains.length > 0 ? (
+                readiness.domains.map((d) => (
+                  <CategoryBar
+                    key={d.domainId}
+                    name={getDomainShortLabel(d.domainId, d.domainLabel)}
+                    percent={d.emaScore}
+                    examWeight={`${d.examWeight}%`}
+                    isStrong={d.emaScore >= target}
+                    isLargestGap={laggingDomains.length > 0 && d.domainId === laggingDomains[0].domainId}
+                  />
+                ))
+              ) : (
+                DEMO_DOMAINS_PLACEHOLDER.map((d) => (
+                  <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong />
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* Recommended Next Action */}
+          <div className="border-t border-[var(--border)] pt-4">
+            <p className="eyebrow">Recommended Next Action</p>
+            <button
+              onClick={() => {
+                if (readiness.totalSessions === 0) {
+                  onStartQuick();
+                } else if (laggingDomains.length > 0) {
+                  onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                } else if (readiness.overallEma >= target) {
+                  onStartExam();
+                } else {
+                  onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                }
+              }}
+              className="w-full flex items-center gap-3 rounded-lg bg-[var(--muted)] p-3 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent mt-1"
+            >
+              <studyAction.icon className="h-5 w-5 shrink-0 text-[var(--primary)]" />
+              <div className="flex-1 min-w-0">
+                <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
+                {spacedCount > 0 && readiness.totalSessions > 0 && (
+                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                    {spacedCount} item{spacedCount !== 1 ? 's' : ''} due for spaced repetition.
+                  </p>
+                )}
+              </div>
+              <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
+            </button>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Quick Start + Recent Sessions — side by side */}
       <div className="grid gap-4 lg:grid-cols-2">
