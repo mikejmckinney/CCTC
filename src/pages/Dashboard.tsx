@@ -189,17 +189,22 @@ export function Dashboard({
     }
   }, [pendingSettingNav, navigateToSetting, onClearPendingNav]);
 
-  // Close tooltip on click outside (pointerdown covers both mouse and touch,
-  // but doesn't interfere with scroll like touchstart does)
+  // Close tooltip on click outside or scroll (prevents interference with
+  // bottom nav on mobile)
   useEffect(() => {
     if (!showEmaTooltip) return;
+    const close = () => setShowEmaTooltip(false);
     const handler = (e: PointerEvent) => {
       if (tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
-        setShowEmaTooltip(false);
+        close();
       }
     };
     document.addEventListener('pointerdown', handler);
-    return () => document.removeEventListener('pointerdown', handler);
+    window.addEventListener('scroll', close, { passive: true });
+    return () => {
+      document.removeEventListener('pointerdown', handler);
+      window.removeEventListener('scroll', close);
+    };
   }, [showEmaTooltip]);
 
   const handleExamDateChange = (value: string) => {
@@ -298,6 +303,28 @@ export function Dashboard({
                 <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
               </button>
             </div>
+
+            {/* Domains — inside readiness pane */}
+            <div className="border-t border-[var(--border)] pt-4">
+              <p className="eyebrow">Domains</p>
+              <div className="mt-2 space-y-3">
+                {readiness.domains.length > 0 ? (
+                  readiness.domains.map((d) => (
+                    <CategoryBar
+                      key={d.domainId}
+                      name={getDomainShortLabel(d.domainId, d.domainLabel)}
+                      percent={d.emaScore}
+                      examWeight={`${d.examWeight}%`}
+                      isStrong={d.emaScore >= target}
+                    />
+                  ))
+                ) : (
+                  DEMO_DOMAINS_PLACEHOLDER.map((d) => (
+                    <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong />
+                  ))
+                )}
+              </div>
+            </div>
           </CardContent>
         </Card>
 
@@ -362,32 +389,6 @@ export function Dashboard({
           </CardContent>
         </Card>
       </div>
-
-      {/* Category Breakdown + Quick Start — side by side */}
-      <div className="grid gap-4 lg:grid-cols-2">
-        {/* Category Breakdown */}
-        <Card>
-        <CardHeader>
-          <CardTitle>Category Breakdown</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {readiness.domains.length > 0 ? (
-            readiness.domains.map((d) => (
-              <CategoryBar
-                key={d.domainId}
-                name={getDomainShortLabel(d.domainId, d.domainLabel)}
-                percent={d.emaScore}
-                examWeight={`${d.examWeight}%`}
-                isStrong={d.emaScore >= target}
-              />
-            ))
-          ) : (
-            DEMO_DOMAINS_PLACEHOLDER.map((d) => (
-              <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong />
-            ))
-          )}
-        </CardContent>
-      </Card>
 
       {/* Quick Start */}
       <Card>
@@ -580,7 +581,6 @@ export function Dashboard({
           </div>
         </CardContent>
       </Card>
-      </div>
 
       {/* Recent Sessions */}
       <Card>
