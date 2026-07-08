@@ -11,7 +11,7 @@ import {
   ChevronRight, Trash2, Flag, Download, Upload
 } from 'lucide-react';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Line
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine
 } from 'recharts';
 
 interface HistoryProps {
@@ -147,18 +147,9 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
         const domainScore = bd.total > 0 ? bd.correct / bd.total : 0;
         domains[bd.categoryId] = Math.round(domainScore * domainWeight * 100);
       }
-      return { label, ...domains, total: entry.result.percent, ema: 0 }; // ema filled below
+      return { label, ...domains, total: entry.result.percent };
     });
   }, [filteredHistory]);
-
-  // Merge EMA trend line data into chartData
-  const chartDataWithEma = useMemo(() => {
-    const points = trend.emaPoints;
-    return chartData.map((d, i) => ({
-      ...d,
-      ema: points[i]?.ema ?? d.total,
-    }));
-  }, [chartData, trend.emaPoints]);
 
   const hasAnimatedChart = useRef(false);
   const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -207,12 +198,12 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
               <span className="text-[var(--muted-foreground)] flex items-center gap-1">
                 Trend
                 <strong className={cn(
-                  trend.emaDelta !== null && trend.emaDelta > 0 ? 'text-[var(--success)]' :
-                  trend.emaDelta !== null && trend.emaDelta < 0 ? 'text-[var(--destructive)]' :
+                  trend.recentDelta !== null && trend.recentDelta > 0 ? 'text-[var(--success)]' :
+                  trend.recentDelta !== null && trend.recentDelta < 0 ? 'text-[var(--destructive)]' :
                   'text-[var(--muted-foreground)]'
                 )}>
-                  {trend.emaDelta !== null
-                    ? `${trend.emaDelta > 0 ? '↑ Improving' : trend.emaDelta < 0 ? '↓ Declining' : '→ Stable'} ${Math.abs(trend.emaDelta)} EMA pts`
+                  {trend.recentDelta !== null
+                    ? `${trend.recentDelta > 0 ? '+' : ''}${trend.recentDelta}`
                     : '—'}
                 </strong>
               </span>
@@ -222,7 +213,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
         <CardContent>
           {chartData.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={chartDataWithEma} margin={{ top: 10, right: 8, left: -10, bottom: 0 }}>
+              <AreaChart data={chartData} margin={{ top: 10, right: 8, left: -10, bottom: 0 }}>
                 <defs>
                   {gradients.map(({ id, gradId }, i) => (
                     <linearGradient key={id} id={gradId} x1="0" y1="0" x2="0" y2="1">
@@ -275,17 +266,6 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
                     isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion}
                   />
                 ))}
-                {/* EMA smoothed trend line */}
-                <Line
-                  type="monotone"
-                  dataKey="ema"
-                  name="EMA"
-                  stroke="var(--accent)"
-                  strokeWidth={2}
-                  strokeDasharray="4 3"
-                  dot={false}
-                  isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion}
-                />
               </AreaChart>
             </ResponsiveContainer>
           ) : (

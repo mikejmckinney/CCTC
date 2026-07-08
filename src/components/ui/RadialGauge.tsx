@@ -13,16 +13,14 @@ const COLORS = {
   low: 'var(--destructive)',
   mid: 'var(--warning)',
   high: 'var(--success)',
+  tick: 'var(--foreground)',
 };
 
 export function RadialGauge({ value, target, size = 180, className, children }: RadialGaugeProps) {
   const clamped = Math.min(100, Math.max(0, value));
   const isAbove = clamped >= target;
 
-  // Dynamic threshold bands based on user's target:
-  // Red: 0 to target*0.7  (well below target)
-  // Amber: target*0.7 to target  (approaching target)
-  // Green: target to 100  (at or above target)
+  // Dynamic threshold bands based on user's target
   const redEnd = Math.round(target * 0.7);
   const amberEnd = target;
   const bands = [
@@ -37,35 +35,46 @@ export function RadialGauge({ value, target, size = 180, className, children }: 
     { name: 'empty', value: 100 - clamped },
   ];
 
+  // Target tick — a thin visible mark on the arc
+  const targetAngle = (180 - (target / 100) * 180) * (Math.PI / 180);
+  const outerR = size * 0.44;
+  const innerR = size * 0.28;
+  const cx = size / 2;
+  const cy = size / 2;
+  const tickX1 = cx + innerR * Math.cos(targetAngle);
+  const tickY1 = cy - innerR * Math.sin(targetAngle);
+  const tickX2 = cx + outerR * Math.cos(targetAngle);
+  const tickY2 = cy - outerR * Math.sin(targetAngle);
+
   return (
     <div className={cn('relative inline-flex items-center justify-center', className)} style={{ width: size, height: size / 2 + 20 }}>
       <PieChart width={size} height={size / 2 + 20}>
-        {/* Background threshold bands — dynamic based on target */}
+        {/* Background threshold bands */}
         <Pie
           data={bands}
-          cx={size / 2}
-          cy={size / 2}
+          cx={cx}
+          cy={cy}
           startAngle={180}
           endAngle={0}
-          innerRadius={size * 0.32}
-          outerRadius={size * 0.42}
+          innerRadius={size * 0.30}
+          outerRadius={size * 0.40}
           dataKey="value"
           stroke="none"
           isAnimationActive={false}
         >
           {bands.map((band) => (
-            <Cell key={band.name} fill={band.color} opacity={0.2} />
+            <Cell key={band.name} fill={band.color} opacity={0.15} />
           ))}
         </Pie>
         {/* Value arc */}
         <Pie
           data={filled}
-          cx={size / 2}
-          cy={size / 2}
+          cx={cx}
+          cy={cy}
           startAngle={180}
           endAngle={0}
-          innerRadius={size * 0.32}
-          outerRadius={size * 0.42}
+          innerRadius={size * 0.30}
+          outerRadius={size * 0.40}
           dataKey="value"
           stroke="none"
           cornerRadius={4}
@@ -73,27 +82,31 @@ export function RadialGauge({ value, target, size = 180, className, children }: 
           <Cell fill={isAbove ? COLORS.high : COLORS.mid} />
           <Cell fill="transparent" />
         </Pie>
-        {/* Target tick mark */}
-        <Pie
-          data={[{ value: target }, { value: 100 - target }]}
-          cx={size / 2}
-          cy={size / 2}
-          startAngle={180}
-          endAngle={0}
-          innerRadius={size * 0.28}
-          outerRadius={size * 0.46}
-          dataKey="value"
-          stroke="none"
-          isAnimationActive={false}
-        >
-          <Cell fill="transparent" />
-          <Cell fill="transparent" />
-        </Pie>
       </PieChart>
+      {/* SVG tick mark on top */}
+      <svg
+        className="absolute inset-0"
+        width={size}
+        height={size / 2 + 20}
+        viewBox={`0 0 ${size} ${size / 2 + 20}`}
+        style={{ pointerEvents: 'none' }}
+      >
+        <line
+          x1={tickX1}
+          y1={tickY1}
+          x2={tickX2}
+          y2={tickY2}
+          stroke="var(--foreground)"
+          strokeWidth={2}
+          strokeLinecap="round"
+          opacity={0.7}
+        />
+      </svg>
       {/* Center content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-end pb-1">
+      <div className="absolute inset-0 flex flex-col items-center justify-end pb-0">
         {children}
       </div>
     </div>
   );
 }
+

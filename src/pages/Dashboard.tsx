@@ -228,11 +228,10 @@ export function Dashboard({
           <CardContent className="px-5 pt-3 pb-5 sm:px-6 sm:pt-4 sm:pb-6 space-y-4">
             {readiness.overallEma > 0 ? (
               <div className="flex items-center gap-4">
-                <RadialGauge value={readiness.overallEma} target={target} size={140}>
-                  <span className="text-xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+                <RadialGauge value={readiness.overallEma} target={target} size={160}>
+                  <span className="text-3xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
                     {readiness.overallEma}%
                   </span>
-                  <span className="text-[10px] text-[var(--muted-foreground)] mt-0.5">target {target}%</span>
                 </RadialGauge>
                 <div className="flex-1 min-w-0">
                   <p className="eyebrow">Readiness Score</p>
