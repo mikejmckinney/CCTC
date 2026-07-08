@@ -4,7 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '
 import { buildHistoryTrend } from '../lib/historyTrend';
 import { formatDuration } from '../lib/format';
 import { DOMAIN_SHORT_LABELS } from '../lib/domains';
-import { exportBackup, importBackup } from '../lib/backup';
+import { exportBackup, importBackup, supportsDirSync, connectSyncFolder, getPersistedDirHandle, syncWithFolder, applyFolderMeta } from '../lib/backup';
+import { getDb, META_KEY, KV_STORE } from '../lib/storage';
 import type { HistoryEntry } from '../types/exam';
 import {
   ChevronRight, Trash2, Flag, Download, Upload
@@ -28,21 +29,89 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
   const [importFile, setImportFile] = useState<File | null>(null);
   const [importModalOpen, setImportModalOpen] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
+  const [syncFolderName, setSyncFolderName] = useState<string | null>(null);
+  const [syncConnected, setSyncConnected] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const [syncMsg, setSyncMsg] = useState<string | null>(null);
+  const [syncDir, setSyncDir] = useState<FileSystemDirectoryHandle | null>(null);
+  const dirSyncSupported = supportsDirSync();
+  const [metaConflict, setMetaConflict] = useState<{ folderMeta: Record<string, unknown>; localMeta: Record<string, unknown> } | null>(null);
+
+  // Restore persisted directory handle on mount
+  useEffect(() => {
+    if (!dirSyncSupported) return;
+    getPersistedDirHandle().then((handle) => {
+      if (handle) {
+        setSyncDir(handle);
+        setSyncConnected(true);
+        setSyncFolderName(handle.name);
+      }
+    }).catch(() => {});
+  }, [dirSyncSupported]);
+
+  const doSync = async (dir: FileSystemDirectoryHandle) => {
+    setSyncing(true);
+    setSyncMsg(null);
+    try {
+      const result = await syncWithFolder(dir);
+      if (result.metaDiffers) {
+        setMetaConflict({ folderMeta: result.folderMeta ?? {}, localMeta: result.localMeta ?? {} });
+        setSyncing(false);
+      } else {
+        setSyncMsg(`Synced · ${result.mergedCount} session(s) in folder.`);
+        setSyncing(false);
+        window.location.reload();
+      }
+    } catch {
+      setSyncMsg('Sync failed — check folder permissions and try again.');
+      setSyncing(false);
+    }
+  };
+
+  const handleConnectFolder = async () => {
+    const dir = await connectSyncFolder();
+    if (dir) {
+      setSyncDir(dir);
+      setSyncConnected(true);
+      setSyncFolderName(dir.name);
+      setSyncMsg(null);
+      await doSync(dir);
+    } else {
+      setSyncMsg('Folder sync needs a Chromium desktop browser (Chrome/Edge). Use Export/Import backup instead.');
+    }
+  };
+
+  const handleSyncNow = async () => {
+    if (!syncDir) return handleConnectFolder();
+    await doSync(syncDir);
+  };
+
+  const handleKeepThisDevice = async () => {
+    if (!syncDir || !metaConflict) return;
+    await applyFolderMeta(syncDir, metaConflict.localMeta);
+    setMetaConflict(null);
+    window.location.reload();
+  };
+
+  const handleKeepFolder = async () => {
+    if (!metaConflict) return;
+    const db = await getDb();
+    await db.put(KV_STORE, metaConflict.folderMeta, META_KEY);
+    setMetaConflict(null);
+    window.location.reload();
+  };
 
   const handleExport = async () => {
-    try {
-      await exportBackup();
-    } catch {
-      // Silently handle
-    }
+    try { await exportBackup(); } catch {}
   };
 
   const handleImport = async () => {
     if (!importFile) return;
     try {
-      await importBackup(importFile);
+      const result = await importBackup(importFile);
       setImportModalOpen(false);
       setImportFile(null);
+      setSyncMsg(`Restored ${result.historyCount} session(s).`);
       window.location.reload();
     } catch (e) {
       setImportError(e instanceof Error ? e.message : 'Import failed.');
@@ -284,37 +353,73 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       <Card>
         <CardHeader>
           <CardTitle>Move progress between devices</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-3">
-            <Button variant="secondary" onClick={() => void handleExport()} className="gap-2">
-              <Download className="h-4 w-4" />
-              Export backup
-            </Button>
-            <label
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] shadow-xs hover:bg-[var(--muted)] h-10 px-4 py-2 cursor-pointer"
-            >
-              <Upload className="h-4 w-4" />
-              Import backup
-              <input
-                type="file"
-                accept=".json"
-                className="hidden"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) {
-                    setImportFile(file);
-                    setImportModalOpen(true);
-                    e.target.value = '';
-                  }
-                }}
-              />
-            </label>
-          </div>
-          <p className="text-xs text-[var(--muted-foreground)] mt-3">
-            Export downloads a <code>cctc-progress-YYYY-MM-DD.json</code> file with your settings, history,
-            and any in-progress session. Import that file on another device to restore your progress.
+          <p className="text-xs text-[var(--muted-foreground)] mt-1">
+            Your progress is stored on this device only. Sync to a cloud-synced folder to carry it across devices, or export/import a backup file manually.
           </p>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {/* Folder sync section */}
+          {dirSyncSupported && (
+            <div className="rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4">
+              {syncConnected ? (
+                <div className="flex items-center justify-between gap-3 flex-wrap">
+                  <div className="text-[13px] text-[var(--foreground)]">
+                    Folder: <strong>{syncFolderName}</strong>
+                    {syncMsg && <span className="text-[var(--muted-foreground)]"> · {syncMsg}</span>}
+                  </div>
+                  <Button variant="secondary" size="sm" onClick={() => void handleSyncNow()} disabled={syncing} className="gap-2">
+                    {syncing ? 'Syncing…' : 'Sync now'}
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex items-center justify-between gap-3 flex-wrap">
+                  <p className="text-[13px] text-[var(--muted-foreground)]">
+                    Point at your Google Drive / OneDrive / iCloud synced folder — one file per session, merged across devices.
+                  </p>
+                  <Button variant="secondary" size="sm" onClick={() => void handleConnectFolder()} className="gap-2 whitespace-nowrap">
+                    Connect folder
+                  </Button>
+                </div>
+              )}
+              {syncMsg && !syncConnected && (
+                <p className="text-xs text-[var(--muted-foreground)] mt-2">{syncMsg}</p>
+              )}
+            </div>
+          )}
+
+          {/* Manual backup section */}
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)] mb-2">Manual backup</p>
+            <div className="flex flex-wrap gap-3 items-center">
+              <Button variant="secondary" onClick={() => void handleExport()} className="gap-2">
+                <Download className="h-4 w-4" />
+                Export
+              </Button>
+              <label
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] shadow-xs hover:bg-[var(--muted)] h-10 px-4 py-2 cursor-pointer"
+              >
+                <Upload className="h-4 w-4" />
+                Import
+                <input
+                  type="file"
+                  accept=".json"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      setImportFile(file);
+                      setImportModalOpen(true);
+                      e.target.value = '';
+                    }
+                  }}
+                />
+              </label>
+            </div>
+          </div>
+
+          {syncMsg && syncConnected && (
+            <p className="text-xs text-[var(--foreground)]">{syncMsg}</p>
+          )}
         </CardContent>
       </Card>
 
@@ -322,8 +427,8 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       <Modal
         open={importModalOpen}
         onClose={() => { setImportModalOpen(false); setImportFile(null); setImportError(null); }}
-        title="Import Backup"
-        description={importError ? undefined : `Replace your ${history.length} session${history.length !== 1 ? 's' : ''} with data from the backup?`}
+        title="Restore progress?"
+        description={importError ? undefined : `This replaces the ${history.length} session${history.length !== 1 ? 's' : ''} on this device with data from the backup. Your current progress will be overwritten.`}
       >
         {importError ? (
           <div className="space-y-3">
@@ -336,17 +441,24 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
             </div>
           </div>
         ) : (
-          <div className="space-y-3">
-            <p className="text-xs text-[var(--muted-foreground)]">
-              This will replace all current sessions, flags, settings, and any in-progress session with the data from the backup file.
-              The current question bank will not be affected.
-            </p>
-            <div className="flex justify-end gap-3">
-              <Button variant="secondary" onClick={() => { setImportModalOpen(false); setImportFile(null); }}>Cancel</Button>
-              <Button onClick={() => void handleImport()}>Replace and import</Button>
-            </div>
+          <div className="flex justify-end gap-3">
+            <Button variant="secondary" onClick={() => { setImportModalOpen(false); setImportFile(null); }}>Cancel</Button>
+            <Button onClick={() => void handleImport()}>Restore</Button>
           </div>
         )}
+      </Modal>
+
+      {/* Meta conflict resolution modal */}
+      <Modal
+        open={metaConflict !== null}
+        onClose={() => setMetaConflict(null)}
+        title="Settings differ between devices"
+        description="Your target/exam-date on this device differ from the folder. Keep which? (Your session history is already merged either way.)"
+      >
+        <div className="flex justify-end gap-3">
+          <Button variant="secondary" onClick={() => void handleKeepFolder()}>Keep folder</Button>
+          <Button onClick={() => void handleKeepThisDevice()}>Keep this device</Button>
+        </div>
       </Modal>
 
       {/* Link to Reported Items */}
