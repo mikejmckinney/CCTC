@@ -421,7 +421,20 @@ export default function App() {
         )}
 
         {page === 'history' && (
-          <History history={history} onViewSession={handleViewSession} onDeleteSession={(id) => void handleDeleteHistory(id)} onClearAll={() => void handleClearHistory()} onNavigateToReported={() => setPage('reported')} />
+          <History
+            history={history}
+            onViewSession={handleViewSession}
+            onDeleteSession={(id) => void handleDeleteHistory(id)}
+            onClearAll={() => void handleClearHistory()}
+            onNavigateToReported={() => setPage('reported')}
+            onSyncComplete={(newHistory, newFlags, newActiveSession) => {
+              setHistory(newHistory);
+              setFlags(newFlags);
+              if (newActiveSession !== undefined && newActiveSession !== null) {
+                setActiveSession(newActiveSession);
+              }
+            }}
+          />
         )}
 
         {page === 'reported' && (

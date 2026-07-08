@@ -1,8 +1,8 @@
 import {
-  getDb, META_KEY, SETTINGS_KEY,
+  getDb, META_KEY, SETTINGS_KEY, ACTIVE_SESSION_KEY,
   KV_STORE, HISTORY_STORE, FLAGS_STORE
 } from './storage';
-import type { HistoryEntry, ItemFlag, SessionSettings, AppMeta } from '../types/exam';
+import type { ActiveSession, HistoryEntry, ItemFlag, SessionSettings, AppMeta } from '../types/exam';
 
 // ─── Backup Schema ──────────────────────────────────────
 
@@ -14,6 +14,7 @@ interface BackupPayload {
   flags: ItemFlag[];
   history: HistoryEntry[];
   meta: AppMeta;
+  activeSession: ActiveSession | null;
 }
 
 function validateBackup(raw: unknown): BackupPayload | null {
@@ -29,11 +30,12 @@ function validateBackup(raw: unknown): BackupPayload | null {
 
 export async function exportBackup(): Promise<void> {
   const db = await getDb();
-  const [meta, settings, history, flags] = await Promise.all([
+  const [meta, settings, history, flags, activeSession] = await Promise.all([
     db.get(KV_STORE, META_KEY),
     db.get(KV_STORE, SETTINGS_KEY),
     db.getAll(HISTORY_STORE),
     db.getAll(FLAGS_STORE),
+    db.get(KV_STORE, ACTIVE_SESSION_KEY),
   ]);
 
   const payload: BackupPayload = {
@@ -44,6 +46,7 @@ export async function exportBackup(): Promise<void> {
     flags: flags ?? [],
     history: history ?? [],
     meta: meta ?? { disclaimerSeen: false },
+    activeSession: activeSession ?? null,
   };
 
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
@@ -57,7 +60,7 @@ export async function exportBackup(): Promise<void> {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export async function importBackup(file: File): Promise<{ historyCount: number; sessionCount: number }> {
+export async function importBackup(file: File): Promise<{ historyCount: number; activeSession: ActiveSession | null }> {
   const text = await file.text();
   let parsed: unknown;
   try { parsed = JSON.parse(text); } catch {
@@ -71,6 +74,9 @@ export async function importBackup(file: File): Promise<{ historyCount: number; 
   const db = await getDb();
   if (backup.settings) await db.put(KV_STORE, backup.settings, SETTINGS_KEY);
   if (backup.meta) await db.put(KV_STORE, backup.meta, META_KEY);
+  if (backup.activeSession) {
+    await db.put(KV_STORE, backup.activeSession, ACTIVE_SESSION_KEY);
+  }
 
   const htx = db.transaction(HISTORY_STORE, 'readwrite');
   await htx.store.clear();
@@ -82,7 +88,7 @@ export async function importBackup(file: File): Promise<{ historyCount: number; 
   await Promise.all(backup.flags.map((f) => ftx.store.put(f)));
   await ftx.done;
 
-  return { historyCount: backup.history.length, sessionCount: backup.history.length };
+  return { historyCount: backup.history.length, activeSession: backup.activeSession ?? null };
 }
 
 // ─── Directory Sync (File System Access API) ─────────────
@@ -146,6 +152,8 @@ export interface SyncResult {
   metaDiffers: boolean;
   folderMeta: Record<string, unknown> | null;
   localMeta: Record<string, unknown> | null;
+  mergedHistory: HistoryEntry[];
+  mergedFlags: ItemFlag[];
 }
 
 export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<SyncResult> {
@@ -209,6 +217,12 @@ export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<Sy
   await Promise.all(mergedFlags.map((f) => ftx.store.put(f)));
   await ftx.done;
 
+  // 8) Sync active session (folder wins if present)
+  const folderSession = await readJsonFromDir(dir, 'active-session.json');
+  if (folderSession) {
+    await db.put(KV_STORE, folderSession, ACTIVE_SESSION_KEY);
+  }
+
   // Check if meta differs
   const metaDiffers = folderMeta != null &&
     JSON.stringify({ t: (localMeta as any).settings?.targetThreshold, e: (localMeta as any).examDate }) !==
@@ -219,7 +233,7 @@ export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<Sy
     await db.put(KV_STORE, folderMeta, META_KEY);
   }
 
-  return { mergedCount: mergedList.length, metaDiffers, folderMeta, localMeta };
+  return { mergedCount: mergedList.length, metaDiffers, folderMeta, localMeta, mergedHistory: mergedList, mergedFlags };
 }
 
 export async function applyFolderMeta(dir: FileSystemDirectoryHandle, localMeta: Record<string, unknown>): Promise<void> {

@@ -6,7 +6,7 @@ import { formatDuration } from '../lib/format';
 import { DOMAIN_SHORT_LABELS } from '../lib/domains';
 import { exportBackup, importBackup, supportsDirSync, connectSyncFolder, getPersistedDirHandle, syncWithFolder, applyFolderMeta } from '../lib/backup';
 import { getDb, META_KEY, KV_STORE } from '../lib/storage';
-import type { HistoryEntry } from '../types/exam';
+import type { HistoryEntry, ItemFlag, ActiveSession } from '../types/exam';
 import {
   ChevronRight, Trash2, Flag, Download, Upload
 } from 'lucide-react';
@@ -20,9 +20,10 @@ interface HistoryProps {
   onDeleteSession: (id: string) => void;
   onClearAll: () => void;
   onNavigateToReported?: () => void;
+  onSyncComplete?: (history: HistoryEntry[], flags: ItemFlag[], activeSession?: ActiveSession | null) => void;
 }
 
-export function History({ history, onViewSession, onDeleteSession, onClearAll, onNavigateToReported }: HistoryProps) {
+export function History({ history, onViewSession, onDeleteSession, onClearAll, onNavigateToReported, onSyncComplete }: HistoryProps) {
   const trend = useMemo(() => buildHistoryTrend(history), [history]);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const [sessionFilter, setSessionFilter] = useState<'all' | 'exam' | 'study'>('all');
@@ -60,7 +61,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       } else {
         setSyncMsg(`Synced · ${result.mergedCount} session(s) in folder.`);
         setSyncing(false);
-        window.location.reload();
+        onSyncComplete?.(result.mergedHistory, result.mergedFlags);
       }
     } catch {
       setSyncMsg('Sync failed — check folder permissions and try again.');
@@ -90,7 +91,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
     if (!syncDir || !metaConflict) return;
     await applyFolderMeta(syncDir, metaConflict.localMeta);
     setMetaConflict(null);
-    window.location.reload();
+    setSyncMsg('Settings kept from this device.');
   };
 
   const handleKeepFolder = async () => {
@@ -98,7 +99,11 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
     const db = await getDb();
     await db.put(KV_STORE, metaConflict.folderMeta, META_KEY);
     setMetaConflict(null);
-    window.location.reload();
+    setSyncMsg('Settings applied from folder.');
+    // Refresh state
+    const freshHistory = await db.getAll('history');
+    const freshFlags = await db.getAll('flags');
+    onSyncComplete?.(freshHistory, freshFlags);
   };
 
   const handleExport = async () => {
@@ -112,7 +117,11 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       setImportModalOpen(false);
       setImportFile(null);
       setSyncMsg(`Restored ${result.historyCount} session(s).`);
-      window.location.reload();
+      // Refresh state from IndexedDB
+      const db = await getDb();
+      const freshHistory = await db.getAll('history');
+      const freshFlags = await db.getAll('flags');
+      onSyncComplete?.(freshHistory, freshFlags, result.activeSession);
     } catch (e) {
       setImportError(e instanceof Error ? e.message : 'Import failed.');
     }
