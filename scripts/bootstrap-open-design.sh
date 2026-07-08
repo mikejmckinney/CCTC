@@ -19,17 +19,26 @@ read_lock() {
 
 expand_home() {
   local path="$1"
+  local expanded
   case $path in
     ~)
-      printf '%s\n' "$HOME"
+      # Use eval to expand tilde without depending on $HOME
+      expanded="$(eval echo ~)"
       ;;
     ~/*)
-      printf '%s\n' "$HOME/${path#~/}"
+      local rest="${path#~/}"
+      expanded="$(eval echo "~/${rest}")"
       ;;
     *)
-      printf '%s\n' "$path"
+      expanded="$path"
       ;;
   esac
+  # Safety check: expanded path must not start with literal ~
+  if [[ "$expanded" == ~* ]]; then
+    echo "error: tilde expansion failed (got literal '$expanded'). Check \$HOME is set." >&2
+    exit 1
+  fi
+  printf '%s\n' "$expanded"
 }
 
 OD_REPO="${OD_REPO:-$(read_lock repo)}"
