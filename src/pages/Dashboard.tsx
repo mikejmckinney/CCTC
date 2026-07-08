@@ -222,23 +222,26 @@ export function Dashboard({
 
   return (
     <div className="space-y-6">
-      {/* Readiness + Quick Start — side by side */}
-      <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
-        {/* Readiness Score */}
-        <Card>
+      {/* Readiness Score */}
+      <Card>
         <CardContent className="p-5 sm:p-6 space-y-4">
           <p className="eyebrow">Readiness Score</p>
           {readiness.overallEma > 0 ? (
-              <div className="flex items-center gap-4">
-                <RadialGauge value={readiness.overallEma} target={target} size={160}>
-                  <span className="text-2xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+            <div className="flex items-center gap-4">
+              <RadialGauge value={readiness.overallEma} target={target} size={140}>
+                <span className="text-xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+                  {readiness.overallEma}%
+                </span>
+                <span className="text-[10px] text-[var(--muted-foreground)] mt-0.5">target {target}%</span>
+              </RadialGauge>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
                     {readiness.overallEma}%
                   </span>
-                  <span className="text-[10px] text-[var(--muted-foreground)] mt-0.5">target {target}%</span>
-                </RadialGauge>
-                <div className="flex-1 min-w-0">
-                  {/* Verdict badge with tooltip */}
-                  <div className="relative inline-block" ref={tooltipRef}>
+                  <span className="text-xs text-[var(--muted-foreground)]">target {target}%</span>
+                </div>
+                <div className="relative inline-block mt-1.5" ref={tooltipRef}>
                     <button
                       type="button"
                       onClick={() => setShowEmaTooltip((v) => !v)}
@@ -331,13 +334,13 @@ export function Dashboard({
         </CardContent>
       </Card>
 
-        {/* Quick Start — right of readiness */}
+        {/* Quick Start */}
         <Card>
           <CardHeader>
             <CardTitle>Quick Start</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+            <div className="grid gap-3 grid-cols-1">
               <QuickStartButton label="Full Exam" icon={BookOpen} description="175 questions, 180 minutes" onClick={onStartExam} />
               <QuickStartButton label="Quick Session" icon={Zap} description="25 questions, 30 minutes" onClick={onStartQuick} />
               <QuickStartButton
@@ -566,7 +569,6 @@ export function Dashboard({
           )}
         </CardContent>
       </Card>
-      </div>
     </div>
   );
 }
