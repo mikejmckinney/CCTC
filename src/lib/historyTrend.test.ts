@@ -34,13 +34,14 @@ function makeEntry(id: string, completedAt: string, percent: number): HistoryEnt
 
 describe('buildHistoryTrend', () => {
   it('returns empty summary when there is no history', () => {
-    expect(buildHistoryTrend([])).toEqual({
-      points: [],
-      averagePercent: null,
-      bestPercent: null,
-      recentDelta: null,
-      targetThreshold: null
-    });
+    const summary = buildHistoryTrend([]);
+    expect(summary.points).toEqual([]);
+    expect(summary.averagePercent).toBeNull();
+    expect(summary.bestPercent).toBeNull();
+    expect(summary.recentDelta).toBeNull();
+    expect(summary.targetThreshold).toBeNull();
+    expect(summary.emaDelta).toBeNull();
+    expect(summary.emaPoints).toEqual([]);
   });
 
   it('orders points chronologically and computes summary stats', () => {

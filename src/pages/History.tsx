@@ -1,15 +1,16 @@
 import { useMemo, useRef, useEffect, useId, useState } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '../components/ui';
-import { buildHistoryTrend, formatTrendDelta } from '../lib/historyTrend';
+import { buildHistoryTrend } from '../lib/historyTrend';
 import { formatDuration } from '../lib/format';
 import { DOMAIN_SHORT_LABELS } from '../lib/domains';
+import { exportBackup, importBackup } from '../lib/backup';
 import type { HistoryEntry } from '../types/exam';
 import {
-  ChevronRight, Trash2, Flag
+  ChevronRight, Trash2, Flag, Download, Upload
 } from 'lucide-react';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Line
 } from 'recharts';
 
 interface HistoryProps {
@@ -24,6 +25,29 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
   const trend = useMemo(() => buildHistoryTrend(history), [history]);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const [sessionFilter, setSessionFilter] = useState<'all' | 'exam' | 'study'>('all');
+  const [importFile, setImportFile] = useState<File | null>(null);
+  const [importModalOpen, setImportModalOpen] = useState(false);
+  const [importError, setImportError] = useState<string | null>(null);
+
+  const handleExport = async () => {
+    try {
+      await exportBackup();
+    } catch {
+      // Silently handle
+    }
+  };
+
+  const handleImport = async () => {
+    if (!importFile) return;
+    try {
+      await importBackup(importFile);
+      setImportModalOpen(false);
+      setImportFile(null);
+      window.location.reload();
+    } catch (e) {
+      setImportError(e instanceof Error ? e.message : 'Import failed.');
+    }
+  };
 
   // Filtered history based on session type
   const filteredHistory = useMemo(() => {
@@ -54,9 +78,18 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
         const domainScore = bd.total > 0 ? bd.correct / bd.total : 0;
         domains[bd.categoryId] = Math.round(domainScore * domainWeight * 100);
       }
-      return { label, ...domains, total: entry.result.percent };
+      return { label, ...domains, total: entry.result.percent, ema: 0 }; // ema filled below
     });
   }, [filteredHistory]);
+
+  // Merge EMA trend line data into chartData
+  const chartDataWithEma = useMemo(() => {
+    const points = trend.emaPoints;
+    return chartData.map((d, i) => ({
+      ...d,
+      ema: points[i]?.ema ?? d.total,
+    }));
+  }, [chartData, trend.emaPoints]);
 
   const hasAnimatedChart = useRef(false);
   const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -105,11 +138,13 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
               <span className="text-[var(--muted-foreground)] flex items-center gap-1">
                 Trend
                 <strong className={cn(
-                  trend.recentDelta !== null && trend.recentDelta > 0 ? 'text-[var(--success)]' :
-                  trend.recentDelta !== null && trend.recentDelta < 0 ? 'text-[var(--destructive)]' :
+                  trend.emaDelta !== null && trend.emaDelta > 0 ? 'text-[var(--success)]' :
+                  trend.emaDelta !== null && trend.emaDelta < 0 ? 'text-[var(--destructive)]' :
                   'text-[var(--muted-foreground)]'
                 )}>
-                  {trend.recentDelta !== null ? formatTrendDelta(trend.recentDelta) : '—'}
+                  {trend.emaDelta !== null
+                    ? `${trend.emaDelta > 0 ? '↑ Improving' : trend.emaDelta < 0 ? '↓ Declining' : '→ Stable'} ${Math.abs(trend.emaDelta)} EMA pts`
+                    : '—'}
                 </strong>
               </span>
             </div>
@@ -118,7 +153,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
         <CardContent>
           {chartData.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={chartData} margin={{ top: 10, right: 8, left: -10, bottom: 0 }}>
+              <AreaChart data={chartDataWithEma} margin={{ top: 10, right: 8, left: -10, bottom: 0 }}>
                 <defs>
                   {gradients.map(({ id, gradId }, i) => (
                     <linearGradient key={id} id={gradId} x1="0" y1="0" x2="0" y2="1">
@@ -171,6 +206,17 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
                     isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion}
                   />
                 ))}
+                {/* EMA smoothed trend line */}
+                <Line
+                  type="monotone"
+                  dataKey="ema"
+                  name="EMA"
+                  stroke="var(--accent)"
+                  strokeWidth={2}
+                  strokeDasharray="4 3"
+                  dot={false}
+                  isAnimationActive={!hasAnimatedChart.current && !prefersReducedMotion}
+                />
               </AreaChart>
             </ResponsiveContainer>
           ) : (
@@ -233,6 +279,75 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
           )}
         </CardContent>
       </Card>
+
+      {/* Move progress between devices */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Move progress between devices</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-3">
+            <Button variant="secondary" onClick={() => void handleExport()} className="gap-2">
+              <Download className="h-4 w-4" />
+              Export backup
+            </Button>
+            <label
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] shadow-xs hover:bg-[var(--muted)] h-10 px-4 py-2 cursor-pointer"
+            >
+              <Upload className="h-4 w-4" />
+              Import backup
+              <input
+                type="file"
+                accept=".json"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    setImportFile(file);
+                    setImportModalOpen(true);
+                    e.target.value = '';
+                  }
+                }}
+              />
+            </label>
+          </div>
+          <p className="text-xs text-[var(--muted-foreground)] mt-3">
+            Export downloads a <code>cctc-progress-YYYY-MM-DD.json</code> file with your settings, history,
+            and any in-progress session. Import that file on another device to restore your progress.
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Import confirmation modal */}
+      <Modal
+        open={importModalOpen}
+        onClose={() => { setImportModalOpen(false); setImportFile(null); setImportError(null); }}
+        title="Import Backup"
+        description={importError ? undefined : `Replace your ${history.length} session${history.length !== 1 ? 's' : ''} with data from the backup?`}
+      >
+        {importError ? (
+          <div className="space-y-3">
+            <div className="rounded-lg bg-[var(--destructive)]/5 border border-[var(--destructive)]/20 p-3">
+              <p className="text-sm text-[var(--destructive)] font-medium">Import failed</p>
+              <p className="text-xs text-[var(--muted-foreground)] mt-1">{importError}</p>
+            </div>
+            <div className="flex justify-end">
+              <Button variant="secondary" onClick={() => { setImportModalOpen(false); setImportFile(null); setImportError(null); }}>Close</Button>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <p className="text-xs text-[var(--muted-foreground)]">
+              This will replace all current sessions, flags, settings, and any in-progress session with the data from the backup file.
+              The current question bank will not be affected.
+            </p>
+            <div className="flex justify-end gap-3">
+              <Button variant="secondary" onClick={() => { setImportModalOpen(false); setImportFile(null); }}>Cancel</Button>
+              <Button onClick={() => void handleImport()}>Replace and import</Button>
+            </div>
+          </div>
+        )}
+      </Modal>
 
       {/* Link to Reported Items */}
       {onNavigateToReported && (

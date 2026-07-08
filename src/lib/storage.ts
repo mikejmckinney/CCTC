@@ -3,17 +3,17 @@ import { buildQuestionVersionMap } from '../data/questionBank';
 import { pruneStaleFlags } from './sessionPersistence';
 import type { ActiveSession, AppMeta, HistoryEntry, ItemFlag, Question, SessionSettings } from '../types/exam';
 
-const DB_NAME = 'cctc-app';
-const DB_VERSION = 1;
-const KV_STORE = 'kv';
-const HISTORY_STORE = 'history';
-const FLAGS_STORE = 'flags';
+export const DB_NAME = 'cctc-app';
+export const DB_VERSION = 1;
+export const KV_STORE = 'kv';
+export const HISTORY_STORE = 'history';
+export const FLAGS_STORE = 'flags';
 
-const META_KEY = 'app-meta';
-const SETTINGS_KEY = 'settings';
-const ACTIVE_SESSION_KEY = 'active-session';
+export const META_KEY = 'app-meta';
+export const SETTINGS_KEY = 'settings';
+export const ACTIVE_SESSION_KEY = 'active-session';
 
-async function getDb() {
+export async function getDb() {
   return openDB(DB_NAME, DB_VERSION, {
     upgrade(db) {
       if (!db.objectStoreNames.contains(KV_STORE)) {

@@ -256,6 +256,10 @@ export function Dashboard({
                     Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
                     improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
                     Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.</p>
+                    <p className="pt-1 border-t border-[var(--border)]">Gauge bands are relative to your target ({target}%):
+                    <span className="text-[var(--destructive)] font-medium"> red</span> = 0–{Math.round(target * 0.7)}% (well below),
+                    <span className="text-[var(--warning)] font-medium"> amber</span> = {Math.round(target * 0.7)}–{target}% (approaching),
+                    <span className="text-[var(--success)] font-medium"> green</span> = {target}–100% (at or above target).</p>
                   </div>
                 )}
               </div>
