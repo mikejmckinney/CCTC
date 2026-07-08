@@ -222,26 +222,21 @@ export function Dashboard({
 
   return (
     <div className="space-y-6">
-      {/* Readiness Score */}
-      <Card>
-        <CardContent className="p-5 sm:p-6 space-y-4">
-          <p className="eyebrow">Readiness Score</p>
-          {readiness.overallEma > 0 ? (
-            <div className="flex items-center gap-4">
-              <RadialGauge value={readiness.overallEma} target={target} size={140}>
-                <span className="text-xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
-                  {readiness.overallEma}%
-                </span>
-                <span className="text-[10px] text-[var(--muted-foreground)] mt-0.5">target {target}%</span>
-              </RadialGauge>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+      {/* Readiness + Quick Start */}
+      <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+        <Card>
+          <CardContent className="p-5 sm:p-6 space-y-4">
+            {readiness.overallEma > 0 ? (
+              <div className="flex items-center gap-4">
+                <RadialGauge value={readiness.overallEma} target={target} size={140}>
+                  <span className="text-xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
                     {readiness.overallEma}%
                   </span>
-                  <span className="text-xs text-[var(--muted-foreground)]">target {target}%</span>
-                </div>
-                <div className="relative inline-block mt-1.5" ref={tooltipRef}>
+                  <span className="text-[10px] text-[var(--muted-foreground)] mt-0.5">target {target}%</span>
+                </RadialGauge>
+                <div className="flex-1 min-w-0">
+                  <p className="eyebrow">Readiness Score</p>
+                  <div className="relative inline-block" ref={tooltipRef}>
                     <button
                       type="button"
                       onClick={() => setShowEmaTooltip((v) => !v)}
@@ -276,63 +271,66 @@ export function Dashboard({
                 </div>
               </div>
             ) : (
-              <p className="mt-1 text-sm text-[var(--muted-foreground)]">Complete sessions to see your readiness score.</p>
+              <div>
+                <p className="eyebrow">Readiness Score</p>
+                <p className="text-sm text-[var(--muted-foreground)]">Complete sessions to see your readiness score.</p>
+              </div>
             )}
 
             {/* Domains */}
             <div className="border-t border-[var(--border)] pt-4">
-            <p className="eyebrow">Domains</p>
-            <div className="mt-2 space-y-3">
-              {readiness.domains.length > 0 ? (
-                readiness.domains.map((d) => (
-                  <CategoryBar
-                    key={d.domainId}
-                    name={getDomainShortLabel(d.domainId, d.domainLabel)}
-                    percent={d.emaScore}
-                    examWeight={`${d.examWeight}%`}
-                    isStrong={d.emaScore >= target}
-                    isLargestGap={laggingDomains.length > 0 && d.domainId === laggingDomains[0].domainId}
-                  />
-                ))
-              ) : (
-                DEMO_DOMAINS_PLACEHOLDER.map((d) => (
-                  <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong />
-                ))
-              )}
-            </div>
-          </div>
-
-          {/* Recommended Next Action */}
-          <div className="border-t border-[var(--border)] pt-4">
-            <p className="eyebrow">Recommended Next Action</p>
-            <button
-              onClick={() => {
-                if (readiness.totalSessions === 0) {
-                  onStartQuick();
-                } else if (laggingDomains.length > 0) {
-                  onStartWeakAreas(laggingDomains.map((d) => d.domainId));
-                } else if (readiness.overallEma >= target) {
-                  onStartExam();
-                } else {
-                  onStartWeakAreas(laggingDomains.map((d) => d.domainId));
-                }
-              }}
-              className="w-full flex items-center gap-3 rounded-lg bg-[var(--muted)] p-3 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent mt-1"
-            >
-              <studyAction.icon className="h-5 w-5 shrink-0 text-[var(--primary)]" />
-              <div className="flex-1 min-w-0">
-                <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
-                {spacedCount > 0 && readiness.totalSessions > 0 && (
-                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                    {spacedCount} item{spacedCount !== 1 ? 's' : ''} due for spaced repetition.
-                  </p>
+              <p className="eyebrow">Domains</p>
+              <div className="mt-2 space-y-3">
+                {readiness.domains.length > 0 ? (
+                  readiness.domains.map((d) => (
+                    <CategoryBar
+                      key={d.domainId}
+                      name={getDomainShortLabel(d.domainId, d.domainLabel)}
+                      percent={d.emaScore}
+                      examWeight={`${d.examWeight}%`}
+                      isStrong={d.emaScore >= target}
+                      isLargestGap={laggingDomains.length > 0 && d.domainId === laggingDomains[0].domainId}
+                    />
+                  ))
+                ) : (
+                  DEMO_DOMAINS_PLACEHOLDER.map((d) => (
+                    <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong />
+                  ))
                 )}
               </div>
-              <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
-            </button>
-          </div>
-        </CardContent>
-      </Card>
+            </div>
+
+            {/* Recommended Next Action */}
+            <div className="border-t border-[var(--border)] pt-4">
+              <p className="eyebrow">Recommended Next Action</p>
+              <button
+                onClick={() => {
+                  if (readiness.totalSessions === 0) {
+                    onStartQuick();
+                  } else if (laggingDomains.length > 0) {
+                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                  } else if (readiness.overallEma >= target) {
+                    onStartExam();
+                  } else {
+                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                  }
+                }}
+                className="w-full flex items-center gap-3 rounded-lg bg-[var(--muted)] p-3 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent mt-1"
+              >
+                <studyAction.icon className="h-5 w-5 shrink-0 text-[var(--primary)]" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
+                  {spacedCount > 0 && readiness.totalSessions > 0 && (
+                    <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                      {spacedCount} item{spacedCount !== 1 ? 's' : ''} due for spaced repetition.
+                    </p>
+                  )}
+                </div>
+                <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
+              </button>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Quick Start */}
         <Card>
@@ -525,6 +523,7 @@ export function Dashboard({
             </div>
           </CardContent>
         </Card>
+      </div>
 
       {/* Recent Sessions */}
       <Card>
