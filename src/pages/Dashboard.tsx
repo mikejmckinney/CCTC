@@ -10,7 +10,7 @@ import { getBlueprintLabel } from '../data/blueprints';
 import {
   Play, Zap, Target, Clock, BookOpen, CheckCircle2,
   AlertTriangle, TrendingUp, ChevronRight, BarChart3, ChevronDown,
-  ChevronUp, RotateCcw, Calendar
+  ChevronUp, RotateCcw
 } from 'lucide-react';
 
 interface DashboardProps {
@@ -227,81 +227,57 @@ export function Dashboard({
         {/* Readiness Score */}
         <Card>
         <CardContent className="p-5 sm:p-6 space-y-4">
-          <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <p className="eyebrow !mb-0">Readiness Score</p>
-              {/* Verdict badge with tooltip */}
-              <div className="relative inline-block" ref={tooltipRef}>
-                <button
-                  type="button"
-                  onClick={() => setShowEmaTooltip((v) => !v)}
-                  className={cn(
-                    'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-colors',
-                    verdict.verdict === 'exam-ready' && 'bg-[var(--success)]/10 text-[var(--success)]',
-                    verdict.verdict === 'on-pace' && 'bg-[var(--info)]/10 text-[var(--info)]',
-                    verdict.verdict === 'on-track' && 'bg-[var(--warning)]/10 text-[var(--warning)]',
-                    verdict.verdict === 'at-risk' && 'bg-[var(--destructive)]/10 text-[var(--destructive)]',
-                  )}
-                  aria-label={`${verdict.label}. Click for details.`}
-                >
-                  {verdict.verdict === 'exam-ready' && <CheckCircle2 className="h-3 w-3" />}
-                  {verdict.verdict === 'at-risk' && <AlertTriangle className="h-3 w-3" />}
-                  {(verdict.verdict === 'on-pace' || verdict.verdict === 'on-track') && <TrendingUp className="h-3 w-3" />}
-                  {verdict.label}
-                </button>
-                {showEmaTooltip && (
-                  <div className="absolute left-0 top-full mt-2 w-80 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-20 space-y-2">
-                    <p><strong className="text-[var(--foreground)]">{verdict.label}:</strong> {verdict.detail}</p>
-                    <p>Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
-                    Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
-                    improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
-                    Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.</p>
-                    <p className="pt-1 border-t border-[var(--border)]">Gauge bands are relative to your target ({target}%):
-                    <span className="text-[var(--destructive)] font-medium"> red</span> = 0–{Math.round(target * 0.7)}% (well below),
-                    <span className="text-[var(--warning)] font-medium"> amber</span> = {Math.round(target * 0.7)}–{target}% (approaching),
-                    <span className="text-[var(--success)] font-medium"> green</span> = {target}–100% (at or above target).</p>
-                  </div>
-                )}
-              </div>
-            </div>
-            {readiness.overallEma > 0 ? (
-              <div className="mt-2 flex justify-center">
-                <RadialGauge value={readiness.overallEma} target={target} size={200}>
-                  <span className="text-3xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+          <p className="eyebrow">Readiness Score</p>
+          {readiness.overallEma > 0 ? (
+              <div className="flex items-center gap-4">
+                <RadialGauge value={readiness.overallEma} target={target} size={160}>
+                  <span className="text-2xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
                     {readiness.overallEma}%
                   </span>
-                  <span className="text-xs text-[var(--muted-foreground)] mt-0.5">target {target}%</span>
+                  <span className="text-[10px] text-[var(--muted-foreground)] mt-0.5">target {target}%</span>
                 </RadialGauge>
+                <div className="flex-1 min-w-0">
+                  {/* Verdict badge with tooltip */}
+                  <div className="relative inline-block" ref={tooltipRef}>
+                    <button
+                      type="button"
+                      onClick={() => setShowEmaTooltip((v) => !v)}
+                      className={cn(
+                        'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-colors',
+                        verdict.verdict === 'exam-ready' && 'bg-[var(--success)]/10 text-[var(--success)]',
+                        verdict.verdict === 'on-pace' && 'bg-[var(--info)]/10 text-[var(--info)]',
+                        verdict.verdict === 'on-track' && 'bg-[var(--warning)]/10 text-[var(--warning)]',
+                        verdict.verdict === 'at-risk' && 'bg-[var(--destructive)]/10 text-[var(--destructive)]',
+                      )}
+                      aria-label={`${verdict.label}. Click for details.`}
+                    >
+                      {verdict.verdict === 'exam-ready' && <CheckCircle2 className="h-3 w-3" />}
+                      {verdict.verdict === 'at-risk' && <AlertTriangle className="h-3 w-3" />}
+                      {(verdict.verdict === 'on-pace' || verdict.verdict === 'on-track') && <TrendingUp className="h-3 w-3" />}
+                      {verdict.label}
+                    </button>
+                    {showEmaTooltip && (
+                      <div className="absolute left-0 top-full mt-2 w-80 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-20 space-y-2">
+                        <p><strong className="text-[var(--foreground)]">{verdict.label}:</strong> {verdict.detail}</p>
+                        <p>Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
+                        Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
+                        improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
+                        Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.</p>
+                        <p className="pt-1 border-t border-[var(--border)]">Gauge bands are relative to your target ({target}%):
+                        <span className="text-[var(--destructive)] font-medium"> red</span> = 0–{Math.round(target * 0.7)}% (well below),
+                        <span className="text-[var(--warning)] font-medium"> amber</span> = {Math.round(target * 0.7)}–{target}% (approaching),
+                        <span className="text-[var(--success)] font-medium"> green</span> = {target}–100% (at or above target).</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             ) : (
-              <p className="mt-2 text-sm text-[var(--muted-foreground)]">Complete sessions to see your readiness score.</p>
+              <p className="mt-1 text-sm text-[var(--muted-foreground)]">Complete sessions to see your readiness score.</p>
             )}
 
-            {/* Exam countdown + Target score pills */}
-            <div className="mt-3 flex flex-wrap gap-2">
-              {daysUntilExam !== null && (
-                <button
-                  type="button"
-                  onClick={() => navigateToSetting('examDate')}
-                  className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
-                >
-                  <Calendar className="h-3.5 w-3.5 text-[var(--accent)]" />
-                  {daysUntilExam > 0 ? `${daysUntilExam}d to exam` : daysUntilExam === 0 ? 'Exam today' : 'Exam passed'}
-                </button>
-              )}
-              <button
-                type="button"
-                onClick={() => navigateToSetting('targetScore')}
-                className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
-              >
-                <Target className="h-3.5 w-3.5 text-[var(--accent)]" />
-                Target {target}%
-              </button>
-            </div>
-          </div>
-
-          {/* Domains */}
-          <div className="border-t border-[var(--border)] pt-4">
+            {/* Domains */}
+            <div className="border-t border-[var(--border)] pt-4">
             <p className="eyebrow">Domains</p>
             <div className="mt-2 space-y-3">
               {readiness.domains.length > 0 ? (
