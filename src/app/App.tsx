@@ -202,8 +202,10 @@ export default function App() {
     mutateSession((s) => ({ ...s, currentIndex: idx }));
   }, [mutateSession]);
 
-  // Start session
-  const handleStartSession = useCallback((overrides?: Partial<SessionSettings>) => {
+  // Start session — prompt if one already exists
+  const [replaceConfirm, setReplaceConfirm] = useState<Partial<SessionSettings> | null>(null);
+
+  const doStartSession = useCallback((overrides?: Partial<SessionSettings>) => {
     const merged = { ...settings, ...overrides };
     const recentIds = buildRecentItemIds(history.map((e) => ({ itemIds: e.itemIds })));
     const session = createSession(bank.questions, merged, recentIds);
@@ -211,7 +213,17 @@ export default function App() {
     setSettings(merged);
     setSelectedHistory(null);
     setPage('session');
+    setReplaceConfirm(null);
   }, [settings, history, bank]);
+
+  const handleStartSession = useCallback((overrides?: Partial<SessionSettings>) => {
+    if (activeSession && !activeSession.submittedAt) {
+      // There's an in-progress session — ask first
+      setReplaceConfirm(overrides ?? {});
+      return;
+    }
+    doStartSession(overrides);
+  }, [activeSession, doStartSession]);
 
   // Submit session — always confirm before submitting
   const handleSubmitSession = useCallback(async () => {
@@ -293,6 +305,26 @@ export default function App() {
         </p>
         <div className="mt-4 flex justify-end">
           <Button onClick={async () => { const m = { disclaimerSeen: true }; setMeta(m); await saveMeta(m); }}>I understand</Button>
+        </div>
+      </Modal>
+
+      {/* Replace session confirmation */}
+      <Modal
+        open={replaceConfirm !== null}
+        onClose={() => setReplaceConfirm(null)}
+        title="Unfinished session"
+        description="You already have a session in progress. Start a new session and discard the current one, or resume it?"
+      >
+        <div className="flex justify-end gap-3">
+          <Button variant="ghost" onClick={() => { setReplaceConfirm(null); setPage('session'); }}>
+            Resume current
+          </Button>
+          <Button variant="secondary" onClick={() => { setReplaceConfirm(null); setActiveSession(null); void clearActiveSession(); }}>
+            Discard
+          </Button>
+          <Button onClick={() => doStartSession(replaceConfirm ?? undefined)}>
+            Start new
+          </Button>
         </div>
       </Modal>
 
