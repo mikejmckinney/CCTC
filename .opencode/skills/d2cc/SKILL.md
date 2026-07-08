@@ -127,6 +127,8 @@ Beyond screenshots, the `visual` check compares **computed styles of matched ele
 
 By default, **all computed CSS properties** are compared — not a curated list. `getComputedStyle` returns everything the browser is actually rendering, so drift in any property (padding, boxShadow, opacity, z-index, color, etc.) is caught. Values are normalized (rgb↔rgba, whitespace, transform/shadow no-ops) and lengths compared with 1px tolerance. Layout drift defaults to severity `error`.
 
+**Pixel-level comparison:** After capturing screenshots, d2cc runs pixelmatch to compare prototype and implementation images pixel-by-pixel. Diff images are saved showing mismatches in red. Screenshots below `pixelMatchThreshold` (default: 95%) are reported as failures. Set `pixelMatchThreshold` in config to adjust sensitivity.
+
 To restrict comparison to specific properties only, set `layoutProperties` in config. Empty or omitted = compare all.
 
 Requires: `npx playwright install chromium`
@@ -198,6 +200,7 @@ screens: [
 | Button not visible after reload | Prototype runtime may need more time. Increase wait after reload step. |
 | `data-el` hook not found | Add `data-el="name"` to the canonical element in the prototype. d2cc auto-discovers all data-el elements — no config needed. |
 | Layout property mismatch | Check the specific computed style (boxShadow, borderRadius, etc.) — fix in implementation CSS |
+| Pixel match below threshold | Check the diff image (red pixels show differences). Fix layout, spacing, or content mismatches. |
 | No data-el elements found | Tag canonical elements in the prototype with `data-el="name"` attributes |
 
 ## Comparisons
