@@ -212,18 +212,18 @@ export default function App() {
     setActiveSession(session);
     setSettings(merged);
     setSelectedHistory(null);
-    setPage('session');
     setReplaceConfirm(null);
+    setPage('session');
   }, [settings, history, bank]);
 
-  const handleStartSession = useCallback((overrides?: Partial<SessionSettings>) => {
+  // Not wrapped in useCallback — always reads current activeSession
+  function handleStartSession(overrides?: Partial<SessionSettings>) {
     if (activeSession && !activeSession.submittedAt) {
-      // There's an in-progress session — ask first
       setReplaceConfirm(overrides ?? {});
       return;
     }
     doStartSession(overrides);
-  }, [activeSession, doStartSession]);
+  }
 
   // Submit session — always confirm before submitting
   const handleSubmitSession = useCallback(async () => {
