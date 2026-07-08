@@ -223,9 +223,9 @@ export function Dashboard({
   return (
     <div className="space-y-6">
       {/* Readiness + Quick Start */}
-      <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+      <div className="grid gap-4 lg:grid-cols-[1fr_1fr] items-start">
         <Card>
-          <CardContent className="p-5 sm:p-6 space-y-4">
+          <CardContent className="px-5 pt-3 pb-5 sm:px-6 sm:pt-4 sm:pb-6 space-y-4">
             {readiness.overallEma > 0 ? (
               <div className="flex items-center gap-4">
                 <RadialGauge value={readiness.overallEma} target={target} size={140}>
