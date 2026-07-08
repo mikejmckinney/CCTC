@@ -713,7 +713,8 @@ input[type="range"]::-webkit-slider-thumb {
 .dashboard-grid {
   display: grid;
   gap: 16px;
-  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: start;
 }
 
 @media (max-width: 720px) {
