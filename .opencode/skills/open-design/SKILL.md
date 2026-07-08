@@ -183,5 +183,3 @@ By category: AI/LLM (claude, cohere, mistral), Dev tools (cursor,
 vercel, linear-app, supabase), Fintech (stripe, coinbase, revolut),
 E-commerce (shopify, airbnb, uber), Media (spotify), Automotive
 (tesla, bmw), Starters (default, warm-editorial).
-
-
