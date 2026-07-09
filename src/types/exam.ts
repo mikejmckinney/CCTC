@@ -198,6 +198,7 @@ export interface ItemFlag {
 
 export interface AppMeta {
   disclaimerSeen: boolean;
+  demoSeeded?: boolean;
 }
 
 export interface LoadedBank {

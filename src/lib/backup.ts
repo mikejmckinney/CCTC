@@ -154,6 +154,7 @@ export interface SyncResult {
   localMeta: Record<string, unknown> | null;
   mergedHistory: HistoryEntry[];
   mergedFlags: ItemFlag[];
+  activeSession: ActiveSession | null;
 }
 
 export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<SyncResult> {
@@ -184,7 +185,7 @@ export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<Sy
   }
 
   // 4) Meta (settings/target/exam-date) — the only real conflict point
-  const localMeta: Record<string, unknown> = (await db.get(KV_STORE, META_KEY)) ?? {};
+  const localMeta: Record<string, unknown> = (await db.get(KV_STORE, SETTINGS_KEY)) ?? {};
   const folderMeta: Record<string, unknown> | null = await readJsonFromDir(dir, 'meta.json');
 
   // 5) Write meta to folder if missing
@@ -218,22 +219,34 @@ export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<Sy
   await ftx.done;
 
   // 8) Sync active session (folder wins if present)
-  const folderSession = await readJsonFromDir(dir, 'active-session.json');
+  const folderSession: ActiveSession | null = await readJsonFromDir(dir, 'active-session.json');
   if (folderSession) {
     await db.put(KV_STORE, folderSession, ACTIVE_SESSION_KEY);
   }
 
-  // Check if meta differs
-  const metaDiffers = folderMeta != null &&
-    JSON.stringify({ t: (localMeta as any).settings?.targetThreshold, e: (localMeta as any).examDate }) !==
-    JSON.stringify({ t: (folderMeta as any).settings?.targetThreshold, e: (folderMeta as any).examDate });
+  // Also write local active session to folder if it exists
+  const localActive = await db.get(KV_STORE, ACTIVE_SESSION_KEY);
+  if (localActive && !folderSession) {
+    await writeJsonToDir(dir, 'active-session.json', localActive);
+  }
 
-  // Apply folder meta if local has none
-  if (folderMeta && !localMeta.settings) {
+  // Check if meta differs (compare settings, not app-meta)
+  const localSettings = await db.get(KV_STORE, SETTINGS_KEY);
+  const metaDiffers = folderMeta != null &&
+    JSON.stringify({ t: (localSettings as any)?.targetThreshold, e: (localSettings as any)?.examDate }) !==
+    JSON.stringify({ t: (folderMeta as any).targetThreshold, e: (folderMeta as any).examDate });
+
+  // Apply folder meta if local has no settings
+  if (folderMeta && !localSettings) {
+    await db.put(KV_STORE, folderMeta, SETTINGS_KEY);
+  }
+
+  // Also store folder meta
+  if (folderMeta && !localMeta) {
     await db.put(KV_STORE, folderMeta, META_KEY);
   }
 
-  return { mergedCount: mergedList.length, metaDiffers, folderMeta, localMeta, mergedHistory: mergedList, mergedFlags };
+  return { mergedCount: mergedList.length, metaDiffers, folderMeta, localMeta, mergedHistory: mergedList, mergedFlags, activeSession: folderSession || localActive };
 }
 
 export async function applyFolderMeta(dir: FileSystemDirectoryHandle, localMeta: Record<string, unknown>): Promise<void> {

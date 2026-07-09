@@ -181,13 +181,14 @@ export function SessionView({
       {/* Question tracker */}
       <Card>
         <CardContent className="p-4">
-          <div className="grid grid-cols-10 sm:grid-cols-15 md:grid-cols-20 gap-1">
-            {session.items.map((item, idx) => (
-              <button
-                key={item.itemId}
-                onClick={() => onGoToQuestion(idx)}
-                className={cn(
-                  'h-8 w-8 min-h-[44px] min-w-[44px] rounded-md text-xs font-medium transition-colors flex items-center justify-center',
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <div className="grid grid-flow-col auto-cols-[minmax(36px,1fr)] gap-1 pb-1 px-4 sm:px-0">
+              {session.items.map((item, idx) => (
+                <button
+                  key={item.itemId}
+                  onClick={() => onGoToQuestion(idx)}
+                  className={cn(
+                    'h-9 w-9 min-h-[36px] min-w-[36px] sm:min-h-[44px] sm:min-w-[44px] rounded-md text-xs font-medium transition-colors flex items-center justify-center',
                   idx === session.currentIndex && 'bg-[var(--primary)] text-[var(--primary-foreground)]',
                   idx !== session.currentIndex && session.answers[item.itemId] && 'bg-[var(--success)]/10 text-[var(--success)]',
                   idx !== session.currentIndex && !session.answers[item.itemId] && 'bg-[var(--muted)] text-[var(--muted-foreground)]',
@@ -197,6 +198,7 @@ export function SessionView({
                 {idx + 1}
               </button>
             ))}
+            </div>
           </div>
         </CardContent>
       </Card>

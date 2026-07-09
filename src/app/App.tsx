@@ -87,18 +87,21 @@ export default function App() {
         if (state.settings) setSettings(state.settings);
         setActiveSession(state.activeSession);
 
-        // Seed demo data if IndexedDB is empty
+        // Seed demo data if IndexedDB is empty AND not previously seeded
         if (state.history.length === 0) {
-          const demoHistory = generateDemoHistory();
-          const demoFlags = generateDemoFlags();
-          for (const entry of demoHistory) {
-            await saveHistoryEntry(entry);
+          if (!state.meta?.demoSeeded) {
+            const demoHistory = generateDemoHistory();
+            const demoFlags = generateDemoFlags();
+            for (const entry of demoHistory) {
+              await saveHistoryEntry(entry);
+            }
+            for (const flag of demoFlags) {
+              await upsertFlag(flag as ItemFlag);
+            }
+            setHistory(demoHistory);
+            setFlags(demoFlags as ItemFlag[]);
+            await saveMeta({ disclaimerSeen: false, demoSeeded: true });
           }
-          for (const flag of demoFlags) {
-            await upsertFlag(flag as ItemFlag);
-          }
-          setHistory(demoHistory);
-          setFlags(demoFlags as ItemFlag[]);
         } else {
           setHistory(state.history);
           setFlags(state.flags);
@@ -154,12 +157,14 @@ export default function App() {
     return () => clearInterval(interval);
   }, [timedSessionId]);
 
-  // Auto-submit when timer expires
+  // Auto-submit when timer expires — uses ref to avoid stale closure
   useEffect(() => {
-    if (!activeSession || activeSession.submittedAt || activeSession.remainingSeconds === null || activeSession.remainingSeconds > 0) return;
-    // Timer hit 0 — auto-submit
-    const result = scoreSession(activeSession.settings.blueprintId, activeSession.items, activeSession.answers, activeSession.settings.targetThreshold);
-    const completed = { ...activeSession, submittedAt: new Date().toISOString(), result, updatedAt: new Date().toISOString() };
+    const session = activeSessionRef.current;
+    if (!session || session.submittedAt || session.remainingSeconds === null || session.remainingSeconds > 0) return;
+    if (session.remainingSeconds === 0 && activeSessionRef.current?.remainingSeconds === 0) return; // already fired
+
+    // Mark session so this effect doesn't fire again
+    const completed = { ...session, submittedAt: new Date().toISOString(), result: scoreSession(session.settings.blueprintId, session.items, session.answers, session.settings.targetThreshold), updatedAt: new Date().toISOString() };
     const entry = toHistoryEntry(completed);
     void saveHistoryEntry(entry).then(() => clearActiveSession()).then(() => {
       setHistory((prev) => [entry, ...prev]);
@@ -439,9 +444,15 @@ export default function App() {
             settings={settings}
             onStartExam={() => handleStartSession({ mode: 'exam', questionCount: 175, timed: true, timeMinutes: 180 })}
             onStartQuick={() => handleStartSession({ mode: 'study', questionCount: 25, timed: true, timeMinutes: 30 })}
-            onStartWeakAreas={(_domains) => {
-              const weakIds = computeSpacedRepetition(history);
-              handleStartSession({ mode: 'study', questionCount: Math.min(30, weakIds.length || 30), timed: false });
+            onStartWeakAreas={(domains) => {
+              const allMissed = computeSpacedRepetition(history);
+              const filtered = domains.length > 0
+                ? allMissed.filter((id) => {
+                    const q = bank.questions.find((qq) => qq.id === id);
+                    return q && domains.includes(String(q.domain));
+                  })
+                : allMissed;
+              handleStartSession({ mode: 'study', questionCount: Math.min(30, filtered.length || 30), timed: false });
             }}
             onStartCustom={(overrides) => handleStartSession(overrides)}
             onUpdateSettings={(partial) => setSettings((prev) => ({ ...prev, ...partial }))}

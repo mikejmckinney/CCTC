@@ -61,7 +61,7 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       } else {
         setSyncMsg(`Synced · ${result.mergedCount} session(s) in folder.`);
         setSyncing(false);
-        onSyncComplete?.(result.mergedHistory, result.mergedFlags);
+        onSyncComplete?.(result.mergedHistory, result.mergedFlags, result.activeSession);
       }
     } catch {
       setSyncMsg('Sync failed — check folder permissions and try again.');
@@ -119,8 +119,8 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
       setSyncMsg(`Restored ${result.historyCount} session(s).`);
       // Refresh state from IndexedDB
       const db = await getDb();
-      const freshHistory = await db.getAll('history');
-      const freshFlags = await db.getAll('flags');
+      const freshHistory: HistoryEntry[] = await db.getAll('history');
+      const freshFlags: ItemFlag[] = await db.getAll('flags');
       onSyncComplete?.(freshHistory, freshFlags, result.activeSession);
     } catch (e) {
       setImportError(e instanceof Error ? e.message : 'Import failed.');
