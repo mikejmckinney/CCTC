@@ -1,5 +1,6 @@
 import type { ActiveSession, SessionSettings } from '../../types/exam';
 import type { ReadinessResult, FocusArea, WeakDomain, RecentSession, ReadinessInsight } from '../../lib/readiness';
+import { InlineCustomizeForm } from '../components/InlineCustomizeForm';
 
 interface DashboardViewProps {
   activeSession: ActiveSession | null;
@@ -13,6 +14,9 @@ interface DashboardViewProps {
   daysToExam: number | null;
   examDateText: string | null;
   lastCustomSettings?: SessionSettings;
+  availableQuestionCount: number;
+  examDate?: string;
+  onUpdateSettings: (partial: Partial<SessionSettings>) => void;
   onStartSession: () => void;
   onResumeSession: () => void;
   onNavigate: (view: 'setup' | 'review' | 'history') => void;
@@ -20,6 +24,8 @@ interface DashboardViewProps {
   onLaunchLastCustom: () => void;
   onLaunchWeakAreas: () => void;
   onSelectSession: (sessionId: string) => void;
+  onUpdateExamDate: (date: string) => void;
+  onSaveLastCustom: (settings: SessionSettings) => void;
 }
 
 function donutColor(percent: number): string {
@@ -56,8 +62,10 @@ function DonutChart({ percent }: { percent: number | null }) {
 export function DashboardView({
   activeSession, settings, readiness, focusAreas, weakDomains,
   recentSessions, readinessInsight, daysToExam, examDateText,
-  lastCustomSettings, onStartSession, onResumeSession, onNavigate,
-  onLaunchPreset, onLaunchLastCustom, onLaunchWeakAreas, onSelectSession
+  lastCustomSettings, availableQuestionCount, examDate,
+  onUpdateSettings, onStartSession, onResumeSession, onNavigate,
+  onLaunchPreset, onLaunchLastCustom, onLaunchWeakAreas, onSelectSession,
+  onUpdateExamDate, onSaveLastCustom
 }: DashboardViewProps) {
   const hasUnfinished = activeSession && !activeSession.submittedAt;
 
@@ -124,7 +132,7 @@ export function DashboardView({
             </div>
 
             {/* Recommendation Insight */}
-            <div style={{ marginTop: 16, padding: 14, borderRadius: 12, background: 'var(--surface2)', border: '1px solid var(--line)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ marginTop: 16, padding: 14, borderRadius: 12, background: 'var(--surface2)', border: '1px solid var(--line)' }}>
               <p style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--ink)', margin: 0 }}>{readinessInsight.verdict}</p>
               <button
                 className="btn-primary"
@@ -228,9 +236,15 @@ export function DashboardView({
                 </span>
               </button>
             )}
-            <button className="btn-ghost" style={{ justifyContent: 'flex-start', fontSize: 13, color: 'var(--tealtext)' }} onClick={() => onNavigate('setup')}>
-              Customize a session →
-            </button>
+            <InlineCustomizeForm
+              settings={settings}
+              availableQuestionCount={availableQuestionCount}
+              examDate={examDate}
+              onUpdateSettings={onUpdateSettings}
+              onStartSession={onStartSession}
+              onUpdateExamDate={onUpdateExamDate}
+              onSaveLastCustom={onSaveLastCustom}
+            />
           </div>
       </div>
 

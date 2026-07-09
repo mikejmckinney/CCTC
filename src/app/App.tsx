@@ -642,6 +642,11 @@ function App() {
                 setView('review');
               }
             }}
+            availableQuestionCount={availableQuestionCount}
+            examDate={meta.examDate}
+            onUpdateSettings={updateSettings}
+            onUpdateExamDate={updateExamDate}
+            onSaveLastCustom={saveLastCustomSettings}
           />
         )}
 
