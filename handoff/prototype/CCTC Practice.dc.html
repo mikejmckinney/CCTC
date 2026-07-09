@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<template id="__bundler_thumbnail" data-bg-color="#123b3a">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#123b3a"/>
+    <circle cx="600" cy="400" r="190" fill="none" stroke="#b07a3c" stroke-width="34" stroke-dasharray="895 300" stroke-linecap="round" transform="rotate(-90 600 400)"/>
+    <text x="600" y="400" text-anchor="middle" dominant-baseline="central" font-family="Georgia, 'Times New Roman', serif" font-size="300" font-weight="600" fill="#f4efe6">C</text>
+    <text x="600" y="640" text-anchor="middle" font-family="Georgia, serif" font-size="58" fill="#dcebe6">CCTC Practice</text>
+  </svg>
+</template>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="cctc-data.js"></script>
+<script src="score-trend-chart.js"></script>
+<style>
+  body { margin:0; background:#f4efe6; transition:background .2s ease; }
+  * { box-sizing:border-box; }
+  @media (max-width:560px){
+    .nav-label{ display:none; }
+    .hdr-primary{ display:none !important; }
+    .bottom-nav{ display:flex !important; }
+    main{ padding-bottom:84px !important; }
+  }
+  .bottom-nav{ display:none; }
+  /* Theme toggle uses View Transitions: disable the default cross-fade so only our
+     circular clip-path wipe plays (the new render is revealed by the growing circle). */
+  ::view-transition-old(root){ animation:none; }
+  ::view-transition-new(root){ animation:none; }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="--bg:#f4efe6; --surface:#fffdf9; --surface2:#faf5ec; --ink:#221d16; --muted:#6f6557; --line:#e6dcc9; --line2:#ddd2bf; --teal:#123b3a; --teal2:#0d2e2d; --tealtext:#123b3a; --tealsoft:#dcebe6; --gold:#b07a3c; --goldtext:#946530; --goldsoft:#f0e4cf; --success:#2f7d5b; --successtext:#2f7d5b; --successsoft:#dcebe0; --expline:#bcdcc8; --danger:#a8443b; --dangertext:#a8443b; --dangersoft:#f3ddd9; --ring:#e9dec8; --letterbg:#f0e8d8; --switchoff:#d8cdb8; --inputdis:#efe9dd; --resumeline:#b9d7ce; --headerbg:rgba(255,253,249,.86); --shadow:rgba(34,29,22,.14); --serif:'Newsreader',Georgia,serif; --sans:'Public Sans',system-ui,sans-serif; min-height:100vh; background:var(--bg); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; transition:background .2s ease, color .2s ease;">
+
+  <!-- ============ DISCLAIMER ============ -->
+  <sc-if value="{{ showDisclaimer }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:50; background:rgba(20,17,12,.55); display:grid; place-items:center; padding:20px;">
+      <div style="width:min(520px,100%); background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:28px; box-shadow:0 24px 70px rgba(20,17,12,.4);">
+        <div style="font:600 11px/1 var(--sans); letter-spacing:.16em; text-transform:uppercase; color:var(--goldtext);">Independent study aid</div>
+        <h2 style="font-family:var(--serif); font-size:24px; font-weight:600; margin:12px 0 12px; color:var(--ink);">Before you begin</h2>
+        <p style="font-size:14px; line-height:1.6; color:var(--muted); margin:0 0 22px;">This practice app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam items, and is not a source of patient-care decisions. Practice results are unofficial estimates only.</p>
+        <button onClick="{{ ackDisclaimer }}" style="width:100%; padding:14px; border:none; border-radius:11px; background:var(--teal); color:#fff; font:600 14px var(--sans); cursor:pointer;">I understand</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ START PROMPT ============ -->
+  <sc-if value="{{ startPromptOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:50; background:rgba(20,17,12,.55); display:grid; place-items:center; padding:20px;">
+      <div style="width:min(480px,100%); background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px; box-shadow:0 24px 70px rgba(20,17,12,.4);">
+        <h2 style="font-family:var(--serif); font-size:21px; font-weight:600; margin:0 0 8px; color:var(--ink);">Session in progress</h2>
+        <p style="font-size:13.5px; line-height:1.55; color:var(--muted); margin:0 0 6px;">You have an unfinished session. Resume it, or start a new one — starting new discards your in-progress answers and bookmarks.</p>
+        <p style="font-size:12.5px; color:var(--tealtext); background:var(--tealsoft); border-radius:9px; padding:9px 12px; margin:0 0 18px;">New session: {{ pendingStartSummary }}</p>
+        <div style="display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
+          <button onClick="{{ cancelStart }}" style="padding:11px 16px; border:1px solid var(--line2); border-radius:10px; background:var(--surface); color:var(--ink); font:600 13px var(--sans); cursor:pointer;">Cancel</button>
+          <button onClick="{{ startNewAnyway }}" style="padding:11px 16px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); color:var(--ink); font:600 13px var(--sans); cursor:pointer;">Start new</button>
+          <button onClick="{{ resumeFromPrompt }}" style="padding:11px 16px; border:none; border-radius:10px; background:var(--teal); color:#fff; font:600 13px var(--sans); cursor:pointer;">Resume current</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ SUBMIT CONFIRM ============ -->
+  <sc-if value="{{ confirmOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:50; background:rgba(20,17,12,.55); display:grid; place-items:center; padding:20px;">
+      <div style="width:min(440px,100%); background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px; box-shadow:0 24px 70px rgba(20,17,12,.4);">
+        <h2 style="font-family:var(--serif); font-size:21px; font-weight:600; margin:0 0 8px; color:var(--ink);">{{ confirmTitle }}</h2>
+        <p style="font-size:13.5px; line-height:1.55; color:var(--muted); margin:0 0 20px;">{{ confirmBody }}</p>
+        <div style="display:flex; gap:10px; justify-content:flex-end;">
+          <button onClick="{{ onConfirmCancel }}" style="padding:11px 16px; border:1px solid var(--line2); border-radius:10px; background:var(--surface); color:var(--ink); font:600 13px var(--sans); cursor:pointer;">Keep going</button>
+          <button onClick="{{ onConfirmYes }}" style="padding:11px 16px; border:none; border-radius:10px; background:var(--teal); color:#fff; font:600 13px var(--sans); cursor:pointer;">{{ confirmCta }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ DESTRUCTIVE CONFIRM ============ -->
+  <sc-if value="{{ destructiveOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:50; background:rgba(20,17,12,.55); display:grid; place-items:center; padding:20px;">
+      <div style="width:min(440px,100%); background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px; box-shadow:0 24px 70px rgba(20,17,12,.4);">
+        <h2 style="font-family:var(--serif); font-size:21px; font-weight:600; margin:0 0 8px; color:var(--ink);">{{ destructiveTitle }}</h2>
+        <p style="font-size:13.5px; line-height:1.55; color:var(--muted); margin:0 0 20px;">{{ destructiveBody }}</p>
+        <div style="display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
+          <button onClick="{{ onDestructiveCancel }}" style="padding:11px 16px; border:1px solid var(--line2); border-radius:10px; background:var(--surface); color:var(--ink); font:600 13px var(--sans); cursor:pointer;">Cancel</button>
+          <sc-if value="{{ destructiveHasAlt }}" hint-placeholder-val="{{ false }}"><button onClick="{{ onDestructiveAlt }}" style="padding:11px 16px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); color:var(--ink); font:600 13px var(--sans); cursor:pointer;">{{ destructiveAltCta }}</button></sc-if>
+          <button onClick="{{ onDestructiveYes }}" style="padding:11px 16px; border:none; border-radius:10px; background:{{ destructivePrimaryBg }}; color:#fff; font:600 13px var(--sans); cursor:pointer;">{{ destructiveCta }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ REPORT MODAL ============ -->
+  <sc-if value="{{ reportOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:50; background:rgba(20,17,12,.55); display:grid; place-items:center; padding:20px;">
+      <div style="width:min(480px,100%); background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px; box-shadow:0 24px 70px rgba(20,17,12,.4);">
+        <h2 style="font-family:var(--serif); font-size:21px; font-weight:600; margin:0 0 4px; color:var(--ink);">{{ reportTitle }}</h2>
+        <p style="font-size:13px; color:var(--muted); margin:0 0 18px;">Flag this item for SME review. Saved on this device.</p>
+        <label style="display:block; font:600 12px var(--sans); color:var(--ink); margin-bottom:6px;">Reason</label>
+        <select value="{{ reportReason }}" onChange="{{ onReportReason }}" style="width:100%; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink); margin-bottom:16px;">
+          <option value="factual error">Factual error</option>
+          <option value="outdated policy/guideline">Outdated policy/guideline</option>
+          <option value="ambiguous / >1 defensible answer">Ambiguous / more than one defensible answer</option>
+          <option value="typo / wording">Typo / wording</option>
+          <option value="broken or wrong reference link">Broken or wrong reference link</option>
+          <option value="other">Other</option>
+        </select>
+        <label style="display:block; font:600 12px var(--sans); color:var(--ink); margin-bottom:6px;">Comment</label>
+        <textarea rows="4" value="{{ reportComment }}" onChange="{{ onReportComment }}" style="width:100%; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink); resize:vertical;"></textarea>
+        <div style="display:flex; gap:10px; margin-top:18px; justify-content:flex-end;">
+          <button onClick="{{ closeReport }}" style="padding:11px 18px; border:1px solid var(--line2); border-radius:10px; background:var(--surface); color:var(--ink); font:600 13px var(--sans); cursor:pointer;">Cancel</button>
+          <button onClick="{{ saveReport }}" style="padding:11px 18px; border:none; border-radius:10px; background:var(--teal); color:#fff; font:600 13px var(--sans); cursor:pointer;">{{ reportSaveLabel }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ HEADER ============ -->
+  <header data-el="header" style="position:sticky; top:0; z-index:20; background:var(--headerbg); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);">
+    <div style="max-width:940px; margin:0 auto; padding:13px 20px; display:flex; align-items:center; justify-content:space-between; gap:14px;">
+      <button onClick="{{ goHome }}" style="display:flex; gap:11px; align-items:center; background:none; border:none; cursor:pointer; padding:0;">
+        <span style="width:32px; height:32px; border-radius:8px; background:var(--teal); color:#fff; display:grid; place-items:center; font-family:var(--serif); font-weight:600; font-size:17px; flex-shrink:0;">C</span>
+        <span class="brand-word" style="font-family:var(--serif); font-size:18px; font-weight:600; color:var(--ink);">CCTC Practice</span>
+      </button>
+      <nav data-el="nav" style="display:flex; gap:4px; align-items:stretch;">
+        <button onClick="{{ onGreetingDate }}" title="Set exam date" style="display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 10px; border-radius:8px; border:none; background:transparent; cursor:pointer; color:var(--muted);"><span style="font:600 13px var(--sans); color:var(--ink);">{{ headerDays }}</span><span style="font:600 9px var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--muted);">To exam</span></button>
+        <button onClick="{{ openTargetSetting }}" title="Set target score" style="display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 10px; border-radius:8px; border:none; background:transparent; cursor:pointer; color:var(--muted);"><span style="font:600 13px var(--sans); color:var(--ink);">{{ headerTarget }}</span><span style="font:600 9px var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--muted);">Target</span></button>
+        <span style="width:1px; background:var(--line); margin:6px 4px;"></span>
+        <button onClick="{{ goHome }}" title="Home" class="hdr-primary" style="{{ navHomeStyle }}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg><span class="nav-label">Home</span></button>
+        <button onClick="{{ goHistory }}" title="Progress" class="hdr-primary" style="{{ navHistoryStyle }}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg><span class="nav-label">Progress</span></button>
+        <sc-if value="{{ hasResume }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ onResume }}" title="Resume session" class="hdr-primary" style="display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 12px; border-radius:8px; border:none; cursor:pointer; background:transparent; color:var(--tealtext);"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="flex-shrink:0;"><path d="M8 5v14l11-7z"></path></svg><span style="font:600 11px var(--sans); color:var(--tealtext);">Resume</span></button>
+        </sc-if>
+        <button onClick="{{ toggleTheme }}" title="{{ themeTitle }}" class="hdr-primary" style="display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 10px; border-radius:8px; border:none; background:transparent; cursor:pointer; color:var(--ink);"><span style="font-size:16px; line-height:18px;">{{ themeIcon }}</span><span style="font:600 11px var(--sans); color:var(--muted);">{{ themeLabel }}</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="bottom-nav" style="position:fixed; left:0; right:0; bottom:0; z-index:30; background:var(--headerbg); backdrop-filter:blur(10px); border-top:1px solid var(--line); padding:8px 12px calc(8px + env(safe-area-inset-bottom)); justify-content:space-around; align-items:stretch;">
+    <button onClick="{{ goHome }}" title="Home" style="{{ bnavHomeStyle }}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg><span style="font:600 10px var(--sans);">Home</span></button>
+    <button onClick="{{ goHistory }}" title="Progress" style="{{ bnavHistoryStyle }}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg><span style="font:600 10px var(--sans);">Progress</span></button>
+    <sc-if value="{{ hasResume }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ onResume }}" title="Resume session" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; padding:4px; border:none; background:transparent; cursor:pointer; color:var(--tealtext);"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg><span style="font:600 10px var(--sans); color:var(--tealtext);">Resume</span></button>
+    </sc-if>
+    <button onClick="{{ toggleTheme }}" title="{{ themeTitle }}" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; padding:4px; border:none; background:transparent; cursor:pointer; color:var(--ink);"><span style="font-size:18px; line-height:20px;">{{ themeIcon }}</span><span style="font:600 10px var(--sans); color:var(--muted);">{{ themeLabel }}</span></button>
+  </nav>
+
+  <main style="max-width:940px; margin:0 auto; padding:24px 20px 64px;">
+
+    <!-- LOADING -->
+    <sc-if value="{{ showLoading }}" hint-placeholder-val="{{ true }}">
+      <p style="color:var(--muted); font-size:14px; padding:40px 0;">Loading study data…</p>
+    </sc-if>
+
+    <sc-if value="{{ dataEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="background:var(--dangersoft); border:1px solid var(--danger); border-radius:14px; padding:16px 18px; margin-bottom:18px;">
+        <div style="font:600 14px var(--sans); color:var(--dangertext);">Question bank didn't load</div>
+        <div style="font-size:12.5px; color:var(--ink); margin-top:5px; line-height:1.5;">If you opened this file by double-clicking it, your browser blocks loading the data file over <code>file://</code>. Serve the folder over a local web server instead — e.g. run <code>python3 -m http.server</code> in this folder and open <code>http://localhost:8000</code>.</div>
+      </div>
+    </sc-if>
+
+    <!-- ============ HOME · DASHBOARD ============ -->
+    <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div>
+          <h1 style="font-family:var(--serif); font-size:30px; font-weight:600; margin:0; color:var(--ink);">Welcome back</h1>
+        </div>
+
+        <sc-if value="{{ hasResume }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--teal); border-radius:14px; padding:15px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+            <div style="min-width:0;">
+              <div style="font:600 10.5px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:#8fb6ae;">Continue</div>
+              <div style="font-size:14px; color:#fff; margin-top:3px;"><span style="font-weight:600;">Resume your session</span> <span style="color:#bfe0d6;">· {{ resumeSub }}</span></div>
+            </div>
+            <button onClick="{{ onResume }}" style="flex-shrink:0; padding:10px 18px; border:none; border-radius:10px; background:#fff; color:#123b3a; font:600 13px var(--sans); cursor:pointer;">Resume →</button>
+          </div>
+        </sc-if>
+
+        <div style="display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); align-items:start;">
+        <div data-el="card" style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
+            <div style="display:flex; align-items:center; gap:18px; padding-bottom:18px; border-bottom:1px solid var(--line);">
+              <div style="position:relative; width:90px; height:90px; border-radius:50%; flex-shrink:0; {{ donutStyle }}">
+                <div style="position:absolute; inset:12px; border-radius:50%; background:var(--surface); display:grid; place-items:center;">
+                  <div style="font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink);">{{ readinessText }}</div>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex; align-items:center; gap:8px;"><span style="font:600 13px var(--sans); color:var(--ink);">Practice readiness</span><span style="{{ readyBadgeStyle }}">{{ readyBadge }}</span></div>
+                <div style="position:relative; display:inline-flex; align-items:center; gap:5px; font-size:12px; color:var(--muted); margin-top:3px;">Weighted recent exam average <button onClick="{{ toggleReadyInfo }}" title="How is this calculated?" style="display:inline-grid; place-items:center; width:16px; height:16px; border-radius:50%; border:1px solid var(--line2); background:var(--surface2); font-size:9px; font-weight:700; color:var(--muted); cursor:pointer; flex-shrink:0;">i</button>
+                  <sc-if value="{{ readyInfoOpen }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:absolute; top:24px; left:0; z-index:20; width:min(280px,78vw); background:var(--ink); color:var(--surface); border-radius:10px; padding:11px 13px; font-size:12px; line-height:1.5; font-weight:400; box-shadow:0 10px 30px rgba(0,0,0,.28);">{{ readinessTooltip }}</span>
+                  </sc-if>
+                </div>
+                <div style="font-size:12px; font-weight:700; margin-top:9px; {{ deltaStyle }}">{{ deltaText }}</div>
+              </div>
+            </div>
+            <div style="margin-top:16px; padding:14px; border-radius:12px; background:var(--surface2); border:1px solid var(--line);">
+              <p style="font-size:13px; line-height:1.5; color:var(--ink); margin:0;">{{ insightText }}</p>
+              <button onClick="{{ recommendedAction }}" style="margin-top:11px; padding:9px 14px; border:none; border-radius:9px; background:var(--teal); color:#fff; font:600 12.5px var(--sans); cursor:pointer;">{{ recommendedLabel }}</button>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin:18px 0 14px;">
+              <span style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Domains</span>
+              <span style="font-size:11px; color:var(--muted);">recent performance · share of exam</span>
+            </div>
+            <sc-for list="{{ domainBars }}" as="d" hint-placeholder-count="3">
+              <div style="margin-bottom:14px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--ink); margin-bottom:6px; gap:10px;"><span style="display:flex; align-items:center; gap:8px; min-width:0;">{{ d.name }}<span style="flex-shrink:0; font:600 10px var(--sans); color:var(--tealtext); background:var(--tealsoft); padding:2px 7px; border-radius:6px;">{{ d.weightChip }}</span></span><span style="display:flex; align-items:center; gap:8px; flex-shrink:0;"><span style="{{ d.statusStyle }}">{{ d.statusLabel }}</span><span style="{{ d.pctStyle }}">{{ d.pctLabel }}</span></span></div>
+                <div style="height:8px; border-radius:5px; background:var(--goldsoft);"><div style="{{ d.fillStyle }}"></div></div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
+            <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Quick start</div>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <button data-el="quick-card" onClick="{{ presetFull }}" style="text-align:left; padding:16px; border:1px solid var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; font-family:var(--sans);">
+                <div style="font:600 15px var(--sans); color:var(--ink);">Full mock exam</div>
+                <div style="font-size:12.5px; color:var(--muted); margin-top:4px;">{{ fullMockSub }}</div>
+              </button>
+              <button onClick="{{ presetQuick }}" style="text-align:left; padding:16px; border:1px solid var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; font-family:var(--sans);">
+                <div style="font:600 15px var(--sans); color:var(--ink);">Quick exam</div>
+                <div style="font-size:12.5px; color:var(--muted); margin-top:4px;">25 questions · 30 min · exam</div>
+              </button>
+              <button onClick="{{ presetWeak }}" style="text-align:left; padding:16px; border:1px solid var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; font-family:var(--sans);">
+                <div style="font:600 15px var(--sans); color:var(--ink);">Weak areas</div>
+                <div style="font-size:12.5px; color:var(--muted); margin-top:4px;">{{ weakSub }}</div>
+              </button>
+            </div>
+            <sc-if value="{{ hasLastCustom }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ recentStart }}" style="margin-top:12px; width:100%; text-align:left; padding:14px 16px; border:1px dashed var(--line2); border-radius:12px; background:var(--surface2); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; font-family:var(--sans);">
+                <span>
+                  <span style="display:block; font:600 11px var(--sans); letter-spacing:.1em; text-transform:uppercase; color:var(--goldtext);">Your last custom setup</span>
+                  <span style="display:block; font-size:13px; color:var(--ink); margin-top:4px;">{{ lastCustomSummary }}</span>
+                </span>
+                <span style="font:600 12px var(--sans); color:var(--tealtext); white-space:nowrap;">Start →</span>
+              </button>
+            </sc-if>
+
+            <!-- expandable customize (inside quick-start, under last-custom tile) -->
+            <div id="customize-anchor" style="margin-top:14px; border-top:1px solid var(--line); overflow:hidden;">
+            <button onClick="{{ toggleCustomize }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 0 0; background:none; border:none; cursor:pointer; font-family:var(--sans); text-align:left;">
+              <span>
+                <span style="display:block; font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Customize a session</span>
+                <span style="display:block; font-size:12.5px; color:var(--muted); margin-top:3px;">Mode, question set, focus, count, timing &amp; more</span>
+              </span>
+              <span style="font:600 20px var(--sans); color:var(--tealtext); line-height:1;">{{ customizeChevron }}</span>
+            </button>
+            <sc-if value="{{ customizeOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:16px 0 4px; display:flex; flex-direction:column; gap:20px;">
+                <div style="margin-top:0;">
+                  <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Mode</div>
+                  <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
+                    <button onClick="{{ setModeExam }}" style="{{ modeExamStyle }}">Exam</button>
+                    <button onClick="{{ setModeStudy }}" style="{{ modeStudyStyle }}">Study</button>
+                  </div>
+                  <div style="font-size:12px; color:var(--muted); margin-top:8px;">{{ modeHint }}</div>
+                </div>
+
+                <div>
+                  <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Question set</div>
+                  <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
+                    <button onClick="{{ setSetStandard }}" style="{{ qsStdStyle }}">Standard bank</button>
+                    <button onClick="{{ setSetScenario }}" style="{{ qsScnStyle }}">Scenario companions</button>
+                  </div>
+                  <div style="font-size:12px; color:var(--muted); margin-top:8px;">{{ questionSetHint }}</div>
+                </div>
+
+                <div>
+                  <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Focus</div>
+                  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <sc-for list="{{ domainChips }}" as="c" hint-placeholder-count="4">
+                      <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+
+                <div style="display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+                  <div>
+                    <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Question count</div>
+                    <input type="number" min="5" max="{{ countAvailable }}" value="{{ countValue }}" onChange="{{ onCount }}" style="width:100%; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink);" />
+                    <div style="font-size:12px; color:var(--muted); margin-top:6px;">{{ availLabel }}</div>
+                  </div>
+                  <div>
+                    <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Time limit (minutes)</div>
+                    <input type="number" min="1" value="{{ minutesValue }}" onChange="{{ onMinutes }}" disabled="{{ minutesDisabled }}" style="{{ minutesInputStyle }}" />
+                  </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:14px;">
+                  <div style="display:flex; align-items:center; justify-content:space-between;">
+                    <div><div style="font:600 13px var(--sans); color:var(--ink);">Timed session</div><div style="font-size:12px; color:var(--muted);">Counts down like the real 3-hour exam</div></div>
+                    <button onClick="{{ toggleTimed }}" style="{{ timedTrack }}"><span style="{{ timedKnob }}"></span></button>
+                  </div>
+                  <div style="display:flex; align-items:center; justify-content:space-between;">
+                    <div><div style="font:600 13px var(--sans); color:var(--ink);">Show timer on screen</div><div style="font-size:12px; color:var(--muted);">Hide it to reduce pressure</div></div>
+                    <button onClick="{{ toggleShowTimer }}" style="{{ showTimerTrack }}"><span style="{{ showTimerKnob }}"></span></button>
+                  </div>
+                </div>
+
+                <div style="border-top:1px solid var(--line); padding-top:16px;">
+                  <button onClick="{{ toggleAdvanced }}" style="background:none; border:none; padding:0; cursor:pointer; font:600 13px var(--sans); color:var(--tealtext);">{{ advancedLabel }}</button>
+                  <sc-if value="{{ advancedOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:14px; display:flex; flex-direction:column; gap:14px;">
+                      <div>
+                        <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Exam date</div>
+                        <input type="date" value="{{ examDateValue }}" onChange="{{ onExamDate }}" style="width:100%; max-width:340px; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink);" />
+                        <div style="font-size:12px; color:var(--muted); margin-top:6px;">{{ examDateHint }}</div>
+                      </div>
+                      <div>
+                        <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Target score: {{ targetValue }}%</div>
+                        <input type="range" min="50" max="90" step="1" value="{{ targetValue }}" onChange="{{ onTarget }}" onInput="{{ onTarget }}" style="width:100%; max-width:340px; accent-color:var(--teal);" />
+                        <div style="font-size:12px; color:var(--muted); margin-top:6px;">Your personal pass goal. Sets the pass/below line on results, readiness, weak areas, and trend bars. Saved as a preference.</div>
+                      </div>
+                      <div>
+                        <div style="font:600 13px var(--sans); color:var(--ink); margin-bottom:8px;">Blueprint version</div>
+                        <select value="{{ blueprintValue }}" onChange="{{ onBlueprint }}" style="width:100%; max-width:340px; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 14px var(--sans); color:var(--ink);">
+                          <option value="cctc-from-2026-07">2026-07 outline (default)</option>
+                          <option value="cctc-thru-2026-06">Legacy outline (until 2026-06)</option>
+                        </select>
+                      </div>
+                      <div style="display:flex; align-items:center; justify-content:space-between; max-width:340px;">
+                        <div><div style="font:600 13px var(--sans); color:var(--ink);">Include draft items</div><div style="font-size:12px; color:var(--muted);">Exam mode is reviewed-only</div></div>
+                        <button onClick="{{ toggleDrafts }}" style="{{ draftsTrack }}"><span style="{{ draftsKnob }}"></span></button>
+                      </div>
+                    </div>
+                  </sc-if>
+                </div>
+
+                <button data-el="btn-primary" onClick="{{ onStart }}" style="padding:15px; border:none; border-radius:12px; background:var(--teal); color:#fff; font:600 15px var(--sans); cursor:pointer;">{{ startLabel }}</button>
+              </div>
+            </sc-if>
+            </div>
+          </div>
+        </div>
+
+        <!-- recent sessions -->
+        <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px;">
+            <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Recent sessions</div>
+            <button onClick="{{ goHistory }}" style="background:none; border:none; color:var(--tealtext); font:600 12px var(--sans); cursor:pointer; padding:0;">View all history →</button>
+          </div>
+          <sc-if value="{{ hasRecent }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <div style="display:grid; grid-template-columns:1.3fr 1fr 1fr .8fr .9fr; gap:10px; padding:0 4px 10px; border-bottom:1px solid var(--line); font:600 10.5px var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--muted);">
+                <span>Date</span><span>Mode</span><span>Questions</span><span>Score</span><span>Duration</span>
+              </div>
+              <sc-for list="{{ recentRows }}" as="r" hint-placeholder-count="5">
+                <div onClick="{{ r.onReview }}" style="{{ r.rowStyle }}">
+                  <span style="font-size:13px; color:var(--ink);">{{ r.date }}</span>
+                  <span><span style="{{ r.modeStyle }}">{{ r.mode }}</span></span>
+                  <span style="font-size:13px; color:var(--ink);">{{ r.questions }}</span>
+                  <span style="font:700 13px var(--sans); {{ r.scoreStyle }}">{{ r.score }}</span>
+                  <span style="font-size:13px; color:var(--ink);">{{ r.duration }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ noRecent }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size:13px; color:var(--muted); margin:0;">Your completed sessions will appear here.</p>
+          </sc-if>
+        </div>
+
+      </div>
+    </sc-if>
+
+    <!-- ============ SESSION ============ -->
+    <sc-if value="{{ isSession }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+          <button onClick="{{ exitSession }}" style="background:none; border:none; cursor:pointer; font:600 13px var(--sans); color:var(--muted); padding:0; display:flex; align-items:center; gap:5px;">‹ Exit</button>
+          <span style="font:600 13px var(--sans); color:var(--ink); white-space:nowrap;">{{ itemPosText }}</span>
+          <div style="display:flex; gap:6px; align-items:center; position:relative;">
+            <button onClick="{{ toggleBookmark }}" style="{{ bookmarkStyle }}">{{ bookmarkIcon }}</button>
+            <button onClick="{{ toggleMenu }}" style="width:34px; height:34px; border-radius:8px; border:1px solid var(--line2); background:var(--surface); cursor:pointer; font-size:16px; color:var(--muted);">⋯</button>
+            <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute; top:40px; right:0; z-index:15; background:var(--surface); border:1px solid var(--line2); border-radius:11px; box-shadow:0 14px 40px rgba(20,17,12,.28); padding:6px; width:190px;">
+                <button onClick="{{ toggleTimerSetting }}" style="display:block; width:100%; text-align:left; padding:10px 12px; background:none; border:none; border-radius:8px; cursor:pointer; font:500 13px var(--sans); color:var(--ink);">{{ timerMenuLabel }}</button>
+                <button onClick="{{ openReport }}" style="display:block; width:100%; text-align:left; padding:10px 12px; background:none; border:none; border-radius:8px; cursor:pointer; font:500 13px var(--sans); color:var(--ink);">Report an issue</button>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <div style="height:5px; border-radius:3px; background:var(--goldsoft);"><div style="{{ progressFill }}"></div></div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span data-el="badge" style="font:600 11px var(--sans); color:var(--tealtext); background:var(--tealsoft); padding:5px 11px; border-radius:7px;">{{ currentCategory }}</span>
+            <span style="font:600 11px var(--sans); color:var(--muted); background:var(--surface2); border:1px solid var(--line); padding:5px 11px; border-radius:7px;">{{ currentType }}</span>
+          </div>
+          <sc-if value="{{ showTimerPill }}" hint-placeholder-val="{{ false }}">
+            <span style="font:600 13px var(--sans); color:var(--ink); font-variant-numeric:tabular-nums; background:var(--surface2); border:1px solid var(--line); padding:5px 12px; border-radius:7px;">{{ timerText }}</span>
+          </sc-if>
+        </div>
+
+        <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px;">
+          <p style="font-family:var(--serif); font-size:19px; line-height:1.5; color:var(--ink); margin:0 0 18px;">{{ currentStem }}</p>
+          <sc-if value="{{ hasElements }}" hint-placeholder-val="{{ false }}">
+            <ol style="margin:0 0 18px; padding-left:20px; color:var(--ink); font-size:14px; line-height:1.6;">
+              <sc-for list="{{ elements }}" as="e" hint-placeholder-count="2"><li><strong>{{ e.id }}.</strong> {{ e.text }}</li></sc-for>
+            </ol>
+          </sc-if>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <sc-for list="{{ sessionOptions }}" as="opt" hint-placeholder-count="4">
+              <button data-el="option-button" onClick="{{ opt.onClick }}" style="{{ opt.containerStyle }}">
+                <span data-el="option-letter" style="{{ opt.letterStyle }}">{{ opt.letter }}</span>
+                <span style="font-size:14px; color:var(--ink); line-height:1.4; padding-top:3px;">{{ opt.text }}<sc-if value="{{ opt.hasSelects }}" hint-placeholder-val="{{ false }}"><small style="display:block; color:var(--muted); margin-top:3px;">{{ opt.selectsText }}</small></sc-if></span>
+              </button>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ showExplanation }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:18px; background:var(--successsoft); border:1px solid var(--expline); border-radius:13px; padding:18px;">
+              <div style="font:700 11px var(--sans); letter-spacing:.1em; text-transform:uppercase; color:var(--successtext); margin-bottom:9px;">{{ expHeader }}</div>
+              <p style="font-size:13.5px; line-height:1.55; color:var(--ink); margin:0 0 12px;">{{ expCorrect }}</p>
+              <sc-for list="{{ expIncorrect }}" as="x" hint-placeholder-count="2"><p style="font-size:12.5px; line-height:1.5; color:var(--muted); margin:0 0 7px;"><strong style="color:var(--ink);">{{ x.letter }}.</strong> {{ x.text }}</p></sc-for>
+              <sc-if value="{{ hasRefs }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:12px; border-top:1px solid var(--expline); padding-top:12px;">
+                  <div style="font:600 11px var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--successtext); margin-bottom:7px;">References</div>
+                  <sc-for list="{{ expRefs }}" as="r" hint-placeholder-count="1"><div style="font-size:12px; color:var(--ink); margin-bottom:6px; line-height:1.45;">{{ r.citation }}<sc-if value="{{ r.hasLoc }}" hint-placeholder-val="{{ false }}"><span style="display:block; color:var(--muted); font-size:11.5px; margin-top:2px;">{{ r.locator }}</span></sc-if></div></sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button onClick="{{ navPrev }}" style="{{ prevStyle }}">Previous</button>
+          <button onClick="{{ navNext }}" style="{{ nextStyle }}">Next</button>
+          <div style="flex:1;"></div>
+          <button onClick="{{ openMap }}" style="padding:12px 16px; border:1px solid var(--line2); border-radius:11px; background:var(--surface); color:var(--ink); font:600 13px var(--sans); cursor:pointer;">Map</button>
+          <button onClick="{{ submitSession }}" style="padding:12px 18px; border:none; border-radius:11px; background:var(--gold); color:#fff; font:600 13px var(--sans); cursor:pointer;">{{ submitLabel }}</button>
+        </div>
+
+        <sc-if value="{{ mapOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:18px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Question map</div>
+              <div style="display:flex; gap:14px; font-size:11px; color:var(--muted);"><span>● Answered</span><span>★ Bookmarked</span></div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(46px,1fr)); gap:8px;">
+              <sc-for list="{{ trackerChips }}" as="t" hint-placeholder-count="10"><button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button></sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <!-- ============ RESULTS + REVIEW (combined) ============ -->
+    <sc-if value="{{ isResults }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div style="background:var(--teal); border-radius:18px; padding:28px 32px; text-align:center;">
+          <div style="font:600 11px var(--sans); letter-spacing:.16em; text-transform:uppercase; color:#8fb6ae;">{{ rsModeText }} complete</div>
+          <div style="font-family:var(--serif); font-size:60px; font-weight:600; color:#fff; line-height:1.05; margin:8px 0 6px;">{{ rsPercent }}%</div>
+          <div style="font-size:14px; color:#bfe0d6;">{{ rsCorrect }} of {{ rsTotal }} correct · {{ rsTimeText }}</div>
+          <div style="display:inline-block; margin-top:14px; padding:8px 16px; border-radius:9px; font:600 13px var(--sans); {{ rsPassStyle }}">{{ rsPassLabel }}</div>
+        </div>
+
+        <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
+          <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">By domain</div>
+          <sc-for list="{{ rsBreakdown }}" as="b" hint-placeholder-count="3">
+            <div style="margin-bottom:14px;">
+              <div style="display:flex; justify-content:space-between; font-size:13px; color:var(--ink); margin-bottom:6px;"><span>{{ b.name }}</span><span style="color:var(--muted);">{{ b.scoreText }}</span></div>
+              <div style="height:8px; border-radius:5px; background:var(--goldsoft);"><div style="{{ b.fillStyle }}"></div></div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button onClick="{{ retake }}" style="flex:1; min-width:150px; padding:14px 18px; border:none; border-radius:12px; background:var(--teal); color:#fff; font:600 14px var(--sans); cursor:pointer;">Retake</button>
+          <button onClick="{{ resultsBack }}" style="padding:14px 18px; border:1px solid var(--line2); border-radius:12px; background:var(--surface); color:var(--ink); font:600 14px var(--sans); cursor:pointer;">{{ resultsBackLabel }}</button>
+        </div>
+
+        <!-- review-inline: filter bar + expandable question list -->
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+            <div style="font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink);">Review answers</div>
+            <div style="font-size:12.5px; color:var(--muted);">{{ reviewCountText }}</div>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <input type="search" value="{{ reviewQuery }}" onInput="{{ onReviewQuery }}" placeholder="Search questions & answers…" style="flex:1; min-width:200px; padding:9px 13px; border:1px solid var(--line2); border-radius:10px; background:var(--surface2); font:400 13px var(--sans); color:var(--ink);" />
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
+              <button onClick="{{ setFilterAll }}" style="{{ filterAllStyle }}">All {{ filterAllCount }}</button>
+              <button onClick="{{ setFilterIncorrect }}" style="{{ filterIncorrectStyle }}">Incorrect {{ filterIncorrectCount }}</button>
+              <button onClick="{{ setFilterCorrect }}" style="{{ filterCorrectStyle }}">Correct {{ filterCorrectCount }}</button>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <sc-for list="{{ reviewDomainChips }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
+            </div>
+          </div>
+
+          <sc-if value="{{ reviewListEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:28px; text-align:center; font-size:13px; color:var(--muted);">No questions match this filter.</div>
+          </sc-if>
+
+          <sc-for list="{{ reviewItems }}" as="q" hint-placeholder-count="4">
+            <div style="background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden;">
+              <button onClick="{{ q.onToggle }}" style="width:100%; display:flex; align-items:flex-start; gap:12px; padding:14px 16px; background:none; border:none; cursor:pointer; text-align:left; font-family:var(--sans);">
+                <span style="{{ q.numStyle }}">{{ q.num }}</span>
+                <span style="flex:1; min-width:0;">
+                  <span style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px;"><span style="{{ q.verdictStyle }}">{{ q.verdict }}</span><span style="font:600 10.5px var(--sans); color:var(--tealtext); background:var(--tealsoft); padding:2px 8px; border-radius:6px;">{{ q.category }}</span><span style="font:500 10.5px 'IBM Plex Mono',monospace; color:var(--muted);">{{ q.qid }}</span></span>
+                  <span style="display:block; font-family:var(--serif); font-size:15px; line-height:1.45; color:var(--ink); margin-bottom:8px;">{{ q.stem }}</span>
+                  <span style="display:flex; flex-direction:column; gap:4px;">
+                    <span style="display:flex; gap:7px; align-items:baseline; font-size:12.5px;"><span style="font:600 10px var(--sans); letter-spacing:.04em; text-transform:uppercase; color:var(--muted); flex-shrink:0; width:74px;">Your answer</span><span style="{{ q.yourStyle }}">{{ q.yourText }}</span></span>
+                    <sc-if value="{{ q.showCorrect }}" hint-placeholder-val="{{ false }}"><span style="display:flex; gap:7px; align-items:baseline; font-size:12.5px;"><span style="font:600 10px var(--sans); letter-spacing:.04em; text-transform:uppercase; color:var(--muted); flex-shrink:0; width:74px;">Correct</span><span style="color:var(--successtext); font-weight:600;">{{ q.correctText }}</span></span></sc-if>
+                  </span>
+                </span>
+                <span style="font:600 18px var(--sans); color:var(--muted); line-height:1; flex-shrink:0;">{{ q.chevron }}</span>
+              </button>
+              <sc-if value="{{ q.expanded }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:0 16px 16px; border-top:1px solid var(--line);">
+                  <p style="font-family:var(--serif); font-size:17px; line-height:1.5; color:var(--ink); margin:16px 0 14px;">{{ q.stem }}</p>
+                  <div style="display:flex; flex-direction:column; gap:9px;">
+                    <sc-for list="{{ q.options }}" as="opt" hint-placeholder-count="4">
+                      <div style="{{ opt.containerStyle }}">
+                        <span style="{{ opt.letterStyle }}">{{ opt.letter }}</span>
+                        <span style="font-size:13.5px; color:var(--ink); line-height:1.4; padding-top:3px;">{{ opt.text }}<sc-if value="{{ opt.hasNote }}" hint-placeholder-val="{{ false }}"><small style="display:block; font-weight:600; margin-top:3px; {{ opt.noteStyle }}">{{ opt.note }}</small></sc-if></span>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="margin-top:16px; background:var(--surface2); border:1px solid var(--line); border-radius:12px; padding:16px;">
+                    <div style="font:700 11px var(--sans); letter-spacing:.1em; text-transform:uppercase; color:var(--successtext); margin-bottom:9px;">{{ q.expHeader }}</div>
+                    <p style="font-size:13px; line-height:1.55; color:var(--ink); margin:0 0 12px;">{{ q.expCorrect }}</p>
+                    <sc-for list="{{ q.expIncorrect }}" as="x" hint-placeholder-count="2"><p style="font-size:12.5px; line-height:1.5; color:var(--muted); margin:0 0 7px;"><strong style="color:var(--ink);">{{ x.letter }}.</strong> {{ x.text }}</p></sc-for>
+                    <sc-if value="{{ q.hasRefs }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top:12px; border-top:1px solid var(--line); padding-top:12px;">
+                        <div style="font:600 11px var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:7px;">References</div>
+                        <sc-for list="{{ q.refs }}" as="r" hint-placeholder-count="1"><div style="font-size:12px; color:var(--ink); margin-bottom:6px; line-height:1.45;">{{ r.citation }}<sc-if value="{{ r.hasLoc }}" hint-placeholder-val="{{ false }}"><span style="display:block; color:var(--muted); font-size:11.5px; margin-top:2px;">{{ r.locator }}</span></sc-if></div></sc-for>
+                      </div>
+                    </sc-if>
+                    <button onClick="{{ q.onReport }}" style="margin-top:14px; background:var(--surface); border:1px solid var(--line2); border-radius:8px; padding:7px 12px; cursor:pointer; font:600 12px var(--sans); color:var(--muted);">Report an issue</button>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ============ HISTORY ============ -->
+    <sc-if value="{{ isHistory }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:16px;">
+          <div>
+            <h1 style="font-family:var(--serif); font-size:30px; font-weight:600; margin:0 0 4px; color:var(--ink);">Progress</h1>
+            <p style="font-size:14px; color:var(--muted); margin:0;">{{ historySubtitle }}</p>
+          </div>
+          <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}"><button onClick="{{ clearHistory }}" style="padding:9px 14px; border:1px solid var(--line2); border-radius:9px; background:var(--surface); color:var(--muted); font:600 12.5px var(--sans); cursor:pointer;">Clear history</button></sc-if>
+        </div>
+
+        <sc-if value="{{ noHistory }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:40px; text-align:center;">
+            <p style="font-size:14px; color:var(--muted); margin:0 0 16px;">No completed sessions yet.</p>
+            <button onClick="{{ goSetup }}" style="padding:12px 18px; border:none; border-radius:11px; background:var(--teal); color:#fff; font:600 13px var(--sans); cursor:pointer;">Start a session</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ true }}">
+          <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
+              <div style="font:600 11px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);">Score trend</div>
+              <div style="display:inline-flex; background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:4px; gap:4px;">
+                <button onClick="{{ setTrendExam }}" style="{{ trendScopeExamStyle }}">Exam</button>
+                <button onClick="{{ setTrendStudy }}" style="{{ trendScopeStudyStyle }}">Study</button>
+                <button onClick="{{ setTrendBoth }}" style="{{ trendScopeBothStyle }}">Both</button>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px; max-width:360px;">
+              <div><div style="font-size:11px; color:var(--muted);">Average</div><div style="font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink);">{{ histAvg }}%</div></div>
+              <div><div style="font-size:11px; color:var(--muted);">Best</div><div style="font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink);">{{ histBest }}%</div></div>
+              <div><div style="font-size:11px; color:var(--muted);">Trend</div><div style="font-family:var(--serif); font-size:22px; font-weight:600; {{ histDeltaStyle }}">{{ histDelta }}</div></div>
+            </div>
+            <sc-if value="{{ hasTrend }}" hint-placeholder-val="{{ true }}">
+              <div style="position:relative; height:240px; overflow:hidden;">
+                <x-import component-from-global-scope="score-trend-chart" from="./score-trend-chart.js" data="{{ trendConfigJson }}" hint-size="100%,240px" style="display:block; width:100%; height:240px;"></x-import>
+              </div>
+            </sc-if>
+            <sc-if value="{{ trendEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="height:120px; display:grid; place-items:center; font-size:13px; color:var(--muted);">{{ trendEmptyText }}</div>
+            </sc-if>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <sc-for list="{{ historyRows }}" as="h" hint-placeholder-count="4">
+              <div onClick="{{ h.onRowClick }}" style="{{ h.rowStyle }}">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
+                  <div style="min-width:0;">
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><span style="font:600 15px var(--sans); color:var(--ink);">{{ h.dateLine }}</span><sc-if value="{{ h.isSample }}" hint-placeholder-val="{{ false }}"><span style="font:600 10px var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--goldtext); background:var(--goldsoft); padding:3px 7px; border-radius:5px;">Sample</span></sc-if></div>
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:7px;"><span style="{{ h.modeChipStyle }}">{{ h.mode }}</span><span style="font-size:12.5px; color:var(--muted);">{{ h.itemsText }} · {{ h.durationText }}</span></div>
+                    <div style="font-size:11.5px; color:var(--muted); margin-top:5px;">blueprint {{ h.blueprintText }}</div>
+                  </div>
+                  <div style="display:flex; gap:12px; align-items:flex-start; flex-shrink:0;">
+                    <div style="text-align:right;"><div style="font-family:var(--serif); font-size:22px; font-weight:600; {{ h.scoreStyle }}">{{ h.scorePct }}</div><div style="font-size:11.5px; color:var(--muted);">{{ h.correctText }}</div></div>
+                    <button onClick="{{ h.onDelete }}" title="Delete session" style="flex-shrink:0; width:34px; height:34px; border:1px solid var(--line2); border-radius:9px; background:transparent; color:var(--muted); cursor:pointer; display:grid; place-items:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
+                  </div>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; margin-top:14px; padding-top:14px; border-top:1px solid var(--line);">
+                  <sc-for list="{{ h.domainCells }}" as="dc" hint-placeholder-count="3">
+                    <div style="background:var(--surface2); border:1px solid var(--line); border-radius:10px; padding:11px 13px;">
+                      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:8px;"><span style="min-width:0;"><span style="{{ dc.tagStyle }}">{{ dc.tag }}</span> <span style="font-size:12.5px; color:var(--ink);">{{ dc.name }}</span></span><span style="font:600 13px var(--sans); color:var(--ink); flex-shrink:0;">{{ dc.score }}</span></div>
+                      <div style="height:7px; border-radius:5px; background:var(--goldsoft);"><div style="{{ dc.barStyle }}"></div></div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ hasFlags }}" hint-placeholder-val="{{ false }}">
+            <div style="background:var(--surface2); border:1px solid var(--line); border-radius:14px; padding:16px 18px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+              <div><div style="font:600 13px var(--sans); color:var(--ink);">{{ flagsCountText }}</div><div style="font-size:12px; color:var(--muted); margin-top:2px;">Reported items, stored on this device</div></div>
+              <button onClick="{{ goFlags }}" style="padding:9px 14px; border:1px solid var(--line2); border-radius:9px; background:var(--surface); color:var(--tealtext); font:600 12.5px var(--sans); cursor:pointer;">Manage flags →</button>
+            </div>
+          </sc-if>
+
+          
+        </sc-if>
+
+          <div style="background:var(--surface2); border:1px solid var(--line); border-radius:14px; padding:16px 18px;">
+            <div style="font:600 13px var(--sans); color:var(--ink);">Move progress between devices</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:2px; line-height:1.5;">Your progress is stored on this device only. Sync to a cloud-synced folder to carry it across devices, or export/import a backup file manually.</div>
+            <sc-if value="{{ dirSyncSupported }}" hint-placeholder-val="{{ true }}">
+              <div style="margin-top:12px; padding:12px 14px; border:1px solid var(--line); border-radius:11px; background:var(--surface);">
+                <sc-if value="{{ syncConnected }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                    <div style="font-size:12.5px; color:var(--ink);">Folder: <strong>{{ syncFolderName }}</strong> <span style="color:var(--muted);">· {{ syncStatus }}</span><span style="display:block; font-size:11.5px; color:var(--muted); margin-top:3px;">Auto-syncs a moment after each answer and when you finish a session.</span></div>
+                    <button onClick="{{ syncNow }}" style="padding:9px 14px; border:none; border-radius:9px; background:var(--teal); color:#fff; font:600 12.5px var(--sans); cursor:pointer;">{{ syncNowLabel }}</button>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ syncNotConnected }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                    <div style="font-size:12.5px; color:var(--muted);">Point at your Google Drive / OneDrive / iCloud synced folder — one file per session, merged across devices.</div>
+                    <button onClick="{{ connectSyncFolder }}" style="padding:9px 14px; border:none; border-radius:9px; background:var(--teal); color:#fff; font:600 12.5px var(--sans); cursor:pointer; white-space:nowrap;">Connect folder</button>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; align-items:center;">
+              <span style="font:600 10.5px var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--muted);">Manual backup</span>
+              <button onClick="{{ exportBackup }}" style="padding:8px 14px; border:1px solid var(--line2); border-radius:10px; background:var(--surface); color:var(--ink); font:600 12.5px var(--sans); cursor:pointer;">Export</button>
+              <button onClick="{{ triggerImport }}" style="padding:8px 14px; border:1px solid var(--line2); border-radius:10px; background:var(--surface); color:var(--ink); font:600 12.5px var(--sans); cursor:pointer;">Import</button>
+              <input type="file" accept="application/json,.json" ref="{{ importInputRef }}" onChange="{{ onImportFile }}" style="display:none;" />
+            </div>
+            <sc-if value="{{ hasImportMsg }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:12px; color:var(--tealtext); margin-top:10px;">{{ importMsg }}</div>
+            </sc-if>
+          </div>
+      </div>
+    </sc-if>
+
+    <!-- ============ FLAGS ============ -->
+    <sc-if value="{{ isFlags }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+          <div>
+            <button onClick="{{ goHistory }}" style="background:none; border:none; cursor:pointer; font:600 13px var(--sans); color:var(--muted); padding:0 0 6px;">‹ Back to progress</button>
+            <h1 style="font-family:var(--serif); font-size:30px; font-weight:600; margin:0 0 4px; color:var(--ink);">Reported items</h1>
+            <p style="font-size:14px; color:var(--muted); margin:0;">{{ flagsCountText }} flagged for SME review · stored on this device</p>
+          </div>
+          <sc-if value="{{ hasFlags }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; gap:8px;">
+              <button onClick="{{ exportFlags }}" style="padding:10px 16px; border:none; border-radius:10px; background:var(--teal); color:#fff; font:600 13px var(--sans); cursor:pointer;">Export JSON</button>
+              <button onClick="{{ clearFlags }}" style="padding:10px 14px; border:1px solid var(--line2); border-radius:10px; background:var(--surface); color:var(--muted); font:600 13px var(--sans); cursor:pointer;">Clear all</button>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ noFlags }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:40px; text-align:center;">
+            <p style="font-size:14px; color:var(--muted); margin:0;">No reported items. Use “Report an issue” from a question's menu to flag content for review.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ hasFlags }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <sc-for list="{{ flagRows }}" as="f" hint-placeholder-count="3">
+              <div style="background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
+                  <div style="min-width:0;">
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                      <span style="font:600 11px var(--sans); color:var(--dangertext); background:var(--dangersoft); padding:4px 9px; border-radius:7px;">{{ f.reasonLabel }}</span>
+                      <span style="font:600 12px var(--sans); color:var(--muted);">{{ f.itemId }}</span>
+                      <span style="font-size:11.5px; color:var(--muted);">{{ f.domainLabel }}</span>
+                    </div>
+                    <sc-if value="{{ f.hasStem }}" hint-placeholder-val="{{ false }}">
+                      <div style="font-size:13px; color:var(--ink); margin-top:8px; line-height:1.45;">{{ f.stem }}</div>
+                    </sc-if>
+                    <div style="font-size:12.5px; color:var(--muted); margin-top:8px; line-height:1.45;">{{ f.comment }}</div>
+                    <div style="font-size:11px; color:var(--muted); margin-top:8px;">{{ f.dateText }}</div>
+                  </div>
+                  <div style="display:flex; gap:8px; flex-shrink:0;">
+                    <button onClick="{{ f.onEdit }}" style="padding:9px 14px; border:1px solid var(--line2); border-radius:9px; background:var(--surface2); color:var(--tealtext); font:600 12.5px var(--sans); cursor:pointer;">Edit</button>
+                    <button onClick="{{ f.onDelete }}" style="padding:9px 12px; border:1px solid var(--line2); border-radius:9px; background:transparent; color:var(--muted); font:600 12.5px var(--sans); cursor:pointer;">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="border-top:1px solid var(--line); margin-top:20px;">
+    <div style="max-width:940px; margin:0 auto; padding:18px 20px 40px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:baseline;"><span style="font-size:11.5px; line-height:1.5; color:var(--muted); flex:1; min-width:260px;">Independent study aid · not affiliated with or endorsed by ABTC or PSI · does not reproduce real exam questions · not a source of patient-care decisions. Practice results are unofficial estimates.</span><a href="https://donate.stripe.com/dRm9AMcYs0sa2F8dNQ18c00" target="_blank" rel="noopener" style="font:600 11.5px var(--sans); color:var(--tealtext); text-decoration:none; white-space:nowrap;">♥ Support this project</a></div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;targetThreshold&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:70,&quot;min&quot;:50,&quot;max&quot;:90,&quot;tsType&quot;:&quot;number&quot;},&quot;readinessAlpha&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:0.3,&quot;min&quot;:0.1,&quot;max&quot;:0.6,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;},&quot;weakWindowSessions&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6,&quot;min&quot;:3,&quot;max&quot;:12,&quot;tsType&quot;:&quot;number&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#b07a3c&quot;,&quot;options&quot;:[&quot;#b07a3c&quot;,&quot;#a8443b&quot;,&quot;#1f6a4b&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;startMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;exam&quot;,&quot;study&quot;],&quot;default&quot;:&quot;exam&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const LS = { prefs:'cctc.prefs.v2', history:'cctc.history.v2', session:'cctc.session.v2' };
+function load(k,f){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } }
+function save(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+function shuffle(a){ const r=a.slice(); for(let i=r.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=r[i]; r[i]=r[j]; r[j]=t; } return r; }
+function uid(){ return 'id-'+Date.now()+'-'+Math.floor(Math.random()*1e6); }
+function clock(s){ if(s==null) return 'Untimed'; const h=Math.floor(s/3600), m=Math.floor((s%3600)/60), x=s%60; return [h,m,x].map(n=>String(n).padStart(2,'0')).join(':'); }
+function shortDate(t){ try{ return new Date(t).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}); }catch(e){ return ''; } }
+function dateTime(t){ try{ return new Date(t).toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}); }catch(e){ return ''; } }
+function durationMin(sec){ if(sec==null) return 'Untimed'; return Math.max(1,Math.round(sec/60))+' min'; }
+function blueprintLabel(id){ if(id==='cctc-thru-2026-06') return 'Legacy (thru 2026-06)'; if(id==='cctc-from-2026-07') return '2026-07 outline'; return id||'—'; }
+
+const THEME = {
+  day: { '--bg':'#f4efe6','--surface':'#fffdf9','--surface2':'#faf5ec','--ink':'#221d16','--muted':'#6f6557','--line':'#e6dcc9','--line2':'#ddd2bf','--teal':'#123b3a','--teal2':'#0d2e2d','--tealtext':'#123b3a','--tealsoft':'#dcebe6','--gold':'#b07a3c','--goldtext':'#946530','--goldsoft':'#f0e4cf','--success':'#2f7d5b','--successtext':'#2f7d5b','--successsoft':'#dcebe0','--expline':'#bcdcc8','--danger':'#a8443b','--dangertext':'#a8443b','--dangersoft':'#f3ddd9','--ring':'#e9dec8','--letterbg':'#f0e8d8','--switchoff':'#d8cdb8','--inputdis':'#efe9dd','--resumeline':'#b9d7ce','--headerbg':'rgba(255,253,249,.86)','--shadow':'rgba(34,29,22,.14)' },
+  night: { '--bg':'#17140f','--surface':'#211d16','--surface2':'#2a251c','--ink':'#f1ebdf','--muted':'#aa9f8c','--line':'#332d24','--line2':'#443d31','--teal':'#1d544f','--teal2':'#16423e','--tealtext':'#7cc2b4','--tealsoft':'rgba(124,194,180,.16)','--gold':'#c79a5a','--goldtext':'#dab06a','--goldsoft':'rgba(202,154,90,.16)','--success':'#3f9d72','--successtext':'#73c79e','--successsoft':'rgba(79,174,130,.16)','--expline':'rgba(115,199,158,.28)','--danger':'#cf7a70','--dangertext':'#e49b91','--dangersoft':'rgba(207,122,112,.16)','--ring':'#3a332a','--letterbg':'#383027','--switchoff':'#443d31','--inputdis':'#262119','--resumeline':'rgba(124,194,180,.4)','--headerbg':'rgba(33,29,22,.86)','--shadow':'rgba(0,0,0,.45)' }
+};
+
+class Component extends DCLogic {
+  state = {
+    ready:false, view:'home', disclaimerSeen:false, theme:'day', targetThreshold:null,
+    QUESTIONS:[], SCENARIOS:[], DOMAINS:[], BLUEPRINT:null,
+    settings:{ mode:'exam', questionSet:'standard', timed:true, timeMinutes:180, showTimer:true, count:10, domains:'all', blueprint:'cctc-from-2026-07', includeDrafts:false },
+    session:null, completed:null, reviewIndex:0, reviewFrom:'results', resultFilter:'all', resultDomain:'all', reviewQuery:'', expandedReview:{}, trendScope:'exam',
+    history:[], flags:[], lastCustom:null,
+    menuOpen:false, mapOpen:false, reviewMapOpen:false, advancedOpen:false, customizeOpen:false,
+    startPromptOpen:false, pendingStart:null, confirmOpen:false, destructive:null, examDate:null,
+    reportOpen:false, reportReason:'factual error', reportComment:'', editingFlagId:null
+  };
+
+  target(){ return this.state.targetThreshold ?? this.props.targetThreshold ?? 70; }
+  setTarget(v){ const n=Math.max(50, Math.min(90, parseInt(v,10)||70)); this.setState({ targetThreshold:n }, ()=>this.persistPrefs()); }
+
+  loadData(){
+    // Prefer the classic-script global (works when opened via file:// by double-click).
+    // Fall back to an ES-module import (works when served over http with a module file).
+    return new Promise(async (resolve)=>{
+      for(let i=0;i<60;i++){ if(window.CCTC_DATA){ resolve(window.CCTC_DATA); return; } await new Promise(r=>setTimeout(r,25)); }
+      try { const m = await import('./cctc-data.js'); if(m && (m.QUESTIONS||m.DOMAINS)){ resolve(m); return; } } catch(e){}
+      resolve(window.CCTC_DATA || { QUESTIONS:[], SCENARIOS:[], DOMAINS:[] });
+    });
+  }
+
+  async componentDidMount(){
+    const mod = await this.loadData();
+    const prefs = load(LS.prefs, {});
+    let history = load(LS.history, []);
+    const session = load(LS.session, null);
+    if((!history || history.length===0) && !prefs.seeded){
+      history = this.seedHistory(mod.DOMAINS, mod.QUESTIONS);
+      save(LS.history, history);
+    } else if((history||[]).some(e=> e.sample && (!e.items || !e.items.length))){
+      // Migrate older seeded samples that lacked item data so they're reviewable.
+      const reals=(history||[]).filter(e=>!e.sample);
+      const seeded=this.seedHistory(mod.DOMAINS, mod.QUESTIONS);
+      history=reals.concat(seeded).sort((a,b)=>b.completedAt-a.completedAt);
+      save(LS.history, history);
+    }
+    let theme = prefs.theme;
+    if(theme!=='day' && theme!=='night'){
+      theme = 'day';
+      try { if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) theme='night'; } catch(e){}
+    }
+    this.setState({
+      ready:true,
+      QUESTIONS: mod.QUESTIONS||[], SCENARIOS: mod.SCENARIOS||[], DOMAINS: mod.DOMAINS||[], BLUEPRINT: mod.BLUEPRINT||null,
+      disclaimerSeen: !!prefs.disclaimerSeen,
+      targetThreshold: (typeof prefs.targetThreshold==='number'? prefs.targetThreshold : null),
+      flags: prefs.flags || [],
+      lastCustom: prefs.lastCustom || null,
+      examDate: prefs.examDate || null,
+      theme, history, session,
+      settings: { ...this.state.settings, mode: this.props.startMode || 'exam', count: Math.min(10, (mod.QUESTIONS||[]).length||10) }
+    }, ()=>{ this.persistPrefs({seeded:true}); this.applyTheme(); });
+    this.timer = setInterval(()=>this.tick(), 1000);
+    this.loadChartLibs();
+  }
+  loadChartLibs(){
+    // Load React/ReactDOM/Recharts UMD AFTER the DC has mounted, so they can't clobber the
+    // DC runtime's own React at init. <score-trend-chart> retries until Recharts is present.
+    if(this._chartLibsStarted) return; this._chartLibsStarted=true;
+    var urls=[
+      'https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js',
+      'https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js',
+      'https://cdn.jsdelivr.net/npm/prop-types@15.8.1/prop-types.min.js',
+      'https://cdn.jsdelivr.net/npm/recharts@2.12.7/umd/Recharts.js'
+    ];
+    var i=0;
+    function next(){ if(i>=urls.length) return; var s=document.createElement('script'); s.src=urls[i++]; s.async=false; s.onload=next; s.onerror=next; document.head.appendChild(s); }
+    next();
+  }
+  componentDidUpdate(){ this.applyTheme(); }
+  componentWillUnmount(){ clearInterval(this.timer); }
+  applyTheme(){
+    if(!this.rootEl) return;
+    const t = THEME[this.state.theme==='night'?'night':'day'];
+    Object.keys(t).forEach(k=> this.rootEl.style.setProperty(k, t[k]));
+    if(this.props.accent) this.rootEl.style.setProperty('--gold', this.props.accent);
+    try { document.body.style.background = t['--bg']; } catch(e){}
+  }
+  toggleTheme(e){
+    var self=this;
+    try { if(e){ this._themeX=e.clientX; this._themeY=e.clientY; } } catch(_){}
+    var next = this.state.theme==='night'?'day':'night';
+    var swap = function(){ self.setState({ theme:next }, function(){ self.persistPrefs(); self.applyTheme(); }); };
+    var reduced=false; try{ reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(_){}
+    var x = (this._themeX!=null? this._themeX : window.innerWidth-40);
+    var y = (this._themeY!=null? this._themeY : 30);
+    // True real-time curtain: View Transitions snapshots the OLD render and the NEW render and
+    // clips between them, so both themes are visible live along the wipe edge — no overlay, no
+    // fade, never blocks content. The new snapshot is revealed by a circle grown from the toggle.
+    if(!reduced && document.startViewTransition){
+      this._vtx=x; this._vty=y;
+      var done=false;
+      try {
+        var vt = document.startViewTransition(function(){ return new Promise(function(res){ self.setState({ theme:next }, function(){ self.persistPrefs(); self.applyTheme(); done=true; res(); }); }); });
+        vt.ready.then(function(){
+          var endR = Math.hypot(Math.max(x, window.innerWidth-x), Math.max(y, window.innerHeight-y)) + 4;
+          document.documentElement.animate(
+            { clipPath: ['circle(0px at '+x+'px '+y+'px)', 'circle('+endR+'px at '+x+'px '+y+'px)'] },
+            { duration: 480, easing:'cubic-bezier(.4,0,.2,1)', pseudoElement:'::view-transition-new(root)' }
+          );
+        }).catch(function(){});
+        // Guard: if the transition never fires, ensure the swap still happens.
+        setTimeout(function(){ if(!done) swap(); }, 400);
+      } catch(_){ swap(); }
+      return;
+    }
+    swap();
+  }
+
+  // Build reviewable items+answers for a sample session from the real bank, consistent with
+  // the per-domain correct/total breakdown, so seeded demo sessions can be reviewed.
+  seedItemsForBreakdown(breakdown, questions){
+    const items=[]; const answers={};
+    (breakdown||[]).forEach(b=>{
+      const pool=shuffle((questions||[]).filter(q=>q.domain===b.domain));
+      for(let k=0;k<b.total;k++){
+        const q= pool[k % (pool.length||1)]; if(!q) continue;
+        const optionOrder= shuffle(q.options.map(o=>o.id));
+        items.push({ q, optionOrder });
+        if(k < b.correct){ answers[q.id]=q.correct; }
+        else { const wrong=q.options.map(o=>o.id).filter(id=>id!==q.correct); answers[q.id]= wrong.length? wrong[Math.floor(Math.random()*wrong.length)] : q.correct; }
+      }
+    });
+    return { items, answers };
+  }
+
+  seedHistory(domains, questions){
+    const ds = domains && domains.length? domains : [{id:1,short:'Education'},{id:2,short:'Pre-transplant'},{id:3,short:'Post-op'}];
+    const targets = { 1:78, 2:70, 3:61 };
+    const overalls = [62,66,67,71,73,78];
+    const blueprints = ['cctc-from-2026-07','cctc-from-2026-07','cctc-thru-2026-06','cctc-from-2026-07','cctc-from-2026-07','cctc-from-2026-07'];
+    const hourOffset = [9,14,20,11,19,8];
+    const day = 86400000;
+    const out = [];
+    overalls.forEach((pct, i)=>{
+      const breakdown = ds.map(d=>{
+        const base = targets[d.id] || 70;
+        const jitter = (pct-70);
+        const p = Math.max(40, Math.min(96, base + jitter + (Math.random()*8-4)));
+        const total = d.id===3?7:6;
+        const correct = Math.round(total * p/100);
+        return { domain:d.id, name:d.short, correct, total, percent: Math.round(correct/total*100) };
+      });
+      const correct = breakdown.reduce((a,b)=>a+b.correct,0);
+      const total = breakdown.reduce((a,b)=>a+b.total,0);
+      const mode = i%3===0?'study':'exam';
+      const seededItems = this.seedItemsForBreakdown(breakdown, questions);
+      out.unshift({
+        id:'sample-'+i, completedAt: (Date.now() - (overalls.length-i)*3*day - (12-hourOffset[i])*3600000),
+        settings:{ mode, target:this.target(), blueprint:blueprints[i], timed: mode==='exam' },
+        result:{ correct, total, percent: Math.round(correct/total*100), estimatedPass: (correct/total*100)>=this.target(), breakdown },
+        items: seededItems.items, answers: seededItems.answers,
+        timeUsedSeconds: mode==='exam'? (1680 + i*240) : null, sample:true
+      });
+    });
+    return out;
+  }
+
+  persistPrefs(extra){ save(LS.prefs, { disclaimerSeen:this.state.disclaimerSeen, flags:this.state.flags, theme:this.state.theme, lastCustom:this.state.lastCustom, examDate:this.state.examDate, targetThreshold:this.state.targetThreshold, seeded:true, ...extra }); }
+
+  setExamDate(v){ this.setState({ examDate: v||null }, ()=>this.persistPrefs()); }
+  daysToExam(){ if(!this.state.examDate) return null; const today=new Date(); today.setHours(0,0,0,0); const ex=new Date(this.state.examDate+'T00:00:00'); if(isNaN(ex.getTime())) return null; return Math.round((ex-today)/86400000); }
+
+  setView(v){ this.setState({ view:v, menuOpen:false, mapOpen:false }); }
+  openCustomize(alsoAdvanced){ this.setState({ view:'home', customizeOpen:true, advancedOpen: alsoAdvanced? true : this.state.advancedOpen, menuOpen:false, mapOpen:false }, ()=>{ const doScroll=()=>{ try{ const el=document.getElementById('customize-anchor'); if(el){ const y=el.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop)-70; window.scrollTo(0, Math.max(0,y)); } }catch(e){} }; [120,300,550,850].forEach(t=>setTimeout(doScroll, t)); }); }
+  ackDisclaimer(){ this.setState({ disclaimerSeen:true }, ()=>this.persistPrefs()); }
+
+  bank(settings){ return (settings.questionSet==='scenario'? this.state.SCENARIOS : this.state.QUESTIONS) || []; }
+  setSetting(p){ this.setState(s=>{ const ns={...s.settings,...p}; const max=this.avail(ns); ns.count=Math.max(1, Math.min(ns.count, max||1)); return { settings:ns }; }); }
+  avail(settings){ const ds=settings.domains; return this.bank(settings).filter(q=> ds==='all'||ds.indexOf(q.domain)>=0).length; }
+
+  toggleDomain(id){
+    if(id==='all'){ this.setSetting({ domains:'all' }); return; }
+    let cur = this.state.settings.domains; cur = cur==='all'? [] : cur.slice();
+    const i = cur.indexOf(id); if(i>=0) cur.splice(i,1); else cur.push(id);
+    this.setSetting({ domains: cur.length? cur : 'all' });
+  }
+  domainsLabel(domains){ if(domains==='all') return 'All domains'; return domains.map(id=>{ const d=(this.state.DOMAINS||[]).find(x=>x.id===id); return d?d.short:('D'+id); }).join(', '); }
+  summary(s){ return (s.mode==='exam'?'Exam':'Study')+' · '+this.domainsLabel(s.domains)+' · '+s.count+' items · '+(s.timed? s.timeMinutes+' min':'untimed')+(s.questionSet==='scenario'?' · scenario':''); }
+
+  // IDs of items the user has previously answered incorrectly, most-recent miss first (deduped).
+  // Spaced-repetition-lite: production should layer true interval scheduling on top of this.
+  incorrectItemIds(){ const seen={}; const order=[]; (this.state.history||[]).slice().sort((a,b)=>b.completedAt-a.completedAt).forEach(e=>{ if(!e.items||!e.answers) return; e.items.forEach(it=>{ const id=it.q.id; if(e.answers[id]!==it.q.correct && !seen[id]){ seen[id]=1; order.push(id); } }); }); return order; }
+
+  buildSession(settings){
+    const ds=settings.domains;
+    let pool=this.bank(settings).filter(q=> ds==='all'||ds.indexOf(q.domain)>=0);
+    if(settings.prioritizeIncorrect){
+      // Front-load previously-missed items (recent misses first), then the rest shuffled.
+      const missRank={}; this.incorrectItemIds().forEach((id,i)=>{ missRank[id]=i; });
+      const missed=pool.filter(q=>missRank[q.id]!=null).sort((a,b)=>missRank[a.id]-missRank[b.id]);
+      const rest=shuffle(pool.filter(q=>missRank[q.id]==null));
+      pool=missed.concat(rest);
+    } else {
+      pool=shuffle(pool);
+    }
+    const count=Math.min(settings.count, pool.length);
+    const items=pool.slice(0,count).map(q=>({ q, optionOrder: shuffle(q.options.map(o=>o.id)) }));
+    return { id:uid(), createdAt:Date.now(), settings:{...settings}, items, answers:{}, revealed:{}, bookmarks:[], currentIndex:0, remainingSeconds: settings.timed? settings.timeMinutes*60 : null, submittedAt:null };
+  }
+  startSession(settings){ const sess=this.buildSession(settings); if(!sess.items.length){ this.setState({ bankError:true, startPromptOpen:false, pendingStart:null, view:'home', customizeOpen:true }); return; } this.setState({ bankError:false, session:sess, completed:null, view:'session', menuOpen:false, mapOpen:false, startPromptOpen:false, pendingStart:null }); save(LS.session, sess); }
+
+  startFlow(settings){
+    if(this.state.session && !this.state.session.submittedAt){
+      this.setState({ startPromptOpen:true, pendingStart:settings });
+    } else {
+      this.startSession(settings);
+    }
+  }
+  resumeFromPrompt(){ this.setState({ startPromptOpen:false, pendingStart:null, view:'session' }); }
+  startNewAnyway(){ const s=this.state.pendingStart; if(s) this.startSession(s); else this.setState({startPromptOpen:false}); }
+  cancelStart(){ this.setState({ startPromptOpen:false, pendingStart:null }); }
+
+  preset(name){
+    const all=(this.state.QUESTIONS||[]).length;
+    let s;
+    if(name==='full') s={ ...this.state.settings, mode:'exam', questionSet:'standard', timed:true, timeMinutes:180, showTimer:true, domains:'all', count:all, includeDrafts:false, prioritizeIncorrect:false };
+    else if(name==='quick') s={ ...this.state.settings, mode:'exam', questionSet:'standard', timed:true, timeMinutes:30, showTimer:true, domains:'all', count:Math.min(25,all), includeDrafts:false, prioritizeIncorrect:false };
+    else { const weak=this.weakDomains(); const dms= weak.length? weak.map(w=>w.id) : 'all'; s={ ...this.state.settings, mode:'study', questionSet:'standard', timed:false, domains: dms, count:Math.min(10,all), prioritizeIncorrect:true }; }
+    this.setState({ settings:s });
+    this.startFlow(s);
+  }
+
+  domainAgg(){ const agg={}; (this.state.history||[]).forEach(e=> (e.result.breakdown||[]).forEach(b=>{ agg[b.domain]=agg[b.domain]||{c:0,t:0}; agg[b.domain].c+=b.correct; agg[b.domain].t+=b.total; })); return agg; }
+  domainPct(id){ const agg=this.domainAgg(); const a=agg[id]; return a&&a.t? a.c/a.t*100 : null; }
+  // Recency-windowed pooled accuracy: pool correct/total per domain over only the most
+  // recent N sessions (exam+study), so recent performance drives "weak areas" without the
+  // noise of an EMA on a thin per-domain series. Returns pct or null (unattempted in window).
+  windowSize(){ return this.props.weakWindowSessions ?? 6; }
+  recentDomainPct(id){ const N=this.windowSize(); const recent=(this.state.history||[]).slice().sort((a,b)=>b.completedAt-a.completedAt).slice(0,N); let c=0,t=0; recent.forEach(e=>(e.result.breakdown||[]).forEach(b=>{ if(b.domain===id){ c+=b.correct; t+=b.total; } })); return t? c/t*100 : null; }
+  weakDomains(){ const th=this.target(); return (this.state.DOMAINS||[]).map(d=>({id:d.id, short:d.short, pct:this.domainEma(d.id)})).filter(x=> x.pct!=null && x.pct < th).sort((a,b)=>a.pct-b.pct); }
+  // Plain-language readiness verdict + a one-tap recommended next action.
+  // Inputs: readiness EMA vs target, weakest domain, and days-to-exam (all optional).
+  readinessInsight(readinessPct){
+    const t=this.target(); const days=this.daysToExam();
+    const daysPhrase = days==null? '' : (days<0? '' : (days===0? ' Your exam is today.' : ' '+days+' day'+(days===1?'':'s')+' to go.'));
+    const weak=this.weakDomains(); const weakest=weak[0];
+    const examHistLen=(this.state.history||[]).filter(e=>e.settings&&e.settings.mode==='exam').length;
+    if(readinessPct==null || examHistLen===0){
+      return { badge:'Not measured', badgeKind:'muted', text:'Take a practice exam to measure where you stand against your '+t+'% target.'+daysPhrase, action:'quick', label:'Take a quick exam →' };
+    }
+    if(readinessPct>=t && !weakest){
+      return { badge:'Exam-ready', badgeKind:'success', text:'You\u2019re at '+readinessPct+'% \u2014 at or above your '+t+'% target across every domain. On your practice data you\u2019re exam-ready; keep sharp with a full mock.'+daysPhrase, action:'full', label:'Take a full mock exam →' };
+    }
+    if(readinessPct>=t && weakest){
+      return { badge:'On track', badgeKind:'gold', text:'Overall you\u2019re at '+readinessPct+'% \u2014 at your '+t+'% target \u2014 but '+weakest.short+' ('+Math.round(weakest.pct)+'%) still lags. One focused set will shore it up.'+daysPhrase, action:'weakDomain', actionDomain:weakest.id, label:'Practice '+weakest.short+' \u00b7 10 questions →' };
+    }
+    // below target
+    const gap=t-readinessPct;
+    const focus= weakest? (' Start with '+weakest.short+' ('+Math.round(weakest.pct)+'%), your weakest area.') : '';
+    return { badge:'Below target', badgeKind:'danger', text:'At '+readinessPct+'%, you\u2019re '+gap+' point'+(gap===1?'':'s')+' below your '+t+'% target.'+focus+daysPhrase, action: weakest?'weakDomain':'quick', actionDomain: weakest?weakest.id:null, label: weakest? ('Practice '+weakest.short+' \u00b7 10 questions →') : 'Take a quick exam →' };
+  }
+  startRecommended(insight){
+    const all=(this.state.QUESTIONS||[]).length;
+    if(insight.action==='full'){ this.preset('full'); return; }
+    if(insight.action==='quick'){ this.preset('quick'); return; }
+    // focused study set on the recommended domain, prioritizing previous misses
+    const dom=insight.actionDomain;
+    const s={ ...this.state.settings, mode:'study', questionSet:'standard', timed:false, domains: dom? [dom] : 'all', count:Math.min(10,all), prioritizeIncorrect:true };
+    this.setState({ settings:s }); this.startFlow(s);
+  }
+
+  // Exponential moving average over a date-ordered series (oldest→newest). α default 0.3
+  // (~last-6 carry half the weight). Returns rounded EMA or null for an empty series.
+  ema(series){ if(!series.length) return null; const a=this.props.readinessAlpha ?? 0.3; let v=series[0]; for(let i=1;i<series.length;i++){ v = a*series[i] + (1-a)*v; } return Math.round(v); }
+  // Per-domain EMA over EXAM sessions (date-ordered), same method/window as readiness, so the
+  // domain bars reconcile with the overall readiness number (both recency-weighted, exam-only).
+  domainEma(id){ const series=(this.state.history||[]).filter(e=>e.settings&&e.settings.mode==='exam').slice().sort((a,b)=>a.completedAt-b.completedAt).map(e=>{ const b=(e.result.breakdown||[]).find(x=>x.domain===id); return b? b.percent : null; }).filter(p=>p!=null); return this.ema(series); }
+  // Status of a domain EMA vs the user's target: ≥target Strong, within 15pts Developing, else Weak.
+  domStatus(ema){ const t=this.target(); if(ema==null) return { key:'none', label:'No data', color:'var(--line2)', text:'var(--muted)' }; if(ema>=t) return { key:'strong', label:'Strong', color:'var(--success)', text:'var(--successtext)' }; if(ema>=t-15) return { key:'developing', label:'Developing', color:'var(--gold)', text:'var(--goldtext)' }; return { key:'weak', label:'Weak', color:'var(--danger)', text:'var(--dangertext)' }; }
+
+  mutate(fn){ this.setState(st=>{ if(!st.session) return null; const ns=fn(st.session); save(LS.session, ns); return { session:ns }; }); this.scheduleAutoSync(); }
+  answer(oid){ this.mutate(s=>{ const it=s.items[s.currentIndex]; const id=it.q.id; const revealed= s.settings.mode==='study'? {...s.revealed,[id]:true} : s.revealed; return {...s, answers:{...s.answers,[id]:oid}, revealed}; }); }
+  nav(d){ this.mutate(s=>({...s, currentIndex: Math.min(Math.max(s.currentIndex+d,0), s.items.length-1)})); }
+  goItem(i){ this.mutate(s=>({...s, currentIndex:i})); this.setState({ mapOpen:false }); }
+  toggleBookmark(){ this.mutate(s=>{ const id=s.items[s.currentIndex].q.id; const b= s.bookmarks.indexOf(id)>=0? s.bookmarks.filter(x=>x!==id) : [...s.bookmarks,id]; return {...s, bookmarks:b}; }); }
+  toggleTimerSetting(){ this.mutate(s=>({...s, settings:{...s.settings, showTimer:!s.settings.showTimer}})); this.setState({ menuOpen:false }); }
+
+  tick(){ const s=this.state.session; if(!s||s.submittedAt||s.remainingSeconds==null) return; if(this.state.view!=='session') return; const rem=s.remainingSeconds-1; if(rem<=0){ const ns={...s, remainingSeconds:0}; save(LS.session,ns); this.setState({session:ns}, ()=>this.doFinalize()); } else { const ns={...s, remainingSeconds:rem}; save(LS.session,ns); this.setState({session:ns}); } }
+
+  score(session){ let correct=0; const byDom={}; session.items.forEach(it=>{ const d=it.q.domain; byDom[d]=byDom[d]||{correct:0,total:0,name:it.q.domainShort}; byDom[d].total++; if(session.answers[it.q.id]===it.q.correct){ correct++; byDom[d].correct++; } }); const total=session.items.length; const percent= total? Math.round(correct/total*100):0; const breakdown=Object.keys(byDom).sort().map(k=>({ domain:+k, name:byDom[k].name, correct:byDom[k].correct, total:byDom[k].total, percent: Math.round(byDom[k].correct/byDom[k].total*100) })); return { correct, total, percent, estimatedPass: percent>=this.target(), breakdown }; }
+
+  submitSession(){ if(this.state.session && !this.state.session.submittedAt){ this.setState({ confirmOpen:true, menuOpen:false }); } }
+  doFinalize(){ const s=this.state.session; if(!s||s.submittedAt) return; const result=this.score(s); const used= s.remainingSeconds==null? null : (s.settings.timeMinutes*60 - s.remainingSeconds); const entry={ id:s.id, completedAt:Date.now(), settings:s.settings, result, items:s.items, answers:s.answers, timeUsedSeconds:used }; const history=[entry, ...this.state.history]; save(LS.history, history); save(LS.session, null); this.setState({ history, session:null, completed:entry, reviewIndex:0, reviewFrom:'results', view:'results', confirmOpen:false, menuOpen:false, mapOpen:false }); this.scheduleAutoSync(); }
+
+  // Generic destructive-action confirmation.
+  askConfirm(cfg){ this.setState({ destructive: cfg }); }
+  cancelDestructive(){ this.setState({ destructive:null }); }
+  runDestructive(){ const d=this.state.destructive; this.setState({ destructive:null }, ()=>{ if(d&&d.run) d.run(); }); }
+  runDestructiveAlt(){ const d=this.state.destructive; this.setState({ destructive:null }, ()=>{ if(d&&d.altRun) d.altRun(); }); }
+
+  clearHistory(){ this.askConfirm({ title:'Clear all history?', body:'This permanently deletes every saved session on this device, including their answer reviews. This cannot be undone.', cta:'Clear history', run:()=>{ save(LS.history, []); this.setState({ history:[] }); } }); }
+  deleteEntry(id){ const entry=(this.state.history||[]).find(e=>e.id===id); const label= entry? (entry.result.percent+'% · '+shortDate(entry.completedAt)) : 'this session'; this.askConfirm({ title:'Delete this session?', body:'This permanently removes the '+label+' result and its answer review. This cannot be undone.', cta:'Delete', run:()=>{ const h=this.state.history.filter(e=>e.id!==id); save(LS.history, h); this.setState({ history:h }); } }); }
+  discardSession(){ save(LS.session, null); this.setState({ session:null, view:'home', startPromptOpen:false, pendingStart:null }); }
+
+  openReport(){ this.setState({ reportOpen:true, menuOpen:false, editingFlagId:null, reportQ:null, reportReason:'factual error', reportComment:'' }); }
+  openReportFor(q){ this.setState({ reportOpen:true, menuOpen:false, editingFlagId:null, reportQ:q, reportReason:'factual error', reportComment:'' }); }
+  editFlag(id){ const f=(this.state.flags||[]).find(x=>x.id===id); if(!f) return; this.setState({ reportOpen:true, editingFlagId:id, reportReason:f.reason, reportComment:f.comment||'' }); }
+  saveReport(){ const editId=this.state.editingFlagId; if(editId){ const flags=this.state.flags.map(f=> f.id===editId? {...f, reason:this.state.reportReason, comment:this.state.reportComment, at:Date.now()} : f); this.setState({ flags, reportOpen:false, editingFlagId:null }, ()=>this.persistPrefs()); return; } const it=this.reportItem(); const flag={ id:uid(), itemId: it? it.id : '?', itemStem: it? (it.stem||'').slice(0,160) : '', domain: it? it.domain : null, reason:this.state.reportReason, comment:this.state.reportComment, at:Date.now() }; const flags=[flag, ...this.state.flags]; this.setState({ flags, reportOpen:false }, ()=>this.persistPrefs()); }
+  reportItem(){ if(this.state.reportQ) return this.state.reportQ; if(this.state.view==='session' && this.state.session){ return this.state.session.items[this.state.session.currentIndex].q; } if(this.state.completed){ return this.state.completed.items[this.state.reviewIndex].q; } return null; }
+  deleteFlag(id){ this.askConfirm({ title:'Delete this flag?', body:'This removes the reported item from your device. This cannot be undone.', cta:'Delete', run:()=>{ const flags=this.state.flags.filter(f=>f.id!==id); this.setState({ flags }, ()=>this.persistPrefs()); } }); }
+  clearFlags(){ this.askConfirm({ title:'Clear all flags?', body:'This removes every reported item saved on this device. This cannot be undone.', cta:'Clear flags', run:()=>{ this.setState({ flags:[] }, ()=>this.persistPrefs()); } }); }
+  exportBackup(){ try{ const payload={ schema:'cctc-backup', version:1, exportedAt:new Date().toISOString(), prefs: load(LS.prefs, {}), history: this.state.history||[], session: load(LS.session, null) }; const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='cctc-progress-'+new Date().toISOString().slice(0,10)+'.json'; document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(()=>URL.revokeObjectURL(url), 1000); }catch(e){} }
+  importBackupFile(file){ if(!file) return; const reader=new FileReader(); reader.onload=(e)=>{ try{ const data=JSON.parse(e.target.result); if(!data || data.schema!=='cctc-backup'){ this.setState({ importMsg:'That file isn\u2019t a CCTC progress backup.' }); return; } const hist=Array.isArray(data.history)? data.history : []; this.askConfirm({ title:'Restore progress?', body:'This replaces the '+((this.state.history||[]).length)+' session(s) on this device with '+hist.length+' from the backup (taken '+shortDate(data.exportedAt)+'). Your current progress will be overwritten.', cta:'Restore', run:()=>{ save(LS.history, hist); if(data.prefs) save(LS.prefs, data.prefs); if(data.session) save(LS.session, data.session); else save(LS.session, null); const p=data.prefs||{}; this.setState({ history:hist, session: data.session||null, flags:p.flags||this.state.flags, theme: (p.theme==='day'||p.theme==='night')?p.theme:this.state.theme, importMsg:'Restored '+hist.length+' session(s)'+(data.session?' + your in-progress session':'')+'.' }, ()=>this.applyTheme()); } }); }catch(err){ this.setState({ importMsg:'Couldn\u2019t read that file \u2014 it may be corrupted.' }); } }; reader.readAsText(file); }
+
+  // ----- Directory sync (File System Access API) -----
+  // The user points at ONE folder — on desktop this can be their Google Drive / OneDrive / iCloud
+  // *synced* folder, so the folder IS their cloud (no OAuth, no backend, no data custody for us).
+  // Sessions are stored one-file-per-session (session-<id>.json) so merge is a conflict-free UNION
+  // keyed by id. A single meta.json holds prefs/target/exam-date; that's the only thing that can
+  // truly conflict, so it prompts keep-this-device / keep-folder. (In production the folder handle
+  // is persisted via IndexedDB to survive reloads; the prototype keeps it in memory per session.)
+  supportsDirSync(){ return typeof window!=='undefined' && !!window.showDirectoryPicker; }
+  async connectSyncFolder(){
+    if(!this.supportsDirSync()){ this.setState({ importMsg:'Folder sync needs a Chromium desktop browser (Chrome/Edge). Use Export/Import backup instead.' }); return; }
+    try{ const dir=await window.showDirectoryPicker({ id:'cctc-sync', mode:'readwrite' }); this.syncDir=dir; this.setState({ syncConnected:true, syncFolderName:dir.name, importMsg:'' }, ()=>this.syncNow()); }
+    catch(e){ if(e && e.name==='AbortError') return; this.setState({ importMsg:'Your browser blocked the folder picker (this can happen in an embedded preview or non-secure context). Open the app in its own tab and try again, or use Export/Import below.' }); }
+  }
+  async _readJson(dir, name){ try{ const fh=await dir.getFileHandle(name); const f=await fh.getFile(); return JSON.parse(await f.text()); }catch(e){ return null; } }
+  async _writeJson(dir, name, obj){ const fh=await dir.getFileHandle(name,{create:true}); const w=await fh.createWritable(); await w.write(JSON.stringify(obj,null,2)); await w.close(); }
+  // Debounced auto-sync: fires a few seconds after the last write (answer, nav, finish) so the
+  // folder copy stays current without a chatty write per interaction. No-op unless connected.
+  scheduleAutoSync(){ if(!this.syncDir) return; clearTimeout(this._autoSyncT); this._autoSyncT=setTimeout(()=>{ this.syncNow(true); }, 2500); }
+
+  async syncNow(auto){
+    const dir=this.syncDir; if(!dir){ if(auto) return; return this.connectSyncFolder(); }
+    if(this.state.syncing) return;
+    this.setState({ syncing:true, importMsg:'' });
+    try{
+      // 1) collect folder session files
+      const folderSessions={};
+      for await (const [name,handle] of dir.entries()){
+        if(handle.kind==='file' && /^session-.*\.json$/.test(name)){ const obj=await this._readJson(dir,name); if(obj&&obj.id) folderSessions[obj.id]=obj; }
+      }
+      // 2) union with local (dedup by id) — append-only, so union is safe & conflict-free
+      const local=this.state.history||[]; const localById={}; local.forEach(e=>{ localById[e.id]=e; });
+      const merged={...folderSessions, ...localById};
+      const mergedList=Object.values(merged).sort((a,b)=>a.completedAt-b.completedAt);
+      // 3) write any local sessions the folder is missing
+      for(const e of mergedList){ if(!folderSessions[e.id]) await this._writeJson(dir,'session-'+e.id+'.json', e); }
+      // 3b) durability copy of the in-progress session (single mutable file, last-writer-wins)
+      const cur=load(LS.session,null); if(cur && !cur.submittedAt) await this._writeJson(dir,'current-session.json', cur);
+      // 4) meta (prefs/target/exam-date) — the only real conflict point
+      const localMeta=load(LS.prefs,{}); const folderMeta=await this._readJson(dir,'meta.json');
+      const applyMerge=(chosenMeta)=>{ save(LS.history, mergedList); if(chosenMeta) save(LS.prefs, chosenMeta); this.setState({ history:mergedList, syncing:false, theme:(chosenMeta&&(chosenMeta.theme==='day'||chosenMeta.theme==='night'))?chosenMeta.theme:this.state.theme, flags:(chosenMeta&&chosenMeta.flags)||this.state.flags, lastSyncAt:Date.now(), importMsg:'Synced · '+mergedList.length+' session(s) in folder.' }, ()=>this.applyTheme()); };
+      const metaDiffers = folderMeta && JSON.stringify({t:folderMeta.targetThreshold,e:folderMeta.examDate}) !== JSON.stringify({t:localMeta.targetThreshold,e:localMeta.examDate});
+      if(metaDiffers && !auto){
+        this.setState({ syncing:false });
+        this.askConfirm({ title:'Settings differ between devices', body:'Your target/exam-date on this device differ from the folder. Keep which? (Your session history is already merged either way.)', cta:'Keep this device', altCta:'Keep folder', run:()=>{ this._writeJson(dir,'meta.json', localMeta); applyMerge(localMeta); }, altRun:()=>{ applyMerge(folderMeta); } });
+      } else if(metaDiffers && auto){
+        // auto-sync never interrupts with a prompt — merge sessions, leave meta untouched until a manual sync
+        applyMerge(null);
+      } else {
+        await this._writeJson(dir,'meta.json', folderMeta||localMeta);
+        applyMerge(folderMeta||localMeta);
+      }
+    }catch(e){ this.setState({ syncing:false, importMsg:'Sync failed — check folder permissions and try again.' }); }
+  }
+
+
+
+  // ---------- style helpers ----------
+  bnavStyle(active){ return 'flex:1; display:flex; flex-direction:column; gap:3px; align-items:center; padding:4px; border:none; background:transparent; cursor:pointer; color:'+(active?'var(--tealtext)':'var(--muted)')+';'; }
+  navStyle(active){ return 'display:flex; flex-direction:column; gap:3px; align-items:center; padding:6px 12px; border-radius:8px; border:none; cursor:pointer; font:600 11px var(--sans); '+(active? 'background:var(--tealsoft); color:var(--tealtext);' : 'background:transparent; color:var(--muted);'); }
+  segStyle(active){ return 'padding:8px 16px; border-radius:8px; border:none; cursor:pointer; font:600 13px var(--sans); '+(active? 'background:var(--teal); color:#fff;' : 'background:transparent; color:var(--muted);'); }
+  homeSegStyle(active){ return 'padding:7px 13px; border-radius:8px; border:none; cursor:pointer; font:600 12.5px var(--sans); '+(active? 'background:var(--teal); color:#fff;' : 'background:transparent; color:var(--muted);'); }
+  chipStyle(active){ return 'padding:9px 14px; border-radius:9px; cursor:pointer; font:600 13px var(--sans); '+(active? 'background:var(--tealsoft); color:var(--tealtext); border:1.5px solid var(--teal);' : 'background:var(--surface2); color:var(--muted); border:1px solid var(--line2);'); }
+  track(on){ return 'width:46px; height:27px; border-radius:14px; border:none; cursor:pointer; position:relative; flex-shrink:0; transition:background .15s; background:'+(on?'var(--teal)':'var(--switchoff)')+';'; }
+  knob(on){ return 'position:absolute; top:3px; left:'+(on?'22px':'3px')+'; width:21px; height:21px; border-radius:50%; background:#fff; transition:left .15s; box-shadow:0 1px 3px rgba(0,0,0,.25);'; }
+  barFill(pct, color){ return 'height:100%; width:'+pct+'%; border-radius:5px; background:'+color+';'; }
+  domColor(pct){ if(pct==null) return 'var(--line2)'; if(pct>=75) return 'var(--teal)'; if(pct>=65) return 'var(--gold)'; return 'var(--danger)'; }
+  // Fixed per-domain identity colors (used in composition views: stacked trend + session cards).
+  domColorId(id){ return id===1?'var(--teal)': id===2?'var(--gold)':'var(--danger)'; }
+  domTextId(id){ return id===1?'var(--tealtext)': id===2?'var(--goldtext)':'var(--dangertext)'; }
+
+  renderVals(){
+    const st=this.state; const S=st.settings;
+    const self=this;
+    const ready=st.ready;
+    const isHome = st.view==='home';
+    const isDashboard = ready && isHome;
+    const isSession = ready && st.view==='session' && !!st.session && st.session.items.length>0;
+    const isResults = ready && st.view==='results' && !!st.completed;
+    const isReview = ready && st.view==='review' && !!st.completed;
+    const isHistory = ready && st.view==='history';
+    const isFlags = ready && st.view==='flags';
+
+    // Readiness & score trend are EXAM-ONLY: study mode reveals answers as you go,
+    // so it doesn't estimate real-exam performance. (Focus areas/weak-areas below stay
+    // pooled across exam+study, since for "what to drill" study attempts are useful coverage.)
+    const examHist=(st.history||[]).filter(e=> e.settings && e.settings.mode==='exam').slice().sort((a,b)=>a.completedAt-b.completedAt);
+    const examPercents=examHist.map(e=>e.result.percent);
+    // Readiness = EMA over exam sessions (recent count more); raw per-session bars stay in the trend.
+    const readinessPct= this.ema(examPercents);
+    const prevReadiness= examPercents.length>=2? this.ema(examPercents.slice(0,-1)) : null;
+    const best= examPercents.length? Math.max.apply(null,examPercents) : null;
+    const delta= (readinessPct!=null && prevReadiness!=null)? readinessPct-prevReadiness : null;
+    const deltaText= delta==null? 'No exam sessions yet' : (delta>0? '▲ '+delta+' pts' : delta<0? '▼ '+Math.abs(delta)+' pts' : 'No change');
+    const readyInsight= this.readinessInsight(readinessPct);
+    const deltaStyle= delta==null? 'color:var(--muted);' : (delta>0? 'color:var(--successtext);' : delta<0? 'color:var(--dangertext);' : 'color:var(--muted);');
+
+    const agg=this.domainAgg();
+    const domainBars=(st.DOMAINS||[]).map(d=>{ const ema=this.domainEma(d.id); const stt=this.domStatus(ema); return { key:d.id, name:d.short, weightChip:(d.weightPct!=null? d.weightPct+'% of exam':''), pctLabel: ema==null?'—':ema+'%', statusLabel: stt.label, statusStyle:'font:600 10px var(--sans); letter-spacing:.04em; text-transform:uppercase; padding:2px 7px; border-radius:6px; color:'+stt.text+'; background:'+(stt.key==='strong'?'var(--successsoft)':stt.key==='developing'?'var(--goldsoft)':stt.key==='weak'?'var(--dangersoft)':'var(--surface2)')+';', pctStyle:'color:'+stt.text+';', fillStyle:this.barFill(ema==null?0:ema, stt.color) }; });
+
+    // Score trend chart source respects the scope filter (exam default / study / both).
+    const _histSorted=(st.history||[]).slice().sort((a,b)=>a.completedAt-b.completedAt);
+    const _scoped= st.trendScope==='study'? _histSorted.filter(e=>e.settings&&e.settings.mode==='study')
+                 : st.trendScope==='both'? _histSorted
+                 : _histSorted.filter(e=>e.settings&&e.settings.mode==='exam');
+    const trendSrc=_scoped.slice(-8);
+    // Score trend = Recharts stacked-area (bar-chart fallback). Each session's overall % split
+    // into per-domain contributions; dashed target line + date labels.
+    const _th = THEME[st.theme==='night'?'night':'day'];
+    const domSorted=(st.DOMAINS||[]).slice().sort((a,b)=>a.id-b.id);
+    const _night = st.theme==='night';
+    // Score-trend domain palette (chart-only): user-specified light/dark hex per domain.
+    const _trendPalette = { 1: _night?'#2a937c':'#006652', 2: _night?'#f4a24b':'#a75c00', 3: _night?'#767ad8':'#6364c0' };
+    const _domColHex = (id)=> _trendPalette[id] || _th['--muted'];
+    const _trendData = trendSrc.map(e=>{ const tot=e.result.total||1; const bd=e.result.breakdown||[]; const row={ name: shortDate(e.completedAt) }; domSorted.forEach(d=>{ const b=bd.find(x=>x.domain===d.id); row[d.short]= b? Math.round(b.correct/tot*1000)/10 : 0; }); return row; });
+    const trendConfig = {
+      data: _trendData,
+      keys: domSorted.map(d=>({ key:'d'+d.id, label:d.short, color:_domColHex(d.id) })),
+      target: this.target(), targetLabel:'TARGET '+this.target(), targetColor:_th['--ink'],
+      axisColor:_th['--muted'], gridColor:_th['--line'],
+      tooltipBg:_th['--surface'], tooltipBorder:_th['--line2'], tooltipInk:_th['--ink'], height:240,
+      barStrong:_th['--success'], barMid:_th['--gold'], barWeak:_th['--danger']
+    };
+    const trendConfigJson = JSON.stringify(trendConfig);
+    const hasTrend = trendSrc.length>0;
+    const _tScope=st.trendScope;
+    const trendScopeStyle=(k)=>'padding:6px 12px; border-radius:8px; border:none; cursor:pointer; font:600 12px var(--sans); '+(_tScope===k?'background:var(--teal); color:#fff;':'background:transparent; color:var(--muted);');
+    const trendLegend = domSorted.map(d=>({ key:d.id, label:d.short, dotStyle:'width:9px; height:9px; border-radius:3px; background:'+this.domColorId(d.id)+'; display:inline-block;' }));
+
+    const hasResume= !!(st.session && !st.session.submittedAt);
+    const resumeSub= hasResume? ('Item '+(st.session.currentIndex+1)+' of '+st.session.items.length+' · '+(st.session.settings.mode==='exam'?'Exam':'Study')+(st.session.remainingSeconds!=null?(' · '+clock(st.session.remainingSeconds)+' left'):'')) : '';
+
+    const out={
+      rootRef:(el)=>{ self.rootEl=el; if(el){ self.applyTheme(); } },
+      dataEmpty: ready && (st.QUESTIONS||[]).length===0,
+      showLoading: !ready,
+      showDisclaimer: ready && !st.disclaimerSeen,
+      ackDisclaimer: ()=>self.ackDisclaimer(),
+      // theme
+      toggleTheme: (e)=>self.toggleTheme(e),
+      themeIcon: st.theme==='night'? '☀' : '☾',
+      themeLabel: st.theme==='night'? 'Light' : 'Dark',
+      headerDays: (()=>{ const d=this.daysToExam(); return d==null? 'Set' : (d<0? '—' : d+'d'); })(),
+      headerTarget: this.target()+'%',
+      openTargetSetting: ()=>self.openCustomize(true),
+      themeTitle: st.theme==='night'? 'Switch to day mode' : 'Switch to night mode',
+      readinessTooltip: 'Readiness is an exponential moving average (EMA) of your recent exam-mode scores — the most recent sessions count the most, so it tracks where you are now rather than your all-time average. Study sessions are excluded. Target: '+this.target()+'%.',
+      readyInfoOpen: st.readyInfoOpen,
+      toggleReadyInfo: ()=>self.setState(x=>({ readyInfoOpen: !x.readyInfoOpen })),
+      // nav
+      goHome: ()=>self.setView('home'),
+      goHistory: ()=>self.setView('history'),
+      openCustomize: ()=>self.openCustomize(false),
+      navHomeStyle: this.navStyle(isHome),
+      navSetupStyle: this.navStyle(isHome && st.customizeOpen),
+      navHistoryStyle: this.navStyle(isHistory),
+      bnavHomeStyle: this.bnavStyle(isHome),
+      bnavHistoryStyle: this.bnavStyle(isHistory),
+      hasResume, onResume: ()=>self.setView('session'), onDiscard: ()=>self.discardSession(),
+      isHome, isDashboard, isSession, isResults, isReview, isHistory,
+      customizeOpen: st.customizeOpen,
+      customizeChevron: st.customizeOpen? '−' : '+',
+      customizeLabel: (st.customizeOpen?'− ':'+ ')+'Customize a session',
+      toggleCustomize: ()=>self.setState(s=>({ customizeOpen:!s.customizeOpen })),
+      // dashboard
+      daysText:(()=>{ const d=this.daysToExam(); if(d==null) return 'Set your exam date'; if(d<0) return 'Exam date has passed'; if(d===0) return 'Your exam is today'; return d+' day'+(d===1?'':'s')+' to your exam'; })(),
+      examDateUnset: this.daysToExam()==null,
+      greetingDateStyle: 'background:none; border:none; padding:0; cursor:pointer; font:inherit; color:'+(this.daysToExam()==null?'var(--tealtext)':'var(--muted)')+'; text-decoration:'+(this.daysToExam()==null?'underline':'none')+'; text-underline-offset:2px;',
+      onGreetingDate: ()=>{ self.openCustomize(true); },
+      bankText:(st.BLUEPRINT? (st.BLUEPRINT.productionBankTotal+' items · '+st.BLUEPRINT.totalItems+'-item exam, '+st.BLUEPRINT.timeMinutes+' min') : ((st.QUESTIONS||[]).length+' practice items')),
+      readinessText: readinessPct==null? '—' : readinessPct+'%',
+      donutStyle: 'background:conic-gradient(var(--teal) 0% '+(readinessPct==null?0:readinessPct)+'%, var(--ring) '+(readinessPct==null?0:readinessPct)+'% 100%);',
+      readyBadge: readyInsight.badge,
+      readyBadgeStyle: 'font:600 9.5px var(--sans); letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:6px; '+( readyInsight.badgeKind==='success'?'background:var(--successsoft); color:var(--successtext);' : readyInsight.badgeKind==='gold'?'background:var(--goldsoft); color:var(--goldtext);' : readyInsight.badgeKind==='danger'?'background:var(--dangersoft); color:var(--dangertext);' : 'background:var(--surface2); color:var(--muted);'),
+      insightText: readyInsight.text,
+      recommendedLabel: readyInsight.label,
+      recommendedAction: ()=>self.startRecommended(readyInsight),
+      deltaText, deltaStyle,
+      resumeEyebrow: hasResume? 'Continue' : 'Get started',
+      resumeTitle: hasResume? 'Resume your session' : 'Start a practice session',
+      resumeSub: hasResume? resumeSub : 'Pick a quick-start below or customize your own.',
+      resumeCardLabel: hasResume? 'Resume →' : 'Customize →',
+      resumeCardAction: hasResume? (()=>self.setView('session')) : (()=>self.openCustomize(false)),
+      domainBars, hasTrend, noTrend: !hasTrend, trendConfigJson, trendLegend,
+      trendScopeExamStyle: trendScopeStyle('exam'), trendScopeStudyStyle: trendScopeStyle('study'), trendScopeBothStyle: trendScopeStyle('both'),
+      setTrendExam: ()=>self.setState({trendScope:'exam'}), setTrendStudy: ()=>self.setState({trendScope:'study'}), setTrendBoth: ()=>self.setState({trendScope:'both'}),
+      trendEmpty: !hasTrend, trendEmptyText: st.trendScope==='study'? 'No study sessions yet.' : (st.trendScope==='both'? 'No sessions yet.' : 'No exam sessions yet.'),
+      fullMockSub: 'All '+((st.QUESTIONS||[]).length)+' items · timed 180 min',
+      hasRecent: (st.history||[]).length>0, noRecent: (st.history||[]).length===0,
+      recentRows: (st.history||[]).slice().sort((a,b)=>b.completedAt-a.completedAt).slice(0,5).map(e=>{
+        const isExam=e.settings&&e.settings.mode==='exam';
+        const pass=e.result.estimatedPass;
+        const canReview= !!(e.items && e.items.length>0);
+        return {
+          key:e.id,
+          onReview:()=>{ if(canReview) self.setState({ completed:e, reviewFrom:'dashboard', view:'results', resultFilter:'all', resultDomain:'all', expandedReview:{} }); },
+          rowStyle:'display:grid; grid-template-columns:1.3fr 1fr 1fr .8fr .9fr; gap:10px; align-items:center; padding:13px 4px; border-bottom:1px solid var(--line);'+(canReview?' cursor:pointer;':''),
+          date:shortDate(e.completedAt),
+          mode:(isExam?'Exam':'Study'),
+          modeStyle:'font:600 10.5px var(--sans); letter-spacing:.04em; text-transform:uppercase; padding:4px 9px; border-radius:7px; background:'+(isExam?'var(--tealsoft)':'var(--goldsoft)')+'; color:'+(isExam?'var(--tealtext)':'var(--goldtext)')+';',
+          questions:e.result.total,
+          score:e.result.percent+'%', scoreStyle:'color:'+(pass?'var(--successtext)':'var(--dangertext)')+';',
+          result:(pass?'Pass':'Below'),
+          resultStyle:'font:600 10.5px var(--sans); padding:4px 9px; border-radius:7px; background:'+(pass?'var(--successsoft)':'var(--dangersoft)')+'; color:'+(pass?'var(--successtext)':'var(--dangertext)')+';',
+          duration: durationMin(e.timeUsedSeconds)
+        };
+      }),
+      weakSub: (()=>{ const w=this.weakDomains(); const base= w.length? ('Study · '+w.map(x=>x.short).join(', ')) : ('Study · all domains · on target'); return base + (this.incorrectItemIds().length? ' · revisits your misses' : ''); })(),
+      presetFull: ()=>self.preset('full'),
+      presetQuick: ()=>self.preset('quick'),
+      presetWeak: ()=>self.preset('weak'),
+      // recent custom
+      hasLastCustom: !!st.lastCustom,
+      lastCustomSummary: st.lastCustom? this.summary(st.lastCustom) : '',
+      recentStart: ()=>{ if(st.lastCustom){ self.setState({settings:{...st.lastCustom}}); self.startFlow(st.lastCustom); } },
+      // setup
+      availLabel: this.avail(S)+' items available for this focus',
+      countAvailable: this.avail(S), countValue: S.count,
+      onCount:(e)=>{ const n=parseInt(e.target.value,10)||0; self.setSetting({count:n}); },
+      minutesValue: S.timeMinutes, minutesDisabled: !S.timed,
+      minutesInputStyle: 'width:100%; padding:11px 12px; border:1px solid var(--line2); border-radius:10px; font:400 14px var(--sans); color:var(--ink); background:'+(S.timed?'var(--surface2)':'var(--inputdis)')+'; opacity:'+(S.timed?'1':'0.55')+';',
+      onMinutes:(e)=>{ const n=Math.max(1,parseInt(e.target.value,10)||1); self.setSetting({timeMinutes:n}); },
+      setModeExam: ()=>self.setSetting({ mode:'exam', includeDrafts:false }),
+      setModeStudy: ()=>self.setSetting({ mode:'study' }),
+      modeExamStyle: this.segStyle(S.mode==='exam'),
+      modeStudyStyle: this.segStyle(S.mode==='study'),
+      modeHint: S.mode==='exam'? 'Answers and explanations are revealed only after you submit.' : 'Each answer reveals the explanation immediately.',
+      setSetStandard: ()=>self.setSetting({ questionSet:'standard' }),
+      setSetScenario: ()=>self.setSetting({ questionSet:'scenario' }),
+      qsStdStyle: this.segStyle(S.questionSet!=='scenario'),
+      qsScnStyle: this.segStyle(S.questionSet==='scenario'),
+      questionSetHint: S.questionSet==='scenario'? 'Longer clinical vignettes paired with the standard bank.' : 'Focused single-concept items written to the content outline.',
+      domainChips: [ {key:'all', label:'All domains', style:this.chipStyle(S.domains==='all'), onClick:()=>self.toggleDomain('all')} ].concat((st.DOMAINS||[]).map(d=>({ key:d.id, label:d.short, style:this.chipStyle(S.domains!=='all'&&S.domains.indexOf(d.id)>=0), onClick:()=>self.toggleDomain(d.id) }))),
+      timedTrack: this.track(S.timed), timedKnob: this.knob(S.timed), toggleTimed: ()=>self.setSetting({ timed:!S.timed }),
+      showTimerTrack: this.track(S.showTimer), showTimerKnob: this.knob(S.showTimer), toggleShowTimer: ()=>self.setSetting({ showTimer:!S.showTimer }),
+      advancedOpen: st.advancedOpen, advancedLabel: (st.advancedOpen?'− ':'+ ')+'Exam preferences & advanced', toggleAdvanced: ()=>self.setState(s=>({advancedOpen:!s.advancedOpen})),
+      targetValue: this.target(), onTarget:(e)=>self.setTarget(e.target.value),
+      examDateValue: st.examDate || '',
+      onExamDate:(e)=>self.setExamDate(e.target.value),
+      examDateHint:(()=>{ const d=this.daysToExam(); if(d==null) return 'Set this to see a live countdown and readiness pacing.'; if(d<0) return 'This date has passed — update it for an upcoming attempt.'; if(d===0) return 'Your exam is today. Good luck.'; return d+' day'+(d===1?'':'s')+' from today.'; })(),
+      blueprintValue: S.blueprint, onBlueprint:(e)=>self.setSetting({ blueprint:e.target.value }),
+      draftsTrack: this.track(S.includeDrafts), draftsKnob: this.knob(S.includeDrafts), toggleDrafts: ()=>{ if(S.mode!=='exam') self.setSetting({ includeDrafts:!S.includeDrafts }); },
+      onStart: ()=>{ const s={...S, count:Math.min(S.count, this.avail(S)||S.count)}; self.setState({ lastCustom:s }, ()=>self.persistPrefs()); self.startFlow(s); },
+      startLabel: 'Start '+(S.mode==='exam'?'exam':'study')+' · '+Math.min(S.count, this.avail(S))+' items',
+      // start prompt
+      startPromptOpen: st.startPromptOpen,
+      pendingStartSummary: st.pendingStart? this.summary(st.pendingStart) : '',
+      cancelStart: ()=>self.cancelStart(),
+      startNewAnyway: ()=>self.startNewAnyway(),
+      resumeFromPrompt: ()=>self.resumeFromPrompt(),
+      // confirm
+      confirmOpen: st.confirmOpen,
+      onConfirmCancel: ()=>self.setState({confirmOpen:false}),
+      onConfirmYes: ()=>self.doFinalize(),
+      // destructive confirm
+      destructiveOpen: !!st.destructive,
+      destructiveTitle: st.destructive? st.destructive.title : '',
+      destructiveBody: st.destructive? st.destructive.body : '',
+      destructiveCta: st.destructive? st.destructive.cta : 'Delete',
+      destructiveHasAlt: !!(st.destructive && st.destructive.altCta),
+      destructiveAltCta: st.destructive? (st.destructive.altCta||'') : '',
+      destructivePrimaryBg: (st.destructive && st.destructive.altCta)? 'var(--teal)' : 'var(--danger)',
+      onDestructiveAlt: ()=>self.runDestructiveAlt(),
+      onDestructiveCancel: ()=>self.cancelDestructive(),
+      onDestructiveYes: ()=>self.runDestructive(),
+    };
+
+    // confirm content
+    if(st.session){
+      const un=st.session.items.length-Object.keys(st.session.answers).length;
+      const exam=st.session.settings.mode==='exam';
+      out.confirmTitle= exam? 'Submit exam?' : 'Finish session?';
+      out.confirmBody= un>0? ('You have '+un+' unanswered item(s); they will be marked incorrect. Submit and score now? You can review every answer afterward.') : ('Submit and score your '+st.session.items.length+' answers now? You can review every answer afterward.');
+      out.confirmCta= exam? 'Submit exam' : 'Finish';
+    }
+
+    // ---------- SESSION ----------
+    if(st.session && st.session.items.length>0){
+      const s=st.session; const safeIdx=Math.min(Math.max(s.currentIndex,0), s.items.length-1); const it=s.items[safeIdx]; const ans=s.answers[it.q.id];
+      const revealed= s.settings.mode==='study'? !!s.revealed[it.q.id] : !!s.submittedAt;
+      const total=s.items.length;
+      out.itemPosText='Item '+(s.currentIndex+1)+' of '+total;
+      out.currentStem=it.q.stem;
+      out.currentCategory='Domain '+it.q.domain+' · '+it.q.domainShort;
+      out.currentType= it.q.type==='one_best'? 'Single best answer' : 'Complex combo';
+      out.progressFill='height:100%; border-radius:3px; background:var(--teal); width:'+Math.round((s.currentIndex+1)/total*100)+'%;';
+      out.hasElements=!!it.q.elements; out.elements=(it.q.elements||[]).map(e=>({key:e.id,id:e.id,text:e.text}));
+      const bm= s.bookmarks.indexOf(it.q.id)>=0;
+      out.bookmarkIcon= bm? '★':'☆';
+      out.bookmarkStyle='width:34px; height:34px; border-radius:8px; cursor:pointer; font-size:16px; border:1px solid '+(bm?'var(--gold)':'var(--line2)')+'; background:'+(bm?'var(--goldsoft)':'var(--surface)')+'; color:'+(bm?'var(--goldtext)':'var(--muted)')+';';
+      out.toggleBookmark=()=>self.toggleBookmark();
+      out.toggleMenu=()=>self.setState(x=>({menuOpen:!x.menuOpen}));
+      out.menuOpen=st.menuOpen;
+      out.timerMenuLabel= s.settings.showTimer? 'Hide timer' : 'Show timer';
+      out.toggleTimerSetting=()=>self.toggleTimerSetting();
+      out.openReport=()=>self.openReport();
+      out.showTimerPill= s.settings.timed && s.settings.showTimer && !s.submittedAt;
+      out.timerText= clock(s.remainingSeconds);
+      out.sessionOptions= it.optionOrder.map((oid,i)=>{ const opt=it.q.options.find(o=>o.id===oid); const letter=String.fromCharCode(65+i); const selected=ans===oid; const correct=it.q.correct===oid; let bd='1px solid var(--line2)', bg='var(--surface)', lb='var(--letterbg)', lc='var(--ink)'; if(revealed&&correct){ bd='1.5px solid var(--success)'; bg='var(--successsoft)'; lb='var(--success)'; lc='#fff'; } else if(revealed&&selected&&!correct){ bd='1.5px solid var(--danger)'; bg='var(--dangersoft)'; lb='var(--danger)'; lc='#fff'; } else if(selected){ bd='1.5px solid var(--teal)'; bg='var(--tealsoft)'; lb='var(--teal)'; lc='#fff'; } const lock= revealed && s.settings.mode==='exam'; return { key:oid, letter, text:opt.text, hasSelects:!!opt.selects, selectsText: opt.selects? 'Selects: '+opt.selects.join(', '):'', onClick: lock? (()=>{}) : (()=>self.answer(oid)), containerStyle:'display:flex; gap:13px; align-items:flex-start; width:100%; text-align:left; padding:14px 15px; border-radius:11px; border:'+bd+'; background:'+bg+'; cursor:'+(lock?'default':'pointer')+'; font-family:var(--sans);', letterStyle:'width:27px; height:27px; border-radius:50%; background:'+lb+'; color:'+lc+'; display:grid; place-items:center; font-size:12.5px; font-weight:700; flex-shrink:0;' }; });
+      const correctIdx= it.optionOrder.indexOf(it.q.correct);
+      out.showExplanation= revealed;
+      out.expHeader= 'Correct · '+String.fromCharCode(65+(correctIdx>=0?correctIdx:0));
+      out.expCorrect= it.q.rationaleCorrect;
+      out.expIncorrect= it.optionOrder.map((oid,i)=>({oid,i})).filter(o=>o.oid!==it.q.correct && it.q.rationaleIncorrect && it.q.rationaleIncorrect[o.oid]).map(o=>({ key:o.oid, letter:String.fromCharCode(65+o.i), text: it.q.rationaleIncorrect[o.oid] }));
+      const refs=(it.q.references||[]);
+      out.hasRefs= refs.length>0;
+      out.expRefs= refs.map((r,i)=>({ key:i, citation:r.citation, hasLoc:!!r.locator, locator:r.locator||'' }));
+      out.navPrev=()=>self.nav(-1); out.navNext=()=>self.nav(1);
+      out.prevStyle='padding:12px 18px; border-radius:11px; font:600 13px var(--sans); cursor:pointer; border:1px solid var(--line2); background:var(--surface); color:var(--ink); opacity:'+(s.currentIndex===0?'0.45':'1')+';';
+      out.nextStyle='padding:12px 18px; border-radius:11px; font:600 13px var(--sans); cursor:pointer; border:1px solid var(--line2); background:var(--surface); color:var(--ink); opacity:'+(s.currentIndex===total-1?'0.45':'1')+';';
+      out.exitSession=()=>self.setView('home');
+      out.submitSession=()=>self.submitSession();
+      out.submitLabel= s.settings.mode==='exam'? 'Submit' : 'Finish';
+      out.openMap=()=>self.setState(x=>({mapOpen:!x.mapOpen})); out.mapOpen=st.mapOpen;
+      out.trackerChips= s.items.map((item,i)=>{ const answered=!!s.answers[item.q.id]; const bmk=s.bookmarks.indexOf(item.q.id)>=0; const cur=i===s.currentIndex; let style='min-height:44px; border-radius:9px; cursor:pointer; font:600 13px var(--sans); border:1px solid var(--line2); background:var(--surface2); color:var(--ink);'; if(answered) style='min-height:44px; border-radius:9px; cursor:pointer; font:600 13px var(--sans); border:1px solid var(--success); background:var(--successsoft); color:var(--ink);'; if(cur) style='min-height:44px; border-radius:9px; cursor:pointer; font:600 13px var(--sans); border:none; background:var(--teal); color:#fff;'; if(bmk&&!cur) style+=' box-shadow:inset 0 0 0 2px var(--gold);'; return { key:item.q.id, label:i+1, style, onClick:()=>self.goItem(i) }; });
+    }
+
+    // ---------- RESULTS / REVIEW ----------
+    const c=st.completed;
+    if(c){
+      out.rsModeText= c.settings.mode==='exam'? 'Exam' : 'Study';
+      out.rsPercent= c.result.percent; out.rsCorrect=c.result.correct; out.rsTotal=c.result.total;
+      out.rsTimeText= 'Time '+clock(c.timeUsedSeconds);
+      out.rsPassLabel= c.result.estimatedPass? ('At or above your '+this.target()+'% target') : ('Below your '+this.target()+'% target');
+      out.rsPassStyle= c.result.estimatedPass? 'background:var(--successsoft); color:var(--successtext);' : 'background:var(--goldsoft); color:var(--goldtext);';
+      out.rsBreakdown= c.result.breakdown.map(b=>({ key:b.domain, name:'Domain '+b.domain+' · '+b.name, scoreText:b.correct+'/'+b.total+' · '+b.percent+'%', fillStyle:this.barFill(b.percent, this.domColor(b.percent)) }));
+      out.retake=()=>self.startSession(c.settings);
+      out.resultsBack=()=> st.reviewFrom==='history'? self.setView('history') : (st.reviewFrom==='dashboard'? self.setView('home') : self.setView('home'));
+      out.resultsBackLabel= st.reviewFrom==='history'? 'Back to progress' : 'Home';
+      // ---- combined review: filter + expandable question list ----
+      const items=c.items||[];
+      const isCorrect=(it)=> c.answers[it.q.id]===it.q.correct;
+      const nCorrect=items.filter(isCorrect).length, nIncorrect=items.length-nCorrect;
+      const flt=st.resultFilter, fdom=st.resultDomain;
+      out.reviewCountText= items.length+' question'+(items.length===1?'':'s');
+      out.filterAllCount=items.length; out.filterCorrectCount=nCorrect; out.filterIncorrectCount=nIncorrect;
+      out.setFilterAll=()=>self.setState({resultFilter:'all'}); out.setFilterCorrect=()=>self.setState({resultFilter:'correct'}); out.setFilterIncorrect=()=>self.setState({resultFilter:'incorrect'});
+      const segS=(a)=>'padding:7px 13px; border-radius:8px; border:none; cursor:pointer; font:600 12.5px var(--sans); '+(a?'background:var(--teal); color:#fff;':'background:transparent; color:var(--muted);');
+      out.filterAllStyle=segS(flt==='all'); out.filterCorrectStyle=segS(flt==='correct'); out.filterIncorrectStyle=segS(flt==='incorrect');
+      const dchip=(a)=>'padding:8px 13px; border-radius:9px; cursor:pointer; font:600 12.5px var(--sans); '+(a?'background:var(--tealsoft); color:var(--tealtext); border:1.5px solid var(--teal);':'background:var(--surface2); color:var(--muted); border:1px solid var(--line2);');
+      const domsInSession=[...new Set(items.map(it=>it.q.domain))].sort();
+      out.reviewDomainChips=[{key:'all',label:'All domains',style:dchip(fdom==='all'),onClick:()=>self.setState({resultDomain:'all'})}].concat(domsInSession.map(id=>{ const dd=(st.DOMAINS||[]).find(d=>d.id===id)||{}; return {key:id,label:(dd.short||('D'+id)),style:dchip(fdom===id),onClick:()=>self.setState({resultDomain:id})}; }));
+      out.reviewQuery=st.reviewQuery;
+      out.onReviewQuery=(e)=>self.setState({reviewQuery:e.target.value});
+      const _q=(st.reviewQuery||'').trim().toLowerCase();
+      const filtered=items.map((it,i)=>({it,i})).filter(({it})=>{ if(flt==='correct'&&!isCorrect(it))return false; if(flt==='incorrect'&&isCorrect(it))return false; if(fdom!=='all'&&it.q.domain!==fdom)return false; if(_q){ const hay=(it.q.stem+' '+it.q.options.map(o=>o.text).join(' ')+' '+it.q.id).toLowerCase(); if(hay.indexOf(_q)<0) return false; } return true; });
+      out.reviewListEmpty=filtered.length===0;
+      out.reviewItems=filtered.map(({it,i})=>{
+        const ans=c.answers[it.q.id]; const correct=ans===it.q.correct; const expanded=!!st.expandedReview[i];
+        const options=it.optionOrder.map((oid,k)=>{ const opt=it.q.options.find(o=>o.id===oid); const letter=String.fromCharCode(65+k); const isC=it.q.correct===oid; const isSel=ans===oid; let bd='1px solid var(--line2)',bg='var(--surface)',lb='var(--letterbg)',lc='var(--ink)',note='',ns=''; if(isC){bd='1.5px solid var(--success)';bg='var(--successsoft)';lb='var(--success)';lc='#fff';note='Correct answer';ns='color:var(--successtext);';} if(isSel&&!isC){bd='1.5px solid var(--danger)';bg='var(--dangersoft)';lb='var(--danger)';lc='#fff';note='Your answer';ns='color:var(--dangertext);';} return { key:oid, letter, text:opt.text, hasNote:!!note, note, noteStyle:ns, containerStyle:'display:flex; gap:12px; align-items:flex-start; padding:12px 14px; border-radius:10px; border:'+bd+'; background:'+bg+';', letterStyle:'width:25px; height:25px; border-radius:50%; background:'+lb+'; color:'+lc+'; display:grid; place-items:center; font-size:12px; font-weight:700; flex-shrink:0;' }; });
+        const cidx=it.optionOrder.indexOf(it.q.correct);
+        const refs=(it.q.references||[]);
+        const yourOpt= ans? it.q.options.find(o=>o.id===ans) : null;
+        const correctOpt= it.q.options.find(o=>o.id===it.q.correct);
+        return {
+          key:it.q.id, num:i+1,
+          qid: it.q.id,
+          yourText: yourOpt? yourOpt.text : 'Not answered',
+          yourStyle: correct? 'color:var(--successtext); font-weight:600;' : (ans? 'color:var(--dangertext); font-weight:600;' : 'color:var(--muted); font-style:italic;'),
+          showCorrect: !correct,
+          correctText: correctOpt? correctOpt.text : '',
+          numStyle:'width:28px; height:28px; border-radius:8px; flex-shrink:0; display:grid; place-items:center; font:700 12px var(--sans); background:'+(correct?'var(--successsoft)':(ans?'var(--dangersoft)':'var(--surface2)'))+'; color:'+(correct?'var(--successtext)':(ans?'var(--dangertext)':'var(--muted)'))+';',
+          verdict: correct?'Correct':(ans?'Incorrect':'Skipped'),
+          verdictStyle:'font:600 10px var(--sans); letter-spacing:.04em; text-transform:uppercase; padding:2px 8px; border-radius:6px; background:'+(correct?'var(--successsoft)':'var(--dangersoft)')+'; color:'+(correct?'var(--successtext)':'var(--dangertext)')+';',
+          category:'D'+it.q.domain+' · '+it.q.domainShort,
+          stem: it.q.stem,
+          chevron: expanded?'−':'+', expanded,
+          onToggle:()=>self.setState(x=>({ expandedReview:{...x.expandedReview, [i]: !x.expandedReview[i]} })),
+          options,
+          expHeader:'Correct · '+String.fromCharCode(65+(cidx>=0?cidx:0)),
+          expCorrect: it.q.rationaleCorrect,
+          expIncorrect: it.optionOrder.map((oid,k)=>({oid,k})).filter(o=>o.oid!==it.q.correct && it.q.rationaleIncorrect && it.q.rationaleIncorrect[o.oid]).map(o=>({key:o.oid,letter:String.fromCharCode(65+o.k),text:it.q.rationaleIncorrect[o.oid]})),
+          hasRefs: refs.length>0, refs: refs.map((r,k)=>({key:k,citation:r.citation,hasLoc:!!r.locator,locator:r.locator||''})),
+          onReport:()=>self.openReportFor(it.q)
+        };
+      });
+      out.openReport=()=>self.openReport();
+    }
+
+    // ---------- HISTORY ----------
+    out.historySubtitle= (st.history||[]).length? ((st.history||[]).length+' sessions recorded') : 'Your completed sessions appear here';
+    out.hasHistory= (st.history||[]).length>0; out.noHistory= (st.history||[]).length===0;
+    // Summary stats follow the trend scope so they match the chart.
+    const _scopedPct=_scoped.map(e=>e.result.percent);
+    const _scLast8=_scopedPct.slice(-8);
+    const _scAvg=_scLast8.length? Math.round(_scLast8.reduce((a,b)=>a+b,0)/_scLast8.length):null;
+    const _scBest=_scopedPct.length? Math.max.apply(null,_scopedPct):null;
+    const _scDelta=_scLast8.length>=2? _scLast8[_scLast8.length-1]-_scLast8[0]:null;
+    out.histAvg= _scAvg==null?0:_scAvg; out.histBest= _scBest==null?0:_scBest;
+    out.histDelta= _scDelta==null? '—' : (_scDelta>0?'+'+_scDelta:_scDelta+'');
+    out.histDeltaStyle= _scDelta==null?'color:var(--muted);':(_scDelta>0?'color:var(--successtext);':_scDelta<0?'color:var(--dangertext);':'color:var(--muted);');
+    out.clearHistory=()=>self.clearHistory();
+    out.historyRows= (st.history||[]).map(e=>{
+      const canReview= !!(e.items && e.items.length>0);
+      const review=()=>{ if(canReview) self.setState({ completed:e, reviewFrom:'history', view:'results', resultFilter:'all', resultDomain:'all', expandedReview:{} }); };
+      const isExam=e.settings&&e.settings.mode==='exam'; const pass=e.result.estimatedPass;
+      return { key:e.id, isSample:!!e.sample, canReview,
+        rowStyle:'background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px;'+(canReview?' cursor:pointer;':''),
+        dateLine: dateTime(e.completedAt),
+        mode: isExam?'Exam':'Study',
+        modeChipStyle:'font:600 10.5px var(--sans); letter-spacing:.04em; text-transform:uppercase; padding:4px 9px; border-radius:7px; background:'+(isExam?'var(--tealsoft)':'var(--goldsoft)')+'; color:'+(isExam?'var(--tealtext)':'var(--goldtext)')+';',
+        itemsText: e.result.total+' items',
+        durationText: durationMin(e.timeUsedSeconds),
+        scorePct: e.result.percent+'%',
+        correctText: e.result.correct+'/'+e.result.total+' correct',
+        scoreStyle:'color:'+(pass?'var(--successtext)':'var(--dangertext)')+';',
+        blueprintText: blueprintLabel(e.settings&&e.settings.blueprint),
+        domainCells: (e.result.breakdown||[]).map(b=>{ const dd=(st.DOMAINS||[]).find(d=>d.id===b.domain)||{}; const stt=self.domStatus(b.percent); return { key:b.domain, tag:'D'+b.domain, tagStyle:'font:700 11px var(--sans); color:'+stt.text+';', name:(dd.short||b.name), score:b.correct+'/'+b.total, barStyle:self.barFill(b.percent, stt.color) }; }),
+        onReview:review, onRowClick:review,
+        onDelete:(ev)=>{ if(ev&&ev.stopPropagation) ev.stopPropagation(); self.deleteEntry(e.id); } };
+    });
+    out.hasFlags=(st.flags||[]).length>0; out.flagsCountText=(st.flags||[]).length+' reported item(s)'; out.clearFlags=()=>self.clearFlags();
+    out.exportBackup=()=>self.exportBackup();
+    out.dirSyncSupported=self.supportsDirSync();
+    out.syncConnected=!!st.syncConnected; out.syncNotConnected=!st.syncConnected;
+    out.syncFolderName=st.syncFolderName||'';
+    out.syncStatus= st.syncing? 'syncing…' : (st.lastSyncAt? ('last synced '+new Date(st.lastSyncAt).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'})) : 'connected');
+    out.syncNowLabel= st.syncing? 'Syncing…' : 'Sync now';
+    out.connectSyncFolder=()=>self.connectSyncFolder();
+    out.syncNow=()=>self.syncNow();
+    out.importInputRef=(el)=>{ self._importInput=el; };
+    out.triggerImport=()=>{ if(self._importInput) self._importInput.click(); };
+    out.onImportFile=(e)=>{ const f=e.target.files&&e.target.files[0]; self.importBackupFile(f); e.target.value=''; };
+    out.importMsg=st.importMsg||''; out.hasImportMsg=!!st.importMsg;
+    out.isFlags=isFlags; out.goFlags=()=>self.setView('flags');
+    out.noFlags=(st.flags||[]).length===0;
+    const reasonLabels={ 'factual error':'Factual error', 'outdated policy/guideline':'Outdated policy/guideline', 'ambiguous / >1 defensible answer':'Ambiguous', 'typo / wording':'Typo / wording', 'broken or wrong reference link':'Broken reference', 'other':'Other' };
+    out.flagRows=(st.flags||[]).slice().sort((a,b)=>b.at-a.at).map(f=>({ key:f.id, itemId:f.itemId, reasonLabel:(reasonLabels[f.reason]||f.reason), comment:(f.comment||'').trim()||'No comment added.', hasComment:!!(f.comment||'').trim(), domainLabel: f.domain? ('Domain '+f.domain) : '', stem:(f.itemStem||'').trim(), hasStem:!!(f.itemStem||'').trim(), dateText:dateTime(f.at), onEdit:()=>self.editFlag(f.id), onDelete:()=>self.deleteFlag(f.id) }));
+    out.exportFlags=()=>self.exportFlags();
+
+    // ---------- REPORT ----------
+    out.reportOpen=st.reportOpen; out.reportReason=st.reportReason; out.reportComment=st.reportComment;
+    out.reportTitle= st.editingFlagId? 'Edit flag' : 'Report an issue';
+    out.reportSaveLabel= st.editingFlagId? 'Save changes' : 'Save flag';
+    out.onReportReason=(e)=>self.setState({reportReason:e.target.value});
+    out.onReportComment=(e)=>self.setState({reportComment:e.target.value});
+    out.closeReport=()=>self.setState({reportOpen:false});
+    out.saveReport=()=>self.saveReport();
+
+    return out;
+  }
+}
+</script>
+</body>
+</html>
