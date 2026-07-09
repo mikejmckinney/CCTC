@@ -5,9 +5,10 @@
   "provider": {
     "openrouter": {
       "models": {
+        "deepseek/deepseek-v4-pro@preset/default": {},
+        "minimax/minimax-m3@preset/default": {},
+        "z-ai/glm-5.2@preset/default": {},
         "xiaomi/mimo-v2.5-pro@preset/default": {},
-        "xiaomi/mimo-v2.5@preset/default": {},
-        "google/gemini-3.5-flash@preset/default": {},
         "openrouter/auto@preset/default": {}
       }
     }
