@@ -96,7 +96,6 @@ export function DashboardView({
       {/* Main grid */}
       <div className="dashboard-grid">
         {/* Left column */}
-        <div className="stack stack--gap">
           <div className="card card--panel" style={{ padding: 20 }}>
             {/* Donut / Readiness Header */}
             <div className="donut-wrap" style={{ paddingBottom: 18, borderBottom: '1px solid var(--line)' }}>
@@ -148,8 +147,8 @@ export function DashboardView({
 
             {/* Focus areas header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', margin: '18px 0 14px' }}>
-              <span style={{ font: '600 11px var(--sans)', letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--muted)' }}>Focus areas</span>
-              <span style={{ fontSize: 11, color: 'var(--muted)' }}>accuracy · share of exam</span>
+              <span style={{ font: '600 11px var(--sans)', letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--muted)' }}>Domains</span>
+              <span style={{ fontSize: 11, color: 'var(--muted)' }}>recent performance · share of exam</span>
             </div>
 
             {/* Focus areas progress bars */}
@@ -200,11 +199,9 @@ export function DashboardView({
                 );
               })}
             </div>
-          </div>
-        </div>
+           </div>
 
         {/* Right: quick start */}
-        <div className="stack stack--gap">
           <div className="card card--panel">
             <p className="eyebrow">Quick start</p>
             <button className="quick-card" onClick={() => onLaunchPreset({ mode: 'exam', questionCount: settings.blueprintId === 'cctc-from-2026-07' ? 175 : 150, timed: true, timeMinutes: 180 })}>
@@ -235,7 +232,6 @@ export function DashboardView({
               Customize a session →
             </button>
           </div>
-        </div>
       </div>
 
       {/* Recent sessions */}

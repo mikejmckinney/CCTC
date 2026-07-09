@@ -158,8 +158,8 @@ a {
 }
 
 .app-header__brand-tile {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 8px;
   background: var(--teal);
   color: #fff;
@@ -167,14 +167,14 @@ a {
   place-items: center;
   font-family: var(--serif);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1;
 }
 
 .app-header__brand-word {
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 17px;
+  font-size: 18px;
   letter-spacing: -0.01em;
 }
 
@@ -727,7 +727,7 @@ input[type="range"]::-webkit-slider-thumb {
 .donut-wrap {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
 .donut-svg {
@@ -813,6 +813,7 @@ input[type="range"]::-webkit-slider-thumb {
   display: block;
   min-height: 0;
   min-width: 0;
+  font-family: var(--sans);
   font-size: 14px;
   padding: 16px;
   border-radius: 12px;
@@ -830,7 +831,7 @@ input[type="range"]::-webkit-slider-thumb {
 .quick-card__title {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink);
 }
 
