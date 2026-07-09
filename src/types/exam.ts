@@ -127,6 +127,8 @@ export interface SessionSettings {
   mode: ExamMode;
   includeDrafts: boolean;
   targetThreshold: number;
+  focusDomains?: number[];
+  prioritizeIncorrect?: boolean;
 }
 
 export interface SessionItemSnapshot {
@@ -198,6 +200,10 @@ export interface ItemFlag {
 
 export interface AppMeta {
   disclaimerSeen: boolean;
+  theme?: 'day' | 'night';
+  examDate?: string;
+  targetThreshold?: number;
+  lastCustomSettings?: SessionSettings;
 }
 
 export interface LoadedBank {

@@ -56,7 +56,7 @@ export async function bootstrapState(questions: Question[]): Promise<BootstrapSt
   }
 
   return {
-    meta: meta ?? { disclaimerSeen: false },
+    meta: (meta && typeof meta === 'object' && !Array.isArray(meta)) ? { disclaimerSeen: false, ...meta as Record<string, unknown> } as AppMeta : { disclaimerSeen: false },
     settings: settings ?? null,
     activeSession: activeSession ?? null,
     history: (history ?? []).sort((left, right) => right.completedAt.localeCompare(left.completedAt)),

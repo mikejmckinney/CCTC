@@ -132,10 +132,14 @@ function prioritizeBucketCandidates(candidates: Question[], selectedQuestions: Q
   });
 }
 
-function buildCandidateBuckets(blueprint: Blueprint, questions: Question[], recentIds: Set<string>): Map<string, Question[]> {
+function buildCandidateBuckets(blueprint: Blueprint, questions: Question[], recentIds: Set<string>, focusDomains?: number[]): Map<string, Question[]> {
   const buckets = new Map<string, Question[]>();
 
-  questions.forEach((question) => {
+  const applicableQuestions = focusDomains && focusDomains.length > 0
+    ? questions.filter((question) => focusDomains.includes(question.domain))
+    : questions;
+
+  applicableQuestions.forEach((question) => {
     const category = resolveCategory(blueprint, question);
     if (!buckets.has(category.id)) {
       buckets.set(category.id, []);
@@ -201,10 +205,18 @@ export function createSession(
     const available = bucket.filter((question) => !selectedIds.has(question.id));
     const unseenAvailable = available.filter((question) => !recentIds.has(question.id));
     const seenAvailable = available.filter((question) => recentIds.has(question.id));
-    const ranked = [
+    let ranked = [
       ...prioritizeBucketCandidates(unseenAvailable, selectedQuestions, blueprint),
       ...prioritizeBucketCandidates(seenAvailable, selectedQuestions, blueprint)
     ];
+
+    if (settings.prioritizeIncorrect) {
+      ranked = [
+        ...ranked.filter((question) => recentIds.has(question.id)),
+        ...ranked.filter((question) => !recentIds.has(question.id))
+      ];
+    }
+
     const chosen = ranked.slice(0, target.target);
 
     chosen.forEach((question) => {
@@ -223,10 +235,18 @@ export function createSession(
     const leftovers = filteredQuestions.filter((question) => !selectedIds.has(question.id));
     const unseenLeftovers = shuffleList(leftovers.filter((question) => !recentIds.has(question.id)));
     const seenLeftovers = shuffleList(leftovers.filter((question) => recentIds.has(question.id)));
-    const rankedLeftovers = [
+    let rankedLeftovers = [
       ...prioritizeBucketCandidates(unseenLeftovers, selectedQuestions, blueprint),
       ...prioritizeBucketCandidates(seenLeftovers, selectedQuestions, blueprint)
     ];
+
+    if (settings.prioritizeIncorrect) {
+      rankedLeftovers = [
+        ...rankedLeftovers.filter((question) => recentIds.has(question.id)),
+        ...rankedLeftovers.filter((question) => !recentIds.has(question.id))
+      ];
+    }
+
     const extraNeeded = settings.questionCount - selected.length;
 
     rankedLeftovers.slice(0, extraNeeded).forEach((question) => {
