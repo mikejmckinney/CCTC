@@ -71,12 +71,18 @@ export default {
       },
 
       // 2. Setup
-      { name: "setup", navText: "Setup" },
+      { name: "setup", steps: [
+        { dismiss: "I understand" },
+        { wait: 1000 },
+        { click: "Setup" },
+        { wait: 2000 },
+      ]},
 
       // 3. Session — start a study session from setup
       {
         name: "session",
         steps: [
+          { dismiss: "I understand" },
           { click: "Home" },
           { wait: 1000 },
           { click: "Setup" },
@@ -114,6 +120,7 @@ export default {
       {
         name: "review",
         steps: [
+          { dismiss: "I understand" },
           { click: "Progress" },
           { wait: 2000 },
           { click: ["button:has-text('Review →')", "button:has-text('Review')"] },
@@ -125,6 +132,7 @@ export default {
       {
         name: "progress",
         steps: [
+          { dismiss: "I understand" },
           { click: "Progress" },
           { wait: 2000 },
         ],
@@ -134,6 +142,7 @@ export default {
       {
         name: "flags",
         steps: [
+          { dismiss: "I understand" },
           { click: "Progress" },
           { wait: 2000 },
           { click: ["button:has-text('Manage flags')", "button:has-text('Manage')"] },

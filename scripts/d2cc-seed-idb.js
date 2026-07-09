@@ -95,12 +95,17 @@
         }
       ];
 
-      const tx = db.transaction(["history", "flags"], "readwrite");
+      // Also seed the kv store to dismiss the disclaimer modal
+      const metaEntry = { disclaimerSeen: true };
+
+      const tx = db.transaction(["history", "flags", "kv"], "readwrite");
       const historyStore = tx.objectStore("history");
       const flagsStore = tx.objectStore("flags");
+      const kvStore = tx.objectStore("kv");
 
       for (const entry of entries) { historyStore.put(entry); }
       for (const flag of flags) { flagsStore.put(flag); }
+      kvStore.put(metaEntry, "app-meta");
 
       tx.oncomplete = () => resolve();
       tx.onerror = () => reject(new Error("Failed to seed IndexedDB"));
