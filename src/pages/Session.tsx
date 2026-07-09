@@ -165,6 +165,7 @@ export function SessionView({
                 size="sm"
                 onClick={onToggleBookmark}
                 className={cn(session.flaggedForReview.includes(currentItem.itemId) && 'text-[var(--accent)]')}
+                aria-label={session.flaggedForReview.includes(currentItem.itemId) ? 'Remove bookmark' : 'Bookmark this question'}
               >
                 <Bookmark className="h-4 w-4" />
               </Button>
