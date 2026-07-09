@@ -115,10 +115,16 @@ Each model session needs a self-contained prompt because it starts fresh:
 ## What we've already tried
 <dead ends so the model doesn't re-suggest them>
 
-## Relevant code / files
-<paste the actual file contents or relevant snippets>
-Note: this opencode session has full filesystem access at <workspace>.
-You can read additional files as needed.
+## Relevant files
+List file paths with line ranges for the model to read itself.
+The session has full filesystem access — it can read any file.
+
+Example:
+- `src/app/views/DashboardView.tsx:97-240` — dashboard grid and quick-start card
+- `src/app.css:713-717` — dashboard-grid CSS
+- `handoff/prototype/CCTC Practice.dc.html:168-200` — prototype dashboard structure
+
+Do NOT paste file contents. The model will read them.
 
 ## Shape of answer wanted
 <recommendation with reasons, or trade-off table, or critique, or
@@ -149,6 +155,14 @@ opencode run --title "local-fusion-${TS}-mm" \
 
 # Wait for all to complete
 wait
+
+# Check which sessions completed vs timed out
+for f in "/tmp/local-fusion-${TS}-"*.out; do
+  echo "$(basename $f): $(wc -l < "$f") lines"
+done
+
+# If any session has < 5 lines of output, it likely timed out.
+# Continue it with a shorter prompt before running the judge.
 
 # Capture the auto-generated session IDs
 SID_MI=$(opencode session list --format json --max-count 10 | \
@@ -248,6 +262,38 @@ rm "/tmp/local-fusion-${TS}-"*.out
 Never delete the sessions themselves — they persist for auditing,
 history, and potential follow-ups.
 
+### Handling timeouts and reusing sessions
+
+Fusion sessions may timeout (especially when models read many files).
+When this happens:
+
+1. **Check if sessions are still running** before starting new ones:
+   ```bash
+   pgrep -f "opencode run" | wc -l
+   ```
+
+2. **Check what each session produced** — a partial output may be useful:
+   ```bash
+   wc -l "/tmp/local-fusion-${TS}-"*.out
+   ```
+
+3. **Reuse timed-out sessions** with `--continue` instead of starting fresh.
+   The session already read the files and built context — starting over
+   wastes that work:
+   ```bash
+   # Session timed out mid-analysis. Continue it with a shorter prompt.
+   opencode run --session "$SID_MI" --continue \
+     "You have already read the files. Produce your analysis now." \
+     > "/tmp/local-fusion-${TS}-mi.out" 2>&1
+   ```
+
+4. **Only create new sessions if the old ones are truly dead** (process
+   gone, output empty). A new session starts from scratch — no file
+   context, no prior reasoning.
+
+Never assume a timed-out session is dead. Check first, continue second,
+create new last.
+
 ---
 
 ## Advisor pattern (single strong model, persistent)
@@ -312,8 +358,13 @@ Same template as fusion, but be explicit about the **kind** of advice:
 ## What I need
 <strategic guidance, blind spot check, edge case review, or decision>
 
-## Relevant code / context
-<paste relevant files or snippets>
+## Relevant files
+List file paths with line ranges for the model to read itself.
+Do NOT paste file contents — the session has full filesystem access.
+
+Example:
+- `src/services/payment.ts:45-80` — payment processing logic
+- `config/database.yml` — connection pool config
 
 Be specific. If there are risks, name them. If there are alternatives,
 rank them.
@@ -384,6 +435,14 @@ always escalate to fusion later.
   The 3 fusion panelists and 1 advisor model were chosen for
   complementary strengths. Deviate only if the task calls for a
   specific model's strengths
+- **Inlining file contents into the prompt.** Sessions have full filesystem
+  access. Point to files by path with line number citations. Inlining
+  bloats context, costs tokens, and causes timeouts — the model should
+  read the files itself.
+- **Creating new sessions instead of reusing timed-out ones.** A timed-out
+  session already read files and built context. Use `--continue` with the
+  captured session ID to resume it. Only create new sessions if the process
+  is confirmed dead.
 
 ---
 
@@ -424,10 +483,14 @@ Ranked recommendation with 3-5 concrete tradeoffs, a migration risk
 assessment (low/medium/high per tradeoff), and a suggested first step
 if the recommendation is "yes."
 
-## Relevant code
-The workspace is at this project root. You have full filesystem access.
-Key files to inspect: config/routes.rb, app/controllers/, app/graphql/
-(empty, planned location), Gemfile.'
+## Relevant files
+The workspace is at this project root. Key files to inspect:
+- `config/routes.rb` — route definitions
+- `app/controllers/` — existing REST controllers
+- `app/graphql/` — empty, planned GraphQL location
+- `Gemfile` — dependencies
+
+Read these yourself. Do not paste contents into the prompt.'
 
 # Launch all 3 in parallel
 opencode run --title "local-fusion-${TS}-mi" \
@@ -528,9 +591,14 @@ command or config change that would confirm each one. Consider:
 - Network-level issues (NAT tables, keepalive)
 - prepared_statements default in Rails
 
-## Relevant context
-The workspace is at the project root. Check config/database.yml,
-config/initializers/database.rb, and any connection pool middleware.' \
+## Relevant files
+The workspace is at the project root. Check these files:
+- `config/database.yml` — connection pool config
+- `config/initializers/database.rb` — any custom database config
+- `lib/patches/connection_reaper.rb` — monkey patch on ActiveRecord
+- Any connection pool middleware files
+
+Read these yourself. Do not paste contents into the prompt.' \
   > "/tmp/${TITLE}.out" 2>&1
 
 # Capture the session ID
