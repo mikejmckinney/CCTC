@@ -47,7 +47,16 @@ export function RadialGauge({ value, target, size = 180, className, children }: 
   const tickY2 = cy - outerR * Math.sin(targetAngle);
 
   return (
-    <div className={cn('relative inline-flex items-center justify-center', className)} style={{ width: size, height: size / 2 + 20 }}>
+    <div
+      className={cn('relative inline-flex items-center justify-center', className)}
+      style={{ width: size, height: size / 2 + 20 }}
+      role="img"
+      aria-label={`Readiness score: ${clamped}%. Target: ${target}%. ${isAbove ? 'At or above target.' : 'Below target.'}`}
+    >
+      {/* Screen-reader text */}
+      <span className="sr-only">
+        Readiness {clamped}%, target {target}%. {isAbove ? 'At or above target.' : 'Below target.'}
+      </span>
       <PieChart width={size} height={size / 2 + 20}>
         {/* Background threshold bands */}
         <Pie

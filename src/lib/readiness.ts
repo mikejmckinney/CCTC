@@ -63,7 +63,7 @@ function getBlueprintWeights(blueprintId: string): Map<string, number> {
   return weights;
 }
 
-export function computeReadiness(history: HistoryEntry[]): ReadinessState {
+export function computeReadiness(history: HistoryEntry[], target: number = 70): ReadinessState {
   if (history.length === 0) {
     return {
       overallEma: 0,
@@ -108,7 +108,7 @@ export function computeReadiness(history: HistoryEntry[]): ReadinessState {
       domainLabel: data.label,
       emaScore,
       examWeight: data.examWeight,
-      isWeak: emaScore < 70,
+      isWeak: emaScore < target,
       sessions: data.scores.length,
     });
   }

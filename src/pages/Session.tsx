@@ -80,7 +80,8 @@ export function SessionView({
           {/* Options */}
           <div className="space-y-2" role="radiogroup" aria-label="Answer choices">
             {currentItem.optionOrder.map((optionId, idx) => {
-              const option = currentItem.question.options.find((o) => o.id === optionId)!;
+              const option = currentItem.question.options.find((o) => o.id === optionId);
+              if (!option) return null;
               const selected = session.answers[currentItem.itemId] === option.id;
               const correct = currentItem.question.correct === option.id;
               const letter = String.fromCharCode(65 + idx);

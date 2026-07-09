@@ -49,9 +49,9 @@ function getReadinessVerdict(
   }
 
   if (overallEma < target && daysUntilExam !== null && daysUntilExam > 0) {
-    // Simple projection: if improving trend, estimate days to target
     const gap = target - overallEma;
-    const daysNeeded = Math.ceil(gap / 2); // rough: 2% per week of study
+    // ~0.3% per day (2% per week / 7 days)
+    const daysNeeded = Math.ceil(gap / 0.3);
     if (daysNeeded <= daysUntilExam) {
       return { verdict: 'on-track', label: 'On track', detail: `Below target but projected to reach ${target}% by exam day.` };
     }
@@ -147,7 +147,8 @@ export function Dashboard({
   onStartCustom, onUpdateSettings, onGoToHistory, onViewSession,
   pendingSettingNav, onClearPendingNav
 }: DashboardProps) {
-  const readiness = useMemo(() => computeReadiness(history), [history]);
+  const target = settings.targetThreshold;
+  const readiness = useMemo(() => computeReadiness(history, target), [history, target]);
   const spacedCount = useMemo(() => computeSpacedRepetition(history).length, [history]);
   const [showSetup, setShowSetup] = useState(false);
   const [examDate, setExamDate] = useState(() => {
@@ -156,7 +157,6 @@ export function Dashboard({
   const [targetScore, setTargetScore] = useState(settings.targetThreshold);
 
   const daysUntilExam = examDate ? Math.ceil((new Date(examDate).getTime() - Date.now()) / 86400000) : null;
-  const target = settings.targetThreshold;
   const verdict = getReadinessVerdict(readiness.overallEma, target, readiness.domains, daysUntilExam);
   const studyAction = generateStudyAction(readiness, target);
   const laggingDomains = readiness.domains.filter((d) => d.emaScore < target);
@@ -293,7 +293,7 @@ export function Dashboard({
                   ))
                 ) : (
                   DEMO_DOMAINS_PLACEHOLDER.map((d) => (
-                    <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong />
+                    <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong={false} />
                   ))
                 )}
               </div>

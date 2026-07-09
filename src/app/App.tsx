@@ -33,20 +33,6 @@ const FLAG_REASONS: FlagReason[] = [
   'other'
 ];
 
-function sessionFingerprint(session: ActiveSession): string {
-  return JSON.stringify({
-    id: session.id,
-    settings: session.settings,
-    items: session.items.map((i) => ({ itemId: i.itemId, optionOrder: i.optionOrder })),
-    answers: session.answers,
-    revealed: session.revealed,
-    flaggedForReview: session.flaggedForReview,
-    currentIndex: session.currentIndex,
-    timerHidden: session.timerHidden,
-    submittedAt: session.submittedAt,
-  });
-}
-
 export default function App() {
   const banks = useMemo(() => loadQuestionBanks(), []);
   const [ready, setReady] = useState(false);
@@ -122,14 +108,24 @@ export default function App() {
   // Track active session ref
   useEffect(() => { activeSessionRef.current = activeSession; }, [activeSession]);
 
-  // Persist active session
+  // Persist active session — only when user actions change (not timer ticks)
   useEffect(() => {
     if (!ready || !activeSession) {
       lastFingerprint.current = '';
       if (ready && !activeSession) void clearActiveSession();
       return;
     }
-    const fp = sessionFingerprint(activeSession);
+    // Compare only mutable fields (exclude updatedAt and remainingSeconds)
+    const fp = JSON.stringify({
+      id: activeSession.id,
+      settings: activeSession.settings,
+      items: activeSession.items.map((i) => ({ itemId: i.itemId, optionOrder: i.optionOrder })),
+      answers: activeSession.answers,
+      revealed: activeSession.revealed,
+      flaggedForReview: activeSession.flaggedForReview,
+      currentIndex: activeSession.currentIndex,
+      submittedAt: activeSession.submittedAt,
+    });
     if (fp !== lastFingerprint.current) {
       lastFingerprint.current = fp;
       void saveActiveSession(activeSession);

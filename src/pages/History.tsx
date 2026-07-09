@@ -83,7 +83,10 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
   };
 
   const handleSyncNow = async () => {
-    if (!syncDir) return handleConnectFolder();
+    if (!syncDir) {
+      setSyncMsg('No folder connected. Click "Connect folder" to set up sync.');
+      return;
+    }
     await doSync(syncDir);
   };
 

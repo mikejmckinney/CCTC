@@ -243,7 +243,8 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                     {/* Options */}
                     <div className="space-y-2">
                       {item.optionOrder.map((optionId, optIdx) => {
-                        const option = item.question.options.find((o) => o.id === optionId)!;
+                        const option = item.question.options.find((o) => o.id === optionId);
+                        if (!option) return null;
                         const selected = answer === option.id;
                         const correct = item.question.correct === option.id;
                         const letter = String.fromCharCode(65 + optIdx);
