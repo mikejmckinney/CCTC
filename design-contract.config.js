@@ -78,26 +78,15 @@ export default {
         { wait: 2000 },
       ]},
 
-      // 3. Session — start a study session from setup
-      {
-        name: "session",
-        steps: [
-          { dismiss: "I understand" },
-          { click: "Home" },
-          { wait: 1000 },
-          { click: "Setup" },
-          { wait: 2000 },
-          { clickExactButton: "Study" },
-          { wait: 1500 },
-          { click: "Start study" },
-          { wait: 3000 },
-        ],
-      },
+      // 3. Session — disabled: session screen causes d2cc capture to hang
+      // See https://github.com/mikejmckinney/CCTC/issues — pending investigation
+      // { name: "session", steps: [...] },
 
       // 4. Session study reveal — click first option to show explanation
       {
         name: "session-study-reveal",
         steps: [
+          { dismiss: "I understand" },
           { waitFor: [".option-button", "button:has(span:text-is('A'))"] },
           { wait: 1000 },
           { click: [".option-button", "button:has(span:text-is('A'))"] },
@@ -109,6 +98,9 @@ export default {
       {
         name: "results",
         steps: [
+          { dismiss: "I understand" },
+          { waitFor: "h1" },
+          { waitFor: "button:has-text('Submit exam'), button:has-text('Finish session'), button:has-text('Finish')" },
           { click: ["button:has-text('Finish session')", "button:has-text('Finish')", "button:has-text('Submit')", "button:has-text('Submit exam')"] },
           { wait: 1000 },
           { click: ["button:has-text('Finish')", "button:has-text('Submit')"] },
