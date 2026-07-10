@@ -12,6 +12,7 @@ import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
 import { computeSpacedRepetition } from '../lib/readiness';
 import { generateDemoHistory, generateDemoFlags } from '../lib/demoData';
+import { useConfirm } from '../lib/useConfirm';
 import {
   bootstrapState, clearActiveSession, clearHistory, deleteFlag,
   deleteHistoryEntry, replaceFlags, saveActiveSession, saveHistoryEntry,
@@ -46,9 +47,6 @@ export default function App() {
   const [selectedHistory, setSelectedHistory] = useState<HistoryEntry | null>(null);
   const [flagDraft, setFlagDraft] = useState<{ item: Question; sessionId: string; reason: FlagReason; comment: string } | null>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
-  const [submitConfirm, setSubmitConfirm] = useState<{ unanswered: number } | null>(null);
-  const [clearHistoryConfirm, setClearHistoryConfirm] = useState(false);
-  const [clearFlagsConfirm, setClearFlagsConfirm] = useState(false);
   const [pendingSettingNav, setPendingSettingNav] = useState<'examDate' | 'targetScore' | null>(null);
   const [examDays, setExamDays] = useState<number | null>(() => {
     try {
@@ -145,15 +143,22 @@ export default function App() {
     return () => window.removeEventListener('beforeunload', flush);
   }, []);
 
-  // Timer
+  // Timer — uses performance.now() delta to avoid drift when tab is throttled
   const timedSessionId = ready && activeSession && !activeSession.submittedAt && activeSession.remainingSeconds !== null ? activeSession.id : null;
+  const timerRef = useRef<number>(0);
 
   useEffect(() => {
     if (!timedSessionId) return;
+    timerRef.current = performance.now();
     const interval = setInterval(() => {
+      const now = performance.now();
+      const elapsed = now - timerRef.current;
+      timerRef.current = now;
+      const ticks = Math.round(elapsed / 1000);
+      if (ticks <= 0) return;
       setActiveSession((prev) => {
         if (!prev || prev.id !== timedSessionId || prev.submittedAt || prev.remainingSeconds === null || prev.remainingSeconds <= 0) return prev;
-        return { ...prev, remainingSeconds: Math.max(0, prev.remainingSeconds - 1), updatedAt: new Date().toISOString() };
+        return { ...prev, remainingSeconds: Math.max(0, prev.remainingSeconds - ticks), updatedAt: new Date().toISOString() };
       });
     }, 1000);
     return () => clearInterval(interval);
@@ -211,6 +216,7 @@ export default function App() {
 
   // Start session — prompt if one already exists
   const [replaceConfirm, setReplaceConfirm] = useState<Partial<SessionSettings> | null>(null);
+  const { confirm, handleConfirm, handleCancel, open, title, description, confirmLabel, variant } = useConfirm();
 
   const doStartSession = useCallback((overrides?: Partial<SessionSettings>) => {
     const merged = { ...settings, ...overrides };
@@ -236,7 +242,31 @@ export default function App() {
   const handleSubmitSession = useCallback(async () => {
     if (!activeSession || isFinalizing) return;
     const unanswered = activeSession.items.length - countAnswered(activeSession);
-    setSubmitConfirm({ unanswered });
+    const isExam = activeSession.settings.mode === 'exam';
+    const title = isExam ? 'Submit Exam' : 'Complete Session';
+    const description = unanswered > 0
+      ? `${isExam ? 'Submit exam' : 'Complete session'} with ${unanswered} unanswered item${unanswered > 1 ? 's' : ''}?${isExam ? ' There is no guessing penalty.' : ''}`
+      : `${isExam ? 'Submit exam and score the results?' : 'Complete session and save your results?'}`;
+    confirm({
+      title,
+      description,
+      confirmLabel: isExam ? 'Submit' : 'Complete',
+      onConfirm: () => {
+        const current = activeSessionRef.current;
+        if (!current) return;
+        setIsFinalizing(true);
+        const result = scoreSession(current.settings.blueprintId, current.items, current.answers, current.settings.targetThreshold);
+        const completed = { ...current, submittedAt: new Date().toISOString(), result, updatedAt: new Date().toISOString() };
+        const entry = toHistoryEntry(completed);
+        void saveHistoryEntry(entry).then(() => clearActiveSession()).then(() => {
+          setHistory((prev) => [entry, ...prev]);
+          setSelectedHistory(entry);
+          setActiveSession(null);
+          setPage('review');
+        }).finally(() => setIsFinalizing(false));
+      },
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeSession, isFinalizing]);
 
   // Report item
@@ -274,7 +304,14 @@ export default function App() {
   }, []);
 
   const handleClearFlags = useCallback(async () => {
-    setClearFlagsConfirm(true);
+    confirm({
+      title: 'Clear All Reports',
+      description: 'Are you sure you want to clear all reported items? This action cannot be undone.',
+      confirmLabel: 'Clear All',
+      variant: 'destructive',
+      onConfirm: () => { void replaceFlags([]).then(() => { setFlags([]); }); },
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleExportFlags = useCallback(() => {
@@ -300,8 +337,20 @@ export default function App() {
   }, [selectedHistory]);
 
   const handleClearHistory = useCallback(async () => {
-    setClearHistoryConfirm(true);
-  }, []);
+    confirm({
+      title: 'Delete All History',
+      description: 'Are you sure you want to delete all session history? This action cannot be undone.',
+      confirmLabel: 'Delete All',
+      variant: 'destructive',
+      onConfirm: () => {
+        void clearHistory().then(() => {
+          setHistory([]);
+          setSelectedHistory(null);
+        });
+      },
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedHistory]);
 
   const handleViewSession = useCallback((entry: HistoryEntry) => {
     setSelectedHistory(entry);
@@ -366,70 +415,11 @@ export default function App() {
         )}
       </Modal>
 
-      {/* Submit confirmation modal */}
-      <Modal
-        open={submitConfirm !== null}
-        onClose={() => { setSubmitConfirm(null); setIsFinalizing(false); }}
-        title={activeSession?.settings.mode === 'exam' ? 'Submit Exam' : 'Complete Session'}
-        description={submitConfirm && submitConfirm.unanswered > 0
-          ? `${activeSession?.settings.mode === 'exam' ? 'Submit exam' : 'Complete session'} with ${submitConfirm.unanswered} unanswered item${submitConfirm.unanswered > 1 ? 's' : ''}?${activeSession?.settings.mode === 'exam' ? ' There is no guessing penalty.' : ''}`
-          : `${activeSession?.settings.mode === 'exam' ? 'Submit exam and score the results?' : 'Complete session and save your results?'}`}
-      >
+      {/* Shared confirm modal — driven by useConfirm hook */}
+      <Modal open={open} onClose={handleCancel} title={title} description={description}>
         <div className="flex justify-end gap-3 mt-4">
-          <Button variant="secondary" onClick={() => { setSubmitConfirm(null); setIsFinalizing(false); }}>Cancel</Button>
-          <Button onClick={() => {
-            setSubmitConfirm(null);
-            // Trigger actual submit
-            if (activeSession) {
-              setIsFinalizing(true);
-              const result = scoreSession(activeSession.settings.blueprintId, activeSession.items, activeSession.answers, activeSession.settings.targetThreshold);
-              const completed = { ...activeSession, submittedAt: new Date().toISOString(), result, updatedAt: new Date().toISOString() };
-              const entry = toHistoryEntry(completed);
-              void saveHistoryEntry(entry).then(() => clearActiveSession()).then(() => {
-                setHistory((prev) => [entry, ...prev]);
-                setSelectedHistory(entry);
-                setActiveSession(null);
-                setPage('review');
-              }).finally(() => setIsFinalizing(false));
-            }
-          }}>Submit</Button>
-        </div>
-      </Modal>
-
-      {/* Clear history confirmation modal */}
-      <Modal
-        open={clearHistoryConfirm}
-        onClose={() => setClearHistoryConfirm(false)}
-        title="Delete All History"
-        description="Are you sure you want to delete all session history? This action cannot be undone."
-      >
-        <div className="flex justify-end gap-3 mt-4">
-          <Button variant="secondary" onClick={() => setClearHistoryConfirm(false)}>Cancel</Button>
-          <Button variant="destructive" onClick={() => {
-            void clearHistory().then(() => {
-              setHistory([]);
-              setSelectedHistory(null);
-              setClearHistoryConfirm(false);
-            });
-          }}>Delete All</Button>
-        </div>
-      </Modal>
-
-      {/* Clear flags confirmation modal */}
-      <Modal
-        open={clearFlagsConfirm}
-        onClose={() => setClearFlagsConfirm(false)}
-        title="Clear All Reports"
-        description="Are you sure you want to clear all reported items? This action cannot be undone."
-      >
-        <div className="flex justify-end gap-3 mt-4">
-          <Button variant="secondary" onClick={() => setClearFlagsConfirm(false)}>Cancel</Button>
-          <Button variant="destructive" onClick={() => {
-            void replaceFlags([]).then(() => {
-              setFlags([]);
-              setClearFlagsConfirm(false);
-            });
-          }}>Clear All</Button>
+          <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
+          <Button variant={variant === 'destructive' ? 'destructive' : 'primary'} onClick={handleConfirm}>{confirmLabel}</Button>
         </div>
       </Modal>
 

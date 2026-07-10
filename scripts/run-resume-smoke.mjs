@@ -24,9 +24,9 @@ async function main() {
     await page.goto(`${baseURL}/`);
     const questionCount = await startStudySession(page, MIN_SESSION_QUESTIONS);
 
-    const firstStem = await page.locator('.question-card h3').first().textContent();
+    const firstStem = await page.locator('main h2').first().textContent();
     await page.getByRole('radio').first().click();
-    await page.getByRole('button', { name: 'Bookmark item' }).click();
+    await page.getByRole('button', { name: 'Bookmark this question' }).click();
     await page.getByRole('button', { name: 'Remove bookmark' }).waitFor();
     await waitForPersistedSessionState(page);
 
@@ -36,7 +36,7 @@ async function main() {
     await resumeActiveSession(page);
     await sessionItemHeading(page, 1, questionCount).waitFor();
 
-    const stemAfterResume = await page.locator('.question-card h3').first().textContent();
+    const stemAfterResume = await page.locator('main h2').first().textContent();
     if (stemAfterResume !== firstStem) {
       throw new Error(`Stem changed after resume: ${firstStem} -> ${stemAfterResume}`);
     }
@@ -46,8 +46,8 @@ async function main() {
       throw new Error(`Expected first answer to remain selected after resume, got aria-checked=${checked}`);
     }
 
-    await page.getByText('Bookmarks 1').waitFor();
-    await page.getByText('Answered 1').waitFor();
+    await page.getByText('1 bookmarked').waitFor();
+    await page.getByText('1 answered').waitFor();
 
     await page.getByRole('button', { name: 'Next' }).click();
     await sessionItemHeading(page, 2, questionCount).waitFor();
