@@ -1,16 +1,19 @@
 # AI_REPO_GUIDE.md
 
 > Purpose: Canonical agent reference for the CCTC repository.
-> Last verified: 2026-06-09
+> Last verified: 2026-07-09
 
-This repository is the CCTC project: a static, client-side practice-exam app for the ABTC Certified Clinical Transplant Coordinator exam. The repo now contains an initial React + TypeScript + Vite app scaffold, local validation tooling, and CI workflows alongside the exam specification, blueprint data, schema, and example question content.
+This repository is the CCTC project: a static, client-side practice-exam app for the ABTC Certified Clinical Transplant Coordinator exam. The repo now contains a React + TypeScript + Vite + Tailwind v4 app with IndexedDB persistence, design system, Playwright e2e, and CI workflows alongside the exam specification, blueprint data, schema, and reviewed question bank.
 
 ## Current State
 
 - Product: CCTC Practice Exam, an independent study aid for CCTC exam candidates.
 - Delivery model: static hosting, offline after first load, no backend, no runtime LLM calls.
-- Present in repo today: prompts, schema, blueprint JSON, question-bank conventions, a React/Vite frontend scaffold under `src/`, static assets under `public/`, a package manifest with local test/build/validate scripts, and validation workflows.
-- Current product maturity: **v1 complete on `main`** — exam engine, persistence, flagging, **506 reviewed items**, history/category trends, a11y polish, GitHub Pages.
+- Stack: React 19 + TypeScript + Vite 6 + Tailwind CSS v4 (no `tailwind.config.js`; tokens live in `src/index.css` under `@theme`).
+- Persistence: IndexedDB via `idb` (`src/lib/storage.ts`); active session auto-saves on user actions (not on every timer tick).
+- Design system: three theme presets (clinical, warm, modern) × light/dark, switchable via `data-theme` on `<html>`. Warm Professional is the default. Token set and reduced-motion handling live in `src/index.css` and `src/components/ThemeProvider.tsx`.
+- Current product maturity: **v1 complete on `main`** — exam engine, persistence, flagging, history/category trends, GitHub Pages.
+- **Redesign (`redesign/OC2`, PR #30) in review** — adds EMA-based readiness, three-theme design system, dashboard-as-landing, shared `useConfirm`, reported-items page, File System Access API backup, Playwright e2e, and the rest of the file map in this guide.
 - Hosting: `.github/workflows/deploy-pages.yml` builds with `VITE_BASE_PATH=/CCTC/` for https://mikejmckinney.github.io/CCTC/
 - **v2 (planned):** `.context/vision/v2-roadmap.md` — sync, deep-linked references, runtime generation, organ-balance shards.
 - **Template feedback:** `.context/sessions/2026-06-09_cctc-v1-template-feedback.md` — lessons for upstream `ai-repo-template`.
@@ -18,7 +21,7 @@ This repository is the CCTC project: a static, client-side practice-exam app for
 The implementation surface is still driven by the prompt set in `.github/prompts/`:
 
 - Recommended stack: React + TypeScript + Vite.
-- Styling: Tailwind CSS.
+- Styling: Tailwind CSS v4 (`@theme` blocks, no JS config).
 - Persistence: IndexedDB via `idb`.
 - Hosting target: static files such as GitHub Pages.
 
@@ -26,21 +29,25 @@ The implementation surface is still driven by the prompt set in `.github/prompts
 
 Read these in order when starting product work:
 
-1. `.github/prompts/00-onboarding.md`
-2. `.github/prompts/01-build-app.md`
-3. `.github/prompts/02-author-questions.md`
-4. `.github/prompts/03-validate.md`
-5. `docs/guides/reference-indexer.md` when authoring or verifying `primary_anchor` / references
+1. `AGENTS.md` (root contract — start every session with the session handshake)
+2. `.github/prompts/00-onboarding.md`
+3. `.github/prompts/01-build-app.md`
+4. `.github/prompts/02-author-questions.md`
+5. `.github/prompts/03-validate.md`
+6. `docs/guides/reference-indexer.md` when authoring or verifying `primary_anchor` / references
 
 Use these files as the current product ground truth:
 
 - `schema/question.schema.json` defines the item contract.
 - `blueprints/cctc-from-2026-07.json` is the default/current exam blueprint.
 - `blueprints/cctc-thru-2026-06.json` is the legacy blueprint with the crosswalk.
-- `questions/_examples/examples.json` contains illustrative items and currently serves as the fallback bank until primary non-underscore shards are added.
+- `questions/_examples/examples.json` contains illustrative items and serves as the fallback bank when no primary shards match the active blueprint.
 - `questions/README.md` defines sharding, review status, and tagging conventions.
+- `src/index.css` defines the design tokens (color, type, radius, motion) — read this before adding new colors.
 
 ## Repository Structure
+
+> **Branch note:** This tree reflects the state on the `redesign/OC2` branch (PR #30). On `main`, `src/` is flatter (no `components/`, `pages/`, `lib/useConfirm.ts`, `lib/backup.ts`, `lib/demoData.ts`, etc.) and `e2e/` is minimal. The redesign adds the missing paths; once merged, the descriptions in this guide apply to `main` as well. Verify with `git ls-tree` if a specific file is missing from your working tree.
 
 ```text
 /
@@ -53,7 +60,8 @@ Use these files as the current product ground truth:
 │   ├── copilot-instructions.md
 │   ├── workflows/
 │   │   ├── ci-tests.yml
-│   │   └── validate.yml
+│   │   ├── validate.yml
+│   │   └── deploy-pages.yml
 │   └── prompts/
 │       ├── 00-onboarding.md
 │       ├── 01-build-app.md
@@ -64,7 +72,15 @@ Use these files as the current product ground truth:
 │   ├── manifest.webmanifest
 │   └── sw.js
 ├── scripts/
-│   └── validate.mjs
+│   ├── validate.mjs
+│   ├── run-e2e.mjs
+│   ├── run-resume-smoke.mjs
+│   └── reference.mjs
+├── e2e/
+│   ├── helpers.mjs
+│   ├── resume.spec.mjs
+│   ├── confirm-dialog.spec.mjs
+│   └── reported-items.spec.mjs
 ├── blueprints/
 │   ├── cctc-from-2026-07.json
 │   └── cctc-thru-2026-06.json
@@ -72,14 +88,20 @@ Use these files as the current product ground truth:
 │   └── question.schema.json
 ├── questions/
 │   ├── README.md
-│   └── _examples/
-│       └── examples.json
+│   ├── _examples/
+│   │   └── examples.json
+│   └── domain-{1,2,3}-*/        # reviewed bank
 ├── src/
-│   ├── app/
+│   ├── app/App.tsx
+│   ├── components/
+│   │   ├── Navigation.tsx
+│   │   ├── ThemeProvider.tsx
+│   │   └── ui/                   # Button, Card, Modal, Input, Badge, Progress, RadialGauge
 │   ├── data/
-│   ├── lib/
+│   ├── lib/                      # assembly, persistence, scoring, readiness, backup, useConfirm
+│   ├── pages/                    # Dashboard, Session, History, Review, ReportedItems
 │   ├── types/
-│   └── test/
+│   └── index.css                 # Tailwind v4 @theme tokens (colors, type, motion)
 ├── docs/
 │   ├── README.md
 │   ├── FAQ.md
@@ -131,13 +153,32 @@ Use these files as the current product ground truth:
 
 | File | Purpose |
 |---|---|
-| `package.json` | Defines local scripts: `npm test`, `npm run build`, `npm run validate`, `npm run reference:*`, plus Vite dev/preview commands |
-| `src/app/App.tsx` | Current top-level app shell for starting sessions, resuming, history, and flags UI |
+| `package.json` | Defines local scripts: `npm test`, `npm run build`, `npm run validate`, `npm run reference:*`, `npm run test:e2e`, plus Vite dev/preview commands |
+| `src/app/App.tsx` | Top-level app shell: routes, session lifecycle, persistence, demo seeding, auto-submit on timer expiry. Wires `useConfirm` for shared confirm dialogs |
+| `src/pages/Dashboard.tsx` | Readiness gauge, domain breakdown, recommended next action, quick start, expandable custom settings, recent sessions |
+| `src/pages/Session.tsx` | Exam UI: roving radio group (arrow keys), bookmark/report, question tracker, auto-submit on timer expiry |
+| `src/pages/History.tsx` | Stacked-area trend chart, All/Exam/Study filter, EMA delta, session list, Clear All, File System Access API backup, link to Reported Items |
+| `src/pages/Review.tsx` | Searchable review of a past session with domain/correct/incorrect filters |
+| `src/pages/ReportedItems.tsx` | Flag management: edit, delete (via `useConfirm`), export, clear all |
+| `src/components/Navigation.tsx` | Header (desktop) + bottom nav (mobile), theme toggle (circular reveal), exam/target pills |
+| `src/components/ThemeProvider.tsx` | Theme context, localStorage persistence, `prefers-color-scheme` |
+| `src/components/ui/Button.tsx` | CVA variants (primary/secondary/accent/ghost/destructive/link) × sizes |
+| `src/components/ui/Modal.tsx` | Focus trap, `useId()`, `dismissible` prop (used by disclaimer) |
+| `src/lib/useConfirm.ts` | Shared confirm dialog hook (title/description/confirmLabel/variant) |
+| `src/lib/circularReveal.ts` | Old-theme overlay shrinks to click point via `clip-path` animation |
+| `src/lib/readiness.ts` | EMA (α=0.3), `computeReadiness(history, target)`, `computeSpacedRepetition` |
+| `src/lib/historyTrend.ts` | `buildHistoryTrend` with same-mode-only `recentDelta` |
+| `src/lib/backup.ts` | JSON export/import + File System Access API folder sync + active session payload |
+| `src/lib/demoData.ts` | 12 sessions (62%→85%) + 3 flags, seeded on first IndexedDB load (`demoSeeded` flag) |
 | `src/data/questionBank.ts` | Loads live bank shards and falls back to `_examples` when no primary shards exist |
 | `src/lib/sessionAssembly.ts` | Builds weighted sessions and default settings from blueprint data |
 | `src/lib/sessionPersistence.ts` | Tracks recently seen item ids and stale-flag pruning helpers |
 | `scripts/validate.mjs` | Local validator for schema, integrity checks, `primary_anchor` keyword checks, and coverage warnings |
+| `scripts/run-e2e.mjs` | Boots `vite preview` and runs `scripts/run-resume-smoke.mjs` (used by `npm run test:e2e`) |
 | `scripts/reference.mjs` | Builds and searches the gitignored PDF page index (`docs/reference/.index/`) |
+| `e2e/resume.spec.mjs` | Playwright: reload restores answers, bookmarks, item order via IndexedDB |
+| `e2e/confirm-dialog.spec.mjs` | Playwright: submit exam + clear-all-history confirm modals open with correct labels |
+| `e2e/reported-items.spec.mjs` | Playwright: Reported Items page reachable from History; demo flags render |
 | `.github/workflows/validate.yml` | Runs `npm ci` and `npm run validate` on push and pull request |
 
 ### Exam data
@@ -165,15 +206,16 @@ Use these files as the current product ground truth:
 ### Exists now
 
 - CCTC product definition and constraints
-- React + TypeScript + Vite app scaffold
+- React 19 + TypeScript + Vite 6 + Tailwind v4 app
 - Static app assets for install/offline hosting
-- Local validation command and GitHub validation workflow
+- Local validation command and GitHub validation/e2e/workflows
 - Prompt-driven build plan
 - Two blueprint JSON files
 - Question JSON schema
 - Example questions and bank conventions
-- Tests for the app shell and session helpers
+- Tests for the app shell, session helpers, and useConfirm
 - Governance docs inherited from the bootstrap template
+- Playwright e2e suite (resume, confirm dialog, reported items)
 
 ### Question bank (current)
 
@@ -215,17 +257,35 @@ Use these files as the current product ground truth:
 - Batch 39–42 (2026-06-05): final authoring push to **505 items**; hand-hygiene, skin-cancer prevention, fungal infection depth; SME bulk review completed 2026-06-08.
 - PR #3 triage (2026-06-08): `QuestionReview` parity with active session, optional chaining on `rationale_incorrect`, examples `primary_anchor` + locator standards, `cctc-3019` retagged to D2/`020500`, `.cursor/mcp.json` removed, ABTC handbook excluded from blocking markdownlint.
 
-### Phase 4 (in progress)
+### Phase 4 (shipped on `main`)
 
-- History trend chart + summary (`src/lib/historyTrend.ts`, History view in `App.tsx`)
+- History trend chart + per-domain breakdown (`src/lib/historyTrend.ts`, `src/pages/History.tsx`)
 - GitHub Pages deploy workflow (`deploy-pages.yml`, `VITE_BASE_PATH`)
 - CSS dedup + `:focus-visible` + mobile sticky session toolbar
 - Trend chart uses fixed plot area (0–100% scale); `historyTrend.test.ts` matches `HistoryEntry` schema
-- Remaining: enable Pages in repo settings, category-level history drill-down, flag-export UX copy
+- Category-level history drill-down via `onViewSession` from the list
+
+### `redesign/OC2` branch (PR #30, in review)
+
+- Three-theme design system (`data-theme` attribute) × light/dark, switchable at runtime; Warm Professional is default
+- Tailwind v4 `@theme` tokens in `src/index.css` (no `tailwind.config.js`)
+- Decomposed App.tsx: pages split into `src/pages/{Dashboard,Session,History,Review,ReportedItems}.tsx`
+- Dashboard: EMA-based readiness score, domain breakdown with "Largest gap" badge, recommended next action, expandable custom settings
+- Session: arrow-key roving `role="radiogroup"`, bookmark/report buttons, auto-submit on timer expiry (uses `performance.now()` delta to avoid drift when tab is throttled)
+- History: stacked-area chart with weighted domain contributions, All/Exam/Study filter, EMA delta, File System Access API folder sync, link to Reported Items
+- Reported Items: edit/delete/export, Clear All
+- Shared `useConfirm` hook for all destructive dialogs (clear history, clear flags, delete report, submit session)
+- Circular-reveal theme toggle animation
+- Mobile bottom nav, 44px min touch targets, `safe-area-inset-bottom`
+- Demo data seeds 12 sessions (62%→85%) + 3 flags on first IndexedDB load via `demoSeeded` flag in `AppMeta`
+- Playwright e2e: `e2e/resume.spec.mjs`, `e2e/confirm-dialog.spec.mjs`, `e2e/reported-items.spec.mjs` + `scripts/run-resume-smoke.mjs`
 
 ### Planned next
 
-- Finish Phase 4 a11y/responsive pass and verify live Pages deploy
+- Cross-device sync (File System Access API is the first step; v2 is server-mediated)
+- Deep-linked references (PDF page viewer ± context; optional public "Further review" links)
+- Runtime-generated questions to reduce memorization
+- Organ-balance content shards for blueprint organ mix
 - Optional bank growth beyond ~506 reviewed items for fresher repeat sessions
 
 ## Verified Commands
@@ -265,3 +325,6 @@ Supporting file-grounded verification for those commands:
 - Treat README as the human-facing summary and this guide as the agent-facing source of current repo reality.
 - If you add build, run, validate, or deployment commands later, update this file in the same change.
 - Describe the project as a v1-complete static practice-exam app with 506 reviewed items, not as a scaffold.
+- When refactoring `App.tsx`, prefer extracting hooks (e.g. `useConfirm`) over per-page confirm state. See `src/lib/useConfirm.ts` for the current pattern.
+- All new colors must come from the `src/index.css` `@theme` token set. Do not introduce inline hex values.
+- When the active branch is `redesign/OC2`, expect new code under `src/components/ui/`, `src/pages/`, and `src/lib/` that does not exist on `main`. Verify by reading the file before citing.

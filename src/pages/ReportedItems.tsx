@@ -1,6 +1,6 @@
-import { useState } from 'react';
-
+import { useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '../components/ui';
+import { useConfirm } from '../lib/useConfirm';
 import type { ItemFlag } from '../types/exam';
 import { Flag, Edit3, Trash2, Download, AlertCircle } from 'lucide-react';
 
@@ -13,17 +13,24 @@ interface ReportedItemsProps {
 }
 
 export function ReportedItems({ flags, onEdit, onDelete, onExport, onClearAll }: ReportedItemsProps) {
-  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const { confirm, handleConfirm, handleCancel, open, title, description, confirmLabel, variant } = useConfirm();
+  const pendingDeleteId = useRef<string | null>(null);
 
   const handleDelete = (flagId: string) => {
-    setDeleteConfirm(flagId);
-  };
-
-  const confirmDelete = () => {
-    if (deleteConfirm) {
-      onDelete(deleteConfirm);
-      setDeleteConfirm(null);
-    }
+    pendingDeleteId.current = flagId;
+    confirm({
+      title: 'Delete Report',
+      description: 'Are you sure you want to delete this report? This action cannot be undone.',
+      confirmLabel: 'Delete',
+      variant: 'destructive',
+      onConfirm: () => {
+        const id = pendingDeleteId.current;
+        if (id) {
+          onDelete(id);
+          pendingDeleteId.current = null;
+        }
+      },
+    });
   };
 
   return (
@@ -116,16 +123,16 @@ export function ReportedItems({ flags, onEdit, onDelete, onExport, onClearAll }:
         </CardContent>
       </Card>
 
-      {/* Delete confirmation modal */}
+      {/* Delete confirmation modal — driven by useConfirm hook */}
       <Modal
-        open={deleteConfirm !== null}
-        onClose={() => setDeleteConfirm(null)}
-        title="Delete Report"
-        description="Are you sure you want to delete this report? This action cannot be undone."
+        open={open}
+        onClose={handleCancel}
+        title={title}
+        description={description}
       >
         <div className="flex justify-end gap-3 mt-4">
-          <Button variant="secondary" onClick={() => setDeleteConfirm(null)}>Cancel</Button>
-          <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
+          <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
+          <Button variant={variant === 'destructive' ? 'destructive' : 'primary'} onClick={handleConfirm}>{confirmLabel}</Button>
         </div>
       </Modal>
     </div>
