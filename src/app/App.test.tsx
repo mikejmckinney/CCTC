@@ -13,8 +13,12 @@ vi.mock('../lib/storage', () => ({
   })),
   clearActiveSession: vi.fn(async () => undefined),
   clearHistory: vi.fn(async () => undefined),
+  clearSampleHistory: vi.fn(async () => 0),
   deleteFlag: vi.fn(async () => undefined),
   deleteHistoryEntry: vi.fn(async () => undefined),
+  getDb: vi.fn(async () => ({
+    transaction: () => ({ store: { put: vi.fn(), delete: vi.fn() }, done: Promise.resolve() })
+  })),
   replaceFlags: vi.fn(async () => undefined),
   saveActiveSession: vi.fn(async () => undefined),
   saveHistoryEntry: vi.fn(async () => undefined),

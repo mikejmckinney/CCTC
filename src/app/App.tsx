@@ -14,9 +14,9 @@ import { computeSpacedRepetition } from '../lib/readiness';
 import { generateDemoHistory, generateDemoFlags } from '../lib/demoData';
 import { useConfirm } from '../lib/useConfirm';
 import {
-  bootstrapState, clearActiveSession, clearHistory, deleteFlag,
+  bootstrapState, clearActiveSession, clearHistory, clearSampleHistory, deleteFlag,
   deleteHistoryEntry, replaceFlags, saveActiveSession, saveHistoryEntry,
-  saveMeta, saveSettings, upsertFlag
+  saveMeta, saveSettings, upsertFlag, getDb
 } from '../lib/storage';
 import type {
   ActiveSession, AppMeta, FlagReason,
@@ -67,7 +67,7 @@ export default function App() {
     [banks]
   );
 
-  // Bootstrap from IndexedDB — seed demo data on first load
+  // Bootstrap from IndexedDB — seed sample data on first load
   useEffect(() => {
     let cancelled = false;
     bootstrapState(allQuestions)
@@ -77,20 +77,27 @@ export default function App() {
         if (state.settings) setSettings(state.settings);
         setActiveSession(state.activeSession);
 
-        // Seed demo data if IndexedDB is empty AND not previously seeded
+        // Seed sample data if IndexedDB is empty AND not previously seeded.
+        // The sample is deterministic (mulberry32 seeded by session index) so
+        // the dashboard renders the same data on every machine.
         if (state.history.length === 0) {
           if (!state.meta?.demoSeeded) {
-            const demoHistory = generateDemoHistory();
-            const demoFlags = generateDemoFlags();
-            for (const entry of demoHistory) {
-              await saveHistoryEntry(entry);
-            }
-            for (const flag of demoFlags) {
-              await upsertFlag(flag as ItemFlag);
+            const demoHistory = generateDemoHistory(allQuestions);
+            const demoFlags = generateDemoFlags(allQuestions);
+            // Batch the writes into a single transaction.
+            const db = await getDb();
+            const historyTx = db.transaction('history', 'readwrite');
+            await Promise.all(demoHistory.map((entry) => historyTx.store.put(entry)));
+            await historyTx.done;
+            if (demoFlags.length > 0) {
+              const flagsTx = db.transaction('flags', 'readwrite');
+              await Promise.all(demoFlags.map((flag) => flagsTx.store.put(flag)));
+              await flagsTx.done;
             }
             setHistory(demoHistory);
-            setFlags(demoFlags as ItemFlag[]);
-            await saveMeta({ disclaimerSeen: false, demoSeeded: true });
+            setFlags(demoFlags);
+            // Mark seeded; sampleNoteDismissed stays false so the banner shows.
+            await saveMeta({ ...state.meta, disclaimerSeen: state.meta?.disclaimerSeen ?? false, demoSeeded: true });
           }
         } else {
           setHistory(state.history);
@@ -352,6 +359,36 @@ export default function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedHistory]);
 
+  const sampleHistoryCount = useMemo(
+    () => history.filter((e) => e.sample === true).length,
+    [history]
+  );
+
+  const handleRemoveSampleData = useCallback(async () => {
+    confirm({
+      title: 'Remove Sample Data',
+      description: `This deletes the ${sampleHistoryCount} sample session${sampleHistoryCount === 1 ? '' : 's'} seeded on first run. Your own sessions and reported items are not affected.`,
+      confirmLabel: 'Remove sample data',
+      variant: 'destructive',
+      onConfirm: () => {
+        void clearSampleHistory().then(() => {
+          setHistory((prev) => prev.filter((e) => e.sample !== true));
+          if (selectedHistory?.sample === true) {
+            setSelectedHistory(null);
+            setPage('history');
+          }
+        });
+      },
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sampleHistoryCount, selectedHistory]);
+
+  const handleDismissSampleNote = useCallback(async () => {
+    const next = { ...meta, sampleNoteDismissed: true };
+    setMeta(next);
+    await saveMeta(next);
+  }, [meta]);
+
   const handleViewSession = useCallback((entry: HistoryEntry) => {
     setSelectedHistory(entry);
     setPage('review');
@@ -438,6 +475,9 @@ export default function App() {
           <Dashboard
             history={history}
             settings={settings}
+            sampleNoteVisible={history.some((e) => e.sample === true) && !meta.sampleNoteDismissed}
+            onDismissSampleNote={() => void handleDismissSampleNote()}
+            onRemoveSampleData={() => void handleRemoveSampleData()}
             onStartExam={() => handleStartSession({ mode: 'exam', questionCount: 175, timed: true, timeMinutes: 180 })}
             onStartQuick={() => handleStartSession({ mode: 'study', questionCount: 25, timed: true, timeMinutes: 30 })}
             onStartWeakAreas={(domains) => {
@@ -468,9 +508,11 @@ export default function App() {
         {page === 'history' && (
           <History
             history={history}
+            sampleHistoryCount={sampleHistoryCount}
             onViewSession={handleViewSession}
             onDeleteSession={(id) => void handleDeleteHistory(id)}
             onClearAll={() => void handleClearHistory()}
+            onRemoveSampleData={() => void handleRemoveSampleData()}
             onNavigateToReported={() => setPage('reported')}
             onSyncComplete={(newHistory, newFlags, newActiveSession) => {
               setHistory(newHistory);

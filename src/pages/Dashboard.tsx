@@ -10,12 +10,15 @@ import { getBlueprintLabel } from '../data/blueprints';
 import {
   Play, Zap, Target, Clock, BookOpen, CheckCircle2,
   AlertTriangle, TrendingUp, ChevronRight, BarChart3, ChevronDown,
-  ChevronUp, RotateCcw
+  ChevronUp, RotateCcw, Sparkles, X
 } from 'lucide-react';
 
 interface DashboardProps {
   history: HistoryEntry[];
   settings: SessionSettings;
+  sampleNoteVisible: boolean;
+  onDismissSampleNote: () => void;
+  onRemoveSampleData: () => void;
   onStartExam: () => void;
   onStartQuick: () => void;
   onStartWeakAreas: (domains: string[]) => void;
@@ -144,7 +147,8 @@ function CategoryBar({ name, percent, examWeight, isStrong, isLargestGap }: {
 }
 
 export function Dashboard({
-  history, settings, onStartExam, onStartQuick, onStartWeakAreas,
+  history, settings, sampleNoteVisible, onDismissSampleNote, onRemoveSampleData,
+  onStartExam, onStartQuick, onStartWeakAreas,
   onStartCustom, onUpdateSettings, onGoToHistory, onViewSession,
   pendingSettingNav, onClearPendingNav, onExamDateChanged
 }: DashboardProps) {
@@ -217,6 +221,37 @@ export function Dashboard({
 
   return (
     <div className="space-y-6">
+      {/* Sample-data banner — visible until dismissed. Hidden automatically
+          if no sample sessions remain. */}
+      {sampleNoteVisible && (
+        <div
+          role="status"
+          className="flex items-start justify-between gap-3 rounded-xl border border-[var(--info)]/30 bg-[var(--info)]/5 px-4 py-3"
+        >
+          <div className="flex items-start gap-2 text-sm text-[var(--foreground)]">
+            <Sparkles className="h-4 w-4 mt-0.5 text-[var(--info)] shrink-0" />
+            <p>
+              Showing sample data — clear it in Progress when you're ready to start.{' '}
+              <button
+                type="button"
+                onClick={onRemoveSampleData}
+                className="font-medium text-[var(--info)] underline-offset-2 hover:underline focus-visible:underline"
+              >
+                Remove sample data
+              </button>
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onDismissSampleNote}
+            aria-label="Dismiss sample-data note"
+            className="shrink-0 rounded-md p-1 text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      )}
+
       {/* Readiness + Quick Start */}
       <div className="grid gap-4 lg:grid-cols-[1fr_1fr] items-start">
         <Card>

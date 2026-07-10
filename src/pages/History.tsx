@@ -8,7 +8,7 @@ import { exportBackup, importBackup, supportsDirSync, connectSyncFolder, getPers
 import { getDb, META_KEY, KV_STORE } from '../lib/storage';
 import type { HistoryEntry, ItemFlag, ActiveSession } from '../types/exam';
 import {
-  ChevronRight, Trash2, Flag, Download, Upload
+  ChevronRight, Trash2, Flag, Download, Upload, Sparkles
 } from 'lucide-react';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine
@@ -16,14 +16,16 @@ import {
 
 interface HistoryProps {
   history: HistoryEntry[];
+  sampleHistoryCount: number;
   onViewSession: (entry: HistoryEntry) => void;
   onDeleteSession: (id: string) => void;
   onClearAll: () => void;
+  onRemoveSampleData: () => void;
   onNavigateToReported?: () => void;
   onSyncComplete?: (history: HistoryEntry[], flags: ItemFlag[], activeSession?: ActiveSession | null) => void;
 }
 
-export function History({ history, onViewSession, onDeleteSession, onClearAll, onNavigateToReported, onSyncComplete }: HistoryProps) {
+export function History({ history, sampleHistoryCount, onViewSession, onDeleteSession, onClearAll, onRemoveSampleData, onNavigateToReported, onSyncComplete }: HistoryProps) {
   const trend = useMemo(() => buildHistoryTrend(history), [history]);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const [sessionFilter, setSessionFilter] = useState<'all' | 'exam' | 'study'>('all');
@@ -293,9 +295,22 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
           <div className="flex items-center justify-between">
             <CardTitle>{sessionFilter === 'all' ? 'All' : sessionFilter === 'exam' ? 'Exam' : 'Study'} Sessions</CardTitle>
             {filteredHistory.length > 0 && (
-              <Button variant="ghost" size="sm" onClick={onClearAll} className="gap-1 text-[var(--destructive)]">
-                <Trash2 className="h-4 w-4" /> Clear All
-              </Button>
+              <div className="flex items-center gap-2">
+                {sampleHistoryCount > 0 && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={onRemoveSampleData}
+                    className="gap-1 text-[var(--muted-foreground)]"
+                    aria-label="Remove sample data"
+                  >
+                    <Sparkles className="h-4 w-4" /> Remove sample data
+                  </Button>
+                )}
+                <Button variant="ghost" size="sm" onClick={onClearAll} className="gap-1 text-[var(--destructive)]">
+                  <Trash2 className="h-4 w-4" /> Clear All
+                </Button>
+              </div>
             )}
           </div>
         </CardHeader>
@@ -305,11 +320,18 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
               {filteredHistory.map((entry) => (
                 <div key={entry.id} className="flex items-center justify-between py-3 -mx-2 px-2 rounded-lg hover:bg-[var(--muted)]/50 transition-colors">
                   <button onClick={() => onViewSession(entry)} className="flex-1 min-w-0 text-left">
-                    <p className="text-sm font-medium text-[var(--foreground)]">
-                      {new Date(entry.completedAt).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
-                      {' · '}
-                      {new Date(entry.completedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
-                    </p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-medium text-[var(--foreground)]">
+                        {new Date(entry.completedAt).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
+                        {' · '}
+                        {new Date(entry.completedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+                      </p>
+                      {entry.sample === true && (
+                        <Badge variant="secondary" className="gap-1">
+                          <Sparkles className="h-3 w-3" /> Sample
+                        </Badge>
+                      )}
+                    </div>
                     <div className="flex flex-wrap items-center gap-2 mt-1">
                       <Badge variant="outline">{getBlueprintShort(entry.settings.blueprintId)}</Badge>
                       <span className="text-xs text-[var(--muted-foreground)]">

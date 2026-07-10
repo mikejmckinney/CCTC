@@ -99,6 +99,17 @@ export async function clearHistory(): Promise<void> {
   await db.clear(HISTORY_STORE);
 }
 
+export async function clearSampleHistory(): Promise<number> {
+  const db = await getDb();
+  const all = (await db.getAll(HISTORY_STORE)) as HistoryEntry[];
+  const sampleIds = all.filter((e) => e.sample === true).map((e) => e.id);
+  if (sampleIds.length === 0) return 0;
+  const tx = db.transaction(HISTORY_STORE, 'readwrite');
+  await Promise.all(sampleIds.map((id) => tx.store.delete(id)));
+  await tx.done;
+  return sampleIds.length;
+}
+
 export async function upsertFlag(flag: ItemFlag): Promise<void> {
   const db = await getDb();
   await db.put(FLAGS_STORE, flag);

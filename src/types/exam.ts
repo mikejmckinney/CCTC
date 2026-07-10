@@ -180,6 +180,14 @@ export interface HistoryEntry {
   answers: Record<string, string | null>;
   flaggedForReview: string[];
   result: SessionResult;
+  /**
+   * Marks the entry as a first-run fixture (deterministic, seeded from the
+   * live question bank). Distinguished from real user sessions so the user
+   * can bulk-remove sample data without losing their own work. See
+   * `src/lib/demoData.ts`. Optional for backward compatibility with
+   * unmarked entries (no migration — see demoData.ts).
+   */
+  sample?: boolean;
 }
 
 export interface ItemFlag {
@@ -199,6 +207,12 @@ export interface ItemFlag {
 export interface AppMeta {
   disclaimerSeen: boolean;
   demoSeeded?: boolean;
+  /**
+   * Tracks whether the user dismissed the "Showing sample data" note on
+   * the Dashboard. False on first run so the banner is visible; set to
+   * true on dismiss and never auto-reset.
+   */
+  sampleNoteDismissed?: boolean;
 }
 
 export interface LoadedBank {
