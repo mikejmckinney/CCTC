@@ -4,8 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '
 import { buildHistoryTrend } from '../lib/historyTrend';
 import { formatDuration } from '../lib/format';
 import { DOMAIN_SHORT_LABELS } from '../lib/domains';
-import { exportBackup, importBackup, supportsDirSync, connectSyncFolder, getPersistedDirHandle, syncWithFolder, applyFolderMeta } from '../lib/backup';
-import { getDb, META_KEY, KV_STORE } from '../lib/storage';
+import { exportBackup, importBackup } from '../lib/backup';
+import { getDb, KV_STORE } from '../lib/storage';
 import type { HistoryEntry, ItemFlag, ActiveSession } from '../types/exam';
 import {
   ChevronRight, Trash2, Flag, Download, Upload, Sparkles
@@ -22,94 +22,40 @@ interface HistoryProps {
   onClearAll: () => void;
   onRemoveSampleData: () => void;
   onNavigateToReported?: () => void;
-  onSyncComplete?: (history: HistoryEntry[], flags: ItemFlag[], activeSession?: ActiveSession | null) => void;
+  // Sync state + handlers are owned by App (so the auto-sync timer
+  // can fire from any data-mutation site). History is purely
+  // presentational for the connected/disconnected card.
+  dirSyncSupported: boolean;
+  syncFolderName: string | null;
+  syncConnected: boolean;
+  syncing: boolean;
+  syncMsg: string | null;
+  metaConflict: { folderMeta: Record<string, unknown>; localMeta: Record<string, unknown> } | null;
+  onConnectFolder: () => void;
+  onSyncNow: () => void;
+  onKeepThisDevice: () => void;
+  onKeepFolder: () => void;
+  onDismissMetaConflict: () => void;
+  /**
+   * Called after a successful import so App can re-read IndexedDB
+   * and update history/flags/activeSession in its own state. The
+   * sync flow has its own refresh inside `runSync`; this is for
+   * the file-import path only.
+   */
+  onImportRefresh?: (history: HistoryEntry[], flags: ItemFlag[], activeSession?: ActiveSession | null) => void;
 }
 
-export function History({ history, sampleHistoryCount, onViewSession, onDeleteSession, onClearAll, onRemoveSampleData, onNavigateToReported, onSyncComplete }: HistoryProps) {
+export function History({
+  history, sampleHistoryCount, onViewSession, onDeleteSession, onClearAll, onRemoveSampleData,
+  onNavigateToReported, dirSyncSupported, syncFolderName, syncConnected, syncing, syncMsg, metaConflict,
+  onConnectFolder, onSyncNow, onKeepThisDevice, onKeepFolder, onDismissMetaConflict, onImportRefresh
+}: HistoryProps) {
   const trend = useMemo(() => buildHistoryTrend(history), [history]);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const [sessionFilter, setSessionFilter] = useState<'all' | 'exam' | 'study'>('all');
   const [importFile, setImportFile] = useState<File | null>(null);
   const [importModalOpen, setImportModalOpen] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
-  const [syncFolderName, setSyncFolderName] = useState<string | null>(null);
-  const [syncConnected, setSyncConnected] = useState(false);
-  const [syncing, setSyncing] = useState(false);
-  const [syncMsg, setSyncMsg] = useState<string | null>(null);
-  const [syncDir, setSyncDir] = useState<FileSystemDirectoryHandle | null>(null);
-  const dirSyncSupported = supportsDirSync();
-  const [metaConflict, setMetaConflict] = useState<{ folderMeta: Record<string, unknown>; localMeta: Record<string, unknown> } | null>(null);
-
-  // Restore persisted directory handle on mount
-  useEffect(() => {
-    if (!dirSyncSupported) return;
-    getPersistedDirHandle().then((handle) => {
-      if (handle) {
-        setSyncDir(handle);
-        setSyncConnected(true);
-        setSyncFolderName(handle.name);
-      }
-    }).catch(() => {});
-  }, [dirSyncSupported]);
-
-  const doSync = async (dir: FileSystemDirectoryHandle) => {
-    setSyncing(true);
-    setSyncMsg(null);
-    try {
-      const result = await syncWithFolder(dir);
-      if (result.metaDiffers) {
-        setMetaConflict({ folderMeta: result.folderMeta ?? {}, localMeta: result.localMeta ?? {} });
-        setSyncing(false);
-      } else {
-        setSyncMsg(`Synced · ${result.mergedCount} session(s) in folder.`);
-        setSyncing(false);
-        onSyncComplete?.(result.mergedHistory, result.mergedFlags, result.activeSession);
-      }
-    } catch {
-      setSyncMsg('Sync failed — check folder permissions and try again.');
-      setSyncing(false);
-    }
-  };
-
-  const handleConnectFolder = async () => {
-    const dir = await connectSyncFolder();
-    if (dir) {
-      setSyncDir(dir);
-      setSyncConnected(true);
-      setSyncFolderName(dir.name);
-      setSyncMsg(null);
-      await doSync(dir);
-    } else {
-      setSyncMsg('Folder sync needs a Chromium desktop browser (Chrome/Edge). Use Export/Import backup instead.');
-    }
-  };
-
-  const handleSyncNow = async () => {
-    if (!syncDir) {
-      setSyncMsg('No folder connected. Click "Connect folder" to set up sync.');
-      return;
-    }
-    await doSync(syncDir);
-  };
-
-  const handleKeepThisDevice = async () => {
-    if (!syncDir || !metaConflict) return;
-    await applyFolderMeta(syncDir, metaConflict.localMeta);
-    setMetaConflict(null);
-    setSyncMsg('Settings kept from this device.');
-  };
-
-  const handleKeepFolder = async () => {
-    if (!metaConflict) return;
-    const db = await getDb();
-    await db.put(KV_STORE, metaConflict.folderMeta, META_KEY);
-    setMetaConflict(null);
-    setSyncMsg('Settings applied from folder.');
-    // Refresh state
-    const freshHistory = await db.getAll('history');
-    const freshFlags = await db.getAll('flags');
-    onSyncComplete?.(freshHistory, freshFlags);
-  };
 
   const handleExport = async () => {
     try { await exportBackup(); } catch {}
@@ -118,15 +64,16 @@ export function History({ history, sampleHistoryCount, onViewSession, onDeleteSe
   const handleImport = async () => {
     if (!importFile) return;
     try {
-      const result = await importBackup(importFile);
+      await importBackup(importFile);
       setImportModalOpen(false);
       setImportFile(null);
-      setSyncMsg(`Restored ${result.historyCount} session(s).`);
-      // Refresh state from IndexedDB
+      // Refresh state from IndexedDB after import. App re-reads the
+      // stores and updates history/flags/activeSession.
       const db = await getDb();
       const freshHistory: HistoryEntry[] = await db.getAll('history');
       const freshFlags: ItemFlag[] = await db.getAll('flags');
-      onSyncComplete?.(freshHistory, freshFlags, result.activeSession);
+      const freshActive = await db.get(KV_STORE, 'active-session');
+      onImportRefresh?.(freshHistory, freshFlags, freshActive as ActiveSession | null);
     } catch (e) {
       setImportError(e instanceof Error ? e.message : 'Import failed.');
     }
@@ -377,21 +324,26 @@ export function History({ history, sampleHistoryCount, onViewSession, onDeleteSe
           {dirSyncSupported && (
             <div className="rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4">
               {syncConnected ? (
-                <div className="flex items-center justify-between gap-3 flex-wrap">
-                  <div className="text-[13px] text-[var(--foreground)]">
-                    Folder: <strong>{syncFolderName}</strong>
-                    {syncMsg && <span className="text-[var(--muted-foreground)]"> · {syncMsg}</span>}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-3 flex-wrap">
+                    <div className="text-[13px] text-[var(--foreground)]">
+                      Folder: <strong>{syncFolderName}</strong>
+                      {syncMsg && <span className="text-[var(--muted-foreground)]"> · {syncMsg}</span>}
+                    </div>
+                    <Button variant="secondary" size="sm" onClick={onSyncNow} disabled={syncing} className="gap-2">
+                      {syncing ? 'Syncing…' : 'Sync now'}
+                    </Button>
                   </div>
-                  <Button variant="secondary" size="sm" onClick={() => void handleSyncNow()} disabled={syncing} className="gap-2">
-                    {syncing ? 'Syncing…' : 'Sync now'}
-                  </Button>
+                  <p className="text-xs text-[var(--muted-foreground)]">
+                    Auto-syncs a moment after each answer and when you finish a session.
+                  </p>
                 </div>
               ) : (
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <p className="text-[13px] text-[var(--muted-foreground)]">
                     Point at your Google Drive / OneDrive / iCloud synced folder — one file per session, merged across devices.
                   </p>
-                  <Button variant="secondary" size="sm" onClick={() => void handleConnectFolder()} className="gap-2 whitespace-nowrap">
+                  <Button variant="secondary" size="sm" onClick={onConnectFolder} className="gap-2 whitespace-nowrap">
                     Connect folder
                   </Button>
                 </div>
@@ -466,13 +418,13 @@ export function History({ history, sampleHistoryCount, onViewSession, onDeleteSe
       {/* Meta conflict resolution modal */}
       <Modal
         open={metaConflict !== null}
-        onClose={() => setMetaConflict(null)}
+        onClose={onDismissMetaConflict}
         title="Settings differ between devices"
         description="Your target/exam-date on this device differ from the folder. Keep which? (Your session history is already merged either way.)"
       >
         <div className="flex justify-end gap-3">
-          <Button variant="secondary" onClick={() => void handleKeepFolder()}>Keep folder</Button>
-          <Button onClick={() => void handleKeepThisDevice()}>Keep this device</Button>
+          <Button variant="secondary" onClick={onKeepFolder}>Keep folder</Button>
+          <Button onClick={onKeepThisDevice}>Keep this device</Button>
         </div>
       </Modal>
 

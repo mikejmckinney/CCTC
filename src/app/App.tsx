@@ -19,12 +19,21 @@ import {
   deleteHistoryEntry, replaceFlags, saveActiveSession, saveHistoryEntry,
   saveMeta, saveSettings, upsertFlag, getDb
 } from '../lib/storage';
+import {
+  syncWithFolder, applyFolderMeta, connectSyncFolder, getPersistedDirHandle,
+  supportsDirSync
+} from '../lib/backup';
 import type {
   ActiveSession, AppMeta, FlagReason,
   HistoryEntry, ItemFlag, Question, SessionSettings
 } from '../types/exam';
 
 type Page = 'dashboard' | 'history' | 'reported' | 'session' | 'review';
+
+// Debounce window for auto-sync: fires a few seconds after the last write
+// (answer, nav, finish) so the folder copy stays current without a
+// chatty write per interaction. Matches the user's spec.
+const AUTO_SYNC_DEBOUNCE_MS = 2500;
 
 const FLAG_REASONS: FlagReason[] = [
   'factual error',
@@ -55,6 +64,25 @@ export default function App() {
     // separate state that's kept in sync via onExamDateChanged.
     return null;
   });
+
+  // Folder sync state (lifted from History.tsx so App can fire the
+  // debounced auto-sync from any data-mutation site: answer, nav,
+  // session end, settings change). The auto-sync timer is owned here.
+  const [syncDir, setSyncDir] = useState<FileSystemDirectoryHandle | null>(null);
+  const [syncFolderName, setSyncFolderName] = useState<string | null>(null);
+  const [syncConnected, setSyncConnected] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const [syncMsg, setSyncMsg] = useState<string | null>(null);
+  const [metaConflict, setMetaConflict] = useState<{ folderMeta: Record<string, unknown>; localMeta: Record<string, unknown> } | null>(null);
+  const syncDirRef = useRef<FileSystemDirectoryHandle | null>(null);
+  const syncingRef = useRef(false);
+  const autoSyncTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dirSyncSupported = useMemo(() => supportsDirSync(), []);
+
+  // Keep the ref in sync with state so the auto-sync timer callback
+  // always sees the latest folder handle without re-creating the timer.
+  useEffect(() => { syncDirRef.current = syncDir; }, [syncDir]);
+  useEffect(() => { syncingRef.current = syncing; }, [syncing]);
 
   // Build an O(1) id -> Question index from the live bank. This is the
   // single source of truth for question lookups at render time, used by
@@ -135,6 +163,126 @@ export default function App() {
   // Track active session ref
   useEffect(() => { activeSessionRef.current = activeSession; }, [activeSession]);
 
+  // ─── Folder sync (manual + auto) ────────────────────────────
+  // State lives in App because the auto-sync timer fires from
+  // any data-mutation site (answer, nav, finish). History receives
+  // everything as props and renders the connected/disconnected card.
+
+  // runSync: shared core. auto=true is non-blocking; never prompts
+  // on meta conflict. auto=false is manual; prompts via metaConflict
+  // state which the History UI surfaces in a confirm modal.
+  const runSync = useCallback(async (auto: boolean): Promise<void> => {
+    const dir = syncDirRef.current;
+    if (!dir) return; // no-op when not connected
+    if (syncingRef.current) return; // de-dupe concurrent syncs
+    syncingRef.current = true;
+    setSyncing(true);
+    setSyncMsg(null);
+    try {
+      const result = await syncWithFolder(dir, { auto });
+      syncingRef.current = false;
+      setSyncing(false);
+      // Always apply the merged history + flags + active session.
+      setHistory(result.mergedHistory);
+      setFlags(result.mergedFlags);
+      if (result.activeSession) setActiveSession(result.activeSession);
+      if (!auto && result.metaDiffers) {
+        // Manual sync: surface the conflict to the History UI modal.
+        setMetaConflict({ folderMeta: result.folderMeta ?? {}, localMeta: result.localMeta ?? {} });
+      } else if (auto && result.autoSkippedMeta) {
+        // Auto sync: silently merge history; defer the conflict to
+        // the next manual sync. Set a quiet indicator so the user
+        // knows something happened but isn't interrupted.
+        setSyncMsg(`Synced · ${result.mergedCount} session(s). Settings differ — run Sync now to choose.`);
+      } else {
+        setSyncMsg(`Synced · ${result.mergedCount} session(s) in folder.`);
+      }
+    } catch {
+      syncingRef.current = false;
+      setSyncing(false);
+      setSyncMsg('Sync failed — check folder permissions and try again.');
+    }
+  }, []);
+
+  // scheduleAutoSync: debounced ~2.5s after the last write (answer,
+  // nav, finish). Resets on every call so rapid interactions coalesce
+  // into a single sync. No-op unless a folder is connected.
+  const scheduleAutoSync = useCallback(() => {
+    if (!syncDirRef.current) return;
+    if (autoSyncTimerRef.current !== null) {
+      clearTimeout(autoSyncTimerRef.current);
+    }
+    autoSyncTimerRef.current = setTimeout(() => {
+      autoSyncTimerRef.current = null;
+      void runSync(true);
+    }, AUTO_SYNC_DEBOUNCE_MS);
+  }, [runSync]);
+
+  // Restore persisted folder handle on first load so auto-sync
+  // works across reloads without re-prompting the user.
+  useEffect(() => {
+    if (!dirSyncSupported) return;
+    void getPersistedDirHandle().then((handle) => {
+      if (handle) {
+        setSyncDir(handle);
+        setSyncConnected(true);
+        setSyncFolderName(handle.name);
+        // The handle is now in the ref too; subsequent scheduleAutoSync()
+        // calls will fire. Don't trigger an immediate sync — let the
+        // user's next action schedule it naturally.
+      }
+    }).catch(() => {});
+  }, [dirSyncSupported]);
+
+  const handleConnectFolder = useCallback(async () => {
+    const dir = await connectSyncFolder();
+    if (dir) {
+      setSyncDir(dir);
+      setSyncConnected(true);
+      setSyncFolderName(dir.name);
+      setSyncMsg(null);
+      // Do an initial manual sync so the folder gets the user's
+      // existing history. Subsequent updates are debounced.
+      await runSync(false);
+    } else {
+      setSyncMsg('Folder sync needs a Chromium desktop browser (Chrome/Edge). Use Export/Import backup instead.');
+    }
+  }, [runSync]);
+
+  const handleSyncNow = useCallback(async () => {
+    if (!syncDir) {
+      setSyncMsg('No folder connected. Click "Connect folder" to set up sync.');
+      return;
+    }
+    await runSync(false);
+  }, [syncDir, runSync]);
+
+  const handleKeepThisDevice = useCallback(async () => {
+    if (!syncDir || !metaConflict) return;
+    await applyFolderMeta(syncDir, metaConflict.localMeta as any);
+    setMetaConflict(null);
+    setSyncMsg('Settings kept from this device.');
+  }, [syncDir, metaConflict]);
+
+  const handleKeepFolder = useCallback(async () => {
+    if (!metaConflict || !syncDir) return;
+    const db = await getDb();
+    await db.put('kv', metaConflict.folderMeta, 'settings');
+    setMetaConflict(null);
+    setSyncMsg('Settings applied from folder.');
+    // Refresh settings from IndexedDB so the UI reflects the
+    // adopted values.
+    const fresh = await db.get('kv', 'settings');
+    if (fresh) setSettings(fresh as any);
+  }, [metaConflict, syncDir]);
+
+  // Cleanup the auto-sync timer on unmount.
+  useEffect(() => () => {
+    if (autoSyncTimerRef.current !== null) {
+      clearTimeout(autoSyncTimerRef.current);
+    }
+  }, []);
+
   // Persist active session — only when user actions change (not timer ticks)
   useEffect(() => {
     if (!ready || !activeSession) {
@@ -156,8 +304,12 @@ export default function App() {
     if (fp !== lastFingerprint.current) {
       lastFingerprint.current = fp;
       void saveActiveSession(activeSession);
+      // Schedule an auto-sync so the durability copy of the
+      // in-progress session stays current. Fires ~2.5s after the
+      // last write so rapid answer/nav clicks coalesce.
+      scheduleAutoSync();
     }
-  }, [activeSession, ready]);
+  }, [activeSession, ready, scheduleAutoSync]);
 
   // Flush on unload
   useEffect(() => {
@@ -201,8 +353,11 @@ export default function App() {
       setSelectedHistory(entry);
       setActiveSession(null);
       setPage('review');
+      // Auto-sync: the in-progress session is now complete, the new
+      // immutable session file should be written to the folder.
+      scheduleAutoSync();
     });
-  }, [activeSession?.remainingSeconds, activeSession?.submittedAt]);
+  }, [activeSession?.remainingSeconds, activeSession?.submittedAt, scheduleAutoSync]);
 
   // Mutate session helper
   const mutateSession = useCallback((fn: (s: ActiveSession) => ActiveSession) => {
@@ -286,6 +441,9 @@ export default function App() {
           setSelectedHistory(entry);
           setActiveSession(null);
           setPage('review');
+          // Auto-sync: new immutable session file should land in
+          // the folder a moment after the user finishes.
+          scheduleAutoSync();
         }).finally(() => setIsFinalizing(false));
       },
     });
@@ -567,12 +725,23 @@ export default function App() {
             onClearAll={() => void handleClearHistory()}
             onRemoveSampleData={() => void handleRemoveSampleData()}
             onNavigateToReported={() => setPage('reported')}
-            onSyncComplete={(newHistory, newFlags, newActiveSession) => {
+            // Sync state (lifted from History so the auto-sync timer
+            // can fire from any data-mutation site in App).
+            dirSyncSupported={dirSyncSupported}
+            syncFolderName={syncFolderName}
+            syncConnected={syncConnected}
+            syncing={syncing}
+            syncMsg={syncMsg}
+            metaConflict={metaConflict}
+            onConnectFolder={() => void handleConnectFolder()}
+            onSyncNow={() => void handleSyncNow()}
+            onKeepThisDevice={() => void handleKeepThisDevice()}
+            onKeepFolder={() => void handleKeepFolder()}
+            onDismissMetaConflict={() => setMetaConflict(null)}
+            onImportRefresh={(newHistory, newFlags, newActiveSession) => {
               setHistory(newHistory);
               setFlags(newFlags);
-              if (newActiveSession !== undefined && newActiveSession !== null) {
-                setActiveSession(newActiveSession);
-              }
+              if (newActiveSession) setActiveSession(newActiveSession);
             }}
           />
         )}

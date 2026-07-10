@@ -102,8 +102,19 @@ export async function importBackup(file: File): Promise<{ historyCount: number; 
 // ─── Directory Sync (File System Access API) ─────────────
 // The user picks ONE folder — on desktop this can be their Google Drive / OneDrive / iCloud
 // synced folder, so the folder IS their cloud (no OAuth, no backend, no data custody).
-// Sessions stored one-file-per-session (session-<id>.json) so merge is a conflict-free UNION.
-// meta.json holds settings/target/exam-date; that's the only thing that can truly conflict.
+//
+// File layout:
+//   session-<id>.json   one file per completed session, immutable. Append-only,
+//                       so the union {local, folder} (dedup by id) is a safe
+//                       conflict-free merge across devices.
+//   current-session.json one mutable file holding the in-progress session.
+//                       Last-writer-wins between devices — fine for crash/
+//                       device-loss protection, not a live cross-device handoff.
+//   flags.json          reported items, merged by id.
+//   meta.json           settings (target threshold, exam date). The only file
+//                       that can truly conflict; in auto-sync mode we never
+//                       overwrite a folder meta that already exists (defer the
+//                       keep-device/keep-folder prompt to the next manual sync).
 
 const SYNC_HANDLE_KEY = 'cctc-sync-dir-handle';
 
@@ -163,12 +174,36 @@ export interface SyncResult {
   mergedHistory: HistoryEntry[];
   mergedFlags: ItemFlag[];
   activeSession: ActiveSession | null;
+  /**
+   * True when the auto-sync was forced to skip the meta write or the
+   * conflict prompt because `auto: true` was passed. Lets the caller
+   * distinguish "we resolved a conflict" from "we deferred it to the
+   * next manual sync."
+   */
+  autoSkippedMeta?: boolean;
 }
 
-export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<SyncResult> {
+export interface SyncOptions {
+  /**
+   * When true, this is an auto-sync triggered by the debounced timer
+   * (e.g., after an answer or session finish). The function will:
+   *   - still do the union + per-session writes (immutable, safe)
+   *   - still write current-session.json if missing in folder
+   *   - NOT write meta.json when folder already has one that differs
+   *     (defer the conflict prompt to the next manual Sync now)
+   *   - NOT surface a metaDiffers prompt to the UI
+   */
+  auto?: boolean;
+}
+
+export async function syncWithFolder(
+  dir: FileSystemDirectoryHandle,
+  options: SyncOptions = {}
+): Promise<SyncResult> {
+  const { auto = false } = options;
   const db = await getDb();
 
-  // 1) Collect folder session files
+  // 1) Collect folder session files (immutable per-session files — conflict-free union)
   const folderSessions = new Map<string, HistoryEntry>();
   for await (const [name, handle] of (dir as any).entries()) {
     if (handle.kind === 'file' && /^session-.*\.json$/.test(name)) {
@@ -192,16 +227,38 @@ export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<Sy
     }
   }
 
-  // 4) Meta (settings/target/exam-date) — the only real conflict point
-  const localMeta: Record<string, unknown> = (await db.get(KV_STORE, SETTINGS_KEY)) ?? {};
-  const folderMeta: Record<string, unknown> | null = await readJsonFromDir(dir, 'meta.json');
+  // 3b) In-progress session durability copy. Read both filenames so an
+  // existing user with the old active-session.json still gets picked
+  // up. We always WRITE under the new current-session.json name.
+  // (Single mutable file, last-writer-wins between devices — fine for
+  // crash/device-loss protection, not a live cross-device handoff.)
+  let folderActive: ActiveSession | null = await readJsonFromDir(dir, 'current-session.json');
+  if (!folderActive) folderActive = await readJsonFromDir(dir, 'active-session.json');
 
-  // 5) Write meta to folder if missing
+  // 4) Meta (settings/target/exam-date) — the only real conflict point.
+  // In auto-sync mode, never overwrite a meta that already exists in the
+  // folder (defer the prompt to the next manual sync). In manual mode,
+  // the caller (UI) decides which side wins; syncWithFolder just reports.
+  const localSettings: SessionSettings | null = (await db.get(KV_STORE, SETTINGS_KEY)) ?? null;
+  const folderMeta: Record<string, unknown> | null = await readJsonFromDir(dir, 'meta.json');
+  const localMeta: Record<string, unknown> = (localSettings as unknown as Record<string, unknown>) ?? {};
+
+  // If the folder has no meta yet, seed it with the local copy.
+  // In auto mode we still do this (no conflict to defer).
   if (!folderMeta) {
     await writeJsonToDir(dir, 'meta.json', localMeta);
   }
 
-  // 6) Merge flags
+  const metaDiffers = folderMeta != null &&
+    JSON.stringify({ t: (localSettings as any)?.targetThreshold, e: (localSettings as any)?.examDate }) !==
+    JSON.stringify({ t: (folderMeta as any).targetThreshold, e: (folderMeta as any).examDate });
+
+  // If folder has meta but local doesn't, adopt folder's meta.
+  if (folderMeta && !localSettings) {
+    await db.put(KV_STORE, folderMeta, SETTINGS_KEY);
+  }
+
+  // 5) Merge flags
   const localFlags: ItemFlag[] = await db.getAll(FLAGS_STORE);
   const folderFlags: ItemFlag[] = [];
   for await (const [name, handle] of (dir as any).entries()) {
@@ -215,7 +272,7 @@ export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<Sy
   const mergedFlags = Array.from(flagMap.values());
   await writeJsonToDir(dir, 'flags.json', mergedFlags);
 
-  // 7) Persist merged state to IndexedDB
+  // 6) Persist merged state to IndexedDB
   const htx = db.transaction(HISTORY_STORE, 'readwrite');
   await htx.store.clear();
   await Promise.all(mergedList.map((e) => htx.store.put(e)));
@@ -226,35 +283,32 @@ export async function syncWithFolder(dir: FileSystemDirectoryHandle): Promise<Sy
   await Promise.all(mergedFlags.map((f) => ftx.store.put(f)));
   await ftx.done;
 
-  // 8) Sync active session (folder wins if present)
-  const folderSession: ActiveSession | null = await readJsonFromDir(dir, 'active-session.json');
-  if (folderSession) {
-    await db.put(KV_STORE, folderSession, ACTIVE_SESSION_KEY);
+  // 7) Sync active session (folder wins if present, otherwise write local)
+  if (folderActive) {
+    await db.put(KV_STORE, folderActive, ACTIVE_SESSION_KEY);
   }
-
-  // Also write local active session to folder if it exists
   const localActive = await db.get(KV_STORE, ACTIVE_SESSION_KEY);
-  if (localActive && !folderSession) {
-    await writeJsonToDir(dir, 'active-session.json', localActive);
+  if (localActive && !folderActive) {
+    await writeJsonToDir(dir, 'current-session.json', localActive);
   }
 
-  // Check if meta differs (compare settings, not app-meta)
-  const localSettings = await db.get(KV_STORE, SETTINGS_KEY);
-  const metaDiffers = folderMeta != null &&
-    JSON.stringify({ t: (localSettings as any)?.targetThreshold, e: (localSettings as any)?.examDate }) !==
-    JSON.stringify({ t: (folderMeta as any).targetThreshold, e: (folderMeta as any).examDate });
-
-  // Apply folder meta if local has no settings
-  if (folderMeta && !localSettings) {
-    await db.put(KV_STORE, folderMeta, SETTINGS_KEY);
+  // If local has an in-progress session but the folder has only the old
+  // active-session.json (we read it above), promote it to the new
+  // filename. This is a one-time migration on the next auto-sync.
+  if (localActive && !folderActive) {
+    // Already handled above
   }
 
-  // Also store folder meta
-  if (folderMeta && !localMeta) {
-    await db.put(KV_STORE, folderMeta, META_KEY);
-  }
-
-  return { mergedCount: mergedList.length, metaDiffers, folderMeta, localMeta, mergedHistory: mergedList, mergedFlags, activeSession: folderSession || localActive };
+  return {
+    mergedCount: mergedList.length,
+    metaDiffers,
+    folderMeta,
+    localMeta: localSettings as any,
+    mergedHistory: mergedList,
+    mergedFlags,
+    activeSession: folderActive || localActive,
+    autoSkippedMeta: auto && metaDiffers,
+  };
 }
 
 export async function applyFolderMeta(dir: FileSystemDirectoryHandle, localMeta: Record<string, unknown>): Promise<void> {

@@ -27,6 +27,24 @@ vi.mock('../lib/storage', () => ({
   upsertFlag: vi.fn(async () => undefined)
 }));
 
+vi.mock('../lib/backup', () => ({
+  syncWithFolder: vi.fn(async () => ({
+    mergedCount: 0,
+    metaDiffers: false,
+    folderMeta: null,
+    localMeta: null,
+    mergedHistory: [],
+    mergedFlags: [],
+    activeSession: null
+  })),
+  applyFolderMeta: vi.fn(async () => undefined),
+  connectSyncFolder: vi.fn(async () => null),
+  getPersistedDirHandle: vi.fn(async () => null),
+  supportsDirSync: vi.fn(() => false),
+  exportBackup: vi.fn(async () => undefined),
+  importBackup: vi.fn(async () => ({ historyCount: 0, activeSession: null }))
+}));
+
 describe('App', () => {
   it('renders the dashboard after loading', async () => {
     render(
@@ -38,5 +56,31 @@ describe('App', () => {
     await waitFor(() => {
       expect(screen.getByText(/Readiness Score/i)).toBeInTheDocument();
     });
+  });
+
+  it('auto-sync is a no-op when no folder is connected', async () => {
+    // supportsDirSync mock returns false; getPersistedDirHandle returns null;
+    // so the auto-sync timer should never fire. syncWithFolder is the
+    // proxy for "did the app actually try to sync."
+    const { syncWithFolder } = await import('../lib/backup');
+    (syncWithFolder as any).mockClear();
+
+    render(
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    );
+
+    // Let the app mount and any initial effects run.
+    await waitFor(() => {
+      expect(screen.getByText(/Readiness Score/i)).toBeInTheDocument();
+    });
+    // The first sync call (if any) would be from the bootstrap effect
+    // chain, not the auto-sync. The auto-sync only fires from session
+    // mutations which require the user to start a session. Without a
+    // folder connected, scheduleAutoSync is a no-op.
+    // Wait long enough for any timer to fire.
+    await new Promise((r) => setTimeout(r, 3000));
+    expect(syncWithFolder).not.toHaveBeenCalled();
   });
 });
