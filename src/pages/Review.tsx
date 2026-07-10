@@ -15,6 +15,30 @@ interface ReviewProps {
 
 type FilterMode = 'all' | 'incorrect' | 'correct';
 
+/** Split text with \x01...\x02 markers around query matches */
+function highlightMatches(text: string, query: string): string {
+  if (!query.trim()) return text;
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escaped})`, 'gi');
+  return text.replace(regex, '\x01$1\x02');
+}
+
+/** Render text with <mark> highlights for search query matches */
+function HighlightedSpan({ text, query }: { text: string; query: string }) {
+  if (!query.trim()) return <span>{text}</span>;
+  const parts = highlightMatches(text, query).split('\x01');
+  return <span>{parts.map((part, i) => {
+    if (part.includes('\x02')) {
+      const [match, rest] = part.split('\x02');
+      if (rest) {
+        return <span key={i}><mark className="bg-[var(--warning)]/20 text-[var(--foreground)] rounded-sm px-0.5">{match}</mark><HighlightedSpan text={rest} query={query} /></span>;
+      }
+      return <mark key={i} className="bg-[var(--warning)]/20 text-[var(--foreground)] rounded-sm px-0.5">{match}</mark>;
+    }
+    return <span key={i}>{part}</span>;
+  })}</span>;
+}
+
 export function Review({ entry, onBack, onReport }: ReviewProps) {
   const [filter, setFilter] = useState<FilterMode>('all');
   const [domainFilter, setDomainFilter] = useState<string | null>(null);
@@ -200,14 +224,16 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                   <div className="flex-1 min-w-0">
                     {/* Question ID */}
                     <p className="text-[10px] text-[var(--muted-foreground)] mb-0.5 font-mono">{item.question.id}</p>
-                    <p className="text-[13px] text-[var(--foreground)] leading-relaxed">{item.question.stem}</p>
+                    <p className="text-[13px] text-[var(--foreground)] leading-relaxed">
+                      <HighlightedSpan text={item.question.stem} query={searchQuery} />
+                    </p>
                     {/* User's actual choice text + correct answer */}
                     <div className="mt-1.5 space-y-0.5">
                       <p className="text-xs text-[var(--muted-foreground)]">
                         Your answer:{' '}
                         <strong className={cn(isCorrect ? 'text-[var(--success)]' : 'text-[var(--destructive)]')}>
                           {answer
-                            ? `${String.fromCharCode(65 + item.optionOrder.indexOf(answer))}. ${item.question.options.find(o => o.id === answer)?.text ?? ''}`
+                            ? <HighlightedSpan text={`${String.fromCharCode(65 + item.optionOrder.indexOf(answer))}. ${item.question.options.find(o => o.id === answer)?.text ?? ''}`} query={searchQuery} />
                             : '—'}
                         </strong>
                       </p>
@@ -215,7 +241,7 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                         <p className="text-xs text-[var(--success)]">
                           Correct:{' '}
                           <strong>
-                            {String.fromCharCode(65 + item.optionOrder.indexOf(item.question.correct))}. {item.question.options.find(o => o.id === item.question.correct)?.text ?? ''}
+                            <HighlightedSpan text={`${String.fromCharCode(65 + item.optionOrder.indexOf(item.question.correct))}. ${item.question.options.find(o => o.id === item.question.correct)?.text ?? ''}`} query={searchQuery} />
                           </strong>
                         </p>
                       )}

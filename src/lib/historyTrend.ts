@@ -59,7 +59,12 @@ export function buildHistoryTrend(entries: HistoryEntry[], limit = 20): HistoryT
   const percents = points.map((point) => point.percent);
   const averagePercent = Math.round(percents.reduce((sum, value) => sum + value, 0) / percents.length);
   const bestPercent = Math.max(...percents);
-  const recentDelta = points.length >= 2 ? points[points.length - 1].percent - points[points.length - 2].percent : null;
+  // Only compare same-mode sessions for recentDelta
+  const latestMode = points.length > 0 ? points[points.length - 1].mode : null;
+  const sameModePoints = latestMode ? points.filter((p) => p.mode === latestMode) : points;
+  const recentDelta = sameModePoints.length >= 2
+    ? sameModePoints[sameModePoints.length - 1].percent - sameModePoints[sameModePoints.length - 2].percent
+    : null;
   const targetThreshold = slice[slice.length - 1]?.settings.targetThreshold ?? null;
 
   // EMA slope comparison: EMA of last N scores, delta between last two EMA values

@@ -136,16 +136,16 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
     return history.filter((e) => e.settings.mode === sessionFilter);
   }, [history, sessionFilter]);
 
-  // Build domain name mapping from history
+  // Build domain name mapping from filtered history (matches chart data)
   const domainNames = useMemo(() => {
     const names: Record<string, string> = {};
-    for (const entry of history) {
+    for (const entry of filteredHistory) {
       for (const bd of entry.result.breakdown) {
         names[bd.categoryId] = DOMAIN_SHORT_LABELS[bd.categoryId] || bd.categoryLabel;
       }
     }
     return names;
-  }, [history]);
+  }, [filteredHistory]);
 
   const chartData = useMemo(() => {
     const chronological = [...filteredHistory].sort((a, b) => a.completedAt.localeCompare(b.completedAt));
