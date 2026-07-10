@@ -181,13 +181,26 @@ function pushSelectedQuestion(
 export function createSession(
   questions: Question[],
   settings: SessionSettings,
-  recentIds: Set<string>
+  recentIds: Set<string>,
+  incorrectPrioritizedIds?: string[]
 ): ActiveSession {
   const blueprint = getBlueprint(settings.blueprintId);
-  const filteredQuestions = questions.filter(
+  let filteredQuestions = questions.filter(
     (question) =>
       (settings.includeDrafts || question.status === 'reviewed') && isBlueprintApplicable(blueprint, question)
   );
+  if (settings.domains && settings.domains !== 'all') {
+    filteredQuestions = filteredQuestions.filter((q) => (settings.domains as number[]).includes(q.domain));
+  }
+  if (settings.prioritizeIncorrect && incorrectPrioritizedIds && incorrectPrioritizedIds.length > 0) {
+    const missRank = new Map<string, number>();
+    incorrectPrioritizedIds.forEach((id, i) => missRank.set(id, i));
+    const missed = filteredQuestions
+      .filter((q) => missRank.has(q.id))
+      .sort((a, b) => (missRank.get(a.id) ?? 0) - (missRank.get(b.id) ?? 0));
+    const rest = shuffleList(filteredQuestions.filter((q) => !missRank.has(q.id)));
+    filteredQuestions = [...missed, ...rest];
+  }
   const targets = getBindingTargets(blueprint, settings.questionCount);
   const domainTolerance = getScaledDomainTolerance(blueprint, settings.questionCount);
   const buckets = buildCandidateBuckets(blueprint, filteredQuestions, recentIds);

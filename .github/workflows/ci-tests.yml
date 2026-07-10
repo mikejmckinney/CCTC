@@ -1,14 +1,7 @@
-# TEMPLATE_PLACEHOLDER: Customize for your project's build/test/lint commands
-#
-# Self-Healing CI Pipeline with Retry Budget
-# -------------------------------------------
-# This workflow runs on every push and PR. If tests fail:
-# 1. Error logs are captured and posted as a comment
-# 2. Agent should read logs and fix issues
-# 3. Maximum 3 attempts before hard-failing and tagging human
-#
-# The retry budget prevents infinite loops and runaway costs.
-# Customize the commands below for your tech stack.
+# CI Tests for CCTC — runs bats suite (scripts/tests/**) and legacy ./test.sh
+# parity gate. CCTC's primary CI is .github/workflows/validate.yml (npm run
+# validate:ci + build:ci + Playwright). This workflow covers the inherited
+# template scripts and shell-based structural checks.
 
 name: CI Tests
 

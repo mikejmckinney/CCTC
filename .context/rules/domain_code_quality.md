@@ -39,12 +39,12 @@ Soft rules are targets. Judge does not block on them; Critic flags them as `CRAF
 ### S1 — Function Length
 Target: a function fits on one screen without scrolling. The exact line count is stack-specific — set a threshold in the "How to extend" block below. Rationale matters more than the count: if a longer function is genuinely more readable than its split form, keep it and say why in a comment.
 
-> Default threshold: `TEMPLATE_PLACEHOLDER` lines. (Suggested starting point: 40 for typed languages, 25 for dynamic languages.)
+> Default threshold: 40 lines. (TypeScript/React components may run longer when JSX structure demands it; justify in a comment if exceeding 60.)
 
 ### S2 — Complexity and Nesting
 Target: cyclomatic complexity and nesting depth stay low enough that a reader can hold the control flow in their head. When you feel yourself indenting a fourth level, extract.
 
-> Default thresholds: cyclomatic complexity `TEMPLATE_PLACEHOLDER`, max nesting depth `TEMPLATE_PLACEHOLDER`.
+> Default thresholds: cyclomatic complexity 10, max nesting depth 3.
 
 ### S3 — Names Describe Intent
 Names say **what the code is for**, not **how it works**. Prefer `calculateRenewalDate` over `addThirtyDays`. Avoid abbreviations unless the abbreviation is a term of art in your domain — and if it is, capture it in a glossary.
@@ -78,19 +78,17 @@ Many unit tests, fewer integration tests, minimal E2E tests. Concrete CI command
 
 ## How to Extend for Your Stack
 
-Downstream projects replace the `TEMPLATE_PLACEHOLDER` values and may add stack-specific rules. Keep extensions **additive** — do not delete Hard rules without an ADR.
+Downstream projects replace the default thresholds above and may add stack-specific rules. Keep extensions **additive** — do not delete Hard rules without an ADR.
 
 ```markdown
-<!-- TEMPLATE_PLACEHOLDER: paste your stack-specific thresholds -->
-
 ## Stack-Specific Overrides
 
-- S1 function length:     <N> lines (target), <N> lines (hard max)
-- S2 cyclomatic complexity: <N> (target), <N> (hard max)
-- S2 nesting depth:       <N> (target), <N> (hard max)
-- Lint / format tool:     <tool + config path>
-- Test framework:         <framework + command>
-- Coverage target:        <percent> (changed files only)
+- S1 function length:     40 lines (target), 60 lines (hard max)
+- S2 cyclomatic complexity: 10 (target), 15 (hard max)
+- S2 nesting depth:       3 (target), 4 (hard max)
+- Lint / format tool:     ESLint + Prettier (eslint.config.*); shellcheck + shfmt for scripts/**
+- Test framework:         Vitest (npm test), Playwright (npm run test:e2e:playwright), bats (scripts/tests/**)
+- Coverage target:        80% on changed files (Vitest --coverage)
 
 ## Stack-Specific Hard Rules (optional)
 

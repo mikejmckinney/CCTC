@@ -127,6 +127,8 @@ export interface SessionSettings {
   mode: ExamMode;
   includeDrafts: boolean;
   targetThreshold: number;
+  prioritizeIncorrect?: boolean;
+  domains?: 'all' | number[];
 }
 
 export interface SessionItemSnapshot {
@@ -194,10 +196,16 @@ export interface ItemFlag {
   mode: ExamMode;
   createdAt: string;
   updatedAt: string;
+  domain?: number;
+  itemStem?: string;
 }
 
 export interface AppMeta {
   disclaimerSeen: boolean;
+  theme?: 'day' | 'night';
+  lastCustomSettings?: SessionSettings;
+  examDate?: string;
+  targetThreshold?: number;
 }
 
 export interface LoadedBank {

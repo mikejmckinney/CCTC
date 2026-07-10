@@ -50,7 +50,7 @@ responses with `Role receipt v<role_contract_version> — docs` and record
 
 ## Responsibilities
 
-- Keep `AI_REPO_GUIDE.md` accurate. Regenerate it when it drifts or contains `TEMPLATE_PLACEHOLDER` in a non-template repo.
+- Keep `AI_REPO_GUIDE.md` accurate. Regenerate it when it drifts from the actual repo state.
 - Keep `README.md` clear for humans. Don't duplicate content that belongs in `AI_REPO_GUIDE.md`.
 - Write ADR prose (the Architect defines the decision; you polish the wording).
 - Maintain `docs/guides/**` — short, targeted, under the 200-line rule.

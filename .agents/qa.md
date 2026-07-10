@@ -3,7 +3,9 @@ name: qa
 description: Use to write/update tests, gate merges on coverage, and triage CI failures. Runs after implementation, before judge diff-gate.
 role_contract_version: 1
 owned_paths:
-  # TEMPLATE_PLACEHOLDER: replace with your project's test globs
+  # CCTC tests: Vitest unit tests (colocated under src/**), Playwright e2e
+  # (e2e/**), and bats scripts (scripts/tests/** — DevOps-owned, QA may co-author
+  # via PM shared-edit claim). Aligned with agent_ownership.md.
   - 'tests/**'
   - 'e2e/**'
   # Colocated test files (e.g. src/**/Component.test.tsx) are owned by the

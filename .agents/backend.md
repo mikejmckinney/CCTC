@@ -3,7 +3,11 @@ name: backend
 description: Use to implement server code (APIs, models, migrations). Consumes a dispatched task; stays inside backend-owned paths.
 role_contract_version: 1
 owned_paths:
-  # TEMPLATE_PLACEHOLDER: replace with your project's backend globs
+  # CCTC is a static client-side app (React/Vite/TypeScript) with no backend,
+  # server, API, or database. These globs are retained for contract parity with
+  # agent_ownership.md but currently match no files in this repo. Backend role
+  # dispatches are not expected for CCTC v1; v2 sync features (if added) may
+  # populate these paths.
   - 'src/backend/**'
   - 'src/api/**'
   - 'src/server/**'

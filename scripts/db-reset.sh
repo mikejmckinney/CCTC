@@ -4,7 +4,10 @@
 #
 # WARNING: This will DELETE all data in the database!
 #
-# TEMPLATE_PLACEHOLDER: Customize this for your database
+# CCTC note: this script is not applicable to v1. CCTC uses IndexedDB
+# (client-side, browser-local) for persistence — there is no server-side
+# database to reset. Retained from the template for v2 if a backend database
+# is added.
 
 set -e
 

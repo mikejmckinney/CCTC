@@ -1,11 +1,15 @@
-# TEMPLATE_PLACEHOLDER: Replace the example entry below with your project's tasks.
-#
 # .context/backlog.yaml — machine-readable task list dispatched by
 # .github/workflows/backlog-to-issues.yml (added in PR 3 of the
 # backlog-driven issue creation pipeline). Each entry becomes one GitHub
 # issue and is then funneled through the gated Copilot assignment workflow
 # (added in PR 2) and the existing downstream pipeline documented in
 # docs/guides/agent-pipeline.md.
+#
+# CCTC note: this backlog dispatch pipeline is inherited from the template.
+# CCTC v1 work was tracked via GitHub issues/PRs directly, not via this file.
+# The example entry below is retained for reference; remove it when adding
+# real CCTC tasks here, or leave entries empty if the dispatch pipeline is
+# not used.
 #
 # Schema:    .context/backlog.schema.json
 # Validate:  pip install check-jsonschema && \

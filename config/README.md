@@ -1,6 +1,6 @@
 # Configuration Templates
 
-> **Purpose**: Deployment configuration templates for common platforms. Copy and customize for your project.
+> **Purpose**: Deployment configuration templates inherited from the template. CCTC v1 deploys as a static Vite build to GitHub Pages (see `.github/workflows/deploy-pages.yml`), so these platform templates (Vercel, Railway, Render, Docker) are not currently used. They are retained for v2 if a backend or containerized deployment is added.
 
 ## Available Templates
 
@@ -16,7 +16,6 @@
 1. Copy the template you need to your project root
 2. Remove the `.template` extension
 3. Replace placeholder values with your actual configuration
-4. Remove the `TEMPLATE_PLACEHOLDER` comment
 
 ## Platform Recommendations
 

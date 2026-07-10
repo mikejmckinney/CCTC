@@ -7,7 +7,7 @@
 # scripts/setup/README.md for the module table and how to run a single
 # module in isolation.
 #
-# TEMPLATE_PLACEHOLDER: Customize this for your project
+# CCTC one-command setup orchestrator. Sources setup modules in lexical order.
 
 set -e
 

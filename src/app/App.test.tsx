@@ -23,16 +23,14 @@ vi.mock('../lib/storage', () => ({
 }));
 
 describe('App', () => {
-  it('renders the start screen and loaded-bank summary', async () => {
+  it('renders the dashboard with quick-start options', async () => {
     render(<App />);
 
-    await waitFor(() => expect(screen.getByRole('heading', { name: /build a practice session/i })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('heading', { name: /welcome back/i })).toBeInTheDocument());
 
-    expect(screen.getByRole('heading', { name: 'CCTC Practice Exam' })).toBeInTheDocument();
-    expect(
-      screen.getByText((_, element) => Boolean(element?.closest('.badge')?.textContent?.includes('506 item')))
-    ).toBeInTheDocument();
-    expect(screen.getByLabelText(/Blueprint version/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /start session/i })).toBeInTheDocument();
+    expect(screen.getByText('Full mock exam')).toBeInTheDocument();
+    expect(screen.getByText('Quick exam')).toBeInTheDocument();
+    expect(screen.getByText('Weak areas')).toBeInTheDocument();
+    expect(screen.getByText('Customize a session')).toBeInTheDocument();
   });
 });

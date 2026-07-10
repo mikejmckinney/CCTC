@@ -1,5 +1,3 @@
-<!-- TEMPLATE_PLACEHOLDER: Add domain rules here -->
-
 # Domain Rules
 
 > **Purpose**: This directory contains **immutable constraints** that must never be violated. Agents should check these rules before making changes.

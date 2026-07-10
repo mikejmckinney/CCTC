@@ -3,12 +3,25 @@ name: frontend
 description: Use to implement UI code (components, pages, styles). Consumes a dispatched task; stays inside frontend-owned paths.
 role_contract_version: 1
 owned_paths:
-  # TEMPLATE_PLACEHOLDER: replace with your project's frontend globs
-  - 'src/frontend/**'
-  - 'src/components/**'
-  - 'src/pages/**'
-  - 'src/styles/**'
+  # CCTC frontend: React + TypeScript + Vite static app. Aligned with
+  # agent_ownership.md. The app is client-side only (no SSR, no backend).
+  - 'src/app/**'
+  - 'src/data/**'
+  - 'src/lib/**'
+  - 'src/test/**'
+  - 'src/types/**'
+  - 'src/main.tsx'
+  - 'src/app.css'
   - 'public/**'
+  - 'index.html'
+  - 'package.json'
+  - 'package-lock.json'
+  - 'vite.config.*'
+  - 'vitest.config.*'
+  - 'tsconfig.json'
+  - 'tsconfig.app.json'
+  - 'tsconfig.node.json'
+  - colocated '*.test.*' / '*.spec.*' under the above source paths
 handoff_targets:
   - qa              # test coverage review
   - judge           # diff-gate review before merge

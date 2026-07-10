@@ -4,7 +4,7 @@ import { pruneStaleFlags } from './sessionPersistence';
 import type { ActiveSession, AppMeta, HistoryEntry, ItemFlag, Question, SessionSettings } from '../types/exam';
 
 const DB_NAME = 'cctc-app';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const KV_STORE = 'kv';
 const HISTORY_STORE = 'history';
 const FLAGS_STORE = 'flags';

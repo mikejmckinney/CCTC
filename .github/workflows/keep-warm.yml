@@ -1,20 +1,7 @@
-# TEMPLATE_PLACEHOLDER: Update BACKEND_URL for your project
-#
-# Keep Backend Warm
-# -----------------
-# Prevents free-tier services (Render, Railway, etc.) from suspending
-# due to inactivity. When enabled, pings the health endpoint every
-# 14 minutes.
-#
-# Status: MANUAL-ONLY by default — the `schedule:` trigger is
-# intentionally commented out below (no current downstream project
-# uses this; cron was burning Actions minutes). Re-enable by
-# uncommenting the `schedule:` block. See #74 for context.
-#
-# Setup:
-# 1. Create a repository secret named BACKEND_URL with your backend URL
-# 2. Or replace the secret reference with a hardcoded URL (less secure)
-# 3. Uncomment the `schedule:` block below if you want recurring pings
+# Keep Backend Warm — NOT APPLICABLE to CCTC.
+# CCTC is a static client-side app (GitHub Pages) with no backend service to
+# keep warm. This workflow is retained from the template for reference but is
+# manual-only (schedule disabled). It can be removed if no v2 backend is added.
 
 name: Keep Backend Warm
 
