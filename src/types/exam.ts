@@ -182,6 +182,7 @@ export interface HistoryEntry {
   answers: Record<string, string | null>;
   flaggedForReview: string[];
   result: SessionResult;
+  sample?: boolean;
 }
 
 export interface ItemFlag {
@@ -206,6 +207,8 @@ export interface AppMeta {
   lastCustomSettings?: SessionSettings;
   examDate?: string;
   targetThreshold?: number;
+  seeded?: boolean;
+  sampleNoticeDismissed?: boolean;
 }
 
 export interface LoadedBank {

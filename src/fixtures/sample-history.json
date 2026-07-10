@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "baseTimestamp": "2026-05-15T00:00:00Z",
+  "targetThreshold": 70,
+  "sessions": [
+    {
+      "id": "sample-0",
+      "completedAt": "2026-04-27T09:00:00.000Z",
+      "mode": "study",
+      "blueprintId": "cctc-from-2026-07",
+      "timeUsedSeconds": null,
+      "domains": {
+        "1": { "itemIds": ["cctc-1001", "cctc-1002", "cctc-1003", "cctc-1004", "cctc-1005", "cctc-1006"], "correct": 3 },
+        "2": { "itemIds": ["cctc-2001", "cctc-2002", "cctc-2003", "cctc-2004", "cctc-2005", "cctc-2006"], "correct": 3 },
+        "3": { "itemIds": ["cctc-3001", "cctc-3002", "cctc-3003", "cctc-3004", "cctc-3005", "cctc-3006", "cctc-3007"], "correct": 6 }
+      }
+    },
+    {
+      "id": "sample-1",
+      "completedAt": "2026-04-30T14:00:00.000Z",
+      "mode": "exam",
+      "blueprintId": "cctc-from-2026-07",
+      "timeUsedSeconds": 1680,
+      "domains": {
+        "1": { "itemIds": ["cctc-1001", "cctc-1002", "cctc-1003", "cctc-1004", "cctc-1005", "cctc-1006"], "correct": 4 },
+        "2": { "itemIds": ["cctc-2001", "cctc-2002", "cctc-2003", "cctc-2004", "cctc-2005", "cctc-2006"], "correct": 3 },
+        "3": { "itemIds": ["cctc-3001", "cctc-3002", "cctc-3003", "cctc-3004", "cctc-3005", "cctc-3006", "cctc-3007"], "correct": 6 }
+      }
+    },
+    {
+      "id": "sample-2",
+      "completedAt": "2026-05-03T20:00:00.000Z",
+      "mode": "exam",
+      "blueprintId": "cctc-thru-2026-06",
+      "timeUsedSeconds": 1920,
+      "domains": {
+        "1": { "itemIds": ["cctc-1001", "cctc-1002", "cctc-1003", "cctc-1004", "cctc-1005", "cctc-1006"], "correct": 4 },
+        "2": { "itemIds": ["cctc-2001", "cctc-2002", "cctc-2003", "cctc-2004", "cctc-2005", "cctc-2006"], "correct": 3 },
+        "3": { "itemIds": ["cctc-3001", "cctc-3002", "cctc-3003", "cctc-3004", "cctc-3005", "cctc-3006", "cctc-3007"], "correct": 6 }
+      }
+    },
+    {
+      "id": "sample-3",
+      "completedAt": "2026-05-06T11:00:00.000Z",
+      "mode": "exam",
+      "blueprintId": "cctc-from-2026-07",
+      "timeUsedSeconds": 2160,
+      "domains": {
+        "1": { "itemIds": ["cctc-1001", "cctc-1002", "cctc-1003", "cctc-1004", "cctc-1005", "cctc-1006"], "correct": 4 },
+        "2": { "itemIds": ["cctc-2001", "cctc-2002", "cctc-2003", "cctc-2004", "cctc-2005", "cctc-2006"], "correct": 3 },
+        "3": { "itemIds": ["cctc-3001", "cctc-3002", "cctc-3003", "cctc-3004", "cctc-3005", "cctc-3006", "cctc-3007"], "correct": 7 }
+      }
+    },
+    {
+      "id": "sample-4",
+      "completedAt": "2026-05-09T19:00:00.000Z",
+      "mode": "exam",
+      "blueprintId": "cctc-from-2026-07",
+      "timeUsedSeconds": 2400,
+      "domains": {
+        "1": { "itemIds": ["cctc-1001", "cctc-1002", "cctc-1003", "cctc-1004", "cctc-1005", "cctc-1006"], "correct": 4 },
+        "2": { "itemIds": ["cctc-2001", "cctc-2002", "cctc-2003", "cctc-2004", "cctc-2005", "cctc-2006"], "correct": 4 },
+        "3": { "itemIds": ["cctc-3001", "cctc-3002", "cctc-3003", "cctc-3004", "cctc-3005", "cctc-3006", "cctc-3007"], "correct": 6 }
+      }
+    },
+    {
+      "id": "sample-5",
+      "completedAt": "2026-05-12T08:00:00.000Z",
+      "mode": "study",
+      "blueprintId": "cctc-from-2026-07",
+      "timeUsedSeconds": null,
+      "domains": {
+        "1": { "itemIds": ["cctc-1001", "cctc-1002", "cctc-1003", "cctc-1004", "cctc-1005", "cctc-1006"], "correct": 5 },
+        "2": { "itemIds": ["cctc-2001", "cctc-2002", "cctc-2003", "cctc-2004", "cctc-2005", "cctc-2006"], "correct": 4 },
+        "3": { "itemIds": ["cctc-3001", "cctc-3002", "cctc-3003", "cctc-3004", "cctc-3005", "cctc-3006", "cctc-3007"], "correct": 6 }
+      }
+    }
+  ]
+}

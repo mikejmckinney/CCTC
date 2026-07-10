@@ -212,7 +212,7 @@ These are deliberate product decisions; the metrics intentionally use **differen
 ## 6. Out of scope / guardrails (do not regress)
 - **No backend, no runtime model calls.** Questions stay static, reviewed JSON; persistence stays client-side (IndexedDB via `storage.ts`).
 - **Raw scoring only**; all pass/readiness labels are *unofficial estimates* against the user's target.
-- **Do not ship the prototype's seeded sample history** — it exists only to make the mock's dashboard/Progress look populated. Production starts empty (with the existing empty states).
+- **Ship a deterministic sample fixture as a one-time first-run experience** (overridden in the PR that introduced this). Every headline analytics feature (readiness EMA, weak areas, trend chart, recommended action) is derived from `HistoryEntry[]`, so a new user would otherwise see a wall of `—` and empty states. The sample is a static JSON fixture (single source of truth for app + test suite) with real items + answers drawn from the actual question bank, consistent with each session's per-domain correct/total — so demo sessions are fully reviewable, not just numbers. Each sample carries `sample: true` and renders a "Sample" badge. A one-time dismissible dashboard note appears. A "Remove sample data" action (deletes only `sample: true` rows) is distinct from "Clear all." Once the user clears or removes the sample data, it stays gone — it is seeded exactly once (gated by `prefs.seeded`).
 - **Preserve existing user data (back-compat).** Current users have sessions/flags/prefs in the app's IndexedDB store. The redesign **reuses the existing `HistoryEntry` / `ItemFlag` / settings schema**, so keep the same store name, keys, and shapes — existing records must remain visible and reviewable after the update. The only additive fields are persisted prefs (`theme`, `lastCustomSettings`, `examDate`, `targetThreshold`); read them with safe fallbacks so older records lacking them don't break. If you must bump a store version, write a forward migration — never drop the existing object store. (The standalone prototype uses `localStorage`; that's a prototype detail — the real app stays on its IndexedDB layer.)
 - Don't lift the prototype's inline-styled markup; use `app.css` + tokens.
 
@@ -313,7 +313,7 @@ Each item is written as a check you can run yourself (DOM assertion, test, or me
 
 **Persistence**
 - [ ] Only `theme` and `lastCustomSettings` are added to storage; dashboard/progress metrics derive from existing `HistoryEntry[]` with no new persisted aggregates.
-- [ ] No seeded/sample history ships — a fresh profile shows the real empty states (§6).
+- [ ] No additional seeded sample history beyond the §6 one-time first-run fixture — a fresh profile after removal shows the real empty states.
 
 ---
 

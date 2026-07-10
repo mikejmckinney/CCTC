@@ -4,7 +4,7 @@ import App from './App';
 
 vi.mock('../lib/storage', () => ({
   bootstrapState: vi.fn(async () => ({
-    meta: { disclaimerSeen: true },
+    meta: { disclaimerSeen: true, seeded: true },
     settings: null,
     activeSession: null,
     history: [],
@@ -14,6 +14,8 @@ vi.mock('../lib/storage', () => ({
   clearHistory: vi.fn(async () => undefined),
   deleteFlag: vi.fn(async () => undefined),
   deleteHistoryEntry: vi.fn(async () => undefined),
+  deleteSampleHistory: vi.fn(async () => 0),
+  loadSampleHistory: vi.fn(() => []),
   replaceFlags: vi.fn(async () => undefined),
   saveActiveSession: vi.fn(async () => undefined),
   saveHistoryEntry: vi.fn(async () => undefined),

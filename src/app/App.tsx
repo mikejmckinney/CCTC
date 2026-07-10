@@ -16,6 +16,8 @@ import {
   clearHistory,
   deleteFlag,
   deleteHistoryEntry,
+  deleteSampleHistory,
+  loadSampleHistory,
   replaceFlags,
   saveActiveSession,
   saveHistoryEntry,
@@ -314,7 +316,7 @@ function App() {
   useEffect(() => {
     let cancelled = false;
     bootstrapState(allQuestions)
-      .then((state) => {
+      .then(async (state) => {
         if (cancelled) return;
         let meta = state.meta;
         if (!meta.theme) {
@@ -323,10 +325,26 @@ function App() {
           meta = { ...meta, theme: prefersDark ? 'night' : 'day' };
           void saveMeta(meta);
         }
+
+        let history = state.history;
+        if (history.length === 0 && !meta.seeded) {
+          try {
+            const sampleHistory = loadSampleHistory(allQuestions);
+            for (const entry of sampleHistory) await saveHistoryEntry(entry);
+            history = sampleHistory.sort((a, b) => b.completedAt.localeCompare(a.completedAt));
+            const nextMeta = { ...meta, seeded: true };
+            await saveMeta(nextMeta);
+            meta = nextMeta;
+          } catch (e) {
+            if (!cancelled) setError(e instanceof Error ? e.message : 'Failed to load sample history.');
+          }
+        }
+
+        if (cancelled) return;
         setMeta(meta);
         setSettings(normalizeSettings(state.settings ?? buildDefaultSettings('cctc-from-2026-07')));
         setActiveSession(state.activeSession);
-        setHistory(state.history);
+        setHistory(history);
         setFlags(state.flags);
       })
       .catch((e) => {
@@ -804,6 +822,30 @@ function App() {
     });
   }
 
+  async function handleRemoveSampleData(): Promise<void> {
+    const sampleCount = history.filter((e) => e.sample).length;
+    if (sampleCount === 0) return;
+    setDestructive({
+      title: 'Remove sample data?',
+      body: `This deletes the ${sampleCount} sample demo session(s). Your own sessions will be kept. This cannot be undone.`,
+      cta: 'Remove samples',
+      run: async () => {
+        const removed = await deleteSampleHistory();
+        setHistory((cur) => cur.filter((e) => !e.sample));
+        setImportMsg(`Removed ${removed} sample session(s).`);
+        const nextMeta = { ...meta, sampleNoticeDismissed: true };
+        setMeta(nextMeta);
+        void saveMeta(nextMeta);
+      }
+    });
+  }
+
+  function dismissSampleNotice(): void {
+    const nextMeta = { ...meta, sampleNoticeDismissed: true };
+    setMeta(nextMeta);
+    void saveMeta(nextMeta);
+  }
+
   async function handleClearFlags(): Promise<void> {
     setDestructive({
       title: 'Clear all flags?',
@@ -1226,6 +1268,21 @@ function App() {
                 <div style={{ fontSize: '12.5px', color: 'var(--ink)', marginTop: '5px', lineHeight: 1.5 }}>No questions match the current filters. Try changing the focus, question set, or include draft items.</div>
               </div>
             )}
+
+            {/* Sample data notice — one-time, dismissible */}
+            {history.some((e) => e.sample) && !meta.sampleNoticeDismissed && (
+              <div className="sample-notice" role="status">
+                <div style={{ minWidth: 0 }}>
+                  <div className="sample-notice__title">Showing sample data</div>
+                  <div className="sample-notice__body">These are demo sessions so you can see the analytics. Clear them in Progress when you&apos;re ready to start.</div>
+                </div>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexShrink: 0 }}>
+                  <button className="sample-notice__remove" onClick={() => void handleRemoveSampleData()}>Remove sample data</button>
+                  <button className="sample-notice__close" onClick={dismissSampleNotice} aria-label="Dismiss sample data notice">×</button>
+                </div>
+              </div>
+            )}
+
             <h1>Welcome back</h1>
             <p style={{ fontSize: '14px', color: 'var(--muted)', margin: '0 0 4px' }}>{bank.questions.length} items · {getBlueprint(settings.blueprintId).default_exam_items}-item exam, {getBlueprint(settings.blueprintId).default_time_minutes} min</p>
 
@@ -1682,7 +1739,10 @@ function App() {
                 <h1>Progress</h1>
                 <p className="history-subtitle">{history.length > 0 ? `${history.length} sessions recorded` : 'Your completed sessions appear here'}</p>
               </div>
-              {history.length > 0 && <button className="clear-btn" onClick={() => void handleClearHistory()}>Clear history</button>}
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                {history.some((e) => e.sample) && <button className="clear-btn" onClick={() => void handleRemoveSampleData()}>Remove sample data</button>}
+                {history.length > 0 && <button className="clear-btn" onClick={() => void handleClearHistory()}>Clear history</button>}
+              </div>
             </div>
 
             {history.length === 0 ? (
@@ -1738,7 +1798,10 @@ function App() {
                       <div key={e.id} className={`history-row ${canReview ? 'history-row--clickable' : ''}`} onClick={() => canReview && openReviewFromHistory(e)}>
                         <div className="history-row__top">
                           <div style={{ minWidth: 0 }}>
-                            <span className="history-row__date">{dateTime(e.completedAt)}</span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                              <span className="history-row__date">{dateTime(e.completedAt)}</span>
+                              {e.sample && <span className="sample-badge">Sample</span>}
+                            </div>
                             <div className="history-row__meta">
                               <span className={`mode-chip mode-chip--${isExam ? 'exam' : 'study'}`}>{isExam ? 'Exam' : 'Study'}</span>
                               <span className="history-row__meta-text">{e.result.total} items · {durationMin(e.timeUsedSeconds)}</span>
