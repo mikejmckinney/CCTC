@@ -68,20 +68,36 @@ export default function App() {
   // Folder sync state (lifted from History.tsx so App can fire the
   // debounced auto-sync from any data-mutation site: answer, nav,
   // session end, settings change). The auto-sync timer is owned here.
-  const [syncDir, setSyncDir] = useState<FileSystemDirectoryHandle | null>(null);
+  //
+  // syncDir lives in a ref (single source of truth) so the auto-sync
+  // timer callback can read the latest handle without re-creating the
+  // timer on every change. The version counter is a useState that
+  // forces a re-render when the ref changes. setSyncDir is the only
+  // path to mutate the ref — there is no parallel state to forget.
   const [syncFolderName, setSyncFolderName] = useState<string | null>(null);
   const [syncConnected, setSyncConnected] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [syncMsg, setSyncMsg] = useState<string | null>(null);
   const [metaConflict, setMetaConflict] = useState<{ folderMeta: Record<string, unknown>; localMeta: Record<string, unknown> } | null>(null);
   const syncDirRef = useRef<FileSystemDirectoryHandle | null>(null);
+  const [syncDirVersion, setSyncDirVersion] = useState(0);
+  const syncDir = syncDirRef.current;
   const syncingRef = useRef(false);
   const autoSyncTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dirSyncSupported = useMemo(() => supportsDirSync(), []);
 
-  // Keep the ref in sync with state so the auto-sync timer callback
-  // always sees the latest folder handle without re-creating the timer.
-  useEffect(() => { syncDirRef.current = syncDir; }, [syncDir]);
+  // Mutator: the only path to change the folder handle. Updates the
+  // ref synchronously and bumps the version counter to force a
+  // re-render. No-op when the new handle is referentially equal
+  // (e.g. the user clicks Connect, the same handle is returned).
+  const setSyncDir = useCallback((handle: FileSystemDirectoryHandle | null) => {
+    if (syncDirRef.current === handle) return;
+    syncDirRef.current = handle;
+    setSyncDirVersion((v) => v + 1);
+  }, []);
+
+  // Keep the syncing flag mirrored in a ref so the auto-sync timer
+  // callback can de-dupe concurrent sync attempts without re-rendering.
   useEffect(() => { syncingRef.current = syncing; }, [syncing]);
 
   // Build an O(1) id -> Question index from the live bank. This is the
@@ -255,14 +271,14 @@ export default function App() {
       return;
     }
     await runSync(false);
-  }, [syncDir, runSync]);
+  }, [syncDir, runSync, syncDirVersion]);
 
   const handleKeepThisDevice = useCallback(async () => {
     if (!syncDir || !metaConflict) return;
     await applyFolderMeta(syncDir, metaConflict.localMeta as any);
     setMetaConflict(null);
     setSyncMsg('Settings kept from this device.');
-  }, [syncDir, metaConflict]);
+  }, [syncDir, metaConflict, syncDirVersion]);
 
   const handleKeepFolder = useCallback(async () => {
     if (!metaConflict || !syncDir) return;
@@ -274,7 +290,7 @@ export default function App() {
     // adopted values.
     const fresh = await db.get('kv', 'settings');
     if (fresh) setSettings(fresh as any);
-  }, [metaConflict, syncDir]);
+  }, [metaConflict, syncDir, syncDirVersion]);
 
   // Cleanup the auto-sync timer on unmount.
   useEffect(() => () => {
