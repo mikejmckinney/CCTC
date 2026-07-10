@@ -110,7 +110,14 @@ export default function App() {
             setHistory(demoHistory);
             setFlags(demoFlags);
             // Mark seeded; sampleNoteDismissed stays false so the banner shows.
-            await saveMeta({ ...state.meta, disclaimerSeen: state.meta?.disclaimerSeen ?? false, demoSeeded: true });
+            // Preserve any other meta fields (e.g., examDate set in a
+            // later session, disclaimerSeen from the bootstrap default).
+            // Sync React state too so subsequent reads (e.g., the
+            // disclaimer "I understand" handler) see the latest meta and
+            // don't accidentally drop demoSeeded by overwriting.
+            const seededMeta = { ...state.meta, demoSeeded: true };
+            setMeta(seededMeta);
+            await saveMeta(seededMeta);
           }
         } else {
           setHistory(state.history);
@@ -435,7 +442,7 @@ export default function App() {
           and must not be used for patient-care decisions. Practice results are unofficial estimates only.
         </p>
         <div className="mt-4 flex justify-end">
-          <Button onClick={async () => { const m = { disclaimerSeen: true }; setMeta(m); await saveMeta(m); }}>I understand</Button>
+          <Button onClick={async () => { const m = { ...meta, disclaimerSeen: true }; setMeta(m); await saveMeta(m); }}>I understand</Button>
         </div>
       </Modal>
 
