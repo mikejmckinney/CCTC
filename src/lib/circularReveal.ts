@@ -1,10 +1,15 @@
 /**
- * Theme toggle with circular reveal animation.
+ * Theme toggle with View Transitions API circular wipe.
  *
- * OLD theme shrinks inward to the click point, revealing new theme.
- * Uses clip-path animation on a positioned overlay.
+ * Uses `document.startViewTransition()` where supported — the browser
+ * snapshots old and new renders. Only the NEW snapshot animates
+ * (expanding circle from click point). The OLD snapshot stays fully
+ * rendered underneath and is naturally covered as the circle grows.
+ * This is the Radix-UI-style magic curtain: both themes are visible
+ * live along the wipe edge, no blocking overlay, no fade.
  *
- * Falls back to instant swap when prefers-reduced-motion is set.
+ * Falls back to instant swap where View Transitions is unsupported
+ * or when the user prefers reduced motion.
  */
 export function performCircularReveal(
   event: React.MouseEvent<HTMLElement>,
@@ -13,7 +18,7 @@ export function performCircularReveal(
   const button = event.currentTarget;
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (prefersReducedMotion) {
+  if (!('startViewTransition' in document) || prefersReducedMotion) {
     callback();
     return;
   }
@@ -23,45 +28,31 @@ export function performCircularReveal(
   const cy = rect.top + rect.height / 2;
   const vw = window.innerWidth;
   const vh = window.innerHeight;
-  const maxRadius = Math.hypot(
+  const endRadius = Math.hypot(
     Math.max(cx, vw - cx),
     Math.max(cy, vh - cy)
   );
 
-  // Snapshot old background
-  const oldBg = getComputedStyle(document.body).backgroundColor;
-
-  // Switch theme — new content renders behind overlay
-  callback();
-
-  // Overlay with old background covers everything
-  const overlay = document.createElement('div');
-  overlay.setAttribute('data-curtain', '');
-  Object.assign(overlay.style, {
-    position: 'fixed',
-    inset: '0',
-    zIndex: '99999',
-    pointerEvents: 'none',
-    background: oldBg,
-    clipPath: `circle(${maxRadius * 1.1}px at ${cx}px ${cy}px)`,
+  const vt = (document as any).startViewTransition(() => {
+    callback();
   });
-  document.body.appendChild(overlay);
 
-  // Trigger reflow
-  overlay.getBoundingClientRect();
+  vt.ready.then(() => {
+    const duration = 500;
+    const easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
 
-  // Shrink overlay to click point — old theme recedes
-  const anim = overlay.animate(
-    [
-      { clipPath: `circle(${maxRadius * 1.1}px at ${cx}px ${cy}px)` },
-      { clipPath: `circle(0px at ${cx}px ${cy}px)` },
-    ],
-    {
-      duration: 500,
-      easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-      fill: 'forwards',
-    }
-  );
-
-  anim.onfinish = () => overlay.remove();
+    // Only animate the NEW snapshot expanding from click point.
+    // The OLD snapshot stays at full size underneath — no animation needed.
+    document.documentElement.animate(
+      [
+        { clipPath: `circle(0px at ${cx}px ${cy}px)` },
+        { clipPath: `circle(${endRadius * 1.1}px at ${cx}px ${cy}px)` },
+      ],
+      {
+        duration,
+        easing,
+        pseudoElement: '::view-transition-new(root)',
+      }
+    );
+  });
 }

@@ -110,14 +110,10 @@ export default function App() {
             setHistory(demoHistory);
             setFlags(demoFlags);
             // Mark seeded; sampleNoteDismissed stays false so the banner shows.
-            // Preserve any other meta fields (e.g., examDate set in a
-            // later session, disclaimerSeen from the bootstrap default).
-            // Sync React state too so subsequent reads (e.g., the
-            // disclaimer "I understand" handler) see the latest meta and
-            // don't accidentally drop demoSeeded by overwriting.
-            const seededMeta = { ...state.meta, demoSeeded: true };
-            setMeta(seededMeta);
-            await saveMeta(seededMeta);
+            // Persist via updateMeta so React state and IndexedDB stay
+            // in sync — subsequent in-memory reads (e.g., the disclaimer
+            // "I understand" handler) see demoSeeded=true.
+            await updateMeta({ demoSeeded: true });
           }
         } else {
           setHistory(state.history);
@@ -404,26 +400,41 @@ export default function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sampleHistoryCount, selectedHistory]);
 
-  const handleDismissSampleNote = useCallback(async () => {
-    const next = { ...meta, sampleNoteDismissed: true };
-    setMeta(next);
+  // updateMeta: single entry point for every meta mutation. Patches the
+  // current React state and writes to IndexedDB in one call, so the
+  // two stores can never drift apart. Replaces a footgun where the
+  // disclaimer "I understand" handler was overwriting meta with
+  // { disclaimerSeen: true } and dropping demoSeeded.
+  //
+  // Uses the functional setMeta form so the patch is applied to the
+  // latest React state, not a closure-captured snapshot. The same
+  // patched object is then persisted, keeping React and IndexedDB
+  // consistent within the same call.
+  const updateMeta = useCallback(async (patch: Partial<AppMeta>) => {
+    let next: AppMeta = { disclaimerSeen: false };
+    setMeta((prev) => {
+      next = { ...prev, ...patch };
+      return next;
+    });
     await saveMeta(next);
-  }, [meta]);
+  }, []);
+
+  const handleDismissSampleNote = useCallback(async () => {
+    await updateMeta({ sampleNoteDismissed: true });
+  }, [updateMeta]);
 
   // Persist exam date in IndexedDB (AppMeta.examDate). Replaces the
   // old localStorage key so the value survives cookie/storage clears
   // alongside the rest of the app's metadata.
   const handleSetExamDate = useCallback(async (iso: string) => {
-    const next = { ...meta, examDate: iso };
-    setMeta(next);
-    await saveMeta(next);
+    await updateMeta({ examDate: iso });
     if (iso) {
       const days = Math.ceil((new Date(iso).getTime() - Date.now()) / 86400000);
       setExamDays(Number.isFinite(days) ? days : null);
     } else {
       setExamDays(null);
     }
-  }, [meta]);
+  }, [updateMeta]);
 
   const handleViewSession = useCallback((entry: HistoryEntry) => {
     setSelectedHistory(entry);
@@ -442,7 +453,7 @@ export default function App() {
           and must not be used for patient-care decisions. Practice results are unofficial estimates only.
         </p>
         <div className="mt-4 flex justify-end">
-          <Button onClick={async () => { const m = { ...meta, disclaimerSeen: true }; setMeta(m); await saveMeta(m); }}>I understand</Button>
+          <Button onClick={() => void updateMeta({ disclaimerSeen: true })}>I understand</Button>
         </div>
       </Modal>
 
