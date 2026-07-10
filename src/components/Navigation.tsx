@@ -72,15 +72,37 @@ export function Navigation({
           </div>
           <div className="flex items-center gap-2">
             {/* Exam info pills — always visible, clickable */}
-            {daysUntilExam !== null && daysUntilExam !== undefined && (
+            {daysUntilExam !== undefined && (
               <button
                 type="button"
                 onClick={onNavigateToExamDate}
-                className="flex items-center gap-1.5 rounded-full bg-[var(--muted)] px-2.5 py-1 text-xs font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--primary)]/10"
+                className={cn(
+                  'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors',
+                  daysUntilExam === null
+                    ? 'border border-dashed border-[var(--border)] text-[var(--muted-foreground)] hover:bg-[var(--muted)]'
+                    : 'bg-[var(--muted)] text-[var(--foreground)] hover:bg-[var(--primary)]/10'
+                )}
+                aria-label={daysUntilExam === null ? 'Set exam date' : undefined}
               >
-                <Calendar className="h-3.5 w-3.5 text-[var(--accent)]" />
-                <span className="hidden sm:inline">{daysUntilExam > 0 ? `${daysUntilExam}d to exam` : daysUntilExam === 0 ? 'Exam today' : 'Exam passed'}</span>
-                <span className="sm:hidden">{daysUntilExam > 0 ? `${daysUntilExam}d` : daysUntilExam === 0 ? 'Today' : 'Passed'}</span>
+                <Calendar className={cn('h-3.5 w-3.5', daysUntilExam === null ? 'text-[var(--muted-foreground)]' : 'text-[var(--accent)]')} />
+                <span className="hidden sm:inline">
+                  {daysUntilExam === null
+                    ? 'Set exam date'
+                    : daysUntilExam > 0
+                      ? `${daysUntilExam}d to exam`
+                      : daysUntilExam === 0
+                        ? 'Exam today'
+                        : 'Exam passed'}
+                </span>
+                <span className="sm:hidden">
+                  {daysUntilExam === null
+                    ? 'Set date'
+                    : daysUntilExam > 0
+                      ? `${daysUntilExam}d`
+                      : daysUntilExam === 0
+                        ? 'Today'
+                        : 'Passed'}
+                </span>
               </button>
             )}
             {targetScore !== undefined && (

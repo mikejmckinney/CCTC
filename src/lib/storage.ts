@@ -4,7 +4,7 @@ import { pruneStaleFlags } from './sessionPersistence';
 import type { ActiveSession, AppMeta, HistoryEntry, ItemFlag, Question, SessionSettings } from '../types/exam';
 
 export const DB_NAME = 'cctc-app';
-export const DB_VERSION = 1;
+export const DB_VERSION = 2;
 export const KV_STORE = 'kv';
 export const HISTORY_STORE = 'history';
 export const FLAGS_STORE = 'flags';
@@ -13,9 +13,63 @@ export const META_KEY = 'app-meta';
 export const SETTINGS_KEY = 'settings';
 export const ACTIVE_SESSION_KEY = 'active-session';
 
+interface LegacySessionItemSnapshot {
+  itemId: string;
+  question?: Question;
+  optionOrder: string[];
+  categoryId: string;
+  categoryLabel: string;
+}
+
+function migrateSessionItem(item: LegacySessionItemSnapshot): { itemId: string; optionOrder: string[]; categoryId: string; categoryLabel: string } {
+  // v1 had a full Question embedded; v2 drops it and resolves at render time.
+  // The other fields (itemId, optionOrder, categoryId, categoryLabel) are
+  // already in the v2 shape, so we just strip `question` if present.
+  return {
+    itemId: item.itemId,
+    optionOrder: item.optionOrder,
+    categoryId: item.categoryId,
+    categoryLabel: item.categoryLabel,
+  };
+}
+
+// idb's upgrade callback signature: (db, oldVersion, newVersion, transaction, event).
+// We only need the transaction. Importing the type directly avoids reaching
+// into the openDB parameter list, which is awkward to type-narrow.
+type UpgradeTransaction = {
+  objectStore: (name: string) => {
+    getAll: () => Promise<unknown>;
+    get: (key: IDBValidKey) => Promise<unknown>;
+    put: (value: unknown, key?: IDBValidKey) => Promise<unknown>;
+  };
+};
+
+async function migrateV1ToV2(
+  tx: UpgradeTransaction,
+  historyEntries: Array<{ id?: string; items?: LegacySessionItemSnapshot[] }>,
+  activeSession: { items?: LegacySessionItemSnapshot[] } | undefined
+): Promise<void> {
+  // v1 stored a full Question in each SessionItemSnapshot. v2 stores
+  // only the lightweight metadata (itemId, optionOrder, categoryId,
+  // categoryLabel). Strip `question` from every history entry and the
+  // active session in a single upgrade transaction.
+  for (const entry of historyEntries) {
+    if (Array.isArray(entry.items)) {
+      entry.items = entry.items.map(migrateSessionItem);
+      if (entry.id !== undefined) {
+        await tx.objectStore('history').put(entry);
+      }
+    }
+  }
+  if (activeSession && Array.isArray(activeSession.items)) {
+    activeSession.items = activeSession.items.map(migrateSessionItem);
+    await tx.objectStore('kv').put(activeSession, ACTIVE_SESSION_KEY);
+  }
+}
+
 export async function getDb() {
   return openDB(DB_NAME, DB_VERSION, {
-    upgrade(db) {
+    async upgrade(db, oldVersion, _newVersion, tx) {
       if (!db.objectStoreNames.contains(KV_STORE)) {
         db.createObjectStore(KV_STORE);
       }
@@ -24,6 +78,14 @@ export async function getDb() {
       }
       if (!db.objectStoreNames.contains(FLAGS_STORE)) {
         db.createObjectStore(FLAGS_STORE, { keyPath: 'id' });
+      }
+      // v1 -> v2: drop embedded Question from session item snapshots
+      // inside the upgrade transaction so the migration is atomic
+      // with the schema change.
+      if (oldVersion < 2) {
+        const historyEntries = (await tx.objectStore('history').getAll()) as Array<{ id?: string; items?: LegacySessionItemSnapshot[] }>;
+        const activeSession = (await tx.objectStore('kv').get(ACTIVE_SESSION_KEY)) as { items?: LegacySessionItemSnapshot[] } | undefined;
+        await migrateV1ToV2(tx, historyEntries, activeSession);
       }
     }
   });

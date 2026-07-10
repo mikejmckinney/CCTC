@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
 import { cn } from '../lib/cn';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Progress } from '../components/ui';
-import type { HistoryEntry } from '../types/exam';
+import { lookupQuestion } from '../lib/bankLookup';
+import type { HistoryEntry, Question } from '../types/exam';
 import {
   ChevronRight, CheckCircle2, XCircle, ArrowLeft, Flag,
   Filter, ListChecks, X, Search
@@ -9,6 +10,7 @@ import {
 
 interface ReviewProps {
   entry: HistoryEntry;
+  questionIndex: Map<string, Question>;
   onBack: () => void;
   onReport: (itemId: string) => void;
 }
@@ -39,7 +41,7 @@ function HighlightedSpan({ text, query }: { text: string; query: string }) {
   })}</span>;
 }
 
-export function Review({ entry, onBack, onReport }: ReviewProps) {
+export function Review({ entry, questionIndex, onBack, onReport }: ReviewProps) {
   const [filter, setFilter] = useState<FilterMode>('all');
   const [domainFilter, setDomainFilter] = useState<string | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -49,29 +51,34 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
 
   const filterCounts = useMemo(() => {
     const all = entry.items.length;
-    const incorrect = entry.items.filter((i) => entry.answers[i.itemId] !== i.question.correct).length;
+    const incorrect = entry.items.filter((i) => {
+      const q = lookupQuestion(questionIndex, i.itemId);
+      return q ? entry.answers[i.itemId] !== q.correct : false;
+    }).length;
     return { all, incorrect, correct: all - incorrect };
-  }, [entry]);
+  }, [entry, questionIndex]);
 
   // Search uses simple .includes() — fast for <1000 questions, no fuzzy matching overhead
   const filteredItems = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     return entry.items.filter((item) => {
+      const question = lookupQuestion(questionIndex, item.itemId);
+      if (!question) return false;
       const answer = entry.answers[item.itemId];
-      const isCorrect = answer === item.question.correct;
+      const isCorrect = answer === question.correct;
       const matchesFilter =
         filter === 'all' ||
         (filter === 'correct' && isCorrect) ||
         (filter === 'incorrect' && !isCorrect);
       const matchesDomain = !domainFilter || item.categoryId === domainFilter;
       const matchesSearch = !q ||
-        item.question.stem.toLowerCase().includes(q) ||
-        item.question.options.some((o) => o.text.toLowerCase().includes(q)) ||
-        item.question.explanation.rationale_correct.toLowerCase().includes(q) ||
-        item.question.id.toLowerCase().includes(q);
+        question.stem.toLowerCase().includes(q) ||
+        question.options.some((o) => o.text.toLowerCase().includes(q)) ||
+        question.explanation.rationale_correct.toLowerCase().includes(q) ||
+        question.id.toLowerCase().includes(q);
       return matchesFilter && matchesDomain && matchesSearch;
     });
-  }, [entry, filter, domainFilter, searchQuery]);
+  }, [entry, filter, domainFilter, searchQuery, questionIndex]);
 
   return (
     <div className="space-y-4">
@@ -202,8 +209,10 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
       ) : (
         <div className="space-y-2">
           {filteredItems.map((item, idx) => {
+            const question = lookupQuestion(questionIndex, item.itemId);
+            if (!question) return null;
             const answer = entry.answers[item.itemId];
-            const isCorrect = answer === item.question.correct;
+            const isCorrect = answer === question.correct;
             const isExpanded = expandedIndex === idx;
 
             return (
@@ -223,9 +232,9 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                   </span>
                   <div className="flex-1 min-w-0">
                     {/* Question ID */}
-                    <p className="text-[10px] text-[var(--muted-foreground)] mb-0.5 font-mono">{item.question.id}</p>
+                    <p className="text-[10px] text-[var(--muted-foreground)] mb-0.5 font-mono">{question.id}</p>
                     <p className="text-[13px] text-[var(--foreground)] leading-relaxed">
-                      <HighlightedSpan text={item.question.stem} query={searchQuery} />
+                      <HighlightedSpan text={question.stem} query={searchQuery} />
                     </p>
                     {/* User's actual choice text + correct answer */}
                     <div className="mt-1.5 space-y-0.5">
@@ -233,7 +242,7 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                         Your answer:{' '}
                         <strong className={cn(isCorrect ? 'text-[var(--success)]' : 'text-[var(--destructive)]')}>
                           {answer
-                            ? <HighlightedSpan text={`${String.fromCharCode(65 + item.optionOrder.indexOf(answer))}. ${item.question.options.find(o => o.id === answer)?.text ?? ''}`} query={searchQuery} />
+                            ? <HighlightedSpan text={`${String.fromCharCode(65 + item.optionOrder.indexOf(answer))}. ${question.options.find(o => o.id === answer)?.text ?? ''}`} query={searchQuery} />
                             : '—'}
                         </strong>
                       </p>
@@ -241,7 +250,7 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                         <p className="text-xs text-[var(--success)]">
                           Correct:{' '}
                           <strong>
-                            <HighlightedSpan text={`${String.fromCharCode(65 + item.optionOrder.indexOf(item.question.correct))}. ${item.question.options.find(o => o.id === item.question.correct)?.text ?? ''}`} query={searchQuery} />
+                            <HighlightedSpan text={`${String.fromCharCode(65 + item.optionOrder.indexOf(question.correct))}. ${question.options.find(o => o.id === question.correct)?.text ?? ''}`} query={searchQuery} />
                           </strong>
                         </p>
                       )}
@@ -256,11 +265,11 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                 {/* Expanded details */}
                 {isExpanded && (
                   <CardContent className="pt-0 space-y-4 border-t border-[var(--border)]">
-                    <h3 className="text-base font-semibold text-[var(--foreground)] leading-relaxed">{item.question.stem}</h3>
+                    <h3 className="text-base font-semibold text-[var(--foreground)] leading-relaxed">{question.stem}</h3>
 
-                    {item.question.elements && (
+                    {question.elements && (
                       <ol className="list-inside list-alpha space-y-1 text-sm text-[var(--foreground)]">
-                        {item.question.elements.map((el) => (
+                        {question.elements.map((el) => (
                           <li key={el.id}><strong>{el.id}.</strong> {el.text}</li>
                         ))}
                       </ol>
@@ -269,10 +278,10 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                     {/* Options */}
                     <div className="space-y-2">
                       {item.optionOrder.map((optionId, optIdx) => {
-                        const option = item.question.options.find((o) => o.id === optionId);
+                        const option = question.options.find((o) => o.id === optionId);
                         if (!option) return null;
                         const selected = answer === option.id;
-                        const correct = item.question.correct === option.id;
+                        const correct = question.correct === option.id;
                         const letter = String.fromCharCode(65 + optIdx);
 
                         return (
@@ -309,23 +318,23 @@ export function Review({ entry, onBack, onReport }: ReviewProps) {
                     {/* Explanation */}
                     <div className="rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4 space-y-2">
                       <p className="text-sm">
-                        <strong className="text-[var(--success)]">Correct answer ({String.fromCharCode(65 + item.optionOrder.indexOf(item.question.correct))}):</strong>{' '}
-                        {item.question.explanation.rationale_correct}
+                        <strong className="text-[var(--success)]">Correct answer ({String.fromCharCode(65 + item.optionOrder.indexOf(question.correct))}):</strong>{' '}
+                        {question.explanation.rationale_correct}
                       </p>
                       {item.optionOrder
-                        .filter((optId) => optId !== item.question.correct && item.question.explanation.rationale_incorrect[optId])
+                        .filter((optId) => optId !== question.correct && question.explanation.rationale_incorrect[optId])
                         .map((optId) => {
                           const displayLetter = String.fromCharCode(65 + item.optionOrder.indexOf(optId));
                           return (
                             <p key={optId} className="text-sm text-[var(--muted-foreground)]">
-                              <strong>{displayLetter}:</strong> {item.question.explanation.rationale_incorrect[optId]}
+                              <strong>{displayLetter}:</strong> {question.explanation.rationale_incorrect[optId]}
                             </p>
                           );
                         })}
-                      {item.question.references.length > 0 && (
+                      {question.references.length > 0 && (
                         <div className="pt-2 border-t border-[var(--border)]">
                           <p className="text-xs font-medium text-[var(--muted-foreground)] mb-1">References</p>
-                          {item.question.references.map((ref, i) => (
+                          {question.references.map((ref, i) => (
                             <p key={i} className="text-xs">
                               {ref.url ? (
                                 <a href={ref.url} target="_blank" rel="noreferrer" className="text-[var(--primary)] hover:underline">{ref.citation}</a>

@@ -1,6 +1,7 @@
-import type { HistoryEntry } from '../types/exam';
+import type { HistoryEntry, Question } from '../types/exam';
 import { getBlueprint } from '../data/blueprints';
 import { getDomainShortLabel } from './domains';
+import { lookupQuestion } from './bankLookup';
 
 /**
  * Exponential Moving Average smoothing factor.
@@ -131,13 +132,18 @@ export function computeReadiness(history: HistoryEntry[], target: number = 70): 
   return { overallEma, domains, totalSessions: chronological.length, recentTrend, weakDomains };
 }
 
-export function computeSpacedRepetition(history: HistoryEntry[]): string[] {
+export function computeSpacedRepetition(
+  history: HistoryEntry[],
+  questionIndex: Map<string, Question>
+): string[] {
   const incorrectMap = new Map<string, { count: number; lastSeen: string }>();
 
   for (const entry of [...history].sort((a, b) => a.completedAt.localeCompare(b.completedAt))) {
     for (const item of entry.items) {
+      const question = lookupQuestion(questionIndex, item.itemId);
+      if (!question) continue;
       const answer = entry.answers[item.itemId];
-      if (answer !== item.question.correct) {
+      if (answer !== question.correct) {
         const existing = incorrectMap.get(item.itemId);
         incorrectMap.set(item.itemId, {
           count: (existing?.count ?? 0) + 1,

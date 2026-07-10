@@ -12,6 +12,7 @@ import { buildRecentItemIds } from '../lib/sessionPersistence';
 import { scoreSession, toHistoryEntry } from '../lib/scoring';
 import { computeSpacedRepetition } from '../lib/readiness';
 import { generateDemoHistory, generateDemoFlags } from '../lib/demoData';
+import { buildQuestionIndex, lookupQuestion } from '../lib/bankLookup';
 import { useConfirm } from '../lib/useConfirm';
 import {
   bootstrapState, clearActiveSession, clearHistory, clearSampleHistory, deleteFlag,
@@ -49,11 +50,15 @@ export default function App() {
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [pendingSettingNav, setPendingSettingNav] = useState<'examDate' | 'targetScore' | null>(null);
   const [examDays, setExamDays] = useState<number | null>(() => {
-    try {
-      const d = localStorage.getItem('cctc-exam-date');
-      return d ? Math.ceil((new Date(d).getTime() - Date.now()) / 86400000) : null;
-    } catch { return null; }
+    // Read from meta after bootstrap; this lazy init only runs on first render
+    // and meta is set shortly after in the bootstrap effect, so we use a
+    // separate state that's kept in sync via onExamDateChanged.
+    return null;
   });
+
+  // Build an O(1) id -> Question index from the live bank. This is the
+  // single source of truth for question lookups at render time, used by
+  // Session, Review, scoring, and spaced-repetition.
   const lastFingerprint = useRef('');
   const activeSessionRef = useRef<ActiveSession | null>(null);
 
@@ -67,6 +72,8 @@ export default function App() {
     [banks]
   );
 
+  const questionIndex = useMemo(() => buildQuestionIndex(allQuestions), [allQuestions]);
+
   // Bootstrap from IndexedDB — seed sample data on first load
   useEffect(() => {
     let cancelled = false;
@@ -76,6 +83,12 @@ export default function App() {
         setMeta(state.meta);
         if (state.settings) setSettings(state.settings);
         setActiveSession(state.activeSession);
+
+        // Recompute exam-days pill from meta.examDate (IndexedDB).
+        if (state.meta?.examDate) {
+          const days = Math.ceil((new Date(state.meta.examDate).getTime() - Date.now()) / 86400000);
+          setExamDays(Number.isFinite(days) ? days : null);
+        }
 
         // Seed sample data if IndexedDB is empty AND not previously seeded.
         // The sample is deterministic (mulberry32 seeded by session index) so
@@ -178,8 +191,8 @@ export default function App() {
     if (session.remainingSeconds === 0 && activeSessionRef.current?.remainingSeconds === 0) return; // already fired
 
     // Mark session so this effect doesn't fire again
-    const completed = { ...session, submittedAt: new Date().toISOString(), result: scoreSession(session.settings.blueprintId, session.items, session.answers, session.settings.targetThreshold), updatedAt: new Date().toISOString() };
-    const entry = toHistoryEntry(completed);
+    const completed = { ...session, submittedAt: new Date().toISOString(), result: scoreSession(session.settings.blueprintId, session.items, session.answers, session.settings.targetThreshold, questionIndex), updatedAt: new Date().toISOString() };
+    const entry = toHistoryEntry(completed, questionIndex);
     void saveHistoryEntry(entry).then(() => clearActiveSession()).then(() => {
       setHistory((prev) => [entry, ...prev]);
       setSelectedHistory(entry);
@@ -262,9 +275,9 @@ export default function App() {
         const current = activeSessionRef.current;
         if (!current) return;
         setIsFinalizing(true);
-        const result = scoreSession(current.settings.blueprintId, current.items, current.answers, current.settings.targetThreshold);
+        const result = scoreSession(current.settings.blueprintId, current.items, current.answers, current.settings.targetThreshold, questionIndex);
         const completed = { ...current, submittedAt: new Date().toISOString(), result, updatedAt: new Date().toISOString() };
-        const entry = toHistoryEntry(completed);
+        const entry = toHistoryEntry(completed, questionIndex);
         void saveHistoryEntry(entry).then(() => clearActiveSession()).then(() => {
           setHistory((prev) => [entry, ...prev]);
           setSelectedHistory(entry);
@@ -278,10 +291,11 @@ export default function App() {
 
   // Report item
   const handleReport = useCallback((item?: Question, sessionId?: string) => {
-    const q = item ?? activeSession?.items[activeSession.currentIndex]?.question;
+    const currentItem = activeSession?.items[activeSession.currentIndex];
+    const q = item ?? (currentItem ? lookupQuestion(questionIndex, currentItem.itemId) : undefined);
     const sid = sessionId ?? activeSession?.id ?? '';
     if (q) setFlagDraft({ item: q, sessionId: sid, reason: 'factual error', comment: '' });
-  }, [activeSession]);
+  }, [activeSession, questionIndex]);
 
   const handleSaveReport = useCallback(async () => {
     if (!flagDraft) return;
@@ -389,6 +403,21 @@ export default function App() {
     await saveMeta(next);
   }, [meta]);
 
+  // Persist exam date in IndexedDB (AppMeta.examDate). Replaces the
+  // old localStorage key so the value survives cookie/storage clears
+  // alongside the rest of the app's metadata.
+  const handleSetExamDate = useCallback(async (iso: string) => {
+    const next = { ...meta, examDate: iso };
+    setMeta(next);
+    await saveMeta(next);
+    if (iso) {
+      const days = Math.ceil((new Date(iso).getTime() - Date.now()) / 86400000);
+      setExamDays(Number.isFinite(days) ? days : null);
+    } else {
+      setExamDays(null);
+    }
+  }, [meta]);
+
   const handleViewSession = useCallback((entry: HistoryEntry) => {
     setSelectedHistory(entry);
     setPage('review');
@@ -475,13 +504,16 @@ export default function App() {
           <Dashboard
             history={history}
             settings={settings}
+            examDate={meta.examDate ?? ''}
+            questionIndex={questionIndex}
             sampleNoteVisible={history.some((e) => e.sample === true) && !meta.sampleNoteDismissed}
             onDismissSampleNote={() => void handleDismissSampleNote()}
             onRemoveSampleData={() => void handleRemoveSampleData()}
+            onSetExamDate={handleSetExamDate}
             onStartExam={() => handleStartSession({ mode: 'exam', questionCount: 175, timed: true, timeMinutes: 180 })}
             onStartQuick={() => handleStartSession({ mode: 'study', questionCount: 25, timed: true, timeMinutes: 30 })}
             onStartWeakAreas={(domains) => {
-              const allMissed = computeSpacedRepetition(history);
+              const allMissed = computeSpacedRepetition(history, questionIndex);
               const filtered = domains.length > 0
                 ? allMissed.filter((id) => {
                     const q = bank.questions.find((qq) => qq.id === id);
@@ -497,10 +529,13 @@ export default function App() {
             pendingSettingNav={pendingSettingNav}
             onClearPendingNav={() => setPendingSettingNav(null)}
             onExamDateChanged={() => {
-              try {
-                const d = localStorage.getItem('cctc-exam-date');
-                setExamDays(d ? Math.ceil((new Date(d).getTime() - Date.now()) / 86400000) : null);
-              } catch { setExamDays(null); }
+              // Re-read from meta (already updated synchronously by handleSetExamDate).
+              if (meta.examDate) {
+                const days = Math.ceil((new Date(meta.examDate).getTime() - Date.now()) / 86400000);
+                setExamDays(Number.isFinite(days) ? days : null);
+              } else {
+                setExamDays(null);
+              }
             }}
           />
         )}
@@ -540,6 +575,7 @@ export default function App() {
         {page === 'session' && activeSession && (
           <SessionView
             session={activeSession}
+            questionIndex={questionIndex}
             onAnswer={handleAnswer}
             onNavigate={handleNavigateSession}
             onToggleBookmark={handleToggleBookmark}
@@ -559,6 +595,7 @@ export default function App() {
         {page === 'review' && selectedHistory && (
           <Review
             entry={selectedHistory}
+            questionIndex={questionIndex}
             onBack={() => setPage('history')}
             onReport={(itemId) => {
               const q = allQuestions.find((qq) => qq.id === itemId);

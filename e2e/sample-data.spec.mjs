@@ -46,6 +46,35 @@ test.describe('sample data', () => {
     expect(await page.getByText('Sample', { exact: true }).count()).toBeGreaterThan(0);
   });
 
+  test('Sample session rows show the original question counts (175/100/50/25), not a flat 50', async ({ page }) => {
+    await page.goto('./');
+    await ensureAppReady(page);
+    await dismissDisclaimerIfPresent(page);
+
+    await page.getByRole('button', { name: 'Progress' }).click();
+    await expect(page.getByText('Progress Over Time')).toBeVisible();
+
+    // The seeded fixture mixes 175q exam, 100q exam, 50q study, 30q study, 25q study.
+    // We assert that the largest (175q) and a smaller (25q) are both present
+    // — that proves the count is per-session, not a uniform cap.
+    const sessionListText = await page.locator('main').first().innerText();
+    expect(sessionListText).toMatch(/175q/);
+    expect(sessionListText).toMatch(/25q/);
+    // And 50q-cap-everything would have replaced the 100q rows.
+    expect(sessionListText).toMatch(/100q/);
+  });
+
+  test('Exam date pill is always visible, with placeholder when no date is set', async ({ page }) => {
+    await page.goto('./');
+    await ensureAppReady(page);
+    await dismissDisclaimerIfPresent(page);
+
+    // The pill should always render in the header. First-time users
+    // (no exam date in IndexedDB) see a "Set exam date" placeholder.
+    const setButton = page.getByRole('button', { name: /set exam date/i });
+    await expect(setButton).toBeVisible();
+  });
+
   test('Remove sample data keeps non-sample entries; deletes sample ones', async ({ page }) => {
     await page.goto('./');
     await ensureAppReady(page);

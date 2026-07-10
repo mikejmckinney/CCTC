@@ -1,10 +1,12 @@
 import { cn } from '../lib/cn';
 import { Card, CardContent, Button, Badge } from '../components/ui';
-import type { ActiveSession } from '../types/exam';
+import { lookupQuestion } from '../lib/bankLookup';
+import type { ActiveSession, Question } from '../types/exam';
 import { ChevronLeft, ChevronRight, Flag, Bookmark, Clock, CheckCircle2, XCircle } from 'lucide-react';
 
 interface SessionViewProps {
   session: ActiveSession;
+  questionIndex: Map<string, Question>;
   onAnswer: (optionId: string) => void;
   onNavigate: (direction: -1 | 1) => void;
   onToggleBookmark: () => void;
@@ -14,10 +16,12 @@ interface SessionViewProps {
 }
 
 export function SessionView({
-  session, onAnswer, onNavigate, onToggleBookmark, onReport, onSubmit, onGoToQuestion
+  session, questionIndex, onAnswer, onNavigate, onToggleBookmark, onReport, onSubmit, onGoToQuestion
 }: SessionViewProps) {
   const currentItem = session.items[session.currentIndex];
   if (!currentItem) return null;
+  const currentQuestion = lookupQuestion(questionIndex, currentItem.itemId);
+  if (!currentQuestion) return null;
 
   const answeredCount = Object.values(session.answers).filter(Boolean).length;
   const isStudy = session.settings.mode === 'study';
@@ -59,19 +63,19 @@ export function SessionView({
         <CardContent className="p-6 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="default">{currentItem.categoryLabel}</Badge>
-            <Badge variant={currentItem.question.status === 'reviewed' ? 'success' : 'warning'}>
-              {currentItem.question.status}
+            <Badge variant={currentQuestion.status === 'reviewed' ? 'success' : 'warning'}>
+              {currentQuestion.status}
             </Badge>
             <Badge variant="secondary">
-              {currentItem.question.type === 'one_best' ? 'Single Best' : 'Complex Combo'}
+              {currentQuestion.type === 'one_best' ? 'Single Best' : 'Complex Combo'}
             </Badge>
           </div>
 
-          <h2 className="text-lg font-semibold text-[var(--foreground)] leading-relaxed">{currentItem.question.stem}</h2>
+          <h2 className="text-lg font-semibold text-[var(--foreground)] leading-relaxed">{currentQuestion.stem}</h2>
 
-          {currentItem.question.elements && (
+          {currentQuestion.elements && (
             <ol className="list-inside list-alpha space-y-1 text-sm text-[var(--foreground)]">
-              {currentItem.question.elements.map((el) => (
+              {currentQuestion.elements.map((el) => (
                 <li key={el.id}><strong>{el.id}.</strong> {el.text}</li>
               ))}
             </ol>
@@ -80,10 +84,10 @@ export function SessionView({
           {/* Options */}
           <div className="space-y-2" role="radiogroup" aria-label="Answer choices">
             {currentItem.optionOrder.map((optionId, idx) => {
-              const option = currentItem.question.options.find((o) => o.id === optionId);
+              const option = currentQuestion.options.find((o) => o.id === optionId);
               if (!option) return null;
               const selected = session.answers[currentItem.itemId] === option.id;
-              const correct = currentItem.question.correct === option.id;
+              const correct = currentQuestion.correct === option.id;
               const letter = String.fromCharCode(65 + idx);
 
               return (
@@ -95,7 +99,7 @@ export function SessionView({
                     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
                       e.preventDefault();
                       const nextIdx = (currentIdx + 1) % currentItem.optionOrder.length;
-                      const nextOption = currentItem.question.options.find((o) => o.id === currentItem.optionOrder[nextIdx]);
+                      const nextOption = currentQuestion.options.find((o) => o.id === currentItem.optionOrder[nextIdx]);
                       if (nextOption) {
                         onAnswer(nextOption.id);
                         // Move focus to the next radio button
@@ -105,7 +109,7 @@ export function SessionView({
                     } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
                       e.preventDefault();
                       const prevIdx = (currentIdx - 1 + currentItem.optionOrder.length) % currentItem.optionOrder.length;
-                      const prevOption = currentItem.question.options.find((o) => o.id === currentItem.optionOrder[prevIdx]);
+                      const prevOption = currentQuestion.options.find((o) => o.id === currentItem.optionOrder[prevIdx]);
                       if (prevOption) {
                         onAnswer(prevOption.id);
                         const buttons = e.currentTarget.parentElement?.querySelectorAll<HTMLElement>('[role="radio"]');
@@ -145,19 +149,19 @@ export function SessionView({
           {/* Explanation (study mode or after submit) */}
           {isRevealed && (
             <div className="rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4 space-y-2">
-              <p className="text-sm"><strong className="text-[var(--success)]">Correct ({String.fromCharCode(65 + currentItem.optionOrder.indexOf(currentItem.question.correct))}):</strong> {currentItem.question.explanation.rationale_correct}</p>
+              <p className="text-sm"><strong className="text-[var(--success)]">Correct ({String.fromCharCode(65 + currentItem.optionOrder.indexOf(currentQuestion.correct))}):</strong> {currentQuestion.explanation.rationale_correct}</p>
               {currentItem.optionOrder
-                .filter((optId) => optId !== currentItem.question.correct && currentItem.question.explanation.rationale_incorrect[optId])
+                .filter((optId) => optId !== currentQuestion.correct && currentQuestion.explanation.rationale_incorrect[optId])
                 .map((optId) => {
                   const displayLetter = String.fromCharCode(65 + currentItem.optionOrder.indexOf(optId));
                   return (
-                    <p key={optId} className="text-sm text-[var(--muted-foreground)]"><strong>{displayLetter}:</strong> {currentItem.question.explanation.rationale_incorrect[optId]}</p>
+                    <p key={optId} className="text-sm text-[var(--muted-foreground)]"><strong>{displayLetter}:</strong> {currentQuestion.explanation.rationale_incorrect[optId]}</p>
                   );
                 })}
-              {currentItem.question.references.length > 0 && (
+              {currentQuestion.references.length > 0 && (
                 <div className="pt-2 border-t border-[var(--border)]">
                   <p className="text-xs font-medium text-[var(--muted-foreground)] mb-1">References</p>
-                  {currentItem.question.references.map((ref, i) => (
+                  {currentQuestion.references.map((ref, i) => (
                     <p key={i} className="text-xs">
                       {ref.url ? <a href={ref.url} target="_blank" rel="noreferrer" className="text-[var(--primary)] hover:underline">{ref.citation}</a> : ref.citation}
                       {ref.locator && <span className="text-[var(--muted-foreground)]"> — {ref.locator}</span>}

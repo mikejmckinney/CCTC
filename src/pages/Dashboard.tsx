@@ -5,7 +5,7 @@ import { RadialGauge } from '../components/ui/RadialGauge';
 import { computeReadiness, computeSpacedRepetition } from '../lib/readiness';
 import { formatDuration } from '../lib/format';
 import { getDomainShortLabel } from '../lib/domains';
-import type { HistoryEntry, SessionSettings, QuestionSet } from '../types/exam';
+import type { HistoryEntry, SessionSettings, QuestionSet, Question } from '../types/exam';
 import { getBlueprintLabel } from '../data/blueprints';
 import {
   Play, Zap, Target, Clock, BookOpen, CheckCircle2,
@@ -16,9 +16,12 @@ import {
 interface DashboardProps {
   history: HistoryEntry[];
   settings: SessionSettings;
+  examDate: string;
+  questionIndex: Map<string, Question>;
   sampleNoteVisible: boolean;
   onDismissSampleNote: () => void;
   onRemoveSampleData: () => void;
+  onSetExamDate: (iso: string) => void;
   onStartExam: () => void;
   onStartQuick: () => void;
   onStartWeakAreas: (domains: string[]) => void;
@@ -147,18 +150,15 @@ function CategoryBar({ name, percent, examWeight, isStrong, isLargestGap }: {
 }
 
 export function Dashboard({
-  history, settings, sampleNoteVisible, onDismissSampleNote, onRemoveSampleData,
-  onStartExam, onStartQuick, onStartWeakAreas,
+  history, settings, examDate, questionIndex, sampleNoteVisible, onDismissSampleNote, onRemoveSampleData,
+  onSetExamDate, onStartExam, onStartQuick, onStartWeakAreas,
   onStartCustom, onUpdateSettings, onGoToHistory, onViewSession,
   pendingSettingNav, onClearPendingNav, onExamDateChanged
 }: DashboardProps) {
   const target = settings.targetThreshold;
   const readiness = useMemo(() => computeReadiness(history, target), [history, target]);
-  const spacedCount = useMemo(() => computeSpacedRepetition(history).length, [history]);
+  const spacedCount = useMemo(() => computeSpacedRepetition(history, questionIndex).length, [history, questionIndex]);
   const [showSetup, setShowSetup] = useState(false);
-  const [examDate, setExamDate] = useState(() => {
-    try { return localStorage.getItem('cctc-exam-date') || ''; } catch { return ''; }
-  });
   const [targetScore, setTargetScore] = useState(settings.targetThreshold);
 
   const daysUntilExam = examDate ? Math.ceil((new Date(examDate).getTime() - Date.now()) / 86400000) : null;
@@ -214,8 +214,7 @@ export function Dashboard({
   }, [showEmaTooltip]);
 
   const handleExamDateChange = (value: string) => {
-    setExamDate(value);
-    try { localStorage.setItem('cctc-exam-date', value); } catch {}
+    onSetExamDate?.(value);
     onExamDateChanged?.();
   };
 

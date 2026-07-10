@@ -129,9 +129,20 @@ export interface SessionSettings {
   targetThreshold: number;
 }
 
+/**
+ * Lightweight per-item reference inside a session. The full Question is
+ * NOT embedded — it is resolved at render time from the live bank via
+ * `lookupQuestion(bank, itemId)`. This keeps per-session storage O(items)
+ * rather than O(items × Question), which mattered once the demo data
+ * was expanded to the full 175/100/50/25 question counts.
+ *
+ * `optionOrder` captures the per-session shuffle of the option ids so a
+ * later review can show the same answer-letter mapping the user saw.
+ * `categoryId` / `categoryLabel` are denormalized so the session
+ * result breakdown can be rendered without a bank lookup.
+ */
 export interface SessionItemSnapshot {
   itemId: string;
-  question: Question;
   optionOrder: string[];
   categoryId: string;
   categoryLabel: string;
@@ -213,6 +224,13 @@ export interface AppMeta {
    * true on dismiss and never auto-reset.
    */
   sampleNoteDismissed?: boolean;
+  /**
+   * ISO-8601 date string for the user's exam date. Stored in IndexedDB
+   * (via AppMeta) so it survives cookie/storage clears, alongside the
+   * rest of the app's metadata. When unset, the header shows a
+   * "Set exam date" pill placeholder.
+   */
+  examDate?: string;
 }
 
 export interface LoadedBank {
