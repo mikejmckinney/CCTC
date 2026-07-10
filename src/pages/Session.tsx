@@ -232,8 +232,9 @@ export function SessionView({
 }
 
 function formatTime(seconds: number): string {
-  const h = Math.floor(seconds / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  const s = seconds % 60;
+  const safe = typeof seconds === 'number' && seconds >= 0 ? seconds : 0;
+  const h = Math.floor(safe / 3600);
+  const m = Math.floor((safe % 3600) / 60);
+  const s = safe % 60;
   return [h, m, s].map((v) => String(v).padStart(2, '0')).join(':');
 }

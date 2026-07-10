@@ -172,21 +172,12 @@ export function Dashboard({
   const navigateToSetting = useCallback((field: 'examDate' | 'targetScore') => {
     setShowSetup(true);
     requestAnimationFrame(() => {
-      setTimeout(() => {
-        const ref = field === 'examDate' ? examDateRef : targetScoreRef;
-        if (ref.current) {
-          ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          ref.current.focus();
-          ref.current.style.outline = '2px solid var(--ring)';
-          ref.current.style.outlineOffset = '2px';
-          setTimeout(() => {
-            if (ref.current) {
-              ref.current.style.outline = '';
-              ref.current.style.outlineOffset = '';
-            }
-          }, 2000);
-        }
-      }, 100);
+      const ref = field === 'examDate' ? examDateRef : targetScoreRef;
+      if (ref.current) {
+        ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        ref.current.focus();
+        // Use CSS :focus-visible for the ring effect — no JS outline hack needed
+      }
     });
   }, []);
 
@@ -204,6 +195,8 @@ export function Dashboard({
     if (!showEmaTooltip) return;
     const close = () => setShowEmaTooltip(false);
     const handler = (e: PointerEvent) => {
+      // Don't close on text selection gestures
+      if (e.pointerType === 'mouse' && window.getSelection()?.type === 'Range') return;
       if (tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
         close();
       }

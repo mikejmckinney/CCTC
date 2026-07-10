@@ -23,6 +23,14 @@ function validateBackup(raw: unknown): BackupPayload | null {
   if (p.schema !== 'cctc-backup' || p.version !== 1) return null;
   if (typeof p.exportedAt !== 'string') return null;
   if (!Array.isArray(p.history)) return null;
+  // Validate each history entry has required fields
+  for (const entry of p.history) {
+    if (!entry || typeof entry !== 'object') return null;
+    const e = entry as Record<string, unknown>;
+    if (typeof e.id !== 'string' || typeof e.completedAt !== 'string' || !e.result || typeof e.result !== 'object') {
+      return null;
+    }
+  }
   return raw as BackupPayload;
 }
 

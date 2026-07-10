@@ -167,7 +167,8 @@ export function History({ history, onViewSession, onDeleteSession, onClearAll, o
   const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   useEffect(() => {
     if (chartData.length > 0) hasAnimatedChart.current = true;
-  }, [chartData]);
+    // Reset animation flag when filter changes so chart re-animates
+  }, [chartData.length]);
 
   const chartId = useId();
   const domainIds = Object.keys(domainNames);
