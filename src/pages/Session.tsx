@@ -90,6 +90,29 @@ export function SessionView({
                 <button
                   key={option.id}
                   onClick={() => onAnswer(option.id)}
+                  onKeyDown={(e) => {
+                    const currentIdx = currentItem.optionOrder.indexOf(optionId);
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                      e.preventDefault();
+                      const nextIdx = (currentIdx + 1) % currentItem.optionOrder.length;
+                      const nextOption = currentItem.question.options.find((o) => o.id === currentItem.optionOrder[nextIdx]);
+                      if (nextOption) {
+                        onAnswer(nextOption.id);
+                        // Move focus to the next radio button
+                        const buttons = e.currentTarget.parentElement?.querySelectorAll<HTMLElement>('[role="radio"]');
+                        if (buttons && buttons[nextIdx]) buttons[nextIdx].focus();
+                      }
+                    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                      e.preventDefault();
+                      const prevIdx = (currentIdx - 1 + currentItem.optionOrder.length) % currentItem.optionOrder.length;
+                      const prevOption = currentItem.question.options.find((o) => o.id === currentItem.optionOrder[prevIdx]);
+                      if (prevOption) {
+                        onAnswer(prevOption.id);
+                        const buttons = e.currentTarget.parentElement?.querySelectorAll<HTMLElement>('[role="radio"]');
+                        if (buttons && buttons[prevIdx]) buttons[prevIdx].focus();
+                      }
+                    }
+                  }}
                   className={cn(
                     'flex w-full items-start gap-3 rounded-xl border p-4 text-left transition-all',
                     selected && !isRevealed && 'border-[var(--primary)] bg-[var(--primary)]/5',

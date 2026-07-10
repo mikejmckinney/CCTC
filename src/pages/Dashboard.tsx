@@ -25,6 +25,7 @@ interface DashboardProps {
   onViewSession: (entry: HistoryEntry) => void;
   pendingSettingNav?: 'examDate' | 'targetScore' | null;
   onClearPendingNav?: () => void;
+  onExamDateChanged?: () => void;
 }
 
 type ReadinessVerdict = 'exam-ready' | 'on-pace' | 'on-track' | 'at-risk';
@@ -145,7 +146,7 @@ function CategoryBar({ name, percent, examWeight, isStrong, isLargestGap }: {
 export function Dashboard({
   history, settings, onStartExam, onStartQuick, onStartWeakAreas,
   onStartCustom, onUpdateSettings, onGoToHistory, onViewSession,
-  pendingSettingNav, onClearPendingNav
+  pendingSettingNav, onClearPendingNav, onExamDateChanged
 }: DashboardProps) {
   const target = settings.targetThreshold;
   const readiness = useMemo(() => computeReadiness(history, target), [history, target]);
@@ -218,6 +219,7 @@ export function Dashboard({
   const handleExamDateChange = (value: string) => {
     setExamDate(value);
     try { localStorage.setItem('cctc-exam-date', value); } catch {}
+    onExamDateChanged?.();
   };
 
   return (

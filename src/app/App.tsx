@@ -50,6 +50,12 @@ export default function App() {
   const [clearHistoryConfirm, setClearHistoryConfirm] = useState(false);
   const [clearFlagsConfirm, setClearFlagsConfirm] = useState(false);
   const [pendingSettingNav, setPendingSettingNav] = useState<'examDate' | 'targetScore' | null>(null);
+  const [examDays, setExamDays] = useState<number | null>(() => {
+    try {
+      const d = localStorage.getItem('cctc-exam-date');
+      return d ? Math.ceil((new Date(d).getTime() - Date.now()) / 86400000) : null;
+    } catch { return null; }
+  });
   const lastFingerprint = useRef('');
   const activeSessionRef = useRef<ActiveSession | null>(null);
 
@@ -272,7 +278,16 @@ export default function App() {
   }, []);
 
   const handleExportFlags = useCallback(() => {
-    const blob = new Blob([JSON.stringify({ exportedAt: new Date().toISOString(), flags }, null, 2)], { type: 'application/json' });
+    // Include question context in flag export
+    const enriched = flags.map((flag) => {
+      const q = allQuestions.find((qq) => qq.id === flag.item_id);
+      return {
+        ...flag,
+        questionStem: q?.stem ?? '',
+        questionCorrect: q?.correct ?? '',
+      };
+    });
+    const blob = new Blob([JSON.stringify({ exportedAt: new Date().toISOString(), flags: enriched }, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a'); a.href = url; a.download = 'cctc-flags.json'; a.click();
     URL.revokeObjectURL(url);
@@ -298,8 +313,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pb-16 sm:pb-0">
-      {/* Disclaimer */}
-      <Modal open={!meta.disclaimerSeen} onClose={() => {}} title="Independent Study Aid">
+      {/* Disclaimer — not dismissible, must acknowledge */}
+      <Modal open={!meta.disclaimerSeen} onClose={() => {}} title="Independent Study Aid" dismissible={false}>
         <p className="text-sm text-[var(--muted-foreground)]">
           This practice app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam items,
           and must not be used for patient-care decisions. Practice results are unofficial estimates only.
@@ -422,12 +437,7 @@ export default function App() {
         currentPage={page}
         onNavigate={setPage}
         hasActiveSession={activeSession !== null && !activeSession.submittedAt}
-        daysUntilExam={(() => {
-          try {
-            const d = localStorage.getItem('cctc-exam-date');
-            return d ? Math.ceil((new Date(d).getTime() - Date.now()) / 86400000) : null;
-          } catch { return null; }
-        })()}
+        daysUntilExam={examDays}
         targetScore={settings.targetThreshold}
         onNavigateToExamDate={() => { setPage('dashboard'); setPendingSettingNav('examDate'); }}
         onNavigateToTargetScore={() => { setPage('dashboard'); setPendingSettingNav('targetScore'); }}
@@ -456,6 +466,12 @@ export default function App() {
             onViewSession={handleViewSession}
             pendingSettingNav={pendingSettingNav}
             onClearPendingNav={() => setPendingSettingNav(null)}
+            onExamDateChanged={() => {
+              try {
+                const d = localStorage.getItem('cctc-exam-date');
+                setExamDays(d ? Math.ceil((new Date(d).getTime() - Date.now()) / 86400000) : null);
+              } catch { setExamDays(null); }
+            }}
           />
         )}
 

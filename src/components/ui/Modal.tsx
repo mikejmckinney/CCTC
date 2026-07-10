@@ -9,9 +9,10 @@ interface ModalProps {
   description?: string;
   children: ReactNode;
   className?: string;
+  dismissible?: boolean;
 }
 
-export function Modal({ open, onClose, title, description, children, className }: ModalProps) {
+export function Modal({ open, onClose, title, description, children, className, dismissible = true }: ModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const titleId = useId();
@@ -92,13 +93,15 @@ export function Modal({ open, onClose, title, description, children, className }
           className
         )}
       >
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 rounded-lg p-1 text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
-          aria-label="Close dialog"
-        >
-          <X className="h-4 w-4" />
-        </button>
+        {dismissible && (
+          <button
+            onClick={onClose}
+            className="absolute right-4 top-4 rounded-lg p-1 text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
+            aria-label="Close dialog"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        )}
         {title && <h2 id={titleId} className="text-lg font-semibold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>{title}</h2>}
         {description && <p id={descId} className="mt-1 text-sm text-[var(--muted-foreground)]">{description}</p>}
         <div className={cn('mt-4', title || description ? '' : 'mt-0')}>
