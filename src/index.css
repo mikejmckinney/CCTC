@@ -434,3 +434,163 @@ input[type="range"]:focus-visible {
   z-index: 2;
   clip-path: inset(0);
 }
+
+/* ═══════════════════════════════════════════════════════
+   View Transitions API — page transitions
+   ═══════════════════════════════════════════════════════
+
+   The <main> element gets view-transition-name: cctc-main so the
+   browser can capture and animate the page region independently of
+   the root (which the theme toggle uses). The class on <main>
+   (vt-slide-forward, vt-slide-back, vt-descend, vt-ascend) picks
+   the keyframes via the ::view-transition-old/new(.class) selectors.
+
+   The root rules above (animation: none) keep the root snapshot
+   static during page transitions — only the named main snapshot
+   animates. Both coexist. */
+
+.vt-page-anim {
+  view-transition-name: cctc-main;
+}
+
+::view-transition-old(cctc-main) {
+  animation: none;
+  mix-blend-mode: normal;
+  opacity: 1;
+  z-index: 1;
+}
+
+::view-transition-new(cctc-main) {
+  animation: none;
+  mix-blend-mode: normal;
+  opacity: 1;
+  z-index: 2;
+  clip-path: inset(0);
+}
+
+/* Lateral: dashboard → history, history ↔ reported.
+   Old page slides out, new page slides in from the opposite side. */
+::view-transition-old(.vt-slide-forward) {
+  animation: 200ms ease-out both fade-out,
+             220ms cubic-bezier(0.32, 0.72, 0, 1) both slide-out-to-left;
+}
+::view-transition-new(.vt-slide-forward) {
+  animation: 200ms ease-out 30ms both fade-in,
+             220ms cubic-bezier(0.32, 0.72, 0, 1) both slide-in-from-right;
+}
+
+::view-transition-old(.vt-slide-back) {
+  animation: 180ms ease-out both fade-out,
+             200ms cubic-bezier(0.32, 0.72, 0, 1) both slide-out-to-right;
+}
+::view-transition-new(.vt-slide-back) {
+  animation: 180ms ease-out 30ms both fade-in,
+             200ms cubic-bezier(0.32, 0.72, 0, 1) both slide-in-from-left;
+}
+
+/* Descend: dashboard → session. The work begins. Slide up + slight
+   scale to convey "moving into the work." */
+::view-transition-old(.vt-descend) {
+  animation: 180ms ease-out both fade-out,
+             220ms cubic-bezier(0.4, 0, 0.2, 1) both slide-out-to-top,
+             220ms ease-out both scale-down;
+}
+::view-transition-new(.vt-descend) {
+  animation: 220ms ease-out 30ms both fade-in,
+             260ms cubic-bezier(0.4, 0, 0.2, 1) both slide-in-from-bottom,
+             260ms ease-out both scale-up;
+}
+
+/* Ascend: session → review. Coming up to look at results. Same
+   vertical motion, slightly less weight on the scale. */
+::view-transition-old(.vt-ascend) {
+  animation: 180ms ease-out both fade-out,
+             220ms cubic-bezier(0.4, 0, 0.2, 1) both slide-out-to-bottom,
+             220ms ease-out both scale-down;
+}
+::view-transition-new(.vt-ascend) {
+  animation: 220ms ease-out 30ms both fade-in,
+             260ms cubic-bezier(0.4, 0, 0.2, 1) both slide-in-from-top,
+             260ms ease-out both scale-up;
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+@keyframes slide-out-to-left {
+  to { transform: translateX(-24px); }
+}
+@keyframes slide-in-from-right {
+  from { transform: translateX(24px); }
+}
+@keyframes slide-out-to-right {
+  to { transform: translateX(24px); }
+}
+@keyframes slide-in-from-left {
+  from { transform: translateX(-24px); }
+}
+@keyframes slide-out-to-top {
+  to { transform: translateY(-20px); }
+}
+@keyframes slide-in-from-bottom {
+  from { transform: translateY(20px); }
+}
+@keyframes slide-out-to-bottom {
+  to { transform: translateY(20px); }
+}
+@keyframes slide-in-from-top {
+  from { transform: translateY(-20px); }
+}
+@keyframes scale-down {
+  to { transform: scale(0.98); }
+}
+@keyframes scale-up {
+  from { transform: scale(0.98); }
+}
+
+/* Reduced motion: kill all page-transition animations. The theme
+   wipe's own guard in circularReveal.ts already handles its own
+   reduced-motion case; this is the page-transition guard. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(.vt-slide-forward),
+  ::view-transition-new(.vt-slide-forward),
+  ::view-transition-old(.vt-slide-back),
+  ::view-transition-new(.vt-slide-back),
+  ::view-transition-old(.vt-descend),
+  ::view-transition-new(.vt-descend),
+  ::view-transition-old(.vt-ascend),
+  ::view-transition-new(.vt-ascend) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   View Transitions API — modal enter/exit
+   ═══════════════════════════════════════════════════════
+
+   The <Modal> component toggles .vt-modal-enter on the overlay and
+   .vt-modal-exit on the same element when open transitions false.
+   The animations are pure CSS; the component just adds/removes
+   classes. */
+
+.vt-modal-enter { animation: 150ms ease-out both fade-in, 150ms cubic-bezier(0.32, 0.72, 0, 1) both modal-scale-in; }
+.vt-modal-exit  { animation: 120ms ease-in both fade-out, 120ms ease-in both modal-scale-out; }
+
+@keyframes modal-scale-in {
+  from { transform: scale(0.96); }
+  to   { transform: scale(1); }
+}
+@keyframes modal-scale-out {
+  from { transform: scale(1); }
+  to   { transform: scale(0.98); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vt-modal-enter, .vt-modal-exit {
+    animation-duration: 0s !important;
+  }
+}

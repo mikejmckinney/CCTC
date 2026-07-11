@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { cn } from '../lib/cn';
 import { Navigation } from '../components/Navigation';
 import { Dashboard } from '../pages/Dashboard';
 import { History } from '../pages/History';
@@ -14,6 +15,7 @@ import { computeSpacedRepetition } from '../lib/readiness';
 import { generateDemoHistory, generateDemoFlags } from '../lib/demoData';
 import { buildQuestionIndex, lookupQuestion } from '../lib/bankLookup';
 import { useConfirm } from '../lib/useConfirm';
+import { navigate, subscribeDirChange, type Page, type TransitionDir } from '../lib/navigation';
 import {
   bootstrapState, clearActiveSession, clearHistory, clearSampleHistory, deleteFlag,
   deleteHistoryEntry, replaceFlags, saveActiveSession, saveHistoryEntry,
@@ -27,8 +29,6 @@ import type {
   ActiveSession, AppMeta, FlagReason,
   HistoryEntry, ItemFlag, Question, SessionSettings
 } from '../types/exam';
-
-type Page = 'dashboard' | 'history' | 'reported' | 'session' | 'review';
 
 // Debounce window for auto-sync: fires a few seconds after the last write
 // (answer, nav, finish) so the folder copy stays current without a
@@ -48,6 +48,16 @@ export default function App() {
   const banks = useMemo(() => loadQuestionBanks(), []);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Page-transition direction. The navigation helper writes this via
+  // setCurrentDir; we re-render via this local state to pick up the
+  // class change. null = no animation in flight.
+  const [transitionDir, setTransitionDir] = useState<TransitionDir | null>(null);
+
+  // Subscribe to direction changes from the navigate() helper so the
+  // <main> element can apply the right CSS class. The helper's
+  // setCurrentDir calls our listener synchronously.
+  useEffect(() => subscribeDirChange(setTransitionDir), []);
+
   const [page, setPage] = useState<Page>('dashboard');
   const [meta, setMeta] = useState<AppMeta>({ disclaimerSeen: false });
   const [settings, setSettings] = useState<SessionSettings>(() => buildDefaultSettings('cctc-from-2026-07'));
@@ -64,6 +74,15 @@ export default function App() {
     // separate state that's kept in sync via onExamDateChanged.
     return null;
   });
+
+  // App-level navigate: closes over setPage and the current page.
+  // The direction is inferred from (current, to) unless overridden.
+  // Call sites that need explicit direction pass it as the second arg
+  // (e.g. session → review is 'ascend' even though session.submit is
+  // semantically 'forward' for the answer).
+  const goTo = useCallback((to: Page, dir?: TransitionDir) => {
+    navigate(setPage, to, page, dir);
+  }, [page]);
 
   // Folder sync state (lifted from History.tsx so App can fire the
   // debounced auto-sync from any data-mutation site: answer, nav,
@@ -368,7 +387,9 @@ export default function App() {
       setHistory((prev) => [entry, ...prev]);
       setSelectedHistory(entry);
       setActiveSession(null);
-      setPage('review');
+      // auto-submit: from session to review. The user just ran out of
+      // time; the result "ascends" into view.
+      goTo('review', 'ascend');
       // Auto-sync: the in-progress session is now complete, the new
       // immutable session file should be written to the folder.
       scheduleAutoSync();
@@ -420,8 +441,9 @@ export default function App() {
     setSettings(merged);
     setSelectedHistory(null);
     setReplaceConfirm(null);
-    setPage('session');
-  }, [settings, history, bank]);
+    // Starting a new session — "going deeper" into the work.
+    goTo('session', 'descend');
+  }, [settings, history, bank, goTo]);
 
   // Not wrapped in useCallback — always reads current activeSession
   function handleStartSession(overrides?: Partial<SessionSettings>) {
@@ -456,7 +478,9 @@ export default function App() {
           setHistory((prev) => [entry, ...prev]);
           setSelectedHistory(entry);
           setActiveSession(null);
-          setPage('review');
+          // Manual submit — same destination as auto-submit (review),
+          // so use the same ascend direction.
+          goTo('review', 'ascend');
           // Auto-sync: new immutable session file should land in
           // the folder a moment after the user finishes.
           scheduleAutoSync();
@@ -531,8 +555,8 @@ export default function App() {
   const handleDeleteHistory = useCallback(async (id: string) => {
     await deleteHistoryEntry(id);
     setHistory((prev) => prev.filter((e) => e.id !== id));
-    if (selectedHistory?.id === id) { setSelectedHistory(null); setPage('history'); }
-  }, [selectedHistory]);
+    if (selectedHistory?.id === id) { setSelectedHistory(null); goTo('history', 'slide-back'); }
+  }, [selectedHistory, goTo]);
 
   const handleClearHistory = useCallback(async () => {
     confirm({
@@ -566,7 +590,7 @@ export default function App() {
           setHistory((prev) => prev.filter((e) => e.sample !== true));
           if (selectedHistory?.sample === true) {
             setSelectedHistory(null);
-            setPage('history');
+            goTo('history', 'slide-back');
           }
         });
       },
@@ -612,8 +636,9 @@ export default function App() {
 
   const handleViewSession = useCallback((entry: HistoryEntry) => {
     setSelectedHistory(entry);
-    setPage('review');
-  }, []);
+    // Drilling into a session review.
+    goTo('review', 'ascend');
+  }, [goTo]);
 
   if (!ready) return <div className="flex min-h-screen items-center justify-center bg-[var(--background)]"><p className="text-[var(--muted-foreground)]">Loading...</p></div>;
   if (error) return <div className="flex min-h-screen items-center justify-center bg-[var(--background)]"><p className="text-[var(--destructive)]">{error}</p></div>;
@@ -639,7 +664,7 @@ export default function App() {
         description="You already have a session in progress. Start a new session and discard the current one, or resume it?"
       >
         <div className="flex justify-end gap-3">
-          <Button variant="ghost" onClick={() => { setReplaceConfirm(null); setPage('session'); }}>
+          <Button variant="ghost" onClick={() => { setReplaceConfirm(null); goTo('session'); }}>
             Resume current
           </Button>
           <Button variant="secondary" onClick={() => { setReplaceConfirm(null); setActiveSession(null); void clearActiveSession(); }}>
@@ -683,15 +708,15 @@ export default function App() {
 
       <Navigation
         currentPage={page}
-        onNavigate={setPage}
+        onNavigate={goTo}
         hasActiveSession={activeSession !== null && !activeSession.submittedAt}
         daysUntilExam={examDays}
         targetScore={settings.targetThreshold}
-        onNavigateToExamDate={() => { setPage('dashboard'); setPendingSettingNav('examDate'); }}
-        onNavigateToTargetScore={() => { setPage('dashboard'); setPendingSettingNav('targetScore'); }}
+        onNavigateToExamDate={() => { goTo('dashboard'); setPendingSettingNav('examDate'); }}
+        onNavigateToTargetScore={() => { goTo('dashboard'); setPendingSettingNav('targetScore'); }}
       />
 
-      <main className="mx-auto max-w-5xl px-4 py-6 pb-20 sm:pb-6">
+      <main className={cn('vt-page-anim mx-auto max-w-5xl px-4 py-6 pb-20 sm:pb-6', transitionDir && `vt-${transitionDir}`)}>
         {page === 'dashboard' && (
           <Dashboard
             history={history}
@@ -716,7 +741,7 @@ export default function App() {
             }}
             onStartCustom={(overrides) => handleStartSession(overrides)}
             onUpdateSettings={(partial) => setSettings((prev) => ({ ...prev, ...partial }))}
-            onGoToHistory={() => setPage('history')}
+            onGoToHistory={() => goTo('history', 'slide-forward')}
             onViewSession={handleViewSession}
             pendingSettingNav={pendingSettingNav}
             onClearPendingNav={() => setPendingSettingNav(null)}
@@ -740,7 +765,7 @@ export default function App() {
             onDeleteSession={(id) => void handleDeleteHistory(id)}
             onClearAll={() => void handleClearHistory()}
             onRemoveSampleData={() => void handleRemoveSampleData()}
-            onNavigateToReported={() => setPage('reported')}
+            onNavigateToReported={() => goTo('reported', 'slide-forward')}
             // Sync state (lifted from History so the auto-sync timer
             // can fire from any data-mutation site in App).
             dirSyncSupported={dirSyncSupported}
@@ -791,7 +816,7 @@ export default function App() {
         {page === 'session' && !activeSession && (
           <div className="text-center py-12">
             <p className="text-[var(--muted-foreground)]">No active session. Start one from the Dashboard or Setup.</p>
-            <Button variant="secondary" className="mt-4" onClick={() => setPage('dashboard')}>Back to Dashboard</Button>
+            <Button variant="secondary" className="mt-4" onClick={() => goTo('dashboard', 'slide-back')}>Back to Dashboard</Button>
           </div>
         )}
 
@@ -799,7 +824,7 @@ export default function App() {
           <Review
             entry={selectedHistory}
             questionIndex={questionIndex}
-            onBack={() => setPage('history')}
+            onBack={() => goTo('history', 'slide-back')}
             onReport={(itemId) => {
               const q = allQuestions.find((qq) => qq.id === itemId);
               if (q) handleReport(q, selectedHistory.id);

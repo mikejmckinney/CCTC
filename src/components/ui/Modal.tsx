@@ -1,5 +1,5 @@
 import { cn } from '../../lib/cn';
-import { type ReactNode, useEffect, useRef, useCallback, useId } from 'react';
+import { type ReactNode, useEffect, useRef, useState, useCallback, useId } from 'react';
 import { X } from 'lucide-react';
 
 interface ModalProps {
@@ -12,11 +12,52 @@ interface ModalProps {
   dismissible?: boolean;
 }
 
+// Match the exit duration in index.css. If you change the CSS, change
+// this too. (The skill's animation-timing table lists 100-200ms for
+// direct toggles; 120ms is in range.)
+const EXIT_DURATION_MS = 120;
+
 export function Modal({ open, onClose, title, description, children, className, dismissible = true }: ModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const titleId = useId();
   const descId = useId();
+
+  // Render + animation state. The modal stays mounted for the exit
+  // animation duration after `open` flips false so the CSS animation
+  // can play out before unmount.
+  const [rendered, setRendered] = useState(open);
+  const [closing, setClosing] = useState(false);
+  const exitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (open) {
+      // Open path: clear any pending exit and ensure we're rendered
+      // with the enter class.
+      if (exitTimerRef.current !== null) {
+        clearTimeout(exitTimerRef.current);
+        exitTimerRef.current = null;
+      }
+      setClosing(false);
+      setRendered(true);
+    } else if (rendered) {
+      // Close path: apply the exit class, then unmount after the
+      // animation. If `open` flips back to true before the timer
+      // fires, the open path above cancels the timer.
+      setClosing(true);
+      exitTimerRef.current = setTimeout(() => {
+        setRendered(false);
+        setClosing(false);
+        exitTimerRef.current = null;
+      }, EXIT_DURATION_MS);
+    }
+    return () => {
+      if (exitTimerRef.current !== null) {
+        clearTimeout(exitTimerRef.current);
+        exitTimerRef.current = null;
+      }
+    };
+  }, [open, rendered]);
 
   // Save previously focused element on open, restore on close
   useEffect(() => {
@@ -80,7 +121,7 @@ export function Modal({ open, onClose, title, description, children, className, 
     }
   }, [open]);
 
-  if (!open) return null;
+  if (!rendered) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby={titleId} aria-describedby={descId}>
@@ -89,7 +130,7 @@ export function Modal({ open, onClose, title, description, children, className, 
         ref={contentRef}
         className={cn(
           'relative z-50 w-full max-w-lg rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-xl',
-          'animate-[scale-in_0.2s_ease-out]',
+          closing ? 'vt-modal-exit' : 'vt-modal-enter',
           className
         )}
       >
