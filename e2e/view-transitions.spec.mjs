@@ -7,28 +7,37 @@ test.describe('view transitions', () => {
     await ensureAppReady(page);
     await dismissDisclaimerIfPresent(page);
 
-    // The <main> starts with no direction class.
-    const before = await page.locator('main').getAttribute('class');
-    expect(before).toContain('vt-page-anim');
-    expect(before).not.toMatch(/vt-(slide-forward|slide-back|descend|ascend)/);
+    // The <main> starts with the base class and no view-transition-class
+    // set (which would propagate to the snapshot pseudo-element).
+    const before = await page.locator('main').evaluate((el) => ({
+      class: el.className,
+      viewTransitionClass: el.style.viewTransitionClass,
+    }));
+    expect(before.class).toContain('vt-page-anim');
+    expect(before.viewTransitionClass).toBe('');
 
     // Click Progress (in the desktop nav). The navigate() helper sets
     // the direction synchronously inside startViewTransition, so by
-    // the time the click resolves, the class is already applied.
+    // the time the click resolves, view-transition-class is already
+    // set (the property propagates to the snapshot pseudo-element).
     await page.getByRole('button', { name: 'Progress' }).click();
 
-    // The class is set on the element. We don't strictly assert which
-    // class — just that the system put one on (proves the direction
-    // path executed). The unit tests cover the specific mapping.
-    const after = await page.locator('main').getAttribute('class');
-    expect(after).toMatch(/vt-(slide-forward|slide-back|descend|ascend)/);
+    const after = await page.locator('main').evaluate((el) => ({
+      class: el.className,
+      viewTransitionClass: el.style.viewTransitionClass,
+    }));
+    // The view-transition-class must be one of the four directions.
+    expect(after.viewTransitionClass).toMatch(/^vt-(slide-forward|slide-back|descend|ascend)$/);
 
     // The class is cleared after the transition completes (the helper
     // resets it in the .finally() block). Wait for the animation
     // duration plus a small buffer.
     await page.waitForTimeout(700);
-    const settled = await page.locator('main').getAttribute('class');
-    expect(settled).not.toMatch(/vt-(slide-forward|slide-back|descend|ascend)/);
+    const settled = await page.locator('main').evaluate((el) => ({
+      class: el.className,
+      viewTransitionClass: el.style.viewTransitionClass,
+    }));
+    expect(settled.viewTransitionClass).toBe('');
   });
 
   test('opening a modal applies the enter class', async ({ page }) => {

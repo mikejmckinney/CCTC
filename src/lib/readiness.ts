@@ -60,7 +60,15 @@ function getBlueprintWeights(blueprintId: string): Map<string, number> {
         weights.set(section.id, Math.round((section.items / scoredItems) * 100));
       }
     }
-  } catch {}
+  } catch (e) {
+    // Invalid or missing blueprint id (e.g., a stale persisted value
+    // from a removed blueprint). Log the diagnostic so the failure
+    // is visible in DevTools and any future telemetry hook — the
+    // old behavior of `catch {}` silently returned 0% weights, which
+    // made the dashboard render "—" everywhere with no clue why.
+    // eslint-disable-next-line no-console
+    console.warn('readiness: failed to load blueprint', blueprintId, e);
+  }
   return weights;
 }
 

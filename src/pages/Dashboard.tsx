@@ -434,7 +434,12 @@ export function Dashboard({
                       <label className="text-[13px] font-medium text-[var(--foreground)]">Blueprint</label>
                       <select
                         value={settings.blueprintId}
-                        onChange={(e) => onUpdateSettings({ blueprintId: e.target.value as any })}
+                        onChange={(e) => {
+                          const v = e.target.value;
+                          if (v === 'cctc-from-2026-07' || v === 'cctc-thru-2026-06') {
+                            onUpdateSettings({ blueprintId: v });
+                          }
+                        }}
                         className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
                       >
                         <option value="cctc-from-2026-07">2026-07 (default)</option>

@@ -5,25 +5,42 @@ test.describe('auto-sync connected card', () => {
   test('connected card shows the auto-sync blurb and folder name', async ({ page }) => {
     // The File System Access API requires a user gesture, so we can't
     // auto-invoke showDirectoryPicker from a test. Inject a mock that
-    // returns a fake handle with the surface syncWithFolder needs.
-    // The mock's entries() yields nothing (no session files), and
-    // getFileHandle throws NotFoundError, so the initial sync returns
-    // cleanly with 0 sessions and no meta conflicts.
+    // returns a writable in-memory directory with the surface
+    // syncWithFolder needs. Initial sample sessions are written into it.
     await page.addInitScript(() => {
-      const makeFakeHandle = (name) => ({
-        kind: 'directory',
-        name,
-        async queryPermission() { return 'granted'; },
-        async requestPermission() { return 'granted'; },
-        async *entries() {
-          // Yield nothing — empty folder.
-        },
-        async getFileHandle() {
-          // No files in the fake folder. Throwing NotFoundError
-          // is what a real handle does when the file is missing.
-          throw new DOMException('Not found', 'NotFoundError');
-        },
-      });
+      const makeFakeHandle = (name) => {
+        const files = new Map();
+        const fileHandle = (fileName) => ({
+          kind: 'file',
+          name: fileName,
+          async getFile() {
+            const contents = files.get(fileName) ?? '';
+            return { text: async () => contents };
+          },
+          async createWritable() {
+            return {
+              async write(contents) { files.set(fileName, String(contents)); },
+              async close() {},
+            };
+          },
+        });
+        return {
+          kind: 'directory',
+          name,
+          async queryPermission() { return 'granted'; },
+          async requestPermission() { return 'granted'; },
+          async *entries() {
+            for (const fileName of files.keys()) yield [fileName, fileHandle(fileName)];
+          },
+          async getFileHandle(fileName, options = {}) {
+            if (!files.has(fileName) && !options.create) {
+              throw new DOMException('Not found', 'NotFoundError');
+            }
+            if (!files.has(fileName)) files.set(fileName, '');
+            return fileHandle(fileName);
+          },
+        };
+      };
       // Mock showDirectoryPicker to return a fake handle.
       window.showDirectoryPicker = async () =>
         makeFakeHandle('Mock Drive');

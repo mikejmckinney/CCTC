@@ -111,7 +111,7 @@ export function navigate(
     return;
   }
 
-  const vt = (document as any).startViewTransition(() => {
+  const vt = document.startViewTransition(() => {
     // flushSync forces React to commit the state update before the
     // browser takes the "new" snapshot. Without this, the snapshot
     // is taken before React has rendered, and the animation is wrong.

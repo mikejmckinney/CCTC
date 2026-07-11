@@ -33,26 +33,37 @@ export function performCircularReveal(
     Math.max(cy, vh - cy)
   );
 
-  const vt = (document as any).startViewTransition(() => {
+  const vt = document.startViewTransition(() => {
     callback();
   });
 
-  vt.ready.then(() => {
-    const duration = 500;
-    const easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
+  vt.ready
+    .then(() => {
+      const duration = 500;
+      const easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
 
-    // Only animate the NEW snapshot expanding from click point.
-    // The OLD snapshot stays at full size underneath — no animation needed.
-    document.documentElement.animate(
-      [
-        { clipPath: `circle(0px at ${cx}px ${cy}px)` },
-        { clipPath: `circle(${endRadius * 1.1}px at ${cx}px ${cy}px)` },
-      ],
-      {
-        duration,
-        easing,
-        pseudoElement: '::view-transition-new(root)',
-      }
-    );
-  });
+      // Only animate the NEW snapshot expanding from click point.
+      // The OLD snapshot stays at full size underneath — no animation needed.
+      document.documentElement.animate(
+        [
+          { clipPath: `circle(0px at ${cx}px ${cy}px)` },
+          { clipPath: `circle(${endRadius * 1.1}px at ${cx}px ${cy}px)` },
+        ],
+        {
+          duration,
+          easing,
+          pseudoElement: '::view-transition-new(root)',
+        }
+      );
+    })
+    .catch((e: unknown) => {
+      // vt.ready can reject if the browser aborts the transition (e.g.,
+      // a new transition supersedes this one, or the user navigates
+      // away). The new theme has already been applied by `callback()`
+      // so the swap is not lost. Log for diagnostics — the old
+      // behavior of an unhandled rejection here would surface as a
+      // noisy devtools warning.
+      // eslint-disable-next-line no-console
+      console.warn('Theme view transition aborted:', e);
+    });
 }

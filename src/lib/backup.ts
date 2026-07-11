@@ -119,21 +119,29 @@ export async function importBackup(file: File): Promise<{ historyCount: number; 
 const SYNC_HANDLE_KEY = 'cctc-sync-dir-handle';
 
 export function supportsDirSync(): boolean {
-  return typeof window !== 'undefined' && typeof (window as any).showDirectoryPicker === 'function';
+  return typeof window !== 'undefined' && typeof window.showDirectoryPicker === 'function';
 }
 
 export async function connectSyncFolder(): Promise<FileSystemDirectoryHandle | null> {
   if (!supportsDirSync()) return null;
   try {
-    const dir = await (window as any).showDirectoryPicker({ id: 'cctc-sync', mode: 'readwrite' });
+    const dir = await window.showDirectoryPicker({ id: 'cctc-sync', mode: 'readwrite' });
     // Persist handle in IndexedDB for reload survival
     try {
       const db = await getDb();
       await db.put(KV_STORE, dir, SYNC_HANDLE_KEY);
-    } catch {}
+    } catch (e) {
+      // The selected folder still works for this session; only handle
+      // restoration on the next load is unavailable.
+      // eslint-disable-next-line no-console
+      console.warn('Could not persist the sync folder handle:', e);
+    }
     return dir as FileSystemDirectoryHandle;
-  } catch {
-    return null; // user cancelled
+  } catch (e) {
+    if (e instanceof DOMException && e.name === 'AbortError') return null;
+    // eslint-disable-next-line no-console
+    console.error('Could not connect the sync folder:', e);
+    return null;
   }
 }
 
@@ -143,10 +151,12 @@ export async function getPersistedDirHandle(): Promise<FileSystemDirectoryHandle
     const handle = await db.get(KV_STORE, SYNC_HANDLE_KEY);
     if (!handle) return null;
     // Verify permission
-    const status = await (handle as any).requestPermission({ mode: 'readwrite' });
+    const status = await handle.requestPermission({ mode: 'readwrite' });
     if (status !== 'granted') return null;
     return handle as FileSystemDirectoryHandle;
-  } catch {
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('Could not restore the sync folder handle:', e);
     return null;
   }
 }
@@ -156,7 +166,13 @@ async function readJsonFromDir(dir: FileSystemDirectoryHandle, name: string): Pr
     const fh = await dir.getFileHandle(name);
     const file = await fh.getFile();
     return JSON.parse(await file.text());
-  } catch { return null; }
+  } catch (e) {
+    if (!(e instanceof DOMException && e.name === 'NotFoundError')) {
+      // eslint-disable-next-line no-console
+      console.warn(`Could not read ${name} from the sync folder:`, e);
+    }
+    return null;
+  }
 }
 
 async function writeJsonToDir(dir: FileSystemDirectoryHandle, name: string, data: unknown): Promise<void> {
@@ -205,7 +221,7 @@ export async function syncWithFolder(
 
   // 1) Collect folder session files (immutable per-session files — conflict-free union)
   const folderSessions = new Map<string, HistoryEntry>();
-  for await (const [name, handle] of (dir as any).entries()) {
+  for await (const [name, handle] of dir.entries()) {
     if (handle.kind === 'file' && /^session-.*\.json$/.test(name)) {
       const obj = await readJsonFromDir(dir, name);
       if (obj && obj.id) folderSessions.set(obj.id, obj as HistoryEntry);
@@ -235,13 +251,22 @@ export async function syncWithFolder(
   let folderActive: ActiveSession | null = await readJsonFromDir(dir, 'current-session.json');
   if (!folderActive) folderActive = await readJsonFromDir(dir, 'active-session.json');
 
-  // 4) Meta (settings/target/exam-date) — the only real conflict point.
-  // In auto-sync mode, never overwrite a meta that already exists in the
-  // folder (defer the prompt to the next manual sync). In manual mode,
-  // the caller (UI) decides which side wins; syncWithFolder just reports.
+  // 4) Meta (settings + exam-date) — the only real conflict point.
+  // The folder meta.json contains the full SessionSettings (target
+  // threshold, blueprint, question set/count, etc.) plus AppMeta.examDate.
+  // In auto-sync mode, never overwrite a meta that already exists in
+  // the folder (defer the prompt to the next manual sync). In manual
+  // mode, the caller (UI) decides which side wins; syncWithFolder
+  // just reports.
   const localSettings: SessionSettings | null = (await db.get(KV_STORE, SETTINGS_KEY)) ?? null;
+  const localAppMeta: AppMeta | null = (await db.get(KV_STORE, META_KEY)) ?? null;
   const folderMeta: Record<string, unknown> | null = await readJsonFromDir(dir, 'meta.json');
-  const localMeta: Record<string, unknown> = (localSettings as unknown as Record<string, unknown>) ?? {};
+  // Compose localMeta from both stores so examDate is included in
+  // the conflict check.
+  const localMeta: Record<string, unknown> = {
+    ...(localSettings as unknown as Record<string, unknown> ?? {}),
+    examDate: localAppMeta?.examDate ?? null,
+  };
 
   // If the folder has no meta yet, seed it with the local copy.
   // In auto mode we still do this (no conflict to defer).
@@ -249,14 +274,15 @@ export async function syncWithFolder(
     await writeJsonToDir(dir, 'meta.json', localMeta);
   }
 
-  // TODO: examDate lives in AppMeta, not SessionSettings. The folder
-  // meta.json currently only contains SessionSettings fields, so this
-  // comparison is effectively just targetThreshold. A future PR
-  // should merge AppMeta.examDate into the meta.json and compare it
-  // here. For now, the `as any` is the least bad workaround.
   const metaDiffers = folderMeta != null &&
-    JSON.stringify({ t: (localSettings as any)?.targetThreshold, e: (localSettings as any)?.examDate }) !==
-    JSON.stringify({ t: (folderMeta as any).targetThreshold, e: (folderMeta as any).examDate });
+    JSON.stringify({
+      t: localSettings?.targetThreshold ?? null,
+      e: localAppMeta?.examDate ?? null,
+    }) !==
+    JSON.stringify({
+      t: folderMeta.targetThreshold ?? null,
+      e: folderMeta.examDate ?? null,
+    });
 
   // If folder has meta but local doesn't, adopt folder's meta.
   if (folderMeta && !localSettings) {
@@ -266,7 +292,7 @@ export async function syncWithFolder(
   // 5) Merge flags
   const localFlags: ItemFlag[] = await db.getAll(FLAGS_STORE);
   const folderFlags: ItemFlag[] = [];
-  for await (const [name, handle] of (dir as any).entries()) {
+  for await (const [name, handle] of dir.entries()) {
     if (handle.kind === 'file' && name === 'flags.json') {
       const obj = await readJsonFromDir(dir, name);
       if (Array.isArray(obj)) folderFlags.push(...obj);
