@@ -169,6 +169,12 @@
     <!-- ============ HOME · DASHBOARD ============ -->
     <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex; flex-direction:column; gap:18px;">
+        <sc-if value="{{ showSampleNote }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--goldsoft); border:1px solid var(--gold); border-radius:12px; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+            <div style="font-size:12.5px; color:var(--goldtext); line-height:1.5;">Showing <strong>sample data</strong> so you can explore the app — remove it in <a href="#" onClick="{{ sampleNoteGoProgress }}" style="color:var(--goldtext); font-weight:700;">Progress</a> when you're ready to start fresh.</div>
+            <button onClick="{{ dismissSampleNote }}" style="padding:7px 12px; border:1px solid var(--gold); border-radius:8px; background:transparent; color:var(--goldtext); font:600 12px var(--sans); cursor:pointer;">Got it</button>
+          </div>
+        </sc-if>
         <div>
           <h1 style="font-family:var(--serif); font-size:30px; font-weight:600; margin:0; color:var(--ink);">Welcome back</h1>
         </div>
@@ -554,7 +560,10 @@
             <h1 style="font-family:var(--serif); font-size:30px; font-weight:600; margin:0 0 4px; color:var(--ink);">Progress</h1>
             <p style="font-size:14px; color:var(--muted); margin:0;">{{ historySubtitle }}</p>
           </div>
-          <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}"><button onClick="{{ clearHistory }}" style="padding:9px 14px; border:1px solid var(--line2); border-radius:9px; background:var(--surface); color:var(--muted); font:600 12.5px var(--sans); cursor:pointer;">Clear history</button></sc-if>
+          <div style="display:flex; gap:8px;">
+            <sc-if value="{{ hasSamples }}" hint-placeholder-val="{{ false }}"><button onClick="{{ removeSampleData }}" style="padding:9px 14px; border:1px solid var(--line2); border-radius:9px; background:var(--surface2); color:var(--goldtext); font:600 12.5px var(--sans); cursor:pointer;">Remove sample data</button></sc-if>
+            <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}"><button onClick="{{ clearHistory }}" style="padding:9px 14px; border:1px solid var(--line2); border-radius:9px; background:var(--surface); color:var(--muted); font:600 12.5px var(--sans); cursor:pointer;">Clear history</button></sc-if>
+          </div>
         </div>
 
         <sc-if value="{{ noHistory }}" hint-placeholder-val="{{ false }}">
@@ -761,6 +770,7 @@ class Component extends DCLogic {
 
   async componentDidMount(){
     const mod = await this.loadData();
+    this._demoFixture = mod.DEMO_HISTORY || [];
     const prefs = load(LS.prefs, {});
     let history = load(LS.history, []);
     const session = load(LS.session, null);
@@ -783,6 +793,7 @@ class Component extends DCLogic {
       ready:true,
       QUESTIONS: mod.QUESTIONS||[], SCENARIOS: mod.SCENARIOS||[], DOMAINS: mod.DOMAINS||[], BLUEPRINT: mod.BLUEPRINT||null,
       disclaimerSeen: !!prefs.disclaimerSeen,
+      sampleNoteDismissed: !!prefs.sampleNoteDismissed,
       targetThreshold: (typeof prefs.targetThreshold==='number'? prefs.targetThreshold : null),
       flags: prefs.flags || [],
       lastCustom: prefs.lastCustom || null,
@@ -849,54 +860,51 @@ class Component extends DCLogic {
 
   // Build reviewable items+answers for a sample session from the real bank, consistent with
   // the per-domain correct/total breakdown, so seeded demo sessions can be reviewed.
+  // Deterministic: pool in bank order, natural option order, first wrong option for misses —
+  // so the same fixture always materializes byte-identical demo sessions (shared test fixture).
   seedItemsForBreakdown(breakdown, questions){
     const items=[]; const answers={};
     (breakdown||[]).forEach(b=>{
-      const pool=shuffle((questions||[]).filter(q=>q.domain===b.domain));
+      const pool=(questions||[]).filter(q=>q.domain===b.domain);
       for(let k=0;k<b.total;k++){
         const q= pool[k % (pool.length||1)]; if(!q) continue;
-        const optionOrder= shuffle(q.options.map(o=>o.id));
+        const optionOrder= q.options.map(o=>o.id);
         items.push({ q, optionOrder });
         if(k < b.correct){ answers[q.id]=q.correct; }
-        else { const wrong=q.options.map(o=>o.id).filter(id=>id!==q.correct); answers[q.id]= wrong.length? wrong[Math.floor(Math.random()*wrong.length)] : q.correct; }
+        else { const wrong=q.options.map(o=>o.id).filter(id=>id!==q.correct); answers[q.id]= wrong.length? wrong[0] : q.correct; }
       }
     });
     return { items, answers };
   }
 
-  seedHistory(domains, questions){
+  // Deterministic demo seed, materialized from the DEMO_HISTORY fixture (cctc-data.js /
+  // handoff/fixtures/demo-history.json — one source of truth for app AND tests).
+  // Dates are OFFSETS from `anchor` (default: first-run time, then frozen in storage — fresh
+  // for every new user, stable within a profile; tests pass a fixed anchor for byte-stable output).
+  // The fixture never sets examDate, so demo data can't create a stale "days to exam".
+  seedHistory(domains, questions, anchor){
     const ds = domains && domains.length? domains : [{id:1,short:'Education'},{id:2,short:'Pre-transplant'},{id:3,short:'Post-op'}];
-    const targets = { 1:78, 2:70, 3:61 };
-    const overalls = [62,66,67,71,73,78];
-    const blueprints = ['cctc-from-2026-07','cctc-from-2026-07','cctc-thru-2026-06','cctc-from-2026-07','cctc-from-2026-07','cctc-from-2026-07'];
-    const hourOffset = [9,14,20,11,19,8];
-    const day = 86400000;
+    const shortOf = {}; ds.forEach(d=>{ shortOf[d.id]=d.short; });
+    const fixture = (this._demoFixture && this._demoFixture.length)? this._demoFixture : ((typeof window!=='undefined' && window.CCTC_DATA && window.CCTC_DATA.DEMO_HISTORY) || []);
+    const day = 86400000; const at = anchor || Date.now();
     const out = [];
-    overalls.forEach((pct, i)=>{
-      const breakdown = ds.map(d=>{
-        const base = targets[d.id] || 70;
-        const jitter = (pct-70);
-        const p = Math.max(40, Math.min(96, base + jitter + (Math.random()*8-4)));
-        const total = d.id===3?7:6;
-        const correct = Math.round(total * p/100);
-        return { domain:d.id, name:d.short, correct, total, percent: Math.round(correct/total*100) };
-      });
+    fixture.forEach(f=>{
+      const breakdown = (f.breakdown||[]).map(b=>({ domain:b.domain, name:shortOf[b.domain]||('D'+b.domain), correct:b.correct, total:b.total, percent: Math.round(b.correct/b.total*100) }));
       const correct = breakdown.reduce((a,b)=>a+b.correct,0);
       const total = breakdown.reduce((a,b)=>a+b.total,0);
-      const mode = i%3===0?'study':'exam';
       const seededItems = this.seedItemsForBreakdown(breakdown, questions);
       out.unshift({
-        id:'sample-'+i, completedAt: (Date.now() - (overalls.length-i)*3*day - (12-hourOffset[i])*3600000),
-        settings:{ mode, target:this.target(), blueprint:blueprints[i], timed: mode==='exam' },
+        id:f.id, completedAt: (at - f.daysAgo*day - (12-f.hour)*3600000),
+        settings:{ mode:f.mode, target:this.target(), blueprint:f.blueprint, timed: f.mode==='exam' },
         result:{ correct, total, percent: Math.round(correct/total*100), estimatedPass: (correct/total*100)>=this.target(), breakdown },
         items: seededItems.items, answers: seededItems.answers,
-        timeUsedSeconds: mode==='exam'? (1680 + i*240) : null, sample:true
+        timeUsedSeconds: f.timeUsedSeconds, sample:true
       });
     });
     return out;
   }
 
-  persistPrefs(extra){ save(LS.prefs, { disclaimerSeen:this.state.disclaimerSeen, flags:this.state.flags, theme:this.state.theme, lastCustom:this.state.lastCustom, examDate:this.state.examDate, targetThreshold:this.state.targetThreshold, seeded:true, ...extra }); }
+  persistPrefs(extra){ save(LS.prefs, { sampleNoteDismissed:this.state.sampleNoteDismissed, disclaimerSeen:this.state.disclaimerSeen, flags:this.state.flags, theme:this.state.theme, lastCustom:this.state.lastCustom, examDate:this.state.examDate, targetThreshold:this.state.targetThreshold, seeded:true, ...extra }); }
 
   setExamDate(v){ this.setState({ examDate: v||null }, ()=>this.persistPrefs()); }
   daysToExam(){ if(!this.state.examDate) return null; const today=new Date(); today.setHours(0,0,0,0); const ex=new Date(this.state.examDate+'T00:00:00'); if(isNaN(ex.getTime())) return null; return Math.round((ex-today)/86400000); }
@@ -1030,6 +1038,7 @@ class Component extends DCLogic {
   runDestructiveAlt(){ const d=this.state.destructive; this.setState({ destructive:null }, ()=>{ if(d&&d.altRun) d.altRun(); }); }
 
   clearHistory(){ this.askConfirm({ title:'Clear all history?', body:'This permanently deletes every saved session on this device, including their answer reviews. This cannot be undone.', cta:'Clear history', run:()=>{ save(LS.history, []); this.setState({ history:[] }); } }); }
+  removeSampleData(){ const n=(this.state.history||[]).filter(e=>e.sample).length; this.askConfirm({ title:'Remove sample data?', body:'This removes the '+n+' sample session(s) that came with the app. Your own sessions are kept.', cta:'Remove samples', run:()=>{ const h=(this.state.history||[]).filter(e=>!e.sample); save(LS.history, h); this.setState({ history:h }); } }); }
   deleteEntry(id){ const entry=(this.state.history||[]).find(e=>e.id===id); const label= entry? (entry.result.percent+'% · '+shortDate(entry.completedAt)) : 'this session'; this.askConfirm({ title:'Delete this session?', body:'This permanently removes the '+label+' result and its answer review. This cannot be undone.', cta:'Delete', run:()=>{ const h=this.state.history.filter(e=>e.id!==id); save(LS.history, h); this.setState({ history:h }); } }); }
   discardSession(){ save(LS.session, null); this.setState({ session:null, view:'home', startPromptOpen:false, pendingStart:null }); }
 
@@ -1424,6 +1433,11 @@ class Component extends DCLogic {
     // ---------- HISTORY ----------
     out.historySubtitle= (st.history||[]).length? ((st.history||[]).length+' sessions recorded') : 'Your completed sessions appear here';
     out.hasHistory= (st.history||[]).length>0; out.noHistory= (st.history||[]).length===0;
+    out.hasSamples= (st.history||[]).some(e=>e.sample);
+    out.removeSampleData=()=>self.removeSampleData();
+    out.showSampleNote= out.hasSamples && !st.sampleNoteDismissed;
+    out.dismissSampleNote=()=>self.setState({ sampleNoteDismissed:true }, ()=>self.persistPrefs());
+    out.sampleNoteGoProgress=(e)=>{ if(e&&e.preventDefault) e.preventDefault(); self.setView('history'); };
     // Summary stats follow the trend scope so they match the chart.
     const _scopedPct=_scoped.map(e=>e.result.percent);
     const _scLast8=_scopedPct.slice(-8);

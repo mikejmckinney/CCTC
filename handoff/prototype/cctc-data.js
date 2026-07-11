@@ -2421,5 +2421,158 @@ const SCENARIOS = [
     ]
   }
 ];
-window.CCTC_DATA = { DOMAINS: DOMAINS, BLUEPRINT: BLUEPRINT, QUESTIONS: QUESTIONS, SCENARIOS: (typeof SCENARIOS!=="undefined"?SCENARIOS:[]) };
+const DEMO_HISTORY = [
+  {
+    "id": "sample-0",
+    "daysAgo": 18,
+    "hour": 9,
+    "mode": "study",
+    "blueprint": "cctc-from-2026-07",
+    "timeUsedSeconds": null,
+    "breakdown": [
+      {
+        "domain": 1,
+        "correct": 4,
+        "total": 6
+      },
+      {
+        "domain": 2,
+        "correct": 3,
+        "total": 6
+      },
+      {
+        "domain": 3,
+        "correct": 4,
+        "total": 7
+      }
+    ]
+  },
+  {
+    "id": "sample-1",
+    "daysAgo": 15,
+    "hour": 14,
+    "mode": "exam",
+    "blueprint": "cctc-from-2026-07",
+    "timeUsedSeconds": 1920,
+    "breakdown": [
+      {
+        "domain": 1,
+        "correct": 4,
+        "total": 6
+      },
+      {
+        "domain": 2,
+        "correct": 4,
+        "total": 6
+      },
+      {
+        "domain": 3,
+        "correct": 4,
+        "total": 7
+      }
+    ]
+  },
+  {
+    "id": "sample-2",
+    "daysAgo": 12,
+    "hour": 20,
+    "mode": "exam",
+    "blueprint": "cctc-thru-2026-06",
+    "timeUsedSeconds": 2160,
+    "breakdown": [
+      {
+        "domain": 1,
+        "correct": 5,
+        "total": 6
+      },
+      {
+        "domain": 2,
+        "correct": 4,
+        "total": 6
+      },
+      {
+        "domain": 3,
+        "correct": 4,
+        "total": 7
+      }
+    ]
+  },
+  {
+    "id": "sample-3",
+    "daysAgo": 9,
+    "hour": 11,
+    "mode": "study",
+    "blueprint": "cctc-from-2026-07",
+    "timeUsedSeconds": null,
+    "breakdown": [
+      {
+        "domain": 1,
+        "correct": 6,
+        "total": 6
+      },
+      {
+        "domain": 2,
+        "correct": 4,
+        "total": 6
+      },
+      {
+        "domain": 3,
+        "correct": 4,
+        "total": 7
+      }
+    ]
+  },
+  {
+    "id": "sample-4",
+    "daysAgo": 6,
+    "hour": 19,
+    "mode": "exam",
+    "blueprint": "cctc-from-2026-07",
+    "timeUsedSeconds": 2400,
+    "breakdown": [
+      {
+        "domain": 1,
+        "correct": 5,
+        "total": 6
+      },
+      {
+        "domain": 2,
+        "correct": 5,
+        "total": 6
+      },
+      {
+        "domain": 3,
+        "correct": 4,
+        "total": 7
+      }
+    ]
+  },
+  {
+    "id": "sample-5",
+    "daysAgo": 3,
+    "hour": 8,
+    "mode": "exam",
+    "blueprint": "cctc-from-2026-07",
+    "timeUsedSeconds": 2640,
+    "breakdown": [
+      {
+        "domain": 1,
+        "correct": 6,
+        "total": 6
+      },
+      {
+        "domain": 2,
+        "correct": 5,
+        "total": 6
+      },
+      {
+        "domain": 3,
+        "correct": 4,
+        "total": 7
+      }
+    ]
+  }
+];
+
+window.CCTC_DATA = { DOMAINS: DOMAINS, BLUEPRINT: BLUEPRINT, DEMO_HISTORY: DEMO_HISTORY, QUESTIONS: QUESTIONS, SCENARIOS: (typeof SCENARIOS!=="undefined"?SCENARIOS:[]) };
 })();
