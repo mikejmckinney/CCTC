@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "small_model": "openrouter/deepseek/deepseek-v4-pro@preset/default",
+  "small_model": "openrouter/minimax/minimax-m3@preset/default",
   "permission": "allow",
   "provider": {
     "openrouter": {
