@@ -112,10 +112,11 @@ guidance, read only one of:
   --invoking-session "$MY_SID"
 ```
 
-The Fusion runner launches three bounded panels in parallel and proceeds when
-at least two succeed. It then invokes the shared Judge fallback chain. The
-Judge specification is internal to `prompts/judge.md`; do not duplicate or
-inline it in the caller prompt.
+The Fusion runner launches Sol, Fable, and GLM as three bounded primary panels
+in parallel. A failed primary slot is backfilled by the next unused model from
+MM, MI, then DS. It proceeds when at least two unique panels succeed, then
+invokes the shared Judge fallback chain. The Judge specification is internal
+to `prompts/judge.md`; do not duplicate or inline it in the caller prompt.
 
 ## Output Contract
 
@@ -132,7 +133,11 @@ Both commands write exactly one JSON object to stdout:
 }
 ```
 
-Fusion also returns `panels_succeeded`. The complete answer is stored at
+Fusion also returns `panels_succeeded`, a `panels` array recording primary-slot
+substitutions, and `judge_overlap`. Panel labels given to the Judge are
+anonymized. `judge_overlap` is true when the selected Judge engine also served
+as a panelist; in that case, treat the result as practical synthesis rather
+than fully independent consensus. The complete answer is stored at
 `output_file`; diagnostics go to stderr and adjacent `.err` files. Read the
 answer file, verify material claims, and synthesize it for the user. Do not
 paste raw panel output.
