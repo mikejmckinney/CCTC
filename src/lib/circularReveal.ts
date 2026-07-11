@@ -33,9 +33,13 @@ export function performCircularReveal(
     Math.max(cy, vh - cy)
   );
 
+  const root = document.documentElement;
+  root.classList.add('theme-transition');
   const vt = document.startViewTransition(() => {
     callback();
   });
+  const clearThemeTransition = () => root.classList.remove('theme-transition');
+  void vt.finished.then(clearThemeTransition, clearThemeTransition);
 
   vt.ready
     .then(() => {
@@ -44,7 +48,7 @@ export function performCircularReveal(
 
       // Only animate the NEW snapshot expanding from click point.
       // The OLD snapshot stays at full size underneath — no animation needed.
-      document.documentElement.animate(
+      root.animate(
         [
           { clipPath: `circle(0px at ${cx}px ${cy}px)` },
           { clipPath: `circle(${endRadius * 1.1}px at ${cx}px ${cy}px)` },

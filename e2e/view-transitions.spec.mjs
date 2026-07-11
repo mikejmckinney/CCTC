@@ -78,4 +78,16 @@ test.describe('view transitions', () => {
     // After the exit animation completes, the dialog is gone.
     await expect(dialog).toBeHidden();
   });
+
+  test('theme toggle suppresses the named page snapshot during the circular wipe', async ({ page }) => {
+    await page.goto('./');
+    await ensureAppReady(page);
+    await dismissDisclaimerIfPresent(page);
+
+    await page.getByRole('button', { name: /switch to (dark|light) mode/i }).click();
+
+    await expect(page.locator('html')).toHaveClass(/theme-transition/);
+    await expect(page.locator('main')).toHaveCSS('view-transition-name', 'none');
+    await expect(page.locator('html')).not.toHaveClass(/theme-transition/, { timeout: 2_000 });
+  });
 });

@@ -453,6 +453,13 @@ input[type="range"]:focus-visible {
   view-transition-name: cctc-main;
 }
 
+/* A theme toggle must capture only the root. Otherwise cctc-main is
+   snapshotted separately and overlays the circular wipe with a second
+   full-region theme transition. */
+html.theme-transition .vt-page-anim {
+  view-transition-name: none;
+}
+
 ::view-transition-old(cctc-main) {
   animation: none;
   mix-blend-mode: normal;
