@@ -249,6 +249,11 @@ export async function syncWithFolder(
     await writeJsonToDir(dir, 'meta.json', localMeta);
   }
 
+  // TODO: examDate lives in AppMeta, not SessionSettings. The folder
+  // meta.json currently only contains SessionSettings fields, so this
+  // comparison is effectively just targetThreshold. A future PR
+  // should merge AppMeta.examDate into the meta.json and compare it
+  // here. For now, the `as any` is the least bad workaround.
   const metaDiffers = folderMeta != null &&
     JSON.stringify({ t: (localSettings as any)?.targetThreshold, e: (localSettings as any)?.examDate }) !==
     JSON.stringify({ t: (folderMeta as any).targetThreshold, e: (folderMeta as any).examDate });
@@ -303,7 +308,7 @@ export async function syncWithFolder(
     mergedCount: mergedList.length,
     metaDiffers,
     folderMeta,
-    localMeta: localSettings as any,
+    localMeta: (localSettings as unknown as Record<string, unknown> | null) ?? null,
     mergedHistory: mergedList,
     mergedFlags,
     activeSession: folderActive || localActive,

@@ -290,11 +290,14 @@ export default function App() {
       return;
     }
     await runSync(false);
+    // syncDirVersion in deps: when the folder handle changes (via
+    // setSyncDir), the version bumps, the callback recreates, and
+    // the next invocation reads the fresh syncDirRef value.
   }, [syncDir, runSync, syncDirVersion]);
 
   const handleKeepThisDevice = useCallback(async () => {
     if (!syncDir || !metaConflict) return;
-    await applyFolderMeta(syncDir, metaConflict.localMeta as any);
+    await applyFolderMeta(syncDir, metaConflict.localMeta);
     setMetaConflict(null);
     setSyncMsg('Settings kept from this device.');
   }, [syncDir, metaConflict, syncDirVersion]);
@@ -305,10 +308,8 @@ export default function App() {
     await db.put('kv', metaConflict.folderMeta, 'settings');
     setMetaConflict(null);
     setSyncMsg('Settings applied from folder.');
-    // Refresh settings from IndexedDB so the UI reflects the
-    // adopted values.
     const fresh = await db.get('kv', 'settings');
-    if (fresh) setSettings(fresh as any);
+    if (fresh) setSettings(fresh as SessionSettings);
   }, [metaConflict, syncDir, syncDirVersion]);
 
   // Cleanup the auto-sync timer on unmount.
@@ -374,15 +375,21 @@ export default function App() {
     return () => clearInterval(interval);
   }, [timedSessionId]);
 
-  // Auto-submit when timer expires — uses ref to avoid stale closure
+  // Auto-submit when timer expires — uses a ref guard so this only
+  // fires once per session ID. (The previous `remainingSeconds === 0
+  // && activeSessionRef.current?.remainingSeconds === 0` guard was a
+  // tautology because `session` IS `activeSessionRef.current` — it
+  // compared the same object to itself and never let the submit
+  // fire. Found by local-consensus review.)
+  const autoSubmittedFor = useRef<string | null>(null);
   useEffect(() => {
     const session = activeSessionRef.current;
     if (!session || session.submittedAt || session.remainingSeconds === null || session.remainingSeconds > 0) return;
-    if (session.remainingSeconds === 0 && activeSessionRef.current?.remainingSeconds === 0) return; // already fired
+    if (autoSubmittedFor.current === session.id) return; // already auto-submitted this session
 
-    // Mark session so this effect doesn't fire again
     const completed = { ...session, submittedAt: new Date().toISOString(), result: scoreSession(session.settings.blueprintId, session.items, session.answers, session.settings.targetThreshold, questionIndex), updatedAt: new Date().toISOString() };
     const entry = toHistoryEntry(completed, questionIndex);
+    autoSubmittedFor.current = session.id;
     void saveHistoryEntry(entry).then(() => clearActiveSession()).then(() => {
       setHistory((prev) => [entry, ...prev]);
       setSelectedHistory(entry);
@@ -390,11 +397,11 @@ export default function App() {
       // auto-submit: from session to review. The user just ran out of
       // time; the result "ascends" into view.
       goTo('review', 'ascend');
-      // Auto-sync: the in-progress session is now complete, the new
-      // immutable session file should be written to the folder.
+      // Auto-sync: the new immutable session file should land in
+      // the folder a moment later.
       scheduleAutoSync();
     });
-  }, [activeSession?.remainingSeconds, activeSession?.submittedAt, scheduleAutoSync]);
+  }, [activeSession?.remainingSeconds, activeSession?.submittedAt, scheduleAutoSync, goTo]);
 
   // Mutate session helper
   const mutateSession = useCallback((fn: (s: ActiveSession) => ActiveSession) => {
