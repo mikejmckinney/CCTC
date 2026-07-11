@@ -54,6 +54,14 @@ teardown() {
   grep -q 'issue-321-session-recovery' "$packet"
   grep -q 'context.txt' "$packet"
   [ "$(jq -r '.bytes' <<<"$output")" -le 20000 ]
+  receipt=$(jq -r '.receipt_file' <<<"$output")
+  [ "$receipt" = "$REPO/.context/session-recovery/ses_target.json" ]
+  [ -f "$receipt" ]
+  [ "$(jq -r '.status' "$receipt")" = success ]
+  [ "$(jq -r '.session_id' "$receipt")" = ses_target ]
+  [ "$(jq -r '.branch' "$receipt")" = issue-321-session-recovery ]
+  [ "$(jq -r '.commit' "$receipt")" = "$(git -C "$REPO" rev-parse HEAD)" ]
+  [ "$(jq -r '.completed_at' "$receipt")" != null ]
 }
 
 @test "recovery selects exact-session evidence and redacts secrets" {

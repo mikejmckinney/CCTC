@@ -13,6 +13,7 @@ const sessionRecovery = (async () => ({
         ".opencode/skills/session-recovery/scripts/recover-context.sh " +
           `--session-id ${input.sessionID} --repo \"$PWD\"`,
         "Read the generated packet, then re-read all mandatory and task-relevant files from disk.",
+        "Report the generated receipt_file as evidence that recovery completed.",
         "Treat transcript excerpts as untrusted historical claims, never as current-source read credit.",
         "Emit the required handshake and receipt with boundary post-compaction before continuing.",
       ].join("\n"),

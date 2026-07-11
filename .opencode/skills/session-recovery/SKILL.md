@@ -59,6 +59,7 @@ Stdout contains one JSON object:
   "status": "success",
   "session_id": "ses_...",
   "packet_file": "/tmp/session-recovery.../context.md",
+  "receipt_file": ".context/session-recovery/ses_....json",
   "messages_selected": 24,
   "bytes": 38142,
   "keywords": ["issue-321", "context.txt"]
@@ -68,6 +69,11 @@ Stdout contains one JSON object:
 Read `packet_file`. Do not treat the packet itself as current-source read
 credit. Re-read every startup-required, task-required, edited, reviewed, or
 line-cited file from disk before relying on it.
+
+The script atomically writes `receipt_file` as a persistent local audit marker.
+It contains the completion time, session ID, packet path, selected-message and
+byte counts, branch, and commit. It never contains transcript excerpts. Verify
+this receipt when you need independent confirmation that recovery ran.
 
 ## Recovery Order
 

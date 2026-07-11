@@ -134,12 +134,34 @@ fi
 
 packet_bytes=$(wc -c <"$PACKET_FILE" | tr -d ' ')
 messages_selected=$(jq 'length' "$SELECTED_TRANSCRIPT")
+RECEIPT_DIR="$REPO/.context/session-recovery"
+RECEIPT_FILE="$RECEIPT_DIR/${SESSION_ID}.json"
+RECEIPT_TEMP="$RECEIPT_FILE.tmp.$$"
+mkdir -p "$RECEIPT_DIR"
+completed_at=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+commit=$(git -C "$REPO" rev-parse HEAD)
+jq -n \
+  --arg status success \
+  --arg session_id "$SESSION_ID" \
+  --arg completed_at "$completed_at" \
+  --arg packet_file "$PACKET_FILE" \
+  --arg branch "$branch" \
+  --arg commit "$commit" \
+  --argjson messages_selected "$messages_selected" \
+  --argjson bytes "$packet_bytes" \
+  '{status: $status, session_id: $session_id, completed_at: $completed_at,
+    packet_file: $packet_file, messages_selected: $messages_selected,
+    bytes: $bytes, branch: $branch, commit: $commit}' >"$RECEIPT_TEMP"
+mv "$RECEIPT_TEMP" "$RECEIPT_FILE"
+
 jq -n \
   --arg status success \
   --arg session_id "$SESSION_ID" \
   --arg packet_file "$PACKET_FILE" \
+  --arg receipt_file "$RECEIPT_FILE" \
   --argjson messages_selected "$messages_selected" \
   --argjson bytes "$packet_bytes" \
   --argjson keywords "$KEYWORDS_JSON" \
   '{status: $status, session_id: $session_id, packet_file: $packet_file,
+    receipt_file: $receipt_file,
     messages_selected: $messages_selected, bytes: $bytes, keywords: $keywords}'
