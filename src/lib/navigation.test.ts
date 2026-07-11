@@ -31,8 +31,6 @@ import {
   setCurrentDir,
   getCurrentDir,
   subscribeDirChange,
-  type Page,
-  type TransitionDir,
 } from './navigation';
 
 describe('inferDirection', () => {
@@ -72,12 +70,9 @@ describe('navigate', () => {
 
   it('sets the dir before calling the setter (so React sees the class on render)', () => {
     const setPage = vi.fn();
-    const observed: (TransitionDir | null)[] = [];
     navigate(setPage, 'history', 'dashboard');
     expect(setPage).toHaveBeenCalledWith('history');
     // The direction was set on the global before the setter ran.
-    // (We can't strictly observe the order in this synchronous test,
-    // but the final state should match inferDirection.)
     expect(getCurrentDir()).toBe('slide-forward');
   });
 
