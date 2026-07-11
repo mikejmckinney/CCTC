@@ -40,17 +40,57 @@ opencode run --session "$SID" --continue "<follow-up prompt>"
 Never pass a made-up name to `--session` — it expects a real session ID
 or it fails with "Session not found."
 
+## Passing the invoking session ID
+
+The invoking agent (you) has a session ID. Pass it to every invoked
+session in the prompt so the invoked agent can read the session transcript
+for additional context — the user's original request, prior consensus
+rounds, code that was written, tool outputs that were verified, etc.
+
+Capture your own session ID:
+```bash
+MY_SID=$(opencode session list --format json --max-count 1 | jq -r '.[0].id')
+```
+
+Then include it in the prompt to every invoked session:
+```
+## Invoking session context
+The invoking agent's session ID is: ${MY_SID}
+
+You may read the session transcript for additional context about what has
+already been tried, what the user's original request was, and what prior
+analysis rounds found. The transcript lives in the opencode SQLite database
+at ~/.local/share/opencode/opencode.db.
+
+Query the `part` table (contains user prompts, assistant responses, tool
+calls, and tool outputs) filtered by session_id:
+```bash
+sqlite3 ~/.local/share/opencode/opencode.db \
+  "SELECT data FROM part WHERE session_id='${MY_SID}' ORDER BY time_created" \
+  | jq -r 'select(.type == "text") | .text' | head -100
+```
+
+For targeted queries (filter by keyword or time range):
+```bash
+sqlite3 ~/.local/share/opencode/opencode.db \
+  "SELECT data FROM part WHERE session_id='${MY_SID}' AND data LIKE '%keyword%' ORDER BY time_created LIMIT 20"
+```
+
+Do NOT dump the entire transcript — it may have hundreds of messages.
+Use targeted queries to find the context you need.
+```
+
 ## What I do
 
 - Launch **parallel** `opencode run` sessions with different models to
   simulate fusion-style multi-model consensus
-- Feed raw panel outputs through a **judge model** (the default advisor)
-  to produce structured analysis: consensus, contradictions, partial
-  coverage, unique insights, and blind spots
-- Launch a **persistent** `opencode run` session with a stronger model for
+- Feed raw panel outputs through a **judge model** that not only
+  identifies consensus, contradictions, and blind spots but also
+  **resolves** each one by reading the source code and citing evidence
+- Launch a **persistent** session with a stronger model for
   advisor-style strategic guidance with follow-up capability
 - Construct prompts that include relevant workspace context so each model
-  sees what you see
+  sees what you see, plus the invoking session ID for transcript access
 - Capture auto-generated session IDs, collect and synthesize responses
   from multiple sessions into a single actionable answer
 - Keep sessions alive for auditing, history, and future follow-ups
@@ -61,21 +101,146 @@ or it fails with "Session not found."
 - Call this for syntax fixes, one-liners, or boilerplate
 - Treat any single model as an oracle — critically evaluate guidance
 - Invent session IDs — always look up the real ID from the session list
+- Report contradictions without resolving them — the judge must read the
+  source and determine which side is correct (or defer if unreachable)
 
 ## Prerequisites
 
 - `opencode` CLI available on PATH
 - `jq` available on PATH (for session list filtering)
-- Configured providers for the models you intend to use
+- `sqlite3` available on PATH (for transcript queries)
+- Configured providers for the panel models (opencode)
+- `claude` CLI on PATH (for Sol/Fable fallback — uses subscription, not API)
+- `codex` CLI on PATH (for GPT-Sol fallback — uses subscription, not API)
+- Configured providers for the fallback models in `opencode.json`
+
+---
+
+## Judge and Advisor model fallback chain
+
+The judge and advisor roles prefer stronger models available via
+subscription CLI tools (substantially cheaper than API calls). The
+fallback chain is:
+
+| Priority | Model | CLI tool | How to invoke |
+|---|---|---|---|
+| 1 (preferred) | GPT-5.6-Sol | `codex` | `codex exec -m gpt-5.6-sol "<prompt>"` |
+| 2 (fallback) | Claude Fable | `claude` | `claude -p --model fable --output-format json "<prompt>"` (prompt via stdin: `echo "<prompt>" \| claude -p --model fable`) |
+| 3 (last resort) | GLM-5.2 | `opencode` | `opencode run --model "openrouter/z-ai/glm-5.2@preset/default" "<prompt>"` |
+
+### How to choose which tier to use
+
+1. **Try Sol first** (`codex exec -m gpt-5.6-sol`). If it succeeds, use
+   its output.
+2. **If Sol fails** (CLI not found, model unavailable, timeout, error),
+   fall back to **Fable** (`claude -p --model fable`). If it succeeds,
+   use its output.
+3. **If both fail**, fall back to **GLM-5.2** via `opencode run`.
+4. **If all three fail**, perform manual synthesis (see fallback section
+   below).
+
+### Sol invocation (preferred judge/advisor)
+
+```bash
+# One-shot (judge pattern)
+timeout 300 codex exec -m gpt-5.6-sol --json "$(cat /tmp/judge-prompt.txt)" \
+  > /tmp/local-fusion-judge.out 2>&1
+
+# Parse JSON output — the answer is in item.completed events
+# The thread_id (for resume) is in thread.started events
+
+# Follow-up (advisor pattern)
+THREAD_ID=$(grep '"thread.started"' /tmp/local-fusion-judge.out | \
+  jq -r '.thread_id')
+timeout 300 codex exec resume "$THREAD_ID" --json "Follow-up question" \
+  > /tmp/local-fusion-judge-followup.out 2>&1
+```
+
+**Sol output format**: NDJSON stream. Parse with `jq`:
+```bash
+# Extract the model's text response
+grep '"item.completed"' /tmp/local-fusion-judge.out | \
+  jq -r '.item.text' 2>/dev/null
+
+# Extract the thread/session ID for resume
+grep '"thread.started"' /tmp/local-fusion-judge.out | \
+  jq -r '.thread_id' 2>/dev/null
+```
+
+### Fable invocation (fallback judge/advisor)
+
+```bash
+# One-shot (judge pattern) — prompt via stdin
+cat /tmp/judge-prompt.txt | timeout 300 claude -p --model fable \
+  --output-format json --dangerously-skip-permissions \
+  > /tmp/local-fusion-judge.out 2>&1
+
+# Parse JSON output
+RESULT=$(jq -r '.result' /tmp/local-fusion-judge.out)
+SESSION_ID=$(jq -r '.session_id' /tmp/local-fusion-judge.out)
+
+# Follow-up (advisor pattern)
+echo "Follow-up question" | timeout 300 claude -p --model fable \
+  --output-format json --dangerously-skip-permissions \
+  -r "$SESSION_ID" \
+  > /tmp/local-fusion-judge-followup.out 2>&1
+```
+
+**Fable output format**: Single JSON object with `result` (text) and
+`session_id` (for `-r` resume).
+
+### GLM invocation (last resort judge/advisor)
+
+```bash
+# One-shot (judge pattern)
+opencode run --title "local-fusion-judge-${TS}" \
+  --model "openrouter/z-ai/glm-5.2@preset/default" \
+  "$(cat /tmp/judge-prompt.txt)" \
+  > "/tmp/local-fusion-judge-${TS}.out" 2>&1
+
+# Follow-up (advisor pattern)
+JUDGE_SID=$(opencode session list --format json --max-count 10 | \
+  jq -r '.[] | select(.title == "local-fusion-judge-'"${TS}"'") | .id' | head -1)
+opencode run --session "$JUDGE_SID" --continue "Follow-up question" \
+  > "/tmp/local-fusion-judge-${TS}-followup.out" 2>&1
+```
+
+### Detecting which tier succeeded
+
+```bash
+# After attempting Sol, check if it produced valid output
+SOL_TEXT=$(grep '"item.completed"' /tmp/local-fusion-judge.out 2>/dev/null | \
+  jq -r '.item.text' 2>/dev/null | head -1)
+if [ -n "$SOL_TEXT" ] && [ "$SOL_TEXT" != "null" ]; then
+  JUDGE_OUTPUT="$SOL_TEXT"
+  JUDGE_ENGINE="sol"
+else
+  # Try Fable
+  cat /tmp/judge-prompt.txt | timeout 300 claude -p --model fable \
+    --output-format json --dangerously-skip-permissions \
+    > /tmp/local-fusion-judge.out 2>&1
+  FABLE_RESULT=$(jq -r '.result // empty' /tmp/local-fusion-judge.out 2>/dev/null)
+  if [ -n "$FABLE_RESULT" ]; then
+    JUDGE_OUTPUT="$FABLE_RESULT"
+    JUDGE_ENGINE="fable"
+    FABLE_SESSION=$(jq -r '.session_id // empty' /tmp/local-fusion-judge.out 2>/dev/null)
+  else
+    # Fall back to GLM
+    # ... opencode run invocation as above ...
+    JUDGE_ENGINE="glm"
+  fi
+fi
+```
 
 ---
 
 ## Fusion pattern (multi-model, one-shot)
 
 Launch 3 sessions in parallel with different models, each with the same
-prompt. Collect results, synthesize.
+prompt. Collect results, run a two-phase judge that resolves contradictions
+and blind spots.
 
-### Default models
+### Default panel models
 
 | Shorthand | Model |
 |---|---|
@@ -98,12 +263,10 @@ local-fusion-<ts>-<model-shorthand>
 Example: `local-fusion-20260708-mi`, `local-fusion-20260708-ds`,
 `local-fusion-20260708-mm`
 
-The title groups sessions from the same fusion round and makes them
-searchable in `opencode session list`.
-
 ### Prompt construction
 
-Each model session needs a self-contained prompt because it starts fresh:
+Each model session needs a self-contained prompt because it starts fresh.
+Always include the invoking session ID so the model can read the transcript.
 
 ```
 ## Goal
@@ -114,6 +277,31 @@ Each model session needs a self-contained prompt because it starts fresh:
 
 ## What we've already tried
 <dead ends so the model doesn't re-suggest them>
+
+## Invoking session context
+The invoking agent's session ID is: ${MY_SID}
+
+You may read the session transcript for additional context about what has
+already been tried, what the user's original request was, and what prior
+analysis rounds found. The transcript lives in the opencode SQLite database
+at ~/.local/share/opencode/opencode.db.
+
+Query the `part` table (contains user prompts, assistant responses, tool
+calls, and tool outputs) filtered by session_id:
+```bash
+sqlite3 ~/.local/share/opencode/opencode.db \
+  "SELECT data FROM part WHERE session_id='${MY_SID}' ORDER BY time_created" \
+  | jq -r 'select(.type == "text") | .text' | head -100
+```
+
+For targeted queries (filter by keyword or time range):
+```bash
+sqlite3 ~/.local/share/opencode/opencode.db \
+  "SELECT data FROM part WHERE session_id='${MY_SID}' AND data LIKE '%keyword%' ORDER BY time_created LIMIT 20"
+```
+
+Do NOT dump the entire transcript — it may have hundreds of messages.
+Use targeted queries to find the context you need.
 
 ## Relevant files
 List file paths with line ranges for the model to read itself.
@@ -138,7 +326,8 @@ files:
 
 ```bash
 TS=$(date +%Y%m%d-%H%M%S)
-PROMPT='<your prompt text here>'
+MY_SID=$(opencode session list --format json --max-count 1 | jq -r '.[0].id')
+PROMPT='<your prompt text here — includes $MY_SID for transcript access>'
 
 # Launch all 3 in parallel
 opencode run --title "local-fusion-${TS}-mi" \
@@ -179,12 +368,17 @@ scope. If you launch many sessions between launch and lookup, increase
 this value or use `--max-count` without a limit (omit the flag for all
 sessions, slower for large histories).
 
-### Collecting results and judging
+### Collecting results and running the two-phase judge
 
-After `wait` completes, feed all raw panel outputs to the advisor model
-acting as a **judge**. The judge produces a structured analysis mirroring
-OpenRouter Fusion's output: consensus, contradictions, partial coverage,
-unique insights, and blind spots.
+After `wait` completes, feed all raw panel outputs to the judge. The
+judge runs in **two phases**: analysis (identify consensus, contradictions,
+blind spots) then **remediation** (resolve each contradiction and blind
+spot by reading the source code, citing evidence, and deferring
+unreachable edge cases).
+
+#### Phase 1 + 2 combined judge prompt
+
+Write the judge prompt to a temp file, then invoke via the fallback chain:
 
 ```bash
 # Concatenate raw panel outputs
@@ -193,65 +387,140 @@ cat "/tmp/local-fusion-${TS}-mi.out" \
     "/tmp/local-fusion-${TS}-mm.out" \
     > "/tmp/local-fusion-${TS}-all.txt"
 
-JUDGE_TITLE="local-fusion-judge-${TS}"
+# Write the two-phase judge prompt to a file
+cat > /tmp/judge-prompt.txt << JUDGE_EOF
+You are a judge. Below are responses from three independent models (MI, DS, MM)
+to the same prompt. You have full filesystem access. Your job has two phases.
 
-opencode run --title "$JUDGE_TITLE" \
-  --model "openrouter/z-ai/glm-5.2@preset/default" \
-  "You are a judge. Below are responses from three independent models
-to the same prompt. Analyze them and return a structured summary.
+## Phase 1: Analysis
+
+Analyze the responses and identify:
+
+### Consensus
+Points where 2+ models agree. These are the highest-confidence findings.
+
+### Contradictions
+Where models disagree. List each contradiction with both sides.
+
+### Partial coverage
+Points raised by only 1-2 models but not all.
+
+### Unique insights
+A specific insight from a single model that the others missed. Cite the source.
+
+### Blind spots
+What all models missed or failed to address.
+
+## Phase 2: Remediation
+
+For EACH contradiction and blind spot identified in Phase 1:
+
+1. Read the relevant source files yourself (you have filesystem access).
+2. Determine which side is correct by citing specific evidence (file:line).
+3. If the issue is an unreachable edge case (the user cannot realistically
+   hit it in normal use), DEFER it with a one-line justification.
+4. If you cannot resolve it from source alone, say "UNRESOLVED — requires
+   runtime verification" and explain what would settle it.
+
+Do NOT leave contradictions unresolved. The user should not have to do a
+separate research pass. If you can read the code and determine the answer,
+do so.
+
+## Final output format
 
 Return exactly these sections:
 
 ## Consensus
-Points where 2+ models agree. These are the highest-confidence findings.
+<bullets>
 
-## Contradictions
-Where models disagree. State both sides without picking one. If none,
-say 'None.'
+## Contradictions (resolved)
+For each: what the models said → what the code says → verdict (which was
+correct, with file:line citation). Mark deferred items as "DEFERRED:
+<reason>".
 
 ## Partial coverage
-Points raised by only 1-2 models but not all. These may be valuable but
-unverified.
+<bullets>
 
 ## Unique insights
-A specific insight from a single model that the others missed. Cite the
-source model.
+<bullets with source model>
 
-## Blind spots
-What all models missed or failed to address. What a reader should be
-aware is absent from this analysis.
+## Blind spots (resolved)
+For each: what was missed → what the code says → whether it matters.
+Mark unreachable edge cases as "DEFERRED: <reason>".
+
+## Prioritized action list
+Rank all identified issues by severity (critical first), with a one-line
+fix recommendation for each. Exclude deferred items.
+
+## Overall assessment
+How well does the implementation match the target? Are there critical
+issues remaining or is it production-ready?
 
 ---
-PRIMARY QUESTION:
-$(head -5 "/tmp/local-fusion-${TS}-all.txt")
-
 PANEL RESPONSES:
-$(cat "/tmp/local-fusion-${TS}-all.txt")" \
-  > "/tmp/${JUDGE_TITLE}.out" 2>&1
+$(cat "/tmp/local-fusion-${TS}-all.txt")
+JUDGE_EOF
 
-# Capture the judge session ID
-JUDGE_SID=$(opencode session list --format json --max-count 10 | \
-  jq -r '.[] | select(.title == "'"$JUDGE_TITLE"'") | .id' | head -1)
+# Invoke the judge via the fallback chain (Sol → Fable → GLM)
+# Try Sol first
+timeout 300 codex exec -m gpt-5.6-sol --json "$(cat /tmp/judge-prompt.txt)" \
+  > /tmp/local-fusion-judge.out 2>&1
 
-echo "Judge session: $JUDGE_SID"
+SOL_TEXT=$(grep '"item.completed"' /tmp/local-fusion-judge.out 2>/dev/null | \
+  jq -r '.item.text' 2>/dev/null)
+
+if [ -n "$SOL_TEXT" ] && [ "$SOL_TEXT" != "null" ]; then
+  JUDGE_OUTPUT="$SOL_TEXT"
+  JUDGE_ENGINE="sol"
+  JUDGE_SESSION=$(grep '"thread.started"' /tmp/local-fusion-judge.out | \
+    jq -r '.thread_id' 2>/dev/null)
+else
+  # Try Fable
+  cat /tmp/judge-prompt.txt | timeout 300 claude -p --model fable \
+    --output-format json --dangerously-skip-permissions \
+    > /tmp/local-fusion-judge.out 2>&1
+
+  FABLE_RESULT=$(jq -r '.result // empty' /tmp/local-fusion-judge.out 2>/dev/null)
+
+  if [ -n "$FABLE_RESULT" ]; then
+    JUDGE_OUTPUT="$FABLE_RESULT"
+    JUDGE_ENGINE="fable"
+    JUDGE_SESSION=$(jq -r '.session_id // empty' /tmp/local-fusion-judge.out 2>/dev/null)
+  else
+    # Fall back to GLM via opencode
+    JUDGE_TITLE="local-fusion-judge-${TS}"
+    opencode run --title "$JUDGE_TITLE" \
+      --model "openrouter/z-ai/glm-5.2@preset/default" \
+      "$(cat /tmp/judge-prompt.txt)" \
+      > "/tmp/${JUDGE_TITLE}.out" 2>&1
+
+    JUDGE_OUTPUT=$(cat "/tmp/${JUDGE_TITLE}.out")
+    JUDGE_ENGINE="glm"
+    JUDGE_SESSION=$(opencode session list --format json --max-count 10 | \
+      jq -r '.[] | select(.title == "'"$JUDGE_TITLE"'") | .id' | head -1)
+  fi
+fi
+
+echo "Judge engine: $JUDGE_ENGINE"
+echo "Judge session: $JUDGE_SESSION"
+echo "$JUDGE_OUTPUT"
 ```
 
 ### Presenting the result
 
 The judge's output **is** your synthesis. Present it to the user as-is
-(or lightly reformatted). Do not re-interpret or editorialize it — the
-judge model already performed the synthesis. Your job is delivery, not
-re-analysis.
+(or lightly reformatted). The judge has already resolved contradictions
+and blind spots — you do not need to do a separate research pass.
 
-If the judge call fails (model unavailable, rate limited, timeout),
-fall back to manual synthesis:
+If the judge call fails on all three tiers (Sol, Fable, GLM), fall back
+to manual synthesis:
 
 1. **Identify consensus** — where 2+ models agree
-2. **Flag contradictions** — where models split, state both sides
+2. **Resolve contradictions yourself** — read the source code, cite
+   evidence, defer unreachable edge cases
 3. **Note unique insights** — a single model's observation others missed
-4. **Check blind spots** — what did all models miss? Use your own
-   knowledge here
-5. **Present a single structured answer**
+4. **Check blind spots** — what did all models miss? Read the code
+5. **Present a single structured answer** with resolved contradictions
 
 ### Clean up temp files (not sessions)
 
@@ -298,51 +567,118 @@ create new last.
 
 ## Advisor pattern (single strong model, persistent)
 
-Launch one session with a stronger model. Capture its session ID so you
-can follow up in the same context.
+Launch one session with a stronger model via the fallback chain. Capture
+its session ID so you can follow up in the same context.
 
-### Default model
+### Model fallback chain
 
-| Role | Model |
-|---|---|
-| Advisor | `openrouter/z-ai/glm-5.2@preset/default` |
+Same chain as the judge: Sol → Fable → GLM. See the fallback section
+above for invocation details.
 
-### Initial launch
+### Initial launch (Sol preferred)
 
 ```bash
+MY_SID=$(opencode session list --format json --max-count 1 | jq -r '.[0].id')
 TITLE="local-advisor-$(date +%Y%m%d-%H%M%S)"
 
-opencode run --title "$TITLE" \
-  --model "openrouter/z-ai/glm-5.2@preset/default" \
-  "<advisor prompt>" \
+# Write advisor prompt to file
+cat > /tmp/advisor-prompt.txt << ADVISOR_EOF
+## Current state
+<what you've done so far, what's working, what's not>
+
+## What I've already tried
+<specific attempts and why they failed or felt incomplete>
+
+## What I need
+<strategic guidance, blind spot check, edge case review, or decision>
+
+## Invoking session context
+The invoking agent's session ID is: ${MY_SID}
+
+You may read the session transcript for additional context. The transcript
+lives in the opencode SQLite database at ~/.local/share/opencode/opencode.db.
+Query the \`part\` table filtered by session_id:
+\`\`\`bash
+sqlite3 ~/.local/share/opencode/opencode.db \
+  "SELECT data FROM part WHERE session_id='${MY_SID}' ORDER BY time_created" \
+  | jq -r 'select(.type == "text") | .text' | head -100
+\`\`\`
+Use targeted queries — do NOT dump the entire transcript.
+
+## Relevant files
+List file paths with line ranges for the model to read itself.
+Do NOT paste file contents — the session has full filesystem access.
+
+Be specific. If there are risks, name them. If there are alternatives,
+rank them.
+ADVISOR_EOF
+
+# Try Sol first
+timeout 300 codex exec -m gpt-5.6-sol --json "$(cat /tmp/advisor-prompt.txt)" \
   > "/tmp/${TITLE}.out" 2>&1
 
-# Capture the session ID
-SID=$(opencode session list --format json --max-count 10 | \
-  jq -r '.[] | select(.title == "'"$TITLE"'") | .id' | head -1)
+SOL_TEXT=$(grep '"item.completed"' "/tmp/${TITLE}.out" 2>/dev/null | \
+  jq -r '.item.text' 2>/dev/null)
 
-echo "Advisor session: $SID (title: $TITLE)"
+if [ -n "$SOL_TEXT" ] && [ "$SOL_TEXT" != "null" ]; then
+  ADVISOR_OUTPUT="$SOL_TEXT"
+  ADVISOR_ENGINE="sol"
+  ADVISOR_SESSION=$(grep '"thread.started"' "/tmp/${TITLE}.out" | \
+    jq -r '.thread_id' 2>/dev/null)
+else
+  # Try Fable
+  cat /tmp/advisor-prompt.txt | timeout 300 claude -p --model fable \
+    --output-format json --dangerously-skip-permissions \
+    > "/tmp/${TITLE}.out" 2>&1
+
+  FABLE_RESULT=$(jq -r '.result // empty' "/tmp/${TITLE}.out" 2>/dev/null)
+
+  if [ -n "$FABLE_RESULT" ]; then
+    ADVISOR_OUTPUT="$FABLE_RESULT"
+    ADVISOR_ENGINE="fable"
+    ADVISOR_SESSION=$(jq -r '.session_id // empty' "/tmp/${TITLE}.out" 2>/dev/null)
+  else
+    # Fall back to GLM
+    opencode run --title "$TITLE" \
+      --model "openrouter/z-ai/glm-5.2@preset/default" \
+      "$(cat /tmp/advisor-prompt.txt)" \
+      > "/tmp/${TITLE}.out" 2>&1
+
+    ADVISOR_OUTPUT=$(cat "/tmp/${TITLE}.out")
+    ADVISOR_ENGINE="glm"
+    ADVISOR_SESSION=$(opencode session list --format json --max-count 10 | \
+      jq -r '.[] | select(.title == "'"$TITLE"'") | .id' | head -1)
+  fi
+fi
+
+echo "Advisor engine: $ADVISOR_ENGINE"
+echo "Advisor session: $ADVISOR_SESSION (engine: $ADVISOR_ENGINE)"
+echo "$ADVISOR_OUTPUT"
 ```
-
-This blocks until the model responds. The output goes to stdout. The
-session persists for follow-ups and auditing.
 
 ### Following up
 
-Use the captured session ID with `--continue`:
+Use the captured session ID with the appropriate CLI's resume command:
 
 ```bash
-opencode run --session "$SID" --continue \
+# Sol follow-up
+timeout 300 codex exec resume "$ADVISOR_SESSION" --json "But what about the edge case where X happens?" \
+  > "/tmp/${TITLE}-followup.out" 2>&1
+
+# Fable follow-up
+echo "But what about the edge case where X happens?" | timeout 300 claude -p \
+  --model fable --output-format json --dangerously-skip-permissions \
+  -r "$ADVISOR_SESSION" \
+  > "/tmp/${TITLE}-followup.out" 2>&1
+
+# GLM follow-up
+opencode run --session "$ADVISOR_SESSION" --continue \
   "But what about the edge case where X happens?" \
   > "/tmp/${TITLE}-followup.out" 2>&1
 ```
 
 Use this to drill deeper: "What would you change?", "Are there security
 concerns I missed?", "Give me a concrete implementation plan."
-
-**Important**: `--continue` without `--session` (relying on "last
-session") can hang indefinitely. Always pass an explicit `--session`
-with the captured ID.
 
 ### Prompt structure
 
@@ -358,13 +694,12 @@ Same template as fusion, but be explicit about the **kind** of advice:
 ## What I need
 <strategic guidance, blind spot check, edge case review, or decision>
 
+## Invoking session context
+<session ID + transcript query instructions>
+
 ## Relevant files
 List file paths with line ranges for the model to read itself.
 Do NOT paste file contents — the session has full filesystem access.
-
-Example:
-- `src/services/payment.ts:45-80` — payment processing logic
-- `config/database.yml` — connection pool config
 
 Be specific. If there are risks, name them. If there are alternatives,
 rank them.
@@ -374,8 +709,7 @@ rank them.
 
 - **Evaluate, don't obey** — cross-check against the codebase
 - **Synthesize into action** — turn guidance into concrete next steps
-- **Cite the source** — "Based on analysis from GLM-5.2, the likely
-  cause…"
+- **Cite the source** — "Based on analysis from [Sol/Fable/GLM]…"
 - **Follow up** if the answer is incomplete or raises new questions
 
 ---
@@ -389,7 +723,7 @@ rank them.
 | "Find flaws in this design." | Advisor | One sharp critic beats a committee |
 | "Survey arguments for and against X." | Fusion | The diversity of responses is the value |
 | "I'm stuck on this bug." | Advisor | Targeted analysis, then follow up |
-| "Is this refactor safe to ship?" | Fusion | Diverse review + judge structured analysis |
+| "Is this refactor safe to ship?" | Fusion | Diverse review + judge resolves contradictions |
 
 If unsure, default to advisor — it's one session vs. four, and you can
 always escalate to fusion later.
@@ -398,9 +732,15 @@ always escalate to fusion later.
 
 ## Cost and latency
 
-- Fusion: 3 panel sessions (parallel) + 1 judge session (sequential).
-  4 total sessions, wall-clock ≈ slowest panel + judge time
-- Advisor: one session, plus follow-up tokens if you continue
+- Fusion: 3 panel sessions (parallel, via opencode) + 1 judge session
+  (sequential, via Sol/Fable/GLM fallback chain). 4 total sessions,
+  wall-clock ≈ slowest panel + judge time
+- Advisor: one session via fallback chain, plus follow-up tokens if you
+  continue
+- **Subscription CLI cost**: Sol and Fable run via `codex` and `claude`
+  CLIs respectively, which use your existing subscription — substantially
+  cheaper than API per-call pricing. GLM runs via `opencode run` which
+  uses the configured OpenRouter provider.
 - Both: models have local filesystem access, so they may read files you
   didn't explicitly paste — that adds token cost but saves you from
   copying everything manually
@@ -424,17 +764,17 @@ always escalate to fusion later.
   unless explicitly instructed
 - **Skipping the timestamp in title.** Without it, titles collide across
   fusion rounds, making session lookup ambiguous
-- **Not using `--continue` for advisor follow-ups.** Each new
-  invocation without `--continue` creates a fresh session with no context
+- **Not using `--continue` / `resume` for advisor follow-ups.** Each new
+  invocation without continuation creates a fresh session with no context
 - **Passing a made-up name to `--session`.** `--session` expects a real
   session ID (`ses_...`). Use `--title` for naming, then look up the
   ID
 - **Using `--continue` without `--session`.** It can hang. Always pass
   the explicit session ID
 - **Using a different model than the defaults without justification.**
-  The 3 fusion panelists and 1 advisor model were chosen for
-  complementary strengths. Deviate only if the task calls for a
-  specific model's strengths
+  The 3 fusion panelists and the fallback chain were chosen for
+  complementary strengths and cost efficiency. Deviate only if the task
+  calls for a specific model's strengths
 - **Inlining file contents into the prompt.** Sessions have full filesystem
   access. Point to files by path with line number citations. Inlining
   bloats context, costs tokens, and causes timeouts — the model should
@@ -443,21 +783,34 @@ always escalate to fusion later.
   session already read files and built context. Use `--continue` with the
   captured session ID to resume it. Only create new sessions if the process
   is confirmed dead.
+- **Reporting contradictions without resolving them.** The judge must
+  read the source code and resolve each contradiction by citing evidence.
+  Do not leave the user with "Model A said X, Model B said Y" — determine
+  which is correct. Defer only unreachable edge cases with justification.
+- **Not passing the invoking session ID.** Invoked agents start fresh
+  with no context. Pass your session ID so they can read the transcript
+  for prior attempts, user requests, and code changes.
+- **Dumping the entire transcript.** The transcript may have hundreds
+  of messages. Use targeted SQLite queries with keyword filters or time
+  ranges to extract only the relevant context.
 
 ---
 
 ## Model quick reference
 
-| Role | Model |
-|---|---|---|
-| Fusion — broad knowledge, tradeoffs | `openrouter/deepseek/deepseek-v4-pro@preset/default` (DS) |
-| Fusion — structured analysis | `openrouter/minimax/minimax-m3@preset/default` (MM) |
-| Fusion — design/system thinking | `openrouter/xiaomi/mimo-v2.5-pro@preset/default` (MI) |
-| Judge — synthesize fusion results | `openrouter/z-ai/glm-5.2@preset/default` |
-| Advisor — strategic guidance | `openrouter/z-ai/glm-5.2@preset/default` |
+| Role | Model | CLI tool | Notes |
+|---|---|---|---|
+| Fusion — broad knowledge, tradeoffs | `openrouter/deepseek/deepseek-v4-pro@preset/default` (DS) | `opencode run` | Panelist |
+| Fusion — structured analysis | `openrouter/minimax/minimax-m3@preset/default` (MM) | `opencode run` | Panelist |
+| Fusion — design/system thinking | `openrouter/xiaomi/mimo-v2.5-pro@preset/default` (MI) | `opencode run` | Panelist |
+| Judge/Advisor — preferred | GPT-5.6-Sol | `codex exec` | Subscription, cheapest |
+| Judge/Advisor — fallback 1 | Claude Fable | `claude -p` | Subscription, cheap |
+| Judge/Advisor — fallback 2 | GLM-5.2 | `opencode run` | API, last resort |
 
-All models are defined in the project's `opencode.json`. Use `opencode
-models` to verify they are available.
+Panel models are defined in the project's `opencode.json`. Judge/advisor
+models use the fallback chain (Sol → Fable → GLM). Use `opencode models`
+to verify opencode providers; use `codex --version` and `claude --version`
+to verify CLI availability.
 
 ---
 
@@ -468,7 +821,8 @@ monolith, 50 endpoints, team of 4."
 
 ```bash
 TS=$(date +%Y%m%d-%H%M%S)
-PROMPT='## Goal
+MY_SID=$(opencode session list --format json --max-count 1 | jq -r '.[0].id')
+PROMPT="## Goal
 Decide whether migrating from REST to GraphQL makes sense for this project.
 
 ## Constraints
@@ -478,19 +832,32 @@ Decide whether migrating from REST to GraphQL makes sense for this project.
 - No dedicated platform/infra team
 - GraphQL would be added incrementally, not a rewrite
 
+## Invoking session context
+The invoking agent's session ID is: ${MY_SID}
+
+You may read the session transcript for additional context. The transcript
+lives in the opencode SQLite database at ~/.local/share/opencode/opencode.db.
+Query the \`part\` table filtered by session_id:
+\`\`\`bash
+sqlite3 ~/.local/share/opencode/opencode.db \\
+  \"SELECT data FROM part WHERE session_id='${MY_SID}' ORDER BY time_created\" \\
+  | jq -r 'select(.type == \"text\") | .text' | head -100
+\`\`\`
+Use targeted queries — do NOT dump the entire transcript.
+
 ## Shape of answer
 Ranked recommendation with 3-5 concrete tradeoffs, a migration risk
 assessment (low/medium/high per tradeoff), and a suggested first step
-if the recommendation is "yes."
+if the recommendation is \"yes.\"
 
 ## Relevant files
 The workspace is at this project root. Key files to inspect:
-- `config/routes.rb` — route definitions
-- `app/controllers/` — existing REST controllers
-- `app/graphql/` — empty, planned GraphQL location
-- `Gemfile` — dependencies
+- \`config/routes.rb\` — route definitions
+- \`app/controllers/\` — existing REST controllers
+- \`app/graphql/\` — empty, planned GraphQL location
+- \`Gemfile\` — dependencies
 
-Read these yourself. Do not paste contents into the prompt.'
+Read these yourself. Do not paste contents into the prompt."
 
 # Launch all 3 in parallel
 opencode run --title "local-fusion-${TS}-mi" \
@@ -515,49 +882,21 @@ SID_DS=$(opencode session list --format json --max-count 10 | \
 SID_MM=$(opencode session list --format json --max-count 10 | \
   jq -r '.[] | select(.title == "local-fusion-'"${TS}"'-mm") | .id' | head -1)
 
-# Feed all panel outputs to the judge for structured synthesis
+# Concatenate and run the two-phase judge via fallback chain
 cat "/tmp/local-fusion-${TS}-mi.out" \
     "/tmp/local-fusion-${TS}-ds.out" \
     "/tmp/local-fusion-${TS}-mm.out" \
     > "/tmp/local-fusion-${TS}-all.txt"
 
-JUDGE_TITLE="local-fusion-judge-${TS}"
+# Write judge prompt (see the two-phase template above)
+# ... write to /tmp/judge-prompt.txt ...
 
-opencode run --title "$JUDGE_TITLE" \
-  --model "openrouter/z-ai/glm-5.2@preset/default" \
-  "You are a judge. Below are responses from three independent models to
-the same prompt. Analyze them and return a structured summary.
-
-Return exactly these sections:
-
-## Consensus
-Points where 2+ models agree. These are the highest-confidence findings.
-
-## Contradictions
-Where models disagree. State both sides without picking one. If none,
-say 'None.'
-
-## Partial coverage
-Points raised by only 1-2 models but not all.
-
-## Unique insights
-A specific insight from a single model that the others missed. Cite the
-source model.
-
-## Blind spots
-What all models missed or failed to address.
-
----
-PANEL RESPONSES:
-$(cat "/tmp/local-fusion-${TS}-all.txt")" \
-  > "/tmp/${JUDGE_TITLE}.out" 2>&1
-
-JUDGE_SID=$(opencode session list --format json --max-count 10 | \
-  jq -r '.[] | select(.title == "'"$JUDGE_TITLE"'") | .id' | head -1)
+# Try Sol first, then Fable, then GLM (see fallback chain section)
+# ...
 
 # Present the judge's structured analysis to the user
 echo "=== Consensus Analysis ==="
-cat "/tmp/${JUDGE_TITLE}.out"
+echo "$JUDGE_OUTPUT"
 ```
 
 ## Example: Bug diagnosis (Advisor)
@@ -566,11 +905,12 @@ cat "/tmp/${JUDGE_TITLE}.out"
 pool looks fine, not correlated with traffic spikes."
 
 ```bash
+MY_SID=$(opencode session list --format json --max-count 1 | jq -r '.[0].id')
 TITLE="local-advisor-$(date +%Y%m%d-%H%M%S)"
 
-opencode run --title "$TITLE" \
-  --model "openrouter/z-ai/glm-5.2@preset/default" \
-  '## Current state
+# Write advisor prompt to file
+cat > /tmp/advisor-prompt.txt << ADVISOR_EOF
+## Current state
 Intermittent PG::ConnectionBad errors in production Rails app. Not
 correlated with traffic spikes. Connection pool config looks standard
 (pool: 25, timeout: 5000). PostgreSQL is on RDS, same VPC.
@@ -584,36 +924,38 @@ correlated with traffic spikes. Connection pool config looks standard
 
 ## What I need
 Ranked list of likely causes (most probable first) with the diagnostic
-command or config change that would confirm each one. Consider:
-- PgBouncer/timeout incompatibility even though we think it is not in use
-- RDS DNS resolution flapping
-- Rails connection reaper interacting with idle timeouts
-- Network-level issues (NAT tables, keepalive)
-- prepared_statements default in Rails
+command or config change that would confirm each one.
+
+## Invoking session context
+The invoking agent's session ID is: ${MY_SID}
+
+You may read the session transcript for additional context. The transcript
+lives in the opencode SQLite database at ~/.local/share/opencode/opencode.db.
+Query the \`part\` table filtered by session_id:
+\`\`\`bash
+sqlite3 ~/.local/share/opencode/opencode.db \\
+  \"SELECT data FROM part WHERE session_id='${MY_SID}' ORDER BY time_created\" \\
+  | jq -r 'select(.type == \"text\") | .text' | head -100
+\`\`\`
+Use targeted queries — do NOT dump the entire transcript.
 
 ## Relevant files
 The workspace is at the project root. Check these files:
-- `config/database.yml` — connection pool config
-- `config/initializers/database.rb` — any custom database config
-- `lib/patches/connection_reaper.rb` — monkey patch on ActiveRecord
-- Any connection pool middleware files
+- \`config/database.yml\` — connection pool config
+- \`config/initializers/database.rb\` — any custom database config
+- \`lib/patches/connection_reaper.rb\` — monkey patch on ActiveRecord
 
-Read these yourself. Do not paste contents into the prompt.' \
-  > "/tmp/${TITLE}.out" 2>&1
+Read these yourself. Do not paste contents into the prompt.
+ADVISOR_EOF
 
-# Capture the session ID
-SID=$(opencode session list --format json --max-count 10 | \
-  jq -r '.[] | select(.title == "'"$TITLE"'") | .id' | head -1)
+# Invoke via fallback chain (Sol → Fable → GLM)
+# ... see advisor launch section above ...
 
-echo "Advisor session: $SID"
-tail -30 "/tmp/${TITLE}.out"
+echo "Advisor session: $ADVISOR_SESSION (engine: $ADVISOR_ENGINE)"
+echo "$ADVISOR_OUTPUT"
 
-# If you need to follow up:
-opencode run --session "$SID" --continue \
-  "The database.yml shows prepared_statements: true. Could that cause
-   this? Also, there is a monkey patch on ActiveRecord::ConnectionAdapters
-   in lib/patches/connection_reaper.rb. Dig into that." \
-  > "/tmp/${TITLE}-followup.out" 2>&1
-
-tail -30 "/tmp/${TITLE}-followup.out"
+# Follow-up (engine-specific resume command):
+# Sol: codex exec resume "$ADVISOR_SESSION" --json "Dig into the monkey patch"
+# Fable: echo "Dig into the monkey patch" | claude -p --model fable -r "$ADVISOR_SESSION"
+# GLM: opencode run --session "$ADVISOR_SESSION" --continue "Dig into the monkey patch"
 ```
