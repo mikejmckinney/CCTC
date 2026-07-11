@@ -53,7 +53,8 @@ MY_SID=$(opencode session list --format json --max-count 1 | jq -r '.[0].id')
 ```
 
 Then include it in the prompt to every invoked session:
-```
+
+````markdown
 ## Invoking session context
 The invoking agent's session ID is: ${MY_SID}
 
@@ -78,7 +79,7 @@ sqlite3 ~/.local/share/opencode/opencode.db \
 
 Do NOT dump the entire transcript — it may have hundreds of messages.
 Use targeted queries to find the context you need.
-```
+````
 
 ## What I do
 
@@ -158,13 +159,13 @@ timeout 300 codex exec resume "$THREAD_ID" --json "Follow-up question" \
 
 **Sol output format**: NDJSON stream. Parse with `jq`:
 ```bash
-# Extract the model's text response
+# Extract the model's text response (may have multiple item.completed events)
 grep '"item.completed"' /tmp/local-fusion-judge.out | \
   jq -r '.item.text' 2>/dev/null
 
 # Extract the thread/session ID for resume
 grep '"thread.started"' /tmp/local-fusion-judge.out | \
-  jq -r '.thread_id' 2>/dev/null
+  jq -r '.thread_id' 2>/dev/null | head -1
 ```
 
 ### Fable invocation (fallback judge/advisor)
@@ -268,7 +269,9 @@ Example: `local-fusion-20260708-mi`, `local-fusion-20260708-ds`,
 Each model session needs a self-contained prompt because it starts fresh.
 Always include the invoking session ID so the model can read the transcript.
 
-```
+Template (copy, fill in the `<...>` placeholders, and pass as the prompt):
+
+````markdown
 ## Goal
 <what the user is trying to accomplish>
 
@@ -317,7 +320,7 @@ Do NOT paste file contents. The model will read them.
 ## Shape of answer wanted
 <recommendation with reasons, or trade-off table, or critique, or
 ranked list of risks>
-```
+````
 
 ### Launch sequence
 
@@ -467,7 +470,7 @@ timeout 300 codex exec -m gpt-5.6-sol --json "$(cat /tmp/judge-prompt.txt)" \
   > /tmp/local-fusion-judge.out 2>&1
 
 SOL_TEXT=$(grep '"item.completed"' /tmp/local-fusion-judge.out 2>/dev/null | \
-  jq -r '.item.text' 2>/dev/null)
+  jq -r '.item.text' 2>/dev/null | head -1)
 
 if [ -n "$SOL_TEXT" ] && [ "$SOL_TEXT" != "null" ]; then
   JUDGE_OUTPUT="$SOL_TEXT"
@@ -618,7 +621,7 @@ timeout 300 codex exec -m gpt-5.6-sol --json "$(cat /tmp/advisor-prompt.txt)" \
   > "/tmp/${TITLE}.out" 2>&1
 
 SOL_TEXT=$(grep '"item.completed"' "/tmp/${TITLE}.out" 2>/dev/null | \
-  jq -r '.item.text' 2>/dev/null)
+  jq -r '.item.text' 2>/dev/null | head -1)
 
 if [ -n "$SOL_TEXT" ] && [ "$SOL_TEXT" != "null" ]; then
   ADVISOR_OUTPUT="$SOL_TEXT"
@@ -684,7 +687,7 @@ concerns I missed?", "Give me a concrete implementation plan."
 
 Same template as fusion, but be explicit about the **kind** of advice:
 
-```
+````markdown
 ## Current state
 <what you've done so far, what's working, what's not>
 
@@ -703,7 +706,7 @@ Do NOT paste file contents — the session has full filesystem access.
 
 Be specific. If there are risks, name them. If there are alternatives,
 rank them.
-```
+````
 
 ### After receiving guidance
 
