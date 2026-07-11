@@ -8,6 +8,9 @@ TIMEOUT_SECONDS="${LOCAL_CONSENSUS_TIMEOUT:-300}"
 SESSION_LIMIT="${LOCAL_CONSENSUS_SESSION_LIMIT:-100}"
 SOL_MODEL="${LOCAL_CONSENSUS_SOL_MODEL:-openai/gpt-5.6-sol}"
 GLM_MODEL="${LOCAL_CONSENSUS_GLM_MODEL:-openrouter/z-ai/glm-5.2@preset/default}"
+MM_MODEL="${LOCAL_CONSENSUS_MM_MODEL:-openrouter/minimax/minimax-m3@preset/default}"
+MI_MODEL="${LOCAL_CONSENSUS_MI_MODEL:-openrouter/xiaomi/mimo-v2.5-pro@preset/default}"
+DS_MODEL="${LOCAL_CONSENSUS_DS_MODEL:-openrouter/deepseek/deepseek-v4-pro@preset/default}"
 
 fail() {
   printf 'local-consensus: %s\n' "$*" >&2
@@ -69,6 +72,20 @@ invoke_engine() {
         --model "$GLM_MODEL" <"$prompt_file" >"$output_file" 2>"$error_file" \
         && [[ -s "$output_file" ]]; then
         ENGINE_SESSION=$(session_id_for_title "${title}-glm")
+        return 0
+      fi
+      ;;
+    mm|mi|ds)
+      local model
+      case "$engine" in
+        mm) model="$MM_MODEL" ;;
+        mi) model="$MI_MODEL" ;;
+        ds) model="$DS_MODEL" ;;
+      esac
+      if run_with_timeout "$TIMEOUT_SECONDS" opencode run --title "${title}-${engine}" \
+        --model "$model" <"$prompt_file" >"$output_file" 2>"$error_file" \
+        && [[ -s "$output_file" ]]; then
+        ENGINE_SESSION=$(session_id_for_title "${title}-${engine}")
         return 0
       fi
       ;;

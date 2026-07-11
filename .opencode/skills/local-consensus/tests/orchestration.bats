@@ -1,5 +1,7 @@
 #!/usr/bin/env bats
 
+bats_require_minimum_version 1.5.0
+
 setup() {
   SKILL_ROOT="$(cd "$BATS_TEST_DIRNAME/.." && pwd)"
   TEST_ROOT="$(mktemp -d "${TMPDIR:-/tmp}/local-consensus-test.XXXXXX")"
@@ -51,6 +53,7 @@ EOF
 #!/usr/bin/env bash
 printf 'claude %s\n' "$*" >>"$MOCK_LOG"
 cat >/dev/null
+[[ "${MOCK_FABLE_MODE:-success}" == success ]] || exit 8
 printf '{"result":"Fable answer","session_id":"ses_fable"}\n'
 EOF
   chmod +x "$BIN_DIR/claude"
@@ -100,8 +103,7 @@ teardown() {
   [ "$prompt_bytes" -ge 262144 ]
 }
 
-@test "fusion judges two successful panels when one panel fails" {
-  export MOCK_MM_MODE=fail
+@test "fusion uses Sol, Fable, and GLM as its primary panel" {
   run "$SKILL_ROOT/scripts/run-fusion.sh" \
     --prompt-file "$TEST_ROOT/prompt.md" \
     --invoking-session ses_parent \
@@ -110,8 +112,41 @@ teardown() {
 
   [ "$status" -eq 0 ]
   [ "$(jq -r '.status' <<<"$output")" = success ]
-  [ "$(jq -r '.panels_succeeded' <<<"$output")" -eq 2 ]
+  [ "$(jq -r '.panels_succeeded' <<<"$output")" -eq 3 ]
   [ "$(jq -r '.engine' <<<"$output")" = sol ]
+  [ "$(jq -r '[.panels[].engine] | join(",")' <<<"$output")" = "sol,fable,glm" ]
+  [ "$(jq -r '.judge_overlap' <<<"$output")" = true ]
+  run ! grep -q '## Panel SOL\|## Panel FABLE\|## Panel GLM' "$TEST_ROOT/fusion/judge-prompt.md"
+}
+
+@test "fusion backfills a failed primary with the first legacy fallback" {
+  run env MOCK_FABLE_MODE=fail "$SKILL_ROOT/scripts/run-fusion.sh" \
+    --prompt-file "$TEST_ROOT/prompt.md" \
+    --invoking-session ses_parent \
+    --title local-fusion-test \
+    --output-dir "$TEST_ROOT/fusion"
+
+  [ "$status" -eq 0 ]
+  [ "$(jq -r '.panels_succeeded' <<<"$output")" -eq 3 ]
+  [ "$(jq -r '.panels[1].slot' <<<"$output")" = fable ]
+  [ "$(jq -r '.panels[1].engine' <<<"$output")" = mm ]
+  [ "$(jq -r '.panels[1].status' <<<"$output")" = fallback ]
+  grep -q -- '--model openrouter/minimax/minimax-m3@preset/default' "$MOCK_LOG"
+}
+
+@test "fusion advances through the legacy fallback pool without reuse" {
+  run env MOCK_FABLE_MODE=fail MOCK_MM_MODE=fail \
+    "$SKILL_ROOT/scripts/run-fusion.sh" \
+    --prompt-file "$TEST_ROOT/prompt.md" \
+    --invoking-session ses_parent \
+    --title local-fusion-test \
+    --output-dir "$TEST_ROOT/fusion"
+
+  [ "$status" -eq 0 ]
+  [ "$(jq -r '.panels[1].engine' <<<"$output")" = mi ]
+  [ "$(jq -r '.panels[1].status' <<<"$output")" = fallback ]
+  grep -q -- '--model openrouter/minimax/minimax-m3@preset/default' "$MOCK_LOG"
+  grep -q -- '--model openrouter/xiaomi/mimo-v2.5-pro@preset/default' "$MOCK_LOG"
 }
 
 @test "environment validation confirms configured Sol model" {
