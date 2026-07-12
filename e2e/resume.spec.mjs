@@ -15,8 +15,11 @@ test.describe('session resume', () => {
     await page.goto('./');
     const questionCount = await startStudySession(page, MIN_SESSION_QUESTIONS);
 
-    // Get the first question's stem text
-    const firstStem = await page.locator('h2').filter({ hasText: /question|transplant|recipient|donor|organ/i }).first().textContent();
+    // The session view has one h2: the current question stem. Do not
+    // filter by vocabulary because a valid generated stem may not contain
+    // words such as "transplant", "recipient", or "donor".
+    const questionStem = page.locator('main h2').first();
+    const firstStem = await questionStem.textContent();
     const firstOption = page.getByRole('radio').first();
 
     await firstOption.click();
@@ -36,7 +39,7 @@ test.describe('session resume', () => {
     await resumeActiveSession(page);
     await expect(sessionItemHeading(page, 1, questionCount)).toBeVisible({ timeout: 10000 });
     // Verify the question stem is preserved
-    await expect(page.locator('h2').filter({ hasText: /question|transplant|recipient|donor|organ/i }).first()).toHaveText(firstStem ?? '');
+    await expect(page.locator('main h2').first()).toHaveText(firstStem ?? '');
     await expect(page.getByRole('radio').first()).toHaveAttribute('aria-checked', 'true');
     await expectSessionStats(page, { answered: 1, bookmarks: 1 });
 

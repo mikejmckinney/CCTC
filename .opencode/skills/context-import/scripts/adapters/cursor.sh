@@ -13,9 +13,18 @@ fail() {
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --session-id) SESSION_ID="${2:-}"; shift 2 ;;
-    --transcript-path) TRANSCRIPT_PATH="${2:-}"; shift 2 ;;
-    --cursor-root) CURSOR_ROOT="${2:-}"; shift 2 ;;
+    --session-id)
+      SESSION_ID="${2:-}"
+      shift 2
+      ;;
+    --transcript-path)
+      TRANSCRIPT_PATH="${2:-}"
+      shift 2
+      ;;
+    --cursor-root)
+      CURSOR_ROOT="${2:-}"
+      shift 2
+      ;;
     *) fail "unknown argument: $1" ;;
   esac
 done

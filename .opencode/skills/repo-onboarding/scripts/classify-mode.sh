@@ -11,7 +11,10 @@ fail() {
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --repo) REPO="${2:-}"; shift 2 ;;
+    --repo)
+      REPO="${2:-}"
+      shift 2
+      ;;
     *) fail "unknown argument: $1" ;;
   esac
 done
@@ -45,8 +48,8 @@ fi
 if contains_pattern 'template repo.s design and workflow diagrams|process/template project' "$REPO/.context/vision/README.md"; then
   signals+=("vision still describes the template repository")
 fi
-if [[ -e "$REPO/.context/vision/architecture/multi-agent-flow.md" \
-  || -e "$REPO/.context/vision/architecture/state-surfaces.md" ]]; then
+if [[ -e "$REPO/.context/vision/architecture/multi-agent-flow.md" ||
+  -e "$REPO/.context/vision/architecture/state-surfaces.md" ]]; then
   signals+=("template-only architecture diagrams remain")
 fi
 if [[ -x "$REPO/scripts/verify-env.sh" ]]; then

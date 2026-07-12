@@ -25,16 +25,56 @@ require_value() {
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --source) require_value "$1" "${2:-}"; SOURCE="$2"; shift 2 ;;
-    --session-id) require_value "$1" "${2:-}"; SOURCE_ID="$2"; shift 2 ;;
-    --transcript-path) require_value "$1" "${2:-}"; TRANSCRIPT_PATH="$2"; shift 2 ;;
-    --cursor-root) require_value "$1" "${2:-}"; CURSOR_ROOT="$2"; shift 2 ;;
-    --db) require_value "$1" "${2:-}"; DB="$2"; shift 2 ;;
-    --repo) require_value "$1" "${2:-}"; REPO="$2"; shift 2 ;;
-    --output-dir) require_value "$1" "${2:-}"; OUTPUT_DIR="$2"; shift 2 ;;
-    --max-messages) require_value "$1" "${2:-}"; MAX_MESSAGES="$2"; shift 2 ;;
-    --max-bytes) require_value "$1" "${2:-}"; MAX_BYTES="$2"; shift 2 ;;
-    --keyword) require_value "$1" "${2:-}"; EXPLICIT_KEYWORDS+=("$2"); shift 2 ;;
+    --source)
+      require_value "$1" "${2:-}"
+      SOURCE="$2"
+      shift 2
+      ;;
+    --session-id)
+      require_value "$1" "${2:-}"
+      SOURCE_ID="$2"
+      shift 2
+      ;;
+    --transcript-path)
+      require_value "$1" "${2:-}"
+      TRANSCRIPT_PATH="$2"
+      shift 2
+      ;;
+    --cursor-root)
+      require_value "$1" "${2:-}"
+      CURSOR_ROOT="$2"
+      shift 2
+      ;;
+    --db)
+      require_value "$1" "${2:-}"
+      DB="$2"
+      shift 2
+      ;;
+    --repo)
+      require_value "$1" "${2:-}"
+      REPO="$2"
+      shift 2
+      ;;
+    --output-dir)
+      require_value "$1" "${2:-}"
+      OUTPUT_DIR="$2"
+      shift 2
+      ;;
+    --max-messages)
+      require_value "$1" "${2:-}"
+      MAX_MESSAGES="$2"
+      shift 2
+      ;;
+    --max-bytes)
+      require_value "$1" "${2:-}"
+      MAX_BYTES="$2"
+      shift 2
+      ;;
+    --keyword)
+      require_value "$1" "${2:-}"
+      EXPLICIT_KEYWORDS+=("$2")
+      shift 2
+      ;;
     *) fail "unknown argument: $1" ;;
   esac
 done
