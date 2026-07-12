@@ -15,13 +15,15 @@ test.describe('approved prototype adaptations', () => {
     const support = page.getByRole('link', { name: 'Support this project' });
     await expect(support).toHaveAttribute('href', 'https://donate.stripe.com/dRm9AMcYs0sa2F8dNQ18c00');
     await expect(support).toHaveAttribute('target', '_blank');
+    await expect(support.locator('svg')).toHaveCount(1);
   });
 
   test('shows a page heading and a dashboard resume panel for active work', async ({ page }) => {
     await page.goto('./');
     await ensureAppReady(page);
     await dismissDisclaimerIfPresent(page);
-    await expect(page.getByRole('heading', { level: 1, name: 'Your CCTC study plan' })).toBeVisible();
+    await expect(page.getByText('Independent study aid', { exact: true })).toHaveCount(0);
+    await expect(page.getByText('Your CCTC study plan', { exact: true })).toHaveCount(0);
 
     await startStudySession(page, 5);
     await page.getByRole('button', { name: 'Home' }).first().click();

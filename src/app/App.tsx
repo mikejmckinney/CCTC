@@ -21,6 +21,7 @@ import {
   saveMeta, saveSettings, upsertFlag, getDb
 } from '../lib/storage';
 import { useFolderSync } from '../lib/useFolderSync';
+import { Heart } from 'lucide-react';
 import type {
   ActiveSession, AppMeta, FlagReason,
   HistoryEntry, ItemFlag, Question, SessionSettings
@@ -744,8 +745,9 @@ export default function App() {
             href="https://donate.stripe.com/dRm9AMcYs0sa2F8dNQ18c00"
             target="_blank"
             rel="noopener noreferrer"
-            className="whitespace-nowrap text-xs font-semibold text-[var(--primary)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold text-[var(--primary)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
           >
+            <Heart className="h-3.5 w-3.5" aria-hidden="true" />
             Support this project
           </a>
         </div>

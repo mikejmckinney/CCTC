@@ -257,12 +257,7 @@ export function Dashboard({
         </div>
       )}
 
-      <div>
-        <p className="eyebrow">Independent study aid</p>
-        <h1 className="mt-1 text-3xl font-semibold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
-          Your CCTC study plan
-        </h1>
-      </div>
+      <h1 className="sr-only">Dashboard</h1>
 
       {activeSession && !activeSession.submittedAt && (
         <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-[var(--primary)] px-5 py-4 text-[var(--primary-foreground)] shadow-sm">
