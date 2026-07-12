@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { cn } from '../lib/cn';
-import { Card, CardContent, Button, Badge } from '../components/ui';
+import { Card, CardContent, Button, Badge, Progress } from '../components/ui';
 import { lookupQuestion } from '../lib/bankLookup';
 import type { ActiveSession, Question } from '../types/exam';
 import { ChevronLeft, ChevronRight, Flag, Bookmark, Clock, CheckCircle2, XCircle } from 'lucide-react';
@@ -26,6 +27,42 @@ export function SessionView({
   const answeredCount = Object.values(session.answers).filter(Boolean).length;
   const isStudy = session.settings.mode === 'study';
   const isRevealed = isStudy ? session.revealed[currentItem.itemId] : Boolean(session.submittedAt);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.altKey || event.ctrlKey || event.metaKey || event.repeat) return;
+      if (document.querySelector('[role="dialog"]')) return;
+
+      const target = event.target;
+      if (target instanceof HTMLElement && target.matches('input, textarea, select, [contenteditable="true"]')) return;
+
+      const key = event.key.toLowerCase();
+      const letterIndex = key.length === 1 && key >= 'a' && key <= 'd' ? key.charCodeAt(0) - 97 : -1;
+      const numberIndex = key >= '1' && key <= '4' ? Number(key) - 1 : -1;
+      const optionIndex = letterIndex >= 0 ? letterIndex : numberIndex;
+      const optionId = currentItem.optionOrder[optionIndex];
+
+      if (optionId) {
+        event.preventDefault();
+        onAnswer(optionId);
+        return;
+      }
+
+      const isInAnswerGroup = target instanceof Element && target.closest('[role="radiogroup"]');
+      if (isInAnswerGroup) return;
+
+      if (event.key === 'ArrowRight' && session.currentIndex < session.items.length - 1) {
+        event.preventDefault();
+        onNavigate(1);
+      } else if (event.key === 'ArrowLeft' && session.currentIndex > 0) {
+        event.preventDefault();
+        onNavigate(-1);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentItem.optionOrder, onAnswer, onNavigate, session.currentIndex, session.items.length]);
 
   return (
     <div className="space-y-4">
@@ -55,6 +92,12 @@ export function SessionView({
               )}
             </div>
           </div>
+          <Progress
+            value={session.currentIndex + 1}
+            max={session.items.length}
+            label={`Session position: item ${session.currentIndex + 1} of ${session.items.length}`}
+            className="mt-3 h-2"
+          />
         </CardContent>
       </Card>
 
@@ -126,6 +169,7 @@ export function SessionView({
                   )}
                   role="radio"
                   aria-checked={selected}
+                  aria-keyshortcuts={`${letter} ${idx + 1}`}
                 >
                   <span className={cn(
                     'flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold',
@@ -179,10 +223,10 @@ export function SessionView({
         <Card className="rounded-t-xl sm:rounded-xl shadow-lg">
           <CardContent className="p-3 flex flex-wrap items-center justify-between gap-2">
             <div className="flex gap-2">
-              <Button variant="secondary" size="sm" onClick={() => onNavigate(-1)} disabled={session.currentIndex === 0}>
+              <Button variant="secondary" size="sm" onClick={() => onNavigate(-1)} disabled={session.currentIndex === 0} aria-keyshortcuts="ArrowLeft">
                 <ChevronLeft className="h-4 w-4" /> Prev
               </Button>
-              <Button variant="secondary" size="sm" onClick={() => onNavigate(1)} disabled={session.currentIndex === session.items.length - 1}>
+              <Button variant="secondary" size="sm" onClick={() => onNavigate(1)} disabled={session.currentIndex === session.items.length - 1} aria-keyshortcuts="ArrowRight">
                 Next <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
@@ -206,6 +250,10 @@ export function SessionView({
           </CardContent>
         </Card>
       </div>
+
+      <p className="text-center text-xs text-[var(--muted-foreground)]">
+        Keyboard: A-D or 1-4 to answer · Left/Right arrows to navigate
+      </p>
 
       {/* Question tracker */}
       <Card>

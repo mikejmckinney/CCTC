@@ -636,13 +636,25 @@ export function Dashboard({
                 </thead>
                 <tbody className="divide-y divide-[var(--border)]">
                   {recentSessions.map((entry) => (
-                    <tr key={entry.id} className="transition-colors hover:bg-[var(--muted)]/50">
+                    <tr
+                      key={entry.id}
+                      tabIndex={0}
+                      onClick={() => onViewSession(entry)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          onViewSession(entry);
+                        }
+                      }}
+                      aria-label={`Review session from ${new Date(entry.completedAt).toLocaleDateString()}`}
+                      className="cursor-pointer transition-colors hover:bg-[var(--muted)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--ring)]"
+                    >
                       <td className="py-3 font-medium">{new Date(entry.completedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                       <td className="py-3">{entry.settings.mode === 'exam' ? 'Exam' : 'Study'}</td>
                       <td className="py-3">{entry.settings.questionCount}</td>
                       <td className="py-3 text-[var(--muted-foreground)]">{formatDuration(entry.timeUsedSeconds)}</td>
                       <td className="py-3 text-right"><Badge variant={entry.result.percent >= entry.settings.targetThreshold ? 'success' : 'warning'}>{entry.result.percent}%</Badge></td>
-                      <td className="py-3 pl-3 text-right"><Button variant="ghost" size="icon-sm" onClick={() => onViewSession(entry)} aria-label={`Review session from ${new Date(entry.completedAt).toLocaleDateString()}`}><ChevronRight className="h-4 w-4" /></Button></td>
+                      <td className="py-3 pl-3 text-right"><ChevronRight className="inline h-4 w-4 text-[var(--muted-foreground)]" aria-hidden="true" /></td>
                     </tr>
                   ))}
                 </tbody>

@@ -36,6 +36,9 @@ test.describe('approved prototype adaptations', () => {
     await dismissDisclaimerIfPresent(page);
 
     await expect(page.getByText(/EMA change/i)).toBeVisible();
-    await expect(page.getByRole('table', { name: 'Recent sessions' })).toBeVisible();
+    const table = page.getByRole('table', { name: 'Recent sessions' });
+    await expect(table).toBeVisible();
+    await table.locator('tbody tr').first().click();
+    await expect(page.getByText('Session Review')).toBeVisible();
   });
 });
