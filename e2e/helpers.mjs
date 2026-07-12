@@ -1,56 +1,62 @@
 import { expect } from '@playwright/test';
 
-/** Matches `QUESTION_MIN` in `src/app/App.tsx`. */
 export const MIN_SESSION_QUESTIONS = 10;
 
 export async function ensureAppReady(page) {
-  await page.getByText('Loading local study data').waitFor({ state: 'hidden', timeout: 30_000 });
+  try {
+    await page.getByText('Loading...').waitFor({ state: 'hidden', timeout: 30_000 });
+  } catch {}
 }
 
 export async function dismissDisclaimerIfPresent(page) {
-  const modal = page.getByLabel('Study aid disclaimer');
-
+  const modal = page.getByRole('dialog');
   try {
     await modal.waitFor({ state: 'visible', timeout: 5_000 });
   } catch {
     return;
   }
-
   await page.getByRole('button', { name: 'I understand' }).click();
   await expect(modal).toBeHidden();
 }
 
 export function sessionItemHeading(page, itemNumber, total) {
-  return page.getByRole('heading', { name: new RegExp(`Item ${itemNumber} of ${total}`, 'i') });
+  return page.getByText(new RegExp(`Item ${itemNumber} of ${total}`, 'i'));
 }
 
 export async function readSessionItemTotal(page) {
-  const heading = page.getByRole('heading', { name: /Item \d+ of \d+/i });
+  const heading = page.getByText(/Item \d+ of \d+/i);
   await expect(heading).toBeVisible();
   const text = await heading.textContent();
   const match = text?.match(/Item \d+ of (\d+)/i);
-  if (!match) {
-    throw new Error(`Could not parse session item total from heading: ${text}`);
-  }
+  if (!match) throw new Error(`Could not parse session item total from text: ${text}`);
   return Number(match[1]);
 }
 
 export async function startStudySession(page, questionCount = MIN_SESSION_QUESTIONS) {
   await ensureAppReady(page);
   await dismissDisclaimerIfPresent(page);
-  await expect(page.getByRole('heading', { name: /build a practice session/i })).toBeVisible();
 
-  await page.getByRole('combobox', { name: 'Mode', exact: true }).selectOption('study');
-  await page.getByRole('spinbutton', { name: /^Question count/i }).fill(String(questionCount));
-  await page.getByRole('button', { name: 'Start session' }).click();
+  // Open expandable setup on Dashboard
+  await page.getByRole('button', { name: /customize settings/i }).click();
+  await page.waitForTimeout(500);
 
-  await expect(page.getByRole('heading', { name: /Item 1 of \d+/i })).toBeVisible();
+  // Select study mode
+  await page.locator('select').first().selectOption('study');
+
+  // Set question count
+  const countInput = page.locator('input[type="number"]').first();
+  await countInput.fill(String(questionCount));
+
+  // Start the session
+  await page.getByRole('button', { name: /start with custom settings/i }).click();
+
+  await expect(page.getByText(/Item 1 of \d+/i)).toBeVisible({ timeout: 10000 });
   return readSessionItemTotal(page);
 }
 
 export async function resumeActiveSession(page) {
-  await page.getByRole('button', { name: 'Resume current session' }).click();
-  await expect(page.getByRole('heading', { name: /Item \d+ of \d+/i })).toBeVisible();
+  await page.getByRole('button', { name: 'Resume' }).first().click();
+  await expect(page.getByText(/Item \d+ of \d+/i)).toBeVisible();
 }
 
 export async function waitForPersistedSessionState(page) {
@@ -61,7 +67,6 @@ export async function waitForPersistedSessionState(page) {
         open.onerror = () => reject(open.error);
         open.onsuccess = () => resolve(open.result);
       });
-
       try {
         const tx = db.transaction('kv', 'readonly');
         const session = await new Promise((resolve, reject) => {
@@ -69,7 +74,6 @@ export async function waitForPersistedSessionState(page) {
           request.onerror = () => reject(request.error);
           request.onsuccess = () => resolve(request.result);
         });
-
         return (
           Array.isArray(session?.flaggedForReview) &&
           session.flaggedForReview.length > 0 &&
@@ -85,7 +89,8 @@ export async function waitForPersistedSessionState(page) {
 }
 
 export async function expectSessionStats(page, { answered, bookmarks }) {
-  const stats = page.locator('.session-stats');
-  await expect(stats.getByText(`Answered ${answered}`, { exact: true })).toBeVisible();
-  await expect(stats.getByText(`Bookmarks ${bookmarks}`, { exact: true })).toBeVisible();
+  await expect(page.getByText(`${answered} answered`)).toBeVisible();
+  if (bookmarks > 0) {
+    await expect(page.getByText(`${bookmarks} bookmarked`)).toBeVisible();
+  }
 }

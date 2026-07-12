@@ -4,7 +4,7 @@
 
 ## The Roles
 
-Canonical role definitions live in `.agents/<role>.md` (platform-agnostic; ADR-023). Each platform has a thin registration overlay (`.github/agents/<role>.agent.md` for Copilot SDK, `.claude/agents/<role>.md` for Claude Code) that carries only frontmatter and points back to the canonical body. ADR-026 adds `role_contract_version` to each canonical role; dispatched subagents report that version in a trailing `subagent_compliance` block.
+Canonical role definitions live in `.agents/<role>.md` (platform-agnostic; ADR-023). Each platform has a thin registration overlay (`.github/agents/<role>.agent.md` for Copilot SDK, `.claude/agents/<role>.md` for Claude Code) that carries only frontmatter and points back to the canonical body.
 
 | Role       | Canonical file          | Writes code? |
 |------------|-------------------------|--------------|
@@ -64,31 +64,24 @@ Chat, dispatched subagents do not receive a dispatch tool, so the default agent
 must read the completed role's `handoff_targets:` and call `runSubagent` for
 the next role itself.
 
-ADR-026 dispatch packets must include the role, goal, expected output,
-issue/PR/plan/diff link, process files to load, ownership constraints, gate
-state, current `AGENTS_MD_VERSION`, and allowed deviations. Every dispatched
-role returns `subagent_compliance`; parent agents copy parsed subagent objects
-into PR-body `parent_compliance.subagents_dispatched`.
+Dispatch packets include the role, goal, expected output, issue/PR/plan/diff
+context, process files to load, ownership constraints, gate state, current
+`AGENTS_MD_VERSION`, and allowed deviations.
 
 ### Subagent output format (positional contract)
 
-Dispatched subagents append the following trailing blocks after their
-role-specific body. The `subagent_compliance` YAML block (ADR-026) is
-**required for all dispatched subagents**. The heading sections are **required**
-for exact-output roles (Judge, Critic) and **encouraged but not required** for
-all other roles:
+Runtime startup receipts follow `AGENTS.md`. Exact-output roles preserve their
+role-specific first line before any receipt content:
 
 1. `## Subagent session handshake` — the 7-field table from
    AGENTS.md `## Session handshake (read-receipt)`.
 2. `## Subagent context receipt` — the file table from
    AGENTS.md `## Session context receipt`.
-3. `subagent_compliance` YAML block (ADR-026).
 
 Exact-output roles (Judge, Critic) emit `DECISION:` / `CRITIC DECISION:` as
 their literal first line before any other content, so the trailing blocks
 coexist with rather than precede the role output. See
-`.context/rules/process_subagent_bootstrap.md` § "Positional output contract"
-for the authoritative rule.
+`.context/rules/process_subagent_bootstrap.md` for practical dispatch guidance.
 
 See `docs/decisions/adr-003-claude-code-subagent-registration.md` for the rationale behind the two-registry design.
 

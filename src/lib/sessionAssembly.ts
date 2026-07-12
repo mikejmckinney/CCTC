@@ -167,9 +167,10 @@ function pushSelectedQuestion(
   question: Question,
   category: { id: string; label: string }
 ): void {
+  // Light snapshot: only the per-session metadata. The full Question is
+  // resolved at render time via lookupQuestion(questionIndex, itemId).
   selected.push({
     itemId: question.id,
-    question,
     optionOrder: freezeOptionOrder(question),
     categoryId: category.id,
     categoryLabel: category.label
@@ -287,12 +288,21 @@ export function countAnswered(session: ActiveSession): number {
   return Object.values(session.answers).filter((answer) => Boolean(answer)).length;
 }
 
-export function summarizeSoftTargets(questions: Question[], blueprint: Blueprint): {
+export function summarizeSoftTargets(
+  items: SessionItemSnapshot[],
+  _blueprint: Blueprint,
+  questionIndex: Map<string, Question>
+): {
   cognitive: Map<CognitiveLevel, number>;
   organ: Map<string, number>;
 } {
+  const resolved: Question[] = [];
+  for (const item of items) {
+    const q = questionIndex.get(item.itemId);
+    if (q) resolved.push(q);
+  }
   return {
-    cognitive: countTagged(questions, (question) => question.cognitive_level) as Map<CognitiveLevel, number>,
-    organ: countTagged(questions, (question) => question.organ)
+    cognitive: countTagged(resolved, (question) => question.cognitive_level) as Map<CognitiveLevel, number>,
+    organ: countTagged(resolved, (question) => question.organ)
   };
 }

@@ -129,9 +129,20 @@ export interface SessionSettings {
   targetThreshold: number;
 }
 
+/**
+ * Lightweight per-item reference inside a session. The full Question is
+ * NOT embedded — it is resolved at render time from the live bank via
+ * `lookupQuestion(bank, itemId)`. This keeps per-session storage O(items)
+ * rather than O(items × Question), which mattered once the demo data
+ * was expanded to the full 175/100/50/25 question counts.
+ *
+ * `optionOrder` captures the per-session shuffle of the option ids so a
+ * later review can show the same answer-letter mapping the user saw.
+ * `categoryId` / `categoryLabel` are denormalized so the session
+ * result breakdown can be rendered without a bank lookup.
+ */
 export interface SessionItemSnapshot {
   itemId: string;
-  question: Question;
   optionOrder: string[];
   categoryId: string;
   categoryLabel: string;
@@ -180,6 +191,14 @@ export interface HistoryEntry {
   answers: Record<string, string | null>;
   flaggedForReview: string[];
   result: SessionResult;
+  /**
+   * Marks the entry as a first-run fixture (deterministic, seeded from the
+   * live question bank). Distinguished from real user sessions so the user
+   * can bulk-remove sample data without losing their own work. See
+   * `src/lib/demoData.ts`. Optional for backward compatibility with
+   * unmarked entries (no migration — see demoData.ts).
+   */
+  sample?: boolean;
 }
 
 export interface ItemFlag {
@@ -198,6 +217,20 @@ export interface ItemFlag {
 
 export interface AppMeta {
   disclaimerSeen: boolean;
+  demoSeeded?: boolean;
+  /**
+   * Tracks whether the user dismissed the "Showing sample data" note on
+   * the Dashboard. False on first run so the banner is visible; set to
+   * true on dismiss and never auto-reset.
+   */
+  sampleNoteDismissed?: boolean;
+  /**
+   * ISO-8601 date string for the user's exam date. Stored in IndexedDB
+   * (via AppMeta) so it survives cookie/storage clears, alongside the
+   * rest of the app's metadata. When unset, the header shows a
+   * "Set exam date" pill placeholder.
+   */
+  examDate?: string;
 }
 
 export interface LoadedBank {

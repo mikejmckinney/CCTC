@@ -1,0 +1,672 @@
+import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
+import { cn } from '../lib/cn';
+import { Card, CardContent, CardHeader, Badge, Progress, Button } from '../components/ui';
+import { RadialGauge } from '../components/ui/RadialGauge';
+import { computeReadiness, computeSpacedRepetition } from '../lib/readiness';
+import { buildHistoryTrend } from '../lib/historyTrend';
+import { formatDuration } from '../lib/format';
+import { getDomainShortLabel } from '../lib/domains';
+import type { ActiveSession, HistoryEntry, SessionSettings, QuestionSet, Question } from '../types/exam';
+import { getBlueprintLabel } from '../data/blueprints';
+import {
+  Play, Zap, Target, Clock, BookOpen, CheckCircle2,
+  AlertTriangle, TrendingUp, ChevronRight, BarChart3, ChevronDown,
+  ChevronUp, RotateCcw, Sparkles, X
+} from 'lucide-react';
+
+interface DashboardProps {
+  history: HistoryEntry[];
+  settings: SessionSettings;
+  examDate: string;
+  questionIndex: Map<string, Question>;
+  sampleNoteVisible: boolean;
+  onDismissSampleNote: () => void;
+  onRemoveSampleData: () => void;
+  onSetExamDate: (iso: string) => void;
+  onStartExam: () => void;
+  onStartQuick: () => void;
+  onStartWeakAreas: (domains: string[]) => void;
+  onStartCustom: (overrides: Partial<SessionSettings>) => void;
+  onUpdateSettings: (partial: Partial<SessionSettings>) => void;
+  onGoToHistory: () => void;
+  onViewSession: (entry: HistoryEntry) => void;
+  activeSession: ActiveSession | null;
+  onResumeSession: () => void;
+  pendingSettingNav?: 'examDate' | 'targetScore' | null;
+  onClearPendingNav?: () => void;
+  onExamDateChanged?: () => void;
+}
+
+type ReadinessVerdict = 'exam-ready' | 'on-pace' | 'on-track' | 'at-risk';
+
+function getReadinessVerdict(
+  overallEma: number,
+  target: number,
+  domains: Array<{ domainId: string; emaScore: number }>,
+  daysUntilExam: number | null
+): { verdict: ReadinessVerdict; label: string; detail: string } {
+  const allDomainsAboveTarget = domains.every((d) => d.emaScore >= target);
+  const anyDomainBelow = domains.some((d) => d.emaScore < target);
+  const laggingDomain = domains.find((d) => d.emaScore < target);
+
+  if (overallEma >= target && allDomainsAboveTarget) {
+    return { verdict: 'exam-ready', label: 'Exam-ready', detail: 'All domains at or above target. You\'re ready.' };
+  }
+
+  if (overallEma >= target && anyDomainBelow) {
+    const lagName = getDomainShortLabel(laggingDomain!.domainId);
+    return { verdict: 'on-pace', label: 'On pace', detail: `Passing overall, but ${lagName} lags at ${laggingDomain!.emaScore}%.` };
+  }
+
+  if (overallEma < target && daysUntilExam !== null && daysUntilExam > 0) {
+    const gap = target - overallEma;
+    return { verdict: 'at-risk', label: 'Building readiness', detail: `${daysUntilExam} days remain. Improve ${gap} points to reach your ${target}% target.` };
+  }
+
+  if (overallEma < target) {
+    const gap = target - overallEma;
+    return { verdict: 'at-risk', label: 'At risk', detail: `Need +${gap}% to reach target.` };
+  }
+
+  return { verdict: 'on-pace', label: 'On pace', detail: 'Keep studying to maintain your readiness.' };
+}
+
+function generateStudyAction(
+  readiness: ReturnType<typeof computeReadiness>,
+  target: number
+): { action: string; icon: React.ElementType } {
+  if (readiness.totalSessions === 0) {
+    return { action: 'Take a quick exam to calibrate your readiness.', icon: Zap };
+  }
+
+  const laggingDomains = readiness.domains.filter((d) => d.emaScore < target);
+
+  if (readiness.overallEma < target) {
+    if (laggingDomains.length > 0) {
+      const names = laggingDomains.map((d) => getDomainShortLabel(d.domainId)).join(', ');
+      return { action: `Practice weak domains: ${names}. Focus on missed items resurfaced first.`, icon: Target };
+    }
+    return { action: 'Study weak areas with spaced repetition of previously-incorrect items.', icon: Target };
+  }
+
+  if (laggingDomains.length > 0) {
+    const names = laggingDomains.map((d) => getDomainShortLabel(d.domainId)).join(', ');
+    return { action: `Practice ${names} to bring all domains above target.`, icon: AlertTriangle };
+  }
+
+  return { action: 'Take a full mock exam or brush up with a quick session.', icon: BookOpen };
+}
+
+function QuickStartButton({ label, icon: Icon, description, onClick }: {
+  label: string; icon: React.ElementType; description: string; onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        'flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-4 text-left shadow-sm',
+        'transition-all hover:shadow-md hover:border-[var(--primary)] hover:-translate-y-0.5'
+      )}
+    >
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--primary)] text-[var(--primary-foreground)]">
+        <Icon className="h-5 w-5" />
+      </div>
+      <div className="min-w-0">
+        <p className="font-semibold text-[13px] text-[var(--foreground)]">{label}</p>
+        <p className="text-xs text-[var(--muted-foreground)] truncate">{description}</p>
+      </div>
+      <ChevronRight className="ml-auto h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
+    </button>
+  );
+}
+
+function CategoryBar({ name, percent, examWeight, isStrong, isLargestGap }: {
+  name: string; percent: number; examWeight: string; isStrong: boolean; isLargestGap?: boolean;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <div className="flex items-center justify-between text-[13px]">
+        <div className="flex items-center gap-2">
+          <span className="font-medium text-[var(--foreground)]">{name}</span>
+          {isLargestGap && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-[var(--warning)]/10 px-2 py-0.5 text-[10px] font-semibold text-[var(--warning)]">
+              <AlertTriangle className="h-3 w-3" /> Largest gap
+            </span>
+          )}
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-[var(--muted)] px-2 py-0.5 text-[10px] font-semibold text-[var(--foreground)]">{examWeight} of exam</span>
+          <span className={cn('rounded-full px-2 py-0.5 text-[10px] font-semibold', isStrong ? 'bg-[var(--success)]/10 text-[var(--success)]' : 'bg-[var(--warning)]/10 text-[var(--warning)]')}>
+            {isStrong ? 'Strong' : 'Developing'}
+          </span>
+          <span className={cn(
+            'text-xs font-semibold',
+            isStrong ? 'text-[var(--success)]' : 'text-[var(--warning)]'
+          )}>{percent}%</span>
+        </div>
+      </div>
+      <Progress value={percent} variant={isStrong ? 'success' : 'warning'} />
+    </div>
+  );
+}
+
+export function Dashboard({
+  history, settings, examDate, questionIndex, sampleNoteVisible, onDismissSampleNote, onRemoveSampleData,
+  onSetExamDate, onStartExam, onStartQuick, onStartWeakAreas,
+  onStartCustom, onUpdateSettings, onGoToHistory, onViewSession,
+  activeSession, onResumeSession,
+  pendingSettingNav, onClearPendingNav, onExamDateChanged
+}: DashboardProps) {
+  const target = settings.targetThreshold;
+  const readiness = useMemo(() => computeReadiness(history, target), [history, target]);
+  const readinessTrend = useMemo(
+    () => buildHistoryTrend(history.filter((entry) => entry.settings.mode === 'exam')),
+    [history]
+  );
+  const spacedCount = useMemo(() => computeSpacedRepetition(history, questionIndex).length, [history, questionIndex]);
+  const [showSetup, setShowSetup] = useState(false);
+  const [targetScore, setTargetScore] = useState(settings.targetThreshold);
+
+  const daysUntilExam = examDate ? Math.ceil((new Date(examDate).getTime() - Date.now()) / 86400000) : null;
+  const verdict = getReadinessVerdict(readiness.overallEma, target, readiness.domains, daysUntilExam);
+  const studyAction = generateStudyAction(readiness, target);
+  const laggingDomains = readiness.domains.filter((d) => d.emaScore < target);
+  const recentSessions = history.slice(0, 5);
+
+  const [showEmaTooltip, setShowEmaTooltip] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const examDateRef = useRef<HTMLInputElement>(null);
+  const targetScoreRef = useRef<HTMLInputElement>(null);
+
+  // Navigate to a specific setting: expand setup, scroll to field, focus it
+  const navigateToSetting = useCallback((field: 'examDate' | 'targetScore') => {
+    setShowSetup(true);
+    requestAnimationFrame(() => {
+      const ref = field === 'examDate' ? examDateRef : targetScoreRef;
+      if (ref.current) {
+        ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        ref.current.focus();
+        // Use CSS :focus-visible for the ring effect — no JS outline hack needed
+      }
+    });
+  }, []);
+
+  // Handle pending navigation from header pills
+  useEffect(() => {
+    if (pendingSettingNav) {
+      navigateToSetting(pendingSettingNav);
+      onClearPendingNav?.();
+    }
+  }, [pendingSettingNav, navigateToSetting, onClearPendingNav]);
+
+  // Close tooltip on click outside or scroll (prevents interference with
+  // bottom nav on mobile)
+  useEffect(() => {
+    if (!showEmaTooltip) return;
+    const close = () => setShowEmaTooltip(false);
+    const handler = (e: PointerEvent) => {
+      // Don't close on text selection gestures
+      if (e.pointerType === 'mouse' && window.getSelection()?.type === 'Range') return;
+      if (tooltipRef.current && !tooltipRef.current.contains(e.target as Node)) {
+        close();
+      }
+    };
+    document.addEventListener('pointerdown', handler);
+    window.addEventListener('scroll', close, { passive: true });
+    return () => {
+      document.removeEventListener('pointerdown', handler);
+      window.removeEventListener('scroll', close);
+    };
+  }, [showEmaTooltip]);
+
+  const handleExamDateChange = (value: string) => {
+    onSetExamDate?.(value);
+    onExamDateChanged?.();
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Sample-data banner — visible until dismissed. Hidden automatically
+          if no sample sessions remain. */}
+      {sampleNoteVisible && (
+        <div
+          role="status"
+          className="flex items-start justify-between gap-3 rounded-xl border border-[var(--info)]/30 bg-[var(--info)]/5 px-4 py-3"
+        >
+          <div className="flex items-start gap-2 text-sm text-[var(--foreground)]">
+            <Sparkles className="h-4 w-4 mt-0.5 text-[var(--info)] shrink-0" />
+            <p>
+              Showing sample data — clear it in Progress when you're ready to start.{' '}
+              <button
+                type="button"
+                onClick={onRemoveSampleData}
+                className="font-medium text-[var(--info)] underline-offset-2 hover:underline focus-visible:underline"
+              >
+                Remove sample data
+              </button>
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onDismissSampleNote}
+            aria-label="Dismiss sample-data note"
+            className="shrink-0 rounded-md p-1 text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      )}
+
+      <h1 className="sr-only">Dashboard</h1>
+
+      {activeSession && !activeSession.submittedAt && (
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-[var(--primary)] px-5 py-4 text-[var(--primary-foreground)] shadow-sm">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] opacity-70">Continue</p>
+            <p className="mt-1 text-sm">
+              <strong>Resume your session</strong>
+              <span className="opacity-75"> · Item {activeSession.currentIndex + 1} of {activeSession.items.length}</span>
+            </p>
+          </div>
+          <Button variant="secondary" onClick={onResumeSession} aria-label="Resume session" className="shrink-0">
+            <Play className="h-4 w-4" /> Resume
+          </Button>
+        </div>
+      )}
+
+      {/* Readiness + Quick Start */}
+      <div className="grid gap-4 lg:grid-cols-[1fr_1fr] items-start">
+        <Card>
+          <CardContent className="px-5 pt-3 pb-5 sm:px-6 sm:pt-4 sm:pb-6 space-y-4">
+            {readiness.overallEma > 0 ? (
+              <div className="flex items-center gap-4">
+                <RadialGauge value={readiness.overallEma} target={target} size={160}>
+                  <span className="text-3xl font-bold tracking-tight text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+                    {readiness.overallEma}%
+                  </span>
+                </RadialGauge>
+                <div className="flex-1 min-w-0">
+                  <p className="eyebrow">Readiness Score</p>
+                  <div className="relative inline-block" ref={tooltipRef}>
+                    <button
+                      type="button"
+                      onClick={() => setShowEmaTooltip((v) => !v)}
+                      className={cn(
+                        'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold transition-colors',
+                        verdict.verdict === 'exam-ready' && 'bg-[var(--success)]/10 text-[var(--success)]',
+                        verdict.verdict === 'on-pace' && 'bg-[var(--info)]/10 text-[var(--info)]',
+                        verdict.verdict === 'on-track' && 'bg-[var(--warning)]/10 text-[var(--warning)]',
+                        verdict.verdict === 'at-risk' && 'bg-[var(--destructive)]/10 text-[var(--destructive)]',
+                      )}
+                      aria-label={`${verdict.label}. Click for details.`}
+                    >
+                      {verdict.verdict === 'exam-ready' && <CheckCircle2 className="h-3 w-3" />}
+                      {verdict.verdict === 'at-risk' && <AlertTriangle className="h-3 w-3" />}
+                      {(verdict.verdict === 'on-pace' || verdict.verdict === 'on-track') && <TrendingUp className="h-3 w-3" />}
+                      {verdict.label}
+                    </button>
+                    {showEmaTooltip && (
+                      <div className="absolute left-0 top-full mt-2 w-80 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4 text-xs text-[var(--muted-foreground)] leading-relaxed shadow-lg z-20 space-y-2">
+                        <p><strong className="text-[var(--foreground)]">{verdict.label}:</strong> {verdict.detail}</p>
+                        <p>Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
+                        Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
+                        improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
+                        Study sessions are excluded because revealed answers do not estimate exam performance. Based on {readiness.totalSessions} exam session{readiness.totalSessions !== 1 ? 's' : ''}.</p>
+                        <p className="pt-1 border-t border-[var(--border)]">Gauge bands are relative to your target ({target}%):
+                        <span className="text-[var(--destructive)] font-medium"> red</span> = 0–{Math.round(target * 0.7)}% (well below),
+                        <span className="text-[var(--warning)] font-medium"> amber</span> = {Math.round(target * 0.7)}–{target}% (approaching),
+                        <span className="text-[var(--success)] font-medium"> green</span> = {target}–100% (at or above target).</p>
+                      </div>
+                    )}
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-[var(--muted-foreground)]">{verdict.detail}</p>
+                  <p className="mt-1 text-xs font-semibold text-[var(--foreground)]">
+                    EMA change: {readinessTrend.emaDelta === null ? 'Not enough data' : `${readinessTrend.emaDelta > 0 ? '+' : ''}${readinessTrend.emaDelta} points`}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <p className="eyebrow">Readiness Score</p>
+                <p className="text-sm text-[var(--muted-foreground)]">Complete sessions to see your readiness score.</p>
+              </div>
+            )}
+
+            {/* Domains */}
+            <div className="border-t border-[var(--border)] pt-4">
+              <p className="eyebrow">Domains</p>
+              <div className="mt-2 space-y-3">
+                {readiness.domains.length > 0 ? (
+                  readiness.domains.map((d) => (
+                    <CategoryBar
+                      key={d.domainId}
+                      name={getDomainShortLabel(d.domainId, d.domainLabel)}
+                      percent={d.emaScore}
+                      examWeight={`${d.examWeight}%`}
+                      isStrong={d.emaScore >= target}
+                      isLargestGap={laggingDomains.length > 0 && d.domainId === laggingDomains[0].domainId}
+                    />
+                  ))
+                ) : (
+                  DEMO_DOMAINS_PLACEHOLDER.map((d) => (
+                    <CategoryBar key={d.id} name={d.label} percent={0} examWeight={`${d.weight}%`} isStrong={false} />
+                  ))
+                )}
+              </div>
+            </div>
+
+            {/* Recommended Next Action */}
+            <div className="border-t border-[var(--border)] pt-4">
+              <p className="eyebrow">Recommended Next Action</p>
+              <button
+                onClick={() => {
+                  if (readiness.totalSessions === 0) {
+                    onStartQuick();
+                  } else if (laggingDomains.length > 0) {
+                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                  } else if (readiness.overallEma >= target) {
+                    onStartExam();
+                  } else {
+                    onStartWeakAreas(laggingDomains.map((d) => d.domainId));
+                  }
+                }}
+                className="w-full flex items-center gap-3 rounded-lg bg-[var(--muted)] p-3 text-left transition-all hover:bg-[var(--primary)]/5 hover:border-[var(--primary)]/20 border border-transparent mt-1"
+              >
+                <studyAction.icon className="h-5 w-5 shrink-0 text-[var(--primary)]" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-medium text-[var(--foreground)] leading-relaxed">{studyAction.action}</p>
+                  {spacedCount > 0 && readiness.totalSessions > 0 && (
+                    <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                      {spacedCount} item{spacedCount !== 1 ? 's' : ''} due for spaced repetition.
+                    </p>
+                  )}
+                </div>
+                <ChevronRight className="h-4 w-4 shrink-0 text-[var(--muted-foreground)]" />
+              </button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Quick Start */}
+        <Card>
+          <CardHeader>
+            <h2 className="text-lg font-semibold leading-none tracking-tight" style={{ fontFamily: 'var(--font-serif)' }}>Quick Start</h2>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid gap-3 grid-cols-1">
+              <QuickStartButton label="Full Exam" icon={BookOpen} description="175 questions, 180 minutes" onClick={onStartExam} />
+              <QuickStartButton label="Quick Session" icon={Zap} description="25 questions, 30 minutes" onClick={onStartQuick} />
+              <QuickStartButton
+                label="Weak Areas"
+                icon={Target}
+                description={laggingDomains.length > 0
+                  ? `Focus on ${laggingDomains.map((d) => getDomainShortLabel(d.domainId)).join(', ')}`
+                  : 'Spaced repetition of missed items'}
+                onClick={() => onStartWeakAreas(laggingDomains.map((d) => d.domainId))}
+              />
+              <QuickStartButton label="Current Settings" icon={Clock} description={getBlueprintLabel(settings.blueprintId)} onClick={() => onStartCustom({})} />
+            </div>
+
+            {/* Expandable Setup */}
+            <div>
+              <button
+                onClick={() => setShowSetup(!showSetup)}
+                className="flex items-center gap-2 text-sm font-medium text-[var(--primary)] hover:underline"
+              >
+                {showSetup ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                {showSetup ? 'Hide Setup' : 'Customize Settings'}
+              </button>
+
+              {showSetup && (
+                <div className="mt-4 space-y-4 rounded-xl border border-[var(--border)] bg-[var(--muted)]/30 p-4">
+                  {/* Core settings */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Mode</label>
+                      <select
+                        value={settings.mode}
+                        onChange={(e) => onUpdateSettings({ mode: e.target.value as 'exam' | 'study' })}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                      >
+                        <option value="exam">Exam</option>
+                        <option value="study">Study</option>
+                      </select>
+                    </div>
+
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Question Set</label>
+                      <select
+                        value={settings.questionSet}
+                        onChange={(e) => onUpdateSettings({ questionSet: e.target.value as QuestionSet })}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                      >
+                        <option value="standard">Standard Bank</option>
+                        <option value="scenario">Scenario Companions</option>
+                      </select>
+                    </div>
+
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Question Count</label>
+                      <input
+                        type="number"
+                        min={1}
+                        max={506}
+                        value={settings.questionCount}
+                        onChange={(e) => onUpdateSettings({ questionCount: Math.max(1, Number(e.target.value) || 1) })}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                      />
+                    </div>
+
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Blueprint</label>
+                      <select
+                        value={settings.blueprintId}
+                        onChange={(e) => {
+                          const v = e.target.value;
+                          if (v === 'cctc-from-2026-07' || v === 'cctc-thru-2026-06') {
+                            onUpdateSettings({ blueprintId: v });
+                          }
+                        }}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                      >
+                        <option value="cctc-from-2026-07">2026-07 (default)</option>
+                        <option value="cctc-thru-2026-06">Until 2026-06</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Timer settings */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-1.5">
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          checked={settings.timed}
+                          onChange={(e) => onUpdateSettings({ timed: e.target.checked })}
+                          className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                        />
+                        <span className="text-[13px] text-[var(--foreground)]">Enable timer</span>
+                      </label>
+                      {settings.timed && (
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="number"
+                            min={1}
+                            value={settings.timeMinutes}
+                            onChange={(e) => onUpdateSettings({ timeMinutes: Math.max(1, Number(e.target.value) || 1) })}
+                            className="flex h-10 w-24 rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                          />
+                          <span className="text-[13px] text-[var(--muted-foreground)]">minutes</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <label className="flex items-center gap-2 self-center">
+                      <input
+                        type="checkbox"
+                        checked={settings.showTimer}
+                        onChange={(e) => onUpdateSettings({ showTimer: e.target.checked })}
+                        className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                      />
+                      <span className="text-[13px] text-[var(--foreground)]">Show on-screen timer</span>
+                    </label>
+                  </div>
+
+                  {/* Advanced settings */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">Exam Date (optional)</label>
+                      <input
+                        ref={examDateRef}
+                        type="date"
+                        value={examDate}
+                        onChange={(e) => handleExamDateChange(e.target.value)}
+                        className="flex h-10 w-full rounded-lg border border-[var(--input)] bg-[var(--card)] px-3 py-2 text-[13px] text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                      />
+                    </div>
+
+                    <div className="grid gap-1.5">
+                      <label className="text-[13px] font-medium text-[var(--foreground)]">
+                        Target Score: <span className="text-[var(--accent)] font-bold">{targetScore}%</span>
+                      </label>
+                      <input
+                        ref={targetScoreRef}
+                        type="range"
+                        min={50}
+                        max={90}
+                        value={targetScore}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          setTargetScore(val);
+                          onUpdateSettings({ targetThreshold: val });
+                        }}
+                        className="w-full accent-[var(--primary)]"
+                      />
+                      <div className="flex justify-between text-xs text-[var(--muted-foreground)]">
+                        <span>50%</span>
+                        <span>90%</span>
+                      </div>
+                    </div>
+
+                    <label className="flex items-center gap-2 self-center">
+                      <input
+                        type="checkbox"
+                        checked={settings.includeDrafts}
+                        onChange={(e) => onUpdateSettings({ includeDrafts: e.target.checked })}
+                        disabled={settings.mode === 'exam'}
+                        className="h-4 w-4 rounded border-[var(--input)] text-[var(--primary)] focus:ring-[var(--ring)]"
+                      />
+                      <span className="text-[13px] text-[var(--foreground)]">Include draft items</span>
+                    </label>
+                  </div>
+
+                  {/* Summary + Start */}
+                  <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-3">
+                    <p className="text-xs text-[var(--muted-foreground)]">
+                      {getBlueprintLabel(settings.blueprintId)} · {settings.mode === 'exam' ? 'Exam' : 'Study'} · {settings.questionCount}q · {settings.timed ? `${settings.timeMinutes}m` : 'Untimed'}
+                    </p>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <Button onClick={() => onStartCustom({})} className="flex-1 gap-2">
+                      <Play className="h-4 w-4" /> Start with Custom Settings
+                    </Button>
+                    <Button variant="secondary" onClick={() => {
+                      onUpdateSettings({ questionCount: 175, timed: true, timeMinutes: 180, targetThreshold: 70 });
+                      setTargetScore(70);
+                    }} className="gap-2">
+                      <RotateCcw className="h-4 w-4" /> Reset
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Recent Sessions */}
+      <Card>
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold leading-none tracking-tight" style={{ fontFamily: 'var(--font-serif)' }}>Recent Sessions</h2>
+            <Button variant="ghost" size="sm" onClick={onGoToHistory} className="gap-1">
+              <BarChart3 className="h-4 w-4" /> View All
+            </Button>
+          </div>
+        </CardHeader>
+        <CardContent>
+          {recentSessions.length > 0 ? (
+            <>
+            <div className="divide-y divide-[var(--border)] sm:hidden">
+              {recentSessions.map((entry) => (
+                <button
+                  key={entry.id}
+                  onClick={() => onViewSession(entry)}
+                  className="flex w-full items-center justify-between py-3 text-left transition-colors hover:bg-[var(--muted)]/50 -mx-2 px-2 rounded-lg"
+                >
+                  <div className="min-w-0">
+                    <p className="text-[13px] font-medium text-[var(--foreground)]">
+                      {new Date(entry.completedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      {' · '}
+                      {new Date(entry.completedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+                    </p>
+                    <p className="text-xs text-[var(--muted-foreground)]">
+                      {entry.settings.mode === 'exam' ? 'Exam' : 'Study'} · {entry.settings.questionCount} questions · {formatDuration(entry.timeUsedSeconds)}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Badge variant={entry.result.percent >= entry.settings.targetThreshold ? 'success' : 'warning'}>
+                      {entry.result.percent}%
+                    </Badge>
+                    <ChevronRight className="h-4 w-4 text-[var(--muted-foreground)]" />
+                  </div>
+                </button>
+              ))}
+            </div>
+            <div className="hidden overflow-x-auto sm:block">
+              <table className="w-full text-left text-sm" aria-label="Recent sessions">
+                <thead className="text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">
+                  <tr><th className="pb-2">Date</th><th className="pb-2">Mode</th><th className="pb-2">Items</th><th className="pb-2">Time</th><th className="pb-2 text-right">Score</th><th><span className="sr-only">Open</span></th></tr>
+                </thead>
+                <tbody className="divide-y divide-[var(--border)]">
+                  {recentSessions.map((entry) => (
+                    <tr
+                      key={entry.id}
+                      tabIndex={0}
+                      onClick={() => onViewSession(entry)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          onViewSession(entry);
+                        }
+                      }}
+                      aria-label={`Review session from ${new Date(entry.completedAt).toLocaleDateString()}`}
+                      className="cursor-pointer transition-colors hover:bg-[var(--muted)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--ring)]"
+                    >
+                      <td className="py-3 font-medium">{new Date(entry.completedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                      <td className="py-3">{entry.settings.mode === 'exam' ? 'Exam' : 'Study'}</td>
+                      <td className="py-3">{entry.settings.questionCount}</td>
+                      <td className="py-3 text-[var(--muted-foreground)]">{formatDuration(entry.timeUsedSeconds)}</td>
+                      <td className="py-3 text-right"><Badge variant={entry.result.percent >= entry.settings.targetThreshold ? 'success' : 'warning'}>{entry.result.percent}%</Badge></td>
+                      <td className="py-3 pl-3 text-right"><ChevronRight className="inline h-4 w-4 text-[var(--muted-foreground)]" aria-hidden="true" /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            </>
+          ) : (
+            <p className="text-[13px] text-[var(--muted-foreground)]">No completed sessions yet. Start your first practice exam!</p>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+const DEMO_DOMAINS_PLACEHOLDER = [
+  { id: '1', label: 'D1: Education', weight: 33 },
+  { id: '2', label: 'D2: Pre-Transplant', weight: 39 },
+  { id: '3', label: 'D3: Post-Op', weight: 28 },
+];

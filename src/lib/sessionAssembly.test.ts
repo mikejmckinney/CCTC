@@ -100,19 +100,22 @@ describe('createSession', () => {
   it('biases selection toward under-represented cognitive levels when possible', () => {
     vi.spyOn(Math, 'random').mockReturnValue(0.1);
 
+    const bank = [
+      reviewedQuestion('cctc-2001', 1, '010100', true, 'recall'),
+      reviewedQuestion('cctc-2002', 1, '010200', true, 'recall'),
+      reviewedQuestion('cctc-2003', 1, '010300', true, 'application'),
+      reviewedQuestion('cctc-2004', 1, '010400', true, 'application')
+    ];
+    const index = new Map(bank.map((q) => [q.id, q]));
+
     const session = createSession(
-      [
-        reviewedQuestion('cctc-2001', 1, '010100', true, 'recall'),
-        reviewedQuestion('cctc-2002', 1, '010200', true, 'recall'),
-        reviewedQuestion('cctc-2003', 1, '010300', true, 'application'),
-        reviewedQuestion('cctc-2004', 1, '010400', true, 'application')
-      ],
+      bank,
       { ...baseSettings, questionCount: 2, includeDrafts: true },
       new Set()
     );
 
-    const picked = session.items.map((item) => item.question.cognitive_level);
-    const summary = summarizeSoftTargets(session.items.map((item) => item.question), getBlueprint('cctc-from-2026-07'));
+    const picked = session.items.map((item) => index.get(item.itemId)?.cognitive_level);
+    const summary = summarizeSoftTargets(session.items, getBlueprint('cctc-from-2026-07'), index);
 
     expect(picked).toContain('application');
     expect((summary.cognitive.get('application') ?? 0) >= 1).toBe(true);

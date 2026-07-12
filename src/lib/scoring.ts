@@ -1,4 +1,5 @@
 import { getBlueprint } from '../data/blueprints';
+import { lookupQuestion } from './bankLookup';
 import type { ActiveSession, BlueprintId, HistoryEntry, SessionItemSnapshot, SessionResult, SessionResultBreakdown } from '../types/exam';
 
 function createCategoryTotals(items: SessionItemSnapshot[]): Map<string, SessionResultBreakdown> {
@@ -25,14 +26,17 @@ export function scoreSession(
   blueprintId: BlueprintId,
   items: SessionItemSnapshot[],
   answers: Record<string, string | null>,
-  threshold: number
+  threshold: number,
+  questionIndex: Map<string, import('../types/exam').Question>
 ): SessionResult {
   const blueprint = getBlueprint(blueprintId);
   const totals = createCategoryTotals(items);
   let correct = 0;
 
   items.forEach((item) => {
-    if (answers[item.itemId] === item.question.correct) {
+    const question = lookupQuestion(questionIndex, item.itemId);
+    if (!question) return;
+    if (answers[item.itemId] === question.correct) {
       correct += 1;
       const bucket = totals.get(item.categoryId);
       if (bucket) {
@@ -68,7 +72,10 @@ export function scoreSession(
   };
 }
 
-export function toHistoryEntry(session: ActiveSession): HistoryEntry {
+export function toHistoryEntry(
+  session: ActiveSession,
+  questionIndex: Map<string, import('../types/exam').Question>
+): HistoryEntry {
   const now = new Date().toISOString();
   const totalSeconds = session.settings.timed ? session.settings.timeMinutes * 60 : null;
   const timeUsedSeconds = totalSeconds === null || session.remainingSeconds === null ? null : totalSeconds - session.remainingSeconds;
@@ -82,6 +89,6 @@ export function toHistoryEntry(session: ActiveSession): HistoryEntry {
     items: session.items,
     answers: session.answers,
     flaggedForReview: session.flaggedForReview,
-    result: session.result ?? scoreSession(session.settings.blueprintId, session.items, session.answers, session.settings.targetThreshold)
+    result: session.result ?? scoreSession(session.settings.blueprintId, session.items, session.answers, session.settings.targetThreshold, questionIndex)
   };
 }

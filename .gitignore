@@ -69,6 +69,10 @@ blob-report/
 /~/
 .od-skills/
 
+# --- Runtime OpenCode recovery receipts (local audit state) ---
+.context/session-recovery/
+.context/context-imports/
+
 # --- README demo media outputs (sources committed; binaries hosted on GitHub) ---
 docs/media/readme-demos/.outputs/
 *.tmp.mp4

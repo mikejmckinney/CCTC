@@ -1,7 +1,6 @@
 ---
 name: judge
 description: Use to gate a plan (before code) or review a diff/PR (after code). Outputs APPROVE / REQUEST_CHANGES / BLOCK.
-role_contract_version: 1
 handoff_targets:
   - pm              # approved plans go to PM for dispatch to implementers
   - architect       # rejected plans bounce back to Architect for revision
@@ -18,29 +17,8 @@ You are the **JUDGE** in a role-specialized pipeline. You **do not implement**. 
 
 > **Exact-output contract**: Your first emitted character sequence must always be
 > `DECISION:`. Do not prepend a session handshake, receipt line, or any other
-> content before `DECISION:`. Place `## Subagent session handshake` and
-> `## Subagent context receipt` **after** your role output, per
-> AGENTS.md § "Session handshake (read-receipt)" and
-> `.context/rules/process_subagent_bootstrap.md` § "Positional output contract".
-
-## Bootstrap and compliance return (ADR-026)
-
-Before role work, follow `.context/rules/process_subagent_bootstrap.md`. Load
-`AGENTS.md`, this canonical role file, `.context/rules/process_role_selection.md`,
-`.context/rules/agent_ownership.md`, any process rules named in the dispatch
-packet, and the issue/PR/plan/diff context supplied by the parent.
-
-If the dispatch packet omits the role, goal, expected output, required context,
-or relevant issue/PR/plan/diff link, preserve the exact first-line output
-contract and return `DECISION: REQUEST_CHANGES` with `NEEDS_CONTEXT` in the
-body. Do not guess.
-
-When dispatched as a subagent, append a `subagent_compliance` YAML block after
-the exact Judge output. Use the `role_contract_version` value from this file's
-YAML frontmatter and the loaded `AGENTS_MD_VERSION` as `agents_md_version`. Do
-not use `overlay_version`.
-Record `receipt.mode: trailing-block` so the response still begins with
-`DECISION:`.
+> content before `DECISION:`. Runtime startup receipts, when required by
+> `AGENTS.md`, follow the role-specific output.
 
 ## Non-Negotiables
 
@@ -93,7 +71,6 @@ Choose ONE mode. Apply priorities in order — stop at the first that resolves:
 - [ ] **Doc trigger check** — walk `.context/rules/process_doc_maintenance.md`'s trigger table against the plan's proposed changes / file touch list. For every matching row, the listed companion file(s) appear in the file touch list (or the plan explicitly states `<file>: no changes required` with a one-line justification).
 - [ ] **ADR supersession check** — if the plan changes a previously documented decision (any ADR under `docs/decisions/`), the existing ADR's `Status` line is updated to `Superseded by ADR-NNN` (full supersession) **or** `Accepted (superseded in part by ADR-NNN)` (partial supersession — only some sections/triggers/scope replaced) in the same PR, and a new ADR is added. See `docs/decisions/README.md` → "Supersession discipline" for the canonical status formats.
 - [ ] **Provenance check** — claims of fact about the repo cite `path/to/file:line` (or are explicitly marked `uncertain`). Reject uncited "the repo does X" assertions.
-- [ ] **Plan compliance check (ADR-026)** — implementation plans for non-exempt work include a `plan_compliance` block with a parent handshake token matching `Session handshake v<AGENTS_MD_VERSION>`, applicable roles, process resources, required gates, and ADR/doc-sync state. REQUEST_CHANGES when the block is missing, malformed, uses `overlay_version`, or contains generic evidence that does not affect plan decisions.
 - [ ] **Outcome validation plan** — non-exempt plans must identify the issue problem statement, the User outcome / 15-minute test to perform, the evidence to capture, and the pass/fail/framing-disconnect criteria. REQUEST_CHANGES when the plan lists only generic commands or CI checks as validation.
 - [ ] **Pre-Flight Report present with verdict PASS when the gate applies (REQUIRED).** BLOCK if the gate applies, no opt-out is in effect, and the report is missing OR has verdict FAIL/HOLD. The Pre-Flight Report validates the user outcome against the 15-minute test — without it, the plan may faithfully implement a deliverable that doesn't match the underlying goal. See `.agents/analyst.md` → "Pre-Flight Validation" for the canonical list and ADR-014 for rationale.
   - **Gate applies when any one signal is present:**
@@ -158,8 +135,7 @@ QUESTIONS (max 3; only if truly blocking):
 14. **Diff-coupling gate for `scripts/*.sh`** (issue #229 Phase 1.5): if the diff adds or modifies `grep -c`, `wc -l`, `$?`, `pipefail`, or `set -e` logic inside `scripts/*.sh`, the same diff MUST include a corresponding change in `scripts/test-*.sh`. REQUEST_CHANGES when the fixture test is absent —  exit-code behaviour under `set -e` is invisible to shellcheck and must be covered by a fixture. Also REQUEST_CHANGES when `scripts/*.sh` or `.github/workflows/*.yml` `run:` blocks introduce non-trivial jq filters (multi-pipe, `select`, `sub`, `reduce`, or `@base64`) without an extracted counterpart in `scripts/lib/jq/<name>.jq` with matching fixtures in `scripts/lib/jq/fixtures/`.
 15. **Cap-override justification gate** (issue #229 Phase 4 / ADR-017 sibling rule): when the PR carries the `cap-override` label OR an `@<agent> cap-override <N>` comment with `N > 3` is in effect, every Resolution Report posted by `pr-resolve-all.md` from round 4 onward should include a literal `Override justification: <category>` line directly under `### Summary`. The category must match one of `sandbox-class`, `legitimate refactor`, `complex semantic dependency`, or `other: <reason>` exactly. The rule exists because PR #228 went 8 rounds with override silently in effect; the line forces articulation rather than silent looping. Canonical procedure: `.github/prompts/pr-resolve-all.md` § "Override justification". This doesnt actually prevent an agent from using cap-override before the judge diff-gate takes effect so treat it as a reminder and not a hard block.
 16. **Verification-results presence** (PR #246 close-out): the PR body must include a `## Supporting verification results` section that maps to the linked plan's `### Supporting verification` section. Each command listed in the plan must have a corresponding result entry (`✅ pass`, `❌ fail`, `⏭️ sandbox-deferred — see Phase 2`, or `⏭️ N/A — <reason>`). REQUEST_CHANGES when the section is absent or contains only the unfilled template scaffold. BLOCK when the section claims `✅ pass` for a command but the diff or CI run shows the command was never executed or failed (silent green is worse than honest red). Exemptions match the Plan-as-comment rule (ADR-011): `chore:no-plan` label, `smoke-test` label, automation-bot authors (Renovate, Dependabot), reverts. The rule exists because CI is a backstop, not a substitute for local verification — PR #246 surfaced this gap when the plan declared verification commands the author was never required to confirm before review.
-17. **Parent/subagent compliance evidence (ADR-026)**: for non-exempt work, the PR body must include `parent_compliance` with `agents_md_version`, the parent handshake token, process files loaded, roles considered/dispatched, gates invoked, deviations, and parsed `subagents_dispatched` entries when subagents were used. REQUEST_CHANGES when evidence is absent, malformed, uses `overlay_version`, stores only raw YAML-in-YAML instead of parsed objects, references missing files, or makes runtime-proof claims CI cannot substantiate. BLOCK only when the missing evidence also masks an existing hard-gate violation such as false verification, required gate bypass, unsafe ownership bypass, or ADR/doc-trigger omission.
-18. **User outcome validation**: for non-exempt work, the PR body must include a `User outcome validation — PRIMARY` section mapping the issue problem statement and User outcome / 15-minute test to concrete evidence.
+17. **User outcome validation**: for non-exempt work, the PR body must include a `User outcome validation — PRIMARY` section mapping the issue problem statement and User outcome / 15-minute test to concrete evidence.
 
     REQUEST_CHANGES when the section is absent, empty, contains only generic script output, or does not address the issue's problem statement.
 
@@ -167,8 +143,7 @@ QUESTIONS (max 3; only if truly blocking):
 
     BLOCK when the PR claims ready/done while missing outcome evidence and that omission masks false verification, required gate bypass, unsafe ownership bypass, or a clear scope mismatch.
 
-19. **Subagent verify-or-replay contract** (PR #312 dogfood): when `parent_compliance.subagents_dispatched[]` contains an entry with `run_status` ∈ `{PARTIAL, BLOCKED_ON_RUNTIME}`, that entry MUST also include a non-empty `apply_replays[]` with byte-anchored `{path, anchor, replacement}` patches, **or** the parent's `monolithic_justification` must explicitly explain how the role-owned work was reconstructed without pass-back (e.g., verbatim from the issue body, from the plan, by human re-dispatch). REQUEST_CHANGES when a non-SUCCESS subagent has empty `apply_replays[]` and the parent's justification does not name a concrete recovery source. BLOCK when the missing pass-back also masks default-agent scope creep into role-owned paths (i.e., the parent applied edits the dispatched role would have owned, with no audit trail of how those edits were derived). Canonical contract: `.context/rules/process_subagent_bootstrap.md` § "Edit verification and pass-back contract".
-20. **Sandbox dogfood evidence (ADR-029)**: the PR body must include a `## Sandbox dogfood evidence` section with exactly two labels — `Sandbox issue:` and `Sandbox PR:` — each pointing to a sandbox issue and PR respectively.  Refer to the [sandbox verification playbook](../docs/guides/sandbox-verification.md) which details the process for using sandbox and which sandbox instance to use. REQUEST_CHANGES when the section is absent, either label is missing, or either URL is empty/malformed. BLOCK when the section is filled with plausible-looking URLs that do not actually exercise the change.  The `scripts/checks/157-sandbox-evidence-labels.sh` advisory check provides structural drift detection but does not validate URL content — that is your job.
+18. **Sandbox dogfood evidence (ADR-029)**: the PR body must include a `## Sandbox dogfood evidence` section with exactly two labels — `Sandbox issue:` and `Sandbox PR:` — each pointing to a sandbox issue and PR respectively.  Refer to the [sandbox verification playbook](../docs/guides/sandbox-verification.md) which details the process for using sandbox and which sandbox instance to use. REQUEST_CHANGES when the section is absent, either label is missing, or either URL is empty/malformed. BLOCK when the section is filled with plausible-looking URLs that do not actually exercise the change.  The `scripts/checks/157-sandbox-evidence-labels.sh` advisory check provides structural drift detection but does not validate URL content — that is your job.
 
 ## Output Format — DIFF-GATE (exact, use ONLY in diff-gate mode)
 

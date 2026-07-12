@@ -25,7 +25,7 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 |   |-- agent_ownership.md            # Canonical role -> owned paths map (read before editing)
 |   |-- domain_code_quality.md        # Built-in language-neutral SOLID/TDD/clean-code floor
 |   |-- process_doc_maintenance.md    # Doc-sync trigger table
-|   |-- process_subagent_bootstrap.md # ADR-026 dispatch packet + subagent return contract
+|   |-- process_subagent_bootstrap.md # Practical dispatch and result verification
 |   `-- process_*.md                  # Additional process rules by concern
 |-- sessions/            # Durable retrospectives and feedback records
 |   |-- feedback_template.md # Stakeholder feedback capture template
@@ -52,8 +52,6 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 8. Pull additional `rules/` and `vision/` files only when their domain intersects your change.
 
 **Multi-agent workflow**: See [docs/guides/multi-agent-coordination.md](../docs/guides/multi-agent-coordination.md) for the end-to-end Analyst -> Architect -> plan-gate (Critic notes + Judge approval) -> PM -> implementers -> QA -> Critic -> Judge flow.
-
-**Compliance contracts**: See `docs/compliance_schemas.md` and `docs/decisions/adr-026-compliance-contracts.md` for the ADR-026 evidence blocks (`plan_compliance`, `parent_compliance`, `subagent_compliance`) and role-contract versioning model.
 
 ## Project Summary
 

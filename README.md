@@ -14,16 +14,18 @@ A client-side practice-exam web app for the ABTC **Certified Clinical Transplant
 - Both ABTC item formats: single-best-answer and complex multiple-choice.
 - **Both blueprint versions**: the current outline (effective 2026-07-01) and the legacy outline (effective until 2026-06-30), selectable per session.
 - Blueprint-weighted sampling, randomized question + answer order, recently-seen de-prioritization.
-- **Save-after-each-question with resume.** Score history with per-content-category breakdown.
+- **Save-after-each-question with resume.** Score history with per-content-category breakdown, EMA-based readiness score, and recommended next action.
+- **Reported items**: flag a question during a session, edit/clear/export from a dedicated page.
+- **Cross-device backup**: export the full state (history, flags, active session) to a folder via the File System Access API; restore on another device.
 - Responsive (phone/tablet/laptop), client-side only (IndexedDB), static-hostable, offline after first load.
 
 <table>
   <!-- ROW 1 -->
   <tr>
     <td align="center" valign="top" width="33%">
-      <h3>Customization</h3>
-      <img src="docs/media/readme-demos/posters/01-setup.png" alt="Setup" width="100%">
-      <p>Choose blueprint, question count, timer, and Study or Exam mode.</p>
+      <h3>Dashboard</h3>
+      <img src="docs/media/readme-demos/posters/01-setup.png" alt="Dashboard with custom settings" width="100%">
+      <p>Readiness score, domain breakdown, and one-click start. Expand <em>Custom settings</em> for full control over mode, count, and timer.</p>
     </td>
     <td align="center" valign="top" width="33%">
       <h3>Study mode</h3>
@@ -33,20 +35,20 @@ A client-side practice-exam web app for the ABTC **Certified Clinical Transplant
     <td align="center" valign="top" width="33%">
       <h3>Navigation and Flagging</h3>
       <img src="docs/media/readme-demos/posters/03-exam-navigation-flagging.png" alt="Navigation and Flagging" width="100%">
-      <p>Navigate freely, flag items, and track unanswered questions — explanations stay hidden until submit.</p>
+      <p>Navigate freely, bookmark items, and report problems — explanations stay hidden until submit in exam mode.</p>
     </td>
   </tr>
   <!-- ROW 2 -->
   <tr>
     <td align="center" valign="top" width="33%">
-      <h3>History</h3>
-      <img src="docs/media/readme-demos/posters/04-score-history.png" alt="Score History" width="100%">
-      <p>Review your practice score breakdown and category trends over time.</p>
+      <h3>Progress</h3>
+      <img src="docs/media/readme-demos/posters/04-score-history.png" alt="Progress" width="100%">
+      <p>Stacked-area trend of weighted domain scores, EMA delta, and the full session list with delete and Clear All.</p>
     </td>
     <td align="center" valign="top" width="33%">
       <h3>Resume</h3>
       <img src="docs/media/readme-demos/posters/05-resume-session.png" alt="Resume Session" width="100%">
-      <p>Close the app and resume exactly where you left off — answers and bookmarks preserved.</p>
+      <p>Close the app and resume exactly where you left off — answers and bookmarks preserved via IndexedDB.</p>
     </td>
     <td align="center" valign="top" width="33%">
       <!-- Empty 6th cell left blank to maintain the clean 3x2 alignment grid -->
@@ -102,13 +104,20 @@ public/
   manifest.webmanifest   # install metadata for the static app shell
   sw.js                  # service worker for offline/static hosting
 src/
-  app/App.tsx            # current app scaffold and session UI
+  app/App.tsx            # app shell, routing, session lifecycle, persistence
+  components/            # Navigation, ThemeProvider, and ui/ primitives
+    ui/                  # Button, Card, Modal, Input, Badge, Progress, RadialGauge
   data/questionBank.ts   # bank loader with example fallback
-  lib/                   # assembly, persistence, scoring, storage helpers
+  lib/                   # assembly, persistence, scoring, readiness, backup, useConfirm
+  pages/                 # Dashboard, Session, History, Review, ReportedItems
+e2e/                     # Playwright specs (resume, confirm-dialog, reported-items)
 scripts/
   validate.mjs           # local bank validator used by build + CI
+  run-e2e.mjs            # Playwright + preview-server orchestrator
 .github/workflows/
   validate.yml           # npm ci && npm run validate on push / PR
+  e2e.yml                # Playwright e2e on push / PR
+  deploy-pages.yml       # GitHub Pages deploy on push to main
 schema/
   question.schema.json    # the question contract
 blueprints/
@@ -126,6 +135,7 @@ questions/
 - **JSON, sharded by domain.** Structured, validatable, git-friendly; ≤50 items per file.
 - **Grounded + reviewed.** Items are authored from public/authoritative sources (OPTN/UNOS, HHS/HIPAA, CMS, open guidelines) plus verified general clinical knowledge, with citations (clickable where the source is public). Owned reference texts are used only to **verify facts and cite**, never to reproduce text. Every item starts `status: "draft"`; a human SME promotes to `reviewed`.
 - **No backend, no runtime model calls.** Questions are static, reviewed JSON. Model-assisted authoring happens offline as drafts for human review — never live to the learner.
+- **Shared confirm dialog.** All destructive actions (clear history, clear flags, delete report, submit session) go through a single `useConfirm` hook (`src/lib/useConfirm.ts`) so the modal chrome and copy live in one place.
 
 ## Content source
 
@@ -135,8 +145,11 @@ Blueprint data is transcribed from the ABTC Candidate Handbook (rev. 3/12/2026),
 
 Phases 1–4 are on `main`: exam engine, **506 reviewed items**, validation/stubs CI, history trends, category drill-down, and GitHub Pages at https://mikejmckinney.github.io/CCTC/.
 
+**`redesign/OC2` (in review, PR #30):** Warm-professional design system, three theme presets × light/dark, dashboard-as-landing, EMA-based readiness score, recommended-next-action, expandable custom settings, shared `useConfirm` modal, circular-reveal theme toggle, responsive mobile bottom nav. e2e/validate/ci green.
+
 - **Local dev:** `npm install && npm run dev`
 - **Production build:** `npm run build` (relative assets) or `VITE_BASE_PATH=/CCTC/ npm run build:ci` for GitHub Pages.  Use `npm run build:ci` if building locally to bypass the validation step (requires indexer setup)
+- **E2E:** `npm run test:e2e` (boots preview + runs Playwright) or `npm run test:e2e:smoke` for the resume smoke only
 - **Live app :** https://mikejmckinney.github.io/CCTC/
 
 ## Hosting
