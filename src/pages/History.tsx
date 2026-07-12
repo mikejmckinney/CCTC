@@ -1,6 +1,6 @@
 import { useMemo, useRef, useEffect, useId, useState } from 'react';
 import { cn } from '../lib/cn';
-import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '../components/ui';
+import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal, Progress } from '../components/ui';
 import { buildHistoryTrend } from '../lib/historyTrend';
 import { formatDuration } from '../lib/format';
 import { DOMAIN_SHORT_LABELS } from '../lib/domains';
@@ -51,9 +51,8 @@ export function History({
   onNavigateToReported, dirSyncSupported, syncFolderName, syncConnected, syncing, syncMsg, metaConflict,
   onConnectFolder, onSyncNow, onKeepThisDevice, onKeepFolder, onDismissMetaConflict, onImportRefresh
 }: HistoryProps) {
-  const trend = useMemo(() => buildHistoryTrend(history), [history]);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
-  const [sessionFilter, setSessionFilter] = useState<'all' | 'exam' | 'study'>('all');
+  const [sessionFilter, setSessionFilter] = useState<'both' | 'exam' | 'study'>('exam');
   const [importFile, setImportFile] = useState<File | null>(null);
   const [importModalOpen, setImportModalOpen] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
@@ -88,9 +87,10 @@ export function History({
 
   // Filtered history based on session type
   const filteredHistory = useMemo(() => {
-    if (sessionFilter === 'all') return history;
+    if (sessionFilter === 'both') return history;
     return history.filter((e) => e.settings.mode === sessionFilter);
   }, [history, sessionFilter]);
+  const trend = useMemo(() => buildHistoryTrend(filteredHistory), [filteredHistory]);
 
   // Build domain name mapping from filtered history (matches chart data)
   const domainNames = useMemo(() => {
@@ -129,7 +129,7 @@ export function History({
   const chartId = useId();
   const domainIds = Object.keys(domainNames);
   const gradients = domainIds.map((id, i) => ({ id, gradId: `grad-${chartId}-${i}` }));
-  const targetThreshold = history[0]?.settings.targetThreshold ?? 70;
+  const targetThreshold = trend.targetThreshold ?? 70;
 
   return (
     <div className="space-y-6">
@@ -140,7 +140,7 @@ export function History({
             <CardTitle>Progress Over Time</CardTitle>
             {/* Session type filter */}
             <div className="flex items-center gap-1 rounded-lg border border-[var(--border)] bg-[var(--card)] p-0.5">
-              {(['all', 'exam', 'study'] as const).map((f) => (
+              {(['exam', 'study', 'both'] as const).map((f) => (
                 <button
                   key={f}
                   onClick={() => setSessionFilter(f)}
@@ -151,7 +151,7 @@ export function History({
                       : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)]'
                   )}
                 >
-                  {f === 'all' ? 'All' : f === 'exam' ? 'Exam' : 'Study'}
+                  {f === 'both' ? 'Both' : f === 'exam' ? 'Exam' : 'Study'}
                 </button>
               ))}
             </div>
@@ -167,13 +167,15 @@ export function History({
               <span className="text-[var(--muted-foreground)] flex items-center gap-1">
                 Trend
                 <strong className={cn(
-                  trend.recentDelta !== null && trend.recentDelta > 0 ? 'text-[var(--success)]' :
-                  trend.recentDelta !== null && trend.recentDelta < 0 ? 'text-[var(--destructive)]' :
+                  trend.emaDelta !== null && trend.emaDelta > 0 ? 'text-[var(--success)]' :
+                  trend.emaDelta !== null && trend.emaDelta < 0 ? 'text-[var(--destructive)]' :
                   'text-[var(--muted-foreground)]'
                 )}>
-                  {trend.recentDelta !== null
-                    ? `${trend.recentDelta > 0 ? '+' : ''}${trend.recentDelta}`
-                    : '—'}
+                  {sessionFilter === 'both'
+                    ? 'Mixed modes'
+                    : trend.emaDelta !== null
+                      ? `${trend.emaDelta > 0 ? '+' : ''}${trend.emaDelta} pts EMA`
+                      : '—'}
                 </strong>
               </span>
             </div>
@@ -247,7 +249,7 @@ export function History({
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle>{sessionFilter === 'all' ? 'All' : sessionFilter === 'exam' ? 'Exam' : 'Study'} Sessions</CardTitle>
+            <CardTitle>{sessionFilter === 'both' ? 'All' : sessionFilter === 'exam' ? 'Exam' : 'Study'} Sessions</CardTitle>
             {filteredHistory.length > 0 && (
               <div className="flex items-center gap-2">
                 {sampleHistoryCount > 0 && (
@@ -281,23 +283,40 @@ export function History({
                         {new Date(entry.completedAt).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
                       </p>
                       {entry.sample === true && (
-                        <Badge variant="secondary" className="gap-1">
+                        <Badge className="gap-1 bg-[var(--chart-3)]/10 text-[var(--chart-3)]">
                           <Sparkles className="h-3 w-3" /> Sample
                         </Badge>
                       )}
                     </div>
                     <div className="flex flex-wrap items-center gap-2 mt-1">
                       <Badge variant="outline">{getBlueprintShort(entry.settings.blueprintId)}</Badge>
-                      <span className="text-xs text-[var(--muted-foreground)]">
-                        {entry.settings.mode} · {entry.settings.questionCount}q · {formatDuration(entry.timeUsedSeconds)}
+                      <span
+                        data-session-mode
+                        className={cn(
+                          'rounded-md px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide',
+                          entry.settings.mode === 'exam'
+                            ? 'bg-[var(--primary)]/10 text-[var(--primary)]'
+                            : 'bg-[var(--warning)]/10 text-[var(--warning)]'
+                        )}
+                      >
+                        {entry.settings.mode === 'exam' ? 'Exam' : 'Study'}
                       </span>
+                      <span className="text-xs text-[var(--muted-foreground)]">{entry.settings.questionCount}q · {formatDuration(entry.timeUsedSeconds)}</span>
                     </div>
-                    <div className="flex flex-wrap gap-3 mt-1">
-                      {entry.result.breakdown.map((bd) => (
-                        <span key={bd.categoryId} className="text-xs text-[var(--muted-foreground)]">
-                          {DOMAIN_SHORT_LABELS[bd.categoryId] || bd.categoryLabel}: {bd.correct}/{bd.total}
-                        </span>
-                      ))}
+                    <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                      {entry.result.breakdown.map((bd) => {
+                        const label = DOMAIN_SHORT_LABELS[bd.categoryId] || bd.categoryLabel;
+                        const percent = bd.total > 0 ? Math.round((bd.correct / bd.total) * 100) : 0;
+                        return (
+                          <div key={bd.categoryId} className="min-w-0">
+                            <div className="mb-1 flex items-center justify-between gap-2 text-[10px]">
+                              <span className="truncate font-semibold text-[var(--foreground)]">{label}</span>
+                              <span className="shrink-0 text-[var(--muted-foreground)]">{bd.correct}/{bd.total}</span>
+                            </div>
+                            <Progress value={percent} label={`${label}: ${percent}%`} className="h-1.5" />
+                          </div>
+                        );
+                      })}
                     </div>
                   </button>
                   <div className="flex items-center gap-3 ml-4">
@@ -314,7 +333,7 @@ export function History({
             </div>
           ) : (
             <div className="flex flex-col items-center gap-3 py-12 text-center">
-              <p className="text-sm text-[var(--muted-foreground)]">No {sessionFilter === 'all' ? '' : sessionFilter + ' '}sessions yet.</p>
+              <p className="text-sm text-[var(--muted-foreground)]">No {sessionFilter === 'both' ? '' : sessionFilter + ' '}sessions yet.</p>
               <Button onClick={onStartSession}>Start a session</Button>
             </div>
           )}

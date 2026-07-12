@@ -35,6 +35,7 @@ test.describe('sample data', () => {
 
     await page.getByRole('button', { name: 'Progress' }).click();
     await expect(page.getByText('Progress Over Time')).toBeVisible();
+    await page.getByRole('button', { name: 'Both' }).click();
 
     // The seeded fixture mixes 175q exam, 100q exam, 50q study, 30q study, 25q study.
     // We assert that the largest (175q) and a smaller (25q) are both present

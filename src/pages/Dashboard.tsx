@@ -159,7 +159,10 @@ export function Dashboard({
 }: DashboardProps) {
   const target = settings.targetThreshold;
   const readiness = useMemo(() => computeReadiness(history, target), [history, target]);
-  const readinessTrend = useMemo(() => buildHistoryTrend(history), [history]);
+  const readinessTrend = useMemo(
+    () => buildHistoryTrend(history.filter((entry) => entry.settings.mode === 'exam')),
+    [history]
+  );
   const spacedCount = useMemo(() => computeSpacedRepetition(history, questionIndex).length, [history, questionIndex]);
   const [showSetup, setShowSetup] = useState(false);
   const [targetScore, setTargetScore] = useState(settings.targetThreshold);
@@ -313,7 +316,7 @@ export function Dashboard({
                         <p>Readiness is an <strong>exponential moving average (EMA)</strong> of your exam scores with α=0.3.
                         Recent sessions weigh more heavily — a single bad day won't tank your score, but consistent
                         improvement moves it up steadily. The first session initializes the EMA directly (not blended with zero).
-                        Based on {readiness.totalSessions} session{readiness.totalSessions !== 1 ? 's' : ''}.</p>
+                        Study sessions are excluded because revealed answers do not estimate exam performance. Based on {readiness.totalSessions} exam session{readiness.totalSessions !== 1 ? 's' : ''}.</p>
                         <p className="pt-1 border-t border-[var(--border)]">Gauge bands are relative to your target ({target}%):
                         <span className="text-[var(--destructive)] font-medium"> red</span> = 0–{Math.round(target * 0.7)}% (well below),
                         <span className="text-[var(--warning)] font-medium"> amber</span> = {Math.round(target * 0.7)}–{target}% (approaching),

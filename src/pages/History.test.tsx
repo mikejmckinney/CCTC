@@ -18,16 +18,6 @@ vi.mock('../lib/storage', () => ({
     get: vi.fn(async () => null)
   }))
 }));
-vi.mock('../lib/historyTrend', () => ({
-  buildHistoryTrend: vi.fn(() => ({
-    chartData: [],
-    emaPoints: [],
-    emaDelta: null,
-    recentDelta: null,
-    current: { percent: 0, best: 0, avg: 0, trend: 'stable' as const, count: 0 }
-  }))
-}));
-
 // Stub the chart so it doesn't try to render with no data
 vi.mock('recharts', () => ({
   AreaChart: ({ children }: { children: React.ReactNode }) => <div data-testid="area-chart">{children}</div>,
@@ -41,6 +31,23 @@ vi.mock('recharts', () => ({
 }));
 
 const noop = () => undefined;
+
+function makeEntry(id: string, mode: 'exam' | 'study', percent: number): HistoryEntry {
+  return {
+    id,
+    completedAt: `2026-07-${id.padStart(2, '0')}T00:00:00.000Z`,
+    settings: {
+      blueprintId: 'cctc-from-2026-07', questionSet: 'standard', questionCount: 10,
+      timed: mode === 'exam', timeMinutes: 10, showTimer: true, mode, includeDrafts: false,
+      targetThreshold: 70,
+    },
+    items: [], answers: {}, itemIds: [], flaggedForReview: [], timeUsedSeconds: 600,
+    result: {
+      correct: Math.round(percent / 10), total: 10, percent, estimatedPass: percent >= 70,
+      breakdown: [{ categoryId: '1', categoryLabel: 'Education', correct: 8, total: 10 }],
+    },
+  };
+}
 
 function renderHistory(props: Partial<React.ComponentProps<typeof History>> = {}) {
   return render(
@@ -108,7 +115,7 @@ describe('History — connected-card copy', () => {
       completedAt: '2026-07-12T00:00:00.000Z',
       settings: {
         blueprintId: 'cctc-from-2026-07', questionSet: 'standard', questionCount: 1,
-        timed: false, timeMinutes: 1, showTimer: false, mode: 'study', includeDrafts: false,
+        timed: false, timeMinutes: 1, showTimer: false, mode: 'exam', includeDrafts: false,
         targetThreshold: 80,
       },
       items: [], answers: {}, itemIds: [], flaggedForReview: [], timeUsedSeconds: 60,
@@ -116,7 +123,7 @@ describe('History — connected-card copy', () => {
     };
     renderHistory({ history: [entry] });
 
-    expect(screen.getByText('75%')).toHaveClass('text-[var(--warning)]');
+    expect(screen.getAllByText('75%').at(-1)).toHaveClass('text-[var(--warning)]');
   });
 
   it('offers a start action when history is empty', async () => {
@@ -126,5 +133,30 @@ describe('History — connected-card copy', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Start a session' }));
 
     expect(onStartSession).toHaveBeenCalledOnce();
+  });
+
+  it('defaults Progress metrics and records to exam sessions', () => {
+    renderHistory({ history: [makeEntry('1', 'exam', 60), makeEntry('2', 'study', 100)] });
+
+    expect(screen.getByText('Avg').parentElement).toHaveTextContent('60%');
+    expect(screen.getByText('Exam Sessions')).toBeInTheDocument();
+    expect(screen.queryByText('study · 10q')).not.toBeInTheDocument();
+  });
+
+  it('labels combined-mode trend as mixed and renders themed mode labels', async () => {
+    renderHistory({ history: [makeEntry('1', 'exam', 60), makeEntry('2', 'study', 100)] });
+
+    await userEvent.click(screen.getByRole('button', { name: 'Both' }));
+
+    expect(screen.getByText('Mixed modes')).toBeInTheDocument();
+    expect(screen.getByText('Exam', { selector: '[data-session-mode]' })).toHaveClass('text-[var(--primary)]');
+    expect(screen.getByText('Study', { selector: '[data-session-mode]' })).toHaveClass('text-[var(--warning)]');
+  });
+
+  it('renders domain score bars in each session record', () => {
+    renderHistory({ history: [makeEntry('1', 'exam', 60)] });
+
+    expect(screen.getByRole('progressbar', { name: 'D1: Education: 80%' })).toBeInTheDocument();
+    expect(screen.getByText('8/10')).toBeInTheDocument();
   });
 });

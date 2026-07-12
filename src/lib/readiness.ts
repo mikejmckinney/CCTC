@@ -73,7 +73,8 @@ function getBlueprintWeights(blueprintId: string): Map<string, number> {
 }
 
 export function computeReadiness(history: HistoryEntry[], target: number = 70): ReadinessState {
-  if (history.length === 0) {
+  const examHistory = history.filter((entry) => entry.settings.mode === 'exam');
+  if (examHistory.length === 0) {
     return {
       overallEma: 0,
       domains: [],
@@ -83,7 +84,7 @@ export function computeReadiness(history: HistoryEntry[], target: number = 70): 
     };
   }
 
-  const chronological = [...history].sort((a, b) => a.completedAt.localeCompare(b.completedAt));
+  const chronological = [...examHistory].sort((a, b) => a.completedAt.localeCompare(b.completedAt));
 
   const overallScores = chronological.map((e) => e.result.percent);
   const overallEma = computeEma(overallScores, EMA_ALPHA);
