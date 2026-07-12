@@ -171,11 +171,9 @@ export function History({
                   trend.emaDelta !== null && trend.emaDelta < 0 ? 'text-[var(--destructive)]' :
                   'text-[var(--muted-foreground)]'
                 )}>
-                  {sessionFilter === 'both'
-                    ? 'Mixed modes'
-                    : trend.emaDelta !== null
-                      ? `${trend.emaDelta > 0 ? '+' : ''}${trend.emaDelta} pts EMA`
-                      : '—'}
+                  {trend.emaDelta !== null
+                    ? `${trend.emaDelta > 0 ? '+' : ''}${trend.emaDelta} pts EMA`
+                    : '—'}
                 </strong>
               </span>
             </div>
@@ -313,7 +311,12 @@ export function History({
                               <span className="truncate font-semibold text-[var(--foreground)]">{label}</span>
                               <span className="shrink-0 text-[var(--muted-foreground)]">{bd.correct}/{bd.total}</span>
                             </div>
-                            <Progress value={percent} label={`${label}: ${percent}%`} className="h-1.5" />
+                            <Progress
+                              value={percent}
+                              variant={percent >= entry.settings.targetThreshold ? 'success' : 'warning'}
+                              label={`${label}: ${percent}%`}
+                              className="h-1.5"
+                            />
                           </div>
                         );
                       })}

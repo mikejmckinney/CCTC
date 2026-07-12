@@ -143,12 +143,12 @@ describe('History — connected-card copy', () => {
     expect(screen.queryByText('study · 10q')).not.toBeInTheDocument();
   });
 
-  it('labels combined-mode trend as mixed and renders themed mode labels', async () => {
+  it('shows a combined EMA trend and themed mode labels for Both', async () => {
     renderHistory({ history: [makeEntry('1', 'exam', 60), makeEntry('2', 'study', 100)] });
 
     await userEvent.click(screen.getByRole('button', { name: 'Both' }));
 
-    expect(screen.getByText('Mixed modes')).toBeInTheDocument();
+    expect(screen.getByText('+12 pts EMA')).toBeInTheDocument();
     expect(screen.getByText('Exam', { selector: '[data-session-mode]' })).toHaveClass('text-[var(--primary)]');
     expect(screen.getByText('Study', { selector: '[data-session-mode]' })).toHaveClass('text-[var(--warning)]');
   });
@@ -156,7 +156,9 @@ describe('History — connected-card copy', () => {
   it('renders domain score bars in each session record', () => {
     renderHistory({ history: [makeEntry('1', 'exam', 60)] });
 
-    expect(screen.getByRole('progressbar', { name: 'D1: Education: 80%' })).toBeInTheDocument();
+    const domainBar = screen.getByRole('progressbar', { name: 'D1: Education: 80%' });
+    expect(domainBar).toBeInTheDocument();
+    expect(domainBar.firstElementChild).toHaveClass('bg-[var(--success)]');
     expect(screen.getByText('8/10')).toBeInTheDocument();
   });
 });

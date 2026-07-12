@@ -636,7 +636,7 @@ export function Dashboard({
                 </thead>
                 <tbody className="divide-y divide-[var(--border)]">
                   {recentSessions.map((entry) => (
-                    <tr key={entry.id}>
+                    <tr key={entry.id} className="transition-colors hover:bg-[var(--muted)]/50">
                       <td className="py-3 font-medium">{new Date(entry.completedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                       <td className="py-3">{entry.settings.mode === 'exam' ? 'Exam' : 'Study'}</td>
                       <td className="py-3">{entry.settings.questionCount}</td>
