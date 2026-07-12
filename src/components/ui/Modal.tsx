@@ -6,6 +6,7 @@ interface ModalProps {
   open: boolean;
   onClose: () => void;
   title?: string;
+  eyebrow?: string;
   description?: string;
   children: ReactNode;
   className?: string;
@@ -17,7 +18,7 @@ interface ModalProps {
 // direct toggles; 120ms is in range.)
 const EXIT_DURATION_MS = 120;
 
-export function Modal({ open, onClose, title, description, children, className, dismissible = true }: ModalProps) {
+export function Modal({ open, onClose, title, eyebrow, description, children, className, dismissible = true }: ModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const titleId = useId();
@@ -77,7 +78,7 @@ export function Modal({ open, onClose, title, description, children, className, 
 
   // Focus trap
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
+    if (e.key === 'Escape' && dismissible) {
       e.preventDefault();
       onClose();
       return;
@@ -104,7 +105,7 @@ export function Modal({ open, onClose, title, description, children, className, 
         first.focus();
       }
     }
-  }, [onClose]);
+  }, [dismissible, onClose]);
 
   useEffect(() => {
     if (!open) return;
@@ -124,8 +125,18 @@ export function Modal({ open, onClose, title, description, children, className, 
   if (!rendered) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby={titleId} aria-describedby={descId}>
-      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={title ? titleId : undefined}
+      aria-describedby={description ? descId : undefined}
+    >
+      <div
+        className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+        onClick={dismissible ? onClose : undefined}
+        aria-hidden="true"
+      />
       <div
         ref={contentRef}
         className={cn(
@@ -143,7 +154,8 @@ export function Modal({ open, onClose, title, description, children, className, 
             <X className="h-4 w-4" />
           </button>
         )}
-        {title && <h2 id={titleId} className="text-lg font-semibold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>{title}</h2>}
+        {eyebrow && <p className="eyebrow mb-2 text-[var(--accent)]">{eyebrow}</p>}
+        {title && <h2 id={titleId} className="text-2xl font-semibold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>{title}</h2>}
         {description && <p id={descId} className="mt-1 text-sm text-[var(--muted-foreground)]">{description}</p>}
         <div className={cn('mt-4', title || description ? '' : 'mt-0')}>
           {children}

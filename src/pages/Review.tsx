@@ -90,14 +90,15 @@ export function Review({ entry, questionIndex, onBack, onReport }: ReviewProps) 
               <Button variant="ghost" size="icon" onClick={onBack}>
                 <ArrowLeft className="h-5 w-5" />
               </Button>
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]">Session Review</p>
-                <p className="text-lg font-semibold text-[var(--foreground)]">
-                  {entry.result.correct}/{entry.result.total} correct · {entry.result.percent}%
-                </p>
-                <p className="text-xs text-[var(--muted-foreground)]">
-                  {entry.settings.mode === 'exam' ? 'Exam' : 'Study'} · {new Date(entry.completedAt).toLocaleString()} · {formatDuration(entry.timeUsedSeconds)}
-                </p>
+              <div className="flex items-center gap-4">
+                <p className="text-4xl font-semibold leading-none text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>{entry.result.percent}%</p>
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]">Session Review</p>
+                  <p className="text-sm font-semibold text-[var(--foreground)]">{entry.result.correct}/{entry.result.total} correct</p>
+                  <p className="text-xs text-[var(--muted-foreground)]">
+                    {entry.settings.mode === 'exam' ? 'Exam' : 'Study'} · {new Date(entry.completedAt).toLocaleString()} · {formatDuration(entry.timeUsedSeconds)}
+                  </p>
+                </div>
               </div>
             </div>
             <Badge variant={entry.result.estimatedPass ? 'success' : 'warning'}>

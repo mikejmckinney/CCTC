@@ -538,13 +538,16 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] pb-16 sm:pb-0">
       {/* Disclaimer — not dismissible, must acknowledge */}
-      <Modal open={!meta.disclaimerSeen} onClose={() => {}} title="Independent Study Aid" dismissible={false}>
-        <p className="text-sm text-[var(--muted-foreground)]">
-          This practice app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam items,
-          and must not be used for patient-care decisions. Practice results are unofficial estimates only.
-        </p>
-        <div className="mt-4 flex justify-end">
-          <Button onClick={() => void updateMeta({ disclaimerSeen: true })}>I understand</Button>
+      <Modal
+        open={!meta.disclaimerSeen}
+        onClose={() => {}}
+        eyebrow="Independent study aid"
+        title="Before you begin"
+        description="This practice app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam items, and is not a source of patient-care decisions. Practice results are unofficial estimates only."
+        dismissible={false}
+      >
+        <div className="flex justify-end">
+          <Button className="w-full sm:w-auto" onClick={() => void updateMeta({ disclaimerSeen: true })}>I understand</Button>
         </div>
       </Modal>
 
@@ -638,6 +641,8 @@ export default function App() {
             onUpdateSettings={(partial) => setSettings((prev) => ({ ...prev, ...partial }))}
             onGoToHistory={() => goTo('history', 'slide-forward')}
             onViewSession={handleViewSession}
+            activeSession={activeSession}
+            onResumeSession={() => goTo('session', 'descend')}
             pendingSettingNav={pendingSettingNav}
             onClearPendingNav={() => setPendingSettingNav(null)}
             onExamDateChanged={() => {
@@ -659,6 +664,7 @@ export default function App() {
             onViewSession={handleViewSession}
             onDeleteSession={(id) => void handleDeleteHistory(id)}
             onClearAll={() => void handleClearHistory()}
+            onStartSession={() => goTo('dashboard', 'ascend')}
             onRemoveSampleData={() => void handleRemoveSampleData()}
             onNavigateToReported={() => goTo('reported', 'slide-forward')}
             // Sync state (lifted from History so the auto-sync timer
@@ -685,6 +691,7 @@ export default function App() {
         {page === 'reported' && (
           <ReportedItems
             flags={flags}
+            questionIndex={questionIndex}
             onEdit={(flag) => {
               const q = allQuestions.find((qq) => qq.id === flag.item_id);
               if (q) setFlagDraft({ item: q, sessionId: flag.session_id, reason: flag.reason, comment: flag.comment });
@@ -729,10 +736,18 @@ export default function App() {
       </main>
 
       <footer className="border-t border-[var(--border)] bg-[var(--card)] mt-8">
-        <div className="mx-auto max-w-5xl px-4 py-4">
-          <p className="text-xs text-[var(--muted-foreground)] text-center">
-            This practice app is an independent study aid, not affiliated with or endorsed by ABTC or PSI.
+        <div className="mx-auto flex max-w-5xl flex-wrap items-baseline justify-between gap-4 px-4 py-6">
+          <p className="min-w-[16rem] flex-1 text-xs leading-relaxed text-[var(--muted-foreground)]">
+            Independent study aid · not affiliated with or endorsed by ABTC or PSI · does not reproduce real exam questions · not a source of patient-care decisions. Practice results are unofficial estimates.
           </p>
+          <a
+            href="https://donate.stripe.com/dRm9AMcYs0sa2F8dNQ18c00"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whitespace-nowrap text-xs font-semibold text-[var(--primary)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+          >
+            Support this project
+          </a>
         </div>
       </footer>
     </div>

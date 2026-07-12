@@ -1,18 +1,20 @@
 import { useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, Button, Badge, Modal } from '../components/ui';
 import { useConfirm } from '../lib/useConfirm';
-import type { ItemFlag } from '../types/exam';
+import type { ItemFlag, Question } from '../types/exam';
+import { getDomainShortLabel } from '../lib/domains';
 import { Flag, Edit3, Trash2, Download, AlertCircle } from 'lucide-react';
 
 interface ReportedItemsProps {
   flags: ItemFlag[];
+  questionIndex: Map<string, Question>;
   onEdit: (flag: ItemFlag) => void;
   onDelete: (flagId: string) => void;
   onExport: () => void;
   onClearAll: () => void;
 }
 
-export function ReportedItems({ flags, onEdit, onDelete, onExport, onClearAll }: ReportedItemsProps) {
+export function ReportedItems({ flags, questionIndex, onEdit, onDelete, onExport, onClearAll }: ReportedItemsProps) {
   const { confirm, handleConfirm, handleCancel, open, title, description, confirmLabel, variant } = useConfirm();
   const pendingDeleteId = useRef<string | null>(null);
 
@@ -60,7 +62,9 @@ export function ReportedItems({ flags, onEdit, onDelete, onExport, onClearAll }:
         <CardContent>
           {flags.length > 0 ? (
             <div className="space-y-3">
-              {flags.map((flag) => (
+              {flags.map((flag) => {
+                const question = questionIndex.get(flag.item_id);
+                return (
                 <div
                   key={flag.id}
                   className="flex items-start justify-between gap-4 rounded-xl border border-[var(--border)] bg-[var(--card)] p-4 transition-colors hover:border-[var(--warning)]/30"
@@ -70,6 +74,12 @@ export function ReportedItems({ flags, onEdit, onDelete, onExport, onClearAll }:
                       <span className="font-mono text-sm font-medium text-[var(--foreground)]">{flag.item_id}</span>
                       <Badge variant="warning">{flag.reason}</Badge>
                     </div>
+                    {question && (
+                      <>
+                        <p className="line-clamp-2 text-sm font-medium text-[var(--foreground)]">{question.stem}</p>
+                        <p className="text-xs font-semibold text-[var(--primary)]">{getDomainShortLabel(String(question.domain))}</p>
+                      </>
+                    )}
                     <p className="text-sm text-[var(--muted-foreground)]">
                       {flag.comment || 'No comment provided.'}
                     </p>
@@ -87,7 +97,8 @@ export function ReportedItems({ flags, onEdit, onDelete, onExport, onClearAll }:
                     </Button>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-12 text-center">

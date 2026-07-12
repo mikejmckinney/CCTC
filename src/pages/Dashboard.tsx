@@ -1,11 +1,12 @@
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { cn } from '../lib/cn';
-import { Card, CardContent, CardHeader, CardTitle, Badge, Progress, Button } from '../components/ui';
+import { Card, CardContent, CardHeader, Badge, Progress, Button } from '../components/ui';
 import { RadialGauge } from '../components/ui/RadialGauge';
 import { computeReadiness, computeSpacedRepetition } from '../lib/readiness';
+import { buildHistoryTrend } from '../lib/historyTrend';
 import { formatDuration } from '../lib/format';
 import { getDomainShortLabel } from '../lib/domains';
-import type { HistoryEntry, SessionSettings, QuestionSet, Question } from '../types/exam';
+import type { ActiveSession, HistoryEntry, SessionSettings, QuestionSet, Question } from '../types/exam';
 import { getBlueprintLabel } from '../data/blueprints';
 import {
   Play, Zap, Target, Clock, BookOpen, CheckCircle2,
@@ -29,6 +30,8 @@ interface DashboardProps {
   onUpdateSettings: (partial: Partial<SessionSettings>) => void;
   onGoToHistory: () => void;
   onViewSession: (entry: HistoryEntry) => void;
+  activeSession: ActiveSession | null;
+  onResumeSession: () => void;
   pendingSettingNav?: 'examDate' | 'targetScore' | null;
   onClearPendingNav?: () => void;
   onExamDateChanged?: () => void;
@@ -57,12 +60,7 @@ function getReadinessVerdict(
 
   if (overallEma < target && daysUntilExam !== null && daysUntilExam > 0) {
     const gap = target - overallEma;
-    // ~0.3% per day (2% per week / 7 days)
-    const daysNeeded = Math.ceil(gap / 0.3);
-    if (daysNeeded <= daysUntilExam) {
-      return { verdict: 'on-track', label: 'On track', detail: `Below target but projected to reach ${target}% by exam day.` };
-    }
-    return { verdict: 'at-risk', label: 'At risk', detail: `Need +${gap}% to reach target. Consider intensive study.` };
+    return { verdict: 'at-risk', label: 'Building readiness', detail: `${daysUntilExam} days remain. Improve ${gap} points to reach your ${target}% target.` };
   }
 
   if (overallEma < target) {
@@ -137,7 +135,10 @@ function CategoryBar({ name, percent, examWeight, isStrong, isLargestGap }: {
           )}
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-[var(--muted-foreground)]">{examWeight} of exam</span>
+          <span className="rounded-full bg-[var(--muted)] px-2 py-0.5 text-[10px] font-semibold text-[var(--foreground)]">{examWeight} of exam</span>
+          <span className={cn('rounded-full px-2 py-0.5 text-[10px] font-semibold', isStrong ? 'bg-[var(--success)]/10 text-[var(--success)]' : 'bg-[var(--warning)]/10 text-[var(--warning)]')}>
+            {isStrong ? 'Strong' : 'Developing'}
+          </span>
           <span className={cn(
             'text-xs font-semibold',
             isStrong ? 'text-[var(--success)]' : 'text-[var(--warning)]'
@@ -153,10 +154,12 @@ export function Dashboard({
   history, settings, examDate, questionIndex, sampleNoteVisible, onDismissSampleNote, onRemoveSampleData,
   onSetExamDate, onStartExam, onStartQuick, onStartWeakAreas,
   onStartCustom, onUpdateSettings, onGoToHistory, onViewSession,
+  activeSession, onResumeSession,
   pendingSettingNav, onClearPendingNav, onExamDateChanged
 }: DashboardProps) {
   const target = settings.targetThreshold;
   const readiness = useMemo(() => computeReadiness(history, target), [history, target]);
+  const readinessTrend = useMemo(() => buildHistoryTrend(history), [history]);
   const spacedCount = useMemo(() => computeSpacedRepetition(history, questionIndex).length, [history, questionIndex]);
   const [showSetup, setShowSetup] = useState(false);
   const [targetScore, setTargetScore] = useState(settings.targetThreshold);
@@ -251,6 +254,28 @@ export function Dashboard({
         </div>
       )}
 
+      <div>
+        <p className="eyebrow">Independent study aid</p>
+        <h1 className="mt-1 text-3xl font-semibold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>
+          Your CCTC study plan
+        </h1>
+      </div>
+
+      {activeSession && !activeSession.submittedAt && (
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-[var(--primary)] px-5 py-4 text-[var(--primary-foreground)] shadow-sm">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] opacity-70">Continue</p>
+            <p className="mt-1 text-sm">
+              <strong>Resume your session</strong>
+              <span className="opacity-75"> · Item {activeSession.currentIndex + 1} of {activeSession.items.length}</span>
+            </p>
+          </div>
+          <Button variant="secondary" onClick={onResumeSession} aria-label="Resume session" className="shrink-0">
+            <Play className="h-4 w-4" /> Resume
+          </Button>
+        </div>
+      )}
+
       {/* Readiness + Quick Start */}
       <div className="grid gap-4 lg:grid-cols-[1fr_1fr] items-start">
         <Card>
@@ -296,6 +321,10 @@ export function Dashboard({
                       </div>
                     )}
                   </div>
+                  <p className="mt-2 text-xs leading-relaxed text-[var(--muted-foreground)]">{verdict.detail}</p>
+                  <p className="mt-1 text-xs font-semibold text-[var(--foreground)]">
+                    EMA change: {readinessTrend.emaDelta === null ? 'Not enough data' : `${readinessTrend.emaDelta > 0 ? '+' : ''}${readinessTrend.emaDelta} points`}
+                  </p>
                 </div>
               </div>
             ) : (
@@ -363,7 +392,7 @@ export function Dashboard({
         {/* Quick Start */}
         <Card>
           <CardHeader>
-            <CardTitle>Quick Start</CardTitle>
+            <h2 className="text-lg font-semibold leading-none tracking-tight" style={{ fontFamily: 'var(--font-serif)' }}>Quick Start</h2>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-3 grid-cols-1">
@@ -562,7 +591,7 @@ export function Dashboard({
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle>Recent Sessions</CardTitle>
+            <h2 className="text-lg font-semibold leading-none tracking-tight" style={{ fontFamily: 'var(--font-serif)' }}>Recent Sessions</h2>
             <Button variant="ghost" size="sm" onClick={onGoToHistory} className="gap-1">
               <BarChart3 className="h-4 w-4" /> View All
             </Button>
@@ -570,7 +599,8 @@ export function Dashboard({
         </CardHeader>
         <CardContent>
           {recentSessions.length > 0 ? (
-            <div className="divide-y divide-[var(--border)]">
+            <>
+            <div className="divide-y divide-[var(--border)] sm:hidden">
               {recentSessions.map((entry) => (
                 <button
                   key={entry.id}
@@ -588,7 +618,7 @@ export function Dashboard({
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Badge variant={entry.result.percent >= target ? 'success' : 'warning'}>
+                    <Badge variant={entry.result.percent >= entry.settings.targetThreshold ? 'success' : 'warning'}>
                       {entry.result.percent}%
                     </Badge>
                     <ChevronRight className="h-4 w-4 text-[var(--muted-foreground)]" />
@@ -596,6 +626,26 @@ export function Dashboard({
                 </button>
               ))}
             </div>
+            <div className="hidden overflow-x-auto sm:block">
+              <table className="w-full text-left text-sm" aria-label="Recent sessions">
+                <thead className="text-[10px] font-semibold uppercase tracking-widest text-[var(--muted-foreground)]">
+                  <tr><th className="pb-2">Date</th><th className="pb-2">Mode</th><th className="pb-2">Items</th><th className="pb-2">Time</th><th className="pb-2 text-right">Score</th><th><span className="sr-only">Open</span></th></tr>
+                </thead>
+                <tbody className="divide-y divide-[var(--border)]">
+                  {recentSessions.map((entry) => (
+                    <tr key={entry.id}>
+                      <td className="py-3 font-medium">{new Date(entry.completedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                      <td className="py-3">{entry.settings.mode === 'exam' ? 'Exam' : 'Study'}</td>
+                      <td className="py-3">{entry.settings.questionCount}</td>
+                      <td className="py-3 text-[var(--muted-foreground)]">{formatDuration(entry.timeUsedSeconds)}</td>
+                      <td className="py-3 text-right"><Badge variant={entry.result.percent >= entry.settings.targetThreshold ? 'success' : 'warning'}>{entry.result.percent}%</Badge></td>
+                      <td className="py-3 pl-3 text-right"><Button variant="ghost" size="icon-sm" onClick={() => onViewSession(entry)} aria-label={`Review session from ${new Date(entry.completedAt).toLocaleDateString()}`}><ChevronRight className="h-4 w-4" /></Button></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            </>
           ) : (
             <p className="text-[13px] text-[var(--muted-foreground)]">No completed sessions yet. Start your first practice exam!</p>
           )}

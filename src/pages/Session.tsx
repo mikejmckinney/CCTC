@@ -47,7 +47,7 @@ export function SessionView({
               {session.flaggedForReview.length > 0 && (
                 <Badge variant="warning">{session.flaggedForReview.length} bookmarked</Badge>
               )}
-              {session.settings.timed && session.remainingSeconds !== null && (
+              {session.settings.timed && session.settings.showTimer && session.remainingSeconds !== null && (
                 <Badge variant="outline">
                   <Clock className="h-3 w-3 mr-1 inline" />
                   {formatTime(session.remainingSeconds)}

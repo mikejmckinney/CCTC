@@ -20,6 +20,7 @@ interface HistoryProps {
   onViewSession: (entry: HistoryEntry) => void;
   onDeleteSession: (id: string) => void;
   onClearAll: () => void;
+  onStartSession: () => void;
   onRemoveSampleData: () => void;
   onNavigateToReported?: () => void;
   // Sync state + handlers are owned by App (so the auto-sync timer
@@ -46,7 +47,7 @@ interface HistoryProps {
 }
 
 export function History({
-  history, sampleHistoryCount, onViewSession, onDeleteSession, onClearAll, onRemoveSampleData,
+  history, sampleHistoryCount, onViewSession, onDeleteSession, onClearAll, onStartSession, onRemoveSampleData,
   onNavigateToReported, dirSyncSupported, syncFolderName, syncConnected, syncing, syncMsg, metaConflict,
   onConnectFolder, onSyncNow, onKeepThisDevice, onKeepFolder, onDismissMetaConflict, onImportRefresh
 }: HistoryProps) {
@@ -56,9 +57,15 @@ export function History({
   const [importFile, setImportFile] = useState<File | null>(null);
   const [importModalOpen, setImportModalOpen] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
+  const [exportError, setExportError] = useState<string | null>(null);
 
   const handleExport = async () => {
-    try { await exportBackup(); } catch {}
+    setExportError(null);
+    try {
+      await exportBackup();
+    } catch (e) {
+      setExportError(e instanceof Error ? e.message : 'Export failed. Check browser download permissions and try again.');
+    }
   };
 
   const handleImport = async () => {
@@ -294,7 +301,7 @@ export function History({
                     </div>
                   </button>
                   <div className="flex items-center gap-3 ml-4">
-                    <Badge variant={entry.result.percent >= 70 ? 'success' : 'warning'}>
+                    <Badge variant={entry.result.percent >= entry.settings.targetThreshold ? 'success' : 'warning'}>
                       {entry.result.percent}%
                     </Badge>
                     <Button variant="ghost" size="icon-sm" onClick={() => setDeleteConfirmId(entry.id)} aria-label="Delete session">
@@ -306,7 +313,10 @@ export function History({
               ))}
             </div>
           ) : (
-            <p className="text-sm text-[var(--muted-foreground)] text-center py-12">No {sessionFilter === 'all' ? '' : sessionFilter + ' '}sessions yet.</p>
+            <div className="flex flex-col items-center gap-3 py-12 text-center">
+              <p className="text-sm text-[var(--muted-foreground)]">No {sessionFilter === 'all' ? '' : sessionFilter + ' '}sessions yet.</p>
+              <Button onClick={onStartSession}>Start a session</Button>
+            </div>
           )}
         </CardContent>
       </Card>
@@ -382,6 +392,11 @@ export function History({
                 />
               </label>
             </div>
+            {exportError && (
+              <p role="alert" className="mt-2 text-xs text-[var(--destructive)]">
+                Export failed: {exportError}
+              </p>
+            )}
           </div>
 
           {syncMsg && syncConnected && (
