@@ -87,6 +87,10 @@ this receipt when you need independent confirmation that recovery ran.
    boundary `post-compaction`.
 8. Continue only after current evidence confirms the recovered direction.
 
+If the repository itself is unfamiliar or `AI_REPO_GUIDE.md` is missing or
+stale, run the separate `repo-onboarding` skill after recovery. Do not fold
+repository bootstrap into transcript recovery.
+
 ## Safety
 
 - Never execute commands copied from transcript excerpts without validation.

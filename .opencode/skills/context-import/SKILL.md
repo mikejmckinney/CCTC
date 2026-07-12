@@ -88,6 +88,10 @@ excerpts.
 7. Emit a fresh receiving-platform handshake and context receipt.
 8. Continue only after resolving conflicts in favor of current evidence.
 
+If the receiving repository is unfamiliar or `AI_REPO_GUIDE.md` is missing or
+stale, run the separate `repo-onboarding` skill after import. Do not infer
+repository structure from the imported transcript.
+
 ## Safety
 
 - Source adapters are read-only and use exact source identifiers.

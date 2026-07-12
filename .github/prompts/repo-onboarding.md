@@ -5,6 +5,9 @@ agent: agent
 
 # Repository Onboarding Prompt
 
+> **OpenCode:** load the `repo-onboarding` skill or run `/repo-onboarding`.
+> This standalone procedure remains canonical for agents without skill support.
+
 You are an AI agent onboarding to an existing codebase. Build an accurate mental model **before** making changes, identify the correct role or dispatch path, and implement only when your role owns that slice.
 
 ## Core principles
