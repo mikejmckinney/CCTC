@@ -86,19 +86,17 @@ fi
 log_info "Template path: $DOTFILES"
 log_info "Workspace path: $WORKSPACE"
 
-# ADR-026 compliance validators parse YAML fixtures and examples. Ensure the
-# template bootstrap provisions PyYAML when this install script is the user's
-# entrypoint (Codespaces dotfiles), matching scripts/setup.sh's requirements
-# handling for non-Codespaces setup.
+# Backlog-to-issues tooling uses PyYAML. Ensure the template bootstrap provisions
+# Python dependencies when this install script is the user's entrypoint.
 if command -v python3 &>/dev/null; then
   if python3 -m pip --version &>/dev/null; then
     log_info "Installing Python dependencies from requirements.txt"
     python3 -m pip install --user -r "$DOTFILES/requirements.txt" || log_warn "Failed to install Python dependencies. Not script-blocking, but onboarding is blocked."
   else
-    log_warn "python3 is present but pip is unavailable; install PyYAML before running compliance validators."
+    log_warn "python3 is present but pip is unavailable; install PyYAML before using backlog tooling."
   fi
 else
-  log_warn "python3 not found; compliance validators require Python 3 with PyYAML."
+  log_warn "python3 not found; backlog tooling requires Python 3 with PyYAML."
 fi
 
 # =============================================================================
@@ -315,12 +313,10 @@ MULTIAGENT_FILES=(
   "docs/guides/multi-model-consensus.md"
   "docs/guides/optional-skills.md"
   "docs/guides/sandbox-verification.md"
-  "docs/compliance_schemas.md"
   ".github/prompts/README.md"
   ".github/prompts/capture-postmortem.md"
   ".github/prompts/expand-backlog-entry.md"
   ".github/prompts/handshake-and-shape-smoke.md"
-  ".github/prompts/instruction-compliance-smoke.md"
   ".github/prompts/judge-mode-smoke.md"
   ".github/prompts/mirror-postmortem.md"
   ".github/prompts/multi-model-consensus-plan.md"
@@ -336,14 +332,10 @@ MULTIAGENT_FILES=(
   "scripts/diag-hang-snapshot.sh"
   "scripts/lib/assertions.sh"
   "scripts/lib/bot-allowlist.txt"
-  "scripts/lib/compliance_schema.py"
   "scripts/lib/logging.sh"
   "scripts/pr-resolve-all-poll.sh"
-  "scripts/validate-compliance-examples.py"
-  "scripts/validate-compliance-fixtures.py"
   "scripts/verify-env.sh"
   "scripts/verify-pr.sh"
-  "scripts/tests/fixtures/compliance"
   "docs/research/.gitkeep"
 )
 

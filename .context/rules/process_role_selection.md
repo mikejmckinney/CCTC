@@ -46,15 +46,7 @@ aligned. If you change one list, change the other in the same PR.
    above).
 4. Dispatch one subagent per role-owned area when work spans multiple roles and
    `runSubagent` is available.
-5. Record dispatch decisions in `parent_compliance` using the schema fields
-   defined in [`docs/compliance_schemas.md`](../../docs/compliance_schemas.md)
-   § "`parent_compliance` v1":
-   - `applicable_roles: [<roles whose ownership applied to the final diff>]`
-   - `subagents_dispatched: [<parsed subagent_compliance objects — one per
-     dispatched role, including its receipt>]`
-   - `monolithic_justification: "<reason, if dispatched_roles are a strict
-     subset of applicable_roles or no subagents ran>"`
-6. If `runSubagent` is not available in the current environment, document the
+5. If `runSubagent` is not available in the current environment, document the
    missing capability as the explicit special case and proceed monolithically.
 
 Each dispatch must resolve a concrete unresolved role-owned question or produce
@@ -82,19 +74,14 @@ This template supports parallel role-specialized agents. Before editing any file
 4. Stay inside your owned paths. Any cross-role edit requires PM coordination. **Never guess ownership silently** — escalate to PM.
 5. Full workflow (analysis → plan-gate → dispatch → parallel implementation → QA → diff-gate → merge) is documented in [docs/guides/multi-agent-coordination.md](../../docs/guides/multi-agent-coordination.md).
 
-## Subagent dispatch compliance
+## Subagent dispatch
 
 When dispatching or receiving role-specialized subagent work, also follow
 [`.context/rules/process_subagent_bootstrap.md`](process_subagent_bootstrap.md).
 
-Parent/default agents must include a dispatch packet with role, goal, expected
+Parent/default agents provide a dispatch packet with role, goal, expected
 output, issue/PR/plan/diff context, required process files, ownership
 constraints, required gates, current `AGENTS_MD_VERSION`, and known deviations.
-Dispatched roles must report `role_contract_version` from their canonical
-`.agents/<role>.md` file in `subagent_compliance`.
-
-Do not add `overlay_version`; platform overlays are registration shims and do
-not own the role contract.
 
 ## Context pack usage
 

@@ -13,7 +13,7 @@ Reassessment cadence and follow-up work (verified Copilot fallback arrays, etc.)
 
 ## Known runtime observation: dispatched-subagent ghost-success
 
-During the multi-stage dispatch session for issue #313 (May 2026), 3 of 5 dispatched subagents returned a textually plausible success report — including a populated `subagent_compliance` block claiming `files_modified` and a pushed commit SHA — but no commit existed on the remote when the parent OP ran `git fetch && git log origin/<branch> -1`. Calling this pattern "ghost-success" because the failure mode is silent: the subagent does not error, returns a structurally valid response, and only the parent's independent re-verification surfaces the drift.
+During the multi-stage dispatch session for issue #313 (May 2026), 3 of 5 dispatched subagents returned a textually plausible success report claiming file edits and a pushed commit SHA, but no commit existed on the remote when the parent OP ran `git fetch && git log origin/<branch> -1`. Calling this pattern "ghost-success" because the failure mode is silent: the subagent does not error, returns a plausible response, and only the parent's independent re-verification surfaces the drift.
 
 **Empirical breakdown for that session (sample size 5, recorded for future correlation, not yet actionable):**
 
@@ -34,7 +34,7 @@ During the multi-stage dispatch session for issue #313 (May 2026), 3 of 5 dispat
 
 **Implication for tier upshift decisions.** Do not upshift Architect/Docs/Judge to a higher tier as a remediation for ghost-success — the empirical signal does not support it. Instead, prefer one of:
 
-1. Have the subagent return file edits via the `apply_replays[]` pattern documented in `.context/rules/process_subagent_bootstrap.md` § "Edit verification and pass-back contract", and let the parent OP commit + push (the established single-applier pattern).
-2. If the subagent must touch the working tree directly, require a `git log origin/<branch> -1 --oneline` verification snippet in the response narrative immediately adjacent to the `subagent_compliance` block (the v1 schema has no `verification` field; see `.context/rules/process_subagent_bootstrap.md` § "Edit verification and pass-back contract") so the parent OP catches the drift in the same response rather than after-the-fact.
+1. Have the subagent return a concrete patch and let the parent OP commit and push.
+2. If the subagent must touch the working tree directly, require a `git log origin/<branch> -1 --oneline` verification snippet in the response so the parent OP catches drift immediately.
 
 **Sample size warning.** N=5 is too small to support a structural change to ADR-019's tier table. This section records the observation so the next multi-stage dispatch session can extend the table and reach actionable N (~20). After that, decide whether to file an ADR-019 amendment, a runtime-host bug report against the dispatch layer, or a tools-layer fix (e.g., subagents lose `git push` capability and must use `apply_replays`).

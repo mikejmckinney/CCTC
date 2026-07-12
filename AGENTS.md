@@ -1,8 +1,8 @@
 # AGENTS.md
 
-<!-- AGENTS_MD_VERSION: 26 -->
+<!-- AGENTS_MD_VERSION: 27 -->
 
-# Domain: Code Quality
+## Domain: Code Quality
 
 ## Hard Rules (Never Violate)
 
@@ -53,9 +53,6 @@ Two similar blocks are cheaper than a premature abstraction. Three is a signal t
 
 ### S6 — Test Pyramid
 Many unit tests, fewer integration tests, minimal E2E tests. Concrete CI commands and coverage expectations live in `AGENTS.md` → "Testing requirements" and the project's own `README.md`.
-
-
-
 ## Stack-Specific Overrides
 
 - S1 function length:     <N> lines (target), <N> lines (hard max)
@@ -64,18 +61,16 @@ Many unit tests, fewer integration tests, minimal E2E tests. Concrete CI command
 - Lint / format tool:     <tool + config path>
 - Test framework:         <framework + command>
 - Coverage target:        <percent> (changed files only)
-
-
-# Clarification and ambiguity
+## Clarification and ambiguity
 
 When a request is ambiguous — where different reasonable interpretations lead to meaningfully different work — stop, ask, recommend and explain reasoning before proceeding. Don't guess and build, and don't ask and build in parallel; ask, then wait.
 
 - **Always Verify details with live sources when available and cite sources**
-- **When to trigger a clarifying question.** Ask specifically when: (1) the request could reasonably mean two or more different things, (2) a decision requires information only the user has (business context, preferences, external constraints), (3) the request conflicts with something in the repo's rules or prior decisions (follow the **Push back** rule in [Critical thinking and communication](#Critical-thinking-and-communication) rather than just asking), or (4) proceeding would require inventing facts (API shapes, data structures, domain terms) that can't be verified.
+- **When to trigger a clarifying question.** Ask specifically when: (1) the request could reasonably mean two or more different things, (2) a decision requires information only the user has (business context, preferences, external constraints), (3) the request conflicts with something in the repo's rules or prior decisions (follow the **Push back** rule in [Critical thinking and communication](#critical-thinking-and-communication) rather than just asking), or (4) proceeding would require inventing facts (API shapes, data structures, domain terms) that can't be verified.
 
 For unexpected issues that are difficult to resolve like a process that consistently hangs or fails despite multiple attempts to fix it, research the issue on the internet to see if it is a known issue others have encountered and what the fix or workaround is.
 
-# Critical thinking and communication
+## Critical thinking and communication
 
 Agents must reason critically rather than agree by default. The bar is "objective and evidence-based," not "agreeable."
 
@@ -86,7 +81,7 @@ Agents must reason critically rather than agree by default. The bar is "objectiv
 - **Cite your sources.** When stating a fact about the codebase or docs, include a relative path (and a line number when precision matters: `path/to/file.md:42`). Statements without a citation are treated as assumptions and must be marked `uncertain`. Judge and Critic reject uncited claims of fact.
 - **Always Explain your reasoning and Default to concise.** Add structure only when it earns its keep; don't pad length or drop detail the answer needs. If a complete answer genuinely requires length, use multiple parts or multiple responses rather than cutting corners.
 
-# Opportunity feedback channel
+## Opportunity feedback channel
 
 ## Purpose
 
@@ -138,7 +133,7 @@ Use when: **security** (secrets, auth, injection); **data-loss** risk; **CI-brea
 
 If unsure, treat as blocking.
 
-# Process: Session Start
+## Process: Session Start
 
 ## Session handshake (read-receipt)
 
@@ -173,7 +168,6 @@ follow the session handshake with this section. Dispatched subagents emit it as 
 | File | Load | In context | Why it was read | Decision affected |
 |---|---|---|---|---|
 | `AGENTS.md` | Read | yes | Startup contract | Loaded handshake, truth hierarchy, rule catalog pointer |
-| `.context/rules/process_session_start.md` | Read | yes | Startup receipt contract | Loaded read-credit and receipt rules |
 | `.context/rules/README.md` | Read | yes | Rule catalog | Selected read profile and triggered rules |
 | `<path>` | <Read / Skipped> | <yes / no / partial> | <reason> | <decision, gate, or output affected> |
 ```

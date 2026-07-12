@@ -10,21 +10,18 @@
 4. **[`.github/PLAN_TEMPLATE.md`](PLAN_TEMPLATE.md)** — copy this template into a comment on any issue you're about to implement, before writing code. See [`.context/rules/process_gates.md`](../.context/rules/process_gates.md) and ADR-011 for the full rules and exemptions.
 5. **[`.github/prompts/op-issue-workflow.md`](prompts/op-issue-workflow.md)** — end-to-end OP issue→merge playbook for the default agent. Read the first time you pick up an issue.
 
-## Parent startup compliance
+## Parent startup
 
 For the first substantive response in a session, emit the exact
 `Session handshake v<N>` token from `AGENTS.md` before any other content unless
-the user explicitly says to skip the handshake. Treat that token as the parent
-receipt required by ADR-026. For implementation plans, fill the
-`plan_compliance` block in `.github/PLAN_TEMPLATE.md`; for PRs, fill the
-`parent_compliance` block in `.github/pull_request_template.md`.
+the user explicitly says to skip the handshake. Follow the runtime context
+receipt guidance in `AGENTS.md`.
 
 When dispatching subagents, provide a dispatch packet containing: role, goal,
 expected output, issue/PR/plan/diff link, process files to load, ownership
 constraints, gate state, current `AGENTS_MD_VERSION`, and any allowed
-deviations. Require the subagent to return `subagent_compliance` per
-`.context/rules/process_subagent_bootstrap.md`. Do not claim CI proves runtime
-dispatch; it can only validate declared evidence shape and references.
+deviations. Follow `.context/rules/process_subagent_bootstrap.md` and verify
+claimed runtime actions independently.
 
 ## Default agent is Parent Orchestrator (OP)
 
@@ -35,8 +32,7 @@ do not mean the default agent should personally absorb all edits. They mean the
 OP should use the repo process to complete the outcome.
 
 The full OP contract — direct-implementation gate (≤ ~20 LOC, single file,
-single role, no role-sensitive surfaces), required dispatch checklist, and
-`parent_compliance.subagents_dispatched` / `monolithic_justification` recording —
+single role, no role-sensitive surfaces) and required dispatch checklist —
 lives in [`.context/rules/process_role_selection.md`](../.context/rules/process_role_selection.md)
 § "Default role: Parent Orchestrator (OP)". Read it before deciding to absorb
 role-owned work.

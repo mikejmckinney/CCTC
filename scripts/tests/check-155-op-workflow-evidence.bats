@@ -96,7 +96,7 @@ EOF
   fixture="$(mktemp "${TMPDIR:-/tmp}/check-155.XXXXXX")"
   cat > "$fixture" <<'EOF'
 ## Phase 3: Plan-as-comment
-The plan must include `Session handshake v18` in plan_compliance.
+The plan must include `Session handshake v18` in its introduction.
 
 ## Anti-patterns
 - Don't paste `Session handshake v17` or any literal vN.

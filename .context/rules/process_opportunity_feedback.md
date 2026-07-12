@@ -39,11 +39,8 @@ Items that are:
 
 ## Required fields (9 total)
 
-Each opportunity note carries the following structured fields. The same
-shape is used in the `agent-state:v1` `opportunity_notes` array and in
-the `subagent_compliance.opportunity_notes` array. Empty list is
-permitted; partially-filled entries are not — if you surface a note,
-fill all 9.
+Each opportunity note carries the following structured fields. Empty lists are
+permitted; partially-filled entries are not — if you surface a note, fill all 9.
 
 | Field | Type | Description |
 |---|---|---|
@@ -205,7 +202,6 @@ Opportunity notes surface in these locations, all carrying the same
 | PR body — `## Opportunity notes` section | Notes surfaced during the work that produced the PR. |
 | Plan comment — `## Opportunity notes` section | Notes surfaced during planning (e.g., "this rule is adjacent and stale"). |
 | `agent-state:v1` comment — `opportunity_notes` field | Live coordination state per ADR-025. |
-| `subagent_compliance` block — `opportunity_notes` field | Per-dispatch evidence. Substantive-output subagents MUST include the field (empty list permitted). Read-only subagents MAY omit it. |
 
 ## Triage
 
@@ -278,5 +274,5 @@ schema is designed to prevent.
   "evaluable bar" principle applied at task entry).
 - ADR-025 — GitHub issues / PR comments as live state (defines the
   `agent-state:v1` surfacing slot).
-- ADR-026 — Compliance contracts (defines the `subagent_compliance`
-  surfacing slot).
+- ADR-032 — Serialized compliance schemas retired; this file and `AGENTS.md`
+  directly document the opportunity-note shape.

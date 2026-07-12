@@ -6,20 +6,6 @@
 # --- File Content Checks ---
 echo "Checking file contents..."
 
-# Check AGENTS.md references AI_REPO_GUIDE.md
-if grep -q "AI_REPO_GUIDE.md" AGENTS.md 2>/dev/null; then
-  pass "AGENTS.md references AI_REPO_GUIDE.md"
-else
-  fail "AGENTS.md should reference AI_REPO_GUIDE.md"
-fi
-
-# Check AGENTS.md has truth hierarchy
-if grep -q "Truth hierarchy" AGENTS.md 2>/dev/null; then
-  pass "AGENTS.md has truth hierarchy section"
-else
-  warn "AGENTS.md missing truth hierarchy section"
-fi
-
 # Check AGENTS.md has testing requirements (now in process_work_style.md per ADR-021)
 if grep -q "Testing requirements" .context/rules/process_work_style.md 2>/dev/null; then
   pass "process_work_style.md has testing requirements section"
@@ -34,53 +20,18 @@ else
   warn "process_pr_completion.md missing PR completion criteria section"
 fi
 
-# Check thin AGENTS.md links to per-concern process_*.md files (ADR-021).
-# Rationale: hard-coded contract assertion per repo convention. Limitation: regex
-# matches standard markdown link syntax `[label](file)`; assumes no nested parens.
-# Scope is restricted to the "Per-concern process rules" section so an unrelated
-# pointer link elsewhere in the file (e.g. the Section-anchor redirects table)
-# can't mask a missing table row. Reported by codex on PR #264 R5.
-CORE_RULE_FILES=(
-  "process_template_detection.md" "process_critical_thinking.md" "process_work_style.md"
-  "process_clarification.md" "process_role_selection.md" "process_gates.md"
-  "process_session_state.md" "process_pr_completion.md" "process_model_tier.md"
-  "process_subagent_bootstrap.md"
-  "process_doc_maintenance.md" "domain_code_quality.md" "repo_orchestration_patterns.md"
-  "agent_ownership.md"
-)
-# Extract markdown table rows (lines starting with '|') from the
-# "Per-concern process rules" section. Restricting to table rows guards
-# against false-pass from prose mentions of the same filename within the
-# section (reported by codex on PR #264 R6).
-# Limitation: awk's range pattern terminates at the next '## ' header.
-# This is robust as long as AGENTS.md keeps the table inside its own
-# section. If a contributor inserts non-table content (e.g., another
-# table) between the section header and the link table, the filter could
-# include extra rows; the regex below still requires the canonical
-# `.context/rules/<file>.md` link target so unrelated rows wouldn't
-# false-match. Documented per repo "document simplification" rule
-# (Gemini, R10).
-LINK_TABLE_BLOCK=""
-if [[ -f "AGENTS.md" ]]; then
-  LINK_TABLE_BLOCK=$(awk '/^## Per-concern process rules/{flag=1; next} /^## /{flag=0} flag && /^\|/' AGENTS.md)
-fi
-MISSING_LINKS=0
-for pfile in "${CORE_RULE_FILES[@]}"; do
-  # Escape regex metachars (notably '.') in filename for grep -E.
-  pfile_re=${pfile//./\\.}
-  # Require the canonical link target `.context/rules/<file>.md` exactly,
-  # optionally followed by '#anchor', then ')'. The leading '.context/rules/'
-  # prefix prevents wrong-directory false-positives like `docs/process_X.md`
-  # (Codex, R9). The trailing terminator prevents suffix typos like '.mdx'
-  # (Codex, R7). Together they pin the regex to the exact canonical paths
-  # used in the link table.
-  if ! printf '%s\n' "$LINK_TABLE_BLOCK" | grep -qE "\[[^]]*\]\(\.context/rules/${pfile_re}(#[^)]*)?\)" 2>/dev/null; then
-    fail "AGENTS.md missing link table entry for $pfile (ADR-021)"
-    MISSING_LINKS=$((MISSING_LINKS + 1))
+# Verify only rule files that the current AGENTS.md actually references.
+referenced_rules=$(grep -oE '\.context/rules/[A-Za-z0-9_.-]+\.md' AGENTS.md 2>/dev/null | sort -u)
+missing_referenced_rules=0
+while IFS= read -r rule_path; do
+  [[ -n "$rule_path" ]] || continue
+  if [[ ! -f "$rule_path" ]]; then
+    fail "AGENTS.md references missing rule file: $rule_path"
+    missing_referenced_rules=$((missing_referenced_rules + 1))
   fi
-done
-if [[ $MISSING_LINKS -eq 0 ]]; then
-  pass "AGENTS.md link table references all core process files (ADR-021)"
+done <<<"$referenced_rules"
+if [[ $missing_referenced_rules -eq 0 ]]; then
+  pass "all rule files referenced by AGENTS.md exist"
 fi
 
 # Check agent-review-on-push.yml has required invariants (issue #205)

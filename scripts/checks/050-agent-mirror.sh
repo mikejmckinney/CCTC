@@ -46,7 +46,7 @@ for canonical in .agents/*.md; do
   [[ -f "$canonical" ]] || continue
   base="$(basename "$canonical" .md)"
   # Skip documentation/template files; canonical role files are <role>.md but
-  # not README.md or the ADR-026 role-contract template.
+  # not README.md or the role template.
   [[ "$base" == "README" || "$base" == "_TEMPLATE" ]] && continue
   # Skip consensus-candidate-* dry-run scaffolding (issue #295). These are
   # Copilot-only model-pinned dispatch targets used by

@@ -8,7 +8,6 @@ When documentation and implementation ever disagree, follow the repo truth order
 
 - `README.md`: this index for the docs tree.
 - `FAQ.md`: project-specific answers about CCTC scope, blueprints, question authoring, and draft versus reviewed items.
-- `compliance_schemas.md`: reference for plan, parent, and subagent compliance blocks used by the multi-agent workflow.
 - `guides/`: workflow guides (template multi-agent docs plus CCTC product runbooks such as the reference indexer).
 - `decisions/`: ADRs for the governance framework currently shipped with this repo.
 - `postmortems/`: lessons learned from the template workflow that still inform how agents operate here.
@@ -29,7 +28,6 @@ Then use these docs as supporting references:
 
 - `FAQ.md` for quick project answers.
 - `guides/reference-indexer.md` for PDF index architecture, authoring commands, and validation tiers.
-- `compliance_schemas.md` if you are returning plan or subagent evidence blocks.
 - `guides/multi-agent-coordination.md` if the task spans multiple owned paths.
 - `decisions/README.md` if you need the ADR index.
 
@@ -39,7 +37,6 @@ Then use these docs as supporting references:
 docs/
 ├── README.md
 ├── FAQ.md
-├── compliance_schemas.md
 ├── smoke-a.md
 ├── smoke-e.md
 ├── decisions/

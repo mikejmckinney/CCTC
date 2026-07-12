@@ -12,10 +12,26 @@ OUTPUT_DIR=
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --prompt-file) require_value "$1" "${2:-}"; PROMPT_FILE="$2"; shift 2 ;;
-    --invoking-session) require_value "$1" "${2:-}"; INVOKING_SESSION="$2"; shift 2 ;;
-    --title) require_value "$1" "${2:-}"; TITLE="$2"; shift 2 ;;
-    --output-dir) require_value "$1" "${2:-}"; OUTPUT_DIR="$2"; shift 2 ;;
+    --prompt-file)
+      require_value "$1" "${2:-}"
+      PROMPT_FILE="$2"
+      shift 2
+      ;;
+    --invoking-session)
+      require_value "$1" "${2:-}"
+      INVOKING_SESSION="$2"
+      shift 2
+      ;;
+    --title)
+      require_value "$1" "${2:-}"
+      TITLE="$2"
+      shift 2
+      ;;
+    --output-dir)
+      require_value "$1" "${2:-}"
+      OUTPUT_DIR="$2"
+      shift 2
+      ;;
     *) fail "unknown argument: $1" ;;
   esac
 done

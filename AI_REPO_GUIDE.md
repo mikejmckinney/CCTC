@@ -105,7 +105,6 @@ Use these files as the current product ground truth:
 ├── docs/
 │   ├── README.md
 │   ├── FAQ.md
-│   ├── compliance_schemas.md
 │   ├── decisions/
 │   ├── guides/
 │   ├── postmortems/
@@ -198,8 +197,7 @@ Use these files as the current product ground truth:
 | `AGENTS.md` | Root agent contract and rule index |
 | `.context/rules/agent_ownership.md` | Ownership map for role-based edits |
 | `.context/rules/process_doc_maintenance.md` | Doc-sync triggers |
-| `.context/rules/process_subagent_bootstrap.md` | Subagent startup and compliance contract |
-| `docs/compliance_schemas.md` | Compliance block reference for plan, parent, and subagent evidence |
+| `.context/rules/process_subagent_bootstrap.md` | Practical subagent dispatch and verification guidance |
 
 ## What Exists Today vs. Later
 

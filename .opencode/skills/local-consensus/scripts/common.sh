@@ -75,7 +75,7 @@ invoke_engine() {
         return 0
       fi
       ;;
-    mm|mi|ds)
+    mm | mi | ds)
       local model
       case "$engine" in
         mm) model="$MM_MODEL" ;;

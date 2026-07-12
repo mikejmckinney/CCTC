@@ -4,9 +4,8 @@
 # Soft-warn evidence check for the OP issue→merge playbook
 # (`.github/prompts/op-issue-workflow.md`). This is a STATIC repo-grep check
 # (no network, no `gh api`) consistent with every other module sourced by
-# `test.sh`. Per ADR-026, the repo can only validate the shape of declared
-# evidence and the references between docs; runtime PR/issue inspection
-# belongs to CI workflows, not to test.sh.
+# `test.sh`. The repo validates static references here; runtime PR/issue
+# inspection belongs to CI workflows, not to test.sh.
 #
 # What it verifies:
 #   1. Playbook file exists at the canonical path.

@@ -158,7 +158,7 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 |-- rules/               # Immutable constraints and domain rules
 |   |-- agent_ownership.md    # Canonical role -> owned paths map (read before editing)
 |   |-- domain_code_quality.md # Built-in language-neutral SOLID/TDD/clean-code floor
-|   |-- process_subagent_bootstrap.md # ADR-026 dispatch packet + subagent return contract
+|   |-- process_subagent_bootstrap.md # Practical dispatch and result verification
 |   `-- domain_*.md           # Add your own stack-specific rules (e.g., domain_auth.md)
 |-- sessions/            # Durable retrospectives + feedback records
 |   |-- feedback_template.md # Stakeholder feedback capture template
@@ -187,7 +187,7 @@ See `AGENTS.md` §"Truth hierarchy" for the canonical definition. Summary:
 
 **Multi-agent workflow**: See [docs/guides/multi-agent-coordination.md](../docs/guides/multi-agent-coordination.md) for how role-specialized agents (Architect, Frontend, Backend, PM, QA, DevOps, Docs, Judge) coordinate in parallel without conflicts.
 
-**Compliance contracts**: See `docs/compliance_schemas.md` and `docs/decisions/adr-026-compliance-contracts.md` for the ADR-026 evidence blocks (`plan_compliance`, `parent_compliance`, `subagent_compliance`) and role-contract versioning model.
+**Runtime receipts**: `AGENTS.md` is authoritative for startup handshake and context receipt behavior. Use `.context/rules/process_subagent_bootstrap.md` for practical dispatch guidance.
 
 **For full documentation on file purposes**, see `docs/guides/context-files-explained.md`.
 
