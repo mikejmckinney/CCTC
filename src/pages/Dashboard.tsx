@@ -602,9 +602,8 @@ export function Dashboard({
               {recentSessions.map((entry) => (
                 <button
                   key={entry.id}
-                  data-dashboard-session-record
                   onClick={() => onViewSession(entry)}
-                  className="-mx-2 flex w-full items-center justify-between rounded-lg bg-[var(--quick-start,var(--card))] px-2 py-3 text-left transition-colors hover:bg-[var(--muted)]/50"
+                  className="flex w-full items-center justify-between py-3 text-left transition-colors hover:bg-[var(--muted)]/50 -mx-2 px-2 rounded-lg"
                 >
                   <div className="min-w-0">
                     <p className="text-[13px] font-medium text-[var(--foreground)]">
@@ -634,7 +633,6 @@ export function Dashboard({
                   {recentSessions.map((entry) => (
                     <tr
                       key={entry.id}
-                      data-dashboard-session-record
                       tabIndex={0}
                       onClick={() => onViewSession(entry)}
                       onKeyDown={(event) => {
@@ -644,7 +642,7 @@ export function Dashboard({
                         }
                       }}
                       aria-label={`Review session from ${new Date(entry.completedAt).toLocaleDateString()}`}
-                      className="cursor-pointer bg-[var(--quick-start,var(--card))] transition-colors hover:bg-[var(--muted)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--ring)]"
+                      className="cursor-pointer transition-colors hover:bg-[var(--muted)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--ring)]"
                     >
                       <td className="py-3 font-medium">{new Date(entry.completedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                       <td className="py-3">{entry.settings.mode === 'exam' ? 'Exam' : 'Study'}</td>

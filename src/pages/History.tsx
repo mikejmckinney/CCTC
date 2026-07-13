@@ -275,7 +275,7 @@ export function History({
                 <div
                   key={entry.id}
                   data-session-record
-                  className="relative -mx-2 rounded-lg bg-[var(--quick-start,var(--card))] px-2 py-3 transition-colors hover:bg-[var(--muted)]/50 sm:flex sm:items-center sm:justify-between"
+                  className="relative -mx-2 rounded-lg px-2 py-3 transition-colors hover:bg-[var(--muted)]/50 sm:flex sm:items-center sm:justify-between"
                 >
                   <button onClick={() => onViewSession(entry)} className="w-full min-w-0 text-left sm:flex-1">
                     <div className="flex items-center gap-2 pr-24 sm:pr-0">
