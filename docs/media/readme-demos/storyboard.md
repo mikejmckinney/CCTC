@@ -2,7 +2,7 @@
 
 | ID | Title | Duration | Flow |
 |---|---|---|---|
-| 00 | Hero overview | 12–18s | Dashboard → Progress → light/dark theme |
+| 00 | Hero overview | 8–14s | Light-mode Dashboard → Progress → Dashboard |
 | 01 | Dashboard setup | 6–10s | Expand settings → Study mode → count and timer |
 | 02 | Study mode | 6–10s | Select answer → reveal explanation |
 | 03 | Exam controls | 6–10s | Answer → report item → navigate with no reveal |

@@ -4,10 +4,10 @@ A private, client-side study app for the ABTC **Certified Clinical Transplant Co
 
 > **Independent study aid.** This app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam questions, and is not a source of patient-care decisions. Practice scores are unofficial estimates.
 
-[00-hero-overview.mp4](https://github.com/user-attachments/assets/ebc4ea29-28c9-4717-bdf4-1bc1303d57b7)
+<p align="center"><video src="https://github.com/user-attachments/assets/d79172ec-975f-4e71-abee-b9d5ce625a8f" poster="docs/media/readme-demos/posters/00-hero-overview.png" controls muted playsinline width="960" aria-label="CCTC dashboard and progress overview demonstration"></video></p>
 
 <p align="center">
-  <a href="https://github.com/user-attachments/assets/ebc4ea29-28c9-4717-bdf4-1bc1303d57b7"><img src="docs/media/readme-demos/posters/00-hero-overview.png" alt="CCTC Practice Exam dashboard in dark mode with readiness score, domain progress, Quick Start actions, and recent sessions" width="960"></a>
+  <a href="https://github.com/user-attachments/assets/d79172ec-975f-4e71-abee-b9d5ce625a8f"><img src="docs/media/readme-demos/posters/00-hero-overview.png" alt="CCTC Practice Exam dashboard in light mode with readiness score, domain progress, Quick Start actions, and recent sessions" width="960"></a>
 </p>
 
 <p align="center"><a href="https://mikejmckinney.github.io/CCTC/"><strong>Open the live app</strong></a></p>
@@ -32,34 +32,34 @@ A private, client-side study app for the ABTC **Certified Clinical Transplant Co
   <tr>
     <td align="center" valign="top" width="33%">
       <h3>Dashboard &amp; setup</h3>
-      <a href="https://github.com/user-attachments/assets/8dfbeb6a-be3b-4832-b2b7-fe595f71cbbd"><img src="docs/media/readme-demos/posters/01-setup.png" alt="Dashboard with readiness insights, Quick Start actions, and expanded custom session settings" width="100%"></a>
+      <a href="https://github.com/user-attachments/assets/e18951d3-0020-425a-882d-333581d25153"><img src="docs/media/readme-demos/posters/01-setup.png" alt="Dashboard with readiness insights, Quick Start actions, and expanded custom session settings" width="100%"></a>
       <p>Start immediately or customize mode, question set, count, blueprint, timer, exam date, and target score.</p>
     </td>
     <td align="center" valign="top" width="33%">
       <h3>Study explanations</h3>
-      <a href="https://github.com/user-attachments/assets/430d014a-65f7-4c67-b83c-07f9200ca841"><img src="docs/media/readme-demos/posters/02-study-mode.png" alt="Study session showing answer feedback, rationale, and references" width="100%"></a>
+      <a href="https://github.com/user-attachments/assets/5f422553-e6d7-415a-a6aa-a551f67004e2"><img src="docs/media/readme-demos/posters/02-study-mode.png" alt="Study session showing answer feedback, rationale, and references" width="100%"></a>
       <p>Reveal the correct answer, rationale for every option, and references immediately after answering.</p>
     </td>
     <td align="center" valign="top" width="33%">
       <h3>Exam controls</h3>
-      <a href="https://github.com/user-attachments/assets/02670582-828c-4d9f-be3e-ce124b89dbd2"><img src="docs/media/readme-demos/posters/03-exam-navigation-flagging.png" alt="Exam session with navigation, report, submit, keyboard guidance, and question tracker controls" width="100%"></a>
+      <a href="https://github.com/user-attachments/assets/0ae26846-e0a0-49a8-8f59-82d16338e6cd"><img src="docs/media/readme-demos/posters/03-exam-navigation-flagging.png" alt="Exam session with navigation, report, submit, keyboard guidance, and question tracker controls" width="100%"></a>
       <p>Navigate by mouse or keyboard, bookmark questions, report issues, and keep explanations hidden until submit.</p>
     </td>
   </tr>
   <tr>
     <td align="center" valign="top" width="33%">
       <h3>Progress</h3>
-      <a href="https://github.com/user-attachments/assets/810424d2-516f-46b3-8556-07bbc4196d41"><img src="docs/media/readme-demos/posters/04-score-history.png" alt="Progress screen with EMA trend, target line, filters, and per-domain session bars" width="100%"></a>
+      <a href="https://github.com/user-attachments/assets/dd620d7d-5ce0-4675-81f6-1c7d9382eefa"><img src="docs/media/readme-demos/posters/04-score-history.png" alt="Progress screen with EMA trend, target line, filters, and per-domain session bars" width="100%"></a>
       <p>Review Exam-only readiness, combined history, EMA change, target performance, and per-domain records.</p>
     </td>
     <td align="center" valign="top" width="33%">
       <h3>Reliable resume</h3>
-      <a href="https://github.com/user-attachments/assets/ec8a8f18-bcd5-4cce-abc1-93dc4f35ede2"><img src="docs/media/readme-demos/posters/05-resume-session.png" alt="Resumed Study session with saved answer and positional progress" width="100%"></a>
+      <a href="https://github.com/user-attachments/assets/3c792879-fb57-432d-a538-b93fdcd9b8d8"><img src="docs/media/readme-demos/posters/05-resume-session.png" alt="Resumed Study session with saved answer and positional progress" width="100%"></a>
       <p>Leave and return without losing item order, answers, bookmarks, timer state, or current position.</p>
     </td>
     <td align="center" valign="top" width="33%">
       <h3>Backup &amp; reporting</h3>
-      <a href="https://github.com/user-attachments/assets/c5f14614-586b-4e4e-8387-95dcb01eabfb"><img src="docs/media/readme-demos/posters/06-backup-reported-items.png" alt="Reported Items screen with editable issue reports and export controls" width="100%"></a>
+      <a href="https://github.com/user-attachments/assets/2f51f8b2-6c86-413f-b2b2-4ed5e5f36701"><img src="docs/media/readme-demos/posters/06-backup-reported-items.png" alt="Reported Items screen with editable issue reports and export controls" width="100%"></a>
       <p>Move progress between devices, maintain a reported-item queue, and export reports for review.</p>
     </td>
   </tr>
@@ -70,27 +70,27 @@ A private, client-side study app for the ABTC **Certified Clinical Transplant Co
 
 ### Dashboard and setup
 
-<p align="center"><video src="https://github.com/user-attachments/assets/8dfbeb6a-be3b-4832-b2b7-fe595f71cbbd" controls muted playsinline width="960" aria-label="Dashboard and custom session setup demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/e18951d3-0020-425a-882d-333581d25153" poster="docs/media/readme-demos/posters/01-setup.png" controls muted playsinline width="960" aria-label="Dashboard and custom session setup demonstration"></video></p>
 
 ### Study explanations
 
-<p align="center"><video src="https://github.com/user-attachments/assets/430d014a-65f7-4c67-b83c-07f9200ca841" controls muted playsinline width="960" aria-label="Study mode answer explanation demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/5f422553-e6d7-415a-a6aa-a551f67004e2" poster="docs/media/readme-demos/posters/02-study-mode.png" controls muted playsinline width="960" aria-label="Study mode answer explanation demonstration"></video></p>
 
 ### Exam controls
 
-<p align="center"><video src="https://github.com/user-attachments/assets/02670582-828c-4d9f-be3e-ce124b89dbd2" controls muted playsinline width="960" aria-label="Exam navigation and reported-item demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/0ae26846-e0a0-49a8-8f59-82d16338e6cd" poster="docs/media/readme-demos/posters/03-exam-navigation-flagging.png" controls muted playsinline width="960" aria-label="Exam navigation and reported-item demonstration"></video></p>
 
 ### Progress
 
-<p align="center"><video src="https://github.com/user-attachments/assets/810424d2-516f-46b3-8556-07bbc4196d41" controls muted playsinline width="960" aria-label="Progress trends and session records demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/dd620d7d-5ce0-4675-81f6-1c7d9382eefa" poster="docs/media/readme-demos/posters/04-score-history.png" controls muted playsinline width="960" aria-label="Progress trends and session records demonstration"></video></p>
 
 ### Resume
 
-<p align="center"><video src="https://github.com/user-attachments/assets/ec8a8f18-bcd5-4cce-abc1-93dc4f35ede2" controls muted playsinline width="960" aria-label="Saved session resume demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/3c792879-fb57-432d-a538-b93fdcd9b8d8" poster="docs/media/readme-demos/posters/05-resume-session.png" controls muted playsinline width="960" aria-label="Saved session resume demonstration"></video></p>
 
 ### Backup and reported items
 
-<p align="center"><video src="https://github.com/user-attachments/assets/c5f14614-586b-4e4e-8387-95dcb01eabfb" controls muted playsinline width="960" aria-label="Backup and reported-item management demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/2f51f8b2-6c86-413f-b2b2-4ed5e5f36701" poster="docs/media/readme-demos/posters/06-backup-reported-items.png" controls muted playsinline width="960" aria-label="Backup and reported-item management demonstration"></video></p>
 
 </details>
 
