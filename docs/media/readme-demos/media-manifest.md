@@ -4,18 +4,19 @@
 
 | Demo | File | GitHub asset URL | Poster |
 |---|---|---|---|
-| 00-hero-overview | `.outputs/00-hero-overview.mp4` | https://github.com/user-attachments/assets/d19c9263-8a82-4114-b34e-c73011d04d43 | `posters/00-hero-overview.png` |
-| 01-setup | `.outputs/01-setup.mp4` | https://github.com/user-attachments/assets/db0c00d6-529c-458c-ad7b-e822d09f360a | `posters/01-setup.png` |
-| 02-study-mode | `.outputs/02-study-mode.mp4` | https://github.com/user-attachments/assets/ded2bd23-33ed-43b3-bf56-8daf0ce8c9f6 | `posters/02-study-mode.png` |
-| 03-exam-navigation-flagging | `.outputs/03-exam-navigation-flagging.mp4` | https://github.com/user-attachments/assets/58fcdee7-0a9e-43f1-8226-8e007c7d4b4f | `posters/03-exam-navigation-flagging.png` |
-| 04-score-history | `.outputs/04-score-history.mp4` | https://github.com/user-attachments/assets/0fea0fcf-0352-4bcb-b62b-5761f3be3bfc | `posters/04-score-history.png` |
-| 05-resume-session | `.outputs/05-resume-session.mp4` | https://github.com/user-attachments/assets/d8d6711f-6bf5-437a-b357-de40c1ad68dd | `posters/05-resume-session.png` |
+| 00-hero-overview | `.outputs/00-hero-overview.mp4` | https://github.com/user-attachments/assets/d79172ec-975f-4e71-abee-b9d5ce625a8f | `posters/00-hero-overview.png` |
+| 01-setup | `.outputs/01-setup.mp4` | https://github.com/user-attachments/assets/e18951d3-0020-425a-882d-333581d25153 | `posters/01-setup.png` |
+| 02-study-mode | `.outputs/02-study-mode.mp4` | https://github.com/user-attachments/assets/5f422553-e6d7-415a-a6aa-a551f67004e2 | `posters/02-study-mode.png` |
+| 03-exam-navigation-flagging | `.outputs/03-exam-navigation-flagging.mp4` | https://github.com/user-attachments/assets/0ae26846-e0a0-49a8-8f59-82d16338e6cd | `posters/03-exam-navigation-flagging.png` |
+| 04-score-history | `.outputs/04-score-history.mp4` | https://github.com/user-attachments/assets/dd620d7d-5ce0-4675-81f6-1c7d9382eefa | `posters/04-score-history.png` |
+| 05-resume-session | `.outputs/05-resume-session.mp4` | https://github.com/user-attachments/assets/3c792879-fb57-432d-a538-b93fdcd9b8d8 | `posters/05-resume-session.png` |
+| 06-backup-reported-items | `.outputs/06-backup-reported-items.mp4` | https://github.com/user-attachments/assets/2f51f8b2-6c86-413f-b2b2-4ed5e5f36701 | `posters/06-backup-reported-items.png` |
 
 ## Issue
 
 Issue URL: https://github.com/mikejmckinney/CCTC/issues/19
 
-Upload order in the issue comment matches demo IDs `00`–`05` (see `storyboard.md`).
+Upload order in the issue comment matches demo IDs `00`-`06` (see `storyboard.md`).
 
 ## Embed template
 
@@ -23,7 +24,7 @@ GitHub only renders `<video>` when the tag is **on one line** inside a block lik
 
 ```html
 <p align="center">
-  <video src="https://github.com/user-attachments/assets/d19c9263-8a82-4114-b34e-c73011d04d43" controls muted playsinline loop autoplay width="960"></video>
+  <video src="https://github.com/user-attachments/assets/ASSET_ID" controls muted playsinline width="960"></video>
 </p>
 ```
 

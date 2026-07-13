@@ -18,16 +18,18 @@ const PREVIEW_HOST = '127.0.0.1';
 const PREVIEW_PORT = 4173;
 const BASE_URL = `http://${PREVIEW_HOST}:${PREVIEW_PORT}`;
 const MIN_QUESTIONS = 10;
-const VIEWPORT = { width: 1920, height: 1080 };
-const SLOW_MO_MS = 100;
+const VIEWPORT = { width: 1280, height: 720 };
+const SLOW_MO_MS = 75;
 const MOUSE_STEPS = 28;
 const TYPE_DELAY_MS = 85;
+const FEATURE_LEAD_IN_MS = 400;
 const DEMO_ORDER = [
   '01-setup',
   '02-study-mode',
   '03-exam-navigation-flagging',
   '04-score-history',
   '05-resume-session',
+  '06-backup-reported-items',
   '00-hero-overview'
 ];
 
@@ -64,7 +66,7 @@ const DEMO_CURSOR_INIT = () => {
   );
 };
 
-function pacing(page) {
+function pacing(page, markStart = () => {}) {
   const pause = (ms = 600) => page.waitForTimeout(ms);
 
   const moveToLocator = async (locator, steps = MOUSE_STEPS) => {
@@ -84,9 +86,7 @@ function pacing(page) {
     await pause(300);
     await locator.hover();
     await pause(180);
-    await page.mouse.down();
-    await pause(90);
-    await page.mouse.up();
+    await locator.click();
     await pause(520);
   };
 
@@ -99,7 +99,7 @@ function pacing(page) {
   };
 
   const selectMode = async (mode) => {
-    const combobox = page.getByRole('combobox', { name: 'Mode', exact: true });
+    const combobox = page.locator('select').first();
     await moveToLocator(combobox);
     await combobox.click();
     await pause(350);
@@ -115,28 +115,20 @@ function pacing(page) {
     await pause(420);
   };
 
-  const toggleCheckbox = async (labelText) => {
-    const checkbox = page.getByRole('checkbox', { name: labelText });
-    await clickChoice(checkbox);
-  };
-
-  return { pause, clickChoice, typeSlowly, selectMode, toggleCheckbox };
+  return { pause, clickChoice, typeSlowly, selectMode, markStart };
 }
 
 async function ensureAppReady(page) {
   await page.getByText('Loading local study data').waitFor({ state: 'hidden', timeout: 60_000 });
 }
 
-async function dismissDisclaimer(page, { clickChoice, pause }) {
-  const modal = page.getByLabel('Study aid disclaimer');
-  try {
-    await modal.waitFor({ state: 'visible', timeout: 5_000 });
-    await clickChoice(page.getByRole('button', { name: 'I understand' }));
-    await modal.waitFor({ state: 'hidden' });
-    await pause(400);
-  } catch {
-    // already dismissed
-  }
+async function dismissDisclaimer(page, { pause }) {
+  const acknowledge = page.getByRole('button', { name: 'I understand' });
+  if (!(await acknowledge.isVisible())) return;
+  const modal = page.getByRole('dialog').filter({ has: page.getByRole('heading', { name: 'Before you begin' }) });
+  await acknowledge.click();
+  await modal.waitFor({ state: 'hidden' });
+  await pause(500);
 }
 
 async function prepareHome(page, helpers) {
@@ -144,15 +136,18 @@ async function prepareHome(page, helpers) {
   await page.goto('./');
   await ensureAppReady(page);
   await dismissDisclaimer(page, helpers);
-  await page.getByRole('heading', { name: /build a practice session/i }).waitFor();
-  await pause(1200);
+  await page.getByRole('heading', { name: 'Dashboard' }).waitFor();
+  const sampleNote = page.getByRole('button', { name: 'Dismiss sample-data note' });
+  if (await sampleNote.isVisible()) await sampleNote.click();
+  await pause(900);
 }
 
 async function startSession(page, { pause, clickChoice, typeSlowly, selectMode }, { mode = 'study', count = MIN_QUESTIONS } = {}) {
+  await clickChoice(page.getByRole('button', { name: 'Customize Settings' }));
   await selectMode(mode);
-  await typeSlowly(page.getByRole('spinbutton', { name: /^Question count/i }), count);
-  await clickChoice(page.getByRole('button', { name: /Start session/i }));
-  await page.getByRole('heading', { name: /Item 1 of/i }).waitFor();
+  await typeSlowly(page.locator('input[type="number"]').first(), count);
+  await clickChoice(page.getByRole('button', { name: 'Start with Custom Settings' }));
+  await page.getByText(/Item 1 of/i).waitFor();
   await pause(800);
 }
 
@@ -174,10 +169,15 @@ async function launchBrowser({ recordDir } = {}) {
       ? { dir: recordDir, size: { width: VIEWPORT.width, height: VIEWPORT.height } }
       : undefined
   });
+  await context.addInitScript(() => {
+    localStorage.setItem('cctc-theme', 'warm');
+    localStorage.setItem('cctc-color-mode', 'light');
+  });
   await context.addInitScript(DEMO_CURSOR_INIT);
   const page = await context.newPage();
+  const videoStartedAt = Date.now();
   page.on('dialog', (dialog) => dialog.accept());
-  return { browser, context, page };
+  return { browser, context, page, videoStartedAt };
 }
 
 async function recordClip(name, steps) {
@@ -186,8 +186,11 @@ async function recordClip(name, steps) {
   fs.rmSync(clipDir, { recursive: true, force: true });
   fs.mkdirSync(clipDir, { recursive: true });
 
-  const { browser, context, page } = await launchBrowser({ recordDir: clipDir });
-  const helpers = pacing(page);
+  const { browser, context, page, videoStartedAt } = await launchBrowser({ recordDir: clipDir });
+  let featureStartedAt;
+  const helpers = pacing(page, () => {
+    featureStartedAt ??= Date.now();
+  });
 
   try {
     await steps(page, helpers);
@@ -201,13 +204,19 @@ async function recordClip(name, steps) {
   if (!webmPath) {
     throw new Error(`No recording produced for ${name}`);
   }
+  if (!featureStartedAt) {
+    throw new Error(`No feature start marked for ${name}`);
+  }
   const mp4Path = path.join(OUT_DIR, `${name}.mp4`);
+  const trimSeconds = Math.max(0, (featureStartedAt - videoStartedAt - FEATURE_LEAD_IN_MS) / 1000);
   const ff = spawnSync(
     'ffmpeg',
     [
       '-y',
       '-i',
       path.join(clipDir, webmPath),
+      '-ss',
+      trimSeconds.toFixed(3),
       '-c:v',
       'libx264',
       '-crf',
@@ -258,73 +267,86 @@ async function waitForPreview() {
 
 const demos = {
   async '01-setup'(page, helpers) {
-    const { pause, selectMode, typeSlowly, toggleCheckbox } = helpers;
+    const { pause, clickChoice, selectMode, typeSlowly, markStart } = helpers;
     await prepareHome(page, helpers);
-    await selectMode('exam');
-    await typeSlowly(page.getByRole('spinbutton', { name: /^Question count/i }), 25);
-    await toggleCheckbox('Timed session');
-    await pause(800);
-    await page.getByText('Timer enabled').waitFor({ timeout: 2_000 }).catch(() => {});
+    await clickChoice(page.getByRole('button', { name: 'Customize Settings' }));
+    markStart();
+    await selectMode('study');
+    await typeSlowly(page.locator('input[type="number"]').first(), 25);
+    const timer = page.getByRole('checkbox', { name: 'Enable timer' });
+    if (await timer.isChecked()) await clickChoice(timer);
     await pause(1200);
   },
 
   async '02-study-mode'(page, helpers) {
     await prepareHome(page, helpers);
     await startSession(page, helpers, { mode: 'study', count: MIN_QUESTIONS });
+    helpers.markStart();
     await helpers.clickChoice(page.getByRole('radio').first());
-    await page.locator('.explanation-card').waitFor();
+    await page.getByText(/^Correct \(/).waitFor();
     await helpers.pause(1500);
   },
 
   async '03-exam-navigation-flagging'(page, helpers) {
     await prepareHome(page, helpers);
     await startSession(page, helpers, { mode: 'exam', count: MIN_QUESTIONS });
+    helpers.markStart();
     await helpers.clickChoice(page.getByRole('radio').first());
-    await helpers.clickChoice(page.getByRole('button', { name: 'Flag this item' }));
-    await helpers.clickChoice(page.getByRole('button', { name: 'Save flag' }));
+    await helpers.clickChoice(page.getByRole('button', { name: 'Report' }));
+    await helpers.clickChoice(page.getByRole('button', { name: 'Save Report' }));
     await helpers.clickChoice(page.getByRole('button', { name: 'Next' }));
     await helpers.pause(1200);
   },
 
   async '04-score-history'(page, helpers) {
-    const { pause, clickChoice } = helpers;
+    const { pause, clickChoice, markStart } = helpers;
     await prepareHome(page, helpers);
-    await startSession(page, helpers, { mode: 'study', count: MIN_QUESTIONS });
-    for (let i = 0; i < 3; i += 1) {
-      await clickChoice(page.getByRole('radio').first());
-      if (i < 2) await clickChoice(page.getByRole('button', { name: 'Next' }));
-    }
-    await clickChoice(page.getByRole('button', { name: 'Complete session' }));
-    await page.getByRole('heading', { name: /correct ·/i }).waitFor();
-    await pause(1200);
-    await clickChoice(page.getByRole('button', { name: 'Back to history' }));
-    await page.getByRole('heading', { name: 'History', exact: true }).waitFor();
+    await clickChoice(page.getByRole('navigation', { name: 'Primary' }).getByRole('button', { name: 'Progress' }));
+    await page.getByText('Progress Over Time').waitFor();
+    markStart();
+    await clickChoice(page.getByRole('button', { name: 'Both' }));
     await pause(1500);
   },
 
   async '05-resume-session'(page, helpers) {
-    const { pause, clickChoice } = helpers;
+    const { pause, clickChoice, markStart } = helpers;
     await prepareHome(page, helpers);
     await startSession(page, helpers, { mode: 'study', count: MIN_QUESTIONS });
     await clickChoice(page.getByRole('radio').first());
-    await clickChoice(page.getByRole('navigation', { name: 'Primary' }).getByRole('button', { name: 'Start' }));
+    markStart();
+    await clickChoice(page.getByRole('navigation', { name: 'Primary' }).getByRole('button', { name: 'Home' }));
+    await page.getByRole('heading', { name: 'Dashboard' }).waitFor();
     await pause(800);
-    await clickChoice(page.getByRole('navigation', { name: 'Primary' }).getByRole('button', { name: 'Resume' }));
-    await page.getByRole('heading', { name: /Item 1 of/i }).waitFor();
+    await clickChoice(page.getByRole('button', { name: 'Resume session' }));
+    await page.getByText(/Item 1 of/i).waitFor();
     await pause(1200);
   },
 
-  async '00-hero-overview'(page, helpers) {
-    const { pause, clickChoice, selectMode } = helpers;
+  async '06-backup-reported-items'(page, helpers) {
+    const { pause, clickChoice, markStart } = helpers;
     await prepareHome(page, helpers);
-    await selectMode('study');
-    await clickChoice(page.getByRole('button', { name: /Start session/i }));
-    await clickChoice(page.getByRole('radio').first());
-    await page.locator('.explanation-card').waitFor();
+    await clickChoice(page.getByRole('navigation', { name: 'Primary' }).getByRole('button', { name: 'Progress' }));
+    const backupHeading = page.getByText('Move progress between devices');
+    await backupHeading.scrollIntoViewIfNeeded();
+    await pause(1200);
+    markStart();
+    await clickChoice(page.getByRole('button', { name: /Reported Items/i }));
+    await page.getByRole('heading', { name: 'Reported Items' }).waitFor();
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    await pause(1400);
+  },
+
+  async '00-hero-overview'(page, helpers) {
+    const { pause, clickChoice, markStart } = helpers;
+    await prepareHome(page, helpers);
+    markStart();
     await pause(1000);
-    await clickChoice(page.getByRole('button', { name: 'Complete session' }));
-    await page.getByRole('heading', { name: /correct ·/i }).waitFor();
-    await pause(1500);
+    await clickChoice(page.getByRole('navigation', { name: 'Primary' }).getByRole('button', { name: 'Progress' }));
+    await page.getByText('Progress Over Time').waitFor();
+    await clickChoice(page.getByRole('button', { name: 'Both' }));
+    await pause(1000);
+    await clickChoice(page.getByRole('navigation', { name: 'Primary' }).getByRole('button', { name: 'Home' }));
+    await pause(1400);
   }
 };
 
