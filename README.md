@@ -156,14 +156,20 @@ Blueprint data comes from the ABTC Candidate Handbook revised March 12, 2026. Th
 The production app on `main` includes the complete practice engine, 506 reviewed standard items plus scenario companions, current and legacy blueprints, responsive Warm Professional interface, light/dark modes, Exam-only readiness, Study weak-area review, keyboard controls, reported items, local persistence, backup, and folder synchronization.
 
 - **Live app:** https://mikejmckinney.github.io/CCTC/
-- **FAQ:** [docs/FAQ.md](docs/FAQ.md)
 - **Question authoring:** [questions/README.md](questions/README.md)
 
-## Limitations and roadmap
+## Limitations
 
 - Practice results are unofficial estimates, not ABTC scaled scores or pass/fail decisions.
 - This is an exam-preparation tool, not medical advice.
 - Browser capabilities vary; folder synchronization requires the File System Access API, while JSON export/import remains available elsewhere.
-- Planned work includes deeper reference links and improved organ-balance coverage. See [`.context/vision/v2-roadmap.md`](.context/vision/v2-roadmap.md).
+
+## Future Improvements
+
+Planned work includes deeper reference links and improved organ-balance coverage. See [`.context/vision/v2-roadmap.md`](.context/vision/v2-roadmap.md).
+
+## FAQ
+
+See [docs/FAQ.md](docs/FAQ.md) for product scope, blueprints, question authoring, and review-status details.
 
 <p align="center"><a href="https://donate.stripe.com/dRm9AMcYs0sa2F8dNQ18c00">Support this independent project</a></p>
