@@ -18,8 +18,8 @@ Outputs land in `docs/media/readme-demos/.outputs/` (gitignored).
 
 | Demo | Source |
 |---|---|
-| Feature clips (01–05, resume) | Playwright live capture of production preview |
-| Hero (00) | HyperFrames-style HTML composition using poster frames from captures |
+| Feature clips (01–06) | Playwright live capture of production preview with deterministic sample data |
+| Hero (00) | Playwright overview of Dashboard, Progress, and dark mode |
 
 ## Upload workflow
 
@@ -32,7 +32,7 @@ Outputs land in `docs/media/readme-demos/.outputs/` (gitignored).
 
 - Put each `<video>` tag on **one line** inside `<p align="center">…</p>`. Multi-line tags render as literal text on GitHub.
 - Use `https://github.com/user-attachments/assets/…` URLs only (not raw blob URLs).
-- Hero poster: commit PNG under `posters/` and reference with a normal `<img>` (optionally linked to the MP4).
+- Posters: commit 1280×720 PNG files under `posters/` and link each one to its MP4.
 - GIF-like autoplay: try `autoplay loop muted playsinline` on the hero video; for guaranteed motion without click, export a short GIF (&lt;10 MB) via FFmpeg and embed with `![alt](url)`.
 
 See [`.github/prompts/04-cctc-open-design-redesign-and-readme-media-v2.md`](../../.github/prompts/04-cctc-open-design-redesign-and-readme-media-v2.md).

@@ -1,176 +1,169 @@
 # [CCTC Practice Exam](https://mikejmckinney.github.io/CCTC/)
 
-A client-side practice-exam web app for the ABTC **Certified Clinical Transplant Coordinator (CCTC®)** exam. 
+A private, client-side study app for the ABTC **Certified Clinical Transplant Coordinator (CCTC®)** exam.
 
-> **Independent study aid.** This practice app is **not affiliated with or endorsed by ABTC or PSI** and does not reproduce real exam questions. All items are original, written to the published content outline. Practice scores are estimates, not official results.
+> **Independent study aid.** This app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam questions, and is not a source of patient-care decisions. Practice scores are unofficial estimates.
 
-[00-hero-overview.mp4](https://github.com/user-attachments/assets/d19c9263-8a82-4114-b34e-c73011d04d43)
+[00-hero-overview.mp4](https://github.com/user-attachments/assets/ebc4ea29-28c9-4717-bdf4-1bc1303d57b7)
 
-## Features
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/ebc4ea29-28c9-4717-bdf4-1bc1303d57b7"><img src="docs/media/readme-demos/posters/00-hero-overview.png" alt="CCTC Practice Exam dashboard in dark mode with readiness score, domain progress, Quick Start actions, and recent sessions" width="960"></a>
+</p>
 
-- Timed or untimed practice exams; timer defaults to the real exam's **180 minutes**, user-adjustable.
-- User-set question count (defaults to the real exam's **175 items**).
-- Two modes: **Study/flashcard** (answer + explanation revealed immediately) and **Exam** (results only after Submit).
-- Both ABTC item formats: single-best-answer and complex multiple-choice.
-- **Both blueprint versions**: the current outline (effective 2026-07-01) and the legacy outline (effective until 2026-06-30), selectable per session.
-- Blueprint-weighted sampling, randomized question + answer order, recently-seen de-prioritization.
-- **Save-after-each-question with resume.** Score history with per-content-category breakdown, EMA-based readiness score, and recommended next action.
-- **Reported items**: flag a question during a session, edit/clear/export from a dedicated page.
-- **Cross-device backup**: export the full state (history, flags, active session) to a folder via the File System Access API; restore on another device.
-- Responsive (phone/tablet/laptop), client-side only (IndexedDB), static-hostable, offline after first load.
+<p align="center"><a href="https://mikejmckinney.github.io/CCTC/"><strong>Open the live app</strong></a></p>
+
+## What it does
+
+- Builds **Study** or **Exam** sessions from 506 reviewed, original practice items.
+- Supports the current 2026-07 blueprint and the legacy outline ending 2026-06.
+- Samples by blueprint weight, randomizes questions and answers, and de-prioritizes recently seen items.
+- Saves after every answer in IndexedDB and resumes unfinished sessions exactly where they stopped.
+- Offers keyboard answering with `A-D` or `1-4`, plus Left/Right question navigation.
+- Tracks positional session progress, bookmarks, unanswered items, and reported-item context.
+- Calculates readiness from **Exam sessions only** using an exponential moving average (EMA).
+- Resurfaces Study misses through weak-area and spaced-repetition practice without changing readiness.
+- Shows per-domain trends and full session records on desktop and mobile.
+- Supports export/import backups and optional synchronization through a cloud-synced folder.
+- Runs entirely in the browser with no account, backend, or runtime model calls.
+
+## Feature tour
 
 <table>
-  <!-- ROW 1 -->
   <tr>
     <td align="center" valign="top" width="33%">
-      <h3>Dashboard</h3>
-      <img src="docs/media/readme-demos/posters/01-setup.png" alt="Dashboard with custom settings" width="100%">
-      <p>Readiness score, domain breakdown, and one-click start. Expand <em>Custom settings</em> for full control over mode, count, and timer.</p>
+      <h3>Dashboard &amp; setup</h3>
+      <a href="https://github.com/user-attachments/assets/8dfbeb6a-be3b-4832-b2b7-fe595f71cbbd"><img src="docs/media/readme-demos/posters/01-setup.png" alt="Dashboard with readiness insights, Quick Start actions, and expanded custom session settings" width="100%"></a>
+      <p>Start immediately or customize mode, question set, count, blueprint, timer, exam date, and target score.</p>
     </td>
     <td align="center" valign="top" width="33%">
-      <h3>Study mode</h3>
-      <img src="docs/media/readme-demos/posters/02-study-mode.png" alt="Study mode" width="100%">
-      <p>In Study mode, reveal explanations and references immediately after answering.</p>
+      <h3>Study explanations</h3>
+      <a href="https://github.com/user-attachments/assets/430d014a-65f7-4c67-b83c-07f9200ca841"><img src="docs/media/readme-demos/posters/02-study-mode.png" alt="Study session showing answer feedback, rationale, and references" width="100%"></a>
+      <p>Reveal the correct answer, rationale for every option, and references immediately after answering.</p>
     </td>
     <td align="center" valign="top" width="33%">
-      <h3>Navigation and Flagging</h3>
-      <img src="docs/media/readme-demos/posters/03-exam-navigation-flagging.png" alt="Navigation and Flagging" width="100%">
-      <p>Navigate freely, bookmark items, and report problems — explanations stay hidden until submit in exam mode.</p>
+      <h3>Exam controls</h3>
+      <a href="https://github.com/user-attachments/assets/02670582-828c-4d9f-be3e-ce124b89dbd2"><img src="docs/media/readme-demos/posters/03-exam-navigation-flagging.png" alt="Exam session with navigation, report, submit, keyboard guidance, and question tracker controls" width="100%"></a>
+      <p>Navigate by mouse or keyboard, bookmark questions, report issues, and keep explanations hidden until submit.</p>
     </td>
   </tr>
-  <!-- ROW 2 -->
   <tr>
     <td align="center" valign="top" width="33%">
       <h3>Progress</h3>
-      <img src="docs/media/readme-demos/posters/04-score-history.png" alt="Progress" width="100%">
-      <p>Stacked-area trend of weighted domain scores, EMA delta, and the full session list with delete and Clear All.</p>
+      <a href="https://github.com/user-attachments/assets/810424d2-516f-46b3-8556-07bbc4196d41"><img src="docs/media/readme-demos/posters/04-score-history.png" alt="Progress screen with EMA trend, target line, filters, and per-domain session bars" width="100%"></a>
+      <p>Review Exam-only readiness, combined history, EMA change, target performance, and per-domain records.</p>
     </td>
     <td align="center" valign="top" width="33%">
-      <h3>Resume</h3>
-      <img src="docs/media/readme-demos/posters/05-resume-session.png" alt="Resume Session" width="100%">
-      <p>Close the app and resume exactly where you left off — answers and bookmarks preserved via IndexedDB.</p>
+      <h3>Reliable resume</h3>
+      <a href="https://github.com/user-attachments/assets/ec8a8f18-bcd5-4cce-abc1-93dc4f35ede2"><img src="docs/media/readme-demos/posters/05-resume-session.png" alt="Resumed Study session with saved answer and positional progress" width="100%"></a>
+      <p>Leave and return without losing item order, answers, bookmarks, timer state, or current position.</p>
     </td>
     <td align="center" valign="top" width="33%">
-      <!-- Empty 6th cell left blank to maintain the clean 3x2 alignment grid -->
+      <h3>Backup &amp; reporting</h3>
+      <a href="https://github.com/user-attachments/assets/c5f14614-586b-4e4e-8387-95dcb01eabfb"><img src="docs/media/readme-demos/posters/06-backup-reported-items.png" alt="Reported Items screen with editable issue reports and export controls" width="100%"></a>
+      <p>Move progress between devices, maintain a reported-item queue, and export reports for review.</p>
     </td>
   </tr>
 </table>
 
 <details>
-<summary>More feature demos</summary>
+<summary><strong>Watch feature demos</strong></summary>
 
-### Practice setup
+### Dashboard and setup
 
-<p align="center">
-  <video src="https://github.com/user-attachments/assets/db0c00d6-529c-458c-ad7b-e822d09f360a" autoplay loop muted playsinline></video>
-</p>
+<p align="center"><video src="https://github.com/user-attachments/assets/8dfbeb6a-be3b-4832-b2b7-fe595f71cbbd" controls muted playsinline width="960" aria-label="Dashboard and custom session setup demonstration"></video></p>
 
-### Study mode
+### Study explanations
 
-<p align="center">
-  <video src="https://github.com/user-attachments/assets/ded2bd23-33ed-43b3-bf56-8daf0ce8c9f6" autoplay loop muted playsinline></video>
-</p>
+<p align="center"><video src="https://github.com/user-attachments/assets/430d014a-65f7-4c67-b83c-07f9200ca841" controls muted playsinline width="960" aria-label="Study mode answer explanation demonstration"></video></p>
 
-### Exam navigation and flagging
+### Exam controls
 
-<p align="center">
-  <video src="https://github.com/user-attachments/assets/58fcdee7-0a9e-43f1-8226-8e007c7d4b4f" autoplay loop muted playsinline></video>
-</p>
+<p align="center"><video src="https://github.com/user-attachments/assets/02670582-828c-4d9f-be3e-ce124b89dbd2" controls muted playsinline width="960" aria-label="Exam navigation and reported-item demonstration"></video></p>
 
-### Score and history
+### Progress
 
-<p align="center">
-  <video src="https://github.com/user-attachments/assets/0fea0fcf-0352-4bcb-b62b-5761f3be3bfc" autoplay loop muted playsinline></video>
-</p>
+<p align="center"><video src="https://github.com/user-attachments/assets/810424d2-516f-46b3-8556-07bbc4196d41" controls muted playsinline width="960" aria-label="Progress trends and session records demonstration"></video></p>
 
-### Resume session
+### Resume
 
-<p align="center">
-  <video src="https://github.com/user-attachments/assets/d8d6711f-6bf5-437a-b357-de40c1ad68dd" autoplay loop muted playsinline></video>
-</p>
+<p align="center"><video src="https://github.com/user-attachments/assets/ec8a8f18-bcd5-4cce-abc1-93dc4f35ede2" controls muted playsinline width="960" aria-label="Saved session resume demonstration"></video></p>
+
+### Backup and reported items
+
+<p align="center"><video src="https://github.com/user-attachments/assets/c5f14614-586b-4e4e-8387-95dcb01eabfb" controls muted playsinline width="960" aria-label="Backup and reported-item management demonstration"></video></p>
 
 </details>
 
+## Readiness and practice model
+
+Readiness is an EMA of completed **Exam** session scores (`alpha = 0.3`), so recent performance matters more without allowing one result to dominate. Study sessions are excluded because immediate feedback does not estimate closed-book exam performance. Incorrect Study answers still enter the weak-area and spaced-repetition queue.
+
+Results are raw practice percentages. The app does not calculate ABTC scaled scores or an official cut score.
+
+## Privacy and storage
+
+- Progress stays in the browser's IndexedDB by default.
+- There is no account, analytics service, application backend, or runtime AI call.
+- Manual JSON export/import moves history, flags, settings, and an active session.
+- Browsers supporting the File System Access API can sync through a user-selected Google Drive, OneDrive, or iCloud folder.
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Useful checks:
+
+```bash
+npm test
+npm run build:ci
+CI=true npm run test:e2e:playwright
+```
+
+The Vite app is static-hostable. GitHub Pages builds use `VITE_BASE_PATH=/CCTC/` and publish `dist/` through `.github/workflows/deploy-pages.yml`.
+
 ## Repository layout
 
-```
-.github/prompts/
-  00-onboarding.md        # start here — context + guardrails
-  01-build-app.md         # web app functional spec
-  02-author-questions.md  # how to author the item bank
-  03-validate.md          # schema + blueprint-coverage validation + CI
-package.json             # React/Vite scripts: test, build, validate
-public/
-  manifest.webmanifest   # install metadata for the static app shell
-  sw.js                  # service worker for offline/static hosting
+```text
 src/
-  app/App.tsx            # app shell, routing, session lifecycle, persistence
-  components/            # Navigation, ThemeProvider, and ui/ primitives
-    ui/                  # Button, Card, Modal, Input, Badge, Progress, RadialGauge
-  data/questionBank.ts   # bank loader with example fallback
-  lib/                   # assembly, persistence, scoring, readiness, backup, useConfirm
-  pages/                 # Dashboard, Session, History, Review, ReportedItems
-e2e/                     # Playwright specs (resume, confirm-dialog, reported-items)
-scripts/
-  validate.mjs           # local bank validator used by build + CI
-  run-e2e.mjs            # Playwright + preview-server orchestrator
-.github/workflows/
-  validate.yml           # npm ci && npm run validate on push / PR
-  e2e.yml                # Playwright e2e on push / PR
-  deploy-pages.yml       # GitHub Pages deploy on push to main
-schema/
-  question.schema.json    # the question contract
-blueprints/
-  cctc-from-2026-07.json  # current blueprint (default)
-  cctc-thru-2026-06.json  # legacy blueprint (+ task->section crosswalk)
-questions/
-  README.md               # sharding, naming, status workflow
-  _examples/examples.json  # two worked items; current fallback bank during early scaffold stage
-  domain-1-education/ ...  # the bank, sharded by domain
+  app/App.tsx             Application composition, routing, persistence, and sync
+  components/             Navigation, theme provider, and reusable UI primitives
+  lib/                    Session assembly, scoring, readiness, backup, and navigation
+  pages/                  Dashboard, Session, Review, History, and Reported Items
+questions/                Reviewed and draft item-bank shards by blueprint domain
+blueprints/               Current and legacy CCTC content-outline configuration
+schema/                   Question-bank JSON schema
+e2e/                      Playwright behavior and responsive-layout coverage
+scripts/                  Validation, references, coverage, and E2E orchestration
+docs/media/readme-demos/  Reproducible README capture, poster, and media workflow
+.github/workflows/        Validation, tests, deployment, and repository automation
 ```
 
-## Key design decisions
+## Content and design decisions
 
-- **One bank, two blueprints.** Items are tagged to the 2026-07 blueprint (`domain`/`task`/`knowledge_codes`); the legacy blueprint derives its sections via a crosswalk in its config. A future outline change is a new config file, not a re-tag of every item.
-- **JSON, sharded by domain.** Structured, validatable, git-friendly; ≤50 items per file.
-- **Grounded + reviewed.** Items are authored from public/authoritative sources (OPTN/UNOS, HHS/HIPAA, CMS, open guidelines) plus verified general clinical knowledge, with citations (clickable where the source is public). Owned reference texts are used only to **verify facts and cite**, never to reproduce text. Every item starts `status: "draft"`; a human SME promotes to `reviewed`.
-- **No backend, no runtime model calls.** Questions are static, reviewed JSON. Model-assisted authoring happens offline as drafts for human review — never live to the learner.
-- **Shared confirm dialog.** All destructive actions (clear history, clear flags, delete report, submit session) go through a single `useConfirm` hook (`src/lib/useConfirm.ts`) so the modal chrome and copy live in one place.
+- **One bank, multiple blueprints.** Items use the current domain/task taxonomy; legacy sections come from a blueprint crosswalk rather than duplicate tagging.
+- **Structured, reviewed JSON.** Sharded files are schema-validated and remain easy to review in Git.
+- **Grounded original questions.** Public and authoritative sources support original practice content. Owned reference texts verify facts but are not reproduced.
+- **Human review gate.** New items begin as drafts and require SME promotion to `reviewed`.
+- **No backend question generation.** Model-assisted authoring occurs offline; learners receive static reviewed content.
 
-## Content source
+Blueprint data comes from the ABTC Candidate Handbook revised March 12, 2026. The published exam format is 175 items (150 scored and 25 unscored pretest items) in three hours.
 
-Blueprint data is transcribed from the ABTC Candidate Handbook (rev. 3/12/2026), CCTC content outlines. The real exam is 175 items (150 scored + 25 unscored pretest), 3 hours. The app does **not** compute ABTC's scaled scores or official cut score (ABTC does not publish them); it reports raw, per-category results labeled as unofficial estimates.
+## Current status
 
-## Status
+The production app on `main` includes the complete practice engine, 506 reviewed standard items plus scenario companions, current and legacy blueprints, responsive Warm Professional interface, light/dark modes, Exam-only readiness, Study weak-area review, keyboard controls, reported items, local persistence, backup, and folder synchronization.
 
-Phases 1–4 are on `main`: exam engine, **506 reviewed items**, validation/stubs CI, history trends, category drill-down, and GitHub Pages at https://mikejmckinney.github.io/CCTC/.
+- **Live app:** https://mikejmckinney.github.io/CCTC/
+- **FAQ:** [docs/FAQ.md](docs/FAQ.md)
+- **Question authoring:** [questions/README.md](questions/README.md)
 
-**`redesign/OC2` (in review, PR #30):** Warm-professional design system, three theme presets × light/dark, dashboard-as-landing, EMA-based readiness score, recommended-next-action, expandable custom settings, shared `useConfirm` modal, circular-reveal theme toggle, responsive mobile bottom nav. e2e/validate/ci green.
+## Limitations and roadmap
 
-- **Local dev:** `npm install && npm run dev`
-- **Production build:** `npm run build` (relative assets) or `VITE_BASE_PATH=/CCTC/ npm run build:ci` for GitHub Pages.  Use `npm run build:ci` if building locally to bypass the validation step (requires indexer setup)
-- **E2E:** `npm run test:e2e` (boots preview + runs Playwright) or `npm run test:e2e:smoke` for the resume smoke only
-- **Live app :** https://mikejmckinney.github.io/CCTC/
+- Practice results are unofficial estimates, not ABTC scaled scores or pass/fail decisions.
+- This is an exam-preparation tool, not medical advice.
+- Browser capabilities vary; folder synchronization requires the File System Access API, while JSON export/import remains available elsewhere.
+- Planned work includes deeper reference links and improved organ-balance coverage. See [`.context/vision/v2-roadmap.md`](.context/vision/v2-roadmap.md).
 
-## Hosting
-
-The app is a static Vite build. Pushes to `main` run `.github/workflows/deploy-pages.yml`, which publishes `dist/` to GitHub Pages with `base: /CCTC/`. Enable **Settings → Pages → GitHub Actions** on the repo if the site is not live yet.
-
-## Limitations
-
-- Practice results are unofficial estimates — not ABTC scaled scores or official pass/fail decisions.
-- The app is an exam-prep tool, not medical advice.
-- Organ-tag soft targets in the bank still drift from blueprint shares (coverage warnings only).
-
-## Future Improvements
-
-Planned **v2** features (see [`.context/vision/v2-roadmap.md`](.context/vision/v2-roadmap.md)):
-
-- Cross-device session sync
-- Deep-linked references (PDF page viewer ± context; optional public “Further review” links)
-- Runtime-generated questions to reduce memorization
-- Organ-balance content shards for blueprint organ mix
-
-## FAQ
-
-See [docs/FAQ.md](docs/FAQ.md) for repo and product details.
+<p align="center"><a href="https://donate.stripe.com/dRm9AMcYs0sa2F8dNQ18c00">Support this independent project</a></p>

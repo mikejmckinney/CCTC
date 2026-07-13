@@ -2,11 +2,12 @@
 
 | ID | Title | Duration | Flow |
 |---|---|---|---|
-| 00 | Hero overview | 12–20s | Setup → answer → submit → score headline |
-| 01 | Practice setup | 6–10s | Blueprint, count, timer, Study/Exam |
+| 00 | Hero overview | 12–18s | Dashboard → Progress → light/dark theme |
+| 01 | Dashboard setup | 6–10s | Expand settings → Study mode → count and timer |
 | 02 | Study mode | 6–10s | Select answer → reveal explanation |
-| 03 | Exam navigation & flagging | 6–10s | Next, flag, navigator stats, no reveal |
-| 04 | Score & history | 8–12s | Score report → history trend |
+| 03 | Exam controls | 6–10s | Answer → report item → navigate with no reveal |
+| 04 | Progress | 8–12s | Exam trend → combined Exam/Study history |
 | 05 | Resume session | 6–8s | Home → resume → same item |
+| 06 | Backup & reported items | 8–12s | Progress backup controls → reported-item queue |
 
-All feature demos (01–05) use **Playwright** against `npm run preview`. Hero (00) composites capture stills in `compositions/00-hero-overview.html`.
+All feature demos and the hero use **Playwright** against `npm run preview` with deterministic sample data.
