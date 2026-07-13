@@ -9,6 +9,7 @@ install_dir: ~/.cache/cctc-tools/open-design
 node: "~24"
 package_manager: pnpm@10.33.2 via corepack
 bootstrap_script: scripts/bootstrap-open-design.sh
-cursor_mcp: optional
+mcp_client: opencode
+mcp_apply_default: dry-run
 last_verified: 2026-06-22
 notes: Latest GitHub release at pin time; local vendored package.json had 0.11.1 on main — use this tag for reproducibility.
