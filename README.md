@@ -4,11 +4,11 @@ A private, client-side study app for the ABTC **Certified Clinical Transplant Co
 
 > **Independent study aid.** This app is not affiliated with or endorsed by ABTC or PSI, does not reproduce real exam questions, and is not a source of patient-care decisions. Practice scores are unofficial estimates.
 
-<p align="center"><video src="https://github.com/user-attachments/assets/d79172ec-975f-4e71-abee-b9d5ce625a8f" poster="docs/media/readme-demos/posters/00-hero-overview.png" controls muted playsinline width="960" aria-label="CCTC dashboard and progress overview demonstration"></video></p>
-
 <p align="center">
   <a href="https://github.com/user-attachments/assets/d79172ec-975f-4e71-abee-b9d5ce625a8f"><img src="docs/media/readme-demos/posters/00-hero-overview.png" alt="CCTC Practice Exam dashboard in light mode with readiness score, domain progress, Quick Start actions, and recent sessions" width="960"></a>
 </p>
+
+<p align="center"><video src="https://github.com/user-attachments/assets/d79172ec-975f-4e71-abee-b9d5ce625a8f" controls muted playsinline width="960" aria-label="CCTC dashboard and progress overview demonstration"></video></p>
 
 <p align="center"><a href="https://mikejmckinney.github.io/CCTC/"><strong>Open the live app</strong></a></p>
 
@@ -70,27 +70,27 @@ A private, client-side study app for the ABTC **Certified Clinical Transplant Co
 
 ### Dashboard and setup
 
-<p align="center"><video src="https://github.com/user-attachments/assets/e18951d3-0020-425a-882d-333581d25153" poster="docs/media/readme-demos/posters/01-setup.png" controls muted playsinline width="960" aria-label="Dashboard and custom session setup demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/e18951d3-0020-425a-882d-333581d25153" controls muted playsinline width="960" aria-label="Dashboard and custom session setup demonstration"></video></p>
 
 ### Study explanations
 
-<p align="center"><video src="https://github.com/user-attachments/assets/5f422553-e6d7-415a-a6aa-a551f67004e2" poster="docs/media/readme-demos/posters/02-study-mode.png" controls muted playsinline width="960" aria-label="Study mode answer explanation demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/5f422553-e6d7-415a-a6aa-a551f67004e2" controls muted playsinline width="960" aria-label="Study mode answer explanation demonstration"></video></p>
 
 ### Exam controls
 
-<p align="center"><video src="https://github.com/user-attachments/assets/0ae26846-e0a0-49a8-8f59-82d16338e6cd" poster="docs/media/readme-demos/posters/03-exam-navigation-flagging.png" controls muted playsinline width="960" aria-label="Exam navigation and reported-item demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/0ae26846-e0a0-49a8-8f59-82d16338e6cd" controls muted playsinline width="960" aria-label="Exam navigation and reported-item demonstration"></video></p>
 
 ### Progress
 
-<p align="center"><video src="https://github.com/user-attachments/assets/dd620d7d-5ce0-4675-81f6-1c7d9382eefa" poster="docs/media/readme-demos/posters/04-score-history.png" controls muted playsinline width="960" aria-label="Progress trends and session records demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/dd620d7d-5ce0-4675-81f6-1c7d9382eefa" controls muted playsinline width="960" aria-label="Progress trends and session records demonstration"></video></p>
 
 ### Resume
 
-<p align="center"><video src="https://github.com/user-attachments/assets/3c792879-fb57-432d-a538-b93fdcd9b8d8" poster="docs/media/readme-demos/posters/05-resume-session.png" controls muted playsinline width="960" aria-label="Saved session resume demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/3c792879-fb57-432d-a538-b93fdcd9b8d8" controls muted playsinline width="960" aria-label="Saved session resume demonstration"></video></p>
 
 ### Backup and reported items
 
-<p align="center"><video src="https://github.com/user-attachments/assets/2f51f8b2-6c86-413f-b2b2-4ed5e5f36701" poster="docs/media/readme-demos/posters/06-backup-reported-items.png" controls muted playsinline width="960" aria-label="Backup and reported-item management demonstration"></video></p>
+<p align="center"><video src="https://github.com/user-attachments/assets/2f51f8b2-6c86-413f-b2b2-4ed5e5f36701" controls muted playsinline width="960" aria-label="Backup and reported-item management demonstration"></video></p>
 
 </details>
 
