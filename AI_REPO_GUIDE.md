@@ -68,6 +68,11 @@ Use these files as the current product ground truth:
 │       ├── 02-author-questions.md
 │       ├── 03-validate.md
 │       └── repo-onboarding.md
+├── .opencode/
+│   └── skills/open-design/
+│       ├── SKILL.md
+│       ├── references/             # setup, Codespaces, troubleshooting
+│       └── scripts/bootstrap.sh     # reusable lock-driven bootstrap
 ├── public/
 │   ├── manifest.webmanifest
 │   └── sw.js
@@ -143,8 +148,10 @@ Use these files as the current product ground truth:
 
 | File | Purpose |
 |---|---|
-| `scripts/bootstrap-open-design.sh` | Clone/build pinned Open Design outside the repo (`docs/design/open-design.lock`) |
-| `docs/design/open-design-setup.md` | Human/agent setup for optional Open Design contributor tooling |
+| `.opencode/skills/open-design/SKILL.md` | Open Design MCP orchestration and links to reusable setup/runtime references |
+| `.opencode/skills/open-design/scripts/bootstrap.sh` | Reusable lock-driven installer and MCP dry-run/apply interface |
+| `scripts/bootstrap-open-design.sh` | CCTC public wrapper; uses `docs/design/open-design.lock` and defaults to an OpenCode MCP dry-run |
+| `docs/design/open-design-setup.md` | CCTC-specific inputs, artifact/media conventions, exclusions, and pin maintenance |
 | `docs/media/readme-demos/scripts/capture-readme-demos.mjs` | Playwright live captures for README feature demos |
 | `DESIGN.md` | UX/design contract for redesign exploration |
 

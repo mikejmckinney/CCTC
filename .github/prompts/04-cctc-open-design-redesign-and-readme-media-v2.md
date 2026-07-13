@@ -122,7 +122,8 @@ These decisions extend the generic stop points above. They are documented in-rep
 - Install path: `~/.cache/cctc-tools/open-design`
 - Setup guide: [`docs/design/open-design-setup.md`](../../docs/design/open-design-setup.md)
 - On Linux, always use `pnpm exec od` inside the install dir — never bare `od` (`/usr/bin/od` is a different program).
-- Cursor MCP: optional; dry-run with `pnpm exec od mcp install cursor --print`.
+- OpenCode MCP: optional; the CCTC wrapper prints a dry-run by default. Apply
+  only after reviewing it with `bash scripts/bootstrap-open-design.sh --apply-mcp`.
 
 ### Media capture split (README truthfulness)
 
@@ -130,7 +131,7 @@ These decisions extend the generic stop points above. They are documented in-rep
 |---|---|---|
 | Feature demos claiming real app behavior | **Playwright** live capture on `npm run dev` | Must reflect actual Study/Exam, history, flagging, IndexedDB flows |
 | Hero overview (polish, transitions, callouts) | **HyperFrames** | Composite **Playwright-captured frames/clips** — do not invent UI that drifts from production |
-| Redesign direction mockups | **Open Design** | Prototypes under `.context/vision/mockups/open-design/` only — not README hero unless merged |
+| Redesign direction mockups | **Open Design** | Store reviewed directions under `docs/design/artifacts/direction-*/`; reserve `.context/vision/mockups/open-design/` for early sketches |
 
 ### Single branch / PR
 
