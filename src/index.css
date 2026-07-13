@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+:root {
+  --primary-solid: var(--primary);
+  --primary-solid-foreground: var(--primary-foreground);
+  --success-solid: var(--success);
+}
+
 @theme {
   /* ── Font families ── */
   --font-sans: "Public Sans", "Segoe UI", system-ui, sans-serif;
@@ -138,11 +144,11 @@
    ═══════════════════════════════════════════════════════ */
 :root[data-theme="warm"] {
   color-scheme: light;
-  --background: oklch(0.975 0.008 75);
+  --background: #f4efe6;
   --foreground: oklch(0.18 0.02 175);
-  --card: oklch(0.99 0.005 75);
+  --card: #fffdf9;
   --card-foreground: oklch(0.18 0.02 175);
-  --popover: oklch(0.99 0.005 75);
+  --popover: #fffdf9;
   --popover-foreground: oklch(0.18 0.02 175);
   --primary: oklch(0.28 0.06 175);
   --primary-foreground: oklch(0.98 0.01 175);
@@ -181,6 +187,10 @@
   --sidebar-ring: oklch(0.50 0.10 175);
   --glass-bg: oklch(0.99 0.005 75 / 0.7);
   --glass-border: oklch(0.99 0.005 75 / 0.4);
+  --quick-start: #faf5ec;
+  --primary-solid: #123b3a;
+  --primary-solid-foreground: #fff;
+  --success-solid: #2f7d5b;
 }
 
 :root[data-theme="warm"].dark {
@@ -225,6 +235,10 @@
   --sidebar-ring: #7cc2b4;
   --glass-bg: rgb(33 29 22 / 86%);
   --glass-border: rgb(68 61 49 / 45%);
+  --quick-start: #2a251c;
+  --primary-solid: #1d544f;
+  --primary-solid-foreground: #fff;
+  --success-solid: #3f9d72;
 }
 
 /* ═══════════════════════════════════════════════════════

@@ -4,10 +4,10 @@ import { type HTMLAttributes, forwardRef } from 'react';
 export const Progress = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { value: number; max?: number; variant?: 'default' | 'success' | 'warning' | 'accent'; label?: string }>(
   ({ className, value, max = 100, variant = 'default', label, ...props }, ref) => {
     const percent = Math.min(100, Math.max(0, (value / max) * 100));
-    const bgColor = variant === 'success' ? 'bg-[var(--success)]' :
+    const bgColor = variant === 'success' ? 'bg-[var(--success-solid)]' :
       variant === 'warning' ? 'bg-[var(--warning)]' :
       variant === 'accent' ? 'bg-[var(--accent)]' :
-      'bg-[var(--primary)]';
+      'bg-[var(--primary-solid)]';
 
     return (
       <div
