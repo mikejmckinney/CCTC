@@ -158,7 +158,7 @@ describe('History — connected-card copy', () => {
 
     const domainBar = screen.getByRole('progressbar', { name: 'D1: Education: 80%' });
     expect(domainBar).toBeInTheDocument();
-    expect(domainBar.firstElementChild).toHaveClass('bg-[var(--success)]');
+    expect(domainBar.firstElementChild).toHaveClass('bg-[var(--success-solid)]');
     expect(screen.getByText('8/10')).toBeInTheDocument();
   });
 });

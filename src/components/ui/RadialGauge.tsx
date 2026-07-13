@@ -12,7 +12,7 @@ interface RadialGaugeProps {
 const COLORS = {
   low: 'var(--destructive)',
   mid: 'var(--warning)',
-  high: 'var(--success)',
+  high: 'var(--success-solid)',
   tick: 'var(--foreground)',
 };
 
@@ -118,4 +118,3 @@ export function RadialGauge({ value, target, size = 180, className, children }: 
     </div>
   );
 }
-

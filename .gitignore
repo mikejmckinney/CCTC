@@ -60,6 +60,7 @@ coverage/
 node_modules/
 
 # --- Playwright e2e artifacts ---
+.playwright-mcp/
 test-results/
 playwright-report/
 blob-report/

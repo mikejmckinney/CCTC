@@ -272,9 +272,13 @@ export function History({
           {filteredHistory.length > 0 ? (
             <div className="divide-y divide-[var(--border)]">
               {filteredHistory.map((entry) => (
-                <div key={entry.id} className="flex items-center justify-between py-3 -mx-2 px-2 rounded-lg hover:bg-[var(--muted)]/50 transition-colors">
-                  <button onClick={() => onViewSession(entry)} className="flex-1 min-w-0 text-left">
-                    <div className="flex items-center gap-2">
+                <div
+                  key={entry.id}
+                  data-session-record
+                  className="relative -mx-2 rounded-lg px-2 py-3 transition-colors hover:bg-[var(--muted)]/50 sm:flex sm:items-center sm:justify-between"
+                >
+                  <button onClick={() => onViewSession(entry)} className="w-full min-w-0 text-left sm:flex-1">
+                    <div className="flex items-center gap-2 pr-24 sm:pr-0">
                       <p className="text-sm font-medium text-[var(--foreground)]">
                         {new Date(entry.completedAt).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
                         {' · '}
@@ -286,7 +290,7 @@ export function History({
                         </Badge>
                       )}
                     </div>
-                    <div className="flex flex-wrap items-center gap-2 mt-1">
+                    <div className="mt-1 flex flex-wrap items-center gap-2 pr-24 sm:pr-0">
                       <Badge variant="outline">{getBlueprintShort(entry.settings.blueprintId)}</Badge>
                       <span
                         data-session-mode
@@ -322,14 +326,14 @@ export function History({
                       })}
                     </div>
                   </button>
-                  <div className="flex items-center gap-3 ml-4">
+                  <div className="absolute right-2 top-3 flex items-center gap-2 sm:static sm:ml-4 sm:gap-3">
                     <Badge variant={entry.result.percent >= entry.settings.targetThreshold ? 'success' : 'warning'}>
                       {entry.result.percent}%
                     </Badge>
                     <Button variant="ghost" size="icon-sm" onClick={() => setDeleteConfirmId(entry.id)} aria-label="Delete session">
                       <Trash2 className="h-4 w-4" />
                     </Button>
-                    <ChevronRight className="h-4 w-4 text-[var(--muted-foreground)]" />
+                    <ChevronRight data-record-chevron className="hidden h-4 w-4 text-[var(--muted-foreground)] sm:block" />
                   </div>
                 </div>
               ))}

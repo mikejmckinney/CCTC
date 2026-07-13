@@ -104,11 +104,11 @@ function QuickStartButton({ label, icon: Icon, description, onClick }: {
     <button
       onClick={onClick}
       className={cn(
-        'flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-4 text-left shadow-sm',
+        'flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--quick-start,var(--card))] p-4 text-left shadow-sm',
         'transition-all hover:shadow-md hover:border-[var(--primary)] hover:-translate-y-0.5'
       )}
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--primary)] text-[var(--primary-foreground)]">
+      <div data-quick-start-icon className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--primary-solid)] text-[var(--primary-solid-foreground)]">
         <Icon className="h-5 w-5" />
       </div>
       <div className="min-w-0">
@@ -260,7 +260,7 @@ export function Dashboard({
       <h1 className="sr-only">Dashboard</h1>
 
       {activeSession && !activeSession.submittedAt && (
-        <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-[var(--primary)] px-5 py-4 text-[var(--primary-foreground)] shadow-sm">
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-[var(--primary-solid)] px-5 py-4 text-[var(--primary-solid-foreground)] shadow-sm">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] opacity-70">Continue</p>
             <p className="mt-1 text-sm">
