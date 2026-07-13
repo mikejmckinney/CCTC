@@ -31,44 +31,11 @@ export function Navigation({
       {/* Header — visible on all viewports */}
       <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-sm">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center">
             <button onClick={() => onNavigate('dashboard')} className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-[var(--primary)]" />
               <span className="text-lg font-bold text-[var(--foreground)]" style={{ fontFamily: 'var(--font-serif)' }}>CCTC</span>
             </button>
-            {/* Desktop nav links */}
-            <nav className="hidden sm:flex items-center gap-1" aria-label="Primary">
-              {NAV_ITEMS.map(({ page, label, icon: Icon }) => (
-                <button
-                  key={page}
-                  onClick={() => onNavigate(page)}
-                  className={cn(
-                    'flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
-                    currentPage === page
-                      ? 'bg-[var(--primary)]/10 text-[var(--primary)]'
-                      : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]'
-                  )}
-                  aria-current={currentPage === page ? 'page' : undefined}
-                >
-                  <Icon className="h-4 w-4" />
-                  {label}
-                </button>
-              ))}
-              {hasActiveSession && (
-                <button
-                  onClick={() => onNavigate('session')}
-                  className={cn(
-                    'flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
-                    currentPage === 'session'
-                      ? 'bg-[var(--accent)]/10 text-[var(--accent)]'
-                      : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--muted)]'
-                  )}
-                >
-                  <Play className="h-4 w-4" />
-                  Resume
-                </button>
-              )}
-            </nav>
           </div>
           <div className="flex items-center gap-2">
             {/* Exam info pills — always visible, clickable */}
@@ -116,14 +83,49 @@ export function Navigation({
                 <span className="sm:hidden">{targetScore}%</span>
               </button>
             )}
-            {/* Dark/light toggle — desktop only (already in bottom nav on mobile) */}
-            <button
-              onClick={(e) => performCircularReveal(e, toggleColorMode)}
-              className="hidden sm:flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)] hover:bg-[var(--muted)]"
-              aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
-            >
-              {colorMode === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-            </button>
+            <nav className="hidden items-center sm:flex" aria-label="Desktop navigation">
+              {NAV_ITEMS.map(({ page, icon: Icon, label }) => (
+                <button
+                  key={page}
+                  onClick={() => onNavigate(page)}
+                  className={cn(
+                    'flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-0.5 rounded-lg px-2 py-1 transition-colors',
+                    currentPage === page
+                      ? 'font-semibold text-[var(--primary)]'
+                      : 'text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)]'
+                  )}
+                  aria-label={label}
+                  aria-current={currentPage === page ? 'page' : undefined}
+                >
+                  <Icon className="h-5 w-5" />
+                  <span className="text-[10px]">{label}</span>
+                </button>
+              ))}
+              {hasActiveSession && (
+                <button
+                  onClick={() => onNavigate('session')}
+                  className={cn(
+                    'flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-0.5 rounded-lg px-2 py-1 transition-colors',
+                    currentPage === 'session'
+                      ? 'font-semibold text-[var(--accent)]'
+                      : 'text-[var(--muted-foreground)] hover:bg-[var(--muted)] hover:text-[var(--foreground)]'
+                  )}
+                  aria-label="Resume"
+                  aria-current={currentPage === 'session' ? 'page' : undefined}
+                >
+                  <Play className="h-5 w-5" />
+                  <span className="text-[10px]">Resume</span>
+                </button>
+              )}
+              <button
+                onClick={(e) => performCircularReveal(e, toggleColorMode)}
+                className="flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-0.5 rounded-lg px-2 py-1 text-[var(--muted-foreground)] transition-colors hover:bg-[var(--muted)] hover:text-[var(--foreground)]"
+                aria-label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}
+              >
+                {colorMode === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+                <span className="text-[10px]">{colorMode === 'light' ? 'Dark' : 'Light'}</span>
+              </button>
+            </nav>
           </div>
         </div>
       </header>
